@@ -457,43 +457,42 @@
         }
 
         .portfolio-preview {
-            height: 240px; background: var(--bg-secondary);
+            height: 280px; background: var(--bg-secondary);
             display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
             border-bottom: 1px solid var(--border);
         }
 
-        .portfolio-preview .browser-mockup {
-            width: 85%; height: 80%; background: var(--bg-primary);
-            border-radius: 8px; border: 1px solid var(--border);
-            overflow: hidden;
+        .portfolio-preview img {
+            width: 100%; height: 100%; object-fit: cover;
+            object-position: top; transition: transform 0.6s ease;
         }
 
-        .browser-bar {
-            display: flex; align-items: center; gap: 6px;
-            padding: 8px 12px; background: var(--bg-card);
-            border-bottom: 1px solid var(--border);
+        .portfolio-item:hover .portfolio-preview img {
+            transform: scale(1.05);
         }
 
-        .browser-dot { width: 8px; height: 8px; border-radius: 50%; }
-        .browser-url {
-            font-family: var(--font-mono); font-size: 10px;
-            color: var(--text-muted); margin-left: 12px;
-            background: var(--bg-primary); padding: 3px 12px;
-            border-radius: 4px; flex: 1;
+        .site-gallery {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 12px; max-width: 1200px; margin: 0 auto;
+            padding: 0 0 40px;
         }
 
-        .browser-content {
-            padding: 16px; display: flex; flex-direction: column; gap: 8px;
+        .site-gallery-item {
+            border-radius: 12px; overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
         }
 
-        .browser-line {
-            height: 6px; border-radius: 3px; background: var(--border);
+        .site-gallery-item:hover {
+            border-color: var(--border-accent);
+            transform: scale(1.02);
         }
 
-        .browser-line.accent { background: var(--accent-glow); width: 40%; }
-        .browser-line.short { width: 60%; }
-        .browser-line.medium { width: 80%; }
+        .site-gallery-item img {
+            width: 100%; height: 220px; object-fit: cover;
+            object-position: top; display: block;
+        }
 
         .portfolio-badge {
             position: absolute; top: 16px; right: 16px;
@@ -677,6 +676,8 @@
             .process-step::after { display: none; }
             .hero-visual { display: none; }
             .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-item[style*="grid-column"] { grid-column: span 1 !important; }
+            .site-gallery { grid-template-columns: 1fr; }
             .testimonial-grid { grid-template-columns: 1fr; }
         }
 
@@ -869,120 +870,105 @@
         <p class="section-subtitle">Real results from real projects. Here's what happens when data meets design.</p>
     </div>
     <div class="portfolio-grid">
+        <!-- ICY BEAR - Main showcase -->
+        <div class="portfolio-item" style="grid-column: span 2;">
+            <div class="portfolio-preview" style="height: 360px;">
+                <img src="https://files.catbox.moe/1059ko.jpg" alt="Icy Bear Dental Homepage" loading="lazy">
+                <span class="portfolio-badge">CRO &bull; Paid Media</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; CRO Optimisation &bull; 6-Figure Ad Budget</div>
+                <h3 class="portfolio-title">Icy Bear Dental</h3>
+                <p class="portfolio-desc">UK oral care brand. Complete Shopify rebranding, CRO optimisation, and paid media management. Managed 6-figure monthly ad budget across Meta, Google & TikTok.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+14%</span><span class="portfolio-stat-label">Revenue</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+40%</span><span class="portfolio-stat-label">Ad Output</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">-25%</span><span class="portfolio-stat-label">CPC</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+15%</span><span class="portfolio-stat-label">Purchases</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- MOONELA -->
         <div class="portfolio-item">
             <div class="portfolio-preview">
-                <div class="browser-mockup">
-                    <div class="browser-bar">
-                        <div class="browser-dot red"></div>
-                        <div class="browser-dot yellow"></div>
-                        <div class="browser-dot green"></div>
-                        <div class="browser-url">moonela.co.uk</div>
-                    </div>
-                    <div class="browser-content">
-                        <div class="browser-line accent" style="width:30%"></div>
-                        <div class="browser-line medium"></div>
-                        <div class="browser-line short"></div>
-                        <div class="browser-line" style="width:45%"></div>
-                        <div class="browser-line medium"></div>
-                    </div>
-                </div>
+                <img src="https://files.catbox.moe/bitjyd.jpg" alt="Moonela Homepage" loading="lazy">
                 <span class="portfolio-badge">E-commerce</span>
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-tag">Shopify &bull; DTC Jewelry</div>
                 <h3 class="portfolio-title">Moonela</h3>
-                <p class="portfolio-desc">Premium jewelry brand built from zero. Full-stack development, product photography direction, and Facebook Ads strategy.</p>
+                <p class="portfolio-desc">Premium jewelry brand built from zero. Full Shopify development, product photography direction, and Facebook Ads strategy.</p>
                 <div class="portfolio-stats">
                     <div class="portfolio-stat"><span class="portfolio-stat-value">Full Build</span><span class="portfolio-stat-label">Shopify</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">+Ads</span><span class="portfolio-stat-label">Meta</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">Meta Ads</span><span class="portfolio-stat-label">Paid</span></div>
                 </div>
             </div>
         </div>
+        <!-- PHOVEA -->
         <div class="portfolio-item">
             <div class="portfolio-preview">
-                <div class="browser-mockup">
-                    <div class="browser-bar">
-                        <div class="browser-dot red"></div>
-                        <div class="browser-dot yellow"></div>
-                        <div class="browser-dot green"></div>
-                        <div class="browser-url">phovea.co.uk</div>
-                    </div>
-                    <div class="browser-content">
-                        <div class="browser-line accent" style="width:35%"></div>
-                        <div class="browser-line short"></div>
-                        <div class="browser-line medium"></div>
-                        <div class="browser-line" style="width:50%"></div>
-                        <div class="browser-line short"></div>
-                    </div>
-                </div>
+                <img src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy">
                 <span class="portfolio-badge">Health & Beauty</span>
             </div>
             <div class="portfolio-info">
-                <div class="portfolio-tag">Shopify &bull; LED Therapy</div>
+                <div class="portfolio-tag">Shopify &bull; SEO &bull; Content</div>
                 <h3 class="portfolio-title">Phovea</h3>
-                <p class="portfolio-desc">LED face masks & red light therapy brand. 9 products, 5 collections, 52 SEO-optimised blog articles, custom Shopify homepage.</p>
+                <p class="portfolio-desc">LED face masks & red light therapy. 9 products, 5 collections, 52 SEO-optimised blog articles, custom Shopify homepage with 10 sections.</p>
                 <div class="portfolio-stats">
                     <div class="portfolio-stat"><span class="portfolio-stat-value">52</span><span class="portfolio-stat-label">SEO Articles</span></div>
                     <div class="portfolio-stat"><span class="portfolio-stat-value">9</span><span class="portfolio-stat-label">Products</span></div>
                 </div>
             </div>
         </div>
-        <div class="portfolio-item">
-            <div class="portfolio-preview">
-                <div class="browser-mockup">
-                    <div class="browser-bar">
-                        <div class="browser-dot red"></div>
-                        <div class="browser-dot yellow"></div>
-                        <div class="browser-dot green"></div>
-                        <div class="browser-url">icybear.co.uk</div>
-                    </div>
-                    <div class="browser-content">
-                        <div class="browser-line accent" style="width:25%"></div>
-                        <div class="browser-line medium"></div>
-                        <div class="browser-line" style="width:70%"></div>
-                        <div class="browser-line short"></div>
-                        <div class="browser-line medium"></div>
-                    </div>
-                </div>
-                <span class="portfolio-badge">Oral Care</span>
-            </div>
-            <div class="portfolio-info">
-                <div class="portfolio-tag">Shopify &bull; CRO &bull; Paid Media</div>
-                <h3 class="portfolio-title">Icy Bear Dental</h3>
-                <p class="portfolio-desc">UK oral care brand. Managed 6-figure ad budget, Shopify rebranding, +40% ad output, +15% purchase volume, +14% revenue growth.</p>
-                <div class="portfolio-stats">
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">+14%</span><span class="portfolio-stat-label">Revenue</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">-25%</span><span class="portfolio-stat-label">CPC</span></div>
-                </div>
+    </div>
+
+    <!-- SITE GALLERIES -->
+    <div style="max-width: 1200px; margin: 60px auto 0;">
+        <div class="section-eyebrow" style="margin-bottom: 32px;">Icy Bear &bull; Shopify Pages</div>
+        <div class="site-gallery">
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/a2dhxd.png" alt="Icy Bear Best Sellers" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/c9ka5t.png" alt="Icy Bear Product Page" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/ps68f3.png" alt="Icy Bear Collections" loading="lazy"></div>
+        </div>
+        <div class="section-eyebrow" style="margin-bottom: 32px;">Moonela &bull; Shopify Pages</div>
+        <div class="site-gallery">
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/2rq3of.jpg" alt="Moonela Best Sellers" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/gun6pj.png" alt="Moonela Product Page" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/f23uj6.png" alt="Moonela All Products" loading="lazy"></div>
+        </div>
+        <div class="section-eyebrow" style="margin-bottom: 32px;">Phovea &bull; Shopify Pages</div>
+        <div class="site-gallery">
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/g4xqej.jpg" alt="Phovea Product Page" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/46cj00.png" alt="Icy Bear Bundles" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy"></div>
+        </div>
+    </div>
+</section>
+
+<!-- PERFORMANCE DATA -->
+<section class="section section-dark">
+    <div class="section-header">
+        <div class="section-eyebrow">Under The Hood</div>
+        <h2 class="section-title">Data-driven <span class="accent">results</span></h2>
+        <p class="section-subtitle">Real dashboards. Real numbers. Every decision backed by analytics.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto;">
+        <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
+            <img src="assets/ad-production-pipeline.png" alt="Ad Production Pipeline" style="width:100%; display:block; filter: blur(6px);" loading="lazy">
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+                <span style="background:rgba(0,255,136,0.15); color:var(--accent); padding:10px 20px; border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--border-accent);"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span>
             </div>
         </div>
-        <div class="portfolio-item">
-            <div class="portfolio-preview">
-                <div class="browser-mockup">
-                    <div class="browser-bar">
-                        <div class="browser-dot red"></div>
-                        <div class="browser-dot yellow"></div>
-                        <div class="browser-dot green"></div>
-                        <div class="browser-url">taped.co.uk</div>
-                    </div>
-                    <div class="browser-content">
-                        <div class="browser-line accent" style="width:28%"></div>
-                        <div class="browser-line short"></div>
-                        <div class="browser-line" style="width:65%"></div>
-                        <div class="browser-line medium"></div>
-                        <div class="browser-line" style="width:40%"></div>
-                    </div>
-                </div>
-                <span class="portfolio-badge">Health & Wellness</span>
+        <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
+            <img src="assets/ad-performance-tracker.png" alt="Ad Performance Dashboard" style="width:100%; display:block; filter: blur(6px);" loading="lazy">
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+                <span style="background:rgba(0,255,136,0.15); color:var(--accent); padding:10px 20px; border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--border-accent);"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span>
             </div>
-            <div class="portfolio-info">
-                <div class="portfolio-tag">Shopify &bull; AI Creative</div>
-                <h3 class="portfolio-title">Taped</h3>
-                <p class="portfolio-desc">Vitamin patches brand. AI-first creative testing strategy, professional product photography, full Shopify build.</p>
-                <div class="portfolio-stats">
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">AI-First</span><span class="portfolio-stat-label">Creative</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">Full</span><span class="portfolio-stat-label">Build</span></div>
-                </div>
+        </div>
+        <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
+            <img src="assets/ugc-script-template.png" alt="UGC Script Template" style="width:100%; display:block; filter: blur(6px);" loading="lazy">
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+                <span style="background:rgba(0,255,136,0.15); color:var(--accent); padding:10px 20px; border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--border-accent);"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span>
             </div>
         </div>
     </div>
