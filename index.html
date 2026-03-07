@@ -14,7 +14,6 @@
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --bg-card: #141414;
-            --bg-card-hover: #1a1a1a;
             --text-primary: #e8e8e8;
             --text-secondary: #888888;
             --text-muted: #555555;
@@ -22,6 +21,8 @@
             --accent-dim: #00cc6a;
             --accent-glow: rgba(0, 255, 136, 0.15);
             --accent-glow-strong: rgba(0, 255, 136, 0.3);
+            --red: #ff4444;
+            --red-glow: rgba(255, 68, 68, 0.15);
             --border: rgba(255,255,255,0.06);
             --border-accent: rgba(0, 255, 136, 0.2);
             --shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -45,13 +46,11 @@
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
 
-        /* MATRIX RAIN CANVAS */
         #matrix-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0; opacity: 0.04; pointer-events: none;
         }
 
-        /* PROGRESS BAR */
         .progress {
             position: fixed; top: 0; left: 0; height: 2px;
             background: linear-gradient(90deg, var(--accent), #00ffcc);
@@ -59,7 +58,7 @@
             box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        /* NAVIGATION */
+        /* NAV */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             background: rgba(10, 10, 10, 0.85);
@@ -68,600 +67,184 @@
             padding: 0 80px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .navbar.scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .navbar-inner {
-            max-width: 1400px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 80px;
-        }
-
-        .navbar-logo {
-            font-family: var(--font-mono);
-            font-size: 20px; font-weight: 700;
-            color: var(--text-primary); text-decoration: none;
-            display: flex; align-items: center; gap: 8px;
-        }
-
+        .navbar.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .navbar-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .navbar-logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .navbar-logo .neo { color: var(--accent); }
-        .navbar-logo .cursor {
-            display: inline-block; width: 2px; height: 20px;
-            background: var(--accent); margin-left: 2px;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
+        .navbar-logo .cursor { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         .navbar-menu { display: flex; align-items: center; gap: 8px; }
-
-        .navbar-link {
-            padding: 12px 24px; font-size: 13px; font-weight: 500;
-            color: var(--text-secondary); text-decoration: none;
-            border-radius: 100px; transition: all 0.3s ease;
-            letter-spacing: 0.05em; text-transform: uppercase;
-        }
-
+        .navbar-link { padding: 12px 24px; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; border-radius: 100px; transition: all 0.3s ease; letter-spacing: 0.05em; text-transform: uppercase; }
         .navbar-link:hover { color: var(--accent); }
-
-        .navbar-cta {
-            margin-left: 24px; padding: 14px 32px;
-            font-size: 12px; font-weight: 600;
-            color: var(--bg-primary); background: var(--accent);
-            text-decoration: none; border-radius: 100px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.08em; text-transform: uppercase;
-        }
-
-        .navbar-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .navbar-toggle {
-            display: none; flex-direction: column; gap: 6px;
-            padding: 10px; background: none; border: none; cursor: pointer;
-        }
-
-        .navbar-toggle span {
-            width: 28px; height: 1px;
-            background: var(--text-primary); transition: all 0.3s ease;
-        }
+        .navbar-cta { margin-left: 24px; padding: 14px 32px; font-size: 12px; font-weight: 600; color: var(--bg-primary); background: var(--accent); text-decoration: none; border-radius: 100px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.08em; text-transform: uppercase; }
+        .navbar-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+        .navbar-toggle { display: none; flex-direction: column; gap: 6px; padding: 10px; background: none; border: none; cursor: pointer; }
+        .navbar-toggle span { width: 28px; height: 1px; background: var(--text-primary); transition: all 0.3s ease; }
 
         /* ANIMATIONS */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 40px var(--accent-glow); }
-            50% { box-shadow: 0 0 80px var(--accent-glow-strong); }
-        }
-
-        @keyframes borderGlow {
-            0%, 100% { border-color: rgba(0, 255, 136, 0.1); }
-            50% { border-color: rgba(0, 255, 136, 0.3); }
-        }
-
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes scanline {
-            0% { top: -10%; }
-            100% { top: 110%; }
-        }
-
-        .animate {
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0;
-        }
-
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 40px var(--accent-glow); } 50% { box-shadow: 0 0 80px var(--accent-glow-strong); } }
+        @keyframes scanline { 0% { top: -10%; } 100% { top: 110%; } }
+        @keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes barFill { from { width: 0; } }
+        .animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
         .delay-1 { animation-delay: 0.15s; }
         .delay-2 { animation-delay: 0.3s; }
         .delay-3 { animation-delay: 0.45s; }
         .delay-4 { animation-delay: 0.6s; }
 
         /* HERO */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            padding: 120px 80px 80px; position: relative; overflow: hidden;
-        }
-
-        .hero::before {
-            content: ''; position: absolute;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-            border-radius: 50%; top: -200px; right: -200px;
-            pointer-events: none;
-        }
-
-        .hero-grid-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image:
-                linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
-
-        .hero-scanline {
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 4px; background: linear-gradient(180deg, transparent, var(--accent-glow), transparent);
-            animation: scanline 8s linear infinite;
-            pointer-events: none; opacity: 0.3;
-        }
-
-        .hero-inner {
-            display: flex; align-items: center; justify-content: space-between;
-            gap: 80px; max-width: 1400px; margin: 0 auto;
-            width: 100%; position: relative; z-index: 2;
-        }
-
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 80px 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); border-radius: 50%; top: -200px; right: -200px; pointer-events: none; }
+        .hero-grid-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+        .hero-scanline { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(180deg, transparent, var(--accent-glow), transparent); animation: scanline 8s linear infinite; pointer-events: none; opacity: 0.3; }
+        .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 80px; max-width: 1400px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
         .hero-content { flex: 1; max-width: 700px; }
-
-        .hero-eyebrow {
-            display: inline-flex; align-items: center; gap: 12px;
-            font-family: var(--font-mono); font-size: 13px; font-weight: 400;
-            color: var(--accent); margin-bottom: 32px;
-        }
-
-        .hero-eyebrow::before {
-            content: '>'; color: var(--accent);
-        }
-
-        .hero h1 {
-            font-size: 68px; font-weight: 700; line-height: 1.05;
-            margin-bottom: 24px; letter-spacing: -0.03em;
-        }
-
-        .hero h1 .accent {
-            color: var(--accent);
-            text-shadow: 0 0 40px var(--accent-glow);
-        }
-
-        .hero-subtitle {
-            font-size: 20px; font-weight: 300;
-            color: var(--text-secondary); margin-bottom: 24px;
-        }
-
-        .hero-description {
-            font-size: 16px; color: var(--text-muted);
-            line-height: 1.9; margin-bottom: 48px; max-width: 520px;
-        }
-
-        .hero-stats {
-            display: flex; gap: 48px; padding: 40px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 48px;
-        }
-
-        .stat-value {
-            font-size: 36px; font-weight: 700;
-            display: block; margin-bottom: 8px;
-            color: var(--accent);
-            text-shadow: 0 0 30px var(--accent-glow);
-        }
-
-        .stat-label {
-            font-family: var(--font-mono);
-            font-size: 11px; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.15em;
-        }
-
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--accent); margin-bottom: 32px; }
+        .hero-eyebrow::before { content: '>'; color: var(--accent); }
+        .hero h1 { font-size: 68px; font-weight: 700; line-height: 1.05; margin-bottom: 24px; letter-spacing: -0.03em; }
+        .hero h1 .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow); }
+        .hero-subtitle { font-size: 20px; font-weight: 300; color: var(--text-secondary); margin-bottom: 24px; }
+        .hero-description { font-size: 16px; color: var(--text-muted); line-height: 1.9; margin-bottom: 48px; max-width: 520px; }
+        .hero-stats { display: flex; gap: 48px; padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+        .stat-value { font-size: 36px; font-weight: 700; display: block; margin-bottom: 8px; color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
+        .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
         .hero-cta { display: flex; gap: 20px; }
-
-        .btn {
-            display: inline-flex; align-items: center; gap: 12px;
-            padding: 18px 36px; border-radius: 100px;
-            font-size: 12px; font-weight: 600; text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.1em; text-transform: uppercase;
-            font-family: var(--font-main);
-        }
-
-        .btn-primary {
-            background: var(--accent); color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .btn-secondary {
-            background: transparent; color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
+        .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-main); }
+        .btn-primary { background: var(--accent); color: var(--bg-primary); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); }
+        .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
         .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-        .hero-visual {
-            position: relative; flex-shrink: 0;
-        }
-
-        .code-window {
-            width: 420px; background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px; overflow: hidden;
-            box-shadow: var(--shadow);
-            animation: glowPulse 4s ease-in-out infinite;
-        }
-
-        .code-window-bar {
-            display: flex; align-items: center; gap: 8px;
-            padding: 16px 20px; border-bottom: 1px solid var(--border);
-        }
-
-        .code-dot {
-            width: 12px; height: 12px; border-radius: 50%;
-        }
-
-        .code-dot.red { background: #ff5f56; }
-        .code-dot.yellow { background: #ffbd2e; }
-        .code-dot.green { background: #27c93f; }
-
-        .code-window-title {
-            font-family: var(--font-mono); font-size: 12px;
-            color: var(--text-muted); margin-left: 12px;
-        }
-
-        .code-content {
-            padding: 24px; font-family: var(--font-mono);
-            font-size: 13px; line-height: 2;
-        }
-
-        .code-line { display: flex; gap: 16px; }
-        .code-number { color: var(--text-muted); user-select: none; min-width: 20px; text-align: right; }
-        .code-keyword { color: #c678dd; }
-        .code-function { color: #61afef; }
-        .code-string { color: var(--accent); }
-        .code-comment { color: var(--text-muted); font-style: italic; }
-        .code-bracket { color: #e8e8e8; }
-        .code-property { color: #e5c07b; }
-        .code-value { color: #98c379; }
+        /* HERO DASHBOARD (replaces code window) */
+        .hero-visual { position: relative; flex-shrink: 0; }
+        .dashboard-window { width: 440px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); animation: glowPulse 4s ease-in-out infinite; }
+        .dashboard-bar { display: flex; align-items: center; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+        .dash-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dash-dot.red { background: #ff5f56; }
+        .dash-dot.yellow { background: #ffbd2e; }
+        .dash-dot.green { background: #27c93f; }
+        .dashboard-title { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-left: 12px; }
+        .dashboard-content { padding: 28px; }
+        .dash-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
+        .dash-metric { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .dash-metric:last-child { border-bottom: none; }
+        .dash-metric-name { font-size: 14px; color: var(--text-secondary); }
+        .dash-metric-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin: 0 16px; position: relative; overflow: hidden; }
+        .dash-metric-fill { height: 100%; border-radius: 3px; animation: barFill 1.5s ease-out forwards; }
+        .dash-metric-fill.bad { background: var(--red); box-shadow: 0 0 10px var(--red-glow); }
+        .dash-metric-fill.good { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+        .dash-metric-value { font-family: var(--font-mono); font-size: 14px; font-weight: 600; min-width: 50px; text-align: right; }
+        .dash-metric-value.bad { color: var(--red); }
+        .dash-metric-value.good { color: var(--accent); }
+        .dash-divider { height: 1px; background: var(--border); margin: 8px 0; }
+        .dash-section-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; margin: 16px 0 12px; padding: 6px 12px; border-radius: 6px; display: inline-block; }
+        .dash-section-label.before { color: var(--red); background: var(--red-glow); }
+        .dash-section-label.after { color: var(--accent); background: var(--accent-glow); }
 
         /* SECTIONS */
         .section { padding: 120px 80px; position: relative; z-index: 1; }
         .section-dark { background: var(--bg-primary); }
         .section-darker { background: var(--bg-secondary); }
-
-        .section-header {
-            text-align: center; max-width: 700px;
-            margin: 0 auto 80px;
-        }
-
-        .section-eyebrow {
-            display: inline-flex; align-items: center; gap: 16px;
-            font-family: var(--font-mono); font-size: 12px; font-weight: 400;
-            color: var(--accent); text-transform: uppercase;
-            letter-spacing: 0.15em; margin-bottom: 24px;
-        }
-
-        .section-eyebrow::before, .section-eyebrow::after {
-            content: ''; width: 30px; height: 1px; background: var(--accent-dim);
-        }
-
-        .section-title {
-            font-size: 52px; font-weight: 700;
-            margin-bottom: 24px; letter-spacing: -0.03em;
-        }
-
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 80px; }
+        .section-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; }
+        .section-eyebrow::before, .section-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--accent-dim); }
+        .section-title { font-size: 52px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; }
         .section-title .accent { color: var(--accent); }
+        .section-subtitle { font-size: 17px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
 
-        .section-subtitle {
-            font-size: 17px; color: var(--text-secondary);
-            line-height: 1.8; font-weight: 300;
-        }
+        /* Matrix decoration for sections */
+        .matrix-decoration { position: absolute; font-family: var(--font-mono); font-size: 11px; color: var(--accent); opacity: 0.07; pointer-events: none; white-space: pre; line-height: 1.8; }
 
-        /* SERVICE CARDS */
-        .cards-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; max-width: 1200px; margin: 0 auto;
-        }
-
-        .card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 24px; padding: 48px 40px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden;
-        }
-
-        .card::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, var(--accent), #00ffcc);
-            opacity: 0; transition: opacity 0.5s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--border-accent);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-        }
-
-        .card:hover::before { opacity: 1; }
-
-        .card-icon {
-            width: 56px; height: 56px; border-radius: 16px;
-            background: var(--accent-glow); display: flex;
-            align-items: center; justify-content: center;
-            font-size: 24px; margin-bottom: 28px; color: var(--accent);
-        }
-
-        .card-title {
-            font-size: 22px; font-weight: 600; margin-bottom: 12px;
-        }
-
+        /* CARDS */
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 48px 40px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #00ffcc); opacity: 0; transition: opacity 0.5s ease; }
+        .card::after { content: ''; position: absolute; bottom: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+        .card:hover { transform: translateY(-8px); border-color: var(--border-accent); box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+        .card:hover::before, .card:hover::after { opacity: 1; }
+        .card-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 28px; color: var(--accent); border: 1px solid var(--border-accent); }
+        .card-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
         .card-text { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
 
         /* PROCESS */
-        .process-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 32px; max-width: 1200px; margin: 0 auto;
-        }
-
-        .process-step {
-            text-align: center; padding: 40px 24px;
-            position: relative;
-        }
-
-        .process-step::after {
-            content: ''; position: absolute; top: 40px;
-            right: -16px; width: 32px; height: 1px;
-            background: var(--border-accent);
-        }
-
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+        .process-step { text-align: center; padding: 40px 24px; position: relative; }
+        .process-step::after { content: ''; position: absolute; top: 40px; right: -16px; width: 32px; height: 1px; background: var(--border-accent); }
         .process-step:last-child::after { display: none; }
+        .process-number { font-family: var(--font-mono); font-size: 48px; font-weight: 700; color: var(--accent); opacity: 0.3; margin-bottom: 20px; text-shadow: 0 0 40px var(--accent-glow); }
+        .process-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+        .process-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 
-        .process-number {
-            font-family: var(--font-mono); font-size: 48px;
-            font-weight: 700; color: var(--accent);
-            opacity: 0.3; margin-bottom: 20px;
-            text-shadow: 0 0 40px var(--accent-glow);
-        }
+        /* PORTFOLIO */
+        .portfolio-showcase { max-width: 1200px; margin: 0 auto; }
+        .portfolio-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.5s ease; position: relative; margin-bottom: 48px; }
+        .portfolio-item:hover { border-color: var(--border-accent); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
 
-        .process-title {
-            font-size: 18px; font-weight: 600; margin-bottom: 12px;
-        }
+        .portfolio-hero-img { width: 100%; height: 500px; object-fit: cover; object-position: top; display: block; transition: transform 0.6s ease; }
+        .portfolio-item:hover .portfolio-hero-img { transform: scale(1.02); }
 
-        .process-text {
-            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
-        }
+        .portfolio-badge { position: absolute; top: 20px; right: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); background: rgba(0,0,0,0.85); padding: 8px 18px; border-radius: 100px; border: 1px solid var(--border-accent); letter-spacing: 0.1em; text-transform: uppercase; backdrop-filter: blur(10px); }
 
-        /* PORTFOLIO / CASE STUDIES */
-        .portfolio-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 32px; max-width: 1200px; margin: 0 auto;
-        }
+        .portfolio-info { padding: 40px 48px; }
+        .portfolio-tag { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+        .portfolio-title { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+        .portfolio-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; max-width: 700px; }
+        .portfolio-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+        .portfolio-stat { font-family: var(--font-mono); font-size: 13px; }
+        .portfolio-stat-value { color: var(--accent); font-weight: 700; font-size: 20px; display: block; text-shadow: 0 0 20px var(--accent-glow); }
+        .portfolio-stat-label { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
 
-        .portfolio-item {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 24px; overflow: hidden;
-            transition: all 0.5s ease; position: relative;
-        }
+        /* SITE GALLERY */
+        .site-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto 60px; }
+        .site-gallery-item { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: all 0.4s ease; position: relative; }
+        .site-gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(0,255,136,0.05) 100%); pointer-events: none; opacity: 0; transition: opacity 0.4s; }
+        .site-gallery-item:hover { border-color: var(--border-accent); transform: scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .site-gallery-item:hover::after { opacity: 1; }
+        .site-gallery-item img { width: 100%; height: 280px; object-fit: cover; object-position: top; display: block; }
 
-        .portfolio-item:hover {
-            border-color: var(--border-accent);
-            transform: translateY(-6px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        .portfolio-preview {
-            height: 280px; background: var(--bg-secondary);
-            display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .portfolio-preview img {
-            width: 100%; height: 100%; object-fit: cover;
-            object-position: top; transition: transform 0.6s ease;
-        }
-
-        .portfolio-item:hover .portfolio-preview img {
-            transform: scale(1.05);
-        }
-
-        .site-gallery {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 12px; max-width: 1200px; margin: 0 auto;
-            padding: 0 0 40px;
-        }
-
-        .site-gallery-item {
-            border-radius: 12px; overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-        }
-
-        .site-gallery-item:hover {
-            border-color: var(--border-accent);
-            transform: scale(1.02);
-        }
-
-        .site-gallery-item img {
-            width: 100%; height: 220px; object-fit: cover;
-            object-position: top; display: block;
-        }
-
-        .portfolio-badge {
-            position: absolute; top: 16px; right: 16px;
-            font-family: var(--font-mono); font-size: 10px;
-            color: var(--accent); background: rgba(0,0,0,0.8);
-            padding: 6px 14px; border-radius: 100px;
-            border: 1px solid var(--border-accent);
-            letter-spacing: 0.1em; text-transform: uppercase;
-        }
-
-        .portfolio-info { padding: 32px; }
-
-        .portfolio-tag {
-            font-family: var(--font-mono); font-size: 11px;
-            color: var(--accent); text-transform: uppercase;
-            letter-spacing: 0.1em; margin-bottom: 12px;
-        }
-
-        .portfolio-title {
-            font-size: 24px; font-weight: 600; margin-bottom: 12px;
-        }
-
-        .portfolio-desc {
-            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .portfolio-stats {
-            display: flex; gap: 24px;
-        }
-
-        .portfolio-stat {
-            font-family: var(--font-mono); font-size: 12px;
-        }
-
-        .portfolio-stat-value { color: var(--accent); font-weight: 600; }
-        .portfolio-stat-label { color: var(--text-muted); margin-left: 6px; }
+        .gallery-label { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .gallery-label::before { content: ''; width: 20px; height: 1px; background: var(--accent-dim); }
+        .gallery-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
         /* BEFORE/AFTER */
-        .before-after {
-            max-width: 1000px; margin: 0 auto;
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 24px; overflow: hidden;
-        }
-
-        .ba-header {
-            display: flex; border-bottom: 1px solid var(--border);
-        }
-
-        .ba-tab {
-            flex: 1; padding: 20px; text-align: center;
-            font-family: var(--font-mono); font-size: 13px;
-            font-weight: 500; letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .ba-tab.before {
-            color: #ff4444; border-right: 1px solid var(--border);
-        }
-
+        .ba-section { max-width: 1200px; margin: 0 auto; }
+        .ba-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; margin-bottom: 48px; }
+        .ba-header { display: flex; border-bottom: 1px solid var(--border); }
+        .ba-tab { flex: 1; padding: 20px; text-align: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+        .ba-tab.before { color: var(--red); border-right: 1px solid var(--border); }
         .ba-tab.after { color: var(--accent); }
-
-        .ba-content {
-            display: grid; grid-template-columns: 1fr 1fr;
-        }
-
-        .ba-side {
-            padding: 40px; border-right: 1px solid var(--border);
-        }
-
-        .ba-side:last-child { border-right: none; }
-
+        .ba-content { display: grid; grid-template-columns: 1fr 1fr; }
+        .ba-side { padding: 40px; }
+        .ba-side:first-child { border-right: 1px solid var(--border); }
         .ba-list { list-style: none; }
-
-        .ba-list li {
-            padding: 12px 0; font-size: 14px;
-            color: var(--text-secondary); line-height: 1.6;
-            display: flex; align-items: flex-start; gap: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .ba-list li { padding: 14px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--border); }
         .ba-list li:last-child { border-bottom: none; }
-
-        .ba-icon-bad { color: #ff4444; flex-shrink: 0; margin-top: 3px; }
+        .ba-icon-bad { color: var(--red); flex-shrink: 0; margin-top: 3px; }
         .ba-icon-good { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
 
-        /* TESTIMONIALS */
-        .testimonial-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; max-width: 1200px; margin: 0 auto;
-        }
-
-        .testimonial {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 20px; padding: 40px;
-            transition: all 0.4s ease;
-        }
-
-        .testimonial:hover {
-            border-color: var(--border-accent);
-            transform: translateY(-4px);
-        }
-
-        .testimonial-stars { color: #ffbd2e; font-size: 14px; margin-bottom: 20px; }
-
-        .testimonial-text {
-            font-size: 15px; color: var(--text-secondary);
-            line-height: 1.8; margin-bottom: 24px; font-style: italic;
-        }
-
-        .testimonial-author { font-weight: 600; font-size: 14px; }
-        .testimonial-role { font-size: 12px; color: var(--text-muted); }
+        /* BLURRED SCREENSHOTS */
+        .confidential-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+        .confidential-item { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+        .confidential-item img { width: 100%; display: block; filter: blur(6px); }
+        .confidential-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; }
+        .confidential-badge { background: var(--accent-glow); color: var(--accent); padding: 10px 20px; border-radius: 100px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border-accent); }
 
         /* CTA */
-        .cta-section {
-            text-align: center; padding: 120px 80px;
-            position: relative; overflow: hidden; z-index: 1;
-        }
-
-        .cta-section::before {
-            content: ''; position: absolute;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-            border-radius: 50%; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .cta-title {
-            font-size: 56px; font-weight: 700; margin-bottom: 24px;
-            letter-spacing: -0.03em; position: relative;
-        }
-
-        .cta-subtitle {
-            font-size: 18px; color: var(--text-secondary);
-            margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto;
-        }
-
+        .cta-section { text-align: center; padding: 120px 80px; position: relative; overflow: hidden; z-index: 1; }
+        .cta-section::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+        .cta-title { font-size: 56px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; position: relative; }
+        .cta-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; }
         .cta-buttons { display: flex; gap: 20px; justify-content: center; }
 
         /* FOOTER */
-        .footer {
-            padding: 60px 80px 40px;
-            border-top: 1px solid var(--border);
-            position: relative; z-index: 1;
-        }
-
-        .footer-inner {
-            max-width: 1400px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-
-        .footer-logo {
-            font-family: var(--font-mono); font-size: 16px; font-weight: 700;
-        }
-
+        .footer { padding: 60px 80px 40px; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
         .footer-logo .neo { color: var(--accent); }
-
-        .footer-text {
-            font-size: 13px; color: var(--text-muted);
-        }
-
+        .footer-text { font-size: 13px; color: var(--text-muted); }
         .footer-links { display: flex; gap: 24px; }
-
-        .footer-link {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 13px; transition: color 0.3s;
-        }
-
+        .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.3s; }
         .footer-link:hover { color: var(--accent); }
 
         /* RESPONSIVE */
@@ -675,21 +258,14 @@
             .process-grid { grid-template-columns: repeat(2, 1fr); }
             .process-step::after { display: none; }
             .hero-visual { display: none; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-item[style*="grid-column"] { grid-column: span 1 !important; }
-            .site-gallery { grid-template-columns: 1fr; }
-            .testimonial-grid { grid-template-columns: 1fr; }
+            .site-gallery { grid-template-columns: 1fr 1fr; }
+            .confidential-grid { grid-template-columns: 1fr; }
+            .portfolio-hero-img { height: 350px; }
         }
 
         @media (max-width: 768px) {
             .navbar { padding: 0 24px; }
-            .navbar-menu {
-                display: none; position: fixed;
-                top: 80px; left: 0; right: 0;
-                background: rgba(10,10,10,0.98);
-                flex-direction: column; padding: 24px;
-                border-bottom: 1px solid var(--border);
-            }
+            .navbar-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
             .navbar-menu.open { display: flex; }
             .navbar-toggle { display: flex; }
             .navbar-cta { margin-left: 0; margin-top: 16px; text-align: center; }
@@ -700,10 +276,12 @@
             .section { padding: 60px 24px; }
             .section-title { font-size: 32px; }
             .cta-title { font-size: 36px; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr; }
+            .cards-grid, .process-grid, .site-gallery { grid-template-columns: 1fr; }
             .ba-content { grid-template-columns: 1fr; }
-            .ba-side { border-right: none; border-bottom: 1px solid var(--border); }
+            .ba-side:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+            .portfolio-hero-img { height: 250px; }
+            .portfolio-info { padding: 24px; }
+            .site-gallery-item img { height: 200px; }
             .footer { padding: 40px 24px; }
             .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
         }
@@ -712,7 +290,6 @@
 <body>
 
 <canvas id="matrix-bg"></canvas>
-
 <div class="progress" id="progress"></div>
 
 <!-- NAVBAR -->
@@ -746,18 +323,9 @@
                 From complete redesigns to surgical CRO improvements &mdash; backed by 7+ years of e-commerce data.
             </p>
             <div class="hero-stats animate delay-3">
-                <div>
-                    <span class="stat-value">300+</span>
-                    <span class="stat-label">Brands Helped</span>
-                </div>
-                <div>
-                    <span class="stat-value">&euro;15M+</span>
-                    <span class="stat-label">Revenue Generated</span>
-                </div>
-                <div>
-                    <span class="stat-value">7+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
+                <div><span class="stat-value">300+</span><span class="stat-label">Brands Helped</span></div>
+                <div><span class="stat-value">&pound;15M+</span><span class="stat-label">Revenue Generated</span></div>
+                <div><span class="stat-value">7+</span><span class="stat-label">Years Experience</span></div>
             </div>
             <div class="hero-cta animate delay-4">
                 <a href="#contact" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
@@ -765,25 +333,47 @@
             </div>
         </div>
         <div class="hero-visual animate delay-3">
-            <div class="code-window">
-                <div class="code-window-bar">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-window-title">your-website.js</span>
+            <div class="dashboard-window">
+                <div class="dashboard-bar">
+                    <div class="dash-dot red"></div>
+                    <div class="dash-dot yellow"></div>
+                    <div class="dash-dot green"></div>
+                    <span class="dashboard-title">website-audit.report</span>
                 </div>
-                <div class="code-content">
-                    <div class="code-line"><span class="code-number">1</span><span class="code-comment">// before neocode</span></div>
-                    <div class="code-line"><span class="code-number">2</span><span class="code-keyword">const</span> <span class="code-property">conversionRate</span> = <span style="color:#ff4444">0.2%</span>;</div>
-                    <div class="code-line"><span class="code-number">3</span><span class="code-keyword">const</span> <span class="code-property">bounceRate</span> = <span style="color:#ff4444">87%</span>;</div>
-                    <div class="code-line"><span class="code-number">4</span><span class="code-keyword">const</span> <span class="code-property">trustScore</span> = <span style="color:#ff4444">"low"</span>;</div>
-                    <div class="code-line"><span class="code-number">5</span></div>
-                    <div class="code-line"><span class="code-number">6</span><span class="code-comment">// after neocode</span></div>
-                    <div class="code-line"><span class="code-number">7</span><span class="code-keyword">const</span> <span class="code-property">conversionRate</span> = <span class="code-string">4.8%</span>;</div>
-                    <div class="code-line"><span class="code-number">8</span><span class="code-keyword">const</span> <span class="code-property">bounceRate</span> = <span class="code-string">32%</span>;</div>
-                    <div class="code-line"><span class="code-number">9</span><span class="code-keyword">const</span> <span class="code-property">trustScore</span> = <span class="code-string">"elite"</span>;</div>
-                    <div class="code-line"><span class="code-number">10</span></div>
-                    <div class="code-line"><span class="code-number">11</span><span class="code-function">deploy</span><span class="code-bracket">(</span><span class="code-string">"success"</span><span class="code-bracket">)</span>; <span class="code-comment">// &#x1F680;</span></div>
+                <div class="dashboard-content">
+                    <div class="dash-section-label before"><i class="fas fa-times-circle"></i> &nbsp;Before Neocode</div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-name">Visitors who leave</span>
+                        <div class="dash-metric-bar"><div class="dash-metric-fill bad" style="width:87%"></div></div>
+                        <span class="dash-metric-value bad">87%</span>
+                    </div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-name">Become customers</span>
+                        <div class="dash-metric-bar"><div class="dash-metric-fill bad" style="width:8%"></div></div>
+                        <span class="dash-metric-value bad">0.2%</span>
+                    </div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-name">Trust score</span>
+                        <div class="dash-metric-bar"><div class="dash-metric-fill bad" style="width:15%"></div></div>
+                        <span class="dash-metric-value bad">Low</span>
+                    </div>
+
+                    <div class="dash-section-label after"><i class="fas fa-check-circle"></i> &nbsp;After Neocode</div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-name">Visitors who leave</span>
+                        <div class="dash-metric-bar"><div class="dash-metric-fill good" style="width:32%"></div></div>
+                        <span class="dash-metric-value good">32%</span>
+                    </div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-name">Become customers</span>
+                        <div class="dash-metric-bar"><div class="dash-metric-fill good" style="width:48%"></div></div>
+                        <span class="dash-metric-value good">4.8%</span>
+                    </div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-name">Trust score</span>
+                        <div class="dash-metric-bar"><div class="dash-metric-fill good" style="width:95%"></div></div>
+                        <span class="dash-metric-value good">Elite</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -792,6 +382,10 @@
 
 <!-- SERVICES -->
 <section class="section section-darker" id="services">
+    <div class="matrix-decoration" style="top: 40px; left: 20px;">01001110 01100101
+01101111 01100011
+01101111 01100100
+01100101 00100000</div>
     <div class="section-header">
         <div class="section-eyebrow">What We Do</div>
         <h2 class="section-title">Websites that <span class="accent">convert</span></h2>
@@ -833,32 +427,22 @@
 
 <!-- PROCESS -->
 <section class="section section-dark" id="process">
+    <div class="matrix-decoration" style="top: 60px; right: 30px;">function transform() {
+  audit(site);
+  design(better);
+  deploy(success);
+  return growth;
+}</div>
     <div class="section-header">
         <div class="section-eyebrow">How We Work</div>
         <h2 class="section-title">From audit to <span class="accent">launch</span></h2>
         <p class="section-subtitle">A proven 4-step process that takes your site from underperforming to industry-leading.</p>
     </div>
     <div class="process-grid">
-        <div class="process-step">
-            <div class="process-number">01</div>
-            <h3 class="process-title">Free Audit</h3>
-            <p class="process-text">We analyse your current site: design, UX, speed, SEO, conversion paths. You get a full report &mdash; no strings attached.</p>
-        </div>
-        <div class="process-step">
-            <div class="process-number">02</div>
-            <h3 class="process-title">Strategy</h3>
-            <p class="process-text">We create a tailored plan based on your goals, audience, and budget. Every decision is backed by data.</p>
-        </div>
-        <div class="process-step">
-            <div class="process-number">03</div>
-            <h3 class="process-title">Build</h3>
-            <p class="process-text">Design, develop, test. We build your new site with obsessive attention to detail and conversion best practices.</p>
-        </div>
-        <div class="process-step">
-            <div class="process-number">04</div>
-            <h3 class="process-title">Launch & Grow</h3>
-            <p class="process-text">Go live with confidence. We monitor performance, run A/B tests, and continuously optimise for better results.</p>
-        </div>
+        <div class="process-step"><div class="process-number">01</div><h3 class="process-title">Free Audit</h3><p class="process-text">We analyse your current site: design, UX, speed, SEO, conversion paths. You get a full report &mdash; no strings attached.</p></div>
+        <div class="process-step"><div class="process-number">02</div><h3 class="process-title">Strategy</h3><p class="process-text">We create a tailored plan based on your goals, audience, and budget. Every decision is backed by data.</p></div>
+        <div class="process-step"><div class="process-number">03</div><h3 class="process-title">Build</h3><p class="process-text">Design, develop, test. We build your new site with obsessive attention to detail and conversion best practices.</p></div>
+        <div class="process-step"><div class="process-number">04</div><h3 class="process-title">Launch & Grow</h3><p class="process-text">Go live with confidence. We monitor performance, run A/B tests, and continuously optimise for better results.</p></div>
     </div>
 </section>
 
@@ -869,154 +453,194 @@
         <h2 class="section-title">Brands we've <span class="accent">transformed</span></h2>
         <p class="section-subtitle">Real results from real projects. Here's what happens when data meets design.</p>
     </div>
-    <div class="portfolio-grid">
-        <!-- ICY BEAR - Main showcase -->
-        <div class="portfolio-item" style="grid-column: span 2;">
-            <div class="portfolio-preview" style="height: 360px;">
-                <img src="https://files.catbox.moe/1059ko.jpg" alt="Icy Bear Dental Homepage" loading="lazy">
-                <span class="portfolio-badge">CRO &bull; Paid Media</span>
+
+    <div class="portfolio-showcase">
+
+        <!-- ICY BEAR -->
+        <div class="portfolio-item">
+            <div style="position:relative; overflow:hidden;">
+                <img class="portfolio-hero-img" src="https://files.catbox.moe/1059ko.jpg" alt="Icy Bear Dental Homepage" loading="lazy">
+                <span class="portfolio-badge">Featured Project</span>
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-tag">Shopify &bull; CRO Optimisation &bull; 6-Figure Ad Budget</div>
                 <h3 class="portfolio-title">Icy Bear Dental</h3>
-                <p class="portfolio-desc">UK oral care brand. Complete Shopify rebranding, CRO optimisation, and paid media management. Managed 6-figure monthly ad budget across Meta, Google & TikTok.</p>
+                <p class="portfolio-desc">UK's leading oral care brand. Complete Shopify rebranding, CRO optimisation across all pages, and paid media management across Meta, Google & TikTok with a 6-figure monthly budget.</p>
                 <div class="portfolio-stats">
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">+14%</span><span class="portfolio-stat-label">Revenue</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+14%</span><span class="portfolio-stat-label">Revenue Growth</span></div>
                     <div class="portfolio-stat"><span class="portfolio-stat-value">+40%</span><span class="portfolio-stat-label">Ad Output</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">-25%</span><span class="portfolio-stat-label">CPC</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">+15%</span><span class="portfolio-stat-label">Purchases</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">-25%</span><span class="portfolio-stat-label">Cost Per Click</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+15%</span><span class="portfolio-stat-label">Purchase Volume</span></div>
                 </div>
             </div>
         </div>
-        <!-- MOONELA -->
-        <div class="portfolio-item">
-            <div class="portfolio-preview">
-                <img src="https://files.catbox.moe/bitjyd.jpg" alt="Moonela Homepage" loading="lazy">
-                <span class="portfolio-badge">E-commerce</span>
-            </div>
-            <div class="portfolio-info">
-                <div class="portfolio-tag">Shopify &bull; DTC Jewelry</div>
-                <h3 class="portfolio-title">Moonela</h3>
-                <p class="portfolio-desc">Premium jewelry brand built from zero. Full Shopify development, product photography direction, and Facebook Ads strategy.</p>
-                <div class="portfolio-stats">
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">Full Build</span><span class="portfolio-stat-label">Shopify</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">Meta Ads</span><span class="portfolio-stat-label">Paid</span></div>
-                </div>
-            </div>
-        </div>
-        <!-- PHOVEA -->
-        <div class="portfolio-item">
-            <div class="portfolio-preview">
-                <img src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy">
-                <span class="portfolio-badge">Health & Beauty</span>
-            </div>
-            <div class="portfolio-info">
-                <div class="portfolio-tag">Shopify &bull; SEO &bull; Content</div>
-                <h3 class="portfolio-title">Phovea</h3>
-                <p class="portfolio-desc">LED face masks & red light therapy. 9 products, 5 collections, 52 SEO-optimised blog articles, custom Shopify homepage with 10 sections.</p>
-                <div class="portfolio-stats">
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">52</span><span class="portfolio-stat-label">SEO Articles</span></div>
-                    <div class="portfolio-stat"><span class="portfolio-stat-value">9</span><span class="portfolio-stat-label">Products</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- SITE GALLERIES -->
-    <div style="max-width: 1200px; margin: 60px auto 0;">
-        <div class="section-eyebrow" style="margin-bottom: 32px;">Icy Bear &bull; Shopify Pages</div>
+        <div class="gallery-label">Icy Bear &bull; Shopify Pages We Designed</div>
         <div class="site-gallery">
             <div class="site-gallery-item"><img src="https://files.catbox.moe/a2dhxd.png" alt="Icy Bear Best Sellers" loading="lazy"></div>
             <div class="site-gallery-item"><img src="https://files.catbox.moe/c9ka5t.png" alt="Icy Bear Product Page" loading="lazy"></div>
             <div class="site-gallery-item"><img src="https://files.catbox.moe/ps68f3.png" alt="Icy Bear Collections" loading="lazy"></div>
         </div>
-        <div class="section-eyebrow" style="margin-bottom: 32px;">Moonela &bull; Shopify Pages</div>
+
+        <!-- ICY BEAR BEFORE/AFTER -->
+        <div class="gallery-label">Icy Bear &bull; Before vs After Our CRO Work</div>
+        <div class="ba-container" style="margin-bottom: 60px;">
+            <div class="ba-header">
+                <div class="ba-tab before"><i class="fas fa-times-circle"></i> &nbsp;Before</div>
+                <div class="ba-tab after"><i class="fas fa-check-circle"></i> &nbsp;After Neocode</div>
+            </div>
+            <div class="ba-content">
+                <div class="ba-side">
+                    <ul class="ba-list">
+                        <li><i class="fas fa-times ba-icon-bad"></i> Outdated Shopify theme with poor mobile UX</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Low conversion rate on product pages</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Inefficient ad spend with high CPC</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> No structured creative pipeline</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Inconsistent brand messaging across channels</li>
+                    </ul>
+                </div>
+                <div class="ba-side">
+                    <ul class="ba-list">
+                        <li><i class="fas fa-check ba-icon-good"></i> Full Shopify rebrand with mobile-first CRO</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> +15% purchase volume with optimised pages</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> -25% CPC through creative testing & audience strategy</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> +40% ad production output with structured pipeline</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Unified brand across Shopify, ads, email & socials</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOONELA -->
+        <div class="portfolio-item">
+            <div style="position:relative; overflow:hidden;">
+                <img class="portfolio-hero-img" src="https://files.catbox.moe/bitjyd.jpg" alt="Moonela Homepage" loading="lazy">
+                <span class="portfolio-badge">E-commerce</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; DTC Jewelry &bull; Full Build</div>
+                <h3 class="portfolio-title">Moonela</h3>
+                <p class="portfolio-desc">Premium jewelry brand built from zero. Full Shopify development, product photography direction, organic social strategy, and Facebook Ads management.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">Full Build</span><span class="portfolio-stat-label">From Zero</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">Shopify</span><span class="portfolio-stat-label">Custom Theme</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">Meta Ads</span><span class="portfolio-stat-label">Paid Strategy</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-label">Moonela &bull; Shopify Pages</div>
         <div class="site-gallery">
             <div class="site-gallery-item"><img src="https://files.catbox.moe/2rq3of.jpg" alt="Moonela Best Sellers" loading="lazy"></div>
             <div class="site-gallery-item"><img src="https://files.catbox.moe/gun6pj.png" alt="Moonela Product Page" loading="lazy"></div>
             <div class="site-gallery-item"><img src="https://files.catbox.moe/f23uj6.png" alt="Moonela All Products" loading="lazy"></div>
         </div>
-        <div class="section-eyebrow" style="margin-bottom: 32px;">Phovea &bull; Shopify Pages</div>
+
+        <!-- PHOVEA -->
+        <div class="portfolio-item">
+            <div style="position:relative; overflow:hidden;">
+                <img class="portfolio-hero-img" src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy">
+                <span class="portfolio-badge">Health & Beauty</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; SEO &bull; Content Strategy</div>
+                <h3 class="portfolio-title">Phovea</h3>
+                <p class="portfolio-desc">LED face masks & red light therapy brand. 9 products across 5 collections, 52 SEO-optimised blog articles, custom Shopify homepage with 10 conversion-focused sections.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">52</span><span class="portfolio-stat-label">SEO Articles</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">9</span><span class="portfolio-stat-label">Products</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">5</span><span class="portfolio-stat-label">Collections</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-label">Phovea &bull; Shopify Pages</div>
         <div class="site-gallery">
             <div class="site-gallery-item"><img src="https://files.catbox.moe/g4xqej.jpg" alt="Phovea Product Page" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/46cj00.png" alt="Icy Bear Bundles" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/46cj00.png" alt="Bundles Page" loading="lazy"></div>
+            <div class="site-gallery-item"><img src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage Full" loading="lazy"></div>
         </div>
+
     </div>
 </section>
 
 <!-- PERFORMANCE DATA -->
 <section class="section section-dark">
+    <div class="matrix-decoration" style="bottom: 40px; left: 20px;">SELECT revenue, cpc, roas
+FROM ad_campaigns
+WHERE brand = 'icy_bear'
+ORDER BY performance DESC;</div>
     <div class="section-header">
         <div class="section-eyebrow">Under The Hood</div>
         <h2 class="section-title">Data-driven <span class="accent">results</span></h2>
         <p class="section-subtitle">Real dashboards. Real numbers. Every decision backed by analytics.</p>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto;">
-        <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
-            <img src="assets/ad-production-pipeline.png" alt="Ad Production Pipeline" style="width:100%; display:block; filter: blur(6px);" loading="lazy">
-            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
-                <span style="background:rgba(0,255,136,0.15); color:var(--accent); padding:10px 20px; border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--border-accent);"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span>
-            </div>
+    <div class="confidential-grid">
+        <div class="confidential-item">
+            <img src="assets/ad-production-pipeline.png" alt="Ad Production Pipeline" loading="lazy">
+            <div class="confidential-overlay"><span class="confidential-badge"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span></div>
         </div>
-        <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
-            <img src="assets/ad-performance-tracker.png" alt="Ad Performance Dashboard" style="width:100%; display:block; filter: blur(6px);" loading="lazy">
-            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
-                <span style="background:rgba(0,255,136,0.15); color:var(--accent); padding:10px 20px; border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--border-accent);"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span>
-            </div>
+        <div class="confidential-item">
+            <img src="assets/ad-performance-tracker.png" alt="Ad Performance Dashboard" loading="lazy">
+            <div class="confidential-overlay"><span class="confidential-badge"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span></div>
         </div>
-        <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
-            <img src="assets/ugc-script-template.png" alt="UGC Script Template" style="width:100%; display:block; filter: blur(6px);" loading="lazy">
-            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
-                <span style="background:rgba(0,255,136,0.15); color:var(--accent); padding:10px 20px; border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--border-accent);"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span>
-            </div>
+        <div class="confidential-item">
+            <img src="assets/ugc-script-template.png" alt="UGC Script Template" loading="lazy">
+            <div class="confidential-overlay"><span class="confidential-badge"><i class="fas fa-lock"></i> &nbsp;Client Data &mdash; Confidential</span></div>
         </div>
     </div>
 </section>
 
-<!-- BEFORE/AFTER -->
-<section class="section section-dark" id="results">
+<!-- BEFORE/AFTER GENERAL -->
+<section class="section section-darker" id="results">
+    <div class="matrix-decoration" style="top: 80px; right: 20px;">if (site.score < 4) {
+  neocode.fix(site);
+  site.revenue *= 3;
+  site.trust = "max";
+}</div>
     <div class="section-header">
         <div class="section-eyebrow">The Difference</div>
         <h2 class="section-title">Before vs <span class="accent">After</span></h2>
         <p class="section-subtitle">This is what we fix. Every day, businesses lose customers because of these exact problems.</p>
     </div>
-    <div class="before-after">
-        <div class="ba-header">
-            <div class="ba-tab before"><i class="fas fa-times-circle"></i> &nbsp;Before Neocode</div>
-            <div class="ba-tab after"><i class="fas fa-check-circle"></i> &nbsp;After Neocode</div>
-        </div>
-        <div class="ba-content">
-            <div class="ba-side">
-                <ul class="ba-list">
-                    <li><i class="fas fa-times ba-icon-bad"></i> Outdated design from 2015</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> No SSL certificate (HTTP only)</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> Gmail/Hotmail email address</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> Broken links & missing pages</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> Not mobile responsive</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> No online booking system</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> No social media integration</li>
-                    <li><i class="fas fa-times ba-icon-bad"></i> Typos & unprofessional copy</li>
-                </ul>
+    <div class="ba-section">
+        <div class="ba-container">
+            <div class="ba-header">
+                <div class="ba-tab before"><i class="fas fa-times-circle"></i> &nbsp;Before Neocode</div>
+                <div class="ba-tab after"><i class="fas fa-check-circle"></i> &nbsp;After Neocode</div>
             </div>
-            <div class="ba-side">
-                <ul class="ba-list">
-                    <li><i class="fas fa-check ba-icon-good"></i> Modern, premium design</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Full HTTPS & security</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Professional branded email</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Every link works perfectly</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Mobile-first responsive</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Online booking & payments</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Full social media presence</li>
-                    <li><i class="fas fa-check ba-icon-good"></i> Professional copywriting</li>
-                </ul>
+            <div class="ba-content">
+                <div class="ba-side">
+                    <ul class="ba-list">
+                        <li><i class="fas fa-times ba-icon-bad"></i> Outdated design from 2015</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> No SSL certificate (HTTP only)</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Gmail/Hotmail email address</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Broken links & missing pages</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Not mobile responsive</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> No online booking system</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> No social media integration</li>
+                        <li><i class="fas fa-times ba-icon-bad"></i> Typos & unprofessional copy</li>
+                    </ul>
+                </div>
+                <div class="ba-side">
+                    <ul class="ba-list">
+                        <li><i class="fas fa-check ba-icon-good"></i> Modern, premium design</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Full HTTPS & security</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Professional branded email</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Every link works perfectly</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Mobile-first responsive</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Online booking & payments</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Full social media presence</li>
+                        <li><i class="fas fa-check ba-icon-good"></i> Professional copywriting</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section section-darker" id="contact">
+<section class="cta-section section-dark" id="contact">
     <h2 class="cta-title">Ready to <span class="accent">upgrade</span>?</h2>
     <p class="cta-subtitle">Get a free website audit. We'll show you exactly what's costing you customers &mdash; and how to fix it.</p>
     <div class="cta-buttons">
@@ -1044,18 +668,15 @@ const canvas = document.getElementById('matrix-bg');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-const chars = 'ネオコードスタジオ01アウエカキクケサシスセソタチツテナニヌネハヒフヘホマミムメモヤユヨラリルレロワヲン';
+const chars = 'NEOCODESTUDIO01';
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array(Math.floor(columns)).fill(1);
-
 function drawMatrix() {
     ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#00ff88';
     ctx.font = fontSize + 'px monospace';
-
     for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -1063,13 +684,8 @@ function drawMatrix() {
         drops[i]++;
     }
 }
-
 setInterval(drawMatrix, 50);
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
 // Progress bar
 window.addEventListener('scroll', () => {
@@ -1078,46 +694,42 @@ window.addEventListener('scroll', () => {
 });
 
 // Navbar scroll
-window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
 
 // Mobile menu
-document.getElementById('navToggle').addEventListener('click', () => {
-    document.getElementById('navMenu').classList.toggle('open');
-});
+document.getElementById('navToggle').addEventListener('click', () => { document.getElementById('navMenu').classList.toggle('open'); });
 
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.card, .process-step, .portfolio-item, .testimonial, .before-after').forEach(el => {
+document.querySelectorAll('.card, .process-step, .portfolio-item, .ba-container, .site-gallery-item, .confidential-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(40px)';
     el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
     observer.observe(el);
 });
 
-// Override animate class for observed elements
 const style = document.createElement('style');
-style.textContent = '.card.animate, .process-step.animate, .portfolio-item.animate, .testimonial.animate, .before-after.animate { opacity: 1 !important; transform: translateY(0) !important; }';
+style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
 document.head.appendChild(style);
 
-// Smooth scroll for nav links
+// Stagger gallery items
+document.querySelectorAll('.site-gallery').forEach(gallery => {
+    gallery.querySelectorAll('.site-gallery-item').forEach((item, i) => {
+        item.style.transitionDelay = (i * 0.15) + 's';
+    });
+});
+
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            document.getElementById('navMenu').classList.remove('open');
-        }
+        if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('navMenu').classList.remove('open'); }
     });
 });
 </script>
