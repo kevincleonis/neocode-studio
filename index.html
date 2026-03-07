@@ -21,12 +21,15 @@
             --accent-dim: #00cc6a;
             --accent-glow: rgba(0, 255, 136, 0.15);
             --accent-glow-strong: rgba(0, 255, 136, 0.3);
+            --accent-glow-intense: rgba(0, 255, 136, 0.5);
             --red: #ff4444;
             --red-glow: rgba(255, 68, 68, 0.15);
             --border: rgba(255,255,255,0.06);
             --border-accent: rgba(0, 255, 136, 0.2);
+            --border-accent-strong: rgba(0, 255, 136, 0.4);
             --shadow: 0 20px 60px rgba(0,0,0,0.5);
             --shadow-glow: 0 0 60px rgba(0, 255, 136, 0.15);
+            --shadow-glow-strong: 0 0 100px rgba(0, 255, 136, 0.25);
             --font-main: 'Space Grotesk', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -48,15 +51,30 @@
 
         #matrix-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; opacity: 0.04; pointer-events: none;
+            z-index: 0; opacity: 0.06; pointer-events: none;
+        }
+
+        /* FLOATING PARTICLES */
+        .particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            box-shadow: 0 0 6px var(--accent), 0 0 12px var(--accent-glow);
         }
 
         .progress {
-            position: fixed; top: 0; left: 0; height: 2px;
-            background: linear-gradient(90deg, var(--accent), #00ffcc);
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent), #00ffcc, var(--accent));
+            background-size: 200% 100%;
+            animation: progressGlow 3s ease-in-out infinite;
             z-index: 9999; transition: width 0.15s;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
         }
+        @keyframes progressGlow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
         /* NAV */
         .navbar {
@@ -67,26 +85,34 @@
             padding: 0 80px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .navbar.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .navbar.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 1px 0 var(--border-accent); }
         .navbar-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
         .navbar-logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .navbar-logo .neo { color: var(--accent); }
-        .navbar-logo .cursor { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; }
+        .navbar-logo .neo { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-logo .cursor { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; box-shadow: 0 0 8px var(--accent); }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         .navbar-menu { display: flex; align-items: center; gap: 8px; }
         .navbar-link { padding: 12px 24px; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; border-radius: 100px; transition: all 0.3s ease; letter-spacing: 0.05em; text-transform: uppercase; }
-        .navbar-link:hover { color: var(--accent); }
-        .navbar-cta { margin-left: 24px; padding: 14px 32px; font-size: 12px; font-weight: 600; color: var(--bg-primary); background: var(--accent); text-decoration: none; border-radius: 100px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.08em; text-transform: uppercase; }
-        .navbar-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+        .navbar-link:hover { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta { margin-left: 24px; padding: 14px 32px; font-size: 12px; font-weight: 600; color: var(--bg-primary); background: var(--accent); text-decoration: none; border-radius: 100px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-strong); }
         .navbar-toggle { display: none; flex-direction: column; gap: 6px; padding: 10px; background: none; border: none; cursor: pointer; }
         .navbar-toggle span { width: 28px; height: 1px; background: var(--text-primary); transition: all 0.3s ease; }
 
         /* ANIMATIONS */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 40px var(--accent-glow); } 50% { box-shadow: 0 0 80px var(--accent-glow-strong); } }
+        @keyframes glowPulseIntense { 0%, 100% { box-shadow: 0 0 60px var(--accent-glow-strong); } 50% { box-shadow: 0 0 120px var(--accent-glow-intense); } }
         @keyframes scanline { 0% { top: -10%; } 100% { top: 110%; } }
         @keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes barFill { from { width: 0; } }
+        @keyframes glitch { 0%, 100% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(2px, -1px); } 60% { transform: translate(-1px, -2px); } 80% { transform: translate(1px, 1px); } }
+        @keyframes typewriter { from { width: 0; } to { width: 100%; } }
+        @keyframes neonFlicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow-strong); opacity: 1; } 20%, 24%, 55% { opacity: 0.8; text-shadow: none; } }
+        @keyframes borderGlow { 0%, 100% { border-color: var(--border-accent); } 50% { border-color: var(--border-accent-strong); } }
+        @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
+        @keyframes dataStream { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+
         .animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
         .delay-1 { animation-delay: 0.15s; }
         .delay-2 { animation-delay: 0.3s; }
@@ -95,35 +121,37 @@
 
         /* HERO */
         .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 80px 80px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); border-radius: 50%; top: -200px; right: -200px; pointer-events: none; }
-        .hero-grid-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-        .hero-scanline { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(180deg, transparent, var(--accent-glow), transparent); animation: scanline 8s linear infinite; pointer-events: none; opacity: 0.3; }
+        .hero::before { content: ''; position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 60%); border-radius: 50%; top: -200px; right: -200px; pointer-events: none; animation: glowPulseIntense 6s ease-in-out infinite; }
+        .hero::after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,255,136,0.08) 0%, transparent 60%); border-radius: 50%; bottom: -100px; left: -100px; pointer-events: none; }
+        .hero-grid-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+        .hero-scanline { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(180deg, transparent, var(--accent-glow-strong), transparent); animation: scanline 6s linear infinite; pointer-events: none; opacity: 0.4; }
         .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 80px; max-width: 1400px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
         .hero-content { flex: 1; max-width: 700px; }
-        .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--accent); margin-bottom: 32px; }
-        .hero-eyebrow::before { content: '>'; color: var(--accent); }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--accent); margin-bottom: 32px; text-shadow: 0 0 10px var(--accent-glow); }
+        .hero-eyebrow::before { content: '>'; color: var(--accent); animation: blink 1.5s step-end infinite; }
         .hero h1 { font-size: 68px; font-weight: 700; line-height: 1.05; margin-bottom: 24px; letter-spacing: -0.03em; }
-        .hero h1 .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow); }
+        .hero h1 .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); animation: neonFlicker 4s ease-in-out infinite; }
         .hero-subtitle { font-size: 20px; font-weight: 300; color: var(--text-secondary); margin-bottom: 24px; }
         .hero-description { font-size: 16px; color: var(--text-muted); line-height: 1.9; margin-bottom: 48px; max-width: 520px; }
         .hero-stats { display: flex; gap: 48px; padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; }
-        .stat-value { font-size: 36px; font-weight: 700; display: block; margin-bottom: 8px; color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
+        .stat-value { font-size: 36px; font-weight: 700; display: block; margin-bottom: 8px; color: var(--accent); text-shadow: 0 0 30px var(--accent-glow), 0 0 60px var(--accent-glow); }
         .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
         .hero-cta { display: flex; gap: 20px; }
         .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-main); }
-        .btn-primary { background: var(--accent); color: var(--bg-primary); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); }
+        .btn-primary { background: var(--accent); color: var(--bg-primary); box-shadow: 0 0 30px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow-strong); }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 30px var(--accent-glow); }
 
-        /* HERO DASHBOARD (replaces code window) */
+        /* HERO DASHBOARD */
         .hero-visual { position: relative; flex-shrink: 0; }
-        .dashboard-window { width: 440px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); animation: glowPulse 4s ease-in-out infinite; }
+        .dashboard-window { width: 440px; background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow), 0 0 60px var(--accent-glow); animation: glowPulse 4s ease-in-out infinite; position: relative; }
+        .dashboard-window::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 20px; border: 1px solid transparent; background: linear-gradient(135deg, var(--accent-glow), transparent, var(--accent-glow)) border-box; pointer-events: none; z-index: 2; }
         .dashboard-bar { display: flex; align-items: center; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
         .dash-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dash-dot.red { background: #ff5f56; }
-        .dash-dot.yellow { background: #ffbd2e; }
-        .dash-dot.green { background: #27c93f; }
+        .dash-dot.red { background: #ff5f56; box-shadow: 0 0 6px rgba(255,95,86,0.5); }
+        .dash-dot.yellow { background: #ffbd2e; box-shadow: 0 0 6px rgba(255,189,46,0.5); }
+        .dash-dot.green { background: #27c93f; box-shadow: 0 0 6px rgba(39,201,63,0.5); }
         .dashboard-title { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-left: 12px; }
         .dashboard-content { padding: 28px; }
         .dash-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
@@ -136,7 +164,7 @@
         .dash-metric-fill.good { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
         .dash-metric-value { font-family: var(--font-mono); font-size: 14px; font-weight: 600; min-width: 50px; text-align: right; }
         .dash-metric-value.bad { color: var(--red); }
-        .dash-metric-value.good { color: var(--accent); }
+        .dash-metric-value.good { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
         .dash-divider { height: 1px; background: var(--border); margin: 8px 0; }
         .dash-section-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; margin: 16px 0 12px; padding: 6px 12px; border-radius: 6px; display: inline-block; }
         .dash-section-label.before { color: var(--red); background: var(--red-glow); }
@@ -147,47 +175,132 @@
         .section-dark { background: var(--bg-primary); }
         .section-darker { background: var(--bg-secondary); }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 80px; }
-        .section-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; }
-        .section-eyebrow::before, .section-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--accent-dim); }
+        .section-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; text-shadow: 0 0 10px var(--accent-glow); }
+        .section-eyebrow::before, .section-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--accent-dim); box-shadow: 0 0 6px var(--accent-glow); }
         .section-title { font-size: 52px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; }
-        .section-title .accent { color: var(--accent); }
+        .section-title .accent { color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
         .section-subtitle { font-size: 17px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
 
         /* Matrix decoration for sections */
         .matrix-decoration { position: absolute; font-family: var(--font-mono); font-size: 11px; color: var(--accent); opacity: 0.07; pointer-events: none; white-space: pre; line-height: 1.8; }
+
+        /* DATA STREAM LINES - vertical green lines that fall down sections */
+        .data-stream { position: absolute; width: 1px; background: linear-gradient(180deg, transparent, var(--accent), transparent); opacity: 0.08; pointer-events: none; animation: dataStream 8s linear infinite; }
+
+        /* GLOWING DIVIDER */
+        .glow-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), var(--accent), var(--accent-dim), transparent); margin: 0; opacity: 0.4; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+
+        /* CRO INSIGHT BLOCKS */
+        .cro-insight {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 48px;
+            background: linear-gradient(135deg, rgba(0,255,136,0.03) 0%, rgba(10,10,10,0.95) 50%, rgba(0,255,136,0.03) 100%);
+            border: 1px solid var(--border-accent);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+        .cro-insight::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        .cro-insight::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .cro-insight-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+            padding: 6px 16px;
+            background: var(--accent-glow);
+            border-radius: 100px;
+            border: 1px solid var(--border-accent);
+        }
+        .cro-insight-tag i { font-size: 10px; }
+        .cro-insight h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        .cro-insight h3 .accent { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .cro-insight p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            position: relative;
+            z-index: 1;
+        }
+        .cro-insight .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .cro-insight-terminal {
+            margin-top: 24px;
+            padding: 16px 20px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent);
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+        .cro-insight-terminal .prompt { color: var(--text-muted); }
+        .cro-insight-terminal .output { color: var(--text-secondary); }
 
         /* CARDS */
         .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
         .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 48px 40px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #00ffcc); opacity: 0; transition: opacity 0.5s ease; }
         .card::after { content: ''; position: absolute; bottom: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
-        .card:hover { transform: translateY(-8px); border-color: var(--border-accent); box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+        .card:hover { transform: translateY(-8px); border-color: var(--border-accent-strong); box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
         .card:hover::before, .card:hover::after { opacity: 1; }
-        .card-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 28px; color: var(--accent); border: 1px solid var(--border-accent); }
+        .card-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 28px; color: var(--accent); border: 1px solid var(--border-accent); box-shadow: 0 0 20px var(--accent-glow); }
         .card-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
         .card-text { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
 
         /* PROCESS */
         .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
         .process-step { text-align: center; padding: 40px 24px; position: relative; }
-        .process-step::after { content: ''; position: absolute; top: 40px; right: -16px; width: 32px; height: 1px; background: var(--border-accent); }
+        .process-step::after { content: ''; position: absolute; top: 40px; right: -16px; width: 32px; height: 1px; background: var(--border-accent); box-shadow: 0 0 10px var(--accent-glow); }
         .process-step:last-child::after { display: none; }
-        .process-number { font-family: var(--font-mono); font-size: 48px; font-weight: 700; color: var(--accent); opacity: 0.3; margin-bottom: 20px; text-shadow: 0 0 40px var(--accent-glow); }
+        .process-number { font-family: var(--font-mono); font-size: 48px; font-weight: 700; color: var(--accent); opacity: 0.3; margin-bottom: 20px; text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); }
         .process-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
         .process-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 
         /* PORTFOLIO */
         .portfolio-showcase { max-width: 1200px; margin: 0 auto; }
         .portfolio-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.5s ease; position: relative; margin-bottom: 48px; }
-        .portfolio-item:hover { border-color: var(--border-accent); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+        .portfolio-item:hover { border-color: var(--border-accent-strong); box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 60px var(--accent-glow); }
 
         .portfolio-hero-img { width: 100%; height: 500px; object-fit: cover; object-position: top; display: block; transition: transform 0.6s ease; }
         .portfolio-item:hover .portfolio-hero-img { transform: scale(1.02); }
 
-        .portfolio-badge { position: absolute; top: 20px; right: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); background: rgba(0,0,0,0.85); padding: 8px 18px; border-radius: 100px; border: 1px solid var(--border-accent); letter-spacing: 0.1em; text-transform: uppercase; backdrop-filter: blur(10px); }
+        .portfolio-badge { position: absolute; top: 20px; right: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); background: rgba(0,0,0,0.85); padding: 8px 18px; border-radius: 100px; border: 1px solid var(--border-accent); letter-spacing: 0.1em; text-transform: uppercase; backdrop-filter: blur(10px); box-shadow: 0 0 20px var(--accent-glow); }
 
         .portfolio-info { padding: 40px 48px; }
-        .portfolio-tag { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+        .portfolio-tag { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; text-shadow: 0 0 10px var(--accent-glow); }
         .portfolio-title { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
         .portfolio-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; max-width: 700px; }
         .portfolio-stats { display: flex; gap: 32px; flex-wrap: wrap; }
@@ -198,14 +311,14 @@
         /* BROWSER MOCKUP SHOWCASE */
         .browser-showcase { max-width: 1200px; margin: 0 auto 60px; }
         .browser-frame { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.5s ease; margin-bottom: 24px; }
-        .browser-frame:hover { border-color: var(--border-accent); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
+        .browser-frame:hover { border-color: var(--border-accent-strong); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 60px var(--accent-glow); }
         .browser-topbar { display: flex; align-items: center; gap: 8px; padding: 12px 20px; background: var(--bg-secondary); border-bottom: 1px solid var(--border); }
         .browser-topbar-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .browser-topbar-dot.r { background: #ff5f56; }
-        .browser-topbar-dot.y { background: #ffbd2e; }
-        .browser-topbar-dot.g { background: #27c93f; }
-        .browser-topbar-url { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); background: var(--bg-primary); padding: 6px 16px; border-radius: 6px; margin-left: 12px; flex: 1; max-width: 300px; }
-        .browser-topbar-label { font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-left: auto; }
+        .browser-topbar-dot.r { background: #ff5f56; box-shadow: 0 0 4px rgba(255,95,86,0.4); }
+        .browser-topbar-dot.y { background: #ffbd2e; box-shadow: 0 0 4px rgba(255,189,46,0.4); }
+        .browser-topbar-dot.g { background: #27c93f; box-shadow: 0 0 4px rgba(39,201,63,0.4); }
+        .browser-topbar-url { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); background: var(--bg-primary); padding: 6px 16px; border-radius: 6px; margin-left: 12px; flex: 1; max-width: 300px; border: 1px solid var(--border); }
+        .browser-topbar-label { font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-left: auto; text-shadow: 0 0 10px var(--accent-glow); }
         .browser-frame-img { width: 100%; display: block; }
         .browser-frame-scroll { width: 100%; max-height: 500px; overflow-y: auto; }
         .browser-frame-scroll img { width: 100%; display: block; }
@@ -216,14 +329,14 @@
         .browser-grid.two-col { grid-template-columns: repeat(2, 1fr); }
 
         /* PHONE MOCKUP */
-        .phone-mockup { width: 300px; margin: 0 auto 60px; background: var(--bg-card); border: 3px solid #333; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px var(--accent-glow); }
+        .phone-mockup { width: 300px; margin: 0 auto 60px; background: var(--bg-card); border: 3px solid #333; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 60px var(--accent-glow); animation: glowPulse 5s ease-in-out infinite; }
         .phone-notch { width: 120px; height: 24px; background: #333; border-radius: 0 0 16px 16px; margin: 0 auto; }
         .phone-screen { position: relative; }
         .phone-screen iframe { width: 100%; height: 540px; border: none; display: block; }
-        .phone-label { text-align: center; padding: 12px; font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; background: var(--bg-secondary); }
+        .phone-label { text-align: center; padding: 12px; font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; background: var(--bg-secondary); text-shadow: 0 0 10px var(--accent-glow); }
 
-        .gallery-label { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-        .gallery-label::before { content: ''; width: 20px; height: 1px; background: var(--accent-dim); }
+        .gallery-label { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; text-shadow: 0 0 10px var(--accent-glow); }
+        .gallery-label::before { content: ''; width: 20px; height: 1px; background: var(--accent-dim); box-shadow: 0 0 6px var(--accent); }
         .gallery-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
         /* BEFORE/AFTER */
@@ -232,7 +345,7 @@
         .ba-header { display: flex; border-bottom: 1px solid var(--border); }
         .ba-tab { flex: 1; padding: 20px; text-align: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
         .ba-tab.before { color: var(--red); border-right: 1px solid var(--border); }
-        .ba-tab.after { color: var(--accent); }
+        .ba-tab.after { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
         .ba-content { display: grid; grid-template-columns: 1fr 1fr; }
         .ba-side { padding: 40px; }
         .ba-side:first-child { border-right: 1px solid var(--border); }
@@ -240,7 +353,7 @@
         .ba-list li { padding: 14px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--border); }
         .ba-list li:last-child { border-bottom: none; }
         .ba-icon-bad { color: var(--red); flex-shrink: 0; margin-top: 3px; }
-        .ba-icon-good { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
+        .ba-icon-good { color: var(--accent); flex-shrink: 0; margin-top: 3px; text-shadow: 0 0 8px var(--accent-glow); }
 
         /* BLURRED SCREENSHOTS */
         .confidential-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
@@ -251,20 +364,23 @@
 
         /* CTA */
         .cta-section { text-align: center; padding: 120px 80px; position: relative; overflow: hidden; z-index: 1; }
-        .cta-section::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
-        .cta-title { font-size: 56px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; position: relative; }
-        .cta-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .cta-buttons { display: flex; gap: 20px; justify-content: center; }
+        .cta-section::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 60%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; animation: glowPulseIntense 5s ease-in-out infinite; }
+        .cta-section::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+        .cta-title { font-size: 56px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; position: relative; z-index: 1; }
+        .cta-title .accent { text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); }
+        .cta-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
 
         /* FOOTER */
-        .footer { padding: 60px 80px 40px; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+        .footer { padding: 60px 80px 40px; border-top: 1px solid var(--border-accent); position: relative; z-index: 1; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); box-shadow: 0 0 20px var(--accent-glow); }
         .footer-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
         .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
-        .footer-logo .neo { color: var(--accent); }
+        .footer-logo .neo { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
         .footer-text { font-size: 13px; color: var(--text-muted); }
         .footer-links { display: flex; gap: 24px; }
         .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.3s; }
-        .footer-link:hover { color: var(--accent); }
+        .footer-link:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
@@ -280,6 +396,7 @@
             .confidential-grid { grid-template-columns: 1fr; }
             .browser-grid { grid-template-columns: 1fr; }
             .portfolio-hero-img { height: 350px; }
+            .cro-insight { margin-left: 20px; margin-right: 20px; padding: 36px; }
         }
 
         @media (max-width: 768px) {
@@ -296,6 +413,7 @@
             .section-title { font-size: 32px; }
             .cta-title { font-size: 36px; }
             .cards-grid, .process-grid, .browser-grid { grid-template-columns: 1fr; }
+            .browser-grid.two-col { grid-template-columns: 1fr; }
             .ba-content { grid-template-columns: 1fr; }
             .ba-side:first-child { border-right: none; border-bottom: 1px solid var(--border); }
             .portfolio-hero-img { height: 250px; }
@@ -304,6 +422,9 @@
             .phone-screen iframe { height: 460px; }
             .footer { padding: 40px 24px; }
             .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+            .cro-insight { margin-left: 16px; margin-right: 16px; padding: 28px; }
+            .cro-insight h3 { font-size: 22px; }
+            .cro-insight p { font-size: 15px; }
         }
     </style>
 </head>
@@ -400,12 +521,16 @@
     </div>
 </section>
 
+<div class="glow-divider"></div>
+
 <!-- SERVICES -->
 <section class="section section-darker" id="services">
     <div class="matrix-decoration" style="top: 40px; left: 20px;">01001110 01100101
 01101111 01100011
 01101111 01100100
 01100101 00100000</div>
+    <div class="data-stream" style="left: 10%; height: 200px; animation-delay: 0s;"></div>
+    <div class="data-stream" style="left: 90%; height: 300px; animation-delay: 3s;"></div>
     <div class="section-header">
         <div class="section-eyebrow">What We Do</div>
         <h2 class="section-title">Websites that <span class="accent">convert</span></h2>
@@ -445,6 +570,8 @@
     </div>
 </section>
 
+<div class="glow-divider"></div>
+
 <!-- PROCESS -->
 <section class="section section-dark" id="process">
     <div class="matrix-decoration" style="top: 60px; right: 30px;">function transform() {
@@ -453,6 +580,8 @@
   deploy(success);
   return growth;
 }</div>
+    <div class="data-stream" style="left: 15%; height: 250px; animation-delay: 1s;"></div>
+    <div class="data-stream" style="left: 85%; height: 180px; animation-delay: 4s;"></div>
     <div class="section-header">
         <div class="section-eyebrow">How We Work</div>
         <h2 class="section-title">From audit to <span class="accent">launch</span></h2>
@@ -466,8 +595,12 @@
     </div>
 </section>
 
+<div class="glow-divider"></div>
+
 <!-- WORK / PORTFOLIO -->
 <section class="section section-darker" id="work">
+    <div class="data-stream" style="left: 5%; height: 400px; animation-delay: 2s;"></div>
+    <div class="data-stream" style="left: 95%; height: 350px; animation-delay: 5s;"></div>
     <div class="section-header">
         <div class="section-eyebrow">Our Work</div>
         <h2 class="section-title">Brands we've <span class="accent">transformed</span></h2>
@@ -495,6 +628,28 @@
             </div>
         </div>
 
+        <!-- CRO INSIGHT: THE SALES FUNNEL -->
+        <div class="cro-insight">
+            <div class="cro-insight-tag"><i class="fas fa-lightbulb"></i> How We Think</div>
+            <h3>The <span class="accent">Sales Funnel</span> &mdash; Why Most Websites Leak Money</h3>
+            <p>
+                Think of your website like a shop on the high street. People walk past (that's your traffic), some stop to look in the window (your homepage), a few walk in (they browse your pages), and only a handful actually buy something.
+            </p>
+            <p style="margin-top: 16px;">
+                The problem? <span class="highlight">Most websites have holes in the funnel.</span> Maybe your homepage is confusing, so people leave in 3 seconds. Maybe your product pages don't answer the right questions. Maybe your checkout process is too complicated. Each of these "holes" means lost customers &mdash; and lost money.
+            </p>
+            <p style="margin-top: 16px;">
+                What we do is simple: <span class="highlight">we find the holes and plug them.</span> For Icy Bear, we redesigned every single step of the customer journey. From the moment someone lands on the site to the moment they click "Buy Now", every element is designed to guide them forward &mdash; not confuse them.
+            </p>
+            <div class="cro-insight-terminal">
+                <span class="prompt">&gt;</span> visitor lands on homepage<br>
+                <span class="prompt">&gt;</span> clear headline tells them what you sell<br>
+                <span class="prompt">&gt;</span> trust badges prove you're legitimate<br>
+                <span class="prompt">&gt;</span> one clear button guides them to products<br>
+                <span class="output">// Result: visitor becomes a customer</span>
+            </div>
+        </div>
+
         <!-- ICY BEAR PAGES IN BROWSER MOCKUPS -->
         <div class="gallery-label">Icy Bear &bull; Shopify Pages We Designed</div>
         <div class="browser-showcase">
@@ -513,7 +668,7 @@
                         <div class="browser-topbar-url">icybear.co.uk/products/whitening-kit</div>
                         <span class="browser-topbar-label">Product Page</span>
                     </div>
-                    <img class="browser-frame-img" src="https://files.catbox.moe/c9ka5t.png" alt="Icy Bear Product Page" loading="lazy" style="">
+                    <img class="browser-frame-img" src="https://files.catbox.moe/c9ka5t.png" alt="Icy Bear Product Page" loading="lazy">
                 </div>
                 <div class="browser-frame">
                     <div class="browser-topbar">
@@ -521,8 +676,29 @@
                         <div class="browser-topbar-url">icybear.co.uk/collections</div>
                         <span class="browser-topbar-label">Collections</span>
                     </div>
-                    <img class="browser-frame-img" src="https://files.catbox.moe/ps68f3.png" alt="Icy Bear Collections" loading="lazy" style="">
+                    <img class="browser-frame-img" src="https://files.catbox.moe/ps68f3.png" alt="Icy Bear Collections" loading="lazy">
                 </div>
+            </div>
+        </div>
+
+        <!-- CRO INSIGHT: TRUST & COPYWRITING -->
+        <div class="cro-insight">
+            <div class="cro-insight-tag"><i class="fas fa-pen-fancy"></i> Copywriting & Trust</div>
+            <h3>Words that <span class="accent">sell</span> &mdash; why your text matters more than your design</h3>
+            <p>
+                Here's something most business owners don't realise: <span class="highlight">people read before they buy.</span> Not essays &mdash; but they scan headlines, read product descriptions, and look for proof that you're the real deal.
+            </p>
+            <p style="margin-top: 16px;">
+                This is called copywriting &mdash; the art of writing text that convinces people to take action. It's the difference between a product title that says <em>"Whitening Kit"</em> and one that says <em>"Professional Teeth Whitening Kit &mdash; Visible Results in 7 Days"</em>. Same product, completely different impact.
+            </p>
+            <p style="margin-top: 16px;">
+                For Icy Bear, we rewrote every headline, every product description, every button. We added <span class="highlight">trust signals</span> &mdash; things like review stars, "Free UK Delivery" badges, "Dentist Recommended" labels. These tiny details tell customers: <em>"This is safe, this is real, this is worth your money."</em>
+            </p>
+            <div class="cro-insight-terminal">
+                <span class="prompt">&gt;</span> generic headline = visitor leaves<br>
+                <span class="prompt">&gt;</span> specific headline + trust badge = visitor stays<br>
+                <span class="prompt">&gt;</span> benefit-driven copy + social proof = sale<br>
+                <span class="output">// Trust is the currency of the internet</span>
             </div>
         </div>
 
@@ -537,7 +713,7 @@
                 </div>
                 <div style="position: relative; padding-bottom: 56.25%;"><iframe loading="lazy" src="https://drive.google.com/file/d/1tjkp1WfcDntsBa_rRBduW8amFYOjn3CX/preview" allow="autoplay" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
             </div>
-            <div class="browser-frame" style="border-color: var(--border-accent); box-shadow: 0 0 40px var(--accent-glow);">
+            <div class="browser-frame" style="border-color: var(--border-accent-strong); box-shadow: 0 0 60px var(--accent-glow);">
                 <div class="browser-topbar">
                     <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
                     <div class="browser-topbar-url">icybear.co.uk</div>
@@ -557,6 +733,29 @@
             <div class="phone-label"><i class="fas fa-check-circle"></i> &nbsp;After Rebrand</div>
         </div>
 
+        <!-- CRO INSIGHT: CUSTOMER JOURNEY & UX -->
+        <div class="cro-insight">
+            <div class="cro-insight-tag"><i class="fas fa-route"></i> Customer Journey</div>
+            <h3>The <span class="accent">3-second rule</span> &mdash; you have 3 seconds to win or lose a visitor</h3>
+            <p>
+                Studies show that when someone visits your website, <span class="highlight">they decide in about 3 seconds whether to stay or leave.</span> That's it. Three seconds to make a first impression.
+            </p>
+            <p style="margin-top: 16px;">
+                What makes someone stay? Three things: <span class="highlight">clarity</span> (they instantly understand what you offer), <span class="highlight">credibility</span> (your site looks professional and trustworthy), and <span class="highlight">a clear next step</span> (they know exactly what to do next &mdash; browse products, book a call, get a quote).
+            </p>
+            <p style="margin-top: 16px;">
+                This is what we call the "customer journey." Every page on your site should guide visitors smoothly from one step to the next, like a well-designed shop layout. The homepage says "here's what we do", the product page says "here's why you need it", and the checkout says "it's safe to buy." No confusion, no dead ends, no wasted clicks.
+            </p>
+            <div class="cro-insight-terminal">
+                <span class="prompt">&gt;</span> Step 1: clear homepage = visitor stays<br>
+                <span class="prompt">&gt;</span> Step 2: compelling products = visitor interested<br>
+                <span class="prompt">&gt;</span> Step 3: easy checkout = visitor buys<br>
+                <span class="output">// Every step removes doubt, adds confidence</span>
+            </div>
+        </div>
+
+        <div class="glow-divider" style="margin-bottom: 60px;"></div>
+
         <!-- MOONELA -->
         <div class="portfolio-item">
             <div style="position:relative; overflow:hidden;">
@@ -572,6 +771,27 @@
                     <div class="portfolio-stat"><span class="portfolio-stat-value">Shopify</span><span class="portfolio-stat-label">Custom Theme</span></div>
                     <div class="portfolio-stat"><span class="portfolio-stat-value">Meta Ads</span><span class="portfolio-stat-label">Paid Strategy</span></div>
                 </div>
+            </div>
+        </div>
+
+        <!-- CRO INSIGHT: BRAND PERCEPTION & FIRST IMPRESSIONS -->
+        <div class="cro-insight">
+            <div class="cro-insight-tag"><i class="fas fa-gem"></i> Brand Perception</div>
+            <h3>Why <span class="accent">looking premium</span> makes people pay more</h3>
+            <p>
+                Here's a fact that might surprise you: <span class="highlight">people judge the quality of your product by the quality of your website.</span> If your site looks cheap, people assume your product is cheap too &mdash; even if it's the best on the market.
+            </p>
+            <p style="margin-top: 16px;">
+                For Moonela, we built a jewelry brand from scratch. The products were beautiful, but without a site that matched that quality, no one would have taken them seriously. We designed every page to feel <span class="highlight">luxurious</span> &mdash; clean layouts, elegant fonts, high-quality product images with consistent lighting, and a colour palette that screamed "premium."
+            </p>
+            <p style="margin-top: 16px;">
+                This is called <span class="highlight">brand perception</span>, and it directly affects how much people are willing to pay. A &pound;30 necklace on a &pound;30-looking website stays a &pound;30 necklace. The same necklace on a &pound;300-looking website? Suddenly it feels like a steal.
+            </p>
+            <div class="cro-insight-terminal">
+                <span class="prompt">&gt;</span> cheap design = cheap perceived value<br>
+                <span class="prompt">&gt;</span> premium design = premium perceived value<br>
+                <span class="prompt">&gt;</span> same product, different presentation<br>
+                <span class="output">// Your website IS your brand</span>
             </div>
         </div>
 
@@ -592,7 +812,7 @@
                         <div class="browser-topbar-url">moonela.co.uk/products/ring</div>
                         <span class="browser-topbar-label">Product Page</span>
                     </div>
-                    <img class="browser-frame-img" src="https://files.catbox.moe/gun6pj.png" alt="Moonela Product Page" loading="lazy" style="">
+                    <img class="browser-frame-img" src="https://files.catbox.moe/gun6pj.png" alt="Moonela Product Page" loading="lazy">
                 </div>
                 <div class="browser-frame">
                     <div class="browser-topbar">
@@ -600,10 +820,12 @@
                         <div class="browser-topbar-url">moonela.co.uk/collections/all</div>
                         <span class="browser-topbar-label">All Products</span>
                     </div>
-                    <img class="browser-frame-img" src="https://files.catbox.moe/f23uj6.png" alt="Moonela All Products" loading="lazy" style="">
+                    <img class="browser-frame-img" src="https://files.catbox.moe/f23uj6.png" alt="Moonela All Products" loading="lazy">
                 </div>
             </div>
         </div>
+
+        <div class="glow-divider" style="margin-bottom: 60px;"></div>
 
         <!-- PHOVEA -->
         <div class="portfolio-item">
@@ -623,6 +845,27 @@
             </div>
         </div>
 
+        <!-- CRO INSIGHT: SEO & CONTENT -->
+        <div class="cro-insight">
+            <div class="cro-insight-tag"><i class="fas fa-search"></i> SEO & Content</div>
+            <h3>Getting found on <span class="accent">Google</span> &mdash; the free traffic machine</h3>
+            <p>
+                Imagine having customers walk into your shop every day without paying for advertising. That's what SEO does for your website. <span class="highlight">SEO (Search Engine Optimisation)</span> is basically making sure Google shows your business when people search for what you sell.
+            </p>
+            <p style="margin-top: 16px;">
+                For Phovea, we wrote <span class="highlight">52 blog articles</span> answering every question someone might ask about LED face masks and red light therapy. Things like "Do LED face masks actually work?" or "Best red light therapy for acne." Each article is a doorway &mdash; Google shows it to people searching those questions, and those people end up on the Phovea website, ready to buy.
+            </p>
+            <p style="margin-top: 16px;">
+                We also built the homepage with <span class="highlight">10 conversion-focused sections</span> &mdash; each one designed to answer a specific objection a customer might have. "Is it safe?" "Does it work?" "What do other customers think?" By the time they reach the bottom, every question has been answered, and the "Add to Cart" button is the only logical next step.
+            </p>
+            <div class="cro-insight-terminal">
+                <span class="prompt">&gt;</span> customer googles "best LED face mask UK"<br>
+                <span class="prompt">&gt;</span> finds your blog article on page 1<br>
+                <span class="prompt">&gt;</span> reads it, trusts you, clicks to product page<br>
+                <span class="output">// Free customer. No ad spend required.</span>
+            </div>
+        </div>
+
         <div class="gallery-label">Phovea &bull; Shopify Pages</div>
         <div class="browser-showcase">
             <div class="browser-grid">
@@ -632,7 +875,7 @@
                         <div class="browser-topbar-url">phovea.co.uk/products/led-mask</div>
                         <span class="browser-topbar-label">Product Page</span>
                     </div>
-                    <img class="browser-frame-img" src="https://files.catbox.moe/g4xqej.jpg" alt="Phovea Product Page" loading="lazy" style="">
+                    <img class="browser-frame-img" src="https://files.catbox.moe/g4xqej.jpg" alt="Phovea Product Page" loading="lazy">
                 </div>
                 <div class="browser-frame">
                     <div class="browser-topbar">
@@ -640,7 +883,7 @@
                         <div class="browser-topbar-url">phovea.co.uk</div>
                         <span class="browser-topbar-label">Homepage</span>
                     </div>
-                    <img class="browser-frame-img" src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy" style="">
+                    <img class="browser-frame-img" src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage" loading="lazy">
                 </div>
             </div>
         </div>
@@ -648,12 +891,16 @@
     </div>
 </section>
 
+<div class="glow-divider"></div>
+
 <!-- PERFORMANCE DATA -->
 <section class="section section-dark">
     <div class="matrix-decoration" style="bottom: 40px; left: 20px;">SELECT revenue, cpc, roas
 FROM ad_campaigns
 WHERE brand = 'icy_bear'
 ORDER BY performance DESC;</div>
+    <div class="data-stream" style="left: 20%; height: 300px; animation-delay: 1.5s;"></div>
+    <div class="data-stream" style="left: 80%; height: 250px; animation-delay: 3.5s;"></div>
     <div class="section-header">
         <div class="section-eyebrow">Under The Hood</div>
         <h2 class="section-title">Data-driven <span class="accent">results</span></h2>
@@ -675,6 +922,8 @@ ORDER BY performance DESC;</div>
     </div>
 </section>
 
+<div class="glow-divider"></div>
+
 <!-- BEFORE/AFTER GENERAL -->
 <section class="section section-darker" id="results">
     <div class="matrix-decoration" style="top: 80px; right: 20px;">if (site.score < 4) {
@@ -682,11 +931,35 @@ ORDER BY performance DESC;</div>
   site.revenue *= 3;
   site.trust = "max";
 }</div>
+    <div class="data-stream" style="left: 8%; height: 350px; animation-delay: 0.5s;"></div>
+    <div class="data-stream" style="left: 92%; height: 280px; animation-delay: 4.5s;"></div>
     <div class="section-header">
         <div class="section-eyebrow">The Difference</div>
         <h2 class="section-title">Before vs <span class="accent">After</span></h2>
         <p class="section-subtitle">This is what we fix. Every day, businesses lose customers because of these exact problems.</p>
     </div>
+
+    <!-- CRO INSIGHT: WHAT CRO ACTUALLY MEANS -->
+    <div class="cro-insight" style="margin-bottom: 60px;">
+        <div class="cro-insight-tag"><i class="fas fa-chart-bar"></i> What is CRO?</div>
+        <h3>CRO in plain English: <span class="accent">turning more visitors into customers</span></h3>
+        <p>
+            CRO stands for Conversion Rate Optimisation. Sounds technical, but it's actually simple. Let's say 100 people visit your website every day, and 2 of them buy something. That's a 2% conversion rate.
+        </p>
+        <p style="margin-top: 16px;">
+            <span class="highlight">Our job is to turn that 2% into 4%, 5%, or even 6%.</span> Same number of visitors, but double or triple the sales. No extra advertising costs. No extra marketing. Just a better website that does a better job of convincing people to buy.
+        </p>
+        <p style="margin-top: 16px;">
+            How? By fixing the things that put people off. Slow loading times, confusing layouts, missing information, ugly design, no reviews, complicated checkout. Each fix removes a reason for people to leave. And when fewer people leave, <span class="highlight">more people buy. It's that simple.</span>
+        </p>
+        <div class="cro-insight-terminal">
+            <span class="prompt">&gt;</span> 100 visitors &times; 2% conversion = 2 sales/day<br>
+            <span class="prompt">&gt;</span> 100 visitors &times; 5% conversion = 5 sales/day<br>
+            <span class="prompt">&gt;</span> same traffic, 150% more revenue<br>
+            <span class="output">// That's the power of CRO</span>
+        </div>
+    </div>
+
     <div class="ba-section">
         <div class="ba-container">
             <div class="ba-header">
@@ -723,6 +996,8 @@ ORDER BY performance DESC;</div>
     </div>
 </section>
 
+<div class="glow-divider"></div>
+
 <!-- CTA -->
 <section class="cta-section section-dark" id="contact">
     <h2 class="cta-title">Ready to <span class="accent">upgrade</span>?</h2>
@@ -747,29 +1022,56 @@ ORDER BY performance DESC;</div>
 </footer>
 
 <script>
-// Matrix Rain
+// Matrix Rain - Enhanced
 const canvas = document.getElementById('matrix-bg');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const chars = 'NEOCODESTUDIO01';
+const chars = 'NEOCODESTUDIO01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array(Math.floor(columns)).fill(1);
+const speeds = Array(Math.floor(columns)).fill(0).map(() => Math.random() * 0.5 + 0.5);
 function drawMatrix() {
-    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+    ctx.fillStyle = 'rgba(10, 10, 10, 0.04)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00ff88';
-    ctx.font = fontSize + 'px monospace';
     for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
+        const brightness = Math.random();
+        if (brightness > 0.95) {
+            ctx.fillStyle = '#00ff88';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#00ff88';
+        } else {
+            ctx.fillStyle = `rgba(0, 255, 136, ${0.3 + brightness * 0.7})`;
+            ctx.shadowBlur = 0;
+        }
+        ctx.font = fontSize + 'px monospace';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        ctx.shadowBlur = 0;
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
+        drops[i] += speeds[i];
     }
 }
-setInterval(drawMatrix, 50);
+setInterval(drawMatrix, 45);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+// Floating particles
+function createParticles() {
+    for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.width = (Math.random() * 3 + 1) + 'px';
+        p.style.height = p.style.width;
+        p.style.animation = `floatUp ${Math.random() * 15 + 10}s linear infinite`;
+        p.style.animationDelay = Math.random() * 10 + 's';
+        p.style.opacity = Math.random() * 0.5 + 0.1;
+        document.body.appendChild(p);
+    }
+}
+createParticles();
 
 // Progress bar
 window.addEventListener('scroll', () => {
@@ -790,7 +1092,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.card, .process-step, .portfolio-item, .ba-container, .site-gallery-item, .confidential-item').forEach(el => {
+document.querySelectorAll('.card, .process-step, .portfolio-item, .ba-container, .confidential-item, .cro-insight, .browser-frame, .phone-mockup').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(40px)';
     el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
@@ -801,19 +1103,25 @@ const style = document.createElement('style');
 style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
 document.head.appendChild(style);
 
-// Stagger gallery items
-document.querySelectorAll('.site-gallery').forEach(gallery => {
-    gallery.querySelectorAll('.site-gallery-item').forEach((item, i) => {
-        item.style.transitionDelay = (i * 0.15) + 's';
-    });
-});
-
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('navMenu').classList.remove('open'); }
+    });
+});
+
+// Glow on mouse proximity for CRO insights
+document.querySelectorAll('.cro-insight').forEach(insight => {
+    insight.addEventListener('mousemove', (e) => {
+        const rect = insight.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        insight.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,255,136,0.06) 0%, rgba(10,10,10,0.95) 50%)`;
+    });
+    insight.addEventListener('mouseleave', () => {
+        insight.style.background = '';
     });
 });
 </script>
