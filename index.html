@@ -195,13 +195,31 @@
         .portfolio-stat-value { color: var(--accent); font-weight: 700; font-size: 20px; display: block; text-shadow: 0 0 20px var(--accent-glow); }
         .portfolio-stat-label { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
 
-        /* SITE GALLERY */
-        .site-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto 60px; }
-        .site-gallery-item { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: all 0.4s ease; position: relative; }
-        .site-gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(0,255,136,0.05) 100%); pointer-events: none; opacity: 0; transition: opacity 0.4s; }
-        .site-gallery-item:hover { border-color: var(--border-accent); transform: scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .site-gallery-item:hover::after { opacity: 1; }
-        .site-gallery-item img { width: 100%; height: 280px; object-fit: cover; object-position: top; display: block; }
+        /* BROWSER MOCKUP SHOWCASE */
+        .browser-showcase { max-width: 1200px; margin: 0 auto 60px; }
+        .browser-frame { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.5s ease; margin-bottom: 24px; }
+        .browser-frame:hover { border-color: var(--border-accent); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
+        .browser-topbar { display: flex; align-items: center; gap: 8px; padding: 12px 20px; background: var(--bg-secondary); border-bottom: 1px solid var(--border); }
+        .browser-topbar-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .browser-topbar-dot.r { background: #ff5f56; }
+        .browser-topbar-dot.y { background: #ffbd2e; }
+        .browser-topbar-dot.g { background: #27c93f; }
+        .browser-topbar-url { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); background: var(--bg-primary); padding: 6px 16px; border-radius: 6px; margin-left: 12px; flex: 1; max-width: 300px; }
+        .browser-topbar-label { font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-left: auto; }
+        .browser-frame-img { width: 100%; max-height: 600px; object-fit: cover; object-position: top; display: block; }
+        .browser-frame-scroll { width: 100%; max-height: 500px; overflow-y: auto; }
+        .browser-frame-scroll img { width: 100%; display: block; }
+        .browser-frame-scroll::-webkit-scrollbar { width: 4px; }
+        .browser-frame-scroll::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 2px; }
+
+        .browser-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto 60px; }
+
+        /* PHONE MOCKUP */
+        .phone-mockup { width: 300px; margin: 0 auto 60px; background: var(--bg-card); border: 3px solid #333; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px var(--accent-glow); }
+        .phone-notch { width: 120px; height: 24px; background: #333; border-radius: 0 0 16px 16px; margin: 0 auto; }
+        .phone-screen { position: relative; }
+        .phone-screen iframe { width: 100%; height: 540px; border: none; display: block; }
+        .phone-label { text-align: center; padding: 12px; font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; background: var(--bg-secondary); }
 
         .gallery-label { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
         .gallery-label::before { content: ''; width: 20px; height: 1px; background: var(--accent-dim); }
@@ -258,10 +276,9 @@
             .process-grid { grid-template-columns: repeat(2, 1fr); }
             .process-step::after { display: none; }
             .hero-visual { display: none; }
-            .site-gallery { grid-template-columns: 1fr 1fr; }
             .confidential-grid { grid-template-columns: 1fr; }
+            .browser-grid { grid-template-columns: 1fr; }
             .portfolio-hero-img { height: 350px; }
-            .ba-video-grid { grid-template-columns: 1fr !important; }
         }
 
         @media (max-width: 768px) {
@@ -277,12 +294,13 @@
             .section { padding: 60px 24px; }
             .section-title { font-size: 32px; }
             .cta-title { font-size: 36px; }
-            .cards-grid, .process-grid, .site-gallery { grid-template-columns: 1fr; }
+            .cards-grid, .process-grid, .browser-grid { grid-template-columns: 1fr; }
             .ba-content { grid-template-columns: 1fr; }
             .ba-side:first-child { border-right: none; border-bottom: 1px solid var(--border); }
             .portfolio-hero-img { height: 250px; }
             .portfolio-info { padding: 24px; }
-            .site-gallery-item img { height: 200px; }
+            .phone-mockup { width: 260px; }
+            .phone-screen iframe { height: 460px; }
             .footer { padding: 40px 24px; }
             .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
         }
@@ -476,46 +494,66 @@
             </div>
         </div>
 
+        <!-- ICY BEAR PAGES IN BROWSER MOCKUPS -->
         <div class="gallery-label">Icy Bear &bull; Shopify Pages We Designed</div>
-        <div class="site-gallery">
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/a2dhxd.png" alt="Icy Bear Best Sellers" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/c9ka5t.png" alt="Icy Bear Product Page" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/ps68f3.png" alt="Icy Bear Collections" loading="lazy"></div>
+        <div class="browser-showcase">
+            <div class="browser-frame">
+                <div class="browser-topbar">
+                    <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                    <div class="browser-topbar-url">icybear.co.uk/collections/best-sellers</div>
+                    <span class="browser-topbar-label">Best Sellers</span>
+                </div>
+                <img class="browser-frame-img" src="https://files.catbox.moe/a2dhxd.png" alt="Icy Bear Best Sellers" loading="lazy">
+            </div>
+            <div class="browser-grid">
+                <div class="browser-frame">
+                    <div class="browser-topbar">
+                        <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                        <div class="browser-topbar-url">icybear.co.uk/products/whitening-kit</div>
+                        <span class="browser-topbar-label">Product Page</span>
+                    </div>
+                    <img class="browser-frame-img" src="https://files.catbox.moe/c9ka5t.png" alt="Icy Bear Product Page" loading="lazy" style="max-height:400px;">
+                </div>
+                <div class="browser-frame">
+                    <div class="browser-topbar">
+                        <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                        <div class="browser-topbar-url">icybear.co.uk/collections</div>
+                        <span class="browser-topbar-label">Collections</span>
+                    </div>
+                    <img class="browser-frame-img" src="https://files.catbox.moe/ps68f3.png" alt="Icy Bear Collections" loading="lazy" style="max-height:400px;">
+                </div>
+            </div>
         </div>
 
-        <!-- ICY BEAR BEFORE/AFTER VISUAL -->
+        <!-- ICY BEAR BEFORE/AFTER VIDEO -->
         <div class="gallery-label">Icy Bear &bull; Before vs After Our Rebrand</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1200px; margin: 0 auto 60px;">
-            <!-- BEFORE -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
-                <div style="padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
-                    <span style="background: var(--red-glow); color: var(--red); padding: 6px 14px; border-radius: 100px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(255,68,68,0.2);"><i class="fas fa-times-circle"></i> &nbsp;Before</span>
-                    <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">Original Website</span>
+        <div class="browser-grid" style="max-width: 1200px; margin: 0 auto 48px;">
+            <div class="browser-frame" style="border-color: rgba(255,68,68,0.2);">
+                <div class="browser-topbar">
+                    <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                    <div class="browser-topbar-url">icybear.co.uk</div>
+                    <span class="browser-topbar-label" style="color: var(--red);"><i class="fas fa-times-circle"></i> &nbsp;Before</span>
                 </div>
-                <div style="position: relative; padding-bottom: 56.25%; width: 100%;">
-                    <iframe loading="lazy" src="https://drive.google.com/file/d/1tjkp1WfcDntsBa_rRBduW8amFYOjn3CX/preview" allow="autoplay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
-                </div>
+                <div style="position: relative; padding-bottom: 56.25%;"><iframe loading="lazy" src="https://drive.google.com/file/d/1tjkp1WfcDntsBa_rRBduW8amFYOjn3CX/preview" allow="autoplay" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
             </div>
-            <!-- AFTER -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 20px; overflow: hidden; box-shadow: 0 0 40px var(--accent-glow);">
-                <div style="padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
-                    <span style="background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 100px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border-accent);"><i class="fas fa-check-circle"></i> &nbsp;After</span>
-                    <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">Premium Rebrand by Neocode</span>
+            <div class="browser-frame" style="border-color: var(--border-accent); box-shadow: 0 0 40px var(--accent-glow);">
+                <div class="browser-topbar">
+                    <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                    <div class="browser-topbar-url">icybear.co.uk</div>
+                    <span class="browser-topbar-label"><i class="fas fa-check-circle"></i> &nbsp;After Neocode</span>
                 </div>
-                <div style="position: relative; padding-bottom: 56.25%; width: 100%;">
-                    <iframe loading="lazy" src="https://drive.google.com/file/d/1vlCnWQZEwim_R2ztrEsfEJf2zGhROJPm/preview" allow="autoplay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
-                </div>
+                <div style="position: relative; padding-bottom: 56.25%;"><iframe loading="lazy" src="https://drive.google.com/file/d/1vlCnWQZEwim_R2ztrEsfEJf2zGhROJPm/preview" allow="autoplay" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
             </div>
         </div>
-        <!-- MOBILE BEFORE/AFTER -->
-        <div class="gallery-label">Icy Bear &bull; Mobile Experience After Rebrand</div>
-        <div style="max-width: 360px; margin: 0 auto 60px; background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 20px; overflow: hidden; box-shadow: 0 0 40px var(--accent-glow);">
-            <div style="padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px;">
-                <span style="background: var(--accent-glow); color: var(--accent); padding: 5px 12px; border-radius: 100px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border-accent);"><i class="fas fa-mobile-alt"></i> &nbsp;Mobile</span>
+
+        <!-- MOBILE -->
+        <div class="gallery-label">Icy Bear &bull; Mobile Experience</div>
+        <div class="phone-mockup">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <iframe loading="lazy" src="https://drive.google.com/file/d/1jWWEeCxzMSD8vt6qlob42a10DeoP89Nh/preview" allow="autoplay"></iframe>
             </div>
-            <div style="position: relative; padding-bottom: 177.78%; width: 100%;">
-                <iframe loading="lazy" src="https://drive.google.com/file/d/1jWWEeCxzMSD8vt6qlob42a10DeoP89Nh/preview" allow="autoplay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
-            </div>
+            <div class="phone-label"><i class="fas fa-check-circle"></i> &nbsp;After Rebrand</div>
         </div>
 
         <!-- MOONELA -->
@@ -537,10 +575,33 @@
         </div>
 
         <div class="gallery-label">Moonela &bull; Shopify Pages</div>
-        <div class="site-gallery">
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/2rq3of.jpg" alt="Moonela Best Sellers" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/gun6pj.png" alt="Moonela Product Page" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/f23uj6.png" alt="Moonela All Products" loading="lazy"></div>
+        <div class="browser-showcase">
+            <div class="browser-frame">
+                <div class="browser-topbar">
+                    <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                    <div class="browser-topbar-url">moonela.co.uk/collections/best-sellers</div>
+                    <span class="browser-topbar-label">Best Sellers</span>
+                </div>
+                <img class="browser-frame-img" src="https://files.catbox.moe/2rq3of.jpg" alt="Moonela Best Sellers" loading="lazy">
+            </div>
+            <div class="browser-grid">
+                <div class="browser-frame">
+                    <div class="browser-topbar">
+                        <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                        <div class="browser-topbar-url">moonela.co.uk/products/ring</div>
+                        <span class="browser-topbar-label">Product Page</span>
+                    </div>
+                    <img class="browser-frame-img" src="https://files.catbox.moe/gun6pj.png" alt="Moonela Product Page" loading="lazy" style="max-height:400px;">
+                </div>
+                <div class="browser-frame">
+                    <div class="browser-topbar">
+                        <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                        <div class="browser-topbar-url">moonela.co.uk/collections/all</div>
+                        <span class="browser-topbar-label">All Products</span>
+                    </div>
+                    <img class="browser-frame-img" src="https://files.catbox.moe/f23uj6.png" alt="Moonela All Products" loading="lazy" style="max-height:400px;">
+                </div>
+            </div>
         </div>
 
         <!-- PHOVEA -->
@@ -562,10 +623,25 @@
         </div>
 
         <div class="gallery-label">Phovea &bull; Shopify Pages</div>
-        <div class="site-gallery">
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/g4xqej.jpg" alt="Phovea Product Page" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/46cj00.png" alt="Bundles Page" loading="lazy"></div>
-            <div class="site-gallery-item"><img src="https://files.catbox.moe/ux3jft.jpg" alt="Phovea Homepage Full" loading="lazy"></div>
+        <div class="browser-showcase">
+            <div class="browser-grid">
+                <div class="browser-frame">
+                    <div class="browser-topbar">
+                        <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                        <div class="browser-topbar-url">phovea.co.uk/products/led-mask</div>
+                        <span class="browser-topbar-label">Product Page</span>
+                    </div>
+                    <img class="browser-frame-img" src="https://files.catbox.moe/g4xqej.jpg" alt="Phovea Product Page" loading="lazy" style="max-height:450px;">
+                </div>
+                <div class="browser-frame">
+                    <div class="browser-topbar">
+                        <div class="browser-topbar-dot r"></div><div class="browser-topbar-dot y"></div><div class="browser-topbar-dot g"></div>
+                        <div class="browser-topbar-url">phovea.co.uk/collections/bundles</div>
+                        <span class="browser-topbar-label">Bundles</span>
+                    </div>
+                    <img class="browser-frame-img" src="https://files.catbox.moe/46cj00.png" alt="Bundles Page" loading="lazy" style="max-height:450px;">
+                </div>
+            </div>
         </div>
 
     </div>
