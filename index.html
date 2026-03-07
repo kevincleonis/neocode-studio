@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neocode Studio - Web Design & CRO Agency | UK</title>
+    <meta name="description" content="We build high-converting websites for UK businesses. CRO optimization, UX design, and digital strategy by Neocode Studio.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --accent-glow-strong: rgba(0, 255, 136, 0.3);
+            --border: rgba(255,255,255,0.06);
+            --border-accent: rgba(0, 255, 136, 0.2);
+            --shadow: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-glow: 0 0 60px rgba(0, 255, 136, 0.15);
+            --font-main: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+        /* MATRIX RAIN CANVAS */
+        #matrix-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; opacity: 0.04; pointer-events: none;
+        }
+
+        /* PROGRESS BAR */
+        .progress {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent), #00ffcc);
+            z-index: 9999; transition: width 0.15s;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 80px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .navbar-inner {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 80px;
+        }
+
+        .navbar-logo {
+            font-family: var(--font-mono);
+            font-size: 20px; font-weight: 700;
+            color: var(--text-primary); text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .navbar-logo .neo { color: var(--accent); }
+        .navbar-logo .cursor {
+            display: inline-block; width: 2px; height: 20px;
+            background: var(--accent); margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .navbar-menu { display: flex; align-items: center; gap: 8px; }
+
+        .navbar-link {
+            padding: 12px 24px; font-size: 13px; font-weight: 500;
+            color: var(--text-secondary); text-decoration: none;
+            border-radius: 100px; transition: all 0.3s ease;
+            letter-spacing: 0.05em; text-transform: uppercase;
+        }
+
+        .navbar-link:hover { color: var(--accent); }
+
+        .navbar-cta {
+            margin-left: 24px; padding: 14px 32px;
+            font-size: 12px; font-weight: 600;
+            color: var(--bg-primary); background: var(--accent);
+            text-decoration: none; border-radius: 100px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.08em; text-transform: uppercase;
+        }
+
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .navbar-toggle {
+            display: none; flex-direction: column; gap: 6px;
+            padding: 10px; background: none; border: none; cursor: pointer;
+        }
+
+        .navbar-toggle span {
+            width: 28px; height: 1px;
+            background: var(--text-primary); transition: all 0.3s ease;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 40px var(--accent-glow); }
+            50% { box-shadow: 0 0 80px var(--accent-glow-strong); }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(0, 255, 136, 0.1); }
+            50% { border-color: rgba(0, 255, 136, 0.3); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes scanline {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        .animate {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 120px 80px 80px; position: relative; overflow: hidden;
+        }
+
+        .hero::before {
+            content: ''; position: absolute;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            border-radius: 50%; top: -200px; right: -200px;
+            pointer-events: none;
+        }
+
+        .hero-grid-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-scanline {
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 4px; background: linear-gradient(180deg, transparent, var(--accent-glow), transparent);
+            animation: scanline 8s linear infinite;
+            pointer-events: none; opacity: 0.3;
+        }
+
+        .hero-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 80px; max-width: 1400px; margin: 0 auto;
+            width: 100%; position: relative; z-index: 2;
+        }
+
+        .hero-content { flex: 1; max-width: 700px; }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--font-mono); font-size: 13px; font-weight: 400;
+            color: var(--accent); margin-bottom: 32px;
+        }
+
+        .hero-eyebrow::before {
+            content: '>'; color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: 68px; font-weight: 700; line-height: 1.05;
+            margin-bottom: 24px; letter-spacing: -0.03em;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+            text-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .hero-subtitle {
+            font-size: 20px; font-weight: 300;
+            color: var(--text-secondary); margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 16px; color: var(--text-muted);
+            line-height: 1.9; margin-bottom: 48px; max-width: 520px;
+        }
+
+        .hero-stats {
+            display: flex; gap: 48px; padding: 40px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+
+        .stat-value {
+            font-size: 36px; font-weight: 700;
+            display: block; margin-bottom: 8px;
+            color: var(--accent);
+            text-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 11px; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.15em;
+        }
+
+        .hero-cta { display: flex; gap: 20px; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 18px 36px; border-radius: 100px;
+            font-size: 12px; font-weight: 600; text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.1em; text-transform: uppercase;
+            font-family: var(--font-main);
+        }
+
+        .btn-primary {
+            background: var(--accent); color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: transparent; color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        .hero-visual {
+            position: relative; flex-shrink: 0;
+        }
+
+        .code-window {
+            width: 420px; background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        .code-window-bar {
+            display: flex; align-items: center; gap: 8px;
+            padding: 16px 20px; border-bottom: 1px solid var(--border);
+        }
+
+        .code-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+        }
+
+        .code-dot.red { background: #ff5f56; }
+        .code-dot.yellow { background: #ffbd2e; }
+        .code-dot.green { background: #27c93f; }
+
+        .code-window-title {
+            font-family: var(--font-mono); font-size: 12px;
+            color: var(--text-muted); margin-left: 12px;
+        }
+
+        .code-content {
+            padding: 24px; font-family: var(--font-mono);
+            font-size: 13px; line-height: 2;
+        }
+
+        .code-line { display: flex; gap: 16px; }
+        .code-number { color: var(--text-muted); user-select: none; min-width: 20px; text-align: right; }
+        .code-keyword { color: #c678dd; }
+        .code-function { color: #61afef; }
+        .code-string { color: var(--accent); }
+        .code-comment { color: var(--text-muted); font-style: italic; }
+        .code-bracket { color: #e8e8e8; }
+        .code-property { color: #e5c07b; }
+        .code-value { color: #98c379; }
+
+        /* SECTIONS */
+        .section { padding: 120px 80px; position: relative; z-index: 1; }
+        .section-dark { background: var(--bg-primary); }
+        .section-darker { background: var(--bg-secondary); }
+
+        .section-header {
+            text-align: center; max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-eyebrow {
+            display: inline-flex; align-items: center; gap: 16px;
+            font-family: var(--font-mono); font-size: 12px; font-weight: 400;
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 0.15em; margin-bottom: 24px;
+        }
+
+        .section-eyebrow::before, .section-eyebrow::after {
+            content: ''; width: 30px; height: 1px; background: var(--accent-dim);
+        }
+
+        .section-title {
+            font-size: 52px; font-weight: 700;
+            margin-bottom: 24px; letter-spacing: -0.03em;
+        }
+
+        .section-title .accent { color: var(--accent); }
+
+        .section-subtitle {
+            font-size: 17px; color: var(--text-secondary);
+            line-height: 1.8; font-weight: 300;
+        }
+
+        /* SERVICE CARDS */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px; max-width: 1200px; margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 24px; padding: 48px 40px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden;
+        }
+
+        .card::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent), #00ffcc);
+            opacity: 0; transition: opacity 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-accent);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .card-icon {
+            width: 56px; height: 56px; border-radius: 16px;
+            background: var(--accent-glow); display: flex;
+            align-items: center; justify-content: center;
+            font-size: 24px; margin-bottom: 28px; color: var(--accent);
+        }
+
+        .card-title {
+            font-size: 22px; font-weight: 600; margin-bottom: 12px;
+        }
+
+        .card-text { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+
+        /* PROCESS */
+        .process-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 32px; max-width: 1200px; margin: 0 auto;
+        }
+
+        .process-step {
+            text-align: center; padding: 40px 24px;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: ''; position: absolute; top: 40px;
+            right: -16px; width: 32px; height: 1px;
+            background: var(--border-accent);
+        }
+
+        .process-step:last-child::after { display: none; }
+
+        .process-number {
+            font-family: var(--font-mono); font-size: 48px;
+            font-weight: 700; color: var(--accent);
+            opacity: 0.3; margin-bottom: 20px;
+            text-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .process-title {
+            font-size: 18px; font-weight: 600; margin-bottom: 12px;
+        }
+
+        .process-text {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+        }
+
+        /* PORTFOLIO / CASE STUDIES */
+        .portfolio-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 32px; max-width: 1200px; margin: 0 auto;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 24px; overflow: hidden;
+            transition: all 0.5s ease; position: relative;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .portfolio-preview {
+            height: 240px; background: var(--bg-secondary);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .portfolio-preview .browser-mockup {
+            width: 85%; height: 80%; background: var(--bg-primary);
+            border-radius: 8px; border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .browser-bar {
+            display: flex; align-items: center; gap: 6px;
+            padding: 8px 12px; background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .browser-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .browser-url {
+            font-family: var(--font-mono); font-size: 10px;
+            color: var(--text-muted); margin-left: 12px;
+            background: var(--bg-primary); padding: 3px 12px;
+            border-radius: 4px; flex: 1;
+        }
+
+        .browser-content {
+            padding: 16px; display: flex; flex-direction: column; gap: 8px;
+        }
+
+        .browser-line {
+            height: 6px; border-radius: 3px; background: var(--border);
+        }
+
+        .browser-line.accent { background: var(--accent-glow); width: 40%; }
+        .browser-line.short { width: 60%; }
+        .browser-line.medium { width: 80%; }
+
+        .portfolio-badge {
+            position: absolute; top: 16px; right: 16px;
+            font-family: var(--font-mono); font-size: 10px;
+            color: var(--accent); background: rgba(0,0,0,0.8);
+            padding: 6px 14px; border-radius: 100px;
+            border: 1px solid var(--border-accent);
+            letter-spacing: 0.1em; text-transform: uppercase;
+        }
+
+        .portfolio-info { padding: 32px; }
+
+        .portfolio-tag {
+            font-family: var(--font-mono); font-size: 11px;
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 12px;
+        }
+
+        .portfolio-title {
+            font-size: 24px; font-weight: 600; margin-bottom: 12px;
+        }
+
+        .portfolio-desc {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-stats {
+            display: flex; gap: 24px;
+        }
+
+        .portfolio-stat {
+            font-family: var(--font-mono); font-size: 12px;
+        }
+
+        .portfolio-stat-value { color: var(--accent); font-weight: 600; }
+        .portfolio-stat-label { color: var(--text-muted); margin-left: 6px; }
+
+        /* BEFORE/AFTER */
+        .before-after {
+            max-width: 1000px; margin: 0 auto;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 24px; overflow: hidden;
+        }
+
+        .ba-header {
+            display: flex; border-bottom: 1px solid var(--border);
+        }
+
+        .ba-tab {
+            flex: 1; padding: 20px; text-align: center;
+            font-family: var(--font-mono); font-size: 13px;
+            font-weight: 500; letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .ba-tab.before {
+            color: #ff4444; border-right: 1px solid var(--border);
+        }
+
+        .ba-tab.after { color: var(--accent); }
+
+        .ba-content {
+            display: grid; grid-template-columns: 1fr 1fr;
+        }
+
+        .ba-side {
+            padding: 40px; border-right: 1px solid var(--border);
+        }
+
+        .ba-side:last-child { border-right: none; }
+
+        .ba-list { list-style: none; }
+
+        .ba-list li {
+            padding: 12px 0; font-size: 14px;
+            color: var(--text-secondary); line-height: 1.6;
+            display: flex; align-items: flex-start; gap: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ba-list li:last-child { border-bottom: none; }
+
+        .ba-icon-bad { color: #ff4444; flex-shrink: 0; margin-top: 3px; }
+        .ba-icon-good { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
+
+        /* TESTIMONIALS */
+        .testimonial-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px; max-width: 1200px; margin: 0 auto;
+        }
+
+        .testimonial {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars { color: #ffbd2e; font-size: 14px; margin-bottom: 20px; }
+
+        .testimonial-text {
+            font-size: 15px; color: var(--text-secondary);
+            line-height: 1.8; margin-bottom: 24px; font-style: italic;
+        }
+
+        .testimonial-author { font-weight: 600; font-size: 14px; }
+        .testimonial-role { font-size: 12px; color: var(--text-muted); }
+
+        /* CTA */
+        .cta-section {
+            text-align: center; padding: 120px 80px;
+            position: relative; overflow: hidden; z-index: 1;
+        }
+
+        .cta-section::before {
+            content: ''; position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            border-radius: 50%; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: 56px; font-weight: 700; margin-bottom: 24px;
+            letter-spacing: -0.03em; position: relative;
+        }
+
+        .cta-subtitle {
+            font-size: 18px; color: var(--text-secondary);
+            margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; }
+
+        /* FOOTER */
+        .footer {
+            padding: 60px 80px 40px;
+            border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+        }
+
+        .footer-inner {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .footer-logo {
+            font-family: var(--font-mono); font-size: 16px; font-weight: 700;
+        }
+
+        .footer-logo .neo { color: var(--accent); }
+
+        .footer-text {
+            font-size: 13px; color: var(--text-muted);
+        }
+
+        .footer-links { display: flex; gap: 24px; }
+
+        .footer-link {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 13px; transition: color 0.3s;
+        }
+
+        .footer-link:hover { color: var(--accent); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .navbar { padding: 0 40px; }
+            .hero { padding: 120px 40px 80px; }
+            .section { padding: 80px 40px; }
+            .hero h1 { font-size: 48px; }
+            .section-title { font-size: 40px; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-step::after { display: none; }
+            .hero-visual { display: none; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 24px; }
+            .navbar-menu {
+                display: none; position: fixed;
+                top: 80px; left: 0; right: 0;
+                background: rgba(10,10,10,0.98);
+                flex-direction: column; padding: 24px;
+                border-bottom: 1px solid var(--border);
+            }
+            .navbar-menu.open { display: flex; }
+            .navbar-toggle { display: flex; }
+            .navbar-cta { margin-left: 0; margin-top: 16px; text-align: center; }
+            .hero { padding: 120px 24px 60px; }
+            .hero h1 { font-size: 36px; }
+            .hero-stats { flex-wrap: wrap; gap: 32px; }
+            .hero-cta { flex-direction: column; }
+            .section { padding: 60px 24px; }
+            .section-title { font-size: 32px; }
+            .cta-title { font-size: 36px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .ba-content { grid-template-columns: 1fr; }
+            .ba-side { border-right: none; border-bottom: 1px solid var(--border); }
+            .footer { padding: 40px 24px; }
+            .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="matrix-bg"></canvas>
+
+<div class="progress" id="progress"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="#" class="navbar-logo"><span class="neo">neo</span>code<span class="cursor"></span></a>
+        <div class="navbar-menu" id="navMenu">
+            <a href="#services" class="navbar-link">Services</a>
+            <a href="#process" class="navbar-link">Process</a>
+            <a href="#work" class="navbar-link">Work</a>
+            <a href="#results" class="navbar-link">Results</a>
+            <a href="#contact" class="navbar-cta">Get a Free Audit</a>
+        </div>
+        <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-scanline"></div>
+    <div class="hero-inner">
+        <div class="hero-content">
+            <div class="hero-eyebrow animate">Web Design & CRO Agency</div>
+            <h1 class="animate delay-1">Your website is <span class="accent">losing</span> you customers.</h1>
+            <p class="hero-subtitle animate delay-2">We fix that.</p>
+            <p class="hero-description animate delay-2">
+                We help UK businesses turn underperforming websites into high-converting machines.
+                From complete redesigns to surgical CRO improvements &mdash; backed by 7+ years of e-commerce data.
+            </p>
+            <div class="hero-stats animate delay-3">
+                <div>
+                    <span class="stat-value">300+</span>
+                    <span class="stat-label">Brands Helped</span>
+                </div>
+                <div>
+                    <span class="stat-value">&euro;15M+</span>
+                    <span class="stat-label">Revenue Generated</span>
+                </div>
+                <div>
+                    <span class="stat-value">7+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+            <div class="hero-cta animate delay-4">
+                <a href="#contact" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
+                <a href="#work" class="btn btn-secondary">See Our Work</a>
+            </div>
+        </div>
+        <div class="hero-visual animate delay-3">
+            <div class="code-window">
+                <div class="code-window-bar">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-window-title">your-website.js</span>
+                </div>
+                <div class="code-content">
+                    <div class="code-line"><span class="code-number">1</span><span class="code-comment">// before neocode</span></div>
+                    <div class="code-line"><span class="code-number">2</span><span class="code-keyword">const</span> <span class="code-property">conversionRate</span> = <span style="color:#ff4444">0.2%</span>;</div>
+                    <div class="code-line"><span class="code-number">3</span><span class="code-keyword">const</span> <span class="code-property">bounceRate</span> = <span style="color:#ff4444">87%</span>;</div>
+                    <div class="code-line"><span class="code-number">4</span><span class="code-keyword">const</span> <span class="code-property">trustScore</span> = <span style="color:#ff4444">"low"</span>;</div>
+                    <div class="code-line"><span class="code-number">5</span></div>
+                    <div class="code-line"><span class="code-number">6</span><span class="code-comment">// after neocode</span></div>
+                    <div class="code-line"><span class="code-number">7</span><span class="code-keyword">const</span> <span class="code-property">conversionRate</span> = <span class="code-string">4.8%</span>;</div>
+                    <div class="code-line"><span class="code-number">8</span><span class="code-keyword">const</span> <span class="code-property">bounceRate</span> = <span class="code-string">32%</span>;</div>
+                    <div class="code-line"><span class="code-number">9</span><span class="code-keyword">const</span> <span class="code-property">trustScore</span> = <span class="code-string">"elite"</span>;</div>
+                    <div class="code-line"><span class="code-number">10</span></div>
+                    <div class="code-line"><span class="code-number">11</span><span class="code-function">deploy</span><span class="code-bracket">(</span><span class="code-string">"success"</span><span class="code-bracket">)</span>; <span class="code-comment">// &#x1F680;</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-darker" id="services">
+    <div class="section-header">
+        <div class="section-eyebrow">What We Do</div>
+        <h2 class="section-title">Websites that <span class="accent">convert</span></h2>
+        <p class="section-subtitle">We don't just make pretty websites. We engineer digital experiences that turn visitors into paying customers.</p>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+            <h3 class="card-title">Website Redesign</h3>
+            <p class="card-text">Complete website overhaul &mdash; modern design, mobile-first, fast loading. We rebuild from the ground up with conversion in mind.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            <h3 class="card-title">CRO Optimisation</h3>
+            <p class="card-text">Data-driven conversion rate optimisation. We analyse user behaviour, fix friction points, and maximise every visit to your site.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+            <h3 class="card-title">UX/UI Design</h3>
+            <p class="card-text">User experience that feels effortless. Clean interfaces, intuitive navigation, and design that builds trust instantly.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fab fa-shopify"></i></div>
+            <h3 class="card-title">Shopify & E-commerce</h3>
+            <p class="card-text">Custom Shopify builds, theme development, and e-commerce strategy. 20+ DTC brands built from zero to revenue.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-search"></i></div>
+            <h3 class="card-title">SEO & Performance</h3>
+            <p class="card-text">Technical SEO, site speed optimisation, and structured data. Get found by the right customers at the right time.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+            <h3 class="card-title">Paid Ads Setup</h3>
+            <p class="card-text">Meta, Google, TikTok &mdash; we set up and manage campaigns that drive real traffic. &pound;150K+/month in ad budgets managed.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section-dark" id="process">
+    <div class="section-header">
+        <div class="section-eyebrow">How We Work</div>
+        <h2 class="section-title">From audit to <span class="accent">launch</span></h2>
+        <p class="section-subtitle">A proven 4-step process that takes your site from underperforming to industry-leading.</p>
+    </div>
+    <div class="process-grid">
+        <div class="process-step">
+            <div class="process-number">01</div>
+            <h3 class="process-title">Free Audit</h3>
+            <p class="process-text">We analyse your current site: design, UX, speed, SEO, conversion paths. You get a full report &mdash; no strings attached.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-number">02</div>
+            <h3 class="process-title">Strategy</h3>
+            <p class="process-text">We create a tailored plan based on your goals, audience, and budget. Every decision is backed by data.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-number">03</div>
+            <h3 class="process-title">Build</h3>
+            <p class="process-text">Design, develop, test. We build your new site with obsessive attention to detail and conversion best practices.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-number">04</div>
+            <h3 class="process-title">Launch & Grow</h3>
+            <p class="process-text">Go live with confidence. We monitor performance, run A/B tests, and continuously optimise for better results.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WORK / PORTFOLIO -->
+<section class="section section-darker" id="work">
+    <div class="section-header">
+        <div class="section-eyebrow">Our Work</div>
+        <h2 class="section-title">Brands we've <span class="accent">transformed</span></h2>
+        <p class="section-subtitle">Real results from real projects. Here's what happens when data meets design.</p>
+    </div>
+    <div class="portfolio-grid">
+        <div class="portfolio-item">
+            <div class="portfolio-preview">
+                <div class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot red"></div>
+                        <div class="browser-dot yellow"></div>
+                        <div class="browser-dot green"></div>
+                        <div class="browser-url">moonela.co.uk</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="browser-line accent" style="width:30%"></div>
+                        <div class="browser-line medium"></div>
+                        <div class="browser-line short"></div>
+                        <div class="browser-line" style="width:45%"></div>
+                        <div class="browser-line medium"></div>
+                    </div>
+                </div>
+                <span class="portfolio-badge">E-commerce</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; DTC Jewelry</div>
+                <h3 class="portfolio-title">Moonela</h3>
+                <p class="portfolio-desc">Premium jewelry brand built from zero. Full-stack development, product photography direction, and Facebook Ads strategy.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">Full Build</span><span class="portfolio-stat-label">Shopify</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+Ads</span><span class="portfolio-stat-label">Meta</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <div class="portfolio-preview">
+                <div class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot red"></div>
+                        <div class="browser-dot yellow"></div>
+                        <div class="browser-dot green"></div>
+                        <div class="browser-url">phovea.co.uk</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="browser-line accent" style="width:35%"></div>
+                        <div class="browser-line short"></div>
+                        <div class="browser-line medium"></div>
+                        <div class="browser-line" style="width:50%"></div>
+                        <div class="browser-line short"></div>
+                    </div>
+                </div>
+                <span class="portfolio-badge">Health & Beauty</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; LED Therapy</div>
+                <h3 class="portfolio-title">Phovea</h3>
+                <p class="portfolio-desc">LED face masks & red light therapy brand. 9 products, 5 collections, 52 SEO-optimised blog articles, custom Shopify homepage.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">52</span><span class="portfolio-stat-label">SEO Articles</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">9</span><span class="portfolio-stat-label">Products</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <div class="portfolio-preview">
+                <div class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot red"></div>
+                        <div class="browser-dot yellow"></div>
+                        <div class="browser-dot green"></div>
+                        <div class="browser-url">icybear.co.uk</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="browser-line accent" style="width:25%"></div>
+                        <div class="browser-line medium"></div>
+                        <div class="browser-line" style="width:70%"></div>
+                        <div class="browser-line short"></div>
+                        <div class="browser-line medium"></div>
+                    </div>
+                </div>
+                <span class="portfolio-badge">Oral Care</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; CRO &bull; Paid Media</div>
+                <h3 class="portfolio-title">Icy Bear Dental</h3>
+                <p class="portfolio-desc">UK oral care brand. Managed 6-figure ad budget, Shopify rebranding, +40% ad output, +15% purchase volume, +14% revenue growth.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">+14%</span><span class="portfolio-stat-label">Revenue</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">-25%</span><span class="portfolio-stat-label">CPC</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <div class="portfolio-preview">
+                <div class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot red"></div>
+                        <div class="browser-dot yellow"></div>
+                        <div class="browser-dot green"></div>
+                        <div class="browser-url">taped.co.uk</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="browser-line accent" style="width:28%"></div>
+                        <div class="browser-line short"></div>
+                        <div class="browser-line" style="width:65%"></div>
+                        <div class="browser-line medium"></div>
+                        <div class="browser-line" style="width:40%"></div>
+                    </div>
+                </div>
+                <span class="portfolio-badge">Health & Wellness</span>
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-tag">Shopify &bull; AI Creative</div>
+                <h3 class="portfolio-title">Taped</h3>
+                <p class="portfolio-desc">Vitamin patches brand. AI-first creative testing strategy, professional product photography, full Shopify build.</p>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">AI-First</span><span class="portfolio-stat-label">Creative</span></div>
+                    <div class="portfolio-stat"><span class="portfolio-stat-value">Full</span><span class="portfolio-stat-label">Build</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section class="section section-dark" id="results">
+    <div class="section-header">
+        <div class="section-eyebrow">The Difference</div>
+        <h2 class="section-title">Before vs <span class="accent">After</span></h2>
+        <p class="section-subtitle">This is what we fix. Every day, businesses lose customers because of these exact problems.</p>
+    </div>
+    <div class="before-after">
+        <div class="ba-header">
+            <div class="ba-tab before"><i class="fas fa-times-circle"></i> &nbsp;Before Neocode</div>
+            <div class="ba-tab after"><i class="fas fa-check-circle"></i> &nbsp;After Neocode</div>
+        </div>
+        <div class="ba-content">
+            <div class="ba-side">
+                <ul class="ba-list">
+                    <li><i class="fas fa-times ba-icon-bad"></i> Outdated design from 2015</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> No SSL certificate (HTTP only)</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> Gmail/Hotmail email address</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> Broken links & missing pages</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> Not mobile responsive</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> No online booking system</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> No social media integration</li>
+                    <li><i class="fas fa-times ba-icon-bad"></i> Typos & unprofessional copy</li>
+                </ul>
+            </div>
+            <div class="ba-side">
+                <ul class="ba-list">
+                    <li><i class="fas fa-check ba-icon-good"></i> Modern, premium design</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Full HTTPS & security</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Professional branded email</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Every link works perfectly</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Mobile-first responsive</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Online booking & payments</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Full social media presence</li>
+                    <li><i class="fas fa-check ba-icon-good"></i> Professional copywriting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section-darker" id="contact">
+    <h2 class="cta-title">Ready to <span class="accent">upgrade</span>?</h2>
+    <p class="cta-subtitle">Get a free website audit. We'll show you exactly what's costing you customers &mdash; and how to fix it.</p>
+    <div class="cta-buttons">
+        <a href="mailto:so.marketing.center@gmail.com" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/447000000000" class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo"><span class="neo">neo</span>code studio</div>
+        <p class="footer-text">&copy; 2026 Neocode Studio. Trading name of So Marketing Center Ltd.</p>
+        <div class="footer-links">
+            <a href="#services" class="footer-link">Services</a>
+            <a href="#work" class="footer-link">Work</a>
+            <a href="#contact" class="footer-link">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Matrix Rain
+const canvas = document.getElementById('matrix-bg');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = 'ネオコードスタジオ01アウエカキクケサシスセソタチツテナニヌネハヒフヘホマミムメモヤユヨラリルレロワヲン';
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff88';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+    }
+}
+
+setInterval(drawMatrix, 50);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Progress bar
+window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progress').style.width = scrolled + '%';
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
+document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navMenu').classList.toggle('open');
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card, .process-step, .portfolio-item, .testimonial, .before-after').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px)';
+    el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+    observer.observe(el);
+});
+
+// Override animate class for observed elements
+const style = document.createElement('style');
+style.textContent = '.card.animate, .process-step.animate, .portfolio-item.animate, .testimonial.animate, .before-after.animate { opacity: 1 !important; transform: translateY(0) !important; }';
+document.head.appendChild(style);
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('navMenu').classList.remove('open');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
