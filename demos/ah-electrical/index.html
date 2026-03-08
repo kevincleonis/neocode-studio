@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AH Electrical Services - Your Trusted Electrician in Manchester</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0b0f14;
+            --bg-card: #111820;
+            --bg-card-hover: #161e28;
+            --text: #e8ecf1;
+            --text-dim: #8899aa;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.15);
+            --accent-strong: rgba(245, 158, 11, 0.3);
+            --blue: #3b82f6;
+            --blue-glow: rgba(59, 130, 246, 0.15);
+            --green: #10b981;
+            --border: rgba(255,255,255,0.06);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+        /* Neocode Banner */
+        .nc-banner { background: linear-gradient(90deg, #00ff88, #00cc6a); color: #0a0a0a; text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+        .nc-banner a { color: #0a0a0a; text-decoration: underline; font-weight: 700; }
+
+        /* Nav */
+        .nav { position: sticky; top: 0; z-index: 100; background: rgba(11,15,20,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 40px; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .nav-brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; }
+        .nav-brand i { color: var(--accent); font-size: 24px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { background: var(--accent); color: #0b0f14; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-strong); }
+
+        /* Hero */
+        .hero { padding: 100px 40px 80px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--accent); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+        .hero-badge i { font-size: 12px; }
+        .hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.15; max-width: 800px; margin: 0 auto 20px; position: relative; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 18px; color: var(--text-dim); max-width: 550px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--accent); color: #0b0f14; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px var(--accent-strong); }
+        .btn-secondary { background: transparent; color: var(--text); padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Trust Bar */
+        .trust-bar { display: flex; justify-content: center; gap: 48px; padding: 48px 40px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 12px; color: var(--text-dim); font-size: 14px; font-weight: 500; }
+        .trust-item i { color: var(--accent); font-size: 20px; }
+        .trust-item .stars { color: var(--accent); letter-spacing: 2px; }
+
+        /* Sections */
+        .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 56px; }
+        .section-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .section-header h2 span { color: var(--accent); }
+        .section-header p { color: var(--text-dim); font-size: 17px; max-width: 500px; margin: 0 auto; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; transition: all 0.3s; }
+        .service-card:hover { border-color: rgba(245,158,11,0.3); transform: translateY(-4px); background: var(--bg-card-hover); }
+        .service-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .service-icon i { color: var(--accent); font-size: 22px; }
+        .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .service-card p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+
+        /* Why Us */
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+        .why-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; text-align: center; }
+        .why-number { font-size: 42px; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
+        .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .why-card p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+
+        /* Testimonials */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+        .testimonial { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+        .testimonial-stars { color: var(--accent); margin-bottom: 16px; letter-spacing: 3px; }
+        .testimonial p { font-size: 15px; color: var(--text-dim); line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+        .testimonial-author { font-size: 14px; font-weight: 600; color: var(--text); }
+        .testimonial-location { font-size: 13px; color: var(--text-dim); }
+
+        /* Areas */
+        .areas-list { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .area-tag { background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; padding: 10px 22px; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: all 0.3s; }
+        .area-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* CTA */
+        .cta { text-align: center; padding: 80px 40px; background: linear-gradient(180deg, transparent, rgba(245,158,11,0.05)); }
+        .cta h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .cta h2 span { color: var(--accent); }
+        .cta p { color: var(--text-dim); font-size: 17px; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-phone { font-size: 28px; font-weight: 800; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+
+        /* Footer */
+        .footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 48px 40px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer-brand { font-size: 18px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .footer-brand i { color: var(--accent); }
+        .footer-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 16px; }
+        .footer h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; color: var(--text-dim); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-bottom { text-align: center; padding: 20px 40px; font-size: 12px; color: var(--text-dim); border-top: 1px solid var(--border); }
+
+        /* 24h Badge */
+        .emergency-strip { background: linear-gradient(90deg, #dc2626, #b91c1c); text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .emergency-strip i { animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 60px 20px 40px; }
+            .section { padding: 60px 20px; }
+            .trust-bar { gap: 24px; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .cta { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nc-banner">
+        <i class="fas fa-wand-magic-sparkles"></i>
+        This is a free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a>. Like what you see? <a href="https://neocodestudio.co.uk/contact.html" target="_blank">Get in touch</a>.
+    </div>
+
+    <div class="emergency-strip">
+        <i class="fas fa-bolt"></i> 24-Hour Emergency Callouts Available <i class="fas fa-bolt"></i>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-brand"><i class="fas fa-bolt"></i> AH Electrical</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#areas">Areas</a></li>
+            </ul>
+            <a href="tel:01617067671" class="nav-cta"><i class="fas fa-phone"></i> 0161 706 7671</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge"><i class="fas fa-star"></i> Rated 5 Stars on Google</div>
+        <h1>Your Trusted <span>Electrician</span> in Manchester</h1>
+        <p>NAPIT registered, fully insured, and backed by a 10-year guarantee on all work. From rewires to EV chargers, we've got you covered.</p>
+        <div class="hero-btns">
+            <a href="tel:01617067671" class="btn-primary"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="#services" class="btn-secondary"><i class="fas fa-bolt"></i> View Services</a>
+        </div>
+    </section>
+
+    <div class="trust-bar">
+        <div class="trust-item"><i class="fas fa-shield-halved"></i> NAPIT Registered</div>
+        <div class="trust-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Google Reviews</div>
+        <div class="trust-item"><i class="fas fa-certificate"></i> 10-Year Guarantee</div>
+        <div class="trust-item"><i class="fas fa-clock"></i> 20+ Years Experience</div>
+    </div>
+
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2>Our <span>Services</span></h2>
+            <p>Complete electrical solutions for homes and businesses across Manchester and the Northwest.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-plug"></i></div>
+                <h3>Rewiring & Upgrades</h3>
+                <p>Full and partial house rewires, consumer unit upgrades, and fusebox replacements. All certified and compliant with Part P regulations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>Lighting Design</h3>
+                <p>LED strips, under-cabinet lighting, spotlights, chandeliers, outdoor and security lighting. Transform any space.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+                <h3>Smart Home & Security</h3>
+                <p>Ring doorbells, CCTV systems, burglar alarms, smoke detectors, and automated lighting circuits.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-car"></i></div>
+                <h3>EV Charger Installation</h3>
+                <p>Future-proof your home with a professionally installed electric vehicle charging point. OZEV approved.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-fire"></i></div>
+                <h3>Heating & Showers</h3>
+                <p>Electric underfloor heating, shower installations, cookers, hobs, and extractor fans fitted safely.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+                <h3>Inspections & Reports</h3>
+                <p>Electrical Installation Condition Reports (EICR) for landlords, homeowners, and commercial properties.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="why">
+        <div class="section-header">
+            <h2>Why Choose <span>AH Electrical</span>?</h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-number">20+</div>
+                <h3>Years Experience</h3>
+                <p>Two decades of professional electrical installations across the Northwest.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-number">10yr</div>
+                <h3>Work Guarantee</h3>
+                <p>Every job we complete is backed by our 10-year workmanship guarantee.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-number">5.0</div>
+                <h3>Google Rating</h3>
+                <p>Consistently rated 5 stars by our customers on Google Reviews.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-number">24h</div>
+                <h3>Emergency Callouts</h3>
+                <p>Electrical emergency? We offer round-the-clock emergency callout service.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="reviews">
+        <div class="section-header">
+            <h2>What Our <span>Customers</span> Say</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Adam promptly turned up, checked all electrics thoroughly. Very professional and reasonably priced. Would use him every time."</p>
+                <div class="testimonial-author">Tracey</div>
+                <div class="testimonial-location">M28, Manchester</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"He was polite, professional, identified the problem quickly and fixed it on the spot. Highly recommend AH Electrical to anyone."</p>
+                <div class="testimonial-author">Tristan</div>
+                <div class="testimonial-location">M4, Manchester</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Fantastic service from start to finish. The team rewired our entire house with minimal disruption. Couldn't be happier with the result."</p>
+                <div class="testimonial-author">Sarah</div>
+                <div class="testimonial-location">Stockport</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="areas">
+        <div class="section-header">
+            <h2>Areas We <span>Cover</span></h2>
+            <p>Serving homes and businesses across Greater Manchester and beyond.</p>
+        </div>
+        <div class="areas-list">
+            <div class="area-tag">Manchester</div>
+            <div class="area-tag">Stockport</div>
+            <div class="area-tag">Cheshire</div>
+            <div class="area-tag">Oldham</div>
+            <div class="area-tag">Rochdale</div>
+            <div class="area-tag">Salford</div>
+            <div class="area-tag">Wilmslow</div>
+            <div class="area-tag">Bramhall</div>
+            <div class="area-tag">Bolton</div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Need an <span>Electrician</span>?</h2>
+        <p>Get a free, no-obligation quote today. We respond to all enquiries within the hour.</p>
+        <a href="tel:01617067671" class="cta-phone"><i class="fas fa-phone"></i> 0161 706 7671</a>
+        <br><br>
+        <a href="mailto:ahelectricians@gmail.com" class="btn-primary"><i class="fas fa-envelope"></i> Email Us</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand"><i class="fas fa-bolt"></i> AH Electrical Services</div>
+                <p class="footer-desc">Your trusted local electrician in Manchester. NAPIT registered, fully insured, with over 20 years of experience. All work guaranteed for 10 years.</p>
+                <p style="font-size:14px; color: var(--text-dim);"><i class="fas fa-phone" style="color:var(--accent);margin-right:8px;"></i> 0161 706 7671</p>
+                <p style="font-size:14px; color: var(--text-dim); margin-top:6px;"><i class="fas fa-envelope" style="color:var(--accent);margin-right:8px;"></i> ahelectricians@gmail.com</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Rewiring</a></li>
+                    <li><a href="#services">Lighting</a></li>
+                    <li><a href="#services">Smart Home</a></li>
+                    <li><a href="#services">EV Chargers</a></li>
+                    <li><a href="#services">Inspections</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#areas">Service Areas</a></li>
+                    <li><a href="tel:01617067671">Emergency Callout</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">&copy; 2026 AH Electrical Services. All rights reserved. NAPIT Registered.</div>
+</body>
+</html>
