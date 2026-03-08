@@ -4,47 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S. Macfarlane Plumbing & Heating | Carlisle's Trusted Plumber</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#0f1b2d;--navy-light:#162236;--teal:#0ea5a0;--teal-dark:#0c8a86;--teal-glow:rgba(14,165,160,0.12);--slate:#64748b;--light:#f8fafc;--border:#e2e8f0;--white:#ffffff}
+:root{--navy:#0f1b2d;--navy-light:#162236;--teal:#0ea5a0;--teal2:#06d6a0;--teal-dark:#0c8a86;--slate:#64748b;--light:#f8fafc;--border:#e2e8f0;--white:#fff;--glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.1)}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);overflow-x:hidden}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* Neocode Banner */
-.neocode-banner{background:var(--navy);color:var(--white);text-align:center;padding:10px 20px;font-size:13px;font-weight:500;letter-spacing:0.5px}
+.neocode-banner{background:linear-gradient(90deg,#0a1018,var(--navy),#0a1018);color:var(--white);text-align:center;padding:10px 20px;font-size:12px;font-weight:500;letter-spacing:0.5px}
 .neocode-banner a{color:var(--teal);text-decoration:none;font-weight:700}
-.neocode-banner a:hover{text-decoration:underline}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-1{transition-delay:0.1s}
+.stagger-2{transition-delay:0.2s}
+.stagger-3{transition-delay:0.3s}
+.stagger-4{transition-delay:0.4s}
 
 /* Nav */
-.nav{position:sticky;top:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;border-bottom:1px solid var(--border)}
+.nav{position:sticky;top:0;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;padding:0 40px}
 .nav-logo{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:800;color:var(--navy)}
-.nav-logo .gas-badge{background:var(--teal-glow);border:1px solid rgba(14,165,160,0.2);color:var(--teal);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:0.5px}
+.nav-logo .gas-badge{background:linear-gradient(135deg,rgba(14,165,160,0.1),rgba(6,214,160,0.05));border:1px solid rgba(14,165,160,0.2);color:var(--teal);font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:0.5px}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{text-decoration:none;color:var(--slate);font-size:14px;font-weight:600;transition:color 0.2s}
 .nav-links a:hover{color:var(--navy)}
-.nav-cta{background:var(--teal);color:var(--white);padding:10px 24px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;transition:all 0.2s}
-.nav-cta:hover{background:var(--teal-dark)}
+.nav-cta{background:linear-gradient(135deg,var(--teal),var(--teal2));color:var(--white);padding:10px 24px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;transition:all 0.3s;box-shadow:0 4px 16px rgba(14,165,160,0.25)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(14,165,160,0.35)}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.mobile-toggle span{display:block;width:22px;height:2px;background:var(--navy);margin:5px 0}
 
-/* Hero - Split Layout */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;align-items:center}
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;align-items:center;position:relative;overflow:hidden}
 .hero-left{padding:80px 60px 80px 80px;max-width:640px;margin-left:auto}
-.hero-right{height:100%;background:url('https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;position:relative}
-.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--white) 0%,transparent 15%)}
-.hero-trust{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
-.hero-trust .badge{background:var(--navy);color:var(--white);font-size:11px;font-weight:700;padding:6px 14px;border-radius:8px;letter-spacing:0.5px;display:flex;align-items:center;gap:6px}
-.hero-trust .badge svg{width:14px;height:14px}
-.hero-trust .gas-safe{background:#ff6b00;color:var(--white);font-size:11px;font-weight:800;padding:6px 14px;border-radius:8px;letter-spacing:0.5px}
+.hero-right{height:100%;position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;min-height:600px}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--white) 0%,transparent 20%);z-index:2}
+.hero-right::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(0deg,rgba(14,165,160,0.08),transparent);z-index:1}
+.hero-trust{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.hero-trust .badge{background:var(--navy);color:var(--white);font-size:11px;font-weight:700;padding:6px 14px;border-radius:10px;letter-spacing:0.5px;display:flex;align-items:center;gap:6px}
+.hero-trust .gas-safe{background:linear-gradient(135deg,#ff6b00,#ff9500);color:var(--white);font-size:11px;font-weight:800;padding:6px 14px;border-radius:10px;letter-spacing:0.5px}
 .hero h1{font-size:clamp(36px,4.5vw,56px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px;color:var(--navy)}
-.hero h1 span{background:linear-gradient(135deg,var(--teal),#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 span{background:linear-gradient(135deg,var(--teal),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{font-size:17px;color:var(--slate);line-height:1.7;margin-bottom:36px;max-width:460px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
-.btn-fill{background:var(--teal);color:var(--white);padding:14px 32px;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
-.btn-fill:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(14,165,160,0.3)}
-.btn-outline{background:transparent;color:var(--navy);padding:14px 32px;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;border:2px solid var(--border);transition:all 0.3s}
-.btn-outline:hover{border-color:var(--navy);transform:translateY(-2px)}
-.hero-micro{display:flex;gap:24px}
+.btn-fill{background:linear-gradient(135deg,var(--teal),var(--teal2));color:var(--white);padding:14px 32px;border-radius:14px;text-decoration:none;font-size:15px;font-weight:700;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(14,165,160,0.3)}
+.btn-fill:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(14,165,160,0.35)}
+.btn-outline{background:transparent;color:var(--navy);padding:14px 32px;border-radius:14px;text-decoration:none;font-size:15px;font-weight:700;border:2px solid var(--border);transition:all 0.3s}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.hero-micro{display:flex;gap:24px;flex-wrap:wrap}
 .hero-micro-item{font-size:13px;color:var(--slate);display:flex;align-items:center;gap:6px}
 .hero-micro-item strong{color:var(--navy)}
 
@@ -52,51 +67,61 @@ body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);ov
 .trust-bar{background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .trust-inner{max-width:1200px;margin:0 auto;padding:36px 40px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
 .trust-item{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--navy)}
-.trust-icon{width:40px;height:40px;background:var(--teal-glow);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.trust-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(14,165,160,0.1),rgba(6,214,160,0.05));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px}
 
-/* Services - Alternating */
+/* Services */
 .services{padding:100px 40px;max-width:1200px;margin:0 auto}
 .services-header{text-align:center;margin-bottom:72px}
-.section-tag{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:block}
-.section-title{font-size:clamp(30px,3.5vw,44px);font-weight:900;letter-spacing:-1px;line-height:1.1;color:var(--navy);margin-bottom:16px}
+.section-tag{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;background:linear-gradient(135deg,var(--teal),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;display:block}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.5vw,44px);font-weight:700;letter-spacing:-1px;line-height:1.1;color:var(--navy);margin-bottom:16px}
 .section-desc{font-size:16px;color:var(--slate);line-height:1.7;max-width:520px;margin:0 auto}
 .service-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px}
 .service-row:nth-child(even) .service-img{order:-1}
-.service-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.service-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3;position:relative}
 .service-img img{width:100%;height:100%;object-fit:cover}
-.service-content .service-number{font-size:64px;font-weight:900;color:var(--teal-glow);line-height:1;margin-bottom:8px;letter-spacing:-2px}
-.service-content h3{font-size:28px;font-weight:800;margin-bottom:12px;color:var(--navy)}
+.service-img::after{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(135deg,var(--teal),transparent,var(--teal2));opacity:0.15;pointer-events:none}
+.service-content .service-number{font-size:64px;font-weight:900;background:linear-gradient(135deg,rgba(14,165,160,0.12),rgba(6,214,160,0.05));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;letter-spacing:-2px}
+.service-content h3{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;margin-bottom:12px;color:var(--navy)}
 .service-content p{font-size:15px;color:var(--slate);line-height:1.7;margin-bottom:20px}
-.service-features{list-style:none;display:flex;flex-direction:column;gap:8px}
-.service-features li{font-size:14px;color:var(--navy);font-weight:500;padding-left:24px;position:relative}
-.service-features li::before{content:'';position:absolute;left:0;top:6px;width:12px;height:12px;background:var(--teal-glow);border:2px solid var(--teal);border-radius:50%}
+.service-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.service-features li{font-size:14px;color:var(--navy);font-weight:500;padding-left:28px;position:relative}
+.service-features li::before{content:'';position:absolute;left:0;top:5px;width:14px;height:14px;background:linear-gradient(135deg,rgba(14,165,160,0.15),rgba(6,214,160,0.1));border:2px solid var(--teal);border-radius:50%}
 
 /* Pricing */
 .pricing{background:var(--light);padding:100px 40px}
 .pricing-inner{max-width:1200px;margin:0 auto}
 .pricing-header{text-align:center;margin-bottom:64px}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.price-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:40px 32px;text-align:center;transition:all 0.3s;position:relative}
+.price-card{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:40px 32px;text-align:center;transition:all 0.4s;position:relative;overflow:hidden}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal2));opacity:0;transition:opacity 0.4s}
+.price-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.06)}
+.price-card:hover::before{opacity:1}
 .price-card.featured{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
-.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:var(--white);font-size:11px;font-weight:800;padding:4px 16px;border-radius:100px;letter-spacing:1px}
+.price-card.featured::before{opacity:1}
+.price-card.featured::after{content:'MOST POPULAR';position:absolute;top:16px;right:-32px;background:linear-gradient(135deg,var(--teal),var(--teal2));color:var(--white);font-size:10px;font-weight:800;padding:4px 40px;letter-spacing:1px;transform:rotate(45deg)}
 .price-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.08)}
-.price-icon{font-size:32px;margin-bottom:16px}
+.price-icon{font-size:36px;margin-bottom:16px}
 .price-card h3{font-size:20px;font-weight:800;margin-bottom:8px}
 .price-amount{font-size:36px;font-weight:900;color:var(--navy);margin-bottom:4px}
-.price-amount span{font-size:16px;font-weight:500;color:var(--slate)}
+.price-amount em{font-size:16px;font-weight:500;color:var(--slate);font-style:normal}
 .price-note{font-size:13px;color:var(--slate);margin-bottom:20px}
 .price-list{list-style:none;text-align:left;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.price-list li{font-size:14px;color:var(--navy);padding-left:20px;position:relative}
+.price-list li{font-size:14px;color:var(--navy);padding-left:24px;position:relative}
 .price-list li::before{content:'&#10003;';position:absolute;left:0;color:var(--teal);font-weight:700}
+.btn-fill-sm{background:linear-gradient(135deg,var(--teal),var(--teal2));color:var(--white);padding:12px 28px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;transition:all 0.3s;display:inline-block;box-shadow:0 4px 16px rgba(14,165,160,0.25)}
+.btn-fill-sm:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(14,165,160,0.3)}
 
 /* Reviews */
-.reviews{padding:100px 40px;background:var(--navy)}
-.reviews-inner{max-width:1200px;margin:0 auto}
+.reviews{padding:100px 40px;background:var(--navy);position:relative;overflow:hidden}
+.reviews::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(14,165,160,0.08),transparent 60%);pointer-events:none}
+.reviews::after{content:'';position:absolute;bottom:-200px;left:-200px;width:400px;height:400px;background:radial-gradient(circle,rgba(6,214,160,0.06),transparent 60%);pointer-events:none}
+.reviews-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
 .reviews-header{text-align:center;margin-bottom:64px}
 .reviews .section-title{color:var(--white)}
 .reviews .section-desc{color:rgba(255,255,255,0.5)}
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.review-card{background:var(--navy-light);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px 24px}
+.review-card{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:20px;padding:32px 24px;transition:all 0.4s}
+.review-card:hover{background:rgba(255,255,255,0.08);transform:translateY(-4px);border-color:rgba(14,165,160,0.2)}
 .review-stars{color:#fbbf24;margin-bottom:14px;letter-spacing:2px}
 .review-card p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:18px;font-style:italic}
 .review-author{font-size:14px;font-weight:700;color:var(--white)}
@@ -106,13 +131,15 @@ body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);ov
 .cta{padding:100px 40px}
 .cta-inner{max-width:1200px;margin:0 auto}
 .cta-box{background:linear-gradient(135deg,var(--navy) 0%,#1a2d47 100%);border-radius:28px;padding:72px 60px;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
-.cta-box::after{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(14,165,160,0.15),transparent 70%)}
-.cta-left h2{font-size:36px;font-weight:900;color:var(--white);line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(14,165,160,0.15),transparent 70%);pointer-events:none}
+.cta-box::after{content:'';position:absolute;left:-100px;bottom:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(6,214,160,0.1),transparent 60%);pointer-events:none}
+.cta-left{position:relative;z-index:2}
+.cta-left h2{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:var(--white);line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
 .cta-left p{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:28px}
-.cta-right{display:flex;flex-direction:column;gap:20px;position:relative;z-index:2}
-.cta-contact-item{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px 24px;transition:all 0.2s}
-.cta-contact-item:hover{background:rgba(255,255,255,0.08)}
-.cta-contact-icon{width:44px;height:44px;min-width:44px;background:var(--teal-glow);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.cta-right{display:flex;flex-direction:column;gap:16px;position:relative;z-index:2}
+.cta-contact-item{display:flex;align-items:center;gap:16px;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:16px;padding:20px 24px;transition:all 0.3s}
+.cta-contact-item:hover{background:rgba(255,255,255,0.08);border-color:rgba(14,165,160,0.2);transform:translateX(4px)}
+.cta-contact-icon{width:48px;height:48px;min-width:48px;background:linear-gradient(135deg,rgba(14,165,160,0.15),rgba(6,214,160,0.08));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .cta-contact-item h4{font-size:13px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:2px}
 .cta-contact-item p{font-size:16px;color:var(--white);font-weight:700}
 .cta-contact-item a{color:var(--white);text-decoration:none}
@@ -120,7 +147,6 @@ body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);ov
 /* Footer */
 .footer{background:var(--light);border-top:1px solid var(--border);padding:36px 40px;text-align:center;font-size:13px;color:var(--slate)}
 .footer a{color:var(--teal);text-decoration:none;font-weight:600}
-.footer a:hover{text-decoration:underline}
 
 /* Mobile */
 @media(max-width:968px){
@@ -130,6 +156,7 @@ body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);ov
 .hero-right::before{background:linear-gradient(180deg,var(--white) 0%,transparent 30%)}
 .nav-inner{padding:0 20px}
 .nav-links{display:none}
+.mobile-toggle{display:block}
 .services{padding:64px 24px}
 .service-row{grid-template-columns:1fr;gap:32px}
 .service-row:nth-child(even) .service-img{order:0}
@@ -177,9 +204,6 @@ body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);ov
 .neocode-banner{font-size:11px;padding:8px 12px}
 img{max-width:100%;height:auto}
 }
-@media(max-width:480px){
-.hero h1{font-size:26px}
-}
 </style>
 </head>
 <body>
@@ -203,63 +227,56 @@ S. Macfarlane
 <li><a href="#contact">Contact</a></li>
 </ul>
 <a href="tel:07716262952" class="nav-cta">Get a Free Quote</a>
+<button class="mobile-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
+<span></span><span></span><span></span>
+</button>
 </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
 <div class="hero-left">
-<div class="hero-trust">
+<div class="hero-trust reveal">
 <span class="badge">&#9733; Carlisle's #1 Rated</span>
 <span class="gas-safe">Gas Safe Registered</span>
 </div>
-<h1>Your local plumber you can <span>actually trust.</span></h1>
-<p>Plumbing, heating & boiler specialists in Carlisle and Cumbria. Free estimates, fair pricing, and work you can rely on for years to come.</p>
-<div class="hero-actions">
+<h1 class="reveal stagger-1">Your local plumber you can <span>actually trust.</span></h1>
+<p class="reveal stagger-2">Plumbing, heating & boiler specialists in Carlisle and Cumbria. Free estimates, fair pricing, and work you can rely on for years to come.</p>
+<div class="hero-actions reveal stagger-3">
 <a href="tel:07716262952" class="btn-fill">Call 07716 262 952 &rarr;</a>
 <a href="#services" class="btn-outline">Our Services</a>
 </div>
-<div class="hero-micro">
+<div class="hero-micro reveal stagger-4">
 <div class="hero-micro-item"><strong>&#10003;</strong> Free Estimates</div>
 <div class="hero-micro-item"><strong>&#10003;</strong> No Call-Out Fee</div>
 <div class="hero-micro-item"><strong>&#10003;</strong> Carlisle & Cumbria</div>
 </div>
 </div>
-<div class="hero-right"></div>
+<div class="hero-right">
+<img src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional plumber at work">
+</div>
 </section>
 
 <!-- Trust Bar -->
 <div class="trust-bar">
 <div class="trust-inner">
-<div class="trust-item">
-<div class="trust-icon">&#128274;</div>
-Gas Safe Registered (#603236)
-</div>
-<div class="trust-item">
-<div class="trust-icon">&#9733;</div>
-5-Star Rated on Google
-</div>
-<div class="trust-item">
-<div class="trust-icon">&#128176;</div>
-Free Quotes on All Jobs
-</div>
-<div class="trust-item">
-<div class="trust-icon">&#128205;</div>
-Carlisle, Brampton & Wetheral
-</div>
+<div class="trust-item reveal stagger-1"><div class="trust-icon">&#128274;</div> Gas Safe Registered (#603236)</div>
+<div class="trust-item reveal stagger-2"><div class="trust-icon">&#9733;</div> 5-Star Rated on Google</div>
+<div class="trust-item reveal stagger-3"><div class="trust-icon">&#128176;</div> Free Quotes on All Jobs</div>
+<div class="trust-item reveal stagger-4"><div class="trust-icon">&#128205;</div> Carlisle, Brampton & Wetheral</div>
 </div>
 </div>
 
 <!-- Services -->
 <div id="services" class="services">
-<div class="services-header">
+<div class="services-header reveal">
 <span class="section-tag">Our Services</span>
-<div class="section-title">Everything plumbing<br>& heating.</div>
+<div class="section-title">Everything plumbing & heating.</div>
 <div class="section-desc">From a leaking tap to a full central heating system, no job is too big or too small.</div>
 </div>
 
 <div class="service-row">
-<div class="service-content">
+<div class="service-content reveal-left">
 <div class="service-number">01</div>
 <h3>Boiler Installation & Replacement</h3>
 <p>We supply and fit all major boiler brands. Whether you need a new condensing boiler or a full system upgrade, we'll find the right solution for your home and budget.</p>
@@ -269,13 +286,13 @@ Carlisle, Brampton & Wetheral
 <li>Full system design & installation</li>
 </ul>
 </div>
-<div class="service-img">
-<img src="https://images.pexels.com/photos/8486955/pexels-photo-8486955.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Boiler installation">
+<div class="service-img reveal-right">
+<img src="https://images.pexels.com/photos/8486955/pexels-photo-8486955.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Boiler installation">
 </div>
 </div>
 
 <div class="service-row">
-<div class="service-content">
+<div class="service-content reveal-right">
 <div class="service-number">02</div>
 <h3>Central Heating Systems</h3>
 <p>Full central heating installations, repairs, and power flushing using the ADEY MagnaClean system. We'll make sure your home stays warm and efficient.</p>
@@ -285,13 +302,13 @@ Carlisle, Brampton & Wetheral
 <li>Underfloor heating solutions</li>
 </ul>
 </div>
-<div class="service-img">
-<img src="https://images.pexels.com/photos/7504837/pexels-photo-7504837.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Central heating radiator">
+<div class="service-img reveal-left">
+<img src="https://images.pexels.com/photos/7504837/pexels-photo-7504837.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Central heating radiator">
 </div>
 </div>
 
 <div class="service-row">
-<div class="service-content">
+<div class="service-content reveal-left">
 <div class="service-number">03</div>
 <h3>Bathroom Installation</h3>
 <p>Complete bathroom design and installation from start to finish. We handle all plumbing, tiling, and finishing work to transform your space.</p>
@@ -301,8 +318,8 @@ Carlisle, Brampton & Wetheral
 <li>All plumbing & tiling included</li>
 </ul>
 </div>
-<div class="service-img">
-<img src="https://images.pexels.com/photos/6585764/pexels-photo-6585764.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Modern bathroom">
+<div class="service-img reveal-right">
+<img src="https://images.pexels.com/photos/6585764/pexels-photo-6585764.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Modern bathroom">
 </div>
 </div>
 </div>
@@ -310,16 +327,16 @@ Carlisle, Brampton & Wetheral
 <!-- Pricing -->
 <section id="pricing" class="pricing">
 <div class="pricing-inner">
-<div class="pricing-header">
+<div class="pricing-header reveal">
 <span class="section-tag">Transparent Pricing</span>
 <div class="section-title">No hidden costs. Ever.</div>
 <div class="section-desc">Fair, upfront pricing so you know exactly what you're paying before we start.</div>
 </div>
 <div class="pricing-grid">
-<div class="price-card">
+<div class="price-card reveal stagger-1">
 <div class="price-icon">&#128293;</div>
 <h3>Boiler Service</h3>
-<div class="price-amount">From &pound;60 <span></span></div>
+<div class="price-amount">From &pound;60</div>
 <div class="price-note">Depending on age & make</div>
 <ul class="price-list">
 <li>Full safety inspection</li>
@@ -327,11 +344,12 @@ Carlisle, Brampton & Wetheral
 <li>Pressure & flow checks</li>
 <li>Written report provided</li>
 </ul>
+<a href="tel:07716262952" class="btn-fill-sm">Book Now</a>
 </div>
-<div class="price-card featured">
-<div class="price-icon">&#127777;</div>
+<div class="price-card featured reveal stagger-2">
+<div class="price-icon">&#127777;&#65039;</div>
 <h3>Power Flush</h3>
-<div class="price-amount">From &pound;350 <span></span></div>
+<div class="price-amount">From &pound;350</div>
 <div class="price-note">ADEY MagnaCleanse system</div>
 <ul class="price-list">
 <li>Full system chemical flush</li>
@@ -339,11 +357,12 @@ Carlisle, Brampton & Wetheral
 <li>Improved heating efficiency</li>
 <li>Inhibitor protection added</li>
 </ul>
+<a href="tel:07716262952" class="btn-fill-sm">Book Now</a>
 </div>
-<div class="price-card">
+<div class="price-card reveal stagger-3">
 <div class="price-icon">&#128689;</div>
 <h3>General Plumbing</h3>
-<div class="price-amount">Free <span>Quote</span></div>
+<div class="price-amount">Free <em>Quote</em></div>
 <div class="price-note">No call-out fee</div>
 <ul class="price-list">
 <li>Leak repairs & pipe work</li>
@@ -351,6 +370,7 @@ Carlisle, Brampton & Wetheral
 <li>Waste & drainage</li>
 <li>Emergency call-outs</li>
 </ul>
+<a href="tel:07716262952" class="btn-fill-sm">Get Quote</a>
 </div>
 </div>
 </div>
@@ -359,25 +379,25 @@ Carlisle, Brampton & Wetheral
 <!-- Reviews -->
 <section id="reviews" class="reviews">
 <div class="reviews-inner">
-<div class="reviews-header">
+<div class="reviews-header reveal">
 <span class="section-tag">Reviews</span>
 <div class="section-title">Trusted by Carlisle families.</div>
 <div class="section-desc">Real feedback from real customers across Cumbria.</div>
 </div>
 <div class="reviews-grid">
-<div class="review-card">
+<div class="review-card reveal stagger-1">
 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p>"Fantastic service and good advice; very helpful and knowledgeable for a fair price too. A small job but helped a lot, put me at ease."</p>
 <div class="review-author">Verified Customer</div>
 <div class="review-via">Google Review</div>
 </div>
-<div class="review-card">
+<div class="review-card reveal stagger-2">
 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p>"Found him through online search. Received a quote with a Gas Safe number that checked out. Worked non-stop, was very clean and tidy. Showed me how it all worked."</p>
 <div class="review-author">Verified Customer</div>
 <div class="review-via">Google Review</div>
 </div>
-<div class="review-card">
+<div class="review-card reveal stagger-3">
 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p>"Very professional and reliable. Installed a new boiler and radiators. Everything was left spotless. Highly recommend for any plumbing or heating work in Carlisle."</p>
 <div class="review-author">Verified Customer</div>
@@ -390,7 +410,7 @@ Carlisle, Brampton & Wetheral
 <!-- CTA / Contact -->
 <section id="contact" class="cta">
 <div class="cta-inner">
-<div class="cta-box">
+<div class="cta-box reveal-scale">
 <div class="cta-left">
 <span class="section-tag">Get In Touch</span>
 <h2>Need a plumber in Carlisle? We're just a call away.</h2>
@@ -400,31 +420,19 @@ Carlisle, Brampton & Wetheral
 <div class="cta-right">
 <div class="cta-contact-item">
 <div class="cta-contact-icon">&#128222;</div>
-<div>
-<h4>Phone</h4>
-<p><a href="tel:07716262952">07716 262 952</a></p>
-</div>
+<div><h4>Phone</h4><p><a href="tel:07716262952">07716 262 952</a></p></div>
 </div>
 <div class="cta-contact-item">
 <div class="cta-contact-icon">&#128222;</div>
-<div>
-<h4>Landline</h4>
-<p><a href="tel:01228402854">01228 402 854</a></p>
-</div>
+<div><h4>Landline</h4><p><a href="tel:01228402854">01228 402 854</a></p></div>
 </div>
 <div class="cta-contact-item">
 <div class="cta-contact-icon">&#9993;</div>
-<div>
-<h4>Email</h4>
-<p><a href="mailto:info@smacfarlaneplumbing.co.uk">info@smacfarlaneplumbing.co.uk</a></p>
-</div>
+<div><h4>Email</h4><p><a href="mailto:info@smacfarlaneplumbing.co.uk">info@smacfarlaneplumbing.co.uk</a></p></div>
 </div>
 <div class="cta-contact-item">
 <div class="cta-contact-icon">&#128205;</div>
-<div>
-<h4>Address</h4>
-<p>3 Garfield Street, Carlisle<br>CA2 5EG, Cumbria</p>
-</div>
+<div><h4>Address</h4><p>3 Garfield Street, Carlisle<br>CA2 5EG, Cumbria</p></div>
 </div>
 </div>
 </div>
@@ -439,16 +447,23 @@ Carlisle, Brampton & Wetheral
 
 <!-- Popup -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-<div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+<div style="background:#fff;border-radius:20px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
 <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
 <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
 <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
 <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
+<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#0ea5a0,#06d6a0);color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
 <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
 </div>
 </div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+<script>
+var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});
+document.addEventListener('DOMContentLoaded',function(){
+var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+els.forEach(function(el){obs.observe(el);});
+});
+</script>
 
 </body>
 </html>

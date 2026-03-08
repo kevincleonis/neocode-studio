@@ -5,105 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A.J.S Motorworks | Trusted Car Garage in Telford</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#0c1821;--accent:#e63946;--accent2:#d62839;--blue:#1d3557;--steel:#457b9d;--light:#f1faee;--offwhite:#f8f9fa;--gray:#6c757d;--dark:#0a0e12}
+:root{--primary:#0c1821;--accent:#e63946;--accent2:#ff6b6b;--blue:#1d3557;--steel:#457b9d;--light:#f1faee;--offwhite:#f8f9fa;--gray:#6c757d;--dark:#0a0e12;--glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.1)}
 html{scroll-behavior:smooth}
-body{font-family:'Archivo',sans-serif;color:var(--primary);background:#fff;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;color:var(--primary);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* NEOCODE */
-.neocode-banner{background:var(--dark);color:#fff;text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.5px;font-weight:500}
+.neocode-banner{background:linear-gradient(90deg,#0a0e12,#1d3557,#0a0e12);color:#fff;text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.5px;font-weight:500}
 .neocode-banner a{color:var(--accent);text-decoration:none;font-weight:700}
 
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.9);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-1{transition-delay:0.1s}
+.stagger-2{transition-delay:0.2s}
+.stagger-3{transition-delay:0.3s}
+.stagger-4{transition-delay:0.4s}
+.stagger-5{transition-delay:0.5s}
+.stagger-6{transition-delay:0.6s}
+
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(12,24,33,0.97);backdrop-filter:blur(16px);padding:0 5%}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,24,33,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:0 5%}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px}
-.logo span{color:var(--accent)}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.logo span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:14px;font-weight:500;transition:color 0.3s}
 .nav-links a:hover{color:#fff}
-.nav-cta{background:var(--accent);color:#fff;padding:11px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s;letter-spacing:0.3px}
-.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:11px 26px;border-radius:12px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s;letter-spacing:0.3px;box-shadow:0 4px 16px rgba(230,57,70,0.3)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(230,57,70,0.4)}
 .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .mobile-toggle span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;transition:0.3s}
 
 /* HERO */
 .hero{min-height:100vh;background:var(--primary);position:relative;display:flex;align-items:center;overflow:hidden;padding:0 5%}
-.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;opacity:0.2}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,24,33,0.95) 0%,rgba(29,53,87,0.8) 100%)}
-.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%;padding:100px 0}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:36px}
-.hero-rating{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);padding:8px 16px;border-radius:100px}
+.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover;opacity:0.15}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,24,33,0.97) 0%,rgba(29,53,87,0.85) 50%,rgba(12,24,33,0.95) 100%)}
+.hero-glow{position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(230,57,70,0.12),transparent 60%);pointer-events:none}
+.hero-glow-2{position:absolute;bottom:-300px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(69,123,157,0.1),transparent 60%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:120px 0 80px}
+.hero-top{display:flex;align-items:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.hero-rating{display:flex;align-items:center;gap:8px;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);padding:8px 16px;border-radius:100px}
 .hero-rating .stars{color:var(--accent);font-size:14px}
 .hero-rating .text{color:rgba(255,255,255,0.7);font-size:13px;font-weight:500}
-.hero-badge{background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.3);padding:8px 16px;border-radius:100px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5.5vw,72px);font-weight:800;color:#fff;line-height:1.05;margin-bottom:28px;max-width:800px}
-.hero h1 span{color:var(--accent);display:inline}
-.hero-desc{font-size:18px;color:rgba(255,255,255,0.6);line-height:1.8;max-width:560px;margin-bottom:48px}
-.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px}
-.btn-red{background:var(--accent);color:#fff;padding:18px 40px;border-radius:8px;text-decoration:none;font-weight:800;font-size:15px;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
-.btn-red:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 16px 48px rgba(230,57,70,0.3)}
-.btn-white-outline{border:2px solid rgba(255,255,255,0.2);color:#fff;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s}
-.btn-white-outline:hover{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.05)}
-.hero-counters{display:flex;gap:64px}
+.hero-badge{background:linear-gradient(135deg,rgba(230,57,70,0.15),rgba(255,107,107,0.1));border:1px solid rgba(230,57,70,0.3);padding:8px 16px;border-radius:100px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;color:#fff;line-height:1.08;margin-bottom:24px}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:17px;color:rgba(255,255,255,0.6);line-height:1.8;max-width:500px;margin-bottom:40px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn-red{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:16px 36px;border-radius:14px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(230,57,70,0.3)}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(230,57,70,0.4)}
+.btn-glass{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);color:#fff;padding:16px 36px;border-radius:14px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.3s}
+.btn-glass:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.hero-counters{display:flex;gap:40px}
 .counter{position:relative;padding-left:20px}
-.counter::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:2px}
-.counter-num{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:#fff}
+.counter::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px}
+.counter-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:#fff}
 .counter-label{font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px}
+
+.hero-image{position:relative}
+.hero-image img{width:100%;border-radius:24px;box-shadow:0 40px 80px rgba(0,0,0,0.4)}
+.hero-image::before{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(135deg,var(--accent),transparent,var(--steel));opacity:0.3;z-index:-1}
+.hero-float{position:absolute;bottom:24px;left:24px;background:rgba(12,24,33,0.85);backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.hero-float-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.hero-float strong{color:#fff;font-size:14px;display:block}
+.hero-float small{color:rgba(255,255,255,0.5);font-size:12px}
+
+/* TRUST */
+.trust-bar{background:var(--offwhite);border-top:1px solid rgba(0,0,0,0.04);border-bottom:1px solid rgba(0,0,0,0.04);padding:40px 5%}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--primary)}
+.trust-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(230,57,70,0.08),rgba(255,107,107,0.05));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px}
 
 /* SERVICES */
 .services{padding:120px 5%;background:var(--offwhite)}
-.section-header{text-align:center;max-width:600px;margin:0 auto 72px}
-.section-tag{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block}
-.section-header h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:800;color:var(--primary);margin-bottom:16px}
+.section-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.section-tag{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;display:block}
+.section-header h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--primary);margin-bottom:16px}
 .section-header p{color:var(--gray);font-size:16px;line-height:1.7}
 .services-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-card{background:#fff;border-radius:16px;padding:40px 28px;border:1px solid rgba(0,0,0,0.04);transition:all 0.4s;position:relative;overflow:hidden}
-.svc-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.06)}
-.svc-card:hover .svc-icon{background:var(--accent);color:#fff}
-.svc-icon{width:52px;height:52px;background:rgba(230,57,70,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;transition:all 0.3s}
-.svc-card h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;color:var(--primary)}
+.svc-card{background:#fff;border-radius:20px;padding:40px 28px;border:1px solid rgba(0,0,0,0.04);transition:all 0.4s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.4s}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.08)}
+.svc-card:hover::before{opacity:1}
+.svc-icon{width:56px;height:56px;background:linear-gradient(135deg,rgba(230,57,70,0.1),rgba(255,107,107,0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;transition:all 0.3s}
+.svc-card:hover .svc-icon{background:linear-gradient(135deg,var(--accent),var(--accent2));transform:scale(1.05)}
+.svc-card:hover .svc-icon-inner{filter:brightness(10)}
+.svc-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;color:var(--primary)}
 .svc-card p{color:var(--gray);font-size:14px;line-height:1.7}
 
 /* WHY US */
 .why-us{padding:120px 5%;background:#fff}
 .why-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .why-image{position:relative}
-.why-image img{width:100%;border-radius:20px}
-.why-image .exp-badge{position:absolute;top:24px;left:24px;background:var(--accent);color:#fff;padding:20px;border-radius:16px;text-align:center;box-shadow:0 12px 40px rgba(230,57,70,0.3)}
-.exp-badge .num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;line-height:1}
+.why-image img{width:100%;border-radius:24px;box-shadow:0 32px 64px rgba(0,0,0,0.1)}
+.why-image::after{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:2px solid rgba(230,57,70,0.15);border-radius:24px;z-index:-1}
+.exp-badge{position:absolute;top:24px;left:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:24px;border-radius:20px;text-align:center;box-shadow:0 12px 40px rgba(230,57,70,0.3)}
+.exp-badge .num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;line-height:1}
 .exp-badge .lab{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
-.why-text h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;color:var(--primary);margin-bottom:24px}
+.why-text h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--primary);margin-bottom:24px}
 .why-text p{color:var(--gray);font-size:15px;line-height:1.85;margin-bottom:20px}
 .qual-list{list-style:none;margin:32px 0}
-.qual-list li{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
+.qual-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
 .qual-list li:last-child{border-bottom:none}
-.qual-check{width:28px;height:28px;background:rgba(230,57,70,0.08);color:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.qual-check{width:32px;height:32px;background:linear-gradient(135deg,rgba(230,57,70,0.1),rgba(255,107,107,0.05));color:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
 .qual-list li span{font-size:14px;color:var(--primary);font-weight:500;line-height:1.6}
 
 /* REVIEWS */
-.reviews{padding:120px 5%;background:var(--primary)}
-.reviews .section-tag{color:var(--accent)}
+.reviews{padding:120px 5%;background:var(--primary);position:relative;overflow:hidden}
+.reviews::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(230,57,70,0.08),transparent 60%);pointer-events:none}
+.reviews .section-tag{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .reviews .section-header h2{color:#fff}
 .reviews .section-header p{color:rgba(255,255,255,0.5)}
 .reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.review-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:36px 28px;transition:all 0.3s}
-.review-card:hover{background:rgba(255,255,255,0.07)}
+.review-card{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:20px;padding:36px 28px;transition:all 0.4s}
+.review-card:hover{background:rgba(255,255,255,0.08);transform:translateY(-4px);border-color:rgba(230,57,70,0.2)}
 .review-stars{color:var(--accent);font-size:14px;letter-spacing:2px;margin-bottom:16px}
 .review-card p{color:rgba(255,255,255,0.75);font-size:14px;line-height:1.8;font-style:italic;margin-bottom:20px}
 .review-name{color:#fff;font-weight:700;font-size:14px}
 .review-source{color:rgba(255,255,255,0.4);font-size:12px;margin-top:2px}
 
 /* CTA */
-.cta-section{padding:100px 5%;background:var(--accent);text-align:center;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%)}
+.cta-section{padding:120px 5%;background:linear-gradient(135deg,var(--accent),var(--accent2));text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent 60%);pointer-events:none}
 .cta-inner{position:relative;z-index:2}
-.cta-section h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;color:#fff;margin-bottom:16px}
+.cta-section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:#fff;margin-bottom:16px}
 .cta-section p{color:rgba(255,255,255,0.85);font-size:17px;max-width:500px;margin:0 auto 40px;line-height:1.7}
-.btn-white{background:#fff;color:var(--primary);padding:18px 44px;border-radius:8px;text-decoration:none;font-weight:800;font-size:15px;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px;display:inline-block}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,0.15)}
+.btn-white{background:#fff;color:var(--primary);padding:18px 44px;border-radius:14px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,0.15)}
 .cta-contact{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:48px}
 .cta-contact-item{color:rgba(255,255,255,0.8);font-size:14px}
 .cta-contact-item strong{display:block;color:#fff;font-size:15px;margin-bottom:2px}
@@ -117,17 +154,17 @@ footer a{color:var(--accent);text-decoration:none}
 @media(max-width:968px){
 .nav-links{display:none}
 .mobile-toggle{display:block}
-.hero-counters{gap:32px}
+.hero-content{grid-template-columns:1fr;gap:40px}
+.hero-image{order:-1;max-width:500px;margin:0 auto}
+.hero-counters{gap:32px;flex-wrap:wrap}
 .services-grid{grid-template-columns:1fr 1fr}
 .why-grid{grid-template-columns:1fr;gap:40px}
 .reviews-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-.nav-links{display:none}
-.mobile-toggle{display:block}
 nav{padding:0 16px}
 .hero{min-height:auto;padding:0 16px}
-.hero-content{padding:80px 0 60px}
+.hero-content{padding:100px 0 60px}
 .hero h1{font-size:28px}
 .hero-desc{font-size:15px}
 .hero-top{flex-direction:column;align-items:flex-start;gap:10px}
@@ -135,7 +172,8 @@ nav{padding:0 16px}
 .hero-counters{flex-direction:column;gap:20px}
 .counter-num{font-size:28px}
 .hero-buttons{flex-direction:column}
-.btn-red,.btn-white-outline{text-align:center;padding:16px 32px;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center}
+.btn-red,.btn-glass,.btn-white{text-align:center;padding:16px 32px;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center}
+.hero-float{display:none}
 .services{padding:60px 16px}
 .services-grid{grid-template-columns:1fr}
 .section-header{margin-bottom:40px}
@@ -147,6 +185,7 @@ nav{padding:0 16px}
 .why-grid{grid-template-columns:1fr;gap:32px}
 .why-text h2{font-size:26px}
 .why-text p{font-size:14px}
+.why-image::after{display:none}
 .reviews{padding:60px 16px}
 .reviews-grid{grid-template-columns:1fr}
 .review-card{padding:28px 20px}
@@ -154,9 +193,10 @@ nav{padding:0 16px}
 .cta-section{padding:60px 16px}
 .cta-section h2{font-size:26px}
 .cta-section p{font-size:15px}
-.btn-white{padding:16px 32px;min-height:48px}
 .cta-contact{flex-direction:column;gap:16px}
 footer{padding:32px 16px}
+.trust-bar{padding:24px 16px}
+.trust-inner{flex-direction:column;gap:16px;align-items:flex-start}
 }
 </style>
 </head>
@@ -188,63 +228,85 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-overlay"></div>
+<div class="hero-glow"></div>
+<div class="hero-glow-2"></div>
+<div class="hero-grid"></div>
 <div class="hero-content">
-<div class="hero-top">
+<div>
+<div class="hero-top reveal">
 <div class="hero-rating">
-<span class="stars">★★★★★</span>
+<span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
 <span class="text">4.7 / 5 — 131 Reviews</span>
 </div>
 <div class="hero-badge">40+ Years Experience</div>
 </div>
-<h1>Telford's Most Trusted <span>Car Garage.</span></h1>
-<p class="hero-desc">From MOTs and servicing to complex diagnostics and repairs — A.J.S Motorworks delivers affordable, reliable car garage services backed by over four decades of combined experience.</p>
-<div class="hero-buttons">
-<a href="tel:01952242175" class="btn-red">Call 01952 242175</a>
-<a href="#services" class="btn-white-outline">View All Services</a>
+<h1 class="reveal stagger-1">Telford's Most Trusted <span>Car Garage.</span></h1>
+<p class="hero-desc reveal stagger-2">From MOTs and servicing to complex diagnostics and repairs — A.J.S Motorworks delivers affordable, reliable car garage services backed by over four decades of combined experience.</p>
+<div class="hero-buttons reveal stagger-3">
+<a href="tel:01952242175" class="btn-red">Call 01952 242175 &rarr;</a>
+<a href="#services" class="btn-glass">View All Services</a>
 </div>
-<div class="hero-counters">
+<div class="hero-counters reveal stagger-4">
 <div class="counter"><div class="counter-num">40+</div><div class="counter-label">Years Combined Experience</div></div>
 <div class="counter"><div class="counter-num">131</div><div class="counter-label">5-Star Reviews</div></div>
 <div class="counter"><div class="counter-num">NVQ3+</div><div class="counter-label">Qualified Technicians</div></div>
 </div>
 </div>
+<div class="hero-image reveal-right stagger-2">
+<img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AJS Motorworks professional mechanic">
+<div class="hero-float">
+<div class="hero-float-icon">&#128295;</div>
+<div><strong>MOT Testing Station</strong><small>Official & accredited</small></div>
+</div>
+</div>
+</div>
 </section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+<div class="trust-inner">
+<div class="trust-item reveal stagger-1"><div class="trust-icon">&#9733;</div> 4.7/5 Google Rating</div>
+<div class="trust-item reveal stagger-2"><div class="trust-icon">&#128274;</div> NVQ3+ Qualified</div>
+<div class="trust-item reveal stagger-3"><div class="trust-icon">&#128176;</div> Free No-Obligation Quotes</div>
+<div class="trust-item reveal stagger-4"><div class="trust-icon">&#128205;</div> Wellington, Telford</div>
+</div>
+</div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-<div class="section-header">
+<div class="section-header reveal">
 <span class="section-tag">Our Services</span>
 <h2>Complete Car Care</h2>
 <p>All makes and models. Cars, vans, commercial vehicles, and more. Whatever your vehicle needs, we've got it covered.</p>
 </div>
 <div class="services-grid">
-<div class="svc-card">
-<div class="svc-icon">🔧</div>
+<div class="svc-card reveal stagger-1">
+<div class="svc-icon"><span class="svc-icon-inner">&#128295;</span></div>
 <h3>MOT Testing</h3>
 <p>Official MOT testing station. Book your annual MOT with our qualified technicians and get your vehicle road-legal.</p>
 </div>
-<div class="svc-card">
-<div class="svc-icon">⚙️</div>
+<div class="svc-card reveal stagger-2">
+<div class="svc-icon"><span class="svc-icon-inner">&#9881;&#65039;</span></div>
 <h3>Full Servicing</h3>
 <p>Interim and full services to manufacturer specifications. Keep your vehicle running smoothly and maintain warranty compliance.</p>
 </div>
-<div class="svc-card">
-<div class="svc-icon">🖥️</div>
+<div class="svc-card reveal stagger-3">
+<div class="svc-icon"><span class="svc-icon-inner">&#128187;</span></div>
 <h3>Diagnostics</h3>
 <p>Advanced diagnostic equipment to identify faults quickly and accurately. Engine management lights, ABS, and electrical issues.</p>
 </div>
-<div class="svc-card">
-<div class="svc-icon">🛞</div>
+<div class="svc-card reveal stagger-4">
+<div class="svc-icon"><span class="svc-icon-inner">&#128736;&#65039;</span></div>
 <h3>Brakes & Clutch</h3>
 <p>Brake pad and disc replacement, clutch repairs, and hydraulic systems. Safety-critical work carried out to the highest standard.</p>
 </div>
-<div class="svc-card">
-<div class="svc-icon">🔩</div>
+<div class="svc-card reveal stagger-5">
+<div class="svc-icon"><span class="svc-icon-inner">&#128296;</span></div>
 <h3>Suspension & Exhausts</h3>
 <p>Shock absorbers, springs, exhaust systems, and catalytic converters. Addressing ride quality and emissions issues.</p>
 </div>
-<div class="svc-card">
-<div class="svc-icon">⚡</div>
+<div class="svc-card reveal stagger-6">
+<div class="svc-icon"><span class="svc-icon-inner">&#9889;</span></div>
 <h3>Auto Electrical</h3>
 <p>Starter motor and alternator repairs, battery diagnostics, wiring issues, and complete electrical fault finding.</p>
 </div>
@@ -254,21 +316,21 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 <!-- WHY US -->
 <section class="why-us" id="why">
 <div class="why-grid">
-<div class="why-image">
-<img src="https://images.pexels.com/photos/3642618/pexels-photo-3642618.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AJS Motorworks garage">
+<div class="why-image reveal-left">
+<img src="https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional mechanic working">
 <div class="exp-badge"><div class="num">40+</div><div class="lab">Years Exp.</div></div>
 </div>
-<div class="why-text">
+<div class="why-text reveal-right">
 <span class="section-tag">Why Choose AJS</span>
-<h2>Honest, Affordable, Professional</h2>
-<p>Led by Alex, A.J.S Motorworks at Spring Hill Service Station in Wellington has built a reputation for trustworthy, quality workmanship. Our technicians hold Level 3 or higher NVQ qualifications and undergo continuous training to stay ahead of evolving vehicle technology.</p>
+<h2>Honest, Affordable & Professional</h2>
+<p>Led by Alex, A.J.S Motorworks at Spring Hill Service Station in Wellington has built a reputation for trustworthy, quality workmanship. Our technicians hold Level 3 or higher NVQ qualifications and undergo continuous training.</p>
 <p>We work on everything from everyday cars and vans to HGVs, commercial vehicles, vintage cars, and even boats.</p>
 <ul class="qual-list">
-<li><div class="qual-check">✓</div><span>NVQ Level 3+ qualified technicians in Light Vehicle Maintenance & Repair</span></li>
-<li><div class="qual-check">✓</div><span>Ongoing training to keep up with the latest vehicle technology</span></li>
-<li><div class="qual-check">✓</div><span>All makes & models — cars, vans, HGVs, commercial, vintage & boats</span></li>
-<li><div class="qual-check">✓</div><span>Free, no-obligation quotes on all work</span></li>
-<li><div class="qual-check">✓</div><span>Serving Telford, Shrewsbury, Bridgnorth, Market Drayton & Newport</span></li>
+<li><div class="qual-check">&#10003;</div><span>NVQ Level 3+ qualified technicians in Light Vehicle Maintenance & Repair</span></li>
+<li><div class="qual-check">&#10003;</div><span>Ongoing training to keep up with the latest vehicle technology</span></li>
+<li><div class="qual-check">&#10003;</div><span>All makes & models — cars, vans, HGVs, commercial, vintage & boats</span></li>
+<li><div class="qual-check">&#10003;</div><span>Free, no-obligation quotes on all work</span></li>
+<li><div class="qual-check">&#10003;</div><span>Serving Telford, Shrewsbury, Bridgnorth, Market Drayton & Newport</span></li>
 </ul>
 </div>
 </div>
@@ -276,26 +338,26 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 
 <!-- REVIEWS -->
 <section class="reviews" id="reviews">
-<div class="section-header">
+<div class="section-header reveal">
 <span class="section-tag">Customer Reviews</span>
 <h2>Rated 4.7/5 by 131 Customers</h2>
 <p>Our reputation is built on trust, quality work, and honest pricing. Here's what our customers say.</p>
 </div>
 <div class="reviews-grid">
-<div class="review-card">
-<div class="review-stars">★★★★★</div>
+<div class="review-card reveal stagger-1">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p>"Absolutely brilliant service. Alex and the team were honest about what needed doing and didn't try to upsell. Fair prices and great work. Highly recommend."</p>
 <div class="review-name">Mark T.</div>
 <div class="review-source">Google Review</div>
 </div>
-<div class="review-card">
-<div class="review-stars">★★★★★</div>
+<div class="review-card reveal stagger-2">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p>"Been bringing my car here for years. They always go above and beyond. Trustworthy, reliable, and genuinely care about their customers. Won't go anywhere else."</p>
 <div class="review-name">Sarah L.</div>
 <div class="review-source">Google Review</div>
 </div>
-<div class="review-card">
-<div class="review-stars">★★★★★</div>
+<div class="review-card reveal stagger-3">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p>"Had an urgent issue with my van and they squeezed me in the same day. Diagnosed the problem quickly and had me back on the road by lunchtime. Lifesavers!"</p>
 <div class="review-name">James W.</div>
 <div class="review-source">Google Review</div>
@@ -305,10 +367,10 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-<div class="cta-inner">
+<div class="cta-inner reveal">
 <h2>Book Your Appointment Today</h2>
 <p>Whether it's an MOT, a service, or a tricky fault — call us for a free, no-obligation quote. We're here to help.</p>
-<a href="tel:01952242175" class="btn-white">Call 01952 242175</a>
+<a href="tel:01952242175" class="btn-white">Call 01952 242175 &rarr;</a>
 <div class="cta-contact">
 <div class="cta-contact-item"><strong>Address</strong>Spring Hill, Wellington, Telford, TF1 3NA</div>
 <div class="cta-contact-item"><strong>Email</strong>ajs-motorworks@outlook.com</div>
@@ -325,16 +387,24 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 
 <!-- POPUP -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-<div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+<div style="background:#fff;border-radius:20px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
 <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
 <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
 <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
 <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
+<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#e63946,#ff6b6b);color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
 <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
 </div>
 </div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+<script>
+var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});
+// IntersectionObserver scroll animations
+document.addEventListener('DOMContentLoaded',function(){
+var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+els.forEach(function(el){obs.observe(el);});
+});
+</script>
 
 </body>
 </html>
