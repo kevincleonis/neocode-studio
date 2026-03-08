@@ -5,102 +5,179 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mobile Vehicle Repair | We Come to You | Expert Mobile Mechanics</title>
 <meta name="description" content="Professional mobile vehicle repair service. We come to your home or workplace. Diagnostics, servicing, brakes, clutches & more. No garage visit needed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#dc2626;--darkred:#991b1b;--charcoal:#18181b;--steel:#27272a;--silver:#f4f4f5;--text:#3f3f46;--white:#fff}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--white)}
+:root{--red:#dc2626;--darkred:#991b1b;--charcoal:#18181b;--steel:#27272a;--silver:#f4f4f5;--text:#3f3f46;--white:#fff;--glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.1);--glow:rgba(220,38,38,0.15)}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
+.sans{font-family:'Space Grotesk',sans-serif}
 
 /* Nav */
-nav{position:fixed;top:0;width:100%;z-index:100;background:var(--charcoal);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:65px}
-nav .logo{font-weight:800;font-size:1.3rem;color:var(--white)}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(24,24,27,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:68px;transition:all .4s}
+nav .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;color:var(--white);letter-spacing:-0.5px}
 nav .logo span{color:var(--red)}
-nav ul{list-style:none;display:flex;gap:1.8rem}
-nav ul a{color:rgba(255,255,255,0.7);font-size:.85rem;font-weight:500;transition:color .3s}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:rgba(255,255,255,0.6);font-size:.85rem;font-weight:500;transition:color .3s;letter-spacing:.3px}
 nav ul a:hover{color:var(--red)}
-.phone-btn{background:var(--red);color:#fff;padding:.55rem 1.3rem;border-radius:8px;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.4rem;transition:all .3s}
-.phone-btn:hover{background:var(--darkred)}
+.phone-btn{background:linear-gradient(135deg,var(--red),#ef4444);color:#fff;padding:.6rem 1.5rem;border-radius:50px;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.4rem;transition:all .3s;box-shadow:0 4px 15px rgba(220,38,38,0.3)}
+.phone-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(220,38,38,0.4)}
+.mob-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.mob-toggle span{width:24px;height:2px;background:#fff;transition:.3s}
 
 /* Hero */
-.hero{min-height:100vh;background:var(--charcoal);display:flex;align-items:center;padding:6rem 2rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1280') center/cover;opacity:.15}
+.hero{min-height:100vh;background:var(--charcoal);display:flex;align-items:center;padding:7rem 2rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;opacity:.18}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(24,24,27,0.95) 0%,rgba(24,24,27,0.7) 40%,rgba(220,38,38,0.08) 100%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden;z-index:1}
+.particle{position:absolute;width:3px;height:3px;background:rgba(220,38,38,0.4);border-radius:50%;animation:float-up linear infinite}
+@keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
 .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;width:100%}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);color:var(--red);padding:.45rem 1rem;border-radius:6px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1px}
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--white);line-height:1.1;font-weight:900;margin-bottom:1rem}
-.hero h1 span{color:var(--red)}
-.hero p{color:rgba(255,255,255,0.6);font-size:1.1rem;line-height:1.8;margin-bottom:2rem;max-width:520px}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.25);backdrop-filter:blur(10px);color:var(--red);padding:.5rem 1.2rem;border-radius:50px;font-size:.8rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:.5px}
+.hero-tag .pulse{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,0.4)}50%{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,5.5vw,4rem);color:var(--white);line-height:1.08;font-weight:700;margin-bottom:1.2rem;letter-spacing:-1px}
+.hero h1 span{background:linear-gradient(135deg,var(--red),#ef4444,#f87171);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:rgba(255,255,255,0.55);font-size:1.05rem;line-height:1.8;margin-bottom:2rem;max-width:520px}
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-red{background:var(--red);color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:700;font-size:.95rem;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
-.btn-red:hover{background:var(--darkred);transform:translateY(-2px)}
-.btn-ghost{border:1px solid rgba(255,255,255,0.2);color:var(--white);padding:1rem 2rem;border-radius:10px;font-weight:600;font-size:.95rem;transition:all .3s}
-.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.btn-red{background:linear-gradient(135deg,var(--red),#ef4444);color:#fff;padding:1rem 2.2rem;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 8px 30px rgba(220,38,38,0.3)}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(220,38,38,0.4)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.15);color:var(--white);padding:1rem 2.2rem;border-radius:50px;font-weight:600;font-size:.95rem;transition:all .3s;backdrop-filter:blur(10px)}
+.btn-ghost:hover{border-color:var(--red);color:var(--red);background:rgba(220,38,38,0.05)}
 
-/* How it works card */
-.how-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px)}
-.how-card h3{color:var(--white);font-size:1.3rem;margin-bottom:2rem}
+/* Glass card */
+.how-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:2.5rem;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06)}
+.how-card h3{font-family:'Space Grotesk',sans-serif;color:var(--white);font-size:1.3rem;margin-bottom:2rem;letter-spacing:-0.5px}
 .step{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start}
 .step:last-child{margin-bottom:0}
-.step-num{width:36px;height:36px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0}
-.step-text{color:rgba(255,255,255,0.8);font-size:.9rem;line-height:1.5}
-.step-text strong{color:var(--white);display:block;margin-bottom:.2rem}
+.step-num{width:40px;height:40px;background:linear-gradient(135deg,var(--red),#ef4444);color:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0;box-shadow:0 4px 15px rgba(220,38,38,0.3)}
+.step-text{color:rgba(255,255,255,0.75);font-size:.9rem;line-height:1.5}
+.step-text strong{color:var(--white);display:block;margin-bottom:.2rem;font-family:'Space Grotesk',sans-serif}
 
 /* USP Bar */
-.usp{padding:2.5rem 2rem;background:var(--red);color:var(--white)}
-.usp-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
-.usp-item{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.9rem}
+.usp{padding:0;background:linear-gradient(135deg,var(--red),var(--darkred));position:relative;z-index:5;margin-top:-30px}
+.usp-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:0;flex-wrap:wrap}
+.usp-item{display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:.85rem;color:var(--white);padding:22px 28px;position:relative;transition:all .3s}
+.usp-item:not(:last-child)::after{content:'';position:absolute;right:0;top:25%;height:50%;width:1px;background:rgba(255,255,255,0.15)}
+.usp-item:hover{background:rgba(255,255,255,0.08)}
+
+/* Section animations */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.9);transition:all .6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
 
 /* Services */
-.services{padding:6rem 2rem;background:var(--silver)}
-.services-inner{max-width:1200px;margin:0 auto}
-.section-tag{color:var(--red);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
-.services h2{font-size:2.5rem;font-weight:800;margin-bottom:.5rem}
-.services>p,.services-inner>p{color:var(--text);margin-bottom:3rem;font-size:1rem}
+.services{padding:7rem 2rem;background:var(--silver);position:relative;overflow:hidden}
+.services::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(220,38,38,0.04),transparent 70%);border-radius:50%}
+.services-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
+.section-tag{font-family:'Space Grotesk',sans-serif;color:var(--red);font-size:.75rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:10px}
+.section-tag::before{content:'';width:30px;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin-bottom:.8rem;letter-spacing:-0.5px;color:var(--charcoal)}
+.section-desc{color:#71717a;font-size:1rem;margin-bottom:3rem;max-width:550px;line-height:1.7}
 .srv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.srv-card{background:var(--white);border-radius:14px;padding:2rem 1.5rem;text-align:center;transition:all .3s;border:2px solid transparent}
-.srv-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,0.08)}
-.srv-icon{font-size:2.5rem;margin-bottom:1rem}
-.srv-card h3{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.srv-card{background:var(--white);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition:all .4s;border:1px solid transparent;position:relative;overflow:hidden}
+.srv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),#f87171);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.srv-card:hover{border-color:rgba(220,38,38,0.15);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.08)}
+.srv-card:hover::before{transform:scaleX(1)}
+.srv-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+.srv-card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-0.3px}
 .srv-card p{color:#71717a;font-size:.82rem;line-height:1.6}
 
+/* About section with image */
+.about{padding:7rem 2rem;background:var(--white)}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,0.12)}
+.about-img img{width:100%;height:500px;object-fit:cover;display:block;transition:transform .6s}
+.about-img:hover img{transform:scale(1.03)}
+.about-img .overlay-badge{position:absolute;bottom:24px;left:24px;background:rgba(24,24,27,0.85);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px 24px;color:var(--white);display:flex;align-items:center;gap:12px}
+.overlay-badge .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--red)}
+.overlay-badge .small{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.about-text h2{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:1rem;letter-spacing:-0.5px;color:var(--charcoal)}
+.about-text p{color:#71717a;line-height:1.8;margin-bottom:1rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}
+.about-feature{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;background:var(--silver);border-radius:12px;transition:all .3s}
+.about-feature:hover{background:rgba(220,38,38,0.06);transform:translateX(4px)}
+.about-feature .icon{font-size:1.3rem}
+.about-feature span{font-size:.85rem;font-weight:600;color:var(--charcoal)}
+
 /* Coverage */
-.coverage{padding:6rem 2rem;background:var(--white)}
-.cov-inner{max-width:1100px;margin:0 auto;text-align:center}
-.cov-inner h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
-.cov-inner>p{color:var(--text);margin-bottom:3rem;font-size:1.05rem}
+.coverage{padding:6rem 2rem;background:var(--charcoal);color:var(--white);position:relative;overflow:hidden}
+.coverage::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(220,38,38,0.08),transparent 70%);border-radius:50%}
+.cov-inner{max-width:1100px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.cov-inner h2{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;margin-bottom:1rem;letter-spacing:-0.5px}
+.cov-inner>p{color:rgba(255,255,255,0.5);font-size:1.05rem;margin-bottom:3rem}
 .cov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.cov-card{background:var(--silver);border-radius:12px;padding:1.5rem;text-align:left}
-.cov-card h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.cov-card p{font-size:.82rem;color:#71717a}
+.cov-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem;text-align:left;backdrop-filter:blur(10px);transition:all .4s}
+.cov-card:hover{border-color:rgba(220,38,38,0.3);background:rgba(220,38,38,0.05);transform:translateY(-4px)}
+.cov-card .card-icon{font-size:2rem;margin-bottom:1rem}
+.cov-card h4{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.cov-card p{font-size:.85rem;color:rgba(255,255,255,0.4);line-height:1.6}
 
 /* Reviews */
-.reviews{padding:6rem 2rem;background:var(--charcoal);color:var(--white)}
+.reviews{padding:7rem 2rem;background:var(--silver);position:relative;overflow:hidden}
 .rev-inner{max-width:1100px;margin:0 auto;text-align:center}
-.rev-inner h2{font-size:2.5rem;font-weight:800;margin-bottom:3rem}
+.rev-inner h2{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;margin-bottom:.8rem;letter-spacing:-0.5px;color:var(--charcoal)}
+.rev-inner>p.sub{color:#71717a;margin-bottom:3rem;font-size:1rem}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:left}
-.rev-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:2rem}
-.rev-stars{color:#f59e0b;margin-bottom:.8rem}
-.rev-card blockquote{color:rgba(255,255,255,0.7);font-size:.92rem;line-height:1.7;margin-bottom:1rem}
-.rev-name{font-weight:700;font-size:.85rem}
-.rev-loc{color:rgba(255,255,255,0.4);font-size:.75rem}
+.rev-card{background:var(--white);border-radius:20px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid transparent;transition:all .4s;position:relative;overflow:hidden}
+.rev-card::before{content:'\201C';position:absolute;top:10px;right:20px;font-size:5rem;color:rgba(220,38,38,0.06);font-family:Georgia,serif;line-height:1}
+.rev-card:hover{border-color:rgba(220,38,38,0.15);transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,0.08)}
+.rev-stars{color:#f59e0b;margin-bottom:.8rem;font-size:1.1rem;letter-spacing:2px}
+.rev-card blockquote{font-size:.92rem;line-height:1.7;color:#475569;margin-bottom:1.2rem;position:relative;z-index:1}
+.rev-author{display:flex;align-items:center;gap:10px}
+.rev-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--red),#f87171);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem;font-family:'Space Grotesk',sans-serif}
+.rev-name{font-weight:700;font-size:.85rem;font-family:'Space Grotesk',sans-serif}
+.rev-loc{font-size:.75rem;color:#94a3b8}
 
 /* CTA */
-.final-cta{padding:5rem 2rem;background:linear-gradient(135deg,var(--red),var(--darkred));text-align:center;color:#fff}
-.final-cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
-.final-cta p{opacity:.85;font-size:1.1rem;margin-bottom:2rem}
-.btn-white{display:inline-block;background:#fff;color:var(--red);padding:1rem 2.5rem;border-radius:10px;font-weight:700;font-size:1rem;transition:all .3s}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.final-cta{padding:6rem 2rem;background:linear-gradient(135deg,var(--red),var(--darkred));text-align:center;color:#fff;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:rgba(255,255,255,0.05);border-radius:50%}
+.final-cta::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:rgba(255,255,255,0.03);border-radius:50%}
+.final-cta h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin-bottom:1rem;position:relative;letter-spacing:-0.5px}
+.final-cta p{opacity:.85;font-size:1.1rem;margin-bottom:2rem;position:relative}
+.btn-white{display:inline-block;background:#fff;color:var(--red);padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:1rem;transition:all .3s;position:relative;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.25)}
+.cta-phone{display:block;margin-top:1.5rem;font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;position:relative}
 
 /* Footer */
-footer{background:var(--charcoal);color:rgba(255,255,255,0.4);padding:2.5rem 2rem;text-align:center;font-size:.8rem}
-footer .logo{color:#fff;font-size:1.1rem;font-weight:800;margin-bottom:.8rem}
-footer .logo span{color:var(--red)}
+footer{background:var(--charcoal);color:rgba(255,255,255,0.4);padding:4rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.footer-brand .logo{font-family:'Space Grotesk',sans-serif;color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.footer-brand .logo span{color:var(--red)}
+.footer-brand p{font-size:.85rem;line-height:1.7;color:rgba(255,255,255,0.35)}
+.footer-col h4{font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,0.35);transition:color .3s}
+.footer-col a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:.78rem}
+.footer-bottom a{color:var(--red);text-decoration:none}
 
+/* Responsive */
+@media(max-width:1024px){
+.srv-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:768px){
-nav ul{display:none}
+nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(24,24,27,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px 2rem;gap:15px;border-top:1px solid rgba(255,255,255,0.06)}
+nav ul.active{display:flex}
+.mob-toggle{display:flex}
 .hero-inner{grid-template-columns:1fr}
-.srv-grid{grid-template-columns:1fr 1fr}
+.hero{padding-top:6rem}
+.srv-grid{grid-template-columns:1fr}
 .cov-grid,.rev-grid{grid-template-columns:1fr}
-.usp-inner{flex-direction:column;align-items:center;gap:1rem}
+.usp-inner{flex-direction:column;align-items:center;gap:0}
+.usp-item::after{display:none}
+.about-inner{grid-template-columns:1fr}
+.about-img img{height:300px}
+.about-features{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -108,20 +185,32 @@ nav ul{display:none}
 
 <nav>
   <div class="logo">Mobile<span>Fix</span></div>
-  <ul>
+  <ul id="navLinks">
     <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#coverage">Coverage</a></li>
     <li><a href="#reviews">Reviews</a></li>
   </ul>
   <a href="tel:" class="phone-btn">&#128222; Call Now</a>
+  <button class="mob-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section class="hero">
+  <div class="hero-particles">
+    <div class="particle" style="left:10%;animation-duration:8s;animation-delay:0s"></div>
+    <div class="particle" style="left:25%;animation-duration:12s;animation-delay:2s"></div>
+    <div class="particle" style="left:45%;animation-duration:10s;animation-delay:4s"></div>
+    <div class="particle" style="left:65%;animation-duration:9s;animation-delay:1s"></div>
+    <div class="particle" style="left:80%;animation-duration:11s;animation-delay:3s"></div>
+    <div class="particle" style="left:90%;animation-duration:7s;animation-delay:5s"></div>
+  </div>
   <div class="hero-inner">
     <div>
-      <div class="hero-tag">&#128663; Mobile Service &bull; We Come to You</div>
+      <div class="hero-tag"><span class="pulse"></span> Mobile Service &mdash; We Come to You</div>
       <h1>Your Mechanic, <span>At Your Door</span></h1>
-      <p>No need to drive to a garage. Our qualified mobile mechanics come to your home or workplace to fix your vehicle. Same-day service available.</p>
+      <p>No need to drive to a garage. Our qualified mobile mechanics come to your home or workplace to fix your vehicle. Same-day service available across the region.</p>
       <div class="hero-ctas">
         <a href="tel:" class="btn-red">&#128222; Call for Quote</a>
         <a href="#services" class="btn-ghost">View Services</a>
@@ -131,19 +220,19 @@ nav ul{display:none}
       <h3>How It Works</h3>
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-text"><strong>Call or Book Online</strong>Tell us about your vehicle and the issue</div>
+        <div class="step-text"><strong>Call or Book Online</strong>Tell us about your vehicle and the issue you're experiencing</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-text"><strong>We Come to You</strong>Our mechanic arrives at your chosen location</div>
+        <div class="step-text"><strong>We Come to You</strong>Our mechanic arrives at your chosen location, fully equipped</div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <div class="step-text"><strong>Diagnose &amp; Repair</strong>We fix the issue on-site with genuine parts</div>
+        <div class="step-text"><strong>Diagnose &amp; Repair</strong>We fix the issue on-site with genuine parts and expert care</div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <div class="step-text"><strong>Back on the Road</strong>Pay on completion, guaranteed workmanship</div>
+        <div class="step-text"><strong>Back on the Road</strong>Pay on completion with guaranteed workmanship on every job</div>
       </div>
     </div>
   </div>
@@ -161,47 +250,47 @@ nav ul{display:none}
 
 <section class="services" id="services">
   <div class="services-inner">
-    <div class="section-tag">What We Do</div>
-    <h2>Complete Mobile Repair Services</h2>
-    <p>Everything you'd get at a garage, delivered to your doorstep.</p>
+    <div class="section-tag reveal">What We Do</div>
+    <h2 class="section-title reveal">Complete Mobile Repair Services</h2>
+    <p class="section-desc reveal">Everything you'd get at a garage, delivered to your doorstep. Quality repairs, genuine parts, guaranteed workmanship.</p>
     <div class="srv-grid">
-      <div class="srv-card">
-        <div class="srv-icon">&#128295;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#128295;</span>
         <h3>Full Servicing</h3>
-        <p>Interim & full services. Oil change, filter replacement, fluid top-ups, and multi-point inspection.</p>
+        <p>Interim &amp; full services. Oil change, filter replacement, fluid top-ups, and multi-point inspection.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#128196;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#128196;</span>
         <h3>Diagnostics</h3>
         <p>Advanced diagnostic scanning to pinpoint engine faults, warning lights, and electronic issues.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#9940;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#9940;</span>
         <h3>Brakes</h3>
-        <p>Brake pad & disc replacement, brake fluid changes, handbrake adjustment, and caliper repairs.</p>
+        <p>Brake pad &amp; disc replacement, brake fluid changes, handbrake adjustment, and caliper repairs.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#9881;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#9881;</span>
         <h3>Clutch Repair</h3>
         <p>Clutch replacement, flywheel inspection, slave cylinder repair, and clutch cable adjustment.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#128267;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#128267;</span>
         <h3>Battery</h3>
         <p>Battery testing, replacement, and electrical fault diagnosis. Jump start service available.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#128168;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#128168;</span>
         <h3>Exhaust</h3>
-        <p>Exhaust repair & replacement, catalytic converter work, and emissions diagnostics.</p>
+        <p>Exhaust repair &amp; replacement, catalytic converter work, and emissions diagnostics.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#127777;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#127777;</span>
         <h3>Cooling System</h3>
         <p>Radiator repair, thermostat replacement, water pump service, and coolant flush.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">&#128663;</div>
+      <div class="srv-card reveal-scale">
+        <span class="srv-icon">&#128663;</span>
         <h3>Pre-MOT Check</h3>
         <p>Comprehensive inspection to identify and fix issues before your MOT test day.</p>
       </div>
@@ -209,58 +298,143 @@ nav ul{display:none}
   </div>
 </section>
 
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img reveal-left">
+      <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile mechanic at work" loading="lazy">
+      <div class="overlay-badge">
+        <div class="big">100%</div>
+        <div><div class="small">Satisfaction Guaranteed</div></div>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-tag">Why Choose Us</div>
+      <h2>Expert Mechanics, Right at Your Door</h2>
+      <p>We bring the garage to you. Our fully qualified mobile mechanics arrive with professional tools and genuine parts to get your vehicle fixed without you having to leave your home or workplace.</p>
+      <p>Whether it's a routine service, a diagnostic check, or an emergency repair, our team delivers the same quality you'd expect from a top garage &mdash; just more convenient and often more affordable.</p>
+      <div class="about-features">
+        <div class="about-feature"><span class="icon">&#128663;</span><span>We Come to You</span></div>
+        <div class="about-feature"><span class="icon">&#128176;</span><span>No Call-Out Fee</span></div>
+        <div class="about-feature"><span class="icon">&#128295;</span><span>Genuine Parts</span></div>
+        <div class="about-feature"><span class="icon">&#128737;</span><span>Fully Insured</span></div>
+        <div class="about-feature"><span class="icon">&#9733;</span><span>5-Star Reviews</span></div>
+        <div class="about-feature"><span class="icon">&#9201;</span><span>Same-Day Service</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="coverage" id="coverage">
   <div class="cov-inner">
-    <div class="section-tag">Coverage Area</div>
-    <h2>Serving Your Area</h2>
-    <p>Our mobile mechanics cover a wide service area, bringing expert repairs directly to you.</p>
+    <div class="section-tag reveal" style="justify-content:center;color:#f87171">Coverage Area</div>
+    <h2 class="reveal">Serving Your Area</h2>
+    <p class="reveal">Our mobile mechanics cover a wide service area, bringing expert repairs directly to you.</p>
     <div class="cov-grid">
-      <div class="cov-card"><h4>Residential</h4><p>We'll work on your driveway or outside your home. No disruption to your day.</p></div>
-      <div class="cov-card"><h4>Workplace</h4><p>Get your car fixed while you work. We'll have it ready by the time you finish.</p></div>
-      <div class="cov-card"><h4>Roadside</h4><p>Broken down? We can come to you for emergency roadside repairs and diagnostics.</p></div>
+      <div class="cov-card reveal-scale">
+        <div class="card-icon">&#127968;</div>
+        <h4>Residential</h4>
+        <p>We'll work on your driveway or outside your home. No disruption to your day whatsoever.</p>
+      </div>
+      <div class="cov-card reveal-scale">
+        <div class="card-icon">&#127970;</div>
+        <h4>Workplace</h4>
+        <p>Get your car fixed while you work. We'll have it ready by the time you finish for the day.</p>
+      </div>
+      <div class="cov-card reveal-scale">
+        <div class="card-icon">&#128680;</div>
+        <h4>Roadside</h4>
+        <p>Broken down? We can come to you for emergency roadside repairs and diagnostics.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="reviews" id="reviews">
   <div class="rev-inner">
-    <div class="section-tag" style="color:#f59e0b">Customer Reviews</div>
-    <h2>Trusted by Drivers</h2>
+    <div class="section-tag reveal" style="justify-content:center">Customer Reviews</div>
+    <h2 class="reveal">Trusted by Drivers</h2>
+    <p class="sub reveal">See why hundreds of vehicle owners choose us for their repairs.</p>
     <div class="rev-grid">
-      <div class="rev-card">
+      <div class="rev-card reveal-scale">
         <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Absolute lifesaver. My car wouldn't start and within 2 hours the mechanic was at my house. New battery fitted and running perfectly."</blockquote>
-        <div class="rev-name">Steve P.</div>
-        <div class="rev-loc">Google Review</div>
+        <blockquote>"Absolute lifesaver. My car wouldn't start and within 2 hours the mechanic was at my house. New battery fitted and running perfectly. Brilliant service."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">SP</div>
+          <div><div class="rev-name">Steve P.</div><div class="rev-loc">Google Review</div></div>
+        </div>
       </div>
-      <div class="rev-card">
+      <div class="rev-card reveal-scale">
         <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Had my full service done on my drive while I worked from home. Brilliant idea, great price, and the mechanic was very professional."</blockquote>
-        <div class="rev-name">Emma K.</div>
-        <div class="rev-loc">Google Review</div>
+        <blockquote>"Had my full service done on my drive while I worked from home. Brilliant idea, great price, and the mechanic was very professional. Will use again."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">EK</div>
+          <div><div class="rev-name">Emma K.</div><div class="rev-loc">Google Review</div></div>
+        </div>
       </div>
-      <div class="rev-card">
+      <div class="rev-card reveal-scale">
         <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Why would anyone bother going to a garage when these guys come to you? Fair prices, honest advice, and quality work. Highly recommend."</blockquote>
-        <div class="rev-name">Paul D.</div>
-        <div class="rev-loc">Google Review</div>
+        <blockquote>"Why would anyone bother going to a garage when these guys come to you? Fair prices, honest advice, and quality work. Highly recommend to everyone."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">PD</div>
+          <div><div class="rev-name">Paul D.</div><div class="rev-loc">Google Review</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="final-cta">
-  <h2>Need a Mobile Mechanic?</h2>
-  <p>We come to you - home, work, or roadside. Free diagnosis with every repair.</p>
-  <a href="tel:" class="btn-white">&#128222; Call Now for a Quote</a>
+  <h2 class="reveal">Need a Mobile Mechanic?</h2>
+  <p class="reveal">We come to you &mdash; home, work, or roadside. Free diagnosis with every repair.</p>
+  <a href="tel:" class="btn-white reveal">&#128222; Call Now for a Quote</a>
+  <span class="cta-phone reveal">&#128222; Call Us Today</span>
 </section>
 
 <footer>
-  <div class="logo">Mobile<span>Fix</span></div>
-  <p>Professional Mobile Vehicle Repair &bull; All Makes &amp; Models</p>
-  <p style="margin-top:1rem">&copy; 2025 Mobile Vehicle Repair. All rights reserved.</p>
-  <p style="margin-top:.5rem;opacity:.5;font-size:.7rem">Demo redesign by NeoCode Studio</p>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Mobile<span>Fix</span></div>
+        <p>Professional mobile vehicle repair service. We bring the garage to you &mdash; saving you time, money, and hassle. All makes and models welcome.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Full Servicing</a></li>
+          <li><a href="#services">Diagnostics</a></li>
+          <li><a href="#services">Brakes</a></li>
+          <li><a href="#services">Clutch Repair</a></li>
+          <li><a href="#services">Battery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Mobile Vehicle Repair. All rights reserved.</p>
+      <p>Website by <a href="#">NeoCode Studio</a></p>
+    </div>
+  </div>
 </footer>
 
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('active')})});
+
+// Scroll reveal animations
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>observer.observe(el));
+
+// Stagger animation delays for grids
+document.querySelectorAll('.srv-grid,.rev-grid,.cov-grid').forEach(grid=>{
+  grid.querySelectorAll('.reveal-scale').forEach((card,i)=>{card.style.transitionDelay=i*0.1+'s'});
+});
+</script>
 </body>
 </html>
