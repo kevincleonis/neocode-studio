@@ -82,51 +82,72 @@
         .section { padding: 100px 80px; position: relative; z-index: 1; }
         .section-dark { background: var(--bg-primary); }
         .section-darker { background: var(--bg-secondary); }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 80px; }
-        .section-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; text-shadow: 0 0 10px var(--accent-glow); }
-        .section-eyebrow::before, .section-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--accent-dim); box-shadow: 0 0 6px var(--accent-glow); }
-        .section-title { font-size: 44px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; }
-        .section-title .accent { color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
-        .section-subtitle { font-size: 17px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
         .data-stream { position: absolute; width: 1px; background: linear-gradient(180deg, transparent, var(--accent), transparent); opacity: 0.08; pointer-events: none; animation: dataStream 8s linear infinite; }
         .glow-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), var(--accent), var(--accent-dim), transparent); margin: 0; opacity: 0.4; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
 
-        /* SERVICE CARDS */
-        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; }
-        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 48px 40px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #00ffcc); opacity: 0; transition: opacity 0.5s ease; }
-        .service-card::after { content: ''; position: absolute; bottom: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
-        .service-card:hover { transform: translateY(-8px); border-color: var(--border-accent-strong); box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
-        .service-card:hover::before, .service-card:hover::after { opacity: 1; }
-        .service-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 28px; color: var(--accent); border: 1px solid var(--border-accent); box-shadow: 0 0 20px var(--accent-glow); }
-        .service-title { font-size: 24px; font-weight: 600; margin-bottom: 16px; }
-        .service-text { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; }
-        .service-features { list-style: none; padding: 0; }
-        .service-features li { font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
-        .service-features li:last-child { border-bottom: none; }
-        .service-features li::before { content: '>'; color: var(--accent); font-weight: 700; text-shadow: 0 0 8px var(--accent-glow); }
+        /* PRICING GRID */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; align-items: stretch; }
 
-        /* PRICING HINT */
-        .pricing-section { max-width: 800px; margin: 0 auto; text-align: center; }
-        .pricing-card { background: linear-gradient(135deg, rgba(0,255,136,0.03) 0%, rgba(10,10,10,0.95) 50%, rgba(0,255,136,0.03) 100%); border: 1px solid var(--border-accent); border-radius: 24px; padding: 60px 48px; position: relative; overflow: hidden; animation: borderGlow 4s ease-in-out infinite; }
-        .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
-        .pricing-card h3 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
-        .pricing-card h3 .accent { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
-        .pricing-card p { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .pricing-card .highlight { color: var(--accent); font-weight: 500; }
+        .pricing-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 48px 36px; position: relative; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; }
+        .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #00ffcc); opacity: 0; transition: opacity 0.5s ease; }
+        .pricing-card:hover { transform: translateY(-8px); border-color: var(--border-accent-strong); box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
+        .pricing-card:hover::before { opacity: 1; }
 
-        /* CTA */
+        /* POPULAR / FEATURED CARD */
+        .pricing-card.featured { border-color: var(--border-accent-strong); animation: borderGlow 4s ease-in-out infinite; background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, var(--bg-card) 40%, rgba(0,255,136,0.04) 100%); }
+        .pricing-card.featured::before { opacity: 1; }
+        .pricing-card.featured::after { content: ''; position: absolute; bottom: -40%; right: -30%; width: 300px; height: 300px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); opacity: 0.4; pointer-events: none; }
+
+        .popular-badge { position: absolute; top: 20px; right: 20px; font-family: var(--font-mono); font-size: 10px; color: var(--bg-primary); background: var(--accent); padding: 6px 16px; border-radius: 100px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; box-shadow: 0 0 20px var(--accent-glow); }
+
+        .pricing-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 24px; color: var(--accent); border: 1px solid var(--border-accent); box-shadow: 0 0 20px var(--accent-glow); }
+
+        .pricing-name { font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; text-shadow: 0 0 10px var(--accent-glow); }
+
+        .pricing-price { margin-bottom: 8px; }
+        .pricing-price .old-price { font-size: 22px; color: var(--text-muted); text-decoration: line-through; margin-right: 12px; font-weight: 400; }
+        .pricing-price .amount { font-size: 52px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.03em; }
+        .pricing-price .currency { font-size: 28px; font-weight: 400; color: var(--text-secondary); vertical-align: super; margin-right: 2px; }
+
+        .pricing-type { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+        .pricing-type .monthly { color: var(--accent); font-weight: 500; }
+
+        .pricing-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+        .pricing-features { list-style: none; padding: 0; margin-bottom: 40px; flex: 1; }
+        .pricing-features li { font-size: 14px; color: var(--text-secondary); padding: 10px 0; display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
+        .pricing-features li i { color: var(--accent); font-size: 12px; margin-top: 4px; flex-shrink: 0; text-shadow: 0 0 8px var(--accent-glow); }
+
+        .pricing-cta { margin-top: auto; }
+        .pricing-cta .btn { width: 100%; justify-content: center; }
+
+        /* BUTTONS */
         .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-main); }
         .btn-primary { background: var(--accent); color: var(--bg-primary); box-shadow: 0 0 30px var(--accent-glow); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow-strong); }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
         .btn-secondary:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 30px var(--accent-glow); }
 
+        /* GUARANTEE */
+        .guarantee { max-width: 700px; margin: 80px auto 0; text-align: center; padding: 40px; background: linear-gradient(135deg, rgba(0,255,136,0.03) 0%, rgba(10,10,10,0.95) 50%, rgba(0,255,136,0.03) 100%); border: 1px solid var(--border-accent); border-radius: 20px; }
+        .guarantee i { font-size: 32px; color: var(--accent); margin-bottom: 16px; text-shadow: 0 0 20px var(--accent-glow); }
+        .guarantee h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .guarantee p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+
+        /* FAQ */
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 28px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-size: 17px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+        .faq-question::before { content: '>'; font-family: var(--font-mono); color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+        .faq-answer { font-size: 14px; color: var(--text-secondary); line-height: 1.8; padding-left: 24px; }
+
+        /* CTA */
         .cta-section { text-align: center; padding: 120px 80px; position: relative; overflow: hidden; z-index: 1; }
         .cta-section::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 60%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; animation: glowPulseIntense 5s ease-in-out infinite; }
         .cta-section::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
         .cta-title { font-size: 48px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; position: relative; z-index: 1; }
-        .cta-title .accent { text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); }
+        .cta-title .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); }
         .cta-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
         .cta-buttons { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
 
@@ -144,8 +165,14 @@
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .navbar { padding: 0 40px; } .page-header { padding: 140px 40px 60px; } .section { padding: 80px 40px; }
-            .page-header h1 { font-size: 44px; } .section-title { font-size: 36px; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .page-header h1 { font-size: 44px; }
+            .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .pricing-card { padding: 36px 28px; }
+            .pricing-price .amount { font-size: 42px; }
+        }
+        @media (max-width: 900px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+            .pricing-card.featured { order: -1; }
         }
         @media (max-width: 768px) {
             .navbar { padding: 0 24px; }
@@ -153,10 +180,9 @@
             .navbar-menu.open { display: flex; } .navbar-toggle { display: flex; }
             .navbar-cta { margin-left: 0; margin-top: 16px; text-align: center; }
             .page-header { padding: 120px 24px 60px; } .page-header h1 { font-size: 32px; }
-            .section { padding: 60px 24px; } .section-title { font-size: 28px; } .cta-title { font-size: 32px; }
-            .services-grid { grid-template-columns: 1fr; }
+            .section { padding: 60px 24px; } .cta-title { font-size: 32px; }
+            .cta-section { padding: 80px 24px; }
             .footer { padding: 40px 24px; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
-            .pricing-card { padding: 40px 24px; }
         }
     </style>
 </head>
@@ -185,151 +211,139 @@
 <section class="page-header">
     <div class="page-header-grid"></div>
     <div class="page-header-content">
-        <div class="page-eyebrow animate">Our Services</div>
-        <h1 class="animate delay-1">Everything you need to <span class="accent">grow</span> online</h1>
-        <p class="animate delay-2">From full website builds to fine-tuning your conversion rate &mdash; we offer end-to-end digital solutions for businesses ready to scale.</p>
+        <div class="page-eyebrow animate">Pricing & Services</div>
+        <h1 class="animate delay-1">Choose your <span class="accent">plan</span></h1>
+        <p class="animate delay-2">No hidden fees. No long-term contracts. Just clear deliverables and real results for your business.</p>
     </div>
 </section>
 
 <div class="glow-divider"></div>
 
-<!-- CORE SERVICES -->
+<!-- PRICING -->
 <section class="section section-darker">
     <div class="data-stream" style="left: 5%; height: 300px; animation-delay: 0s;"></div>
     <div class="data-stream" style="left: 95%; height: 200px; animation-delay: 4s;"></div>
-    <div class="section-header">
-        <div class="section-eyebrow">Core Services</div>
-        <h2 class="section-title">Built to <span class="accent">convert</span></h2>
-        <p class="section-subtitle">Every service is designed with one goal: turning your website visitors into paying customers.</p>
-    </div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3 class="service-title">Website Design & Build</h3>
-            <p class="service-text">Custom-designed websites built from scratch. Mobile-first, fast-loading, and engineered to convert visitors into customers.</p>
-            <ul class="service-features">
-                <li>Bespoke design tailored to your brand</li>
-                <li>Mobile-responsive across all devices</li>
-                <li>Speed-optimised (under 3s load time)</li>
-                <li>SEO-ready structure</li>
-                <li>Contact forms & booking integration</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-            <h3 class="service-title">Website Redesign</h3>
-            <p class="service-text">Already have a site that&rsquo;s underperforming? We rebuild it with modern design, better UX, and conversion-focused layouts.</p>
-            <ul class="service-features">
-                <li>Full visual & structural overhaul</li>
-                <li>Keep your existing content & SEO</li>
-                <li>Before/after performance comparison</li>
-                <li>Improved user journey & navigation</li>
-                <li>Trust signals & social proof integration</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-            <h3 class="service-title">Conversion Rate Optimisation (CRO)</h3>
-            <p class="service-text">Data-driven improvements to turn more visitors into customers. We analyse behaviour, identify friction, and optimise every step.</p>
-            <ul class="service-features">
-                <li>Heatmap & session recording analysis</li>
-                <li>A/B testing & multivariate testing</li>
-                <li>Checkout flow optimisation</li>
-                <li>Landing page optimisation</li>
-                <li>Funnel leak identification & fixes</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-layer-group"></i></div>
-            <h3 class="service-title">UX/UI Design</h3>
-            <p class="service-text">Intuitive, beautiful interfaces that make using your website effortless. Design that builds trust and drives action.</p>
-            <ul class="service-features">
-                <li>User research & persona mapping</li>
-                <li>Wireframing & prototyping (Figma)</li>
-                <li>Visual design system & brand consistency</li>
-                <li>Accessibility compliance (WCAG)</li>
-                <li>Interactive micro-animations</li>
-            </ul>
-        </div>
-    </div>
-</section>
 
-<div class="glow-divider"></div>
+    <div class="pricing-grid">
 
-<!-- E-COMMERCE & GROWTH -->
-<section class="section section-dark">
-    <div class="data-stream" style="left: 15%; height: 250px; animation-delay: 2s;"></div>
-    <div class="data-stream" style="left: 85%; height: 350px; animation-delay: 5s;"></div>
-    <div class="section-header">
-        <div class="section-eyebrow">Growth & E-Commerce</div>
-        <h2 class="section-title">Scale your <span class="accent">revenue</span></h2>
-        <p class="section-subtitle">Specialised services for businesses that sell online or want to drive more leads.</p>
-    </div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon"><i class="fab fa-shopify"></i></div>
-            <h3 class="service-title">Shopify & E-Commerce</h3>
-            <p class="service-text">Custom Shopify stores, theme development, and e-commerce strategy. 20+ brands built from zero to revenue.</p>
-            <ul class="service-features">
-                <li>Custom Shopify theme development</li>
-                <li>Product page optimisation</li>
-                <li>Cart & checkout flow design</li>
-                <li>App integrations & automation</li>
-                <li>Migration from other platforms</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-search"></i></div>
-            <h3 class="service-title">SEO & Performance</h3>
-            <p class="service-text">Get found by the right customers. Technical SEO, site speed, and structured data to boost your organic visibility.</p>
-            <ul class="service-features">
-                <li>Technical SEO audit & fixes</li>
-                <li>On-page SEO optimisation</li>
-                <li>Core Web Vitals improvement</li>
-                <li>Google Business Profile setup</li>
-                <li>Local SEO for service businesses</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-bullseye"></i></div>
-            <h3 class="service-title">Paid Ads Management</h3>
-            <p class="service-text">Facebook, Instagram, Google, TikTok &mdash; we set up and manage campaigns that drive real, measurable traffic.</p>
-            <ul class="service-features">
-                <li>Campaign strategy & setup</li>
-                <li>Audience research & targeting</li>
-                <li>Ad creative direction</li>
-                <li>Budget optimisation & scaling</li>
-                <li>&pound;150K+/month ad budgets managed</li>
-            </ul>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-envelope-open-text"></i></div>
-            <h3 class="service-title">Email & Retention</h3>
-            <p class="service-text">Turn one-time buyers into repeat customers. Email flows, automations, and retention strategies that increase lifetime value.</p>
-            <ul class="service-features">
-                <li>Welcome & abandoned cart flows</li>
-                <li>Post-purchase email sequences</li>
-                <li>Newsletter design & strategy</li>
-                <li>Klaviyo / Mailchimp setup</li>
-                <li>Customer segmentation</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<div class="glow-divider"></div>
-
-<!-- HOW IT STARTS -->
-<section class="section section-darker">
-    <div class="pricing-section">
+        <!-- STARTER -->
         <div class="pricing-card">
-            <h3>Start with a <span class="accent">free audit</span></h3>
-            <p>We&rsquo;ll review your current website, identify what&rsquo;s costing you customers, and give you a clear action plan &mdash; <span class="highlight">completely free, no strings attached</span>.</p>
-            <div class="cta-buttons">
-                <a href="mailto:hello@neocodestudio.co.uk" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
-                <a href="index.html#work" class="btn btn-secondary">See Our Work</a>
+            <div class="pricing-icon"><i class="fas fa-search-plus"></i></div>
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-price">
+                <span class="currency">&pound;</span><span class="amount">497</span>
+            </div>
+            <div class="pricing-type">One-off payment</div>
+            <p class="pricing-desc">A deep-dive audit of your current website with actionable quick fixes to start converting more visitors immediately.</p>
+            <ul class="pricing-features">
+                <li><i class="fas fa-check"></i>Full website audit (UX, speed, mobile, SEO)</li>
+                <li><i class="fas fa-check"></i>Detailed report with prioritised fixes</li>
+                <li><i class="fas fa-check"></i>Quick wins implemented (speed, trust signals, CTAs)</li>
+                <li><i class="fas fa-check"></i>Google Business Profile optimisation</li>
+                <li><i class="fas fa-check"></i>Competitor analysis snapshot</li>
+                <li><i class="fas fa-check"></i>30-minute strategy call</li>
+            </ul>
+            <div class="pricing-cta">
+                <a href="mailto:hello@neocodestudio.co.uk?subject=Starter%20Package%20%E2%80%93%20Website%20Audit" class="btn btn-secondary">Get Started <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
+
+        <!-- PROFESSIONAL (FEATURED) -->
+        <div class="pricing-card featured">
+            <div class="popular-badge">Best Value</div>
+            <div class="pricing-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="pricing-name">Professional</div>
+            <div class="pricing-price">
+                <span class="old-price">&pound;1,997</span>
+                <span class="currency">&pound;</span><span class="amount">1,497</span>
+            </div>
+            <div class="pricing-type">One-off payment</div>
+            <p class="pricing-desc">A complete website redesign &mdash; modern, fast, mobile-first, and built to turn visitors into paying customers.</p>
+            <ul class="pricing-features">
+                <li><i class="fas fa-check"></i>Everything in Starter</li>
+                <li><i class="fas fa-check"></i>Complete website redesign & development</li>
+                <li><i class="fas fa-check"></i>Mobile-responsive, fast-loading design</li>
+                <li><i class="fas fa-check"></i>SEO-optimised structure & content</li>
+                <li><i class="fas fa-check"></i>Contact forms & booking integration</li>
+                <li><i class="fas fa-check"></i>Social proof & trust signals setup</li>
+                <li><i class="fas fa-check"></i>2 rounds of revisions included</li>
+                <li><i class="fas fa-check"></i>Domain & hosting setup assistance</li>
+            </ul>
+            <div class="pricing-cta">
+                <a href="mailto:hello@neocodestudio.co.uk?subject=Professional%20Package%20%E2%80%93%20Website%20Redesign" class="btn btn-primary">Get Started <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- GROWTH -->
+        <div class="pricing-card">
+            <div class="pricing-icon"><i class="fas fa-rocket"></i></div>
+            <div class="pricing-name">Growth</div>
+            <div class="pricing-price">
+                <span class="currency">&pound;</span><span class="amount">2,997</span>
+            </div>
+            <div class="pricing-type">One-off <span class="monthly">+ &pound;297/mo optional retainer</span></div>
+            <p class="pricing-desc">Full redesign plus ongoing growth &mdash; SEO, ads, email marketing, and monthly optimisations to keep scaling your revenue.</p>
+            <ul class="pricing-features">
+                <li><i class="fas fa-check"></i>Everything in Professional</li>
+                <li><i class="fas fa-check"></i>Advanced SEO setup & optimisation</li>
+                <li><i class="fas fa-check"></i>Google Ads campaign setup</li>
+                <li><i class="fas fa-check"></i>Email marketing flows (welcome, abandoned cart)</li>
+                <li><i class="fas fa-check"></i>Analytics & conversion tracking</li>
+                <li><i class="fas fa-check"></i>Monthly performance report</li>
+                <li><i class="fas fa-check"></i>Ongoing site updates & optimisations</li>
+                <li><i class="fas fa-check"></i>Priority support</li>
+            </ul>
+            <div class="pricing-cta">
+                <a href="mailto:hello@neocodestudio.co.uk?subject=Growth%20Package%20%E2%80%93%20Full%20Service" class="btn btn-secondary">Get Started <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+        <i class="fas fa-shield-alt"></i>
+        <h3>100% Satisfaction Guarantee</h3>
+        <p>Not happy with the result? We&rsquo;ll revise until you are. Every project starts with a free audit so you know exactly what you&rsquo;re getting before you commit.</p>
+    </div>
+
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- FAQ -->
+<section class="section section-dark">
+    <div class="faq-grid">
+        <div class="faq-item">
+            <div class="faq-question">How long does a website redesign take?</div>
+            <div class="faq-answer">Most projects are completed within 2&ndash;3 weeks. The Starter audit is delivered within 5 business days.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do I need to provide content and images?</div>
+            <div class="faq-answer">We can work with your existing content or help you source professional images and write copy that converts. It&rsquo;s included in all packages.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What platform do you build on?</div>
+            <div class="faq-answer">We build on whatever suits your business best &mdash; WordPress, Shopify, Wix, Squarespace, or custom HTML/CSS. We&rsquo;ll recommend the right fit during your audit.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What if I just want the audit?</div>
+            <div class="faq-answer">The Starter package works perfectly as a standalone service. You&rsquo;ll get a full report and quick fixes implemented &mdash; no pressure to upgrade.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Is the monthly retainer required on the Growth plan?</div>
+            <div class="faq-answer">No, it&rsquo;s optional. The &pound;2,997 covers the full build and setup. The &pound;297/month retainer is for ongoing optimisation, updates, and support if you want continued growth.</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section-dark">
+    <h2 class="cta-title">Not sure which plan? <span class="accent">Let&rsquo;s talk.</span></h2>
+    <p class="cta-subtitle">Get a free website audit &mdash; we&rsquo;ll tell you exactly what&rsquo;s costing you customers and recommend the right plan.</p>
+    <div class="cta-buttons">
+        <a href="mailto:hello@neocodestudio.co.uk?subject=Free%20Website%20Audit" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
+        <a href="index.html#work" class="btn btn-secondary">See Our Work</a>
     </div>
 </section>
 
@@ -386,7 +400,7 @@ document.getElementById('navToggle').addEventListener('click', () => {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate'); observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
-document.querySelectorAll('.service-card, .pricing-card').forEach(el => observer.observe(el));
+document.querySelectorAll('.pricing-card, .guarantee, .faq-item').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
