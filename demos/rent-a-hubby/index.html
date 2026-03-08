@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Hubby | Brighton's Friendly Handyman Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #1B6FA8;
+            --blue-dark: #134E75;
+            --blue-light: #E8F4FD;
+            --orange: #F28C28;
+            --orange-dark: #D97720;
+            --orange-light: #FFF4E8;
+            --dark: #1A2332;
+            --text: #3A4553;
+            --text-light: #6B7A8D;
+            --bg: #FFFFFF;
+            --bg-off: #F8FAFB;
+            --border: #E5EBF0;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.10);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === NEOCODE BANNER === */
+        .neocode-banner {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1000;
+        }
+        .neocode-banner a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .neocode-banner a:hover { text-decoration: underline; }
+
+        /* === NAVIGATION === */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--blue);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--orange); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--blue); }
+        .nav-cta {
+            background: var(--orange);
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .nav-cta:hover { background: var(--orange-dark); transform: translateY(-1px); }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .menu-toggle span {
+            display: block; width: 24px; height: 2px; background: var(--dark);
+            margin: 6px 0; transition: 0.3s;
+        }
+
+        /* === CONTAINER === */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* === HERO === */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover no-repeat;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(19,78,117,0.85) 0%, rgba(27,111,168,0.65) 50%, rgba(242,140,40,0.3) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            padding: 60px 0;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 5.5vw, 64px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--orange); }
+        .hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 520px;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(242,140,40,0.35);
+        }
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(242,140,40,0.45);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(8px);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        .btn-blue {
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(27,111,168,0.3);
+        }
+        .btn-blue:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* === STATS === */
+        .stats {
+            background: var(--bg);
+            padding: 0;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        .stat-item {
+            padding: 40px 30px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-number span { color: var(--orange); }
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* === SECTION === */
+        .section { padding: 100px 0; }
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(32px, 4vw, 44px);
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* === SERVICES === */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .service-body {
+            padding: 28px;
+        }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--blue-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+        .service-body h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .service-body p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* === SPLIT SECTION === */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .split-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .split-img img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+        .split-text h2 {
+            font-size: clamp(30px, 3.5vw, 40px);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .split-text p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+        .check-list { list-style: none; margin-bottom: 32px; }
+        .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .check-list li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: var(--orange-light);
+            color: var(--orange);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        /* === TESTIMONIALS === */
+        .testimonials-bg { background: var(--bg-off); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .testimonial-stars {
+            color: var(--orange);
+            font-size: 18px;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--blue);
+            font-size: 16px;
+        }
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--dark);
+        }
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* === CTA === */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: rgba(242,140,40,0.15);
+            border-radius: 50%;
+        }
+        .cta-section h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .cta-section p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+        .cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 80px 0 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .footer-brand h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .footer-brand h3 span { color: var(--orange); }
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .footer h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 10px; }
+        .footer ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer ul a:hover { color: var(--orange); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .services-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .split { gap: 40px; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .hero { min-height: 80vh; }
+            .hero-content { padding: 40px 0; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+            .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .split { grid-template-columns: 1fr; gap: 32px; }
+            .split-img img { height: 350px; }
+            .section { padding: 70px 0; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Neocode Banner -->
+<div class="neocode-banner">
+    Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; <a href="https://neocodestudio.co.uk/contact.html" target="_blank">Get yours today</a>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <a href="#" class="nav-logo">Rent A <span>Hubby</span></a>
+    <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">Brighton & Hove's Trusted Handyman</div>
+            <h1>Your Friendly, <span>Reliable</span> Handyman Service</h1>
+            <p>Professional domestic and commercial handyman services across Brighton, Hove, and surrounding areas. No call-out charge &mdash; you only pay for the time the job actually takes.</p>
+            <div class="hero-btns">
+                <a href="mailto:Brian@rentahubby.co.uk" class="btn btn-primary">Get a Free Quote</a>
+                <a href="#services" class="btn btn-secondary">View Services</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">15<span>+</span></div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2,500<span>+</span></div>
+                <div class="stat-label">Jobs Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">&pound;1<span>M</span></div>
+                <div class="stat-label">Public Liability Insurance</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Call-Out Charges</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title">Professional Handyman Services</h2>
+            <p class="section-subtitle">From small fixes to full renovations, we handle it all with care and expertise across Brighton & Hove.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/5691640/pexels-photo-5691640.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Plumbing Service" class="service-img">
+                <div class="service-body">
+                    <div class="service-icon">&#128295;</div>
+                    <h3>Plumbing &amp; Repairs</h3>
+                    <p>Leaky taps, toilet repairs, pipe fixes, and general plumbing maintenance for your home or business.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/5691631/pexels-photo-5691631.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Electrical Work" class="service-img">
+                <div class="service-body">
+                    <div class="service-icon">&#9889;</div>
+                    <h3>Electrical Work</h3>
+                    <p>Light fitting installation, socket repairs, switch replacements, and minor electrical maintenance.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/4491881/pexels-photo-4491881.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Furniture Assembly" class="service-img">
+                <div class="service-body">
+                    <div class="service-icon">&#128736;</div>
+                    <h3>Furniture Assembly</h3>
+                    <p>Expert flat-pack and IKEA furniture assembly. We build it right the first time, every time.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Fixings and Fitting" class="service-img">
+                <div class="service-body">
+                    <div class="service-icon">&#128296;</div>
+                    <h3>Fixings &amp; Fittings</h3>
+                    <p>Shelves, blinds, curtain poles, bathroom accessories, picture hanging, and mirrors securely fitted.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Commercial Services" class="service-img">
+                <div class="service-body">
+                    <div class="service-icon">&#127970;</div>
+                    <h3>Commercial Services</h3>
+                    <p>Office maintenance, retail fit-outs, and commercial property upkeep. Reliable and professional.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/5691640/pexels-photo-5691640.jpeg?auto=compress&cs=tinysrgb&w=600&h=440&fit=crop&crop=top" alt="General Repairs" class="service-img">
+                <div class="service-body">
+                    <div class="service-icon">&#127968;</div>
+                    <h3>General Home Repairs</h3>
+                    <p>Door adjustments, window fixes, wall patching, and all those odd jobs around the house you never get to.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Split Section -->
+<section class="section" id="about" style="background: var(--bg-off);">
+    <div class="container">
+        <div class="split">
+            <div class="split-img">
+                <img src="https://images.pexels.com/photos/5691631/pexels-photo-5691631.jpeg?auto=compress&cs=tinysrgb&w=800&h=900&fit=crop" alt="Professional Handyman at Work">
+            </div>
+            <div class="split-text">
+                <div class="section-label">Why Choose Us</div>
+                <h2>Brighton's Most Trusted Handyman Since Day One</h2>
+                <p>At Rent A Hubby, we believe in honest, reliable service. You only pay for the time the job takes &mdash; no hidden fees, no call-out charges. If we can't complete the job, you don't pay a penny.</p>
+                <ul class="check-list">
+                    <li>No call-out charge &mdash; ever</li>
+                    <li>&pound;1M public liability insurance</li>
+                    <li>All work fully guaranteed</li>
+                    <li>Pay only for actual time worked</li>
+                    <li>All major debit &amp; credit cards accepted</li>
+                    <li>Covering BN1, BN2, BN3 &amp; surrounding areas</li>
+                </ul>
+                <a href="mailto:Brian@rentahubby.co.uk" class="btn btn-blue">Contact Brian Today</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials-bg" id="reviews">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">What People Say</div>
+            <h2 class="section-title">Trusted by Homeowners Across Brighton</h2>
+            <p class="section-subtitle">Real feedback from real customers who chose Rent A Hubby for their home repairs.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Brian was fantastic &mdash; arrived on time, fixed everything quickly, and left the place spotless. Couldn't ask for a better handyman service in Brighton."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JM</div>
+                    <div>
+                        <div class="testimonial-name">James Mitchell</div>
+                        <div class="testimonial-role">Homeowner, Hove</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Called in the morning, Brian was here by lunchtime. Fixed a leaky tap and assembled my IKEA wardrobe in one visit. Fair price, great work. Highly recommend."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SP</div>
+                    <div>
+                        <div class="testimonial-name">Sarah Patel</div>
+                        <div class="testimonial-role">Tenant, Brighton</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"We've used Rent A Hubby for our office maintenance for years. Reliable, professional, and always happy to help. The no call-out fee policy is brilliant."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">DL</div>
+                    <div>
+                        <div class="testimonial-name">David Lawrence</div>
+                        <div class="testimonial-role">Office Manager, BN1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>Need Something Fixed?</h2>
+        <p>Get in touch today for a free, no-obligation quote. No call-out charge, no hassle &mdash; just honest, reliable handyman work.</p>
+        <div class="cta-btns">
+            <a href="mailto:Brian@rentahubby.co.uk" class="btn btn-primary">Email Brian</a>
+            <a href="#services" class="btn btn-secondary">Browse Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Rent A <span>Hubby</span></h3>
+                <p>Brighton & Hove's friendly, reliable handyman service. Domestic and commercial repairs, fixings, and installations &mdash; all fully insured and guaranteed.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Plumbing</a></li>
+                    <li><a href="#">Electrical</a></li>
+                    <li><a href="#">Furniture Assembly</a></li>
+                    <li><a href="#">Fixings &amp; Fittings</a></li>
+                    <li><a href="#">Commercial</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Areas Covered</h4>
+                <ul>
+                    <li><a href="#">Brighton BN1 &amp; BN2</a></li>
+                    <li><a href="#">Hove BN3</a></li>
+                    <li><a href="#">Portslade</a></li>
+                    <li><a href="#">Peacehaven BN10</a></li>
+                    <li><a href="#">Lewes BN7</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:Brian@rentahubby.co.uk">Brian@rentahubby.co.uk</a></li>
+                    <li><a href="#">Brighton &amp; Hove, East Sussex</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Rent A Hubby. All rights reserved.</span>
+            <span>Brighton Handyman Service | Fully Insured</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

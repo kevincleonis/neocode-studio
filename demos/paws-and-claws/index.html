@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Claws Dog Grooming Leeds | Professional Dog Grooming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #E07B39;
+            --primary-dark: #C96A2E;
+            --primary-light: #FFF3EB;
+            --accent: #2B9B8F;
+            --accent-light: #E6F7F5;
+            --dark: #1A2332;
+            --gray-700: #3D4F5F;
+            --gray-500: #6B7E8D;
+            --gray-300: #C8D4DC;
+            --gray-100: #F5F8FA;
+            --white: #FFFFFF;
+            --warm-bg: #FFFAF6;
+            --radius: 16px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--gray-700);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, .section-title, .nav-logo { font-family: 'Nunito', sans-serif; }
+
+        /* NEOCODE BANNER */
+        .neocode-banner {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .neocode-banner a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .neocode-banner a:hover { text-decoration: underline; }
+
+        /* NAV */
+        .nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-500);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all 0.3s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,250,246,0.96) 0%, rgba(255,250,246,0.88) 50%, rgba(255,250,246,0.3) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        .hero-text { max-width: 580px; }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 5.5vw, 64px);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 19px;
+            color: var(--gray-500);
+            margin-bottom: 36px;
+            max-width: 480px;
+            line-height: 1.8;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-trust {
+            margin-top: 32px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        .trust-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(224,123,57,0.3);
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(224,123,57,0.4); }
+        .btn-outline {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--gray-300);
+        }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(43,155,143,0.3);
+        }
+        .btn-accent:hover { background: #248A7F; transform: translateY(-2px); }
+
+        /* STATS */
+        .stats-bar {
+            background: var(--warm-bg);
+            padding: 48px 24px;
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .stat-item p { font-size: 15px; color: var(--gray-500); font-weight: 500; }
+
+        /* SECTIONS */
+        .section { padding: 100px 24px; }
+        .section-center { text-align: center; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        .section-label.teal {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto 56px;
+            line-height: 1.7;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(224,123,57,0.08);
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .service-card-body { padding: 28px; }
+        .service-card h3 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .service-card p { font-size: 15px; color: var(--gray-500); line-height: 1.7; }
+
+        /* SPLIT */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .split-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .split-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+        .split-text h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .split-text p { font-size: 17px; color: var(--gray-500); margin-bottom: 16px; line-height: 1.8; }
+        .check-list { list-style: none; margin: 24px 0; }
+        .check-list li {
+            padding: 8px 0;
+            font-size: 16px;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .check-list li::before {
+            content: "\2713";
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(224,123,57,0.08);
+        }
+        .testimonial-stars { color: #F59E0B; font-size: 18px; margin-bottom: 16px; }
+        .testimonial-card p {
+            font-size: 16px;
+            color: var(--gray-700);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .testimonial-author { font-weight: 600; color: var(--dark); font-size: 15px; }
+        .testimonial-role { font-size: 13px; color: var(--gray-500); }
+
+        /* AREAS */
+        .areas-section { background: var(--warm-bg); }
+        .areas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .area-tag {
+            background: var(--white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* CTA */
+        .cta-section {
+            position: relative;
+            padding: 120px 24px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
+        }
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(224,123,57,0.9), rgba(43,155,143,0.88));
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-content h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .cta-content p {
+            font-size: 19px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 72px 24px 32px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand h3 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .footer-brand h3 span { color: var(--primary); }
+        .footer-brand p { font-size: 15px; line-height: 1.7; }
+        .footer h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .footer ul a:hover { color: var(--primary); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .split { grid-template-columns: 1fr; gap: 40px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .stat-item h3 { font-size: 32px; }
+            .hero h1 { font-size: 36px; }
+            .hero-btns { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-trust { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NEOCODE BANNER -->
+<div class="neocode-banner">
+    Free redesign concept by <a href="https://neocode.studio" target="_blank">Neocode Studio</a> &mdash; <a href="mailto:hello@neocode.studio">Get in touch</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Paws &amp; <span>Claws</span></a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#contact" class="nav-cta">Book Now</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">Professional Dog Grooming in Leeds</div>
+            <h1>Does Your Dog Deserve <span>Some Pampering?</span></h1>
+            <p>Fully qualified, fully insured dog grooming in Leeds. No cages, no stress &mdash; just one-to-one attention, gentle care, and tail-wagging results. Your dog treated as if they were our own.</p>
+            <div class="hero-btns">
+                <a href="tel:07890666646" class="btn btn-primary">Call 07890 666 646</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <div class="trust-icon">&#10003;</div>
+                    Fully Qualified
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#10003;</div>
+                    Fully Insured
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#10003;</div>
+                    No Cages Ever
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <h3>1:1</h3>
+            <p>Individual Attention</p>
+        </div>
+        <div class="stat-item">
+            <h3>0</h3>
+            <p>Cages Used</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Insured &amp; Qualified</p>
+        </div>
+        <div class="stat-item">
+            <h3>Leeds</h3>
+            <p>Based &amp; Serving</p>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section section-center" id="services">
+    <div class="container">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Grooming That Dogs Love</h2>
+        <p class="section-subtitle">Every dog gets one-to-one attention from start to finish. Relaxing music, gentle handling, and plenty of cuddles included as standard.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/6816860/pexels-photo-6816860.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Full Dog Grooming">
+                <div class="service-card-body">
+                    <h3>Full Groom</h3>
+                    <p>A complete pamper session including bath, blow-dry, full clip, nail trimming, ear cleaning, and styling. Your dog will leave looking and feeling their absolute best.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/5731862/pexels-photo-5731862.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Puppy Grooming">
+                <div class="service-card-body">
+                    <h3>Puppy's First Groom</h3>
+                    <p>A gentle, stress-free introduction to grooming for puppies. We take extra time and care to ensure your pup has a positive experience that sets them up for a lifetime of easy grooming.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1390361/pexels-photo-1390361.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dog Clipping">
+                <div class="service-card-body">
+                    <h3>Clipping &amp; Styling</h3>
+                    <p>Professional clipping for all breeds. Whether it's a breed-standard cut or a practical trim, we tailor every clip to suit your dog's coat type, lifestyle, and your preferences.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dog Bathing">
+                <div class="service-card-body">
+                    <h3>Bath &amp; Blow-Dry</h3>
+                    <p>A refreshing bath with premium shampoos suited to your dog's coat, followed by a thorough blow-dry. Perfect between full grooms to keep your dog clean and fresh.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Nail Trimming">
+                <div class="service-card-body">
+                    <h3>Nail Trimming</h3>
+                    <p>Safe and comfortable nail trimming to keep your dog's paws healthy. Overgrown nails can cause pain and mobility issues &mdash; regular trims keep your dog happy on their feet.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dog Spa Treatment">
+                <div class="service-card-body">
+                    <h3>Spa &amp; Pamper</h3>
+                    <p>The ultimate treat for your furry friend. Our spa experience includes a luxury bath, conditioning treatment, massage, and finishing touches. Because every dog deserves to feel special.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SPLIT -->
+<section class="section" id="about" style="background: var(--warm-bg);">
+    <div class="container">
+        <div class="split">
+            <div class="split-img">
+                <img src="https://images.pexels.com/photos/5731862/pexels-photo-5731862.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Paws and Claws Dog Grooming">
+            </div>
+            <div class="split-text">
+                <div class="section-label teal">About Us</div>
+                <h2>Where Every Dog Gets the VIP Treatment</h2>
+                <p>At Paws &amp; Claws Dog Grooming, we believe every dog deserves to be treated with the same love and care you'd give them at home &mdash; if not more. That's why we never use cages. Your dog receives one-to-one attention from the moment they arrive until the moment they leave.</p>
+                <p>We play soothing music to keep dogs relaxed, and our fully qualified groomers treat every dog as if they were our own. Based at 2 Holtdale Croft in Leeds, we're proud to be a trusted name for dog owners across the city.</p>
+                <ul class="check-list">
+                    <li>No cages &mdash; dogs are never left alone</li>
+                    <li>One-to-one attention at all times</li>
+                    <li>Calming music for a stress-free experience</li>
+                    <li>Fully qualified and fully insured</li>
+                    <li>Every dog treated as our own</li>
+                </ul>
+                <a href="tel:07890666646" class="btn btn-accent" style="margin-top: 12px;">Book Your Dog's Appointment</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-center" id="testimonials">
+    <div class="container">
+        <div class="section-label">Happy Dogs, Happy Owners</div>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Dogs can't write reviews, but their happy owners certainly can. Here's what they have to say about Paws &amp; Claws.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"My anxious rescue dog actually enjoys going to Paws &amp; Claws. The no-cage policy and one-to-one attention makes all the difference. She comes home so happy and looking gorgeous!"</p>
+                <div class="testimonial-author">Emma R.</div>
+                <div class="testimonial-role">Owner of Bella, Cockapoo</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Took my puppy for his first groom and they were so patient and gentle with him. He wasn't scared at all and now he actually gets excited when we pull up outside. Highly recommend!"</p>
+                <div class="testimonial-author">James K.</div>
+                <div class="testimonial-role">Owner of Alfie, Golden Retriever</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Been bringing both my dogs here for years. The quality of grooming is outstanding and you can tell they genuinely love dogs. Wouldn't trust anyone else with my two."</p>
+                <div class="testimonial-author">Lisa P.</div>
+                <div class="testimonial-role">Owner of Max &amp; Ruby, Spaniels</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AREAS -->
+<section class="section section-center areas-section" id="areas">
+    <div class="container">
+        <div class="section-label teal">Service Areas</div>
+        <h2 class="section-title">Serving Dogs Across Leeds</h2>
+        <p class="section-subtitle">Based at 2 Holtdale Croft, LS16 7SQ, we welcome dogs from across Leeds and the surrounding areas.</p>
+        <div class="areas-grid">
+            <span class="area-tag">Holt Park</span>
+            <span class="area-tag">Cookridge</span>
+            <span class="area-tag">Adel</span>
+            <span class="area-tag">Bramhope</span>
+            <span class="area-tag">Horsforth</span>
+            <span class="area-tag">Headingley</span>
+            <span class="area-tag">Kirkstall</span>
+            <span class="area-tag">Meanwood</span>
+            <span class="area-tag">Chapel Allerton</span>
+            <span class="area-tag">Moortown</span>
+            <span class="area-tag">Roundhay</span>
+            <span class="area-tag">Wetherby</span>
+            <span class="area-tag">Otley</span>
+            <span class="area-tag">Guiseley</span>
+            <span class="area-tag">Yeadon</span>
+            <span class="area-tag">Pudsey</span>
+            <span class="area-tag">Leeds City Centre</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+        <h2>Ready to Pamper Your Pooch?</h2>
+        <p>Give your dog the grooming experience they deserve. No cages, no stress &mdash; just expert care and plenty of cuddles. Call now to book your appointment.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="tel:07890666646" class="btn btn-white">Call 07890 666 646</a>
+            <a href="mailto:Pawsandclawsgrooming@aol.co.uk" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: var(--white);">Email Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Paws &amp; <span>Claws</span></h3>
+            <p>Professional dog grooming in Leeds. Fully qualified, fully insured, and committed to giving every dog one-to-one attention in a cage-free, stress-free environment.</p>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">Full Groom</a></li>
+                <li><a href="#">Puppy's First Groom</a></li>
+                <li><a href="#">Clipping &amp; Styling</a></li>
+                <li><a href="#">Bath &amp; Blow-Dry</a></li>
+                <li><a href="#">Nail Trimming</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Why Us</h4>
+            <ul>
+                <li><a href="#">No Cages</a></li>
+                <li><a href="#">1:1 Attention</a></li>
+                <li><a href="#">Fully Qualified</a></li>
+                <li><a href="#">Fully Insured</a></li>
+                <li><a href="#">Calming Environment</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="tel:07890666646">07890 666 646</a></li>
+                <li><a href="mailto:Pawsandclawsgrooming@aol.co.uk">Pawsandclawsgrooming @aol.co.uk</a></li>
+                <li><a href="#">2 Holtdale Croft,<br>Leeds LS16 7SQ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Paws &amp; Claws Dog Grooming Leeds. All rights reserved. Fully qualified &amp; fully insured.</p>
+    </div>
+</footer>
+
+</body>
+</html>

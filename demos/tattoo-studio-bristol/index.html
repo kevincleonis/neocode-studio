@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tattoo Studio Bristol - Custom Tattoos by Ben Boston</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0e0e0e;
+            --bg-card: #1a1a1a;
+            --bg-elevated: #222222;
+            --text: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --accent: #c9a44c;
+            --accent-hover: #dbb960;
+            --border: #2a2a2a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === NEOCODE BANNER === */
+        .neocode-banner {
+            background: #000;
+            border-bottom: 1px solid var(--accent);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #ccc;
+            position: relative;
+            z-index: 1000;
+        }
+        .neocode-banner a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .neocode-banner a:hover { text-decoration: underline; }
+
+        /* === NAVIGATION === */
+        .navbar {
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta {
+            background: var(--accent);
+            color: #000 !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: background 0.3s, transform 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+        /* === HERO === */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 164, 76, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6vw, 80px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 520px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,164,76,0.3); }
+        .btn-outline {
+            border: 1px solid var(--text-muted);
+            color: var(--text);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: transparent;
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* === STATS === */
+        .stats {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 60px 24px;
+        }
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* === SECTIONS === */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-label {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* === SERVICES === */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 60px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .service-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .service-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .service-body { padding: 28px; }
+        .service-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-body p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* === SPLIT SECTION === */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .split-img {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .split-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        .split-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+        .split-content .section-title { margin-bottom: 24px; }
+        .split-content p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .split-list {
+            list-style: none;
+            margin: 24px 0 36px;
+        }
+        .split-list li {
+            padding: 10px 0;
+            color: var(--text-muted);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .split-list li::before {
+            content: '✦';
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        /* === TESTIMONIALS === */
+        .testimonials-bg {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 60px;
+        }
+        .testimonial-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px;
+        }
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text);
+        }
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* === CTA === */
+        .cta-section {
+            text-align: center;
+            padding: 120px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201,164,76,0.08) 0%, transparent 70%);
+        }
+        .cta-section .section-title { max-width: 600px; margin: 0 auto 20px; }
+        .cta-section .section-subtitle { margin: 0 auto 40px; text-align: center; }
+
+        /* === FOOTER === */
+        .footer {
+            background: #080808;
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .footer-brand h3 span { color: var(--accent); }
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+        .footer h4 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer ul a:hover { color: var(--accent); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 48px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .split { grid-template-columns: 1fr; gap: 40px; }
+            .split-img img { height: 350px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .stat-number { font-size: 36px; }
+            .hero h1 { font-size: 36px; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-outline { text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NEOCODE BANNER -->
+<div class="neocode-banner">
+    ✨ Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> — See what your website could look like
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">The Tattoo <span>Studio</span></a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact" class="nav-cta">Book Now</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Award-Winning Tattoo Studio — Bristol</div>
+        <h1>Professional Tattooing at <span>Painless Prices</span></h1>
+        <p>Nearly 30 years of artistry on Cheltenham Road. Custom designs, expert cover-ups, and a relaxed studio atmosphere with award-winning artist Ben Boston.</p>
+        <div class="hero-buttons">
+            <a href="tel:01179077407" class="btn-primary">Call 0117 907 7407</a>
+            <a href="#services" class="btn-outline">View Our Work</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stats-grid">
+        <div>
+            <div class="stat-number">28+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Tattoos Completed</div>
+        </div>
+        <div>
+            <div class="stat-number">5★</div>
+            <div class="stat-label">Google Rating</div>
+        </div>
+        <div>
+            <div class="stat-number">BS6</div>
+            <div class="stat-label">Bristol Location</div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+    <div class="section-label">Our Specialties</div>
+    <h2 class="section-title">Ink That Tells Your Story</h2>
+    <p class="section-subtitle">Every tattoo is a collaboration. From bold custom designs to expert cover-ups, we bring your vision to life with precision and care.</p>
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom Tattoo Design" class="service-img">
+            <div class="service-body">
+                <h3>Custom Designs</h3>
+                <p>Every piece is unique. We work with you to create a one-of-a-kind design that perfectly captures your vision, personality and style across all tattoo genres.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.pexels.com/photos/4123590/pexels-photo-4123590.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cover-up Tattoos" class="service-img">
+            <div class="service-body">
+                <h3>Expert Cover-Ups</h3>
+                <p>Specialising in transforming old, unwanted or faded tattoos into stunning new artwork. Ben's cover-up work is renowned throughout the Bristol tattoo scene.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.pexels.com/photos/3661193/pexels-photo-3661193.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo Consultation" class="service-img">
+            <div class="service-body">
+                <h3>Walk-Ins & Consultations</h3>
+                <p>Pop in for a chat about your next piece. We offer free consultations to discuss placement, sizing, and design direction in our relaxed Cheltenham Road studio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPLIT - ABOUT -->
+<section class="split" id="about">
+    <div class="split-img">
+        <img src="https://images.pexels.com/photos/2183132/pexels-photo-2183132.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ben Boston - Tattoo Artist Bristol">
+    </div>
+    <div class="split-content">
+        <div class="section-label">Meet The Artist</div>
+        <h2 class="section-title">Ben Boston — Born & Inked in Bristol</h2>
+        <p>Born in Bristol in 1976, Ben showed exceptional artistic talent from childhood. After studying art at Brunel and Filton Colleges, he attended his first tattoo conventions in 1996 and never looked back.</p>
+        <p>By 1998, Ben had taken over the studio on Cheltenham Road, building it into one of Bristol's most trusted tattoo destinations alongside colleague Steuart Kingsley.</p>
+        <ul class="split-list">
+            <li>Award-winning tattoo artist</li>
+            <li>All styles — realism, traditional, Japanese, geometric</li>
+            <li>Specialist in cover-up transformations</li>
+            <li>Relaxed, welcoming studio atmosphere</li>
+            <li>Professional tattooing at painless prices</li>
+        </ul>
+        <a href="tel:01179077407" class="btn-primary">Book a Consultation</a>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg" id="testimonials">
+    <div class="section" style="padding-bottom: 100px;">
+        <div class="section-label">Client Reviews</div>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Hundreds of happy clients who wear our art with pride every single day.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Ben is no 1 at his trade. The studio has a comfortable, relaxed atmosphere. Wouldn't go anywhere else in Bristol for my ink."</p>
+                <div class="testimonial-author">Mark T.</div>
+                <div class="testimonial-role">Facebook Review</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Had an old tattoo I'd hated for years. Ben transformed it into something absolutely incredible. His cover-up skills are unmatched. So grateful!"</p>
+                <div class="testimonial-author">Sarah K.</div>
+                <div class="testimonial-role">Google Review</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"First tattoo and I was nervous, but Ben made me feel completely at ease. The attention to detail is amazing and the price was really fair."</p>
+                <div class="testimonial-author">James P.</div>
+                <div class="testimonial-role">Google Review</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="section-label">Ready To Get Inked?</div>
+    <h2 class="section-title">Your Next Tattoo Starts With a Conversation</h2>
+    <p class="section-subtitle">Visit us at 232 Cheltenham Road, Bristol BS6 5QU or give us a call. Walk-ins welcome — consultations always free.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:01179077407" class="btn-primary">Call 0117 907 7407</a>
+        <a href="mailto:tattoostudiobristol@hotmail.co.uk" class="btn-outline">Email Us</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>The Tattoo <span>Studio</span></h3>
+            <p>Professional tattooing at painless prices. Award-winning custom tattoos and expert cover-ups on Cheltenham Road since 1998.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Ben</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Book Now</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">Custom Tattoos</a></li>
+                <li><a href="#">Cover-Ups</a></li>
+                <li><a href="#">Consultations</a></li>
+                <li><a href="#">Walk-Ins</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="tel:01179077407">0117 907 7407</a></li>
+                <li><a href="mailto:tattoostudiobristol@hotmail.co.uk">Email Us</a></li>
+                <li><a href="#">232 Cheltenham Road</a></li>
+                <li><a href="#">Bristol BS6 5QU</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 The Tattoo Studio Bristol. All rights reserved.</span>
+        <span>Follow us: <a href="https://instagram.com/tattoostudiobristol" style="color: var(--accent);">@tattoostudiobristol</a></span>
+    </div>
+</footer>
+
+</body>
+</html>

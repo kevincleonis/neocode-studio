@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carol's Florist Manchester | Over 57 Years of Floral Excellence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #D4727A;
+            --primary-dark: #C05A63;
+            --primary-light: #FDF2F4;
+            --accent: #5B8C5A;
+            --accent-light: #E8F5E8;
+            --dark: #2D2926;
+            --gray-900: #1E293B;
+            --gray-700: #4A4543;
+            --gray-500: #7E7572;
+            --gray-300: #D4CCC8;
+            --gray-100: #FAF7F5;
+            --white: #FFFFFF;
+            --cream: #FFF9F5;
+            --radius: 16px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--gray-700);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, .section-title { font-family: 'Playfair Display', serif; }
+
+        /* NEOCODE BANNER */
+        .neocode-banner {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .neocode-banner a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .neocode-banner a:hover { text-decoration: underline; }
+
+        /* NAV */
+        .nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-500);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all 0.3s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,249,245,0.96) 0%, rgba(255,249,245,0.88) 50%, rgba(255,249,245,0.35) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        .hero-text { max-width: 580px; }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 5.5vw, 64px);
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 19px;
+            color: var(--gray-500);
+            margin-bottom: 36px;
+            max-width: 480px;
+            line-height: 1.8;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-rating {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hero-rating .stars { color: #F59E0B; font-size: 20px; }
+        .hero-rating p { font-size: 15px; color: var(--gray-500); }
+        .hero-rating strong { color: var(--dark); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(212,114,122,0.3);
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,114,122,0.4); }
+        .btn-outline {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--gray-300);
+        }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+        /* STATS */
+        .stats-bar {
+            background: var(--cream);
+            padding: 48px 24px;
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .stat-item p { font-size: 15px; color: var(--gray-500); font-weight: 500; }
+
+        /* SECTIONS */
+        .section { padding: 100px 24px; }
+        .section-center { text-align: center; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto 56px;
+            line-height: 1.7;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(212,114,122,0.08);
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .service-card-body { padding: 28px; }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .service-card p { font-size: 15px; color: var(--gray-500); line-height: 1.7; }
+
+        /* SPLIT */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .split-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .split-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+        .split-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .split-text p { font-size: 17px; color: var(--gray-500); margin-bottom: 16px; line-height: 1.8; }
+        .check-list { list-style: none; margin: 24px 0; }
+        .check-list li {
+            padding: 8px 0;
+            font-size: 16px;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .check-list li::before {
+            content: "\2713";
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212,114,122,0.08);
+        }
+        .testimonial-stars { color: #F59E0B; font-size: 18px; margin-bottom: 16px; }
+        .testimonial-card p {
+            font-size: 16px;
+            color: var(--gray-700);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .testimonial-author { font-weight: 600; color: var(--dark); font-size: 15px; }
+        .testimonial-role { font-size: 13px; color: var(--gray-500); }
+
+        /* AREAS */
+        .areas-section { background: var(--cream); }
+        .areas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .area-tag {
+            background: var(--white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* CTA */
+        .cta-section {
+            position: relative;
+            padding: 120px 24px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/698907/pexels-photo-698907.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
+        }
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212,114,122,0.9), rgba(91,140,90,0.85));
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .cta-content p {
+            font-size: 19px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 72px 24px 32px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .footer-brand h3 span { color: var(--primary); }
+        .footer-brand p { font-size: 15px; line-height: 1.7; }
+        .footer h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .footer ul a:hover { color: var(--primary); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .split { grid-template-columns: 1fr; gap: 40px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .stat-item h3 { font-size: 32px; }
+            .hero h1 { font-size: 36px; }
+            .hero-btns { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NEOCODE BANNER -->
+<div class="neocode-banner">
+    Free redesign concept by <a href="https://neocode.studio" target="_blank">Neocode Studio</a> &mdash; <a href="mailto:hello@neocode.studio">Get in touch</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Carol's <span>Florist</span></a>
+        <ul class="nav-links">
+            <li><a href="#services">Our Flowers</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#delivery">Delivery</a></li>
+            <li><a href="#contact" class="nav-cta">Order Now</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">Independent Family Florist Since 1967</div>
+            <h1>Beautiful Flowers for <span>Every Occasion</span></h1>
+            <p>Over 57 years of creating stunning hand-tied bouquets, heartfelt funeral tributes, and celebration arrangements. Daily fresh flowers, delivered with care across Manchester.</p>
+            <div class="hero-btns">
+                <a href="tel:01617894914" class="btn btn-primary">Call 0161 789 4914</a>
+                <a href="#services" class="btn btn-outline">Browse Flowers</a>
+            </div>
+            <div class="hero-rating">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p><strong>4.9/5</strong> from 37 reviews</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <h3>57+</h3>
+            <p>Years of Excellence</p>
+        </div>
+        <div class="stat-item">
+            <h3>4.9</h3>
+            <p>Star Rating</p>
+        </div>
+        <div class="stat-item">
+            <h3>Daily</h3>
+            <p>Fresh Flowers</p>
+        </div>
+        <div class="stat-item">
+            <h3>Worldwide</h3>
+            <p>Delivery via Interflora</p>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section section-center" id="services">
+    <div class="container">
+        <div class="section-label">Our Flowers</div>
+        <h2 class="section-title">Handcrafted with Love</h2>
+        <p class="section-subtitle">From joyful celebrations to tender farewells, every arrangement is lovingly handcrafted with daily fresh flowers and foliage.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hand-Tied Bouquets">
+                <div class="service-card-body">
+                    <h3>Hand-Tied Bouquets</h3>
+                    <p>Stunning hand-tied bouquets crafted fresh daily for birthdays, anniversaries, thank-yous, and those "just because" moments. Each arrangement is as unique as the person receiving it.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1697912/pexels-photo-1697912.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wedding Flowers">
+                <div class="service-card-body">
+                    <h3>Wedding &amp; Event Flowers</h3>
+                    <p>Make your special day unforgettable with bespoke wedding flowers. From bridal bouquets to venue arrangements, we create floral designs that bring your vision to life.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/2253842/pexels-photo-2253842.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Funeral Tributes">
+                <div class="service-card-body">
+                    <h3>Funeral Tributes</h3>
+                    <p>Compassionate and personal funeral flower arrangements, including wreaths, hearts, posies, coffin sprays, and bespoke designs. Every tribute is crafted with sensitivity and care.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/372166/pexels-photo-372166.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Gift Arrangements">
+                <div class="service-card-body">
+                    <h3>Gift Arrangements</h3>
+                    <p>Complete your gift with balloons, soft toys, luxury chocolates, and greeting cards alongside your flower arrangement. Perfect for Mother's Day, Valentine's, and celebrations.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1458282/pexels-photo-1458282.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Click & Collect">
+                <div class="service-card-body">
+                    <h3>Click &amp; Collect</h3>
+                    <p>Order by phone or visit our shop on Liverpool Road, Peel Green. Click &amp; Collect available for those who prefer to pick up their beautiful flowers in person.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/698907/pexels-photo-698907.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Worldwide Delivery">
+                <div class="service-card-body">
+                    <h3>UK &amp; Worldwide Delivery</h3>
+                    <p>Local personal delivery across Manchester and Salford. UK and worldwide deliveries available through our Interflora partnership, so you can send love anywhere in the world.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SPLIT -->
+<section class="section" id="about" style="background: var(--cream);">
+    <div class="container">
+        <div class="split">
+            <div class="split-img">
+                <img src="https://images.pexels.com/photos/1697912/pexels-photo-1697912.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Carol's Florist Shop">
+            </div>
+            <div class="split-text">
+                <div class="section-label">Our Story</div>
+                <h2>Over 57 Years of Floral Artistry</h2>
+                <p>Carol's Florist has been a beloved part of the Manchester community for over five decades. As an independent, family-run florist, we take pride in providing daily fresh flowers, helpful and friendly advice, and exceptional customer care that you simply won't find at a chain.</p>
+                <p>Located at 508 Liverpool Road, Peel Green, Eccles, our shop is a destination for anyone who appreciates beautifully crafted floral arrangements made with genuine passion and artistry.</p>
+                <ul class="check-list">
+                    <li>Daily fresh flowers and foliage</li>
+                    <li>Independent, family-run since 1967</li>
+                    <li>Interflora member for worldwide delivery</li>
+                    <li>Compassionate funeral tribute specialists</li>
+                    <li>Personalised advice for every occasion</li>
+                </ul>
+                <a href="tel:01617894914" class="btn btn-primary" style="margin-top: 12px;">Call Us Today</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-center" id="testimonials">
+    <div class="container">
+        <div class="section-label">Reviews</div>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Rated 4.9 out of 5 stars. Here's why our customers love Carol's Florist.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"The most beautiful bouquet I've ever received. Carol's put so much thought and care into the arrangement. The flowers lasted over two weeks! Absolutely wonderful service."</p>
+                <div class="testimonial-author">Sarah M.</div>
+                <div class="testimonial-role">Birthday Bouquet</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"During the most difficult time, Carol's created the most beautiful funeral tribute for my mum. They were so compassionate and understanding. The flowers were absolutely stunning."</p>
+                <div class="testimonial-author">David L.</div>
+                <div class="testimonial-role">Funeral Tribute</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Been using Carol's for years and they never disappoint. Always fresh flowers, always beautifully arranged, and the delivery is always on time. A real gem in Eccles."</p>
+                <div class="testimonial-author">Karen W.</div>
+                <div class="testimonial-role">Regular Customer</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DELIVERY AREAS -->
+<section class="section section-center areas-section" id="delivery">
+    <div class="container">
+        <div class="section-label">Delivery Areas</div>
+        <h2 class="section-title">We Deliver Across Manchester</h2>
+        <p class="section-subtitle">Personal delivery to the following areas, plus UK and worldwide delivery through Interflora.</p>
+        <div class="areas-grid">
+            <span class="area-tag">Barton</span>
+            <span class="area-tag">Boothstown</span>
+            <span class="area-tag">Cadishead</span>
+            <span class="area-tag">Davyhulme</span>
+            <span class="area-tag">Eccles</span>
+            <span class="area-tag">Ellenbrook</span>
+            <span class="area-tag">Flixton</span>
+            <span class="area-tag">Irlam</span>
+            <span class="area-tag">Monton</span>
+            <span class="area-tag">Mosley Common</span>
+            <span class="area-tag">Patricroft</span>
+            <span class="area-tag">Peel Green</span>
+            <span class="area-tag">Pendlebury</span>
+            <span class="area-tag">Roe Green</span>
+            <span class="area-tag">Salford</span>
+            <span class="area-tag">Seedley</span>
+            <span class="area-tag">Swinton</span>
+            <span class="area-tag">Urmston</span>
+            <span class="area-tag">Walkden</span>
+            <span class="area-tag">Wardley</span>
+            <span class="area-tag">Weaste</span>
+            <span class="area-tag">Winton</span>
+            <span class="area-tag">Worsley</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+        <h2>Send Something Beautiful Today</h2>
+        <p>Whether it's a birthday, anniversary, sympathy tribute, or simply to brighten someone's day &mdash; let us create the perfect arrangement for you.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="tel:01617894914" class="btn btn-white">Call 0161 789 4914</a>
+            <a href="mailto:carolsfloristmanchester@gmail.com" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: var(--white);">Email Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Carol's <span>Florist</span></h3>
+            <p>Independent family florist serving Manchester for over 57 years. Daily fresh flowers, expert advice, and heartfelt arrangements for every occasion.</p>
+        </div>
+        <div>
+            <h4>Our Flowers</h4>
+            <ul>
+                <li><a href="#">Hand-Tied Bouquets</a></li>
+                <li><a href="#">Funeral Tributes</a></li>
+                <li><a href="#">Wedding Flowers</a></li>
+                <li><a href="#">Gift Arrangements</a></li>
+                <li><a href="#">Mother's Day</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Opening Hours</h4>
+            <ul>
+                <li><a href="#">Mon-Tue: 9am - 5pm</a></li>
+                <li><a href="#">Wed: 9am - 1pm</a></li>
+                <li><a href="#">Thu-Fri: 9am - 5pm</a></li>
+                <li><a href="#">Sat: 9am - 12:30pm</a></li>
+                <li><a href="#">Sun: Closed</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="tel:01617894914">0161 789 4914</a></li>
+                <li><a href="mailto:carolsfloristmanchester@gmail.com">carolsfloristmanchester @gmail.com</a></li>
+                <li><a href="#">508 Liverpool Road,<br>Peel Green, Eccles,<br>Manchester M30 7HZ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Carol's Florist (Manchester) Ltd. All rights reserved. Member of Interflora.</p>
+    </div>
+</footer>
+
+</body>
+</html>

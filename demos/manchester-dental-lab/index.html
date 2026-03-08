@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manchester Dental Lab | Est. 1989 - Family-Owned Dental Laboratory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0E7490;
+            --primary-light: #E0F7FA;
+            --accent: #14B8A6;
+            --dark: #0F172A;
+            --gray-900: #1E293B;
+            --gray-700: #334155;
+            --gray-500: #64748B;
+            --gray-300: #CBD5E1;
+            --gray-100: #F1F5F9;
+            --white: #FFFFFF;
+            --radius: 16px;
+            --radius-sm: 12px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--gray-700);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NEOCODE BANNER */
+        .neocode-banner {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1000;
+        }
+        .neocode-banner a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .neocode-banner a:hover { text-decoration: underline; }
+
+        /* NAV */
+        .nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-500);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: 0.3s; }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/3845653/pexels-photo-3845653.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.4) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        .hero-text { max-width: 600px; }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 5.5vw, 64px);
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 19px;
+            color: var(--gray-500);
+            margin-bottom: 36px;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(8,145,178,0.3);
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(8,145,178,0.4); }
+        .btn-outline {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--gray-300);
+        }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* STATS BAR */
+        .stats-bar {
+            background: var(--gray-100);
+            padding: 48px 24px;
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .stat-item p { font-size: 15px; color: var(--gray-500); font-weight: 500; }
+
+        /* SECTIONS */
+        .section { padding: 100px 24px; }
+        .section-center { text-align: center; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            line-height: 1.15;
+        }
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto 56px;
+            line-height: 1.7;
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--gray-100);
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .service-card-body { padding: 28px; }
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .service-card p { font-size: 15px; color: var(--gray-500); line-height: 1.7; }
+
+        /* SPLIT SECTION */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .split-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .split-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+        .split-text h2 {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .split-text p { font-size: 17px; color: var(--gray-500); margin-bottom: 16px; line-height: 1.8; }
+        .check-list { list-style: none; margin: 24px 0; }
+        .check-list li {
+            padding: 8px 0;
+            font-size: 16px;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .check-list li::before {
+            content: "\2713";
+            background: var(--primary-light);
+            color: var(--primary);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-100);
+        }
+        .testimonial-stars { color: #F59E0B; font-size: 18px; margin-bottom: 16px; }
+        .testimonial-card p {
+            font-size: 16px;
+            color: var(--gray-700);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .testimonial-author { font-weight: 600; color: var(--dark); font-size: 15px; }
+        .testimonial-role { font-size: 13px; color: var(--gray-500); }
+
+        /* AREAS */
+        .areas-section { background: var(--gray-100); }
+        .areas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .area-tag {
+            background: var(--white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* CTA */
+        .cta-section {
+            position: relative;
+            padding: 120px 24px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/287237/pexels-photo-287237.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
+        }
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(8,145,178,0.92), rgba(14,116,144,0.92));
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-content h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .cta-content p {
+            font-size: 19px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 72px 24px 32px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .footer-brand h3 span { color: var(--primary); }
+        .footer-brand p { font-size: 15px; line-height: 1.7; }
+        .footer h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .footer ul a:hover { color: var(--primary); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .split { grid-template-columns: 1fr; gap: 40px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .stat-item h3 { font-size: 32px; }
+            .hero h1 { font-size: 36px; }
+            .hero-btns { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NEOCODE BANNER -->
+<div class="neocode-banner">
+    Free redesign concept by <a href="https://neocode.studio" target="_blank">Neocode Studio</a> &mdash; <a href="mailto:hello@neocode.studio">Get in touch</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Manchester<span>Dental</span>Lab</a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#contact" class="nav-cta">Book Free Consultation</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">Family-Owned Since 1989</div>
+            <h1>Your Smile Deserves <span>Expert Care</span></h1>
+            <p>For over 35 years, Manchester Dental Lab has delivered precision dental prosthetics and personalised care. MHRA registered, family-run, and trusted by dentists across the UK.</p>
+            <div class="hero-btns">
+                <a href="tel:01613719575" class="btn btn-primary">Call 0161 371 9575</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <h3>35+</h3>
+            <p>Years of Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>1hr</h3>
+            <p>Emergency Repairs</p>
+        </div>
+        <div class="stat-item">
+            <h3>MHRA</h3>
+            <p>Registered #2130</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Emergency Line</p>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section section-center" id="services">
+    <div class="container">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Precision Dental Solutions</h2>
+        <p class="section-subtitle">From emergency repairs to digital scanning, we provide a comprehensive range of services for both patients and dental professionals.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/3952071/pexels-photo-3952071.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cosmetic Dentures">
+                <div class="service-card-body">
+                    <h3>Cosmetic Dentures</h3>
+                    <p>Beautiful, natural-looking cosmetic dentures tailored to each patient. Includes copy dentures, single tooth replacements, and full sets crafted with over 35 years of expertise.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/6502307/pexels-photo-6502307.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Crown and Bridge Work">
+                <div class="service-card-body">
+                    <h3>Crown &amp; Bridge Work</h3>
+                    <p>Precision crown and bridge solutions for dental professionals. Using the latest digital scanning technology introduced in 2024, we deliver accurate results with a fast turnaround.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/3779709/pexels-photo-3779709.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Emergency Repairs">
+                <div class="service-card-body">
+                    <h3>Emergency Repairs</h3>
+                    <p>Simple repairs completed while you wait &mdash; within one hour. We offer a 24-hour emergency telephone service and a 3-month guarantee on all repairs for total peace of mind.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/3845653/pexels-photo-3845653.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Flexible Dentures">
+                <div class="service-card-body">
+                    <h3>Flexible Dentures (Valplast)</h3>
+                    <p>Lightweight, comfortable Valplast flexible dentures that blend naturally with your gums. A metal-free alternative that offers superior comfort and aesthetics.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/3952071/pexels-photo-3952071.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cobalt Chrome">
+                <div class="service-card-body">
+                    <h3>Cobalt Chrome Dentures</h3>
+                    <p>Strong, durable cobalt chrome frameworks providing excellent retention and comfort. Precision-engineered for dental professionals with daily collection and delivery service.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/287237/pexels-photo-287237.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Digital Scanning">
+                <div class="service-card-body">
+                    <h3>Digital Scanning</h3>
+                    <p>New in 2024 &mdash; cutting-edge digital scanning technology for dental practices. Faster, more accurate impressions for better-fitting prosthetics and orthodontic solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SPLIT -->
+<section class="section" id="about" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="split">
+            <div class="split-img">
+                <img src="https://images.pexels.com/photos/3952071/pexels-photo-3952071.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Manchester Dental Lab Team">
+            </div>
+            <div class="split-text">
+                <div class="section-label">About Us</div>
+                <h2>A Family Legacy in Dental Craftsmanship</h2>
+                <p>Founded in 1989 by Chris Humphreys, Manchester Dental Lab has grown from a small family workshop into one of Manchester's most trusted dental laboratories. With over 30 years of hands-on experience as a Dental Technician and qualified Clinical Dental Technician since 2014, Chris brings unmatched expertise to every case.</p>
+                <p>The tradition continues with Ryan Humphreys, who qualified as a CDT in 2025, carrying the family's commitment to precision and patient care into the next generation.</p>
+                <ul class="check-list">
+                    <li>MHRA Registered (Reg #2130)</li>
+                    <li>BDA, DAMAS, DLA &amp; PDA Member</li>
+                    <li>Free Initial Consultations Available</li>
+                    <li>Home Visit Consultations</li>
+                    <li>Nationwide Postal Service</li>
+                </ul>
+                <a href="tel:01613719575" class="btn btn-primary" style="margin-top: 12px;">Book Free Consultation</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-center" id="testimonials">
+    <div class="container">
+        <div class="section-label">Testimonials</div>
+        <h2 class="section-title">Trusted by Patients &amp; Dentists</h2>
+        <p class="section-subtitle">Hear from the people who trust Manchester Dental Lab with their smiles and their patients' care.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Absolutely brilliant service. Had an emergency repair done in under an hour. Chris and Ryan really know their craft &mdash; you can tell it's a family passion. Couldn't recommend them enough."</p>
+                <div class="testimonial-author">Margaret T.</div>
+                <div class="testimonial-role">Patient, Droylsden</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"We've used Manchester Dental Lab for over a decade. The quality of their cobalt chrome work and crown &amp; bridge cases is consistently excellent. The daily collection service is invaluable."</p>
+                <div class="testimonial-author">Dr. R. Patel</div>
+                <div class="testimonial-role">Dental Practice, Manchester</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"My new cosmetic dentures look incredibly natural. Chris took the time to get the shade and fit absolutely perfect. The home visit option was so convenient. Five stars all round."</p>
+                <div class="testimonial-author">John B.</div>
+                <div class="testimonial-role">Patient, Manchester</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AREAS -->
+<section class="section section-center areas-section" id="areas">
+    <div class="container">
+        <div class="section-label">Service Areas</div>
+        <h2 class="section-title">Serving Manchester &amp; Beyond</h2>
+        <p class="section-subtitle">Local daily collection and delivery for dental practices, plus nationwide postal service for patients and professionals across the UK.</p>
+        <div class="areas-grid">
+            <span class="area-tag">Droylsden</span>
+            <span class="area-tag">Manchester City Centre</span>
+            <span class="area-tag">Ashton-under-Lyne</span>
+            <span class="area-tag">Tameside</span>
+            <span class="area-tag">Oldham</span>
+            <span class="area-tag">Stockport</span>
+            <span class="area-tag">Salford</span>
+            <span class="area-tag">Bolton</span>
+            <span class="area-tag">Bury</span>
+            <span class="area-tag">Rochdale</span>
+            <span class="area-tag">Trafford</span>
+            <span class="area-tag">Wigan</span>
+            <span class="area-tag">Greater Manchester</span>
+            <span class="area-tag">Nationwide (Postal)</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+        <h2>Ready for a Healthier, Happier Smile?</h2>
+        <p>Book your free initial consultation today. Whether you need emergency repairs or a complete set of cosmetic dentures, our family team is here to help.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="tel:01613719575" class="btn btn-white">Call 0161 371 9575</a>
+            <a href="mailto:enquiries@manchesterdentallab.co.uk" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: var(--white);">Email Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Manchester<span>Dental</span>Lab</h3>
+            <p>Family-owned dental laboratory established in 1989. Providing precision dental prosthetics and personalised care to patients and dental professionals across the UK.</p>
+        </div>
+        <div>
+            <h4>For Patients</h4>
+            <ul>
+                <li><a href="#">Cosmetic Dentures</a></li>
+                <li><a href="#">Emergency Repairs</a></li>
+                <li><a href="#">Copy Dentures</a></li>
+                <li><a href="#">Home Visits</a></li>
+                <li><a href="#">Free Consultation</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>For Dentists</h4>
+            <ul>
+                <li><a href="#">Crown &amp; Bridge</a></li>
+                <li><a href="#">Digital Scanning</a></li>
+                <li><a href="#">Cobalt Chrome</a></li>
+                <li><a href="#">Valplast Dentures</a></li>
+                <li><a href="#">Orthodontics</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="tel:01613719575">0161 371 9575</a></li>
+                <li><a href="mailto:enquiries@manchesterdentallab.co.uk">enquiries@manchesterdentallab.co.uk</a></li>
+                <li><a href="#">115 Manchester Road,<br>Droylsden, M43 6EG</a></li>
+                <li><a href="#">Mon-Fri: 7am - 4pm<br>Sat: By appointment</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Manchester Dental Lab. All rights reserved. MHRA Reg #2130 | BDA | DAMAS | DLA | PDA</p>
+    </div>
+</footer>
+
+</body>
+</html>
