@@ -995,5 +995,41 @@ document.querySelectorAll('.cro-insight').forEach(insight => {
     insight.addEventListener('mouseleave', () => { insight.style.background = ''; });
 });
 </script>
+
+<!-- PILL POPUP (70% scroll) -->
+<div id="pill-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9998;justify-content:center;align-items:center;backdrop-filter:blur(4px);">
+<div id="pill-popup-matrix" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;"></div>
+<div style="position:relative;z-index:2;text-align:center;max-width:700px;width:90%;padding:20px;">
+<span onclick="closePillPopup()" style="position:absolute;top:-10px;right:0;font-size:32px;color:var(--text-muted);cursor:pointer;z-index:3;line-height:1;">&times;</span>
+<p style="font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;opacity:0.7;">// The choice is yours</p>
+<div style="display:flex;gap:24px;justify-content:center;align-items:center;flex-wrap:nowrap;">
+<div onclick="closePillPopup();takeBluePill()" style="cursor:pointer;text-align:center;flex:1;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.08)'" onmouseleave="this.style.transform='scale(1)'">
+<img src="assets/blue-pill.png" alt="Blue Pill" style="width:180px;height:auto;filter:drop-shadow(0 0 25px rgba(68,136,255,0.6));animation:pillFloat 3s ease-in-out infinite,pillGlowBlue 2.5s ease-in-out infinite;">
+<p style="color:#4488ff;font-size:14px;font-weight:600;margin-top:12px;">"I'll keep my current site"</p>
+</div>
+<div onclick="closePillPopup();takeRedPill()" style="cursor:pointer;text-align:center;flex:1;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.08)'" onmouseleave="this.style.transform='scale(1)'">
+<img src="assets/red-pill.png" alt="Red Pill" style="width:180px;height:auto;filter:drop-shadow(0 0 25px rgba(255,68,68,0.6));animation:pillFloat 3s ease-in-out infinite 0.5s,pillGlowRed 2.5s ease-in-out infinite 0.5s;">
+<p style="color:#ff4444;font-size:14px;font-weight:600;margin-top:12px;">"I want a site that converts"</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function(){
+var pillPopupShown=false;
+window.addEventListener('scroll',function(){
+if(!pillPopupShown&&(window.scrollY+window.innerHeight)>document.body.scrollHeight*0.7){
+pillPopupShown=true;
+var pp=document.getElementById('pill-popup');pp.style.display='flex';pp.style.opacity='0';
+// Matrix rain in popup
+var mc=document.getElementById('pill-popup-matrix');
+var chars='アイウエオカキクケコサシスセソ0123456789ABCDEF';
+for(var i=0;i<35;i++){var col=document.createElement('div');col.className='matrix-col';var str='';for(var j=0;j<35;j++) str+=chars[Math.floor(Math.random()*chars.length)]+'<br>';col.innerHTML=str;col.style.left=Math.random()*100+'%';col.style.animationDuration=(3+Math.random()*6)+'s';col.style.animationDelay=Math.random()*3+'s';col.style.fontSize=(10+Math.random()*6)+'px';col.style.opacity=0.08+Math.random()*0.12;mc.appendChild(col);}
+var s=0;var f=function(){s+=0.03;pp.style.opacity=Math.min(s,1);if(s<1)requestAnimationFrame(f);};requestAnimationFrame(f);
+document.body.style.overflow='hidden';
+}});
+})();
+function closePillPopup(){var pp=document.getElementById('pill-popup');pp.style.transition='opacity 0.4s';pp.style.opacity='0';setTimeout(function(){pp.style.display='none';pp.style.transition='';document.body.style.overflow='';},400);}
+</script>
 </body>
 </html>
