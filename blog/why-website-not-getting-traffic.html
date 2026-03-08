@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Is My Website Not Getting Traffic? 7 Fixes (2026)</title>
+    <meta name="description" content="Your website has zero visitors? Here are the 7 most common reasons your small business site isn't getting traffic, and exactly how to fix each one.">
+    <meta property="og:title" content="Why Is My Website Not Getting Traffic? 7 Fixes (2026)">
+    <meta property="og:description" content="Your website has zero visitors? Here are the 7 most common reasons your small business site isn't getting traffic, and exactly how to fix each one.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://neocodestudio.co.uk/blog/why-website-not-getting-traffic.html">
+    <meta property="og:image" content="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800">
+    <meta property="article:published_time" content="2026-03-08">
+    <meta property="article:modified_time" content="2026-03-08">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://neocodestudio.co.uk/blog/why-website-not-getting-traffic.html">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #c0c0c0;
+            --text-muted: #888888;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --accent-glow-strong: rgba(0, 255, 136, 0.3);
+            --accent-glow-intense: rgba(0, 255, 136, 0.5);
+            --border: rgba(255,255,255,0.06);
+            --border-accent: rgba(0, 255, 136, 0.2);
+            --border-accent-strong: rgba(0, 255, 136, 0.4);
+            --shadow: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-glow: 0 0 60px rgba(0, 255, 136, 0.15);
+            --shadow-glow-strong: 0 0 100px rgba(0, 255, 136, 0.25);
+            --font-main: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+        .particle { position: fixed; width: 2px; height: 2px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 0; box-shadow: 0 0 6px var(--accent), 0 0 12px var(--accent-glow); }
+        .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), #00ffcc, var(--accent)); background-size: 200% 100%; animation: progressGlow 3s ease-in-out infinite; z-index: 9999; transition: width 0.15s; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+        @keyframes progressGlow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+        .animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.15s; } .delay-2 { animation-delay: 0.3s; }
+
+        /* NAV */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 80px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .navbar.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 1px 0 var(--border-accent); }
+        .navbar-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .navbar-logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .navbar-logo .neo { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-logo .cursor { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; box-shadow: 0 0 8px var(--accent); }
+        .navbar-menu { display: flex; align-items: center; gap: 8px; }
+        .navbar-link { padding: 12px 24px; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; border-radius: 100px; transition: all 0.3s ease; letter-spacing: 0.05em; text-transform: uppercase; }
+        .navbar-link:hover, .navbar-link.active { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta { margin-left: 24px; padding: 14px 32px; font-size: 12px; font-weight: 600; color: var(--bg-primary); background: var(--accent); text-decoration: none; border-radius: 100px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-strong); }
+        .navbar-toggle { display: none; flex-direction: column; gap: 6px; padding: 10px; background: none; border: none; cursor: pointer; }
+        .navbar-toggle span { width: 28px; height: 1px; background: var(--text-primary); transition: all 0.3s ease; }
+
+        /* ARTICLE */
+        .article-header { padding: 160px 80px 60px; max-width: 820px; margin: 0 auto; position: relative; }
+        .article-back { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 32px; transition: all 0.3s ease; }
+        .article-back:hover { text-shadow: 0 0 10px var(--accent-glow); gap: 12px; }
+        .article-meta { display: flex; align-items: center; gap: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; }
+        .article-meta i { color: var(--accent); font-size: 10px; }
+        .article-header h1 { font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 24px; }
+        .article-header h1 .accent { color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
+        .article-header .article-intro { font-size: 20px; color: var(--text-secondary); line-height: 1.7; font-weight: 300; }
+
+        .article-body { max-width: 720px; margin: 0 auto; padding: 0 80px 80px; }
+        .article-body h2 { font-size: 28px; font-weight: 700; margin: 48px 0 20px; letter-spacing: -0.02em; color: var(--text-primary); }
+        .article-body h2 .accent { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .article-body h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--text-primary); }
+        .article-body p { font-size: 17px; color: var(--text-secondary); line-height: 1.9; margin-bottom: 20px; }
+        .article-body strong { color: var(--text-primary); font-weight: 600; }
+        .article-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--border-accent); transition: all 0.3s ease; }
+        .article-body a:hover { text-shadow: 0 0 10px var(--accent-glow); border-color: var(--accent); }
+        .article-body ul, .article-body ol { margin: 0 0 20px 24px; }
+        .article-body li { font-size: 17px; color: var(--text-secondary); line-height: 1.9; margin-bottom: 8px; }
+        .article-body li::marker { color: var(--accent); }
+        .article-body blockquote { margin: 32px 0; padding: 24px 32px; border-left: 3px solid var(--accent); background: var(--accent-glow); border-radius: 0 12px 12px 0; }
+        .article-body blockquote p { color: var(--text-primary); font-size: 18px; font-weight: 500; margin-bottom: 0; }
+
+        .article-body img { width: 100%; border-radius: 16px; margin: 32px 0; border: 1px solid var(--border); }
+
+        .mistake-number { display: inline-block; font-family: var(--font-mono); font-size: 14px; color: var(--accent); background: var(--accent-glow); padding: 4px 12px; border-radius: 100px; border: 1px solid var(--border-accent); margin-bottom: 8px; letter-spacing: 0.05em; }
+
+        .toc { margin: 0 0 40px; padding: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+        .toc h3 { font-family: var(--font-mono); font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; text-shadow: 0 0 10px var(--accent-glow); }
+        .toc ol { margin: 0 0 0 20px; }
+        .toc li { margin-bottom: 8px; }
+        .toc a { color: var(--text-secondary); text-decoration: none; font-size: 15px; border-bottom: none; transition: color 0.3s ease; }
+        .toc a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
+
+        .article-cta { max-width: 720px; margin: 0 auto 48px; padding: 48px; background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 24px; text-align: center; position: relative; overflow: hidden; }
+        .article-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+        .article-cta h3 .accent { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .article-cta p { font-size: 16px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.7; }
+        .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-main); }
+        .btn-primary { background: var(--accent); color: var(--bg-primary); box-shadow: 0 0 30px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow-strong); }
+        .article-cta .btn-primary { color: #000 !important; font-weight: 700; }
+        .article-cta h3 { font-size: 28px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary); }
+
+        .article-related { max-width: 720px; margin: 0 auto; padding: 0 80px 80px; }
+        .article-related h3 { font-family: var(--font-mono); font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; text-shadow: 0 0 10px var(--accent-glow); }
+        .related-links { display: flex; flex-direction: column; gap: 12px; }
+        .related-link { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text-primary); font-size: 15px; font-weight: 500; transition: all 0.3s ease; }
+        .related-link:hover { border-color: var(--border-accent); box-shadow: 0 0 20px var(--accent-glow); transform: translateX(4px); }
+        .related-link i { color: var(--accent); font-size: 12px; }
+
+        .glow-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), var(--accent), var(--accent-dim), transparent); margin: 0; opacity: 0.4; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+
+        /* FOOTER */
+        .footer { padding: 60px 80px 40px; border-top: 1px solid var(--border-accent); position: relative; z-index: 1; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); box-shadow: 0 0 20px var(--accent-glow); }
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
+        .footer-logo .neo { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+        .footer-text { font-size: 13px; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 24px; align-items: center; }
+        .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.3s; }
+        .footer-link:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .navbar { padding: 0 40px; }
+            .article-header { padding: 140px 40px 40px; }
+            .article-body, .article-related { padding-left: 40px; padding-right: 40px; }
+            .article-header h1 { font-size: 38px; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 24px; }
+            .navbar-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+            .navbar-menu.open { display: flex; } .navbar-toggle { display: flex; }
+            .navbar-cta { margin-left: 0; margin-top: 16px; text-align: center; }
+            .article-header { padding: 120px 24px 30px; }
+            .article-header h1 { font-size: 30px; }
+            .article-header .article-intro { font-size: 17px; }
+            .article-body, .article-related { padding-left: 24px; padding-right: 24px; }
+            .article-body h2 { font-size: 24px; }
+            .article-body p, .article-body li { font-size: 16px; }
+            .article-cta { margin-left: 24px; margin-right: 24px; padding: 32px 24px; }
+            .footer { padding: 40px 24px; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+        }
+
+        /* PILL SECTION */
+        @keyframes pillFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        @keyframes pillGlowBlue { 0%,100%{filter:drop-shadow(0 0 15px rgba(68,136,255,0.4))} 50%{filter:drop-shadow(0 0 35px rgba(68,136,255,0.8))} }
+        @keyframes pillGlowRed { 0%,100%{filter:drop-shadow(0 0 15px rgba(255,68,68,0.4))} 50%{filter:drop-shadow(0 0 35px rgba(255,68,68,0.8))} }
+        @keyframes matrixRain { 0%{transform:translateY(-100%);opacity:1} 100%{transform:translateY(100vh);opacity:0} }
+        .matrix-col{position:absolute;top:-100%;font-family:monospace;color:var(--accent);writing-mode:vertical-rl;animation:matrixRain linear infinite;opacity:0.12;z-index:0;}
+        .pill-section{padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;background:#050505;border-radius:24px;max-width:900px;margin:48px auto;}
+        .pill-section-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;}
+        .pill-row-blog{display:flex;gap:40px;justify-content:center;align-items:flex-start;flex-wrap:nowrap;}
+        .pill-card-blog{cursor:pointer;flex:1;min-width:140px;max-width:360px;padding:20px 16px 24px;border-radius:16px;border:none;background:transparent;transition:all 0.4s ease;position:relative;text-align:center;}
+        .pill-card-blog:hover{transform:translateY(-4px);}
+        .pill-card-blog img{width:200px;height:auto;margin:0 auto 16px;display:block;}
+        .pill-img-blue-blog{animation:pillFloat 3s ease-in-out infinite, pillGlowBlue 2.5s ease-in-out infinite;}
+        .pill-img-red-blog{animation:pillFloat 3s ease-in-out infinite 0.5s, pillGlowRed 2.5s ease-in-out infinite 0.5s;}
+        @media(max-width:700px){
+            .pill-row-blog{flex-direction:column;align-items:center;gap:20px;}
+            .pill-card-blog img{width:140px;}
+            .pill-section{padding:44px 12px 36px;margin:24px auto;}
+        }
+    </style>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why is my website not showing up on Google?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The most common reasons your website is not showing on Google include: your site hasn't been indexed (Google doesn't know it exists), you have no SEO basics in place (missing title tags, meta descriptions, heading structure), you don't have a Google Business Profile, your site loads too slowly, you have no content or blog, your site isn't mobile-friendly, and you have no backlinks or local citations pointing to your site."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to start getting traffic to a new website?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With proper SEO fundamentals in place, a new website can start appearing in Google search results within 2-4 weeks for low-competition local keywords. However, building meaningful organic traffic typically takes 3-6 months of consistent effort including publishing content, building local citations, and optimising your Google Business Profile. Paid advertising can drive traffic immediately while your organic presence grows."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need a blog to get website traffic?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "While a blog is not strictly required, it is one of the most effective ways to drive organic traffic to a small business website. Each blog post is a new page that can rank in Google for specific search terms your customers are using. A plumber who publishes articles answering common questions like 'how to fix a dripping tap' or 'how much does a new boiler cost' creates dozens of entry points to their website that a brochure site with 5 pages simply cannot match."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my website not getting traffic because it's too slow?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Site speed is a confirmed Google ranking factor, so yes, a slow website directly hurts your visibility in search results. Google recommends pages load in under 2.5 seconds. If your site takes 5-10 seconds to load (common on cheap hosting or sites with unoptimised images), Google will rank faster competitors above you. Test your speed for free at pagespeed.web.dev."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Why Is My Website Not Getting Traffic? 7 Fixes (2026)",
+        "description": "Your website has zero visitors? Here are the 7 most common reasons your small business site isn't getting traffic, and exactly how to fix each one.",
+        "author": {
+            "@type": "Organization",
+            "name": "Neocode Studio"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Neocode Studio",
+            "url": "https://neocodestudio.co.uk"
+        },
+        "datePublished": "2026-03-08",
+        "dateModified": "2026-03-08",
+        "url": "https://neocodestudio.co.uk/blog/why-website-not-getting-traffic.html"
+    }
+    </script>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="../index.html" class="navbar-logo"><span class="neo">neo</span>code studio<span class="cursor"></span></a>
+        <div class="navbar-menu" id="navMenu">
+            <a href="../services.html" class="navbar-link">Services</a>
+            <a href="../index.html#process" class="navbar-link">Process</a>
+            <a href="../index.html#work" class="navbar-link">Work</a>
+            <a href="../index.html#testimonials" class="navbar-link">Clients</a>
+            <a href="../blog.html" class="navbar-link active">Blog</a>
+            <a href="../contact.html" class="navbar-cta">Get a Free Audit</a>
+        </div>
+        <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+    <a href="../blog.html" class="article-back animate"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+    <div class="article-meta animate delay-1">
+        <span><i class="fas fa-calendar"></i> 8 March 2026</span>
+        <span><i class="fas fa-clock"></i> 10 min read</span>
+    </div>
+    <h1 class="animate delay-1">Why Is My Website <span class="accent">Not Getting Traffic</span>? 7 Fixes (2026)</h1>
+    <p class="article-intro animate delay-2">You paid for a website. It looks decent. It's got your phone number, your services, maybe even a few photos. But when you check the stats, the answer's always the same: zero visitors. Your website's got no visitors because nobody can find it. Here are the 7 reasons why, and exactly what to do about each one.</p>
+</header>
+
+<!-- ARTICLE BODY -->
+<article class="article-body">
+
+    <p>If you're wondering why is my website not getting traffic, you're not alone. It's a bit like being stuck in the Matrix. You think your website is out there working for you, but the reality is completely different. Most web designers won't ever tell you this: having a website and being visible online are two completely different things. You can have the most beautiful site in the world, but if Google doesn't know it exists, neither do your customers.</p>
+
+    <p>We speak to small business owners every week who are frustrated that their website isn't showing on Google. They spent good money on it. They update it occasionally. But the phone never rings from it. The contact form sits empty. Meanwhile, their competitors with arguably worse businesses are showing up everywhere online.</p>
+
+    <p>The difference is almost never about the quality of the business. It's about visibility. And visibility is fixable. Here are the 7 most common reasons your website isn't getting traffic, and how to get traffic to your website starting today.</p>
+
+    <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Google search results showing small business website visibility and traffic problems" loading="lazy">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ol>
+            <li><a href="#reason-1">Your Website Isn't Indexed by Google</a></li>
+            <li><a href="#reason-2">You Have No SEO Basics in Place</a></li>
+            <li><a href="#reason-3">You Don't Have a Google Business Profile</a></li>
+            <li><a href="#reason-4">Your Site Is Too Slow</a></li>
+            <li><a href="#reason-5">You Have No Content or Blog</a></li>
+            <li><a href="#reason-6">Your Site Isn't Mobile-Friendly</a></li>
+            <li><a href="#reason-7">You Have No Backlinks or Local Citations</a></li>
+        </ol>
+    </div>
+
+    <!-- REASON 1 -->
+    <h2 id="reason-1"><span class="mistake-number">#1</span> Your Website Isn't <span class="accent">Indexed</span> by Google</h2>
+
+    <p>This is the most basic reason your website has no visitors, and it's far more common than you'd think. If Google hasn't indexed your site, it literally doesn't exist in search results. You could search for your exact business name and still not find it.</p>
+
+    <p>How does this happen? Several ways. Your web developer might have left a "noindex" tag on the site from when it was in development. Your robots.txt file might be blocking Google's crawlers. Or, if your site's brand new, Google simply might not have discovered it yet because nothing links to it.</p>
+
+    <h3>A real example</h3>
+
+    <p>We audited a joinery business in Leeds that had their website live for <strong>eight months with zero organic traffic</strong>. The site looked professional. The content was solid. But when we checked Google Search Console, the site hadn't been indexed at all. The developer had left a <code>&lt;meta name="robots" content="noindex"&gt;</code> tag in the header. One line of code made the entire site invisible for eight months.</p>
+
+    <h3>The fix</h3>
+
+    <p>First, check if your site's indexed. Go to Google and type <code>site:yourdomain.co.uk</code>. If nothing comes up, Google doesn't know your site exists. Here's what to do:</p>
+
+    <ul>
+        <li><strong>Set up Google Search Console.</strong> It's free. Go to <a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>, verify your domain, and submit your sitemap. This is the single fastest way to get Google to discover your site.</li>
+        <li><strong>Check for noindex tags.</strong> View your page source (right-click, "View Page Source") and search for "noindex". If you find it, remove it immediately or ask your developer to do so.</li>
+        <li><strong>Check your robots.txt file.</strong> Go to yourdomain.co.uk/robots.txt in your browser. If it says <code>Disallow: /</code>, your entire site's blocked from crawlers. Fix it.</li>
+        <li><strong>Submit individual URLs.</strong> In Google Search Console, use the URL Inspection tool to manually request indexing for your most important pages.</li>
+    </ul>
+
+    <p>This isn't optional. This is step zero. Nothing else on this list matters if Google can't see your website in the first place.</p>
+
+    <!-- REASON 2 -->
+    <h2 id="reason-2"><span class="mistake-number">#2</span> You Have No <span class="accent">SEO Basics</span> in Place</h2>
+
+    <p>Let's be blunt. If your website's page titles all say "Home", "About", "Services", and "Contact", you're invisible to Google. Those words tell Google absolutely nothing about what you do, where you are, or who you serve. Your website isn't showing on Google because Google has no idea what to show it for.</p>
+
+    <p>SEO isn't some dark art reserved for tech wizards. At its core, it's simply telling Google what your pages are about using the right words in the right places. And the vast majority of small business websites get this completely wrong. If you're not sure whether <a href="does-small-business-need-website.html">your small business even needs a website</a>, spoiler: it absolutely does, but only if it's set up properly.</p>
+
+    <h3>What we see constantly</h3>
+
+    <p>In our audits of UK small business websites, these SEO problems come up again and again:</p>
+
+    <ul>
+        <li><strong>Generic or missing title tags.</strong> Your page title is the single most important on-page SEO element. "Home" isn't a title. "Smith & Sons Plumbing | Emergency Plumber Manchester | 24/7 Call Outs" is a title.</li>
+        <li><strong>No meta descriptions.</strong> The snippet of text below your title in Google results. If you don't write one, Google generates something random from your page content. It rarely looks good, and it almost never compels someone to click.</li>
+        <li><strong>No heading structure.</strong> Your pages should use H1, H2, and H3 tags in a logical hierarchy. Not just for Google, but for readability. One H1 per page describing what the page's about, with H2s and H3s breaking up sections underneath.</li>
+        <li><strong>No location mentions.</strong> If you're a plumber in Birmingham, the word "Birmingham" should appear on your homepage, your service pages, and your title tags. Google needs to understand where you operate to show you in local results.</li>
+    </ul>
+
+    <img src="https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Website HTML code showing SEO title tags and meta descriptions for small business" loading="lazy">
+
+    <h3>The fix</h3>
+
+    <p>Go through every page on your website and write a unique, descriptive title tag (under 60 characters) that includes your main keyword and location. Write a compelling meta description (under 155 characters) for each page. Make sure every page has exactly one H1 tag that clearly describes the content.</p>
+
+    <p>Here's a template for a service page title: <strong>[Service] in [City] | [Business Name]</strong>. For example: "Roof Repairs in Manchester | ABC Roofing". Simple, clear, and Google knows exactly what the page's about.</p>
+
+    <p>If you're on WordPress, install a free plugin like Yoast SEO or Rank Math. It gives you a simple interface to add titles and descriptions to every page without touching code.</p>
+
+</article>
+
+<!-- CTA 1 (after reason 2) -->
+<div class="article-cta">
+    <h3>Not sure if Google can <span class="accent">find</span> you?</h3>
+    <p>We'll run a free visibility audit on your website and tell you exactly where you stand in Google, what's blocking your traffic, and what to fix first. No jargon, no obligation.</p>
+    <a href="../contact.html" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<article class="article-body">
+
+    <!-- REASON 3 -->
+    <h2 id="reason-3"><span class="mistake-number">#3</span> You Don't Have a <span class="accent">Google Business Profile</span></h2>
+
+    <p>If you run a local business and you don't have a Google Business Profile (formerly Google My Business), you're missing out on the single most powerful free tool for local visibility. Full stop.</p>
+
+    <p>When someone searches "electrician near me" or "best cafe in Bristol", Google shows a map with three businesses at the top of the results. That's called the Local Pack, and it gets more clicks than the regular search results below it. If you don't have a Google Business Profile, you can't appear there. Ever.</p>
+
+    <h3>The numbers are staggering</h3>
+
+    <p>According to Google's own data, <strong>46% of all Google searches have local intent</strong>. Nearly half. And businesses with a complete Google Business Profile are 70% more likely to attract location visits. They're also 50% more likely to lead to a purchase.</p>
+
+    <p>We worked with a beauty salon in Manchester that had a decent website but zero Google presence. No Google Business Profile, no map listing, nothing. They set one up, added photos, filled in every field, and started collecting reviews. Within six weeks, they were appearing in the Local Pack for "beauty salon Manchester" and getting 15-20 new enquiries per month directly from Google. They didn't change anything on their website. Just the Google Business Profile alone. If you want to dig deeper into local visibility, we've written a full guide on <a href="improve-website-local-customers.html">how to improve your website for local customers</a>.</p>
+
+    <h3>The fix</h3>
+
+    <p>Go to <a href="https://business.google.com" target="_blank" rel="noopener">business.google.com</a> and claim your listing. If your business already has a listing (Google often creates them automatically), claim and verify it. Then fill in absolutely everything:</p>
+
+    <ul>
+        <li>Business name, address, and phone number (must match your website exactly)</li>
+        <li>Business category (be as specific as possible)</li>
+        <li>Opening hours</li>
+        <li>Services offered</li>
+        <li>A detailed business description with your main keywords</li>
+        <li>At least 10 high-quality photos (your premises, your team, your work)</li>
+    </ul>
+
+    <p>Then post updates weekly, respond to every review, and add new photos regularly. Google rewards active profiles with better visibility. This isn't a "set it and forget it" thing. It's an ongoing asset that compounds over time.</p>
+
+    <!-- REASON 4 -->
+    <h2 id="reason-4"><span class="mistake-number">#4</span> Your Site Is Too <span class="accent">Slow</span></h2>
+
+    <p>Site speed is a confirmed Google ranking factor. If your website takes more than 3 seconds to load, Google will push you down in search results in favour of faster competitors. And the reality is, most small business websites are painfully slow.</p>
+
+    <p>The usual culprits are the same ones we see every week: massive images uploaded straight from a phone (4-8MB each instead of 100-200KB), cheap shared hosting that's overloaded with hundreds of other websites, bloated page builders with excessive code, and too many plugins or third-party scripts loading on every page.</p>
+
+    <h3>What slow really costs you</h3>
+
+    <p>Google's Core Web Vitals are a set of speed and user experience metrics that directly influence your search rankings. The key one is Largest Contentful Paint (LCP), which measures how long it takes for the main content of your page to become visible. Google wants this under 2.5 seconds. We regularly see small business websites at 8-12 seconds.</p>
+
+    <p>But it's not just about rankings. <strong>53% of mobile visitors abandon a site that takes longer than 3 seconds to load.</strong> So even if someone does find your site through a link or a social media post, they're leaving before they see what you offer. Your website not getting traffic is bad enough. Losing the traffic you do get to slow loading is worse.</p>
+
+    <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Website speed test showing page load performance metrics for small business website" loading="lazy">
+
+    <h3>The fix</h3>
+
+    <p>Start by testing your site at <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">Google PageSpeed Insights</a>. It will give you a score out of 100 and specific recommendations. Then work through these fixes in order:</p>
+
+    <ul>
+        <li><strong>Compress every image on your site.</strong> Use <a href="https://tinypng.com/" target="_blank" rel="noopener">TinyPNG</a> or ShortPixel. This alone can cut your load time in half. No image on your website should be over 200KB.</li>
+        <li><strong>Upgrade your hosting.</strong> If you're on a &pound;3/month shared plan, your speed will always suffer. A solid hosting plan costs &pound;10-25/month and makes a dramatic difference. SiteGround, Cloudways, and Krystal are all reliable options in the UK.</li>
+        <li><strong>Enable caching.</strong> If you're on WordPress, install WP Super Cache or W3 Total Cache. These store static versions of your pages so they load almost instantly for visitors.</li>
+        <li><strong>Remove what you don't need.</strong> Deactivate and delete unused plugins. Remove fancy animations and sliders that nobody clicks. Strip it back to what actually matters.</li>
+    </ul>
+
+    <p>A fast website is a visible website. Google rewards speed, and visitors reward it even more.</p>
+
+</article>
+
+<!-- CTA 2 (after reason 4) -->
+<div class="article-cta">
+    <h3>Tired of being <span class="accent">invisible</span> online?</h3>
+    <p>A website that nobody can find is a website that isn't working. We build fast, SEO-ready sites that actually show up in Google and bring in real enquiries. <a href="../services.html">See what our web design services look like</a>.</p>
+    <a href="../contact.html" class="btn btn-primary">Talk to Us <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<article class="article-body">
+
+    <!-- REASON 5 -->
+    <h2 id="reason-5"><span class="mistake-number">#5</span> You Have No <span class="accent">Content</span> or Blog</h2>
+
+    <p>Here's how most small business websites are structured: a homepage, an about page, a services page, a contact page. Maybe a gallery. That's five pages. Five chances to rank in Google. Five entry points for potential customers to find you.</p>
+
+    <p>Now think about your competitor who's got those same five pages plus a blog with 30 posts answering common customer questions. They've got 35 pages indexed in Google. 35 chances to appear in search results. 35 entry points. Who do you think gets more traffic?</p>
+
+    <h3>Why content drives traffic</h3>
+
+    <p>Every piece of content you publish is a new opportunity to rank for a specific search term. A plumber who writes a blog post titled "How Much Does a New Boiler Cost in 2026?" can rank for that exact search. A roofer who publishes "Signs You Need a New Roof" can capture homeowners who are researching before they buy.</p>
+
+    <p>This is called informational search intent, and it makes up the majority of Google searches. People are looking for answers before they're looking for businesses. <strong>If you're the one providing those answers, you're the one they call when they're ready to buy.</strong></p>
+
+    <p>We worked with an independent financial adviser in Edinburgh who had a five-page brochure site getting roughly 30 visits per month. We helped them start a blog publishing two posts per month answering common financial questions. After six months, they were getting over 400 organic visits per month and had picked up 12 new clients directly from blog content. Same website. Same business. Just more content.</p>
+
+    <h3>The fix</h3>
+
+    <p>You don't need to become a full-time blogger. Start with one post per month. Think about the questions your customers ask you most often and write a clear, helpful answer to each one. Here are some ideas:</p>
+
+    <ul>
+        <li>"How much does [your service] cost in [your city]?"</li>
+        <li>"How to choose a [your profession] in [your area]"</li>
+        <li>"[Your service] vs [alternative]: which is right for you?"</li>
+        <li>"X signs you need [your service]"</li>
+        <li>"What to expect when you hire a [your profession]"</li>
+    </ul>
+
+    <p>Each post should be 800-1,500 words, genuinely helpful, and optimised with a clear title tag, meta description, and heading structure. Over time, this content compounds. Posts you wrote six months ago continue driving traffic and generating enquiries while you sleep.</p>
+
+    <!-- REASON 6 -->
+    <h2 id="reason-6"><span class="mistake-number">#6</span> Your Site Isn't <span class="accent">Mobile-Friendly</span></h2>
+
+    <p>Google uses mobile-first indexing. That means Google judges your website based on its mobile version, not the desktop version. If your site doesn't work properly on a phone, your rankings suffer across the board, on mobile and desktop searches alike.</p>
+
+    <p>In the UK, over 65% of web traffic comes from mobile devices. For local searches like "plumber near me" or "restaurant open now", that number's even higher, often above 80%. If your site requires pinching and zooming, if buttons are too small to tap, if the text's unreadable without turning the phone sideways, you're losing the majority of your potential traffic before it even arrives.</p>
+
+    <h3>What Google sees</h3>
+
+    <p>Google's crawlers visit your site as a mobile device. If they find text that's too small, interactive elements that are too close together, or content that's wider than the screen, your site gets flagged as not mobile-friendly. This directly affects your rankings.</p>
+
+    <p>But it goes beyond rankings. Even if someone does land on your non-mobile-friendly site, <strong>61% of users say they won't return to a mobile site they had trouble accessing</strong>. You get one chance to make it work on their phone. If you blow it, they're gone for good and heading straight to your competitor.</p>
+
+    <h3>The fix</h3>
+
+    <p>Test your site with Google's <a href="https://search.google.com/test/mobile-friendly" target="_blank" rel="noopener">Mobile-Friendly Test</a>. It takes 30 seconds and gives you a clear pass or fail. If your site fails, a <a href="why-your-website-losing-customers.html">responsive redesign</a> needs to be a top priority.</p>
+
+    <p>Key things a mobile-friendly site needs: text that's readable without zooming (minimum 16px font size), buttons and links that are large enough to tap with a thumb (at least 44x44 pixels), no horizontal scrolling, fast loading on mobile networks, and a navigation menu that works on small screens. These aren't nice-to-haves. They're the bare minimum for 2026.</p>
+
+    <!-- REASON 7 -->
+    <h2 id="reason-7"><span class="mistake-number">#7</span> You Have No <span class="accent">Backlinks</span> or Local Citations</h2>
+
+    <p>Think of backlinks as votes of confidence from other websites. When a reputable website links to yours, it tells Google that your site's trustworthy and worth showing in search results. If you've got zero backlinks, Google has no external signals that your website's worth ranking.</p>
+
+    <p>For local businesses, there's a related concept called local citations. These are mentions of your business name, address, and phone number (NAP) on other websites like Yell.com, Thomson Local, Yelp, industry directories, and local business listings. The more consistent citations you have, the more Google trusts that your business is real, established, and located where you say it is.</p>
+
+    <h3>Why this matters for traffic</h3>
+
+    <p>Google's algorithm uses backlinks as one of its top three ranking factors. A website with 20 quality backlinks from relevant local sources will almost always outrank a website with zero backlinks, even if the content's similar. It's Google's way of gauging authority.</p>
+
+    <p>We audited a landscaping company in Bristol that had a well-designed website with decent content but wasn't ranking for any local terms. When we checked their backlink profile, it was empty. Zero links from other websites. Zero directory listings. Their site existed in a vacuum. We helped them get listed on 25 relevant local and industry directories and secured a few links from local news sites and community pages. Within three months, they went from page 5 to page 1 for "landscaping Bristol" and their organic traffic increased by over 300%.</p>
+
+    <h3>The fix</h3>
+
+    <p>Start with local citations. Get your business listed on these platforms with consistent NAP information (name, address, phone number must be identical everywhere):</p>
+
+    <ul>
+        <li><strong>Essential:</strong> Google Business Profile, Bing Places, Apple Maps, Yell.com, Thomson Local, Yelp, Facebook Business Page</li>
+        <li><strong>Industry-specific:</strong> Checkatrade, Bark, TrustATrader, MyBuilder (for trades), TripAdvisor (for hospitality), Treatwell (for beauty), etc.</li>
+        <li><strong>Local:</strong> Your local Chamber of Commerce website, local business directories, community websites</li>
+    </ul>
+
+    <p>For backlinks, think about who in your local area might link to you. Suppliers you work with. Businesses you partner with. Local charities you support. Local bloggers or journalists who cover businesses in your area. Write a genuinely useful piece of content (like a local guide or a how-to article) and share it with them. Quality over quantity, always.</p>
+
+    <blockquote><p>You wouldn't open a shop on a street with no footfall and expect customers to magically appear. Your website works the same way. If nothing points to it, nobody finds it.</p></blockquote>
+
+    <!-- THE BIG PICTURE -->
+    <h2>The <span class="accent">Big Picture</span>: Why These Problems Compound</h2>
+
+    <p>Here's what makes this so frustrating: most small business websites aren't suffering from one of these problems. They're suffering from three, four, or five of them at the same time. And the effects stack on top of each other.</p>
+
+    <p>A site that isn't indexed, has no SEO, no Google Business Profile, and no content isn't just slightly invisible. It's completely invisible. There's no path for a potential customer to discover it. The website may as well not exist.</p>
+
+    <p>But here's the good news: the fixes also compound. Think of it like taking the red pill. Once you see what's actually going on with your website's visibility, you can't unsee it. And that's a good thing, because now you can fix it. Set up Google Search Console and get indexed. Add proper title tags and meta descriptions. Claim your Google Business Profile. Start publishing one blog post a month. Get listed in 10-15 local directories. Each of these steps on its own makes a difference. Together, they can transform your online visibility within a few months.</p>
+
+    <p>We see this transformation constantly at Neocode Studio. A business that was getting zero organic traffic starts getting 50 visits a month, then 200, then 500. The phone starts ringing. The contact form starts filling up. And it all started with the same fundamentals covered in this article.</p>
+
+    <p>If your website's <a href="small-business-website-mistakes.html">making common mistakes</a> that are driving visitors away, that's a separate problem worth fixing too. But getting found in the first place is where it all begins. Visibility comes first. Then you worry about <a href="why-your-website-losing-customers.html">converting those visitors into customers</a>.</p>
+
+    <p>The question isn't whether you can afford to invest time in your online visibility. It's whether you can afford to keep being invisible while your competitors take every customer who's searching for what you offer.</p>
+
+</article>
+
+<!-- PILL SECTION -->
+<section class="pill-section">
+    <div class="pill-section-bg" id="blog-pill-matrix"></div>
+    <div style="max-width:800px;margin:0 auto;position:relative;z-index:2;">
+        <p style="font-family:var(--font-mono);font-size:13px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;opacity:0.7;">// The choice is yours</p>
+        <h2 style="font-size:clamp(24px,4.5vw,40px);font-weight:700;margin-bottom:12px;line-height:1.2;color:var(--accent);">Take the <span style="color:#4488ff;">blue pill</span> or the <span style="color:#ff4444;">red pill</span></h2>
+        <p style="color:var(--text-muted);font-size:18px;margin-bottom:40px;">One keeps things as they are. The other changes everything.</p>
+        <div class="pill-row-blog">
+            <a href="../index.html#pill-choice" class="pill-card-blog" style="text-decoration:none;">
+                <img src="../assets/blue-pill.png" alt="Blue Pill - keep your current website" class="pill-img-blue-blog">
+                <h3 style="font-size:20px;font-weight:600;color:#4488ff;margin-bottom:8px;">Blue Pill</h3>
+                <p style="font-size:17px;font-weight:500;color:var(--text-primary);margin-bottom:6px;">"I'll keep my current site"</p>
+                <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Stay comfortable. Nothing changes. Your competitors keep growing while your site stays the same.</p>
+            </a>
+            <a href="../contact.html" class="pill-card-blog" style="text-decoration:none;">
+                <img src="../assets/red-pill.png" alt="Red Pill - get a website that converts" class="pill-img-red-blog">
+                <h3 style="font-size:20px;font-weight:600;color:#ff4444;margin-bottom:8px;">Red Pill</h3>
+                <p style="font-size:17px;font-weight:500;color:var(--text-primary);margin-bottom:6px;">"I want a site that converts"</p>
+                <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">See the truth. Discover how much revenue your site is leaving on the table and fix it.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA 3 (final) -->
+<div class="article-cta">
+    <h3>Ready to get <span class="accent">found</span> online?</h3>
+    <p>We've helped dozens of UK small businesses go from invisible to page one. We'll audit your website for free and give you a clear action plan for getting real traffic. No jargon, no hard sell, no obligation.</p>
+    <a href="../contact.html" class="btn btn-primary">Request Your Free Audit <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<!-- RELATED -->
+<div class="article-related">
+    <h3>Related Articles</h3>
+    <div class="related-links">
+        <a href="small-business-website-mistakes.html" class="related-link"><i class="fas fa-arrow-right"></i> 9 Website Mistakes Killing Your Small Business</a>
+        <a href="why-your-website-losing-customers.html" class="related-link"><i class="fas fa-arrow-right"></i> Website Not Converting? 9 Reasons You're Losing Sales</a>
+        <a href="website-redesign-cost-uk.html" class="related-link"><i class="fas fa-arrow-right"></i> Website Redesign Cost UK: 2026 Pricing Guide</a>
+        <a href="improve-website-local-customers.html" class="related-link"><i class="fas fa-arrow-right"></i> How to Improve Your Website for Local Customers</a>
+        <a href="does-small-business-need-website.html" class="related-link"><i class="fas fa-arrow-right"></i> Does My Small Business Really Need a Website in 2026?</a>
+    </div>
+</div>
+
+<div class="glow-divider"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo"><span class="neo">neo</span>code studio</div>
+        <p class="footer-text">&copy; 2026 Neocode Studio. Trading name of So Marketing Center Ltd.</p>
+        <div class="footer-links">
+            <a href="../services.html" class="footer-link">Services</a>
+            <a href="../index.html#work" class="footer-link">Work</a>
+            <a href="../index.html#testimonials" class="footer-link">Clients</a>
+            <a href="../blog.html" class="footer-link">Blog</a>
+            <a href="../contact.html" class="footer-link">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.width = (Math.random() * 3 + 1) + 'px';
+    p.style.height = p.style.width;
+    p.style.animation = `floatUp ${Math.random() * 15 + 10}s linear infinite`;
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.opacity = Math.random() * 0.5 + 0.1;
+    document.body.appendChild(p);
+}
+window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progress').style.width = scrolled + '%';
+});
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('navToggle').addEventListener('click', () => { document.getElementById('navMenu').classList.toggle('open'); });
+
+// Matrix rain for pill section
+(function(){
+    var chars='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF';
+    var container=document.getElementById('blog-pill-matrix');
+    if(!container) return;
+    for(var i=0;i<30;i++){
+        var col=document.createElement('div');col.className='matrix-col';
+        var str='';for(var j=0;j<40;j++) str+=chars[Math.floor(Math.random()*chars.length)]+'<br>';
+        col.innerHTML=str;col.style.left=Math.random()*100+'%';
+        col.style.animationDuration=(3+Math.random()*7)+'s';col.style.animationDelay=Math.random()*5+'s';
+        col.style.fontSize=(10+Math.random()*6)+'px';col.style.opacity=0.08+Math.random()*0.12;
+        container.appendChild(col);
+    }
+})();
+</script>
+
+</body>
+</html>
