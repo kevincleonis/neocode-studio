@@ -3,820 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Southampton Man and Van | Professional Removals & Clearance</title>
+    <title>Southampton Man and Van | From Bedsit to Mansion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --green: #1A7A4C;
-            --green-dark: #145D3A;
-            --green-light: #E6F5EE;
-            --navy: #1B2A4A;
-            --navy-dark: #111D36;
-            --accent: #2ECC71;
-            --dark: #1A2332;
-            --text: #3A4553;
-            --text-light: #6B7A8D;
-            --bg: #FFFFFF;
-            --bg-off: #F7FAF8;
-            --border: #E0EAE5;
-            --radius: 16px;
-            --shadow: 0 4px 24px rgba(0,0,0,0.06);
-            --shadow-lg: 0 12px 48px rgba(0,0,0,0.10);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: #333; background: #fff; }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
+        /* NAV */
+        .nav { background: #fff; border-bottom: 1px solid #eee; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 72px; position: sticky; top: 0; z-index: 100; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; }
+        .nav-logo .dot { width: 10px; height: 10px; background: #27ae60; border-radius: 50%; }
+        .nav-logo span { font-size: 17px; font-weight: 800; color: #1a2744; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: #666; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+        .nav-links a:hover { color: #27ae60; }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .nav-phone { color: #1a2744; font-weight: 700; font-size: 14px; text-decoration: none; }
+        .nav-cta { background: #27ae60; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.2s; }
+        .nav-cta:hover { background: #219a52; }
 
-        /* === NEOCODE BANNER === */
-        .neocode-banner {
-            background: #111;
-            color: #fff;
-            text-align: center;
-            padding: 12px 20px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            position: relative;
-            z-index: 1000;
-        }
-        .neocode-banner a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .neocode-banner a:hover { text-decoration: underline; }
+        /* HERO */
+        .hero { background: #1a2744; padding: 100px 40px 90px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: linear-gradient(135deg, rgba(39,174,96,0.08) 0%, transparent 60%); }
+        .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+        .hero-content {}
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(39,174,96,0.12); border: 1px solid rgba(39,174,96,0.25); color: #27ae60; padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; }
+        .hero h1 { font-size: 48px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+        .hero h1 em { font-style: normal; color: #27ae60; }
+        .hero-sub { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; }
+        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+        .btn-green { background: #27ae60; color: #fff; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-green:hover { background: #219a52; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(39,174,96,0.3); }
+        .btn-outline { background: transparent; color: #fff; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,0.2); transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+        .hero-stats { display: flex; gap: 32px; }
+        .hero-stat { text-align: left; }
+        .hero-stat .num { font-size: 28px; font-weight: 800; color: #27ae60; }
+        .hero-stat .label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .hero-visual { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; }
+        .hero-visual i { font-size: 80px; color: #27ae60; opacity: 0.3; margin-bottom: 24px; }
+        .hero-visual .quote-box { background: rgba(39,174,96,0.1); border-left: 3px solid #27ae60; padding: 20px 24px; border-radius: 0 10px 10px 0; width: 100%; }
+        .hero-visual .quote-box p { font-size: 15px; color: rgba(255,255,255,0.7); font-style: italic; line-height: 1.7; }
+        .hero-visual .quote-box span { display: block; margin-top: 12px; font-size: 12px; color: #27ae60; font-weight: 700; font-style: normal; }
 
-        /* === NAVIGATION === */
-        .navbar {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 40px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-        .nav-logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--navy);
-            text-decoration: none;
-        }
-        .nav-logo span { color: var(--green); }
-        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--green); }
-        .nav-cta {
-            background: var(--green);
-            color: #fff !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600 !important;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
-        .menu-toggle span {
-            display: block; width: 24px; height: 2px; background: var(--dark);
-            margin: 6px 0; transition: 0.3s;
-        }
+        /* SECTIONS */
+        section { padding: 80px 40px; }
+        .section-label { display: inline-block; color: #27ae60; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .section-title { font-size: 36px; font-weight: 800; color: #1a2744; line-height: 1.2; margin-bottom: 14px; }
+        .section-desc { font-size: 16px; color: #777; line-height: 1.7; max-width: 560px; }
+        .centered { text-align: center; }
+        .centered .section-desc { margin: 0 auto; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        /* SERVICES */
+        .services { background: #f8faf9; }
+        .services-grid { max-width: 1100px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .svc-card { background: #fff; border-radius: 12px; padding: 32px 24px; border: 1px solid #eee; transition: all 0.3s; text-align: center; }
+        .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,39,68,0.08); border-color: #27ae60; }
+        .svc-icon { width: 56px; height: 56px; background: linear-gradient(135deg, #e8f5ee, #d4efdf); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #27ae60; font-size: 22px; }
+        .svc-card h3 { font-size: 16px; font-weight: 700; color: #1a2744; margin-bottom: 8px; }
+        .svc-card p { font-size: 13px; color: #888; line-height: 1.6; }
 
-        /* === HERO === */
-        .hero {
-            position: relative;
-            min-height: 92vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover no-repeat;
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(27,42,74,0.9) 0%, rgba(26,122,76,0.7) 50%, rgba(46,204,113,0.3) 100%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 650px;
-            padding: 60px 0;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 28px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .hero h1 {
-            font-size: clamp(38px, 5.5vw, 62px);
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-        .hero h1 span { color: var(--accent); }
-        .hero p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            max-width: 520px;
-        }
-        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        .btn-primary {
-            background: var(--green);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(26,122,76,0.35);
-        }
-        .btn-primary:hover {
-            background: var(--green-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(26,122,76,0.45);
-        }
-        .btn-secondary {
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            border: 2px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(8px);
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-        }
-        .btn-navy {
-            background: var(--navy);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(27,42,74,0.3);
-        }
-        .btn-navy:hover {
-            background: var(--navy-dark);
-            transform: translateY(-2px);
-        }
-        .btn-white {
-            background: #fff;
-            color: var(--green);
-        }
-        .btn-white:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-        }
+        /* INCLUDED */
+        .included { background: #fff; }
+        .included-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .included-visual { background: #1a2744; border-radius: 16px; padding: 48px; min-height: 400px; display: flex; flex-direction: column; justify-content: center; }
+        .included-visual h3 { color: #fff; font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+        .included-visual p { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 28px; }
+        .inc-list { list-style: none; }
+        .inc-list li { display: flex; align-items: center; gap: 12px; padding: 10px 0; color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .inc-list li:last-child { border-bottom: none; }
+        .inc-list li i { color: #27ae60; font-size: 16px; width: 20px; text-align: center; flex-shrink: 0; }
+        .included-content {}
+        .checklist { list-style: none; margin-top: 28px; }
+        .checklist li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; font-size: 15px; color: #555; border-bottom: 1px solid #f5f5f5; }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li .check { width: 24px; height: 24px; background: #e8f5ee; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #27ae60; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
 
-        /* === STATS === */
-        .stats {
-            padding: 0;
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: #fff;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-        }
-        .stat-item {
-            padding: 40px 30px;
-            text-align: center;
-            border-right: 1px solid var(--border);
-        }
-        .stat-item:last-child { border-right: none; }
-        .stat-number {
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--navy);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .stat-number span { color: var(--green); }
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
+        /* TESTIMONIALS */
+        .testimonials { background: #f8faf9; }
+        .test-grid { max-width: 900px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .test-card { background: #fff; border-radius: 12px; padding: 28px; border: 1px solid #eee; }
+        .test-card .stars { color: #f39c12; font-size: 13px; margin-bottom: 14px; }
+        .test-card blockquote { font-size: 15px; color: #555; line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+        .test-card .author { font-size: 13px; font-weight: 700; color: #1a2744; }
+        .test-card .src { font-size: 11px; color: #aaa; margin-top: 2px; }
 
-        /* === SECTION === */
-        .section { padding: 100px 0; }
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px;
-        }
-        .section-label {
-            display: inline-block;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--green);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-        .section-title {
-            font-size: clamp(32px, 4vw, 44px);
-            font-weight: 800;
-            color: var(--dark);
-            line-height: 1.2;
-            margin-bottom: 18px;
-        }
-        .section-subtitle {
-            font-size: 17px;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
+        /* MOVING CHECKLIST */
+        .moving-tips { background: #1a2744; color: #fff; }
+        .moving-tips .section-label { color: #27ae60; }
+        .moving-tips .section-title { color: #fff; }
+        .moving-tips .section-desc { color: rgba(255,255,255,0.5); }
+        .tips-grid { max-width: 1000px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-item { display: flex; align-items: flex-start; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; }
+        .tip-num { width: 36px; height: 36px; background: #27ae60; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
+        .tip-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .tip-item p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
-        /* === SERVICES === */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-        .service-card {
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border);
-        }
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-        .service-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .service-body { padding: 28px; }
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--green-light);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-bottom: 16px;
-        }
-        .service-body h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-        .service-body p {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
+        /* COVERAGE */
+        .coverage { background: #fff; }
+        .coverage-inner { max-width: 1100px; margin: 0 auto; }
+        .coverage-badges { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; justify-content: center; }
+        .cov-badge { background: #f8faf9; border: 1px solid #eee; border-radius: 10px; padding: 20px 28px; text-align: center; flex: 1; min-width: 180px; }
+        .cov-badge i { font-size: 24px; color: #27ae60; margin-bottom: 10px; display: block; }
+        .cov-badge h4 { font-size: 14px; font-weight: 700; color: #1a2744; margin-bottom: 4px; }
+        .cov-badge p { font-size: 12px; color: #999; }
 
-        /* === SPLIT === */
-        .split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .split-img {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        .split-img img {
-            width: 100%;
-            height: 520px;
-            object-fit: cover;
-            display: block;
-        }
-        .split-text h2 {
-            font-size: clamp(30px, 3.5vw, 40px);
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .split-text p {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 24px;
-            line-height: 1.8;
-        }
-        .check-list { list-style: none; margin-bottom: 32px; }
-        .check-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 14px;
-        }
-        .check-list li::before {
-            content: '✓';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 26px;
-            height: 26px;
-            background: var(--green-light);
-            color: var(--green);
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 13px;
-            flex-shrink: 0;
-        }
+        /* LICENSE BANNER */
+        .license-banner { background: #e8f5ee; padding: 24px 40px; }
+        .license-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .license-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #1a2744; }
+        .license-item i { color: #27ae60; font-size: 20px; }
 
-        /* === TESTIMONIALS === */
-        .testimonials-bg { background: var(--bg-off); }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-        .testimonial-card {
-            background: #fff;
-            border-radius: var(--radius);
-            padding: 36px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-        .testimonial-stars {
-            color: #F2A128;
-            font-size: 18px;
-            margin-bottom: 18px;
-            letter-spacing: 2px;
-        }
-        .testimonial-card p {
-            font-size: 15px;
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 22px;
-            font-style: italic;
-        }
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .testimonial-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--green-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--green);
-            font-size: 16px;
-        }
-        .testimonial-name {
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--dark);
-        }
-        .testimonial-role {
-            font-size: 13px;
-            color: var(--text-light);
-        }
+        /* CTA */
+        .cta-section { background: linear-gradient(135deg, #27ae60, #219a52); padding: 80px 40px; text-align: center; }
+        .cta-section h2 { font-size: 38px; font-weight: 800; color: #fff; margin-bottom: 14px; }
+        .cta-section p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+        .btn-white { background: #fff; color: #27ae60; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .cta-contact { display: flex; gap: 28px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+        .cta-contact a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .cta-contact a:hover { color: #fff; }
 
-        /* === CTA === */
-        .cta-section {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--green-dark) 100%);
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: rgba(46,204,113,0.1);
-            border-radius: 50%;
-        }
-        .cta-section h2 {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .cta-section p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 40px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-        }
-        .cta-btns {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        /* === FOOTER === */
-        .footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.7);
-            padding: 80px 0 40px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        .footer-brand h3 {
-            font-size: 22px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-        .footer-brand h3 span { color: var(--accent); }
-        .footer-brand p {
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        .footer h4 {
-            font-size: 15px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* FOOTER */
+        .footer { background: #111b2e; padding: 60px 40px 30px; color: rgba(255,255,255,0.4); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; }
+        .footer h4 { color: #fff; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .footer-brand p { font-size: 13px; line-height: 1.8; margin-top: 10px; }
+        .footer-brand .logo { font-size: 18px; font-weight: 800; color: #fff; }
         .footer ul { list-style: none; }
-        .footer ul li { margin-bottom: 10px; }
-        .footer ul a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-        .footer ul a:hover { color: var(--accent); }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-        }
+        .footer ul li { margin-bottom: 8px; }
+        .footer ul li a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .footer ul li a:hover { color: #27ae60; }
+        .footer-bottom { max-width: 1100px; margin: 36px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; font-size: 12px; }
 
-        /* === RESPONSIVE === */
-        @media (max-width: 1024px) {
-            .services-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .split { gap: 40px; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        /* MOBILE */
         @media (max-width: 768px) {
-            .navbar { padding: 0 20px; }
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            .hero { min-height: 80vh; }
-            .hero-content { padding: 40px 0; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-            .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
-            .split { grid-template-columns: 1fr; gap: 32px; }
-            .split-img img { height: 350px; }
-            .section { padding: 70px 0; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+            .nav { padding: 0 20px; }
+            .nav-links, .nav-phone { display: none; }
+            .hero { padding: 60px 20px 50px; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+            .hero-visual { display: none; }
+            .hero-stats { gap: 20px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .included-grid { grid-template-columns: 1fr; }
+            .test-grid { grid-template-columns: 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            section { padding: 60px 20px; }
+            .section-title { font-size: 28px; }
+            .cta-section h2 { font-size: 28px; }
+            .coverage-badges { flex-direction: column; }
+            .license-inner { flex-direction: column; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Neocode Banner -->
-<div class="neocode-banner">
-    Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; <a href="https://neocodestudio.co.uk/contact.html" target="_blank">Get yours today</a>
-</div>
+<!-- NEOCODE BANNER -->
+<div style="background:#111;color:#fff;text-align:center;padding:10px 20px;font-size:12px;font-weight:500;"><i class="fas fa-wand-magic-sparkles"></i> Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank" style="color:#00ff88;text-decoration:none;font-weight:700;">Neocode Studio</a> · <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="color:#00ff88;text-decoration:none;font-weight:700;">Want this for your business?</a></div>
 
-<!-- Navigation -->
-<nav class="navbar">
-    <a href="#" class="nav-logo">Southampton <span>Man&amp;Van</span></a>
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-logo">
+        <div class="dot"></div>
+        <span>Southampton Man & Van</span>
+    </div>
     <ul class="nav-links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#included">What's Included</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        <li><a href="#checklist">Moving Tips</a></li>
     </ul>
-    <button class="menu-toggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+        <a href="tel:07786712784" class="nav-phone"><i class="fas fa-phone"></i> 07786 712 784</a>
+        <a href="mailto:enquiries@southamptonmanandvan.co.uk" class="nav-cta">Get a Quote</a>
+    </div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
+    <div class="hero-inner">
         <div class="hero-content">
-            <div class="hero-badge">Southampton's Trusted Removals Team</div>
-            <h1>From Bedsit to Mansion &mdash; <span>We Move It All</span></h1>
-            <p>Family-run home and office removal service with over 5 years of experience. Fully licensed, fully insured, and fully committed to making your move stress-free.</p>
-            <div class="hero-btns">
-                <a href="mailto:enquiries@southamptonmanandvan.co.uk" class="btn btn-primary">Get a Free Quote</a>
-                <a href="#services" class="btn btn-secondary">Our Services</a>
+            <div class="hero-tag"><i class="fas fa-truck-moving"></i> Family-Run · 5+ Years</div>
+            <h1>From Bedsit <em>to Mansion</em></h1>
+            <p class="hero-sub">Southampton's trusted family-run removals service. House moves, office relocations, clearances — we handle it all with care and efficiency.</p>
+            <div class="hero-ctas">
+                <a href="tel:07786712784" class="btn-green"><i class="fas fa-phone"></i> Call 07786 712 784</a>
+                <a href="mailto:enquiries@southamptonmanandvan.co.uk" class="btn-outline"><i class="fas fa-envelope"></i> Email for Quote</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num">5+</div>
+                    <div class="label">Years Experience</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">1000+</div>
+                    <div class="label">Moves Completed</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">5★</div>
+                    <div class="label">Customer Rated</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <i class="fas fa-truck-moving"></i>
+            <div class="quote-box">
+                <p>"Just wanted to say big thanks for moving me on Saturday, it took all of the stress out of the day."</p>
+                <span>— Happy Customer</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Stats -->
-<section class="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">5<span>+</span></div>
-                <div class="stat-label">Years in Business</div>
+<!-- LICENSE BANNER -->
+<div class="license-banner">
+    <div class="license-inner">
+        <div class="license-item"><i class="fas fa-certificate"></i> Licensed Waste Carrier (Environmental Agency)</div>
+        <div class="license-item"><i class="fas fa-shield-halved"></i> Fully Insured</div>
+        <div class="license-item"><i class="fas fa-users"></i> Family-Run Business</div>
+        <div class="license-item"><i class="fas fa-clock"></i> Same Day / Last Minute Available</div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="centered">
+        <span class="section-label">Our Services</span>
+        <h2 class="section-title">Whatever You Need Moving, We've Got You</h2>
+        <p class="section-desc">From a single item to a full house — we tailor every job to your exact needs.</p>
+    </div>
+    <div class="services-grid">
+        <div class="svc-card">
+            <div class="svc-icon"><i class="fas fa-house-chimney"></i></div>
+            <h3>House Moves</h3>
+            <p>Full house removals from bedsits to mansions. Flats, bungalows, penthouses — all handled with care.</p>
+        </div>
+        <div class="svc-card">
+            <div class="svc-icon"><i class="fas fa-building"></i></div>
+            <h3>Office Removals</h3>
+            <p>Large, medium, or small office relocations. Minimal downtime, maximum efficiency.</p>
+        </div>
+        <div class="svc-card">
+            <div class="svc-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Student Moves</h3>
+            <p>Affordable moves for students heading to or from university. We know the halls!</p>
+        </div>
+        <div class="svc-card">
+            <div class="svc-icon"><i class="fas fa-trash-can"></i></div>
+            <h3>Clearance Services</h3>
+            <p>Furniture clearance and waste removal. Licensed waste carriers with the Environmental Agency.</p>
+        </div>
+        <div class="svc-card">
+            <div class="svc-icon"><i class="fas fa-road"></i></div>
+            <h3>Long Distance</h3>
+            <p>Moving across the country? We handle long-distance relocations at competitive rates.</p>
+        </div>
+        <div class="svc-card">
+            <div class="svc-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Last Minute</h3>
+            <p>Need to move urgently? We offer same-day and last-minute bookings when available.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included" id="included">
+    <div class="included-grid">
+        <div class="included-visual">
+            <h3>Everything You Need</h3>
+            <p>Every move comes fully equipped — no hidden extras.</p>
+            <ul class="inc-list">
+                <li><i class="fas fa-check"></i> Professional removal blankets</li>
+                <li><i class="fas fa-check"></i> Ratchet straps & securing equipment</li>
+                <li><i class="fas fa-check"></i> Heavy-duty furniture trolley</li>
+                <li><i class="fas fa-check"></i> Protective wrapping materials</li>
+                <li><i class="fas fa-check"></i> Experienced & careful handling</li>
+                <li><i class="fas fa-check"></i> Full insurance coverage</li>
+                <li><i class="fas fa-check"></i> Friendly, uniformed team</li>
+            </ul>
+        </div>
+        <div class="included-content">
+            <span class="section-label">What's Included</span>
+            <h2 class="section-title">No Hidden Fees. No Nasty Surprises.</h2>
+            <p class="section-desc">When you book with us, everything is included in the quote. We bring all the equipment and the muscle — you just tell us where things go.</p>
+            <ul class="checklist">
+                <li><div class="check"><i class="fas fa-check"></i></div> Free, no-obligation quote by phone or email</li>
+                <li><div class="check"><i class="fas fa-check"></i></div> All blankets, straps, and trolleys provided</li>
+                <li><div class="check"><i class="fas fa-check"></i></div> Careful handling of fragile & valuable items</li>
+                <li><div class="check"><i class="fas fa-check"></i></div> Dismantling & reassembly of furniture if needed</li>
+                <li><div class="check"><i class="fas fa-check"></i></div> Licensed waste disposal for clearances</li>
+                <li><div class="check"><i class="fas fa-check"></i></div> Flexible scheduling — including weekends</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+    <div class="centered">
+        <span class="section-label">Customer Reviews</span>
+        <h2 class="section-title">Moving Made Stress-Free</h2>
+        <p class="section-desc">Don't just take our word for it — here's what our customers have to say.</p>
+    </div>
+    <div class="test-grid">
+        <div class="test-card">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">1,200<span>+</span></div>
-                <div class="stat-label">Successful Moves</div>
+            <blockquote>"Many thanks for your & Roy's efforts moving my stuff on Thursday morning."</blockquote>
+            <p class="author">Satisfied Customer</p>
+            <p class="src">Southampton</p>
+        </div>
+        <div class="test-card">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">100<span>%</span></div>
-                <div class="stat-label">Licensed &amp; Insured</div>
+            <blockquote>"Just wanted to say big thanks for moving me on Saturday, it took all of the stress out of the day."</blockquote>
+            <p class="author">Satisfied Customer</p>
+            <p class="src">Southampton</p>
+        </div>
+        <div class="test-card">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">24<span>hr</span></div>
-                <div class="stat-label">Quote Response</div>
+            <blockquote>"Professional and arrived on time. Very nice, friendly and helpful. Will use again."</blockquote>
+            <p class="author">Verified Customer</p>
+            <p class="src">Hampshire</p>
+        </div>
+        <div class="test-card">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <blockquote>"So quick and they carried absolutely everything super fast, even stairs and awkward furniture was no problem."</blockquote>
+            <p class="author">Verified Customer</p>
+            <p class="src">Southampton</p>
+        </div>
+    </div>
+</section>
+
+<!-- MOVING DAY CHECKLIST -->
+<section class="moving-tips" id="checklist">
+    <div class="centered">
+        <span class="section-label">Free Resource</span>
+        <h2 class="section-title">Your Moving Day Checklist</h2>
+        <p class="section-desc">Moving can be stressful. Use our checklist to stay organised and make your moving day as smooth as possible.</p>
+    </div>
+    <div class="tips-grid">
+        <div class="tip-item">
+            <div class="tip-num">1</div>
+            <div>
+                <h4>4 Weeks Before</h4>
+                <p>Start decluttering. Donate, sell, or bin items you no longer need. Less stuff = cheaper move.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">2</div>
+            <div>
+                <h4>2 Weeks Before</h4>
+                <p>Start packing non-essentials. Label every box with room name and contents. Notify utility providers.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">3</div>
+            <div>
+                <h4>1 Week Before</h4>
+                <p>Confirm your booking with us. Pack an essentials box (kettle, mugs, chargers, toiletries, snacks).</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">4</div>
+            <div>
+                <h4>The Day Before</h4>
+                <p>Finish packing. Defrost the freezer. Confirm parking arrangements at both addresses.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">5</div>
+            <div>
+                <h4>Moving Day</h4>
+                <p>We arrive, load up, and transport everything safely. You just tell us where each box goes.</p>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">6</div>
+            <div>
+                <h4>After the Move</h4>
+                <p>Take meter readings. Unpack essentials first. Put the kettle on — you've earned it!</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Services -->
-<section class="section" id="services">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Our Services</div>
-            <h2 class="section-title">Complete Removals &amp; Clearance Solutions</h2>
-            <p class="section-subtitle">Whether you're moving a single item or an entire household, we have the team and the vans to get it done right.</p>
+<!-- COVERAGE -->
+<section class="coverage centered" id="coverage">
+    <span class="section-label">Areas We Cover</span>
+    <h2 class="section-title">Southampton & Beyond</h2>
+    <p class="section-desc">Based in Southampton, covering Hampshire and the entire south coast. Long-distance moves across the UK also available.</p>
+    <div class="coverage-badges">
+        <div class="cov-badge">
+            <i class="fas fa-map-pin"></i>
+            <h4>Southampton</h4>
+            <p>Our home base</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4246091/pexels-photo-4246091.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Home Removals" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#127968;</div>
-                    <h3>Home Removals</h3>
-                    <p>Full house, flat, and bungalow removals. We handle everything from careful packing to safe delivery at your new home.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/7464491/pexels-photo-7464491.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Office Removals" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#127970;</div>
-                    <h3>Office Removals</h3>
-                    <p>Minimise downtime with our efficient office relocation service. We work around your schedule to keep disruption to a minimum.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4246196/pexels-photo-4246196.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Furniture Clearance" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#128230;</div>
-                    <h3>Furniture Clearance</h3>
-                    <p>Need items removed? We offer full furniture clearance services, responsibly disposing of unwanted items.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Student Moves" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#127891;</div>
-                    <h3>Student Relocations</h3>
-                    <p>Affordable moving solutions for students. Whether it's halls to a flat or back home for the holidays.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=600&h=440&fit=crop&crop=top" alt="Long Distance" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#128666;</div>
-                    <h3>Long Distance Transport</h3>
-                    <p>Moving further afield? We cover long-distance relocations across the UK with the same care and reliability.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4246091/pexels-photo-4246091.jpeg?auto=compress&cs=tinysrgb&w=600&h=440&fit=crop&crop=bottom" alt="Last Minute Moves" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#9200;</div>
-                    <h3>Last-Minute Removals</h3>
-                    <p>Need to move urgently? We specialise in short-notice removals. Call us and we'll get you sorted fast.</p>
-                </div>
-            </div>
+        <div class="cov-badge">
+            <i class="fas fa-map-pin"></i>
+            <h4>Hampshire</h4>
+            <p>Eastleigh, Winchester, Fareham</p>
         </div>
-    </div>
-</section>
-
-<!-- Split Section -->
-<section class="section" id="about" style="background: var(--bg-off);">
-    <div class="container">
-        <div class="split">
-            <div class="split-img">
-                <img src="https://images.pexels.com/photos/4246196/pexels-photo-4246196.jpeg?auto=compress&cs=tinysrgb&w=800&h=900&fit=crop" alt="Professional Moving Team">
-            </div>
-            <div class="split-text">
-                <div class="section-label">Why Choose Us</div>
-                <h2>A Family-Run Service You Can Trust</h2>
-                <p>We're not a faceless corporation &mdash; we're a local, family-run team who take pride in every move. With over 5 years of serving Southampton and beyond, your belongings are in safe hands.</p>
-                <ul class="check-list">
-                    <li>Waste Carrier Licensed (Environmental Agency)</li>
-                    <li>Fully insured for your peace of mind</li>
-                    <li>From single items to full house moves</li>
-                    <li>Competitive rates with no hidden costs</li>
-                    <li>Last-minute and same-day availability</li>
-                    <li>Contract &amp; repeat move discounts</li>
-                </ul>
-                <a href="mailto:enquiries@southamptonmanandvan.co.uk" class="btn btn-navy">Request a Quote</a>
-            </div>
+        <div class="cov-badge">
+            <i class="fas fa-map-pin"></i>
+            <h4>South Coast</h4>
+            <p>Portsmouth, Bournemouth, Salisbury</p>
         </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section class="section testimonials-bg" id="reviews">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Customer Reviews</div>
-            <h2 class="section-title">What Our Customers Say</h2>
-            <p class="section-subtitle">Real feedback from people who trusted us with their move.</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"Many thanks for your &amp; Roy's efforts moving my stuff on Thursday morning. Everything arrived in perfect condition. Couldn't recommend them enough!"</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">MH</div>
-                    <div>
-                        <div class="testimonial-name">Margaret H.</div>
-                        <div class="testimonial-role">House Move, Southampton</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"Just wanted to say big thanks for moving me on Saturday, it took all of the stress out of the day. The lads were brilliant &mdash; friendly, fast, and careful."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">TW</div>
-                    <div>
-                        <div class="testimonial-name">Tom W.</div>
-                        <div class="testimonial-role">Flat Removal, SO15</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"Used them for our office relocation. They worked around our hours, didn't break a single thing, and even helped set up the furniture. Top service at a fair price."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">RK</div>
-                    <div>
-                        <div class="testimonial-name">Rachel K.</div>
-                        <div class="testimonial-role">Office Move, Eastleigh</div>
-                    </div>
-                </div>
-            </div>
+        <div class="cov-badge">
+            <i class="fas fa-road"></i>
+            <h4>UK Wide</h4>
+            <p>Long-distance moves available</p>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="contact">
-    <div class="container">
-        <h2>Ready to Move?</h2>
-        <p>Get a free, no-obligation quote today. We'll make your move smooth, fast, and stress-free.</p>
-        <div class="cta-btns">
-            <a href="mailto:enquiries@southamptonmanandvan.co.uk" class="btn btn-primary">Email for a Quote</a>
-            <a href="#services" class="btn btn-white">View Services</a>
-        </div>
+<section class="cta-section">
+    <h2>Ready to Move?</h2>
+    <p>Get a free, no-obligation quote in minutes. Call, text, or email — we'll get back to you fast.</p>
+    <a href="tel:07786712784" class="btn-white"><i class="fas fa-phone"></i> Call 07786 712 784</a>
+    <div class="cta-contact">
+        <a href="mailto:enquiries@southamptonmanandvan.co.uk"><i class="fas fa-envelope"></i> enquiries@southamptonmanandvan.co.uk</a>
+        <a href="sms:07786712784"><i class="fas fa-comment"></i> Text Us</a>
     </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>Southampton <span>Man&amp;Van</span></h3>
-                <p>Family-run home and office removals serving Southampton and the surrounding areas. Licensed waste carriers, fully insured, and committed to a stress-free move every time.</p>
-            </div>
-            <div>
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#">Home Removals</a></li>
-                    <li><a href="#">Office Removals</a></li>
-                    <li><a href="#">Furniture Clearance</a></li>
-                    <li><a href="#">Student Moves</a></li>
-                    <li><a href="#">Long Distance</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:enquiries@southamptonmanandvan.co.uk">enquiries@southampton<br>manandvan.co.uk</a></li>
-                    <li><a href="#">8 Belleview Road</a></li>
-                    <li><a href="#">Southampton, SO15 2AY</a></li>
-                </ul>
-            </div>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="logo">Southampton Man & Van</div>
+            <p>Family-run removals company serving Southampton and Hampshire for over 5 years. From bedsit to mansion — we move it all.</p>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Southampton Man and Van. All rights reserved.</span>
-            <span>Waste Carrier Licensed | Fully Insured</span>
+        <div>
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#services">House Moves</a></li>
+                <li><a href="#services">Office Removals</a></li>
+                <li><a href="#services">Student Moves</a></li>
+                <li><a href="#services">Clearance</a></li>
+                <li><a href="#services">Long Distance</a></li>
+            </ul>
         </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#included">What's Included</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#checklist">Moving Checklist</a></li>
+                <li><a href="#coverage">Coverage Area</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="tel:07786712784"><i class="fas fa-phone" style="width:14px"></i> 07786 712 784</a></li>
+                <li><a href="mailto:enquiries@southamptonmanandvan.co.uk"><i class="fas fa-envelope" style="width:14px"></i> Email Us</a></li>
+                <li><a href="#"><i class="fas fa-map-pin" style="width:14px"></i> 8 Belleview Rd, SO15 2AY</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Southampton Man and Van. Licensed Waste Carrier. All rights reserved.</p>
     </div>
 </footer>
 
-    <div style="text-align:center;padding:12px 20px;background:#0a0a0a;"><p style="margin-top:8px;font-size:11px;opacity:0.4;">Original website: <a href="https://southamptonmanandvan.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">https://southamptonmanandvan.co.uk</a></p></div>
+<!-- ORIGINAL SITE LINK -->
+<div style="text-align:center;padding:12px 20px;background:#0a0a0a;"><p style="font-size:11px;opacity:0.4;">Original website: <a href="https://southamptonmanandvan.co.uk" target="_blank" style="color:inherit;text-decoration:underline;">https://southamptonmanandvan.co.uk</a></p></div>
 
-<!-- Demo Popup -->
+<!-- POPUP -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
     <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
         <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
         <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
         <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
         <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;transition:transform 0.2s;">Let's Talk</a>
-        <br>
-        <button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
+        <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
     </div>
 </div>
-<script>
-setTimeout(function(){
-    var p=document.getElementById('demo-popup');
-    if(p){p.style.display='flex';}
-},4000);
-</script>
+<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
 
 </body>
 </html>
