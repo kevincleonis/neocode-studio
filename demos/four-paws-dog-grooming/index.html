@@ -3,234 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Four Paws Dog Grooming Salon | Est. 2001 | Liverpool's Trusted Groomers</title>
-<meta name="description" content="Liverpool's established dog grooming salon since 2001. Professional grooming for all breeds. 25+ years experience. Book your appointment today.">
+<title>Four Paws Dog Grooming Salon | Liverpool's Trusted Groomers Since 2001</title>
+<meta name="description" content="Professional dog grooming in Childwall, Liverpool. 25+ years experience. All breeds welcome. Nervous dogs our speciality. Call 0151 252 2211.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--teal:#0891b2;--darkteal:#0e7490;--ocean:#164e63;--sand:#fef3c7;--warm:#f8f4eb;--dark:#0c1929;--text:#334155;--white:#fff;--coral:#fb923c;--pink:#f472b6}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--white)}
+:root{--coral:#e8836b;--coral-light:#f09e8b;--coral-dark:#d16b52;--teal:#2a9d8f;--teal-dark:#1f7a6f;--cream:#fdf8f4;--warm:#fef3ed;--dark:#2d2926;--dark2:#3d3835;--text:#6b5e57;--text-light:#8a7d76;--white:#fff;--shadow:0 4px 24px rgba(45,41,38,0.08)}
+body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
-.float-call{position:fixed;bottom:2rem;right:2rem;z-index:99;background:linear-gradient(135deg,var(--teal),var(--coral));color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(8,145,178,0.3);transition:all .3s;animation:bob 3s ease-in-out infinite}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Floating call */
+.float-call{position:fixed;bottom:2rem;right:2rem;z-index:999;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--coral-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(232,131,107,0.4);transition:all .3s;animation:wiggle 3s ease-in-out infinite}
 .float-call:hover{transform:scale(1.1)}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.float-call svg{width:28px;height:28px;fill:var(--white)}
+@keyframes wiggle{0%,100%{transform:rotate(0)}10%{transform:rotate(-8deg)}20%{transform:rotate(8deg)}30%{transform:rotate(-4deg)}40%{transform:rotate(0)}}
 
-.est-bar{background:var(--ocean);color:var(--sand);text-align:center;padding:.5rem;font-size:.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(253,248,244,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.05);padding:0 clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{font-weight:900;font-size:1.25rem;color:var(--dark);display:flex;align-items:center;gap:10px}
+.logo-paw{font-size:1.4rem}
+.logo em{font-style:normal;color:var(--coral)}
+.nav-links{list-style:none;display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.85rem;font-weight:700;color:var(--text);transition:color .3s}
+.nav-links a:hover{color:var(--coral)}
+.nav-cta{background:linear-gradient(135deg,var(--coral),var(--coral-dark))!important;color:var(--white)!important;padding:10px 22px;border-radius:50px;transition:all .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(232,131,107,0.3)}
 
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:70px}
-nav .logo{font-weight:800;font-size:1.3rem;color:var(--ocean)}
-nav .logo span{color:var(--teal)}
-nav .logo .paw{font-size:1.4rem}
-nav ul{list-style:none;display:flex;gap:2rem}
-nav ul a{font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
-nav ul a:hover{color:var(--teal)}
-.nav-call{background:var(--teal);color:#fff;padding:.6rem 1.5rem;border-radius:25px;font-weight:700;font-size:.85rem;transition:all .3s}
-.nav-call:hover{background:var(--darkteal)}
+/* Hero */
+.hero{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;max-width:1200px;margin:0 auto;padding:6rem clamp(1.5rem,4vw,3rem)}
+.hero-text{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--warm);border:1px solid rgba(232,131,107,0.2);color:var(--coral);padding:8px 18px;border-radius:50px;font-size:.78rem;font-weight:800;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.4rem,5vw,3.5rem);font-weight:900;color:var(--dark);line-height:1.15;margin-bottom:1.2rem}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero-desc{font-size:1.05rem;line-height:1.8;color:var(--text);margin-bottom:2rem;max-width:480px}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-coral{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--coral),var(--coral-dark));color:var(--white);padding:16px 32px;border-radius:50px;font-weight:800;font-size:.95rem;transition:all .3s;border:none;cursor:pointer}
+.btn-coral:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,131,107,0.35)}
+.btn-coral svg{width:20px;height:20px;fill:currentColor}
+.btn-teal{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--teal);color:var(--teal);padding:14px 30px;border-radius:50px;font-weight:800;font-size:.95rem;transition:all .3s}
+.btn-teal:hover{background:var(--teal);color:var(--white)}
+.hero-trust{display:flex;gap:2rem;flex-wrap:wrap}
+.trust{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;color:var(--dark)}
+.trust svg{width:20px;height:20px;fill:var(--teal)}
+.hero-img{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:'';position:absolute;inset:0;border-radius:24px;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05)}
+.hero-float{position:absolute;bottom:2rem;left:-1.5rem;background:var(--white);border-radius:16px;padding:1rem 1.5rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;z-index:3}
+.hero-float .stars{color:var(--coral);font-size:1.1rem}
+.hero-float p{font-size:.78rem;font-weight:700;color:var(--dark);line-height:1.3}
+.hero-float span{font-weight:600;color:var(--text);font-size:.72rem}
 
-.hero{min-height:92vh;background:linear-gradient(155deg,var(--dark) 0%,var(--ocean) 45%,var(--darkteal) 100%);display:flex;align-items:center;padding:5rem 2rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-100px;right:-50px;width:350px;height:350px;background:radial-gradient(circle,rgba(251,146,60,0.12),transparent 70%);border-radius:50%}
-.hero::after{content:'';position:absolute;bottom:-100px;left:-50px;width:400px;height:400px;background:radial-gradient(circle,rgba(8,145,178,0.15),transparent 70%);border-radius:50%}
-.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;width:100%;position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(251,146,60,0.15);border:1px solid rgba(251,146,60,0.3);color:var(--coral);padding:.4rem 1rem;border-radius:25px;font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
-.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--white);line-height:1.15;font-weight:800;margin-bottom:1rem}
-.hero h1 span{background:linear-gradient(135deg,var(--coral),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:rgba(255,255,255,0.55);font-size:1.05rem;line-height:1.8;margin-bottom:2rem}
-.hero-pills{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
-.pill{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:.5rem 1rem;border-radius:25px;font-size:.8rem;font-weight:500}
-.btn-cta{display:inline-block;background:linear-gradient(135deg,var(--teal),var(--coral));color:#fff;padding:1rem 2.5rem;border-radius:25px;font-weight:700;font-size:1rem;transition:all .3s;box-shadow:0 4px 20px rgba(8,145,178,0.3)}
-.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(8,145,178,0.4)}
-.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.hero-stat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:1.8rem;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
-.hero-stat:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
-.hero-stat .num{font-size:2rem;font-weight:800;color:var(--coral)}
-.hero-stat .lbl{color:rgba(255,255,255,0.45);font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem}
+/* Section */
+section{padding:6rem clamp(1.5rem,4vw,3rem)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:8px;color:var(--coral);font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem}
+.section-title{font-size:clamp(2rem,4vw,2.6rem);font-weight:900;color:var(--dark);line-height:1.2;margin-bottom:1rem}
+.section-desc{color:var(--text);font-size:1rem;line-height:1.8;max-width:550px;margin-bottom:3rem}
 
-.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
-.tag{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
-.services h2{font-size:2.5rem;font-weight:800;margin-bottom:.5rem}
-.services>p{color:var(--text);margin-bottom:3rem}
+/* Services */
+.services{background:var(--white)}
 .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.srv-card{border:1px solid #e0f2fe;border-radius:18px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;background:linear-gradient(180deg,#f0f9ff,var(--white))}
-.srv-card:hover{border-color:var(--teal);box-shadow:0 8px 30px rgba(8,145,178,0.08);transform:translateY(-3px)}
-.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--coral));transform:scaleX(0);transition:transform .3s}
-.srv-card:hover::after{transform:scaleX(1)}
-.srv-emoji{font-size:2.2rem;margin-bottom:1rem}
-.srv-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-.srv-card p{color:#64748b;font-size:.85rem;line-height:1.7}
-.srv-card .price{margin-top:1rem;font-weight:700;color:var(--teal);font-size:.9rem}
+.srv{background:var(--cream);border-radius:20px;padding:2.2rem;transition:all .4s;border:1px solid transparent;position:relative;overflow:hidden}
+.srv:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(232,131,107,0.15)}
+.srv-icon{width:56px;height:56px;background:linear-gradient(135deg,rgba(232,131,107,0.12),rgba(232,131,107,0.04));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.6rem}
+.srv h3{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:.6rem}
+.srv p{font-size:.85rem;line-height:1.7;color:var(--text)}
+.srv .from{display:inline-block;margin-top:.8rem;font-size:.78rem;font-weight:800;color:var(--coral)}
 
-.promise{padding:5rem 2rem;background:var(--warm)}
-.promise-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.promise-item .icon{font-size:2rem;margin-bottom:.8rem}
-.promise-item h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.promise-item p{font-size:.8rem;color:#64748b;line-height:1.5}
+/* About split */
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{border-radius:24px;overflow:hidden;position:relative}
+.about-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.about-badge{position:absolute;top:1.5rem;right:1.5rem;background:var(--white);border-radius:14px;padding:1rem 1.5rem;box-shadow:var(--shadow);text-align:center}
+.about-badge .num{font-size:2rem;font-weight:900;color:var(--coral)}
+.about-badge .lbl{font-size:.7rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px}
+.about-text h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:900;color:var(--dark);line-height:1.2;margin-bottom:1.2rem}
+.about-text h2 em{font-style:normal;color:var(--coral)}
+.about-text>p{line-height:1.8;margin-bottom:1.2rem;font-size:.95rem}
+.about-checklist{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.5rem}
+.about-check{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--dark)}
+.about-check svg{width:20px;height:20px;fill:var(--teal);flex-shrink:0}
 
-.reviews{padding:6rem 2rem;background:var(--white)}
-.rev-inner{max-width:1100px;margin:0 auto;text-align:center}
-.rev-inner h2{font-size:2.5rem;font-weight:800;margin-bottom:3rem}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:left}
-.rev-card{background:linear-gradient(180deg,#f0f9ff,var(--white));border-radius:18px;padding:2rem;border:1px solid #e0f2fe}
-.rev-stars{color:var(--coral);margin-bottom:.8rem;font-size:1.1rem}
-.rev-card blockquote{font-size:.92rem;line-height:1.7;color:#475569;margin-bottom:1rem}
-.rev-name{font-weight:700;font-size:.85rem}
-.rev-via{font-size:.7rem;color:#94a3b8}
+/* Reviews */
+.reviews{background:var(--white)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rev{background:var(--cream);border-radius:20px;padding:2rem;border:1px solid transparent;transition:all .3s}
+.rev:hover{box-shadow:var(--shadow);border-color:rgba(232,131,107,0.1)}
+.rev-stars{color:var(--coral);font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
+.rev blockquote{font-size:.9rem;line-height:1.8;color:var(--text);margin-bottom:1.2rem;font-style:italic}
+.rev-author{font-weight:800;font-size:.82rem;color:var(--dark)}
+.rev-time{font-size:.72rem;color:var(--text-light);margin-top:2px}
 
-.cta{padding:5rem 2rem;background:linear-gradient(135deg,var(--ocean),var(--darkteal));text-align:center;color:#fff;position:relative;overflow:hidden}
-.cta::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(251,146,60,0.15),transparent);border-radius:50%}
-.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem;position:relative}
-.cta p{opacity:.85;font-size:1.1rem;margin-bottom:2rem;position:relative}
-.btn-white{display:inline-block;background:#fff;color:var(--teal);padding:1rem 2.5rem;border-radius:25px;font-weight:700;font-size:1rem;transition:all .3s;position:relative}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
-.cta-phone{display:block;margin-top:1.5rem;font-size:1.8rem;font-weight:800;position:relative}
+/* Nervous dogs banner */
+.nervous{background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:24px;max-width:1100px;margin:0 auto;padding:4rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;color:var(--white)}
+.nervous h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;margin-bottom:1rem}
+.nervous p{font-size:.95rem;line-height:1.8;opacity:.9;margin-bottom:1.5rem}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--teal-dark);padding:14px 30px;border-radius:50px;font-weight:800;font-size:.9rem;transition:all .3s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.nervous-img{border-radius:20px;overflow:hidden}
+.nervous-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
 
-footer{background:var(--dark);color:rgba(255,255,255,0.4);padding:2.5rem 2rem;text-align:center;font-size:.8rem}
-footer .logo{color:#fff;font-size:1.1rem;font-weight:800;margin-bottom:.8rem}
-footer .logo span{color:var(--teal)}
+/* Gallery */
+.gallery{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-item{border-radius:16px;overflow:hidden;aspect-ratio:1}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.08)}
 
-@media(max-width:768px){
-nav ul{display:none}
-.hero-grid{grid-template-columns:1fr}
-.hero-right{grid-template-columns:1fr 1fr}
-.srv-grid{grid-template-columns:1fr}
-.promise-inner{grid-template-columns:1fr 1fr}
+/* CTA */
+.cta{background:var(--dark);text-align:center;color:var(--white);border-radius:0}
+.cta h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:900;margin-bottom:1rem}
+.cta>p{opacity:.6;font-size:1rem;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-phone{display:block;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--coral);margin-top:1.5rem}
+.cta-info{color:rgba(255,255,255,0.4);font-size:.85rem;margin-top:.8rem}
+
+/* Footer */
+footer{background:var(--dark2);padding:2.5rem clamp(1.5rem,4vw,3rem);text-align:center;color:rgba(255,255,255,0.4);font-size:.78rem;line-height:1.8}
+footer .logo{color:var(--white);justify-content:center;margin-bottom:.8rem}
+footer .credit{opacity:.5;font-size:.7rem;margin-top:.8rem}
+
+/* Mobile */
+@media(max-width:900px){
+.nav-links{display:none}
+.hero{grid-template-columns:1fr;padding-top:4rem;min-height:auto}
+.hero-img{max-height:400px;aspect-ratio:auto}
+.hero-float{display:none}
+.srv-grid{grid-template-columns:1fr 1fr}
+.about-grid{grid-template-columns:1fr;gap:2rem}
 .rev-grid{grid-template-columns:1fr}
-.float-call{bottom:1.5rem;right:1.5rem;width:50px;height:50px;font-size:1.2rem}
+.nervous{grid-template-columns:1fr;padding:3rem 2rem;border-radius:20px;margin:0 1rem}
+.gallery-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.srv-grid{grid-template-columns:1fr}
+.about-checklist{grid-template-columns:1fr}
+.hero-actions{flex-direction:column;align-items:stretch}
+.hero-actions a{text-align:center;justify-content:center}
+.hero-trust{flex-direction:column;gap:.8rem}
+.float-call{bottom:1.2rem;right:1.2rem;width:56px;height:56px}
 }
 </style>
 </head>
 <body>
 
-<div class="est-bar">&#128062; Grooming Liverpool's Dogs Since 2001 &mdash; 25+ Years of Happy Paws</div>
-
-<a href="tel:01512522211" class="float-call" title="Call Now">&#128222;</a>
+<a href="tel:01512522211" class="float-call" aria-label="Call us">
+  <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+</a>
 
 <nav>
-  <div class="logo"><span class="paw">&#128062;</span> Four <span>Paws</span></div>
-  <ul>
+  <div class="logo"><span class="logo-paw">🐾</span> Four <em>Paws</em></div>
+  <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Book</a></li>
+    <li><a href="tel:01512522211" class="nav-cta">Book Now</a></li>
   </ul>
-  <a href="tel:01512522211" class="nav-call">&#128222; Book Now</a>
 </nav>
 
+<!-- Hero -->
 <section class="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="hero-badge">&#128062; Est. 2001 &mdash; 25+ Years</div>
-      <h1>Liverpool's Favourite <span>Dog Grooming</span> Salon</h1>
-      <p>For over 25 years, Four Paws has been Liverpool's go-to salon for professional dog grooming. Expert care for every breed, every coat, every temperament. Your dog will leave looking and feeling incredible.</p>
-      <div class="hero-pills">
-        <span class="pill">&#10003; 25+ Years Experience</span>
-        <span class="pill">&#10003; All Breeds</span>
-        <span class="pill">&#10003; City &amp; Guilds</span>
-        <span class="pill">&#10003; Anxiety-Friendly</span>
-      </div>
-      <a href="tel:01512522211" class="btn-cta">&#128062; Book an Appointment</a>
+  <div class="hero-text">
+    <div class="hero-badge">🐾 Trusted Since 2001</div>
+    <h1>Liverpool's Favourite <em>Dog Groomers</em> for 25 Years</h1>
+    <p class="hero-desc">Every dog gets one-to-one attention from our National Diploma qualified groomers. Nervous dogs? That's our speciality. We've been making tails wag in Childwall since 2001.</p>
+    <div class="hero-actions">
+      <a href="tel:01512522211" class="btn-coral">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Book an Appointment
+      </a>
+      <a href="#services" class="btn-teal">Our Services</a>
     </div>
-    <div class="hero-right">
-      <div class="hero-stat"><div class="num">25+</div><div class="lbl">Years Experience</div></div>
-      <div class="hero-stat"><div class="num">1000s</div><div class="lbl">Happy Dogs</div></div>
-      <div class="hero-stat"><div class="num">All</div><div class="lbl">Breeds Welcome</div></div>
-      <div class="hero-stat"><div class="num">5&#9733;</div><div class="lbl">Facebook Rated</div></div>
+    <div class="hero-trust">
+      <div class="trust"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> National Diploma Qualified</div>
+      <div class="trust"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> First Aid Trained</div>
+      <div class="trust"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> All Breeds</div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.pexels.com/photos/6816860/pexels-photo-6816860.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Happy dog after grooming" loading="eager">
+    <div class="hero-float">
+      <div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div><p>25+ Years of Happy Dogs</p><span>Childwall, Liverpool</span></div>
     </div>
   </div>
 </section>
 
+<!-- Services -->
 <section class="services" id="services">
-  <div class="tag">Our Services</div>
-  <h2>Grooming Menu</h2>
-  <p>Professional grooming packages tailored to your dog's breed, coat type, and individual needs.</p>
-  <div class="srv-grid">
-    <div class="srv-card">
-      <div class="srv-emoji">&#128704;</div>
-      <h3>Full Groom</h3>
-      <p>Complete wash, blow-dry, brush out, clip/trim, nail trim, ear clean, and hygiene tidy. The full works for your pup.</p>
-      <div class="price">From &pound;30</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#128063;</div>
-      <h3>Bath &amp; Tidy</h3>
-      <p>Freshen up between full grooms. Bath, blow-dry, sanitary trim, nail trim, and ear clean.</p>
-      <div class="price">From &pound;20</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#9985;</div>
-      <h3>Breed-Specific Cuts</h3>
-      <p>From Poodle clips to terrier hand-stripping. We know every breed standard and trending styles.</p>
-      <div class="price">From &pound;35</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#128023;</div>
-      <h3>Puppy Introduction</h3>
-      <p>Gentle first grooming experience for puppies. Short, positive session to build confidence from an early age.</p>
-      <div class="price">From &pound;15</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#128133;</div>
-      <h3>De-Matting &amp; De-Shedding</h3>
-      <p>Specialist treatment for matted coats and heavy shedders. Gentle detangling and deep undercoat removal.</p>
-      <div class="price">From &pound;25</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#127801;</div>
-      <h3>Pamper Package</h3>
-      <p>Full groom plus conditioning treatment, blueberry facial, paw balm, and finishing cologne. Pure luxury.</p>
-      <div class="price">From &pound;45</div>
+  <div class="section-inner">
+    <div class="section-tag reveal">🐾 Our Services</div>
+    <h2 class="section-title reveal">Everything Your Dog <br>Needs to Look &amp; Feel Amazing</h2>
+    <p class="section-desc reveal">All breeds and sizes welcome. From a quick nail trim to a full pamper session, we treat every dog like our own.</p>
+    <div class="srv-grid">
+      <div class="srv reveal">
+        <div class="srv-icon">✂️</div>
+        <h3>Full Groom</h3>
+        <p>The complete package: bath, blow-dry, brush out, clip or scissor cut, nails, ears, eyes, and hygiene tidy. Your dog will leave looking and smelling gorgeous.</p>
+        <span class="from">From ~&pound;30</span>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-icon">🛁</div>
+        <h3>Bath &amp; Tidy</h3>
+        <p>A thorough wash, condition, and blow-dry with a face, feet, and hygiene trim. Perfect for between full grooms.</p>
+        <span class="from">From ~&pound;20</span>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-icon">🐩</div>
+        <h3>Breed-Specific Cuts</h3>
+        <p>Breed-standard clips and hand-stripping for terriers, spaniels, poodles, and more. Proper breed knowledge from years of experience.</p>
+        <span class="from">From ~&pound;35</span>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-icon">🐶</div>
+        <h3>Puppy Introduction</h3>
+        <p>A gentle first grooming experience to get your pup comfortable. We take it slow so they learn to love salon visits from the very start.</p>
+        <span class="from">From ~&pound;15</span>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-icon">🧹</div>
+        <h3>De-matting &amp; De-shedding</h3>
+        <p>Stubborn tangles or shedding out of control? We'll carefully work through matted coats and remove loose undercoat without stressing your dog.</p>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-icon">💅</div>
+        <h3>Nail Clipping</h3>
+        <p>Quick, stress-free nail trimming for dogs who just need a nail trim without the full groom. Pop in anytime during opening hours.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="promise">
-  <div class="promise-inner">
-    <div class="promise-item"><div class="icon">&#128150;</div><h4>25+ Years of Love</h4><p>A quarter century of caring for Liverpool's dogs. Experience you can trust.</p></div>
-    <div class="promise-item"><div class="icon">&#127942;</div><h4>Qualified Groomers</h4><p>City &amp; Guilds trained. Continuous professional development.</p></div>
-    <div class="promise-item"><div class="icon">&#128062;</div><h4>Every Breed</h4><p>From Chihuahuas to Great Danes. We welcome dogs of all sizes.</p></div>
-    <div class="promise-item"><div class="icon">&#128247;</div><h4>Fresh &amp; Clean</h4><p>Spotless salon with premium natural grooming products.</p></div>
+<!-- About -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.pexels.com/photos/5731866/pexels-photo-5731866.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Dog being groomed with care" loading="lazy">
+        <div class="about-badge">
+          <div class="num">25+</div>
+          <div class="lbl">Years</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-tag">About Us</div>
+        <h2>More Than a Salon. <em>A Second Home</em> for Your Dog.</h2>
+        <p>Four Paws has been part of the Childwall community since 2001. That's 25 years of wagging tails, happy owners, and dogs that actually enjoy their grooming appointments.</p>
+        <p>We're not a production line. Every dog gets one-to-one time with their own groomer. No cages, no rushing, no stress. Just patient, qualified professionals who genuinely love what they do.</p>
+        <div class="about-checklist">
+          <div class="about-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> National Diploma groomers</div>
+          <div class="about-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> City &amp; Guilds trained</div>
+          <div class="about-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> CPR &amp; first aid certified</div>
+          <div class="about-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> One-to-one attention</div>
+          <div class="about-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Nervous dog specialists</div>
+          <div class="about-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> All breeds &amp; sizes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nervous dogs -->
+<div style="padding:2rem clamp(1.5rem,4vw,3rem)">
+  <div class="nervous reveal">
+    <div>
+      <h2>Nervous or Anxious Dog? You're in the Right Place.</h2>
+      <p>We understand that some dogs find grooming stressful. Our groomers are trained to work with anxious, fearful, and rescue dogs. We'll take all the time they need, use calm handling, and make sure they feel safe throughout. Many of our most loyal customers came to us because their dog had a bad experience elsewhere.</p>
+      <a href="tel:01512522211" class="btn-white">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call to Discuss Your Dog
+      </a>
+    </div>
+    <div class="nervous-img">
+      <img src="https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&dpr=1" alt="Calm, relaxed dog" loading="lazy">
+    </div>
   </div>
 </div>
 
+<!-- Reviews -->
 <section class="reviews" id="reviews">
-  <div class="rev-inner">
-    <div class="tag">Reviews</div>
-    <h2>What Liverpool Dog Owners Say</h2>
+  <div class="section-inner">
+    <div class="section-tag reveal">⭐ Reviews</div>
+    <h2 class="section-title reveal">Loved by Dogs. Trusted by Owners.</h2>
+    <p class="section-desc reveal">Our customers keep coming back year after year. Here's what they have to say.</p>
     <div class="rev-grid">
-      <div class="rev-card">
+      <div class="rev reveal">
         <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Been bringing my dogs to Four Paws for over 10 years now. They always come back looking gorgeous. Wouldn't trust anyone else with my babies."</blockquote>
-        <div class="rev-name">Michelle D.</div>
-        <div class="rev-via">Facebook Review</div>
+        <blockquote>"Been bringing my dogs here for over 10 years. Wouldn't trust anyone else with my babies. They always come home looking beautiful and smelling lovely."</blockquote>
+        <div class="rev-author">Michelle D.</div>
+        <div class="rev-time">Loyal customer since 2014</div>
       </div>
-      <div class="rev-card">
+      <div class="rev reveal">
         <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"My nervous rescue was so well looked after. They took their time, were incredibly patient, and he came out looking like a different dog! Amazing."</blockquote>
-        <div class="rev-name">Tony R.</div>
-        <div class="rev-via">Facebook Review</div>
+        <blockquote>"My nervous rescue was so well looked after. They took their time, were incredibly patient, and he came out calm and happy. First groomer he's ever been relaxed with."</blockquote>
+        <div class="rev-author">Tony R.</div>
+        <div class="rev-time">Rescue dog owner</div>
       </div>
-      <div class="rev-card">
+      <div class="rev reveal">
         <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Always great with our Cockapoo. Professional, friendly, and the price is really reasonable for the quality. Booked in every 6 weeks without fail."</blockquote>
-        <div class="rev-name">Laura &amp; Steve C.</div>
-        <div class="rev-via">Facebook Review</div>
+        <blockquote>"Always great with our Cockapoo. Professional, friendly, and the price is really reasonable. We've used Four Paws since she was a pup and feel confident leaving her there."</blockquote>
+        <div class="rev-author">Laura &amp; Steve C.</div>
+        <div class="rev-time">Regular customers</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta" id="contact">
-  <h2>Book Your Dog In Today</h2>
-  <p>25+ years of professional grooming. Every breed welcome. Liverpool's trusted salon since 2001.</p>
-  <a href="tel:01512522211" class="btn-white">&#128062; Book an Appointment</a>
-  <span class="cta-phone">&#128222; 0151 252 2211</span>
+<!-- Gallery -->
+<section class="gallery">
+  <div class="section-inner">
+    <div class="section-tag reveal">📸 Happy Customers</div>
+    <h2 class="section-title reveal">Fresh From the Salon</h2>
+    <div class="gallery-grid" style="margin-top:2rem">
+      <div class="gallery-item reveal"><img src="https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Freshly groomed poodle" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="https://images.pexels.com/photos/6568942/pexels-photo-6568942.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Happy golden retriever" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="https://images.pexels.com/photos/5731870/pexels-photo-5731870.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Dog grooming session" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Cute puppy after bath" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="section-inner" style="text-align:center">
+    <h2 class="reveal">Ready to Book Your Dog In?</h2>
+    <p class="reveal">Monday to Friday, 9am to 6pm. All breeds welcome.</p>
+    <a href="tel:01512522211" class="btn-coral reveal" style="font-size:1.05rem;padding:18px 40px">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      Call 0151 252 2211
+    </a>
+    <a href="tel:01512522211" class="cta-phone reveal">0151 252 2211</a>
+    <p class="cta-info reveal">802-804 Queens Drive, Childwall, Liverpool L13 4BT<br>Opposite The Rocket pub</p>
+  </div>
 </section>
 
 <footer>
-  <div class="logo">&#128062; Four <span>Paws</span> Dog Grooming Salon</div>
-  <p>802-804 Queens Drive, Liverpool L13 4BT</p>
-  <p style="margin-top:.5rem">Facebook: Four Paws Groomers</p>
-  <p style="margin-top:1rem">&copy; 2025 Four Paws Dog Grooming Salon. All rights reserved.</p>
-  <p style="margin-top:.5rem;opacity:.5;font-size:.7rem">Demo redesign by NeoCode Studio</p>
+  <div class="logo" style="justify-content:center"><span class="logo-paw">🐾</span> Four <em>Paws</em> Dog Grooming</div>
+  <p>802-804 Queens Drive, Childwall, Liverpool L13 4BT | 0151 252 2211</p>
+  <p>Mon-Fri: 9am - 6pm | All Breeds Welcome</p>
+  <p>&copy; 2025 Four Paws Dog Grooming Salon. All rights reserved.</p>
+  <p class="credit">Demo redesign by NeoCode Studio</p>
 </footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' }); });
+});
+</script>
 
 </body>
 </html>
