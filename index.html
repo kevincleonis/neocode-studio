@@ -493,49 +493,112 @@
 </section>
 
 <!-- PILL CHOICE -->
-<section class="section section-dark" id="pill-choice" style="padding: 80px 20px; text-align: center; position: relative; overflow: hidden;">
-    <div style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
-        <p style="font-family: var(--font-mono); font-size: 14px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;">The choice is yours</p>
-        <h2 style="font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 12px; line-height: 1.2;">Take the <span style="color: #4488ff;">blue pill</span> or the <span style="color: #ff4444;">red pill</span></h2>
-        <p style="color: var(--text-muted); font-size: 18px; margin-bottom: 48px;">One keeps things as they are. The other changes everything.</p>
-        <div style="display: flex; gap: 32px; justify-content: center; align-items: stretch; flex-wrap: wrap;">
+<style>
+@keyframes matrixRain { 0%{transform:translateY(-100%);opacity:1} 100%{transform:translateY(100vh);opacity:0} }
+@keyframes pillFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes pillGlowBlue { 0%,100%{filter:drop-shadow(0 0 15px rgba(68,136,255,0.4))} 50%{filter:drop-shadow(0 0 35px rgba(68,136,255,0.8))} }
+@keyframes pillGlowRed { 0%,100%{filter:drop-shadow(0 0 15px rgba(255,68,68,0.4))} 50%{filter:drop-shadow(0 0 35px rgba(255,68,68,0.8))} }
+#pill-matrix-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;}
+.matrix-col{position:absolute;top:-100%;font-family:var(--font-mono);font-size:14px;color:var(--accent);opacity:0.15;writing-mode:vertical-rl;line-height:1.2;animation:matrixRain linear infinite;}
+.pill-card{cursor:pointer;flex:1;min-width:280px;max-width:360px;padding:40px 28px 32px;border-radius:16px;border:none;background:transparent;transition:all 0.4s ease;position:relative;text-align:center;}
+.pill-card:hover .pill-img{transform:translateY(-12px) scale(1.1);}
+.pill-img{width:160px;height:auto;margin:0 auto 24px;display:block;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);}
+.pill-img-blue{animation:pillFloat 3s ease-in-out infinite, pillGlowBlue 2.5s ease-in-out infinite;}
+.pill-img-red{animation:pillFloat 3s ease-in-out infinite 0.5s, pillGlowRed 2.5s ease-in-out infinite 0.5s;}
+#blue-pill-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.97);z-index:10000;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:20px;}
+#blue-pill-overlay .matrix-overlay-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;}
+</style>
+<section class="section section-dark" id="pill-choice" style="padding:100px 20px;text-align:center;position:relative;overflow:hidden;background:#050505;">
+    <!-- Matrix rain background -->
+    <div id="pill-matrix-bg"></div>
+    <div style="max-width:800px;margin:0 auto;position:relative;z-index:2;">
+        <p style="font-family:var(--font-mono);font-size:13px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;opacity:0.7;">// The choice is yours</p>
+        <h2 style="font-size:clamp(28px,4.5vw,46px);font-weight:700;margin-bottom:12px;line-height:1.2;">Take the <span style="color:#4488ff;">blue pill</span> or the <span style="color:#ff4444;">red pill</span></h2>
+        <p style="color:var(--text-muted);font-size:18px;margin-bottom:56px;">One keeps things as they are. The other changes everything.</p>
+        <div style="display:flex;gap:40px;justify-content:center;align-items:stretch;flex-wrap:wrap;">
             <!-- BLUE PILL -->
-            <div id="blue-pill" onclick="takeBluePill()" style="cursor: pointer; flex: 1; min-width: 280px; max-width: 360px; padding: 36px 28px; border-radius: 16px; border: 2px solid rgba(68,136,255,0.3); background: rgba(68,136,255,0.06); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseenter="this.style.borderColor='rgba(68,136,255,0.6)';this.style.boxShadow='0 0 40px rgba(68,136,255,0.2)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='rgba(68,136,255,0.3)';this.style.boxShadow='none';this.style.transform='translateY(0)'">
-                <div style="width: 80px; height: 36px; border-radius: 18px; background: linear-gradient(135deg, #4488ff 50%, #2266dd 50%); margin: 0 auto 20px; box-shadow: 0 0 30px rgba(68,136,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2); position: relative; overflow: hidden;"><div style="position:absolute;top:4px;left:12px;width:20px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);transform:rotate(-20deg);"></div></div>
-                <h3 style="font-size: 20px; font-weight: 600; color: #4488ff; margin-bottom: 10px;">Blue Pill</h3>
-                <p style="font-size: 17px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px;">"I'll keep my current site"</p>
-                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">Stay comfortable. Nothing changes. Your competitors keep growing while your site stays the same.</p>
+            <div class="pill-card" id="blue-pill" onclick="takeBluePill()">
+                <img src="assets/blue-pill.png" alt="Blue Pill" class="pill-img pill-img-blue">
+                <h3 style="font-size:20px;font-weight:600;color:#4488ff;margin-bottom:10px;">Blue Pill</h3>
+                <p style="font-size:17px;font-weight:500;color:var(--text-primary);margin-bottom:8px;">"I'll keep my current site"</p>
+                <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Stay comfortable. Nothing changes. Your competitors keep growing while your site stays the same.</p>
             </div>
             <!-- RED PILL -->
-            <div id="red-pill" onclick="takeRedPill()" style="cursor: pointer; flex: 1; min-width: 280px; max-width: 360px; padding: 36px 28px; border-radius: 16px; border: 2px solid rgba(255,68,68,0.3); background: rgba(255,68,68,0.06); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseenter="this.style.borderColor='rgba(255,68,68,0.6)';this.style.boxShadow='0 0 40px rgba(255,68,68,0.2)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='rgba(255,68,68,0.3)';this.style.boxShadow='none';this.style.transform='translateY(0)'">
-                <div style="width: 80px; height: 36px; border-radius: 18px; background: linear-gradient(135deg, #ff4444 50%, #cc2222 50%); margin: 0 auto 20px; box-shadow: 0 0 30px rgba(255,68,68,0.4), inset 0 -2px 4px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2); position: relative; overflow: hidden;"><div style="position:absolute;top:4px;left:12px;width:20px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);transform:rotate(-20deg);"></div></div>
-                <h3 style="font-size: 20px; font-weight: 600; color: #ff4444; margin-bottom: 10px;">Red Pill</h3>
-                <p style="font-size: 17px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px;">"I want a site that converts"</p>
-                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">See the truth. Discover how much revenue your site is leaving on the table &mdash; and fix it.</p>
+            <div class="pill-card" id="red-pill" onclick="takeRedPill()">
+                <img src="assets/red-pill.png" alt="Red Pill" class="pill-img pill-img-red">
+                <h3 style="font-size:20px;font-weight:600;color:#ff4444;margin-bottom:10px;">Red Pill</h3>
+                <p style="font-size:17px;font-weight:500;color:var(--text-primary);margin-bottom:8px;">"I want a site that converts"</p>
+                <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">See the truth. Discover how much revenue your site is leaving on the table &mdash; and fix it.</p>
             </div>
         </div>
     </div>
     <!-- Blue pill overlay -->
-    <div id="blue-pill-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:20px;">
-        <div id="blue-pill-content" style="max-width:600px;">
-            <div style="font-size:60px; margin-bottom:24px;">😴</div>
-            <h2 style="font-size:32px; color:#4488ff; margin-bottom:20px; font-weight:700;">Ignorance is bliss...</h2>
-            <div style="font-family:var(--font-mono); font-size:14px; color:var(--text-muted); text-align:left; background:rgba(68,136,255,0.08); border:1px solid rgba(68,136,255,0.2); border-radius:12px; padding:24px; margin-bottom:24px; line-height:2;">
+    <div id="blue-pill-overlay">
+        <div class="matrix-overlay-bg" id="overlay-matrix"></div>
+        <div style="max-width:600px;position:relative;z-index:2;">
+            <img src="assets/blue-pill.png" alt="Blue Pill" style="width:100px;margin-bottom:20px;filter:drop-shadow(0 0 30px rgba(68,136,255,0.6));opacity:0.6;">
+            <h2 style="font-size:32px;color:#4488ff;margin-bottom:20px;font-weight:700;">Ignorance is bliss...</h2>
+            <div style="font-family:var(--font-mono);font-size:14px;color:var(--text-muted);text-align:left;background:rgba(68,136,255,0.05);border:1px solid rgba(68,136,255,0.15);border-radius:12px;padding:24px;margin-bottom:28px;line-height:2.2;">
                 <span style="color:#4488ff;">&gt;</span> While you sleep, your competitors are optimising...<br>
-                <span style="color:#4488ff;">&gt;</span> <span style="color:#ff4444;">67% of visitors</span> leave your site in under 3 seconds<br>
-                <span style="color:#4488ff;">&gt;</span> <span style="color:#ff4444;">£2,400/month</span> in lost revenue from poor conversion<br>
-                <span style="color:#4488ff;">&gt;</span> <span style="color:#ff4444;">88% of users</span> won't return after a bad experience<br>
-                <span style="color:#fff; margin-top:8px; display:inline-block;">// Maybe the red pill wasn't so scary after all?</span>
+                <span style="color:#4488ff;">&gt;</span> <span style="color:#ff4444;font-weight:600;">67% of visitors</span> leave your site in under 3 seconds<br>
+                <span style="color:#4488ff;">&gt;</span> <span style="color:#ff4444;font-weight:600;">&pound;2,400/month</span> in lost revenue from poor conversion<br>
+                <span style="color:#4488ff;">&gt;</span> <span style="color:#ff4444;font-weight:600;">88% of users</span> won't return after a bad experience<br>
+                <span style="color:var(--accent);margin-top:8px;display:inline-block;">// Maybe the red pill wasn't so scary after all?</span>
             </div>
-            <a href="contact.html" class="btn btn-primary" style="display:inline-block; padding:16px 36px; background:var(--accent); color:#000; text-decoration:none; border-radius:8px; font-weight:600; font-size:16px; margin-right:12px;">Actually, give me the red pill <i class="fas fa-arrow-right"></i></a>
-            <button onclick="closeBluePill()" style="padding:16px 24px; background:transparent; color:var(--text-muted); border:1px solid rgba(255,255,255,0.1); border-radius:8px; cursor:pointer; font-family:var(--font-main); font-size:14px; margin-top:12px;">No thanks, I'll keep dreaming</button>
+            <a href="contact.html" style="display:inline-block;padding:16px 36px;background:var(--accent);color:#000;text-decoration:none;border-radius:8px;font-weight:600;font-size:16px;font-family:var(--font-main);margin-right:12px;transition:all 0.3s;">Actually, give me the red pill <i class="fas fa-arrow-right"></i></a>
+            <br><button onclick="closeBluePill()" style="padding:14px 24px;background:transparent;color:var(--text-muted);border:1px solid rgba(255,255,255,0.08);border-radius:8px;cursor:pointer;font-family:var(--font-main);font-size:14px;margin-top:16px;transition:all 0.3s;">No thanks, I'll keep dreaming</button>
         </div>
     </div>
 </section>
 <script>
-function takeBluePill(){var o=document.getElementById('blue-pill-overlay');o.style.display='flex';o.style.opacity='0';document.body.style.overflow='hidden';var s=0;var f=function(){s+=0.05;o.style.opacity=Math.min(s,1);if(s<1)requestAnimationFrame(f);};requestAnimationFrame(f);}
-function closeBluePill(){var o=document.getElementById('blue-pill-overlay');o.style.opacity='0';setTimeout(function(){o.style.display='none';document.body.style.overflow='';},400);}
-function takeRedPill(){document.body.style.transition='filter 0.5s';document.body.style.filter='brightness(2) saturate(0)';setTimeout(function(){window.location.href='contact.html';},600);}
+(function(){
+    // Matrix rain for pill section
+    var chars='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF';
+    var container=document.getElementById('pill-matrix-bg');
+    for(var i=0;i<25;i++){
+        var col=document.createElement('div');
+        col.className='matrix-col';
+        var str='';
+        for(var j=0;j<30;j++) str+=chars[Math.floor(Math.random()*chars.length)]+'<br>';
+        col.innerHTML=str;
+        col.style.left=Math.random()*100+'%';
+        col.style.animationDuration=(4+Math.random()*8)+'s';
+        col.style.animationDelay=Math.random()*5+'s';
+        col.style.fontSize=(10+Math.random()*6)+'px';
+        col.style.opacity=0.04+Math.random()*0.08;
+        container.appendChild(col);
+    }
+})();
+function takeBluePill(){
+    var o=document.getElementById('blue-pill-overlay');
+    o.style.display='flex';o.style.opacity='0';document.body.style.overflow='hidden';
+    // Add matrix rain to overlay
+    var mc=document.getElementById('overlay-matrix');mc.innerHTML='';
+    var chars='アイウエオカキクケコ0123456789';
+    for(var i=0;i<40;i++){
+        var col=document.createElement('div');col.className='matrix-col';
+        var str='';for(var j=0;j<30;j++) str+=chars[Math.floor(Math.random()*chars.length)]+'<br>';
+        col.innerHTML=str;col.style.left=Math.random()*100+'%';
+        col.style.animationDuration=(3+Math.random()*6)+'s';col.style.animationDelay=Math.random()*3+'s';
+        col.style.fontSize=(10+Math.random()*6)+'px';col.style.opacity=0.06+Math.random()*0.1;col.style.color='#4488ff';
+        mc.appendChild(col);
+    }
+    var s=0;var f=function(){s+=0.04;o.style.opacity=Math.min(s,1);if(s<1)requestAnimationFrame(f);};requestAnimationFrame(f);
+}
+function closeBluePill(){var o=document.getElementById('blue-pill-overlay');o.style.transition='opacity 0.5s';o.style.opacity='0';setTimeout(function(){o.style.display='none';o.style.transition='';document.body.style.overflow='';},500);}
+function takeRedPill(){
+    // Red matrix flash effect
+    var flash=document.createElement('div');flash.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;background:rgba(255,0,0,0.15);';
+    document.body.appendChild(flash);
+    var chars='01';var drops=[];
+    for(var i=0;i<60;i++){
+        var col=document.createElement('div');col.style.cssText='position:absolute;top:-100%;font-family:monospace;font-size:'+(8+Math.random()*10)+'px;color:rgba(255,68,68,'+(0.3+Math.random()*0.5)+');writing-mode:vertical-rl;animation:matrixRain '+(1+Math.random()*2)+'s linear forwards;left:'+Math.random()*100+'%;';
+        var str='';for(var j=0;j<40;j++) str+=chars[Math.floor(Math.random()*2)]+'<br>';
+        col.innerHTML=str;flash.appendChild(col);
+    }
+    setTimeout(function(){document.body.style.transition='filter 0.6s';document.body.style.filter='brightness(3) saturate(0)';},400);
+    setTimeout(function(){window.location.href='contact.html';},1000);
+}
 </script>
 
 <div class="inline-cta section-dark">
