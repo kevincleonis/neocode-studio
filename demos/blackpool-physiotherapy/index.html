@@ -12,6 +12,8 @@
 :root{--blue:#2563eb;--blue-light:#60a5fa;--blue-dark:#1d4ed8;--blue-glow:rgba(37,99,235,0.08);--mint:#10b981;--bg:#f8fafb;--white:#fff;--dark:#111827;--dark2:#1f2937;--text:#4b5563;--text-light:#6b7280;--border:#e5e7eb;--shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04)}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
+a:focus,button:focus{outline:2px solid var(--blue);outline-offset:2px}
+a:focus:not(:focus-visible){outline:none}
 img{max-width:100%;display:block}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -31,6 +33,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(248,250,251,0.92);backdrop
 .nav-links a:hover{color:var(--blue)}
 .nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue-dark))!important;color:var(--white)!important;padding:10px 20px;border-radius:10px;font-weight:700!important;transition:all .3s}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,0.25)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--dark);border-radius:2px;transition:all .3s}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:1.5rem;z-index:99}
+.mobile-nav.open{display:block}
+.mobile-nav ul{list-style:none;display:flex;flex-direction:column;gap:0}
+.mobile-nav a{display:block;padding:14px 0;font-size:.95rem;font-weight:600;color:var(--dark);border-bottom:1px solid var(--border);transition:color .3s}
+.mobile-nav a:hover{color:var(--blue)}
+.mobile-nav li:last-child a{border-bottom:none;color:var(--white);background:linear-gradient(135deg,var(--blue),var(--blue-dark));border-radius:10px;text-align:center;padding:12px 20px;margin-top:8px;font-weight:700}
 
 /* Hero */
 .hero{max-width:1200px;margin:0 auto;padding:6rem clamp(1.5rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;min-height:85vh}
@@ -106,13 +116,16 @@ footer .credit{opacity:.5;font-size:.7rem;margin-top:.8rem}
 
 @media(max-width:900px){
 .nav-links{display:none}
+.hamburger{display:flex}
 .hero{grid-template-columns:1fr;min-height:auto;padding-top:4rem}
 .hero-img{max-height:400px;aspect-ratio:auto}
-.treat-grid{grid-template-columns:1fr}
-.team-grid{grid-template-columns:1fr}
+.treat-grid{grid-template-columns:1fr 1fr}
+.team-grid{grid-template-columns:1fr 1fr}
 .ins-logos{gap:1rem}
 }
 @media(max-width:600px){
+.treat-grid{grid-template-columns:1fr}
+.team-grid{grid-template-columns:1fr}
 .hero-actions{flex-direction:column;align-items:stretch}
 .hero-actions a{text-align:center;justify-content:center}
 .hero-trust{flex-direction:column;gap:.6rem}
@@ -138,7 +151,18 @@ footer .credit{opacity:.5;font-size:.7rem;margin-top:.8rem}
     <li><a href="#insurance">Insurance</a></li>
     <li><a href="tel:01253301118" class="nav-cta">Book Now</a></li>
   </ul>
+  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-nav">
+  <ul>
+    <li><a href="#treatments" onclick="this.closest('.mobile-nav').classList.remove('open')">Treatments</a></li>
+    <li><a href="#team" onclick="this.closest('.mobile-nav').classList.remove('open')">Our Team</a></li>
+    <li><a href="#insurance" onclick="this.closest('.mobile-nav').classList.remove('open')">Insurance</a></li>
+    <li><a href="tel:01253301118">Book Now</a></li>
+  </ul>
+</div>
 
 <!-- Hero -->
 <section class="hero">

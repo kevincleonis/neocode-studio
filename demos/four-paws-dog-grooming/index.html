@@ -12,6 +12,8 @@
 :root{--coral:#e8836b;--coral-light:#f09e8b;--coral-dark:#d16b52;--teal:#2a9d8f;--teal-dark:#1f7a6f;--cream:#fdf8f4;--warm:#fef3ed;--dark:#2d2926;--dark2:#3d3835;--text:#6b5e57;--text-light:#8a7d76;--white:#fff;--shadow:0 4px 24px rgba(45,41,38,0.08)}
 body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
+a:focus,button:focus{outline:2px solid var(--coral);outline-offset:2px}
+a:focus:not(:focus-visible){outline:none}
 img{max-width:100%;display:block}
 
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
@@ -33,6 +35,19 @@ nav{position:sticky;top:0;z-index:100;background:rgba(253,248,244,0.92);backdrop
 .nav-links a:hover{color:var(--coral)}
 .nav-cta{background:linear-gradient(135deg,var(--coral),var(--coral-dark))!important;color:var(--white)!important;padding:10px 22px;border-radius:50px;transition:all .3s}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(232,131,107,0.3)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px;z-index:201}
+.hamburger span{display:block;width:26px;height:3px;background:var(--coral);border-radius:3px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+.mobile-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(45,41,38,0.5);opacity:0;transition:opacity .3s}
+.mobile-overlay.open{opacity:1}
+.mobile-menu{position:fixed;top:0;right:-300px;width:280px;height:100%;z-index:201;background:var(--cream);border-radius:20px 0 0 20px;padding:5rem 2rem 2rem;transition:right .3s;box-shadow:-4px 0 24px rgba(0,0,0,0.1)}
+.mobile-menu.open{right:0}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:1.5rem}
+.mobile-menu a{font-size:1.1rem;font-weight:700;color:var(--dark);transition:color .3s}
+.mobile-menu a:hover{color:var(--coral)}
+.mobile-menu .nav-cta{display:inline-block;text-align:center;margin-top:1rem}
 
 /* Hero */
 .hero{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;max-width:1200px;margin:0 auto;padding:6rem clamp(1.5rem,4vw,3rem)}
@@ -131,6 +146,7 @@ footer .credit{opacity:.5;font-size:.7rem;margin-top:.8rem}
 /* Mobile */
 @media(max-width:900px){
 .nav-links{display:none}
+.hamburger{display:flex}
 .hero{grid-template-columns:1fr;padding-top:4rem;min-height:auto}
 .hero-img{max-height:400px;aspect-ratio:auto}
 .hero-float{display:none}
@@ -147,6 +163,7 @@ footer .credit{opacity:.5;font-size:.7rem;margin-top:.8rem}
 .hero-actions a{text-align:center;justify-content:center}
 .hero-trust{flex-direction:column;gap:.8rem}
 .float-call{bottom:1.2rem;right:1.2rem;width:56px;height:56px}
+.nervous{padding:2rem 1.2rem;border-radius:16px}
 }
 </style>
 </head>
@@ -164,7 +181,17 @@ footer .credit{opacity:.5;font-size:.7rem;margin-top:.8rem}
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="tel:01512522211" class="nav-cta">Book Now</a></li>
   </ul>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:01512522211" class="nav-cta">Book Now</a></li>
+  </ul>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -358,6 +385,19 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' }); });
 });
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+function toggleMenu() {
+  const open = mobileMenu.classList.toggle('open');
+  mobileOverlay.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', toggleMenu);
+mobileOverlay.addEventListener('click', toggleMenu);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (mobileMenu.classList.contains('open')) toggleMenu(); }));
 </script>
 
 </body>
