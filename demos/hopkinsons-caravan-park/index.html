@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hopkinsons Caravan Park | Whitbarrow Hall | Lake District, Cumbria</title>
+<meta name="description" content="Peaceful caravan park in the Northern Lake District. 20 acres between Keswick & Penrith, near Ullswater. Caravans, motorhomes & campervans welcome. Dogs welcome.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--forest:#15803d;--forest-light:#22c55e;--forest-glow:rgba(21,128,61,.12);--earth:#78350f;--earth-light:#a16207;--sky:#0ea5e9;--cream:#fefdf5;--sand:#fef3c7;--white:#fff;--dark:#0a1a0a;--charcoal:#1a2e1a;--gray:#64748b;--glass:rgba(255,255,255,.08);--glass-border:rgba(255,255,255,.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:#1e293b;background:var(--white);overflow-x:hidden;line-height:1.6}
+h1,h2,h3{font-family:'DM Serif Display',serif;font-weight:400}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;transition:all .3s}
+nav.scrolled{background:rgba(10,26,10,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'DM Serif Display';font-size:1.2rem;color:var(--white);text-decoration:none}
+.nav-brand span{color:var(--forest-light)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--forest-light)}
+.nav-cta{background:var(--forest)!important;color:var(--white)!important;padding:10px 24px!important;border-radius:10px!important;font-weight:600!important;font-family:'Inter',sans-serif!important}
+.mobile-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,10,.5) 0%,rgba(10,26,10,.3) 40%,rgba(10,26,10,.85) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:160px 24px 120px;text-align:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:100px;padding:8px 24px;font-size:.8rem;color:var(--forest-light);font-weight:600;margin-bottom:28px;font-family:'Inter',sans-serif}
+.hero h1{font-size:clamp(2.5rem,6vw,4.2rem);color:var(--white);line-height:1.1;margin-bottom:20px}
+.hero h1 span{color:var(--forest-light)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 40px}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:14px;font-size:1rem;font-weight:600;text-decoration:none;transition:all .3s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-green{background:linear-gradient(135deg,var(--forest),var(--forest-light));color:var(--white);box-shadow:0 8px 32px rgba(21,128,61,.35)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(21,128,61,.45)}
+.btn-ghost{background:var(--glass);color:var(--white);border:1px solid var(--glass-border);backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+.hero-features{display:flex;gap:32px;justify-content:center;margin-top:56px;flex-wrap:wrap}
+.hero-feat{background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px 28px;text-align:center;min-width:140px}
+.hero-feat-icon{font-size:1.5rem;margin-bottom:6px}
+.hero-feat-text{font-size:.8rem;color:rgba(255,255,255,.7);font-weight:500}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.container{max-width:1200px;margin:0 auto}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;color:var(--forest);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:'Inter',sans-serif}
+.section-label::before{content:'';width:24px;height:2px;background:var(--forest)}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--dark);margin-bottom:16px;line-height:1.15}
+.section-desc{font-size:1rem;color:var(--gray);max-width:550px;margin-bottom:48px}
+
+/* PARK INFO */
+.park-bg{background:var(--cream)}
+.park-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.park-img-wrap{position:relative}
+.park-img-wrap img{width:100%;height:450px;object-fit:cover;border-radius:24px}
+.park-img-badge{position:absolute;bottom:20px;left:20px;background:rgba(10,26,10,.85);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 24px;display:flex;align-items:center;gap:12px}
+.park-img-badge-icon{width:40px;height:40px;background:var(--forest);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.1rem}
+.park-img-badge h4{color:var(--white);font-family:'Inter',sans-serif;font-weight:700;font-size:.85rem}
+.park-img-badge p{color:rgba(255,255,255,.6);font-size:.75rem}
+.park-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.park-list li{display:flex;gap:14px;padding:18px;background:var(--white);border-radius:14px;border:1px solid #e2e8f0;transition:all .3s}
+.park-list li:hover{border-color:rgba(21,128,61,.2);box-shadow:0 4px 16px rgba(21,128,61,.06)}
+.p-check{width:30px;height:30px;background:linear-gradient(135deg,var(--forest),var(--forest-light));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--white);font-weight:700;font-size:.8rem}
+.park-list h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:3px;font-family:'Inter',sans-serif}
+.park-list p{font-size:.83rem;color:var(--gray)}
+
+/* FACILITIES */
+.fac-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.fac-card{background:var(--cream);border:1px solid #fde68a;border-radius:18px;padding:28px;text-align:center;transition:all .3s}
+.fac-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(21,128,61,.06);border-color:rgba(21,128,61,.3)}
+.fac-icon{font-size:2rem;margin-bottom:12px}
+.fac-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:6px;font-family:'Inter',sans-serif}
+.fac-card p{font-size:.82rem;color:var(--gray)}
+
+/* LOCATION */
+.loc-section{background:linear-gradient(135deg,var(--dark),var(--charcoal))}
+.loc-section .section-label{color:var(--forest-light)}
+.loc-section .section-label::before{background:var(--forest-light)}
+.loc-section .section-title{color:var(--white)}
+.loc-section .section-desc{color:rgba(255,255,255,.6)}
+.loc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.loc-card{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:28px;text-align:center;transition:all .3s}
+.loc-card:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.loc-icon{font-size:2rem;margin-bottom:12px}
+.loc-card h3{font-size:1.05rem;color:var(--white);margin-bottom:6px;font-family:'Inter',sans-serif;font-weight:700}
+.loc-card p{font-size:.85rem;color:rgba(255,255,255,.6)}
+
+/* CTA */
+.cta-section{text-align:center;background:var(--cream)}
+.cta-box{background:linear-gradient(135deg,var(--forest),#166534);border-radius:32px;padding:80px 48px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-100px;right:-50px;width:350px;height:350px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);border-radius:50%}
+.cta-box::after{content:'';position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;background:radial-gradient(circle,rgba(34,197,94,.2),transparent 70%);border-radius:50%}
+.cta-box h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);margin-bottom:16px;position:relative;z-index:2}
+.cta-box p{color:rgba(255,255,255,.8);font-size:1.05rem;max-width:520px;margin:0 auto 32px;position:relative;z-index:2}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+.cta-addr{margin-top:24px;font-size:.85rem;color:rgba(255,255,255,.55);position:relative;z-index:2}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:60px 24px 30px;text-align:center}
+footer .brand{font-family:'DM Serif Display';font-size:1.3rem;color:var(--white);margin-bottom:8px}
+footer .addr{font-size:.85rem;margin-bottom:24px}
+footer .foot-links{display:flex;gap:24px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+footer .foot-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:color .3s}
+footer .foot-links a:hover{color:var(--forest-light)}
+footer .copy{font-size:.75rem;color:rgba(255,255,255,.3)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.hero-features{gap:16px}
+.hero-feat{min-width:120px;padding:14px 18px}
+.park-grid{grid-template-columns:1fr}
+.nav-links{display:none}
+.mobile-toggle{display:block}
+.cta-box{padding:48px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+<div class="nav-inner">
+<a href="#" class="nav-brand">Hopkinsons <span>Caravan Park</span></a>
+<div class="nav-links">
+<a href="#park">The Park</a>
+<a href="#facilities">Facilities</a>
+<a href="#location">Location</a>
+<a href="tel:017684834566" class="nav-cta">Book Now</a>
+</div>
+<button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg">
+<img src="https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Lake District landscape">
+</div>
+<div class="hero-inner">
+<div class="hero-tag">&#127966; Northern Lake District, Cumbria</div>
+<h1>Your Peaceful Retreat in the <span>Heart of the Lakes</span></h1>
+<p class="hero-sub">20 acres of unspoilt countryside between Keswick and Penrith, overlooked by the magnificent Blencathra. Just minutes from Lake Ullswater.</p>
+<div class="hero-ctas">
+<a href="tel:017684834566" class="btn btn-green">
+<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+Book Your Pitch
+</a>
+<a href="#park" class="btn btn-ghost">Explore the Park</a>
+</div>
+<div class="hero-features">
+<div class="hero-feat fade-up"><div class="hero-feat-icon">&#9978;</div><div class="hero-feat-text">20 Acre Site</div></div>
+<div class="hero-feat fade-up"><div class="hero-feat-icon">&#9889;</div><div class="hero-feat-text">Electric Hookups</div></div>
+<div class="hero-feat fade-up"><div class="hero-feat-icon">&#128054;</div><div class="hero-feat-text">Dogs Welcome</div></div>
+<div class="hero-feat fade-up"><div class="hero-feat-icon">&#127956;</div><div class="hero-feat-text">Near Ullswater</div></div>
+<div class="hero-feat fade-up"><div class="hero-feat-icon">&#11088;</div><div class="hero-feat-text">5-Star Hygiene</div></div>
+</div>
+</div>
+</section>
+
+<section class="park-bg" id="park">
+<div class="container">
+<div class="park-grid">
+<div class="park-img-wrap fade-up">
+<img src="https://images.pexels.com/photos/6271625/pexels-photo-6271625.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Caravan park setting">
+<div class="park-img-badge">
+<div class="park-img-badge-icon">&#127966;</div>
+<div>
+<h4>Whitbarrow Hall</h4>
+<p>Berrier, Penrith CA11 0XB</p>
+</div>
+</div>
+</div>
+<div>
+<div class="section-label fade-up">About the Park</div>
+<h2 class="section-title fade-up">Where the Lakes Meet Tranquillity</h2>
+<p class="section-desc fade-up">Set on a level 20-acre site surrounded by unspoilt farming country, Hopkinsons is the perfect base for exploring the Northern Lake District.</p>
+<ul class="park-list">
+<li class="fade-up">
+<div class="p-check">&#10003;</div>
+<div><h4>Caravans, Motorhomes & Campervans</h4><p>Spacious pitches on level ground with electric hookups and hardstanding available.</p></div>
+</li>
+<li class="fade-up">
+<div class="p-check">&#10003;</div>
+<div><h4>Stunning Location</h4><p>Midway between Keswick and Penrith, overlooked by the magnificent Blencathra.</p></div>
+</li>
+<li class="fade-up">
+<div class="p-check">&#10003;</div>
+<div><h4>Family & Dog Friendly</h4><p>Large adventure playground for children. Dogs are welcome on leads around the park.</p></div>
+</li>
+<li class="fade-up">
+<div class="p-check">&#10003;</div>
+<div><h4>Peace & Quiet Guaranteed</h4><p>A tranquil retreat away from busy tourist areas. The perfect countryside escape.</p></div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="facilities">
+<div class="container">
+<div class="section-label fade-up">Facilities</div>
+<h2 class="section-title fade-up">Everything You Need for a Perfect Stay</h2>
+<p class="section-desc fade-up">Well-maintained facilities in a beautiful, tranquil setting.</p>
+<div class="fac-grid">
+<div class="fac-card fade-up">
+<div class="fac-icon">&#128703;</div>
+<h3>Toilets & Showers</h3>
+<p>Clean, well-maintained shower and toilet blocks for your comfort.</p>
+</div>
+<div class="fac-card fade-up">
+<div class="fac-icon">&#9889;</div>
+<h3>Electric Hookups</h3>
+<p>Reliable electric hookup points available at pitches across the site.</p>
+</div>
+<div class="fac-card fade-up">
+<div class="fac-icon">&#127968;</div>
+<h3>Hardstanding Pitches</h3>
+<p>Level hardstanding pitches available for caravans and motorhomes.</p>
+</div>
+<div class="fac-card fade-up">
+<div class="fac-icon">&#127936;</div>
+<h3>Adventure Playground</h3>
+<p>Large outdoor play area with climbing frames, swings, and adventure equipment.</p>
+</div>
+<div class="fac-card fade-up">
+<div class="fac-icon">&#128054;</div>
+<h3>Dog Friendly</h3>
+<p>Four-legged friends are welcome. Beautiful countryside walks from the park.</p>
+</div>
+<div class="fac-card fade-up">
+<div class="fac-icon">&#11088;</div>
+<h3>5-Star Food Hygiene</h3>
+<p>Top food hygiene rating awarded by the local authority. Quality you can trust.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="loc-section" id="location">
+<div class="container">
+<div class="section-label fade-up">Explore Nearby</div>
+<h2 class="section-title fade-up">A Gateway to the Lake District</h2>
+<p class="section-desc fade-up">Perfectly positioned for exploring Cumbria's finest attractions, walks, and lakes.</p>
+<div class="loc-grid">
+<div class="loc-card fade-up">
+<div class="loc-icon">&#127754;</div>
+<h3>Lake Ullswater</h3>
+<p>Just a few miles away. Take a steamer cruise, kayak, or simply enjoy the views.</p>
+</div>
+<div class="loc-card fade-up">
+<div class="loc-icon">&#127956;</div>
+<h3>Keswick</h3>
+<p>Charming market town with shops, cafes, Derwentwater, and the Theatre by the Lake.</p>
+</div>
+<div class="loc-card fade-up">
+<div class="loc-icon">&#9968;</div>
+<h3>Blencathra</h3>
+<p>The magnificent fell overlooks the park. Popular walks and scrambles for all abilities.</p>
+</div>
+<div class="loc-card fade-up">
+<div class="loc-icon">&#127961;</div>
+<h3>Penrith</h3>
+<p>Historic market town nearby with Penrith Castle ruins, independent shops, and great food.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+<div class="cta-box fade-up">
+<h2>Ready for Your Lake District Escape?</h2>
+<p>Call us to book your pitch at Whitbarrow Hall. We'd love to welcome you to our corner of the Lakes.</p>
+<div class="cta-btns">
+<a href="tel:017684834566" class="btn" style="background:var(--white);color:var(--forest);font-size:1.1rem;padding:18px 40px">
+<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+Call 01768 483456
+</a>
+<a href="mailto:info@hopkinsons-caravanpark.co.uk" class="btn btn-ghost" style="border-color:rgba(255,255,255,.25)">
+Email Us
+</a>
+</div>
+<div class="cta-addr">Whitbarrow Hall, Berrier, Penrith, Cumbria CA11 0XB</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="brand">Hopkinsons Caravan Park</div>
+<div class="addr">Whitbarrow Hall, Berrier, Penrith, Cumbria CA11 0XB | 01768 483456</div>
+<div class="foot-links">
+<a href="#park">The Park</a>
+<a href="#facilities">Facilities</a>
+<a href="#location">Location</a>
+<a href="mailto:info@hopkinsons-caravanpark.co.uk">Email</a>
+</div>
+<div class="copy">&copy; 2026 Hopkinsons Whitbarrow Hall Caravan Park. All rights reserved.</div>
+</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+</script>
+</body>
+</html>
