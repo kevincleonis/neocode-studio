@@ -94,7 +94,7 @@
         .pricing-card:hover::before { opacity: 1; }
 
         /* POPULAR / FEATURED CARD */
-        .pricing-card.featured { border-color: var(--border-accent-strong); animation: borderGlow 4s ease-in-out infinite; background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, var(--bg-card) 40%, rgba(0,255,136,0.04) 100%); }
+        .pricing-card.featured { border-color: var(--border-accent-strong); background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, var(--bg-card) 40%, rgba(0,255,136,0.04) 100%); }
         .pricing-card.featured::before { opacity: 1; }
         .pricing-card.featured::after { content: ''; position: absolute; bottom: -40%; right: -30%; width: 300px; height: 300px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); opacity: 0.4; pointer-events: none; z-index: 0; }
 
@@ -402,7 +402,21 @@ document.getElementById('navToggle').addEventListener('click', () => {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate'); observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
-document.querySelectorAll('.pricing-card, .guarantee, .faq-item').forEach(el => observer.observe(el));
+document.querySelectorAll('.pricing-card, .guarantee, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px)';
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+});
 </script>
 </body>
 </html>
