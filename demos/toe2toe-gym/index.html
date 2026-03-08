@@ -3,832 +3,572 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toe 2 Toe Gym | Boxing & MMA - Coventry</title>
+    <title>TOE 2 TOE GYM | Pro/Amateur Boxing & Fitness Academy | Coventry</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --red: #E63946;
-            --red-dark: #C5303C;
-            --red-glow: rgba(230,57,70,0.3);
-            --orange: #F77F00;
-            --dark: #0A0A0A;
-            --dark-card: #141414;
-            --dark-surface: #1A1A1A;
-            --dark-border: #2A2A2A;
-            --text: #C8C8C8;
-            --text-light: #888;
-            --white: #F5F5F5;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 4px 24px rgba(0,0,0,0.3);
-            --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #ccc; background: #0c0c0c; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text);
-            background: var(--dark);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
+        /* NAV */
+        .nav { background: rgba(12,12,12,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 72px; position: sticky; top: 0; z-index: 100; }
+        .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 3px; text-transform: uppercase; }
+        .nav-logo em { font-style: normal; color: #e63946; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: color 0.2s; font-family: 'Inter', sans-serif; }
+        .nav-links a:hover { color: #e63946; }
+        .nav-cta { background: #e63946; color: #fff; padding: 10px 24px; border-radius: 0; text-decoration: none; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Oswald', sans-serif; transition: all 0.2s; }
+        .nav-cta:hover { background: #c0313d; }
 
-        /* === NEOCODE BANNER === */
-        .neocode-banner {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 12px 20px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            position: relative;
-            z-index: 1000;
-            border-bottom: 1px solid var(--dark-border);
-        }
-        .neocode-banner a {
-            color: var(--red);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .neocode-banner a:hover { text-decoration: underline; }
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 40px 80px; position: relative; overflow: hidden; background: #0c0c0c; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(230,57,70,0.08) 0%, transparent 60%); }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to top, #0c0c0c, transparent); }
+        .hero-inner { position: relative; z-index: 2; max-width: 900px; }
+        .hero-tag { display: inline-block; border: 1px solid #e63946; color: #e63946; padding: 6px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 32px; font-family: 'Inter', sans-serif; }
+        .hero h1 { font-size: 80px; font-weight: 700; color: #fff; line-height: 0.95; margin-bottom: 24px; letter-spacing: 4px; }
+        .hero h1 em { font-style: normal; color: #e63946; display: block; font-size: 90px; }
+        .hero-sub { font-size: 16px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 500px; margin: 0 auto 40px; letter-spacing: 0.5px; }
+        .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-red { background: #e63946; color: #fff; padding: 16px 40px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; font-family: 'Oswald', sans-serif; transition: all 0.3s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-red:hover { background: #c0313d; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(230,57,70,0.4); }
+        .btn-ghost { background: transparent; color: #fff; padding: 16px 40px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; font-family: 'Oswald', sans-serif; border: 2px solid rgba(255,255,255,0.15); transition: all 0.3s; }
+        .btn-ghost:hover { border-color: #e63946; color: #e63946; }
+        .hero-badges { display: flex; gap: 40px; justify-content: center; margin-top: 60px; }
+        .hero-badge { text-align: center; }
+        .hero-badge .val { font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700; color: #fff; }
+        .hero-badge .lbl { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; font-weight: 600; }
 
-        /* === NAVIGATION === */
-        .navbar {
-            background: rgba(10,10,10,0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--dark-border);
-            padding: 0 40px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-        .nav-logo {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--white);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .nav-logo span { color: var(--red); }
-        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--red); }
-        .nav-cta {
-            background: var(--red);
-            color: #fff !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700 !important;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
-        .menu-toggle span {
-            display: block; width: 24px; height: 2px; background: var(--white);
-            margin: 6px 0; transition: 0.3s;
-        }
+        /* SECTION STYLES */
+        section { padding: 100px 40px; }
+        .section-label { display: inline-block; color: #e63946; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; font-family: 'Inter', sans-serif; }
+        .section-title { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+        .section-desc { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 520px; }
+        .centered { text-align: center; }
+        .centered .section-desc { margin: 0 auto; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        /* ETHOS */
+        .ethos { background: #0c0c0c; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); padding: 60px 40px; text-align: center; }
+        .ethos-quote { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 4px; max-width: 700px; margin: 0 auto; line-height: 1.4; }
+        .ethos-quote em { font-style: normal; color: #e63946; }
 
-        /* === HERO === */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover no-repeat;
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.5) 40%, rgba(10,10,10,0.85) 100%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            padding: 60px 0;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(230,57,70,0.15);
-            border: 1px solid rgba(230,57,70,0.3);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--red);
-            margin-bottom: 28px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .hero h1 {
-            font-size: clamp(44px, 6vw, 76px);
-            font-weight: 900;
-            color: var(--white);
-            line-height: 1.05;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-        .hero h1 span {
-            color: var(--red);
-            display: block;
-        }
-        .hero p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            max-width: 520px;
-        }
-        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn-red {
-            background: var(--red);
-            color: #fff;
-            box-shadow: 0 4px 25px var(--red-glow);
-        }
-        .btn-red:hover {
-            background: var(--red-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 35px var(--red-glow);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255,255,255,0.25);
-        }
-        .btn-outline:hover {
-            border-color: var(--red);
-            color: var(--red);
-            transform: translateY(-2px);
-        }
-        .btn-white {
-            background: var(--white);
-            color: var(--dark);
-        }
-        .btn-white:hover {
-            background: #ddd;
-            transform: translateY(-2px);
-        }
+        /* CLASSES */
+        .classes { background: #101010; }
+        .classes-grid { max-width: 1100px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .class-card { background: #161616; border: 1px solid rgba(255,255,255,0.05); padding: 32px 24px; transition: all 0.3s; position: relative; overflow: hidden; }
+        .class-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: #e63946; transition: height 0.3s; }
+        .class-card:hover::before { height: 100%; }
+        .class-card:hover { border-color: rgba(230,57,70,0.2); transform: translateY(-3px); }
+        .class-card .icon { font-size: 28px; color: #e63946; margin-bottom: 16px; opacity: 0.7; }
+        .class-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .class-card p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+        .class-tag { display: inline-block; background: rgba(230,57,70,0.1); color: #e63946; padding: 3px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 12px; font-family: 'Inter', sans-serif; }
 
-        /* === STATS === */
-        .stats {
-            padding: 0;
-            margin-top: -70px;
-            position: relative;
-            z-index: 10;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: var(--dark-card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            border: 1px solid var(--dark-border);
-        }
-        .stat-item {
-            padding: 40px 30px;
-            text-align: center;
-            border-right: 1px solid var(--dark-border);
-        }
-        .stat-item:last-child { border-right: none; }
-        .stat-number {
-            font-size: 44px;
-            font-weight: 900;
-            color: var(--white);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .stat-number span { color: var(--red); }
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-light);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* SCHEDULE */
+        .schedule { background: #0c0c0c; }
+        .schedule-table { max-width: 1000px; margin: 48px auto 0; border-collapse: collapse; width: 100%; }
+        .schedule-table th { font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; color: #e63946; text-transform: uppercase; letter-spacing: 2px; padding: 14px 16px; text-align: left; border-bottom: 2px solid rgba(230,57,70,0.2); }
+        .schedule-table td { padding: 14px 16px; font-size: 13px; color: rgba(255,255,255,0.5); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .schedule-table tr:hover td { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.02); }
+        .schedule-table .day { font-weight: 600; color: #fff; font-size: 14px; }
 
-        /* === SECTION === */
-        .section { padding: 100px 0; }
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px;
-        }
-        .section-label {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--red);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 16px;
-        }
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 900;
-            color: var(--white);
-            line-height: 1.15;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-        }
-        .section-subtitle {
-            font-size: 17px;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
+        /* MOTIVATION SPLIT */
+        .motivation { background: #0c0c0c; padding: 0; display: grid; grid-template-columns: 1fr 1fr; min-height: 400px; }
+        .motivation-img { background: linear-gradient(135deg, #1a0a0a, #0c0c0c); display: flex; align-items: center; justify-content: center; padding: 60px; }
+        .motivation-img i { font-size: 120px; color: #e63946; opacity: 0.1; }
+        .motivation-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; border-left: 1px solid rgba(255,255,255,0.04); }
+        .motivation-text blockquote { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 2px; line-height: 1.3; margin-bottom: 20px; }
+        .motivation-text blockquote em { font-style: normal; color: #e63946; }
+        .motivation-text .attr { font-size: 12px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
 
-        /* === SERVICES === */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .service-card {
-            background: var(--dark-card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            border: 1px solid var(--dark-border);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--red);
-        }
-        .service-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .service-body { padding: 28px; }
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(230,57,70,0.12);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-bottom: 16px;
-        }
-        .service-body h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .service-body p {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
+        /* TRAINERS */
+        .trainers { background: #101010; }
+        .trainers-grid { max-width: 1100px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .trainer-card { background: #161616; border: 1px solid rgba(255,255,255,0.05); text-align: center; padding: 36px 20px; transition: all 0.3s; }
+        .trainer-card:hover { border-color: rgba(230,57,70,0.2); }
+        .trainer-avatar { width: 80px; height: 80px; background: linear-gradient(135deg, #1a1a1a, #222); border: 2px solid rgba(230,57,70,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; color: rgba(230,57,70,0.4); }
+        .trainer-card h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .trainer-card .role { font-size: 11px; color: #e63946; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 600; }
+        .trainer-card p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; }
 
-        /* === SPLIT === */
-        .split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .split-img {
-            border-radius: var(--radius);
-            overflow: hidden;
-            border: 1px solid var(--dark-border);
-        }
-        .split-img img {
-            width: 100%;
-            height: 520px;
-            object-fit: cover;
-            display: block;
-        }
-        .split-text h2 {
-            font-size: clamp(30px, 3.5vw, 42px);
-            font-weight: 900;
-            color: var(--white);
-            margin-bottom: 20px;
-            line-height: 1.15;
-            text-transform: uppercase;
-        }
-        .split-text h2 span { color: var(--red); }
-        .split-text p {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 24px;
-            line-height: 1.8;
-        }
-        .check-list { list-style: none; margin-bottom: 32px; }
-        .check-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 14px;
-        }
-        .check-list li::before {
-            content: '///';
-            color: var(--red);
-            font-weight: 900;
-            font-size: 12px;
-            letter-spacing: -2px;
-            flex-shrink: 0;
-        }
+        /* MEMBERSHIP */
+        .membership { background: #0c0c0c; }
+        .membership-cards { max-width: 900px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .mem-card { background: #161616; border: 1px solid rgba(255,255,255,0.05); padding: 40px 28px; text-align: center; transition: all 0.3s; position: relative; }
+        .mem-card.featured { border-color: #e63946; }
+        .mem-card.featured::after { content: 'POPULAR'; position: absolute; top: 0; right: 0; background: #e63946; color: #fff; padding: 4px 14px; font-size: 10px; font-weight: 700; letter-spacing: 2px; font-family: 'Oswald', sans-serif; }
+        .mem-card:hover { transform: translateY(-4px); border-color: rgba(230,57,70,0.3); }
+        .mem-label { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .mem-price { font-family: 'Oswald', sans-serif; font-size: 52px; font-weight: 700; color: #fff; line-height: 1; }
+        .mem-price span { font-size: 16px; color: rgba(255,255,255,0.3); font-weight: 400; }
+        .mem-note { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 6px; margin-bottom: 24px; }
+        .mem-features { list-style: none; text-align: left; margin-bottom: 28px; }
+        .mem-features li { font-size: 13px; color: rgba(255,255,255,0.5); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 10px; }
+        .mem-features li:last-child { border-bottom: none; }
+        .mem-features li i { color: #e63946; font-size: 12px; width: 16px; text-align: center; }
+        .btn-mem { display: block; background: transparent; border: 2px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; text-align: center; transition: all 0.3s; cursor: pointer; }
+        .btn-mem:hover, .mem-card.featured .btn-mem { background: #e63946; border-color: #e63946; }
 
-        /* === TESTIMONIALS === */
-        .testimonials-bg { background: var(--dark-surface); }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .testimonial-card {
-            background: var(--dark-card);
-            border-radius: var(--radius);
-            padding: 36px;
-            border: 1px solid var(--dark-border);
-            transition: border-color 0.3s;
-        }
-        .testimonial-card:hover { border-color: var(--red); }
-        .testimonial-stars {
-            color: var(--orange);
-            font-size: 18px;
-            margin-bottom: 18px;
-            letter-spacing: 2px;
-        }
-        .testimonial-card p {
-            font-size: 15px;
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 22px;
-            font-style: italic;
-        }
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .testimonial-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(230,57,70,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: var(--red);
-            font-size: 16px;
-        }
-        .testimonial-name {
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--white);
-        }
-        .testimonial-role {
-            font-size: 13px;
-            color: var(--text-light);
-        }
+        /* COMMUNITY */
+        .community { background: #101010; }
+        .community-grid { max-width: 1000px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .comm-card { background: #161616; border: 1px solid rgba(255,255,255,0.05); padding: 32px; display: flex; align-items: flex-start; gap: 20px; }
+        .comm-card i { font-size: 28px; color: #e63946; opacity: 0.6; flex-shrink: 0; margin-top: 4px; }
+        .comm-card h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .comm-card p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; }
 
-        /* === CTA === */
-        .cta-section {
-            background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 50%, #8B1A25 100%);
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -15%;
-            width: 600px;
-            height: 600px;
-            background: rgba(0,0,0,0.15);
-            border-radius: 50%;
-        }
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 400px;
-            height: 400px;
-            background: rgba(0,0,0,0.1);
-            border-radius: 50%;
-        }
-        .cta-section h2 {
-            font-size: clamp(34px, 4.5vw, 54px);
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 20px;
-            position: relative;
-            text-transform: uppercase;
-        }
-        .cta-section p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 40px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-        }
-        .cta-btns {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
+        /* REVIEWS */
+        .reviews { background: #0c0c0c; }
+        .reviews-grid { max-width: 1000px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .review-card { background: #161616; border: 1px solid rgba(255,255,255,0.05); padding: 28px; }
+        .review-card .stars { color: #e63946; font-size: 12px; margin-bottom: 14px; }
+        .review-card blockquote { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; font-style: italic; margin-bottom: 14px; }
+        .review-card .author { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* === FOOTER === */
-        .footer {
-            background: #050505;
-            color: rgba(255,255,255,0.5);
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--dark-border);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        .footer-brand h3 {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--white);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .footer-brand h3 span { color: var(--red); }
-        .footer-brand p {
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        .footer h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        /* FREE CLASS BANNER */
+        .free-class { background: #e63946; padding: 60px 40px; text-align: center; }
+        .free-class h2 { font-size: 48px; font-weight: 700; color: #fff; letter-spacing: 4px; margin-bottom: 14px; }
+        .free-class p { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .btn-dark { background: #0c0c0c; color: #fff; padding: 16px 40px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; font-family: 'Oswald', sans-serif; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-dark:hover { background: #1a1a1a; transform: translateY(-2px); }
+
+        /* FOOTER */
+        .footer { background: #080808; padding: 60px 40px 30px; border-top: 1px solid rgba(255,255,255,0.04); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; }
+        .footer h4 { font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; color: #e63946; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-brand .logo { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 3px; text-transform: uppercase; }
+        .footer-brand .logo em { font-style: normal; color: #e63946; }
+        .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.25); line-height: 1.8; margin-top: 10px; }
         .footer ul { list-style: none; }
-        .footer ul li { margin-bottom: 10px; }
-        .footer ul a {
-            color: rgba(255,255,255,0.4);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-        .footer ul a:hover { color: var(--red); }
-        .footer-bottom {
-            border-top: 1px solid var(--dark-border);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-        }
+        .footer ul li { margin-bottom: 8px; }
+        .footer ul li a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .footer ul li a:hover { color: #e63946; }
+        .footer-bottom { max-width: 1100px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; font-size: 11px; color: rgba(255,255,255,0.15); }
+        .footer-socials { display: flex; gap: 12px; margin-top: 12px; }
+        .footer-socials a { width: 36px; height: 36px; background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); text-decoration: none; font-size: 14px; transition: all 0.2s; }
+        .footer-socials a:hover { background: #e63946; color: #fff; }
 
-        /* === RESPONSIVE === */
-        @media (max-width: 1024px) {
-            .services-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .split { gap: 40px; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        /* MOBILE */
         @media (max-width: 768px) {
-            .navbar { padding: 0 20px; }
+            .nav { padding: 0 20px; }
             .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            .hero { min-height: 90vh; }
-            .hero-content { padding: 40px 0; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .stat-item { border-right: none; border-bottom: 1px solid var(--dark-border); }
-            .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
-            .split { grid-template-columns: 1fr; gap: 32px; }
-            .split-img img { height: 350px; }
-            .section { padding: 70px 0; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+            .hero { min-height: auto; padding: 80px 20px 60px; }
+            .hero h1 { font-size: 44px; }
+            .hero h1 em { font-size: 50px; }
+            .hero-badges { gap: 20px; }
+            .classes-grid { grid-template-columns: 1fr; }
+            .trainers-grid { grid-template-columns: 1fr 1fr; }
+            .membership-cards { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .motivation { grid-template-columns: 1fr; }
+            .motivation-img { display: none; }
+            .motivation-text { padding: 60px 20px; }
+            .community-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            section { padding: 60px 20px; }
+            .section-title { font-size: 32px; }
+            .schedule-table { font-size: 12px; }
+            .schedule-table th, .schedule-table td { padding: 10px 8px; }
+            .free-class h2 { font-size: 32px; }
+            .ethos-quote { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Neocode Banner -->
-<div class="neocode-banner">
-    Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; <a href="https://neocodestudio.co.uk/contact.html" target="_blank">Get yours today</a>
-</div>
+<!-- NEOCODE BANNER -->
+<div style="background:#111;color:#fff;text-align:center;padding:10px 20px;font-size:12px;font-weight:500;"><i class="fas fa-wand-magic-sparkles"></i> Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank" style="color:#00ff88;text-decoration:none;font-weight:700;">Neocode Studio</a> · <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="color:#00ff88;text-decoration:none;font-weight:700;">Want this for your business?</a></div>
 
-<!-- Navigation -->
-<nav class="navbar">
-    <a href="#" class="nav-logo">Toe<span>2</span>Toe</a>
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-logo">TOE <em>2</em> TOE</div>
     <ul class="nav-links">
         <li><a href="#classes">Classes</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact" class="nav-cta">Join Now</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#team">Coaches</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="menu-toggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
+    <a href="mailto:Leighton@toe2toegym.co.uk" class="nav-cta">First Class Free</a>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">Coventry's Premier Fight Gym</div>
-            <h1>Train Hard. <span>Fight Harder.</span></h1>
-            <p>Boxing, MMA, and fitness training in the heart of Coventry. Whether you're a beginner or a competitor, Toe 2 Toe Gym is where champions are made.</p>
-            <div class="hero-btns">
-                <a href="mailto:Leighton@toe2toegym.co.uk" class="btn btn-red">Start Your Journey</a>
-                <a href="#classes" class="btn btn-outline">View Classes</a>
+    <div class="hero-inner">
+        <div class="hero-tag">Pro / Amateur Boxing & Fitness Academy</div>
+        <h1>TRAIN LIKE<em>A FIGHTER</em></h1>
+        <p class="hero-sub">Coventry's premier boxing and MMA academy. From complete beginners to professional fighters — everyone is welcome at Toe 2 Toe.</p>
+        <div class="hero-ctas">
+            <a href="mailto:Leighton@toe2toegym.co.uk" class="btn-red"><i class="fas fa-bolt"></i> First Class Free</a>
+            <a href="#classes" class="btn-ghost">View Classes</a>
+        </div>
+        <div class="hero-badges">
+            <div class="hero-badge">
+                <div class="val">8+</div>
+                <div class="lbl">Expert Coaches</div>
+            </div>
+            <div class="hero-badge">
+                <div class="val">7</div>
+                <div class="lbl">Days A Week</div>
+            </div>
+            <div class="hero-badge">
+                <div class="val">5+</div>
+                <div class="lbl">Disciplines</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Stats -->
-<section class="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">10<span>+</span></div>
-                <div class="stat-label">Years Training</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500<span>+</span></div>
-                <div class="stat-label">Active Members</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">20<span>+</span></div>
-                <div class="stat-label">Weekly Classes</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">5<span>&#9733;</span></div>
-                <div class="stat-label">Google Rating</div>
-            </div>
+<!-- ETHOS -->
+<div class="ethos">
+    <p class="ethos-quote">"Leave your <em>ego</em> at the door. Bring your <em>heart</em> inside."</p>
+</div>
+
+<!-- CLASSES -->
+<section class="classes" id="classes">
+    <div class="centered">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Classes For Every Level</h2>
+        <p class="section-desc">Whether you want to compete, get fit, or learn self-defence — we have a class for you. All levels welcome.</p>
+    </div>
+    <div class="classes-grid">
+        <div class="class-card">
+            <div class="icon"><i class="fas fa-hand-fist"></i></div>
+            <h3>Boxing</h3>
+            <p>Technique, sparring, mitt work and circuits. Split into beginner and advanced sessions. Learn from former British & Commonwealth champions.</p>
+            <span class="class-tag">All Levels</span>
+        </div>
+        <div class="class-card">
+            <div class="icon"><i class="fas fa-shield-halved"></i></div>
+            <h3>MMA</h3>
+            <p>Mixed martial arts combining striking, grappling, and ground work. Build a complete fighting skill set from the ground up.</p>
+            <span class="class-tag">Age 14+</span>
+        </div>
+        <div class="class-card">
+            <div class="icon"><i class="fas fa-khanda"></i></div>
+            <h3>Muay Thai</h3>
+            <p>The art of eight limbs. Learn devastating kicks, elbows, knees, and clinch work from experienced instructors.</p>
+            <span class="class-tag">All Levels</span>
+        </div>
+        <div class="class-card">
+            <div class="icon"><i class="fas fa-dumbbell"></i></div>
+            <h3>Strength & Conditioning</h3>
+            <p>Fighter-level fitness training. Circuits, heavy bag work, functional strength — push your limits every session.</p>
+            <span class="class-tag">All Levels</span>
+        </div>
+        <div class="class-card">
+            <div class="icon"><i class="fas fa-child"></i></div>
+            <h3>Kids Boxing</h3>
+            <p>Ages 5-14. DBS-certified instructors teach the basics of boxing including offence & defence drills in a fun, safe environment.</p>
+            <span class="class-tag">Ages 5-14</span>
+        </div>
+        <div class="class-card">
+            <div class="icon"><i class="fas fa-bullseye"></i></div>
+            <h3>1-on-1 Training</h3>
+            <p>Personal sessions tailored to your goals. Whether you're preparing for a fight or just want focused attention — we've got you.</p>
+            <span class="class-tag">By Appointment</span>
         </div>
     </div>
 </section>
 
-<!-- Classes / Services -->
-<section class="section" id="classes">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">What We Offer</div>
-            <h2 class="section-title">Classes &amp; Training</h2>
-            <p class="section-subtitle">From boxing fundamentals to competitive MMA, we have classes for every level and every goal.</p>
+<!-- SCHEDULE -->
+<section class="schedule" id="schedule">
+    <div class="centered">
+        <span class="section-label">Timetable</span>
+        <h2 class="section-title">Class Schedule</h2>
+        <p class="section-desc">Open 7 days a week. No excuses.</p>
+    </div>
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Morning</th>
+                <th>Afternoon</th>
+                <th>Evening</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="day">Monday</td>
+                <td>Open Gym 8am-12pm</td>
+                <td>Kids Boxing 4:30pm</td>
+                <td>Boxing 6pm / MMA 7:30pm</td>
+            </tr>
+            <tr>
+                <td class="day">Tuesday</td>
+                <td>Open Gym 8am-12pm</td>
+                <td>Kids Boxing 4:30pm</td>
+                <td>Boxing 6pm / Muay Thai 7:30pm</td>
+            </tr>
+            <tr>
+                <td class="day">Wednesday</td>
+                <td>Open Gym 8am-12pm</td>
+                <td>S&C 4:30pm</td>
+                <td>Boxing 6pm / MMA 7:30pm</td>
+            </tr>
+            <tr>
+                <td class="day">Thursday</td>
+                <td>Open Gym 8am-12pm</td>
+                <td>Kids Boxing 4:30pm</td>
+                <td>Boxing 6pm / Muay Thai 7:30pm</td>
+            </tr>
+            <tr>
+                <td class="day">Friday</td>
+                <td>Open Gym 8am-12pm</td>
+                <td>Open Gym 12-5pm</td>
+                <td>Boxing 6pm / S&C 7:30pm</td>
+            </tr>
+            <tr>
+                <td class="day">Saturday</td>
+                <td>Kids 10am / Boxing 11am</td>
+                <td>Open Gym 1-5pm</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td class="day">Sunday</td>
+                <td>Open Gym 8am-2pm</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- MOTIVATION SPLIT -->
+<div class="motivation">
+    <div class="motivation-img">
+        <i class="fas fa-hand-fist"></i>
+    </div>
+    <div class="motivation-text">
+        <blockquote>"It's not about being the <em>best</em>. It's about being <em>better</em> than you were yesterday."</blockquote>
+        <p class="attr">— Toe 2 Toe Gym Ethos</p>
+    </div>
+</div>
+
+<!-- TRAINERS -->
+<section class="trainers" id="team">
+    <div class="centered">
+        <span class="section-label">Meet The Team</span>
+        <h2 class="section-title">World-Class Coaches</h2>
+        <p class="section-desc">An 8-strong team of fully qualified boxing, fitness & MMA instructors with decades of combined experience.</p>
+    </div>
+    <div class="trainers-grid">
+        <div class="trainer-card">
+            <div class="trainer-avatar"><i class="fas fa-user"></i></div>
+            <h3>Leighton Brady</h3>
+            <div class="role">Head Coach & Owner</div>
+            <p>Professional BBBofC Licensed Coach. Founded Toe 2 Toe to make boxing accessible to everyone in Coventry.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4761352/pexels-photo-4761352.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Boxing Classes" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#129354;</div>
-                    <h3>Boxing</h3>
-                    <p>Technical boxing training from beginners to competitive fighters. Learn footwork, combinations, defence, and ring craft from experienced coaches.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/260447/pexels-photo-260447.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="MMA Training" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#129355;</div>
-                    <h3>MMA</h3>
-                    <p>Mixed martial arts combining striking, grappling, and ground work. Train all disciplines under one roof with expert instructors.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Fitness Training" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#128170;</div>
-                    <h3>Strength &amp; Conditioning</h3>
-                    <p>Build fight-ready fitness with our S&C sessions. High-intensity circuits, strength work, and conditioning for peak performance.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Personal Training" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#127942;</div>
-                    <h3>1-2-1 Coaching</h3>
-                    <p>Personalised coaching tailored to your goals. Whether you're prepping for a fight or training for fitness, get expert attention.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/163403/pexels-photo-163403.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Kids Classes" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#11088;</div>
-                    <h3>Junior Programme</h3>
-                    <p>Build confidence, discipline, and fitness in young people. Safe, structured classes for kids and teens of all abilities.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop&crop=top" alt="Sparring Sessions" class="service-img">
-                <div class="service-body">
-                    <div class="service-icon">&#128293;</div>
-                    <h3>Open Sparring</h3>
-                    <p>Controlled sparring sessions for experienced members. Test your skills in a safe, supervised environment with matched opponents.</p>
-                </div>
-            </div>
+        <div class="trainer-card">
+            <div class="trainer-avatar"><i class="fas fa-user"></i></div>
+            <h3>Neil "Simmo" Simpson</h3>
+            <div class="role">Boxing Coach</div>
+            <p>Former British & Commonwealth Champion. Bringing elite-level boxing knowledge to every session.</p>
+        </div>
+        <div class="trainer-card">
+            <div class="trainer-avatar"><i class="fas fa-user"></i></div>
+            <h3>BJJ Coach</h3>
+            <div class="role">4x National Champion</div>
+            <p>Four-time BJJ National Champion bringing world-class grappling expertise to the MMA programme.</p>
+        </div>
+        <div class="trainer-card">
+            <div class="trainer-avatar"><i class="fas fa-user"></i></div>
+            <h3>Pro Fighters</h3>
+            <div class="role">Current Professionals</div>
+            <p>Active professional boxers and fighters who train and coach at the gym alongside members.</p>
         </div>
     </div>
 </section>
 
-<!-- Split Section -->
-<section class="section" id="about" style="background: var(--dark-surface);">
-    <div class="container">
-        <div class="split">
-            <div class="split-img">
-                <img src="https://images.pexels.com/photos/4761352/pexels-photo-4761352.jpeg?auto=compress&cs=tinysrgb&w=800&h=900&fit=crop" alt="Training at Toe 2 Toe Gym">
-            </div>
-            <div class="split-text">
-                <div class="section-label">About The Gym</div>
-                <h2>Not Just a Gym. <span>A Fighting Family.</span></h2>
-                <p>Toe 2 Toe Gym in Coventry is more than a place to train &mdash; it's a community. Whether you're stepping through the doors for the first time or you're a seasoned competitor, you'll be welcomed, challenged, and supported.</p>
-                <ul class="check-list">
-                    <li>Full-size boxing ring &amp; cage</li>
-                    <li>Expert coaches with competitive experience</li>
-                    <li>Beginner-friendly &mdash; all levels welcome</li>
-                    <li>Classes 7 days a week</li>
-                    <li>Junior &amp; youth programmes</li>
-                    <li>Competitive fight team</li>
-                </ul>
-                <a href="mailto:Leighton@toe2toegym.co.uk" class="btn btn-red">Book a Free Trial</a>
-            </div>
+<!-- MEMBERSHIP -->
+<section class="membership" id="membership">
+    <div class="centered">
+        <span class="section-label">Join The Family</span>
+        <h2 class="section-title">Membership Options</h2>
+        <p class="section-desc">Simple pricing. No contracts. No hidden fees. Just turn up and train.</p>
+    </div>
+    <div class="membership-cards">
+        <div class="mem-card">
+            <div class="mem-label">Day Pass</div>
+            <div class="mem-price">£7 <span>/session</span></div>
+            <p class="mem-note">Try before you commit</p>
+            <ul class="mem-features">
+                <li><i class="fas fa-check"></i> Access to one class or open gym</li>
+                <li><i class="fas fa-check"></i> All equipment provided</li>
+                <li><i class="fas fa-check"></i> No commitment required</li>
+                <li><i class="fas fa-check"></i> Great for beginners</li>
+            </ul>
+            <a href="mailto:Leighton@toe2toegym.co.uk" class="btn-mem">Get Started</a>
+        </div>
+        <div class="mem-card featured">
+            <div class="mem-label">Monthly</div>
+            <div class="mem-price">£35 <span>/month</span></div>
+            <p class="mem-note">Full unlimited access</p>
+            <ul class="mem-features">
+                <li><i class="fas fa-check"></i> Unlimited classes 7 days a week</li>
+                <li><i class="fas fa-check"></i> Open gym access</li>
+                <li><i class="fas fa-check"></i> All disciplines included</li>
+                <li><i class="fas fa-check"></i> Cancel anytime</li>
+            </ul>
+            <a href="mailto:Leighton@toe2toegym.co.uk" class="btn-mem">Join Now</a>
+        </div>
+        <div class="mem-card">
+            <div class="mem-label">Student / Concession</div>
+            <div class="mem-price">£25 <span>/month</span></div>
+            <p class="mem-note">Valid student ID required</p>
+            <ul class="mem-features">
+                <li><i class="fas fa-check"></i> Full gym & class access</li>
+                <li><i class="fas fa-check"></i> 7 days a week</li>
+                <li><i class="fas fa-check"></i> All disciplines included</li>
+                <li><i class="fas fa-check"></i> Concession available</li>
+            </ul>
+            <a href="mailto:Leighton@toe2toegym.co.uk" class="btn-mem">Get Started</a>
         </div>
     </div>
 </section>
 
-<!-- Testimonials -->
-<section class="section testimonials-bg" id="reviews">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Member Reviews</div>
-            <h2 class="section-title">What Our Members Say</h2>
-            <p class="section-subtitle">Hear from the people who train with us every day.</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"Best gym in Coventry, hands down. The coaches actually care about your progress. I came in as a complete beginner and now I'm competing. The atmosphere is unreal."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">JD</div>
-                    <div>
-                        <div class="testimonial-name">Jake D.</div>
-                        <div class="testimonial-role">Boxing Member, 2 Years</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"I joined for fitness and stayed for the community. The MMA classes are brilliant &mdash; Leighton and the team make everyone feel welcome regardless of level."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">SA</div>
-                    <div>
-                        <div class="testimonial-name">Sophie A.</div>
-                        <div class="testimonial-role">MMA &amp; Fitness</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"My son has been training here for a year. His confidence has gone through the roof. The junior programme is structured, safe, and the coaches are fantastic role models."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">MR</div>
-                    <div>
-                        <div class="testimonial-name">Mark R.</div>
-                        <div class="testimonial-role">Parent, Junior Member</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- COMMUNITY -->
+<section class="community">
+    <div class="centered">
+        <span class="section-label">More Than A Gym</span>
+        <h2 class="section-title">Community First</h2>
+        <p class="section-desc">Toe 2 Toe isn't just about fighting. It's about building a community that lifts everyone up.</p>
     </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contact">
-    <div class="container">
-        <h2>Ready to Step In the Ring?</h2>
-        <p>Your first session is on us. Walk in, try a class, and see why Toe 2 Toe is Coventry's number one fight gym.</p>
-        <div class="cta-btns">
-            <a href="mailto:Leighton@toe2toegym.co.uk" class="btn btn-white">Book a Free Trial</a>
-            <a href="#classes" class="btn btn-outline">View Classes</a>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>Toe<span>2</span>Toe Gym</h3>
-                <p>Coventry's premier boxing and MMA gym. Training fighters and building confidence since day one. All levels welcome &mdash; from first-timers to competitive athletes.</p>
-            </div>
+    <div class="community-grid">
+        <div class="comm-card">
+            <i class="fas fa-heart"></i>
             <div>
-                <h4>Classes</h4>
-                <ul>
-                    <li><a href="#">Boxing</a></li>
-                    <li><a href="#">MMA</a></li>
-                    <li><a href="#">S&amp;C</a></li>
-                    <li><a href="#">1-2-1 Coaching</a></li>
-                    <li><a href="#">Juniors</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Info</h4>
-                <ul>
-                    <li><a href="#">Timetable</a></li>
-                    <li><a href="#">Membership</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Gallery</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:Leighton@toe2toegym.co.uk">Leighton@toe2toegym.co.uk</a></li>
-                    <li><a href="#">Burnsall Rd</a></li>
-                    <li><a href="#">Coventry, CV5 6BP</a></li>
-                </ul>
+                <h3>Free Classes For Those In Need</h3>
+                <p>Free gym access for parents & children struggling to make ends meet, people with disabilities, and kids who need a positive outlet.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Toe 2 Toe Gym. All rights reserved.</span>
-            <span>Boxing &amp; MMA | Coventry</span>
+        <div class="comm-card">
+            <i class="fas fa-children"></i>
+            <div>
+                <h3>Keeping Kids Off The Streets</h3>
+                <p>Our kids programme gives young people discipline, confidence, and a safe place to channel their energy after school.</p>
+            </div>
         </div>
+        <div class="comm-card">
+            <i class="fas fa-handshake"></i>
+            <div>
+                <h3>All Are Welcome</h3>
+                <p>Every age, size, ability, and background. You walk in alone — you leave with a team behind you.</p>
+            </div>
+        </div>
+        <div class="comm-card">
+            <i class="fas fa-trophy"></i>
+            <div>
+                <h3>From Beginner To Champion</h3>
+                <p>Whether you're stepping into a gym for the first time or preparing for a title fight, we have the coaching to get you there.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+    <div class="centered">
+        <span class="section-label">What Members Say</span>
+        <h2 class="section-title">5-Star Rated</h2>
+        <p class="section-desc">Every single Google review — 5 stars. That says everything.</p>
+    </div>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <blockquote>"One of the best boxing gyms around. Great membership prices and amazing choice of classes."</blockquote>
+            <p class="author">Google Review</p>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <blockquote>"Very friendly, welcoming and suitable for all levels of fitness. The staff work you hard to achieve your goals."</blockquote>
+            <p class="author">Google Review</p>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <blockquote>"Everybody is welcome at this gym. Great team & community spirit. You can go in alone and walk out with lots of new friends."</blockquote>
+            <p class="author">Google Review</p>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <blockquote>"Trainers are extremely experienced and knowledgeable who always go the extra mile. Loads of gym equipment and brilliant classes."</blockquote>
+            <p class="author">Google Review</p>
+        </div>
+    </div>
+</section>
+
+<!-- FIRST CLASS FREE -->
+<div class="free-class">
+    <h2>First Class Free</h2>
+    <p>No sign-up required. No pressure. Just turn up, train hard, and see if Toe 2 Toe is for you.</p>
+    <a href="mailto:Leighton@toe2toegym.co.uk" class="btn-dark"><i class="fas fa-bolt"></i> Book Your Free Session</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="logo">TOE <em>2</em> TOE GYM</div>
+            <p>Pro / Amateur Boxing & Fitness Academy. Coventry's home of boxing, MMA, and martial arts. Open 7 days a week.</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/Toe2ToeGym/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/toe2toegym/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/toe2toegym" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+        <div>
+            <h4>Classes</h4>
+            <ul>
+                <li><a href="#classes">Boxing</a></li>
+                <li><a href="#classes">MMA</a></li>
+                <li><a href="#classes">Muay Thai</a></li>
+                <li><a href="#classes">Kids Boxing</a></li>
+                <li><a href="#classes">S&C</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Info</h4>
+            <ul>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#team">Coaches</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="mailto:Leighton@toe2toegym.co.uk"><i class="fas fa-envelope" style="width:14px"></i> Leighton@toe2toegym.co.uk</a></li>
+                <li><a href="#"><i class="fas fa-map-pin" style="width:14px"></i> Unit 4, Burnsall Rd</a></li>
+                <li><a href="#"><i class="fas fa-map-pin" style="width:14px"></i> Coventry, CV5 6BP</a></li>
+                <li><a href="#schedule"><i class="fas fa-clock" style="width:14px"></i> Mon-Fri 8am-9pm</a></li>
+                <li><a href="#schedule"><i class="fas fa-clock" style="width:14px"></i> Sat 8am-5pm / Sun 8am-2pm</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Toe 2 Toe Gym. All rights reserved. Pro/Amateur Boxing & Fitness Academy, Coventry UK.</p>
     </div>
 </footer>
 
-    <div style="text-align:center;padding:12px 20px;background:#0a0a0a;"><p style="margin-top:8px;font-size:11px;opacity:0.4;">Original website: <a href="https://toe2toegym.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">https://toe2toegym.co.uk</a></p></div>
+<!-- ORIGINAL SITE LINK -->
+<div style="text-align:center;padding:12px 20px;background:#0a0a0a;"><p style="font-size:11px;opacity:0.4;">Original website: <a href="https://toe2toegym.co.uk" target="_blank" style="color:inherit;text-decoration:underline;">https://toe2toegym.co.uk</a></p></div>
 
-<!-- Demo Popup -->
+<!-- POPUP -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
     <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
         <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
         <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
         <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
         <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;transition:transform 0.2s;">Let's Talk</a>
-        <br>
-        <button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
+        <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
     </div>
 </div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+<script>setTimeout(function(){var p=document.getElementById('demo-popup');if(p){p.style.display='flex';}},4000);</script>
 
 </body>
 </html>
