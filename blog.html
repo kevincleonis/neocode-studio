@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Web Design & CRO Insights | Neocode Studio</title>
+    <meta name="description" content="Practical web design, conversion optimisation and digital growth tips for UK small businesses. Learn how to turn your website into a revenue engine.">
+    <meta property="og:title" content="Blog - Web Design & CRO Insights | Neocode Studio">
+    <meta property="og:description" content="Practical web design, conversion optimisation and digital growth tips for UK small businesses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neocodestudio.co.uk/blog">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://neocodestudio.co.uk/blog">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #c0c0c0;
+            --text-muted: #888888;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --accent-glow-strong: rgba(0, 255, 136, 0.3);
+            --accent-glow-intense: rgba(0, 255, 136, 0.5);
+            --border: rgba(255,255,255,0.06);
+            --border-accent: rgba(0, 255, 136, 0.2);
+            --border-accent-strong: rgba(0, 255, 136, 0.4);
+            --shadow: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-glow: 0 0 60px rgba(0, 255, 136, 0.15);
+            --shadow-glow-strong: 0 0 100px rgba(0, 255, 136, 0.25);
+            --font-main: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+        .particle { position: fixed; width: 2px; height: 2px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 0; box-shadow: 0 0 6px var(--accent), 0 0 12px var(--accent-glow); }
+        .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), #00ffcc, var(--accent)); background-size: 200% 100%; animation: progressGlow 3s ease-in-out infinite; z-index: 9999; transition: width 0.15s; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+        @keyframes progressGlow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 40px var(--accent-glow); } 50% { box-shadow: 0 0 80px var(--accent-glow-strong); } }
+        @keyframes borderGlow { 0%, 100% { border-color: var(--border-accent); } 50% { border-color: var(--border-accent-strong); } }
+        .animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.15s; } .delay-2 { animation-delay: 0.3s; } .delay-3 { animation-delay: 0.45s; } .delay-4 { animation-delay: 0.6s; }
+
+        /* NAV */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 80px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .navbar.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 1px 0 var(--border-accent); }
+        .navbar-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .navbar-logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .navbar-logo .neo { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-logo .cursor { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; box-shadow: 0 0 8px var(--accent); }
+        .navbar-menu { display: flex; align-items: center; gap: 8px; }
+        .navbar-link { padding: 12px 24px; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; border-radius: 100px; transition: all 0.3s ease; letter-spacing: 0.05em; text-transform: uppercase; }
+        .navbar-link:hover, .navbar-link.active { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta { margin-left: 24px; padding: 14px 32px; font-size: 12px; font-weight: 600; color: var(--bg-primary); background: var(--accent); text-decoration: none; border-radius: 100px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-strong); }
+        .navbar-toggle { display: none; flex-direction: column; gap: 6px; padding: 10px; background: none; border: none; cursor: pointer; }
+        .navbar-toggle span { width: 28px; height: 1px; background: var(--text-primary); transition: all 0.3s ease; }
+
+        /* BLOG HERO */
+        .blog-hero { padding: 160px 80px 80px; text-align: center; position: relative; overflow: hidden; }
+        .blog-hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 60%); border-radius: 50%; top: -200px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+        .blog-hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--accent); margin-bottom: 24px; text-shadow: 0 0 10px var(--accent-glow); }
+        .blog-hero-eyebrow::before { content: '>'; color: var(--accent); animation: blink 1.5s step-end infinite; }
+        .blog-hero h1 { font-size: 56px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.03em; }
+        .blog-hero h1 .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); }
+        .blog-hero p { font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-weight: 300; }
+
+        /* BLOG CARDS */
+        .blog-grid { max-width: 1200px; margin: 0 auto; padding: 0 80px 120px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .blog-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px 36px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+        .blog-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #00ffcc); opacity: 0; transition: opacity 0.5s ease; }
+        .blog-card::after { content: ''; position: absolute; bottom: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+        .blog-card:hover { transform: translateY(-8px); border-color: var(--border-accent-strong); box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
+        .blog-card:hover::before, .blog-card:hover::after { opacity: 1; }
+        .blog-card-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+        .blog-card-meta i { color: var(--accent); font-size: 10px; }
+        .blog-card h2 { font-size: 22px; font-weight: 600; margin-bottom: 16px; line-height: 1.3; color: var(--text-primary); }
+        .blog-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; flex: 1; }
+        .blog-card-read { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 0 10px var(--accent-glow); }
+        .blog-card-read i { transition: transform 0.3s ease; }
+        .blog-card:hover .blog-card-read i { transform: translateX(4px); }
+
+        /* CTA SECTION */
+        .cta-section { text-align: center; padding: 120px 80px; position: relative; overflow: hidden; z-index: 1; }
+        .cta-section::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 60%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+        .cta-title { font-size: 48px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.03em; position: relative; z-index: 1; }
+        .cta-title .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); }
+        .cta-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; position: relative; z-index: 1; }
+        .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-main); }
+        .btn-primary { background: var(--accent); color: var(--bg-primary); box-shadow: 0 0 30px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow-strong); }
+
+        .glow-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), var(--accent), var(--accent-dim), transparent); margin: 0; opacity: 0.4; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+
+        /* FOOTER */
+        .footer { padding: 60px 80px 40px; border-top: 1px solid var(--border-accent); position: relative; z-index: 1; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); box-shadow: 0 0 20px var(--accent-glow); }
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
+        .footer-logo .neo { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+        .footer-text { font-size: 13px; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 24px; align-items: center; }
+        .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.3s; }
+        .footer-link:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .navbar { padding: 0 40px; }
+            .blog-hero { padding: 140px 40px 60px; }
+            .blog-grid { padding: 0 40px 80px; grid-template-columns: repeat(2, 1fr); }
+            .blog-hero h1 { font-size: 40px; }
+            .cta-section { padding: 80px 40px; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 24px; }
+            .navbar-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+            .navbar-menu.open { display: flex; } .navbar-toggle { display: flex; }
+            .navbar-cta { margin-left: 0; margin-top: 16px; text-align: center; }
+            .blog-hero { padding: 120px 24px 40px; }
+            .blog-hero h1 { font-size: 32px; }
+            .blog-grid { padding: 0 24px 60px; grid-template-columns: 1fr; gap: 20px; }
+            .blog-card { padding: 28px 24px; }
+            .cta-section { padding: 60px 24px; }
+            .cta-title { font-size: 32px; }
+            .footer { padding: 40px 24px; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo"><span class="neo">neo</span>code studio<span class="cursor"></span></a>
+        <div class="navbar-menu" id="navMenu">
+            <a href="services.html" class="navbar-link">Services</a>
+            <a href="index.html#process" class="navbar-link">Process</a>
+            <a href="index.html#work" class="navbar-link">Work</a>
+            <a href="index.html#testimonials" class="navbar-link">Clients</a>
+            <a href="blog.html" class="navbar-link active">Blog</a>
+            <a href="contact.html" class="navbar-cta">Get a Free Audit</a>
+        </div>
+        <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+    <div class="blog-hero-eyebrow animate">Insights & Guides</div>
+    <h1 class="animate delay-1">The <span class="accent">Neocode</span> Blog</h1>
+    <p class="animate delay-2">Practical advice on web design, conversion optimisation, and growing your business online. No fluff &mdash; just what works.</p>
+</section>
+
+<!-- BLOG GRID -->
+<div class="blog-grid">
+
+    <a href="blog/why-your-website-losing-customers.html" class="blog-card animate">
+        <div class="blog-card-meta">
+            <span><i class="fas fa-calendar"></i> 5 Mar 2026</span>
+            <span><i class="fas fa-clock"></i> 5 min read</span>
+        </div>
+        <h2>Why Your Website Is Losing You Customers (And How to Fix It)</h2>
+        <p>Your website looks fine to you, but visitors are leaving in droves. Discover the 5 most common reasons UK businesses lose customers online &mdash; and the quick fixes that make a real difference.</p>
+        <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+    </a>
+
+    <a href="blog/website-redesign-cost-uk.html" class="blog-card animate delay-1">
+        <div class="blog-card-meta">
+            <span><i class="fas fa-calendar"></i> 28 Feb 2026</span>
+            <span><i class="fas fa-clock"></i> 5 min read</span>
+        </div>
+        <h2>How Much Does a Website Redesign Cost in the UK? (2026 Guide)</h2>
+        <p>From DIY builders to full-service agencies, website costs vary wildly. We break down the real numbers, what affects pricing, and how to think about ROI instead of just cost.</p>
+        <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+    </a>
+
+    <a href="blog/small-business-website-mistakes.html" class="blog-card animate delay-2">
+        <div class="blog-card-meta">
+            <span><i class="fas fa-calendar"></i> 20 Feb 2026</span>
+            <span><i class="fas fa-clock"></i> 5 min read</span>
+        </div>
+        <h2>7 Website Mistakes That Are Killing Your Small Business</h2>
+        <p>Expired SSL certificates, Gmail on your contact page, stock photos from 2015. These common mistakes are costing you customers every single day. Here is how to fix them.</p>
+        <span class="blog-card-read">Read Article <i class="fas fa-arrow-right"></i></span>
+    </a>
+
+</div>
+
+<div class="glow-divider"></div>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2 class="cta-title animate">Want a website that <span class="accent">converts</span>?</h2>
+    <p class="cta-subtitle animate delay-1">Get a free, no-obligation audit of your current site. We will show you exactly what is holding you back.</p>
+    <div class="cta-buttons animate delay-2">
+        <a href="contact.html" class="btn btn-primary">Get Your Free Audit <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo"><span class="neo">neo</span>code studio</div>
+        <p class="footer-text">&copy; 2026 Neocode Studio. Trading name of So Marketing Center Ltd.</p>
+        <div class="footer-links">
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="index.html#work" class="footer-link">Work</a>
+            <a href="index.html#testimonials" class="footer-link">Clients</a>
+            <a href="blog.html" class="footer-link">Blog</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Floating particles
+for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.width = (Math.random() * 3 + 1) + 'px';
+    p.style.height = p.style.width;
+    p.style.animation = `floatUp ${Math.random() * 15 + 10}s linear infinite`;
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.opacity = Math.random() * 0.5 + 0.1;
+    document.body.appendChild(p);
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progress').style.width = scrolled + '%';
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+
+// Mobile menu
+document.getElementById('navToggle').addEventListener('click', () => { document.getElementById('navMenu').classList.toggle('open'); });
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.blog-card, .cta-section').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(40px)';
+    el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+    observer.observe(el);
+});
+const style = document.createElement('style');
+style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>
