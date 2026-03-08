@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobblekeys N Tees | Expert Shoe Repair &amp; Key Cutting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --espresso:#3a2218;--espresso-deep:#241008;
+  --cognac:#c47a3f;--cognac-light:#d9944f;--gold:#daa520;
+  --cream:#faf6f0;--bg:#fdfcfa;--bg-warm:#f5f0e8;
+  --text:#3a2218;--text-body:#6b5446;--text-muted:#a08878;--border:#e8ddd0;
+  --gradient:linear-gradient(135deg,#c47a3f,#d9944f,#daa520);
+  --gradient-dark:linear-gradient(135deg,#241008,#3a2218);
+  --glass:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.85);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}
+.stagger-4{transition-delay:.4s}.stagger-5{transition-delay:.5s}
+
+.neocode-banner{background:var(--espresso-deep);padding:10px 20px;text-align:center;font-size:12px;color:rgba(255,255,255,.6);letter-spacing:1px}
+.neocode-banner a{color:var(--cognac-light);text-decoration:none;font-weight:600}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,252,250,.92);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(196,122,63,.06);transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-icon{width:44px;height:44px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.nav-logo-text{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--espresso)}
+.nav-logo-text span{display:block;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--text-body);text-decoration:none;font-size:14px;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--cognac)}
+.nav-cta{background:var(--gradient);color:#fff;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px rgba(196,122,63,.25)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,122,63,.35)}
+.mobile-menu{display:none;background:none;border:none;cursor:pointer}
+.mobile-menu span{display:block;width:22px;height:2px;background:var(--espresso);margin:5px 0;transition:.3s}
+
+.hero{padding:140px 48px 100px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1280px;margin:0 auto;position:relative}
+.hero::before{content:'';position:absolute;top:-80px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(196,122,63,.06) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,122,63,.08);border:1px solid rgba(196,122,63,.18);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:700;color:var(--cognac);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:24px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,4.5vw,56px);font-weight:800;line-height:1.1;color:var(--espresso);margin-bottom:22px}
+.hero h1 .gradient-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:17px;line-height:1.8;color:var(--text-body);margin-bottom:32px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.btn-gradient{background:var(--gradient);color:#fff;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:all .3s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;box-shadow:0 8px 24px rgba(196,122,63,.3)}
+.btn-gradient:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(196,122,63,.35)}
+.btn-outline{background:transparent;color:var(--espresso);padding:14px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid var(--border);transition:all .3s}
+.btn-outline:hover{border-color:var(--cognac);color:var(--cognac)}
+.hero-trust{display:flex;gap:32px}
+.trust-item h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:30px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.trust-item p{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-weight:500}
+.hero-image{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px rgba(58,34,24,.12)}
+.hero-image img{width:100%;height:520px;object-fit:cover;display:block}
+.hero-glass{position:absolute;bottom:24px;left:24px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);border-radius:16px;padding:18px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 12px 36px rgba(0,0,0,.1)}
+.hero-glass .icon{font-size:24px}
+.hero-glass .text{font-size:14px;font-weight:700;color:var(--espresso)}
+.hero-glass .text span{display:block;font-size:11px;font-weight:500;color:var(--text-muted)}
+
+section{padding:100px 48px}
+.section-center{text-align:center;max-width:640px;margin:0 auto 60px}
+.section-label{font-size:12px;font-weight:700;color:var(--cognac);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,44px);font-weight:800;color:var(--espresso);margin-bottom:16px;line-height:1.15}
+.section-desc{font-size:16px;line-height:1.7;color:var(--text-body)}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.service-card{background:#fff;border-radius:20px;padding:40px 32px;border:1px solid var(--border);transition:all .4s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:0;transition:opacity .3s}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(196,122,63,.08);border-color:rgba(196,122,63,.2)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:56px;height:56px;background:rgba(196,122,63,.08);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px}
+.service-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;margin-bottom:12px;color:var(--espresso)}
+.service-card p{font-size:14px;line-height:1.7;color:var(--text-body)}
+
+.craft-section{background:var(--espresso);color:#fff;position:relative;overflow:hidden}
+.craft-section::before{content:'';position:absolute;top:-50%;left:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(196,122,63,.15) 0%,transparent 60%);border-radius:50%}
+.craft-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:1100px;margin:0 auto;align-items:center}
+.craft-text h3{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;margin-bottom:18px;line-height:1.2}
+.craft-text p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:16px}
+.craft-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.craft-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;text-align:center;backdrop-filter:blur(12px)}
+.craft-stat h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.craft-stat p{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
+.craft-image{border-radius:20px;overflow:hidden}
+.craft-image img{width:100%;height:420px;object-fit:cover;display:block}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:0 auto}
+.price-card{background:#fff;border-radius:20px;padding:36px;border:1px solid var(--border);transition:all .4s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(196,122,63,.08)}
+.price-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;color:var(--espresso);margin-bottom:8px}
+.price-card .price{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+.price-card p{font-size:13px;line-height:1.7;color:var(--text-body)}
+
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.review-card{background:#fff;border-radius:20px;padding:32px;border:1px solid var(--border)}
+.review-stars{color:var(--gold);font-size:16px;margin-bottom:12px}
+.review-card p{font-size:14px;line-height:1.7;color:var(--text-body);margin-bottom:16px;font-style:italic}
+.review-author{font-weight:700;font-size:13px;color:var(--espresso)}
+
+.cta-section{background:var(--gradient-dark);padding:100px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(196,122,63,.2) 0%,transparent 50%);pointer-events:none}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,48px);font-weight:800;color:#fff;margin-bottom:18px;position:relative}
+.cta-section p{font-size:17px;color:rgba(255,255,255,.65);margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;position:relative}
+.cta-section .btn-gradient{background:#fff;color:var(--espresso);box-shadow:0 8px 32px rgba(0,0,0,.2);position:relative}
+
+footer{background:var(--espresso-deep);padding:60px 48px 30px;color:rgba(255,255,255,.5)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto 40px}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.footer-brand p{font-size:13px;line-height:1.7}
+.footer-col h4{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px;transition:color .3s}
+.footer-col a:hover{color:var(--cognac-light)}
+.footer-bottom{text-align:center;padding-top:30px;border-top:1px solid rgba(255,255,255,.08);font-size:12px}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .nav-links,.nav-cta{display:none}
+  .mobile-menu{display:block}
+  .hero{grid-template-columns:1fr;padding:120px 20px 60px;gap:32px}
+  .hero-image img{height:300px}
+  section{padding:60px 20px}
+  .services-grid,.reviews-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .craft-grid{grid-template-columns:1fr}
+  .craft-image img{height:280px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .craft-stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="neocode-banner">DEMO PREVIEW &mdash; Built by <a href="https://neocode-studio.github.io" target="_blank">NeoCode Studio</a></div>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">👞</div>
+    <div class="nav-logo-text">Cobblekeys N Tees<span>Shoe Repair &amp; Key Cutting</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#craft">Our Craft</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Visit Us</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Find Us</a>
+  <button class="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-content reveal">
+    <div class="hero-badge">✂️ Traditional Craft, Modern Service</div>
+    <h1>Expert <span class="gradient-text">Shoe Repair</span> &amp; Key Cutting</h1>
+    <p>Breathing new life into your favourite footwear since day one. Professional shoe repairs, key cutting, engraving and more — all under one roof in Teesside.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-gradient">Visit Our Shop →</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><h4>1000+</h4><p>Shoes Repaired</p></div>
+      <div class="trust-item"><h4>Same</h4><p>Day Service</p></div>
+      <div class="trust-item"><h4>5★</h4><p>Reviews</p></div>
+    </div>
+  </div>
+  <div class="hero-image reveal-right">
+    <img src="https://images.pexels.com/photos/1566435/pexels-photo-1566435.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Handcrafted leather shoes" loading="eager">
+    <div class="hero-glass">
+      <div class="icon">🔧</div>
+      <div class="text">Expert Craftsmanship<span>Quality repairs, fair prices</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-center reveal">
+    <div class="section-label">Our Services</div>
+    <div class="section-title">More Than Just a Cobbler</div>
+    <p class="section-desc">From sole replacements to watch batteries, we're your one-stop shop for repairs and services.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal stagger-1">
+      <div class="service-icon">👟</div>
+      <h3>Shoe Repair</h3>
+      <p>Resoling, reheeling, stitching, stretching and full restorations. We repair all types of footwear from trainers to brogues.</p>
+    </div>
+    <div class="service-card reveal stagger-2">
+      <div class="service-icon">🔑</div>
+      <h3>Key Cutting</h3>
+      <p>Precision key cutting for homes, cars, padlocks and security keys. Standard and specialist blanks available while you wait.</p>
+    </div>
+    <div class="service-card reveal stagger-3">
+      <div class="service-icon">⌚</div>
+      <h3>Watch &amp; Battery</h3>
+      <p>Watch battery replacements, strap fitting and minor watch repairs. Quick turnaround on most standard watches.</p>
+    </div>
+    <div class="service-card reveal stagger-4">
+      <div class="service-icon">🏷️</div>
+      <h3>Engraving</h3>
+      <p>Personalised engraving on trophies, pet tags, jewellery and gifts. Perfect for special occasions and corporate awards.</p>
+    </div>
+    <div class="service-card reveal stagger-5">
+      <div class="service-icon">👜</div>
+      <h3>Leather Goods</h3>
+      <p>Handbag repairs, belt shortening, jacket zip replacements and leather conditioning. We restore leather items to their former glory.</p>
+    </div>
+    <div class="service-card reveal stagger-1">
+      <div class="service-icon">👕</div>
+      <h3>T-Shirt Printing</h3>
+      <p>Custom t-shirt and garment printing for individuals, teams, events and businesses. Quality prints at competitive prices.</p>
+    </div>
+  </div>
+</section>
+
+<section class="craft-section" id="craft">
+  <div class="craft-grid">
+    <div class="craft-text reveal-left">
+      <div class="section-label" style="color:var(--cognac-light);text-align:left">The Art of Repair</div>
+      <h3>Craftsmanship That Stands the Test of Time</h3>
+      <p>In a throwaway world, we believe in fixing, restoring and preserving. Every shoe that comes through our door gets the same attention to detail, whether it's a well-loved pair of boots or designer heels.</p>
+      <p>Our skilled cobblers use traditional techniques combined with modern materials to deliver repairs that last. Why replace when you can restore?</p>
+      <div class="craft-stats">
+        <div class="craft-stat">
+          <h4>20+</h4>
+          <p>Years Exp</p>
+        </div>
+        <div class="craft-stat">
+          <h4>5K+</h4>
+          <p>Repairs Done</p>
+        </div>
+        <div class="craft-stat">
+          <h4>98%</h4>
+          <p>Satisfaction</p>
+        </div>
+      </div>
+    </div>
+    <div class="craft-image reveal-right">
+      <img src="https://images.pexels.com/photos/4491490/pexels-photo-4491490.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Cobbler tools and workbench" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-center reveal">
+    <div class="section-label">Pricing Guide</div>
+    <div class="section-title">Fair Prices, No Surprises</div>
+    <p class="section-desc">Quality repairs at honest prices. Here's a quick guide — pop in for an exact quote.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal stagger-1">
+      <h3>Heel Replacement</h3>
+      <div class="price">From £8</div>
+      <p>Men's and women's heel tips and full heel replacements. Quick turnaround, quality materials.</p>
+    </div>
+    <div class="price-card reveal stagger-2">
+      <h3>Full Resole</h3>
+      <div class="price">From £25</div>
+      <p>Complete sole replacement using premium Vibram or leather soles. Extends shoe life by years.</p>
+    </div>
+    <div class="price-card reveal stagger-3">
+      <h3>Key Cutting</h3>
+      <div class="price">From £3</div>
+      <p>Standard Yale and mortice keys cut while you wait. Security and car keys also available.</p>
+    </div>
+    <div class="price-card reveal stagger-4">
+      <h3>Zip Replacement</h3>
+      <div class="price">From £12</div>
+      <p>Boot, jacket and bag zip replacements. We match the original zip as closely as possible.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="background:var(--bg-warm)">
+  <div class="section-center reveal">
+    <div class="section-label">Testimonials</div>
+    <div class="section-title">What Our Customers Say</div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal stagger-1">
+      <div class="review-stars">★★★★★</div>
+      <p>"Thought my favourite boots were done for — Cobblekeys resoled them and they look better than new. Incredible craftsmanship and really friendly service."</p>
+      <div class="review-author">— Helen W., Stockton</div>
+    </div>
+    <div class="review-card reveal stagger-2">
+      <div class="review-stars">★★★★★</div>
+      <p>"Popped in for a key cut and it was done in 5 minutes. Fair price, works perfectly. Will definitely use them for shoe repairs too."</p>
+      <div class="review-author">— James K., Middlesbrough</div>
+    </div>
+    <div class="review-card reveal stagger-3">
+      <div class="review-stars">★★★★★</div>
+      <p>"Had my grandmother's leather handbag restored beautifully. Such a personal, caring service. These skills are rare — support your local cobbler!"</p>
+      <div class="review-author">— Ann M., Thornaby</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <h2 class="reveal">Visit <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Cobblekeys</span> Today</h2>
+  <p class="reveal">Bring your worn shoes, broken keys and repair jobs to us. No appointment needed — just walk in!</p>
+  <a href="#" class="btn-gradient reveal">📍 Get Directions</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>👞 Cobblekeys N Tees</h3>
+      <p>Expert shoe repair, key cutting, engraving and more. Serving Teesside with quality craftsmanship and friendly service.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Shoe Repair</a>
+      <a href="#services">Key Cutting</a>
+      <a href="#services">Engraving</a>
+      <a href="#services">Watch Battery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <a href="#">Mon-Fri: 9am - 5:30pm</a>
+      <a href="#">Saturday: 9am - 4pm</a>
+      <a href="#">Sunday: Closed</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">Teesside</a>
+      <a href="#">info@cobblekeys.co.uk</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Cobblekeys N Tees. All rights reserved. &mdash; Website by <a href="https://neocode-studio.github.io" style="color:var(--cognac-light);text-decoration:none">NeoCode Studio</a></p>
+  </div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
