@@ -9,199 +9,235 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #ffffff;
-            --bg-soft: #f8f9fb;
-            --bg-warm: #f0f4f8;
-            --text: #1a1a2e;
-            --text-dim: #5a6276;
-            --text-light: #8892a4;
-            --accent: #1e56a0;
-            --accent-light: #e8f0fe;
-            --accent-dark: #163d73;
+            --bg: #0a0e1a;
+            --bg-card: rgba(255,255,255,0.04);
+            --bg-glass: rgba(255,255,255,0.06);
+            --text: #ffffff;
+            --text-dim: rgba(255,255,255,0.65);
+            --text-light: rgba(255,255,255,0.4);
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-glow: rgba(59,130,246,0.25);
             --amber: #f59e0b;
-            --amber-light: #fef3c7;
-            --green: #059669;
-            --border: #e5e7eb;
-            --radius: 12px;
+            --amber-glow: rgba(245,158,11,0.15);
+            --green: #10b981;
+            --border: rgba(255,255,255,0.08);
+            --radius: 16px;
+            --gradient-hero: linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0f172a 100%);
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
+        /* Scroll Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
         /* Neocode Banner */
-        .nc-banner { background: #111; color: #fff; text-align: center; padding: 10px 20px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; }
+        .nc-banner { background: linear-gradient(90deg, #111827, #1e293b); color: #fff; text-align: center; padding: 10px 20px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; border-bottom: 1px solid var(--border); }
         .nc-banner a { color: #00ff88; text-decoration: none; font-weight: 700; }
         .nc-banner a:hover { text-decoration: underline; }
 
         /* Top Bar */
-        .top-bar { background: var(--accent); color: #fff; text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .top-bar { background: linear-gradient(90deg, var(--accent), #2563eb); color: #fff; text-align: center; padding: 12px 20px; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .top-bar i { animation: pulse 2s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
+        /* Floating orbs background */
+        .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+        .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.08); top: -200px; right: -200px; }
+        .orb-2 { width: 500px; height: 500px; background: rgba(245,158,11,0.05); bottom: -200px; left: -200px; }
+        .orb-3 { width: 400px; height: 400px; background: rgba(16,185,129,0.04); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
         /* Nav */
-        .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 32px; }
+        .nav { position: sticky; top: 0; z-index: 100; background: rgba(10,14,26,0.85); backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 32px; }
         .nav-brand { font-size: 20px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 10px; }
-        .nav-brand i { color: var(--accent); }
+        .nav-brand i { color: var(--amber); filter: drop-shadow(0 0 8px rgba(245,158,11,0.4)); }
         .nav-links { display: flex; gap: 36px; list-style: none; }
         .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-        .nav-cta { background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
-        .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+        .nav-links a:hover { color: var(--accent-light); }
+        .nav-cta { background: linear-gradient(135deg, var(--accent), #2563eb); color: #fff; padding: 10px 24px; border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.3s; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px var(--accent-glow); }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 28px var(--accent-glow); }
 
         /* Hero */
-        .hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: var(--gradient-hero); }
         .hero-bg { position: absolute; inset: 0; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.3) 100%); }
-        .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 32px; width: 100%; }
-        .hero-inner { max-width: 560px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-light); color: #92400e; border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.08; margin-bottom: 20px; color: var(--text); }
-        .hero h1 span { color: var(--accent); }
-        .hero-desc { font-size: 17px; color: var(--text-dim); line-height: 1.7; margin-bottom: 36px; }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-        .btn { padding: 14px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; }
-        .btn-dark { background: var(--accent); color: #fff; }
-        .btn-dark:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,86,160,0.25); }
-        .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-        .hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.15; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.95) 0%, rgba(10,14,26,0.8) 40%, rgba(10,14,26,0.6) 100%); }
+        .hero-grid-pattern { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+        .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 32px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-inner { max-width: 580px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--amber-glow); border: 1px solid rgba(245,158,11,0.3); color: var(--amber); border-radius: 100px; padding: 8px 18px; font-size: 12px; font-weight: 700; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 0.08em; }
+        .hero h1 { font-size: clamp(38px, 5vw, 60px); font-weight: 900; line-height: 1.05; margin-bottom: 24px; color: var(--text); letter-spacing: -0.5px; }
+        .hero h1 span { background: linear-gradient(135deg, var(--accent-light), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-desc { font-size: 17px; color: var(--text-dim); line-height: 1.8; margin-bottom: 40px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+        .btn { padding: 15px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent), #2563eb); color: #fff; box-shadow: 0 4px 20px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px var(--accent-glow); }
+        .btn-glass { background: var(--bg-glass); color: var(--text); border: 1px solid var(--border); backdrop-filter: blur(12px); }
+        .btn-glass:hover { border-color: var(--accent); background: rgba(59,130,246,0.08); }
+        .hero-trust { display: flex; gap: 24px; flex-wrap: wrap; }
         .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); font-weight: 500; }
-        .hero-trust-item i { color: var(--accent); }
+        .hero-trust-item i { color: var(--accent-light); }
         .hero-trust-item .stars { color: var(--amber); }
 
+        /* Hero right side - glassmorphism cards */
+        .hero-cards { display: flex; flex-direction: column; gap: 16px; }
+        .hero-stat-card { background: var(--bg-glass); backdrop-filter: blur(20px) saturate(150%); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: all 0.4s; }
+        .hero-stat-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .hero-stat-card .stat-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+        .hero-stat-card .stat-icon.blue { background: var(--accent-glow); color: var(--accent-light); }
+        .hero-stat-card .stat-icon.amber { background: var(--amber-glow); color: var(--amber); }
+        .hero-stat-card .stat-icon.green { background: rgba(16,185,129,0.15); color: var(--green); }
+        .hero-stat-card h3 { font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+        .hero-stat-card p { font-size: 13px; color: var(--text-dim); }
+
         /* Section */
-        .section { padding: 100px 32px; max-width: 1200px; margin: 0 auto; }
-        .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
-        .section-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
-        .section-desc { font-size: 17px; color: var(--text-dim); max-width: 520px; line-height: 1.7; }
-        .section-header { text-align: center; margin-bottom: 64px; }
+        .section { padding: 120px 32px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-light); margin-bottom: 12px; }
+        .section-title { font-size: clamp(30px, 3.5vw, 46px); font-weight: 800; line-height: 1.12; margin-bottom: 16px; letter-spacing: -0.3px; }
+        .section-desc { font-size: 17px; color: var(--text-dim); max-width: 520px; line-height: 1.8; }
+        .section-header { text-align: center; margin-bottom: 72px; }
         .section-header .section-desc { margin: 0 auto; }
 
-        /* Services Grid with Images */
+        /* Gradient divider */
+        .gradient-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 auto; max-width: 1200px; }
+
+        /* Services Grid */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .service-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.35s; }
-        .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); border-color: transparent; }
+        .service-card { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.4s; position: relative; }
+        .service-card::before { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(135deg, rgba(59,130,246,0.05), transparent); opacity: 0; transition: opacity 0.4s; z-index: 1; pointer-events: none; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.3); border-color: rgba(59,130,246,0.2); }
+        .service-card:hover::before { opacity: 1; }
         .service-img { width: 100%; height: 220px; object-fit: cover; display: block; }
-        .service-body { padding: 28px 24px; }
+        .service-body { padding: 28px 24px; position: relative; z-index: 2; }
         .service-body h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
         .service-body p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
 
-        /* Split Section */
-        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 100px 32px; }
+        /* About Split */
+        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 120px 32px; position: relative; z-index: 1; }
         .split.reverse { direction: rtl; }
         .split.reverse > * { direction: ltr; }
-        .split-img { border-radius: 20px; overflow: hidden; }
-        .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 420px; }
-        .check-list { list-style: none; margin: 24px 0 36px; }
-        .check-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: var(--text-dim); line-height: 1.5; }
-        .check-list li i { color: var(--green); margin-top: 3px; font-size: 14px; }
+        .split-img { border-radius: 24px; overflow: hidden; position: relative; }
+        .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 440px; }
+        .split-img::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; pointer-events: none; }
+        .check-list { list-style: none; margin: 28px 0 40px; }
+        .check-list li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; font-size: 15px; color: var(--text-dim); line-height: 1.5; }
+        .check-list li i { color: var(--green); margin-top: 3px; font-size: 14px; width: 28px; height: 28px; border-radius: 8px; background: rgba(16,185,129,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
         /* Stats */
-        .stats-section { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; padding: 72px 32px; text-align: center; }
-        .stat-number { font-size: 48px; font-weight: 900; color: var(--accent); margin-bottom: 4px; }
-        .stat-label { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+        .stats-section { position: relative; z-index: 1; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; max-width: 1200px; margin: 0 auto; background: var(--border); }
+        .stat-item { background: var(--bg); padding: 56px 32px; text-align: center; }
+        .stat-number { font-size: 52px; font-weight: 900; margin-bottom: 4px; background: linear-gradient(135deg, var(--accent-light), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-label { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
         .stat-desc { font-size: 13px; color: var(--text-light); }
 
         /* Testimonials */
-        .reviews-section { background: var(--bg-soft); }
+        .reviews-section { position: relative; z-index: 1; }
         .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .review-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
-        .review-stars { color: var(--amber); margin-bottom: 16px; font-size: 16px; letter-spacing: 2px; }
-        .review-text { font-size: 15px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+        .review-card { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 20px; padding: 36px; transition: all 0.4s; position: relative; overflow: hidden; }
+        .review-card::before { content: '\201C'; position: absolute; top: -10px; right: 20px; font-size: 120px; font-weight: 900; color: rgba(59,130,246,0.06); line-height: 1; }
+        .review-card:hover { border-color: rgba(59,130,246,0.2); transform: translateY(-4px); }
+        .review-stars { color: var(--amber); margin-bottom: 20px; font-size: 16px; letter-spacing: 2px; }
+        .review-text { font-size: 15px; color: var(--text-dim); line-height: 1.9; margin-bottom: 24px; font-style: italic; }
         .review-author { font-size: 14px; font-weight: 700; color: var(--text); }
         .review-location { font-size: 13px; color: var(--text-light); }
 
         /* Areas */
         .areas-wrap { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .area-pill { background: var(--bg); border: 1px solid var(--border); border-radius: 100px; padding: 10px 22px; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: all 0.3s; display: flex; align-items: center; gap: 6px; }
-        .area-pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-        .area-pill i { font-size: 11px; color: var(--accent); }
+        .area-pill { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 100px; padding: 10px 24px; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: all 0.3s; display: flex; align-items: center; gap: 6px; backdrop-filter: blur(8px); }
+        .area-pill:hover { border-color: var(--accent); color: var(--accent-light); background: rgba(59,130,246,0.08); }
+        .area-pill i { font-size: 11px; color: var(--accent-light); }
 
         /* CTA */
-        .cta-section { position: relative; text-align: center; padding: 120px 32px; overflow: hidden; }
+        .cta-section { position: relative; text-align: center; padding: 140px 32px; overflow: hidden; z-index: 1; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(37,99,235,0.08)); }
         .cta-section .cta-bg { position: absolute; inset: 0; }
-        .cta-section .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
-        .cta-section .cta-overlay { position: absolute; inset: 0; background: rgba(30,86,160,0.92); }
+        .cta-section .cta-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.08; }
         .cta-section .cta-content { position: relative; z-index: 2; }
-        .cta-section h2 { font-size: 40px; font-weight: 800; color: #fff; margin-bottom: 16px; }
-        .cta-section p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
-        .cta-phone { font-size: 36px; font-weight: 900; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 14px; margin-bottom: 28px; transition: all 0.3s; }
+        .cta-section h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #fff; margin-bottom: 16px; letter-spacing: -0.3px; }
+        .cta-section p { font-size: 17px; color: var(--text-dim); margin-bottom: 44px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .cta-phone { font-size: 40px; font-weight: 900; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 16px; margin-bottom: 32px; transition: all 0.3s; }
         .cta-phone:hover { transform: scale(1.03); }
-        .btn-white { background: #fff; color: var(--accent); padding: 16px 36px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+        .cta-phone i { color: var(--accent-light); filter: drop-shadow(0 0 12px var(--accent-glow)); }
+        .btn-glow { background: linear-gradient(135deg, var(--accent), #2563eb); color: #fff; padding: 16px 40px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; box-shadow: 0 4px 28px var(--accent-glow); }
+        .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--accent-glow); }
 
         /* Footer */
-        .footer { background: var(--text); color: #fff; padding: 64px 32px 0; }
+        .footer { background: #050810; color: #fff; padding: 72px 32px 0; border-top: 1px solid var(--border); position: relative; z-index: 1; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; }
         .footer-brand { font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .footer-brand i { color: var(--amber); }
-        .footer-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 20px; }
-        .footer-contact { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .footer-desc { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+        .footer-contact { font-size: 14px; color: var(--text-dim); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
         .footer-contact i { color: var(--amber); }
-        .footer h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; color: rgba(255,255,255,0.4); }
+        .footer h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 20px; color: var(--text-light); }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-        .footer-links a:hover { color: #fff; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); text-align: center; padding: 20px 32px; font-size: 12px; color: rgba(255,255,255,0.3); max-width: 1200px; margin: 0 auto; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--accent-light); }
+        .footer-bottom { border-top: 1px solid var(--border); text-align: center; padding: 20px 32px; font-size: 12px; color: var(--text-light); max-width: 1200px; margin: 0 auto; }
 
         /* Responsive */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-cards { display: none; }
             .services-grid, .reviews-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-            .split { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+            .split { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
             .split.reverse { direction: ltr; }
             .split-img img { min-height: 280px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); padding: 48px 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-inner { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .nav-cta { font-size: 12px; padding: 10px 16px; }
             .top-bar { font-size: 12px; padding: 8px 16px; }
-            .hero { min-height: 70vh; }
-            .hero-overlay { background: linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 60%, rgba(255,255,255,0.5) 100%); }
+            .hero { min-height: 80vh; }
             .hero-content { padding: 0 16px; }
-            .hero h1 { font-size: 30px; }
+            .hero h1 { font-size: 32px; }
             .hero-desc { font-size: 15px; }
             .hero-btns { flex-direction: column; }
             .btn { width: 100%; justify-content: center; min-height: 48px; font-size: 14px; }
             .hero-trust { flex-direction: column; gap: 12px; }
             .hero-badge { font-size: 11px; }
-            .section { padding: 48px 16px; }
-            .section-title { font-size: 26px; }
+            .section { padding: 64px 16px; }
+            .section-title { font-size: 28px; }
             .section-desc { font-size: 15px; }
-            .section-header { margin-bottom: 40px; }
+            .section-header { margin-bottom: 48px; }
             .services-grid { grid-template-columns: 1fr; max-width: 100%; }
-            .service-img { height: 180px; }
+            .service-img { height: 200px; }
             .service-body { padding: 20px 16px; }
-            .service-body h3 { font-size: 16px; }
-            .service-body p { font-size: 14px; }
-            .split { grid-template-columns: 1fr; gap: 32px; padding: 48px 16px; }
-            .split.reverse { direction: ltr; }
+            .split { grid-template-columns: 1fr; gap: 32px; padding: 64px 16px; }
             .split-img img { min-height: 240px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; padding: 40px 16px; }
-            .stat-number { font-size: 32px; }
-            .stat-label { font-size: 13px; }
-            .stat-desc { font-size: 12px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stat-item { padding: 32px 16px; }
+            .stat-number { font-size: 36px; }
             .reviews-grid { grid-template-columns: 1fr; max-width: 100%; }
-            .review-card { padding: 24px 20px; }
-            .review-text { font-size: 14px; }
+            .review-card { padding: 28px 20px; }
             .areas-wrap { gap: 8px; }
             .area-pill { padding: 8px 16px; font-size: 13px; }
             .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-            .cta-section { padding: 60px 16px; }
+            .cta-section { padding: 80px 16px; }
             .cta-section h2 { font-size: 28px; }
-            .cta-section p { font-size: 15px; }
-            .cta-phone { font-size: 24px; }
-            .btn-white { padding: 14px 28px; font-size: 14px; }
+            .cta-phone { font-size: 26px; }
             .footer { padding: 48px 16px 0; }
-            .footer-bottom { padding: 16px; }
         }
     </style>
 </head>
 <body>
+    <!-- Background orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <div class="nc-banner">
         <i class="fas fa-wand-magic-sparkles"></i> Free redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &middot; <a href="https://neocodestudio.co.uk/contact.html" target="_blank">Want this for your business?</a>
     </div>
@@ -228,19 +264,37 @@
             <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Electrician at switchboard">
         </div>
         <div class="hero-overlay"></div>
+        <div class="hero-grid-pattern"></div>
         <div class="hero-content">
             <div class="hero-inner">
-                <div class="hero-badge"><i class="fas fa-star"></i> Rated 5.0 on Google</div>
-                <h1>Your Trusted <span>Electrician</span> in Manchester.</h1>
-                <p class="hero-desc">NAPIT registered. Fully insured. 10-year guarantee on all work. From full rewires to EV chargers, we deliver quality you can rely on.</p>
+                <div class="hero-badge"><i class="fas fa-star"></i> Rated 5.0 on Google &middot; 20+ Years</div>
+                <h1>Manchester's Most Trusted <span>Electrician.</span></h1>
+                <p class="hero-desc">NAPIT registered. Fully insured. 10-year guarantee on all work. From full rewires to EV chargers, we deliver the quality and reliability your home deserves.</p>
                 <div class="hero-btns">
-                    <a href="tel:01617067671" class="btn btn-dark"><i class="fas fa-phone"></i> Get a Free Quote</a>
-                    <a href="#services" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Our Services</a>
+                    <a href="tel:01617067671" class="btn btn-primary"><i class="fas fa-phone"></i> Get a Free Quote</a>
+                    <a href="#services" class="btn btn-glass"><i class="fas fa-arrow-down"></i> Our Services</a>
                 </div>
                 <div class="hero-trust">
                     <div class="hero-trust-item"><i class="fas fa-shield-halved"></i> NAPIT Registered</div>
                     <div class="hero-trust-item"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 Google</div>
-                    <div class="hero-trust-item"><i class="fas fa-clock"></i> 20+ Years</div>
+                    <div class="hero-trust-item"><i class="fas fa-clock"></i> 24h Emergency</div>
+                </div>
+            </div>
+            <div class="hero-cards">
+                <div class="hero-stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-bolt"></i></div>
+                    <h3>20+ Years</h3>
+                    <p>Professional electrical installations across the Northwest</p>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="stat-icon amber"><i class="fas fa-star"></i></div>
+                    <h3>5.0 Rating</h3>
+                    <p>Consistently 5-star reviewed on Google by real customers</p>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="stat-icon green"><i class="fas fa-shield-halved"></i></div>
+                    <h3>10-Year Guarantee</h3>
+                    <p>Every single job backed by our comprehensive guarantee</p>
                 </div>
             </div>
         </div>
@@ -249,22 +303,22 @@
     <!-- Stats -->
     <div class="stats-section">
         <div class="stats-grid">
-            <div>
+            <div class="stat-item reveal">
                 <div class="stat-number">20+</div>
                 <div class="stat-label">Years Experience</div>
                 <div class="stat-desc">Professional installations across the Northwest</div>
             </div>
-            <div>
+            <div class="stat-item reveal reveal-delay-1">
                 <div class="stat-number">10yr</div>
                 <div class="stat-label">Work Guarantee</div>
                 <div class="stat-desc">Every job backed by our guarantee</div>
             </div>
-            <div>
+            <div class="stat-item reveal reveal-delay-2">
                 <div class="stat-number">5.0</div>
                 <div class="stat-label">Google Rating</div>
                 <div class="stat-desc">Consistently rated 5 stars</div>
             </div>
-            <div>
+            <div class="stat-item reveal reveal-delay-3">
                 <div class="stat-number">24h</div>
                 <div class="stat-label">Emergency Service</div>
                 <div class="stat-desc">Round-the-clock callouts</div>
@@ -274,48 +328,48 @@
 
     <!-- Services -->
     <section class="section" id="services">
-        <div class="section-header">
+        <div class="section-header reveal">
             <div class="section-label">What We Do</div>
             <h2 class="section-title">Complete Electrical Solutions.</h2>
-            <p class="section-desc">From full house rewires to smart home installations. Every job completed to the highest standard.</p>
+            <p class="section-desc">From full house rewires to smart home installations. Every job completed to the highest standard with precision and care.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card reveal">
                 <img class="service-img" src="https://images.pexels.com/photos/5691631/pexels-photo-5691631.jpeg?auto=compress&cs=tinysrgb&w=600" alt="House rewiring">
                 <div class="service-body">
                     <h3>Rewiring & Upgrades</h3>
                     <p>Full and partial house rewires, consumer unit upgrades, and fusebox replacements. Part P compliant.</p>
                 </div>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal reveal-delay-1">
                 <img class="service-img" src="https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Modern lighting">
                 <div class="service-body">
                     <h3>Lighting Design</h3>
                     <p>LED strips, spotlights, under-cabinet, chandeliers, outdoor and security lighting. Transform any space.</p>
                 </div>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal reveal-delay-2">
                 <img class="service-img" src="https://images.pexels.com/photos/6077368/pexels-photo-6077368.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Security system">
                 <div class="service-body">
                     <h3>Smart Home & Security</h3>
                     <p>Ring doorbells, CCTV, burglar alarms, smoke detectors, and automated circuits.</p>
                 </div>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal">
                 <img class="service-img" src="https://images.pexels.com/photos/9800092/pexels-photo-9800092.jpeg?auto=compress&cs=tinysrgb&w=600" alt="EV charger">
                 <div class="service-body">
                     <h3>EV Charger Installation</h3>
                     <p>Future-proof your home with a professionally installed electric vehicle charging point.</p>
                 </div>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal reveal-delay-1">
                 <img class="service-img" src="https://images.pexels.com/photos/3637739/pexels-photo-3637739.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Heating">
                 <div class="service-body">
                     <h3>Heating & Showers</h3>
                     <p>Electric underfloor heating, showers, cookers, hobs, and extractor fans fitted safely.</p>
                 </div>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal reveal-delay-2">
                 <img class="service-img" src="https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Inspection">
                 <div class="service-body">
                     <h3>Inspections & Reports</h3>
@@ -325,49 +379,51 @@
         </div>
     </section>
 
+    <div class="gradient-divider"></div>
+
     <!-- About Split -->
     <div class="split" id="about">
-        <div class="split-img">
+        <div class="split-img reveal">
             <img src="https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional electrician">
         </div>
-        <div>
+        <div class="reveal reveal-delay-2">
             <div class="section-label">Why Choose Us</div>
             <h2 class="section-title">Quality Work. Honest Prices. No Shortcuts.</h2>
-            <p class="section-desc">With over 20 years of experience serving Manchester and the Northwest, we deliver electrical work you can trust.</p>
+            <p class="section-desc">With over 20 years of experience serving Manchester and the Northwest, we deliver electrical work you can trust — every single time.</p>
             <ul class="check-list">
-                <li><i class="fas fa-check-circle"></i> NAPIT registered competent person</li>
-                <li><i class="fas fa-check-circle"></i> All work guaranteed for 10 years</li>
-                <li><i class="fas fa-check-circle"></i> Fully compliant with Part P building regulations</li>
-                <li><i class="fas fa-check-circle"></i> 24-hour emergency callout service</li>
-                <li><i class="fas fa-check-circle"></i> Free, no-obligation quotes</li>
-                <li><i class="fas fa-check-circle"></i> Clean, tidy, and respectful of your home</li>
+                <li><i class="fas fa-check"></i> NAPIT registered competent person</li>
+                <li><i class="fas fa-check"></i> All work guaranteed for 10 years</li>
+                <li><i class="fas fa-check"></i> Fully compliant with Part P building regulations</li>
+                <li><i class="fas fa-check"></i> 24-hour emergency callout service</li>
+                <li><i class="fas fa-check"></i> Free, no-obligation quotes</li>
+                <li><i class="fas fa-check"></i> Clean, tidy, and respectful of your home</li>
             </ul>
-            <a href="tel:01617067671" class="btn btn-dark"><i class="fas fa-phone"></i> Get a Free Quote</a>
+            <a href="tel:01617067671" class="btn btn-primary"><i class="fas fa-phone"></i> Get a Free Quote</a>
         </div>
     </div>
 
     <!-- Testimonials -->
     <section class="reviews-section" id="reviews">
-        <div class="section" style="padding-top:100px;padding-bottom:100px;">
-            <div class="section-header">
+        <div class="section">
+            <div class="section-header reveal">
                 <div class="section-label">Reviews</div>
                 <h2 class="section-title">Trusted by Homeowners Across Manchester.</h2>
                 <p class="section-desc">Don't just take our word for it. Here's what our customers have to say.</p>
             </div>
             <div class="reviews-grid">
-                <div class="review-card">
+                <div class="review-card reveal">
                     <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <p class="review-text">"Adam promptly turned up, checked all electrics thoroughly. Very professional and reasonably priced. Would use him every time."</p>
                     <div class="review-author">Tracey</div>
                     <div class="review-location">M28, Manchester</div>
                 </div>
-                <div class="review-card">
+                <div class="review-card reveal reveal-delay-1">
                     <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <p class="review-text">"He was polite, professional, identified the problem quickly and fixed it on the spot. Highly recommend AH Electrical to anyone."</p>
                     <div class="review-author">Tristan</div>
                     <div class="review-location">M4, Manchester</div>
                 </div>
-                <div class="review-card">
+                <div class="review-card reveal reveal-delay-2">
                     <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <p class="review-text">"Fantastic service from start to finish. The team rewired our entire house with minimal disruption. Couldn't be happier with the result."</p>
                     <div class="review-author">Sarah</div>
@@ -379,11 +435,11 @@
 
     <!-- Areas -->
     <section class="section" id="areas">
-        <div class="section-header">
+        <div class="section-header reveal">
             <div class="section-label">Service Areas</div>
             <h2 class="section-title">Covering Greater Manchester & Beyond.</h2>
         </div>
-        <div class="areas-wrap">
+        <div class="areas-wrap reveal">
             <div class="area-pill"><i class="fas fa-location-dot"></i> Manchester</div>
             <div class="area-pill"><i class="fas fa-location-dot"></i> Stockport</div>
             <div class="area-pill"><i class="fas fa-location-dot"></i> Cheshire</div>
@@ -401,13 +457,12 @@
         <div class="cta-bg">
             <img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Electrical work">
         </div>
-        <div class="cta-overlay"></div>
-        <div class="cta-content">
+        <div class="cta-content reveal">
             <h2>Ready to Get Started?</h2>
             <p>Get a free, no-obligation quote. We respond to all enquiries within the hour.</p>
             <a href="tel:01617067671" class="cta-phone"><i class="fas fa-phone"></i> 0161 706 7671</a>
             <br>
-            <a href="mailto:ahelectricians@gmail.com" class="btn-white"><i class="fas fa-envelope"></i> Email Us</a>
+            <a href="mailto:ahelectricians@gmail.com" class="btn-glow"><i class="fas fa-envelope"></i> Email Us Today</a>
         </div>
     </section>
 
@@ -448,21 +503,43 @@
         </div>
         <div class="footer-bottom">&copy; 2026 AH Electrical Services. NAPIT Registered. All rights reserved.</div>
     </footer>
-    <div style="text-align:center;padding:12px 20px;background:#0a0a0a;"><p style="margin-top:8px;font-size:11px;opacity:0.4;">Original website: <a href="https://ahelectricalservices.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">https://ahelectricalservices.co.uk</a></p></div>
+    <div style="text-align:center;padding:12px 20px;background:#030508;"><p style="margin-top:8px;font-size:11px;opacity:0.4;">Original website: <a href="https://ahelectricalservices.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">https://ahelectricalservices.co.uk</a></p></div>
 
 <!-- Demo Popup -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-    <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+    <div style="background:rgba(15,23,42,0.95);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.5);">
         <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
-        <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
-        <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
-        <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;transition:transform 0.2s;">Let's Talk</a>
+        <h2 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
+        <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#fff;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#fff;">turns visitors into paying customers</strong>.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;box-shadow:0 4px 20px rgba(59,130,246,0.3);">Let's Talk</a>
         <br>
-        <button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
+        <button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,0.4);font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
     </div>
 </div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+<!-- Scroll reveal + popup script -->
+<script>
+var popupShown=false;
+window.addEventListener("scroll",function(){
+    if(!popupShown&&window.scrollY>window.innerHeight*0.6){
+        popupShown=true;
+        var p=document.getElementById("demo-popup");
+        if(p){p.style.display="flex";}
+    }
+});
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
