@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pizza Palace Goldthorpe | Fresh Pizza, Kebabs & Burgers | Order Now</title>
+<meta name="description" content="Goldthorpe's favourite takeaway. Fresh handmade pizzas, kebabs with homemade chilli sauce, southern fried chicken & burgers. 25 years chef experience. Order now!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#dc2626;--red-dark:#991b1b;--red-glow:rgba(220,38,38,.2);--gold:#f59e0b;--gold-light:#fbbf24;--dark:#0f0f0f;--darker:#080808;--charcoal:#1a1a1a;--gray:#9ca3af;--white:#fff;--glass:rgba(255,255,255,.04);--glass-border:rgba(255,255,255,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans','Space Grotesk',system-ui,sans-serif;color:var(--white);background:var(--darker);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4{font-family:'Space Grotesk',system-ui,sans-serif}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;transition:all .3s}
+nav.scrolled{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Space Grotesk';font-size:1.2rem;font-weight:700;color:var(--white);text-decoration:none}
+.nav-brand span{color:var(--red)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-order{background:var(--red)!important;color:var(--white)!important;padding:10px 24px!important;border-radius:12px!important;font-weight:600!important}
+.nav-order:hover{background:var(--red-dark)!important}
+.mobile-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.3}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.6) 0%,rgba(8,8,8,.9) 70%,var(--darker) 100%)}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(220,38,38,.2),transparent 70%);z-index:1;animation:pulse-glow 4s ease-in-out infinite}
+@keyframes pulse-glow{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:140px 24px 80px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:100px;padding:8px 24px;font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:28px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.05;margin-bottom:24px}
+.hero h1 .highlight{display:block;background:linear-gradient(135deg,var(--red),#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.2rem;color:var(--gray);max-width:550px;margin:0 auto 40px}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:14px;font-size:1rem;font-weight:600;text-decoration:none;transition:all .3s;border:none;cursor:pointer;font-family:'Space Grotesk',system-ui,sans-serif}
+.btn-red{background:linear-gradient(135deg,var(--red),#ef4444);color:var(--white);box-shadow:0 8px 32px rgba(220,38,38,.4)}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(220,38,38,.5)}
+.btn-dark{background:var(--charcoal);color:var(--white);border:1px solid var(--glass-border)}
+.btn-dark:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.hero-info{display:flex;gap:32px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.hero-info-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--gray)}
+.hero-info-item .icon{width:36px;height:36px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+
+/* MENU SECTION */
+section{padding:100px 24px}
+.container{max-width:1200px;margin:0 auto}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.section-label::before{content:'';width:20px;height:2px;background:var(--gold)}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;line-height:1.15}
+.section-desc{font-size:1rem;color:var(--gray);max-width:550px;margin-bottom:48px}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.menu-card{background:var(--charcoal);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;transition:all .4s}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 20px 60px rgba(220,38,38,.1)}
+.menu-img{width:100%;height:200px;object-fit:cover;transition:transform .5s}
+.menu-card:hover .menu-img{transform:scale(1.05)}
+.menu-content{padding:24px}
+.menu-tag{display:inline-block;background:rgba(220,38,38,.15);color:var(--red);font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.menu-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.menu-card p{font-size:.85rem;color:var(--gray);line-height:1.6;margin-bottom:16px}
+.menu-price{font-size:1.1rem;font-weight:700;color:var(--gold)}
+
+/* SPECIALS */
+.specials-section{background:var(--charcoal);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
+.specials-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.special-img-wrap{position:relative;border-radius:24px;overflow:hidden}
+.special-img-wrap img{width:100%;height:450px;object-fit:cover}
+.special-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6))}
+.special-badge{position:absolute;top:20px;right:20px;background:var(--red);color:var(--white);font-family:'Space Grotesk';font-weight:700;font-size:.8rem;padding:8px 16px;border-radius:10px;z-index:2}
+.special-features{display:flex;flex-direction:column;gap:20px}
+.special-feat{display:flex;gap:16px;padding:20px;background:var(--dark);border:1px solid var(--glass-border);border-radius:16px;transition:all .3s}
+.special-feat:hover{border-color:rgba(220,38,38,.3)}
+.feat-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--red-glow),rgba(220,38,38,.05));border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem}
+.feat-text h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+.feat-text p{font-size:.85rem;color:var(--gray)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.about-card{background:var(--charcoal);border:1px solid var(--glass-border);border-radius:20px;padding:32px;text-align:center;transition:all .3s}
+.about-card:hover{transform:translateY(-3px);border-color:rgba(245,158,11,.3)}
+.about-num{font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.about-label{font-size:.85rem;color:var(--gray)}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.review-card{background:var(--charcoal);border:1px solid var(--glass-border);border-radius:20px;padding:32px;transition:all .3s}
+.review-card:hover{border-color:rgba(245,158,11,.2)}
+.review-stars{color:var(--gold);font-size:1.1rem;margin-bottom:16px;letter-spacing:2px}
+.review-text{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;margin-bottom:20px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:40px;height:40px;background:linear-gradient(135deg,var(--red),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+.review-name{font-weight:600;font-size:.9rem}
+.review-src{color:var(--gray);font-size:.75rem}
+
+/* CTA */
+.cta-section{text-align:center}
+.cta-box{background:linear-gradient(135deg,var(--red-dark),var(--red));border-radius:32px;padding:80px 48px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-100px;right:-50px;width:300px;height:300px;background:radial-gradient(circle,rgba(245,158,11,.25),transparent 70%);border-radius:50%}
+.cta-box::after{content:'';position:absolute;bottom:-80px;left:-30px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);border-radius:50%}
+.cta-box h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;position:relative;z-index:2}
+.cta-box p{color:rgba(255,255,255,.8);font-size:1.1rem;max-width:500px;margin:0 auto 32px;position:relative;z-index:2}
+.cta-btns{position:relative;z-index:2;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-hours{margin-top:28px;font-size:.9rem;color:rgba(255,255,255,.6);position:relative;z-index:2}
+
+/* FOOTER */
+footer{background:var(--dark);padding:60px 24px 30px;text-align:center;border-top:1px solid var(--glass-border)}
+footer .brand{font-family:'Space Grotesk';font-size:1.3rem;font-weight:700;margin-bottom:8px}
+footer .addr{font-size:.85rem;color:var(--gray);margin-bottom:24px}
+footer .foot-links{display:flex;gap:24px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+footer .foot-links a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .3s}
+footer .foot-links a:hover{color:var(--gold)}
+footer .copy{font-size:.75rem;color:rgba(255,255,255,.3)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.specials-grid{grid-template-columns:1fr}
+.about-grid{grid-template-columns:repeat(2,1fr)}
+.nav-links{display:none}
+.mobile-toggle{display:block}
+.cta-box{padding:48px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+<div class="nav-inner">
+<a href="#" class="nav-brand">Pizza <span>Palace</span></a>
+<div class="nav-links">
+<a href="#menu">Menu</a>
+<a href="#specials">Specials</a>
+<a href="#reviews">Reviews</a>
+<a href="tel:01709888986" class="nav-order">Order Now</a>
+</div>
+<button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg">
+<img src="https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pizza">
+</div>
+<div class="hero-glow"></div>
+<div class="hero-inner">
+<div class="hero-badge">&#128293; Goldthorpe's Favourite Since 2010</div>
+<h1>Freshly Made.<br><span class="highlight">Incredibly Tasty.</span></h1>
+<p class="hero-sub">30 handmade pizzas, signature kebabs with our famous homemade chilli sauce, southern fried chicken & burgers. Made fresh daily by our chef with 25 years experience.</p>
+<div class="hero-ctas">
+<a href="tel:01709888986" class="btn btn-red">
+<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+Order: 01709 888986
+</a>
+<a href="#menu" class="btn btn-dark">View Menu</a>
+</div>
+<div class="hero-info">
+<div class="hero-info-item"><div class="icon">&#128205;</div>23 Barnsley Road, S63 9LS</div>
+<div class="hero-info-item"><div class="icon">&#128338;</div>4PM - Midnight Daily</div>
+<div class="hero-info-item"><div class="icon">&#128666;</div>Fast Local Delivery</div>
+</div>
+</div>
+</section>
+
+<section id="menu">
+<div class="container">
+<div class="section-label fade-up">Our Menu</div>
+<h2 class="section-title fade-up">Made Fresh Every Single Day</h2>
+<p class="section-desc fade-up">From classic margheritas to our legendary Goldthorpe Special Burger, every dish is prepared with passion and premium ingredients.</p>
+<div class="menu-grid">
+<div class="menu-card fade-up">
+<img src="https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fresh Pizza" class="menu-img">
+<div class="menu-content">
+<div class="menu-tag">30 Varieties</div>
+<h3>Handmade Pizzas</h3>
+<p>Fresh dough, premium toppings, baked to golden perfection. From classic Margherita to loaded specials.</p>
+<div class="menu-price">From &pound;6.99</div>
+</div>
+</div>
+<div class="menu-card fade-up">
+<img src="https://images.pexels.com/photos/6210747/pexels-photo-6210747.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Kebab" class="menu-img">
+<div class="menu-content">
+<div class="menu-tag">Signature</div>
+<h3>Chef Special Kebabs</h3>
+<p>Generous portions served with rice, salad, and our famous handmade chilli sauce that keeps you coming back.</p>
+<div class="menu-price">From &pound;7.99</div>
+</div>
+</div>
+<div class="menu-card fade-up">
+<img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Burger" class="menu-img">
+<div class="menu-content">
+<div class="menu-tag">Fan Favourite</div>
+<h3>Burgers & Chicken</h3>
+<p>Southern fried chicken and our legendary Goldthorpe Special Burger. Crispy, juicy, and always satisfying.</p>
+<div class="menu-price">From &pound;5.99</div>
+</div>
+</div>
+<div class="menu-card fade-up">
+<img src="https://images.pexels.com/photos/2638026/pexels-photo-2638026.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Desserts" class="menu-img">
+<div class="menu-content">
+<div class="menu-tag">Sweet Treats</div>
+<h3>Desserts</h3>
+<p>Finish with chocolate gateau, cheesecake, or a creamy milkshake. The perfect end to a perfect meal.</p>
+<div class="menu-price">From &pound;3.99</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="specials-section" id="specials">
+<div class="container">
+<div class="specials-grid">
+<div class="special-img-wrap fade-up">
+<img src="https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Pizza making">
+<div class="special-badge">EST. 15 YEARS</div>
+</div>
+<div>
+<div class="section-label fade-up">Why Choose Us</div>
+<h2 class="section-title fade-up">Not Just Another Takeaway</h2>
+<p class="section-desc fade-up">Located opposite Goldthorpe Library, we've been serving the community for 15 years with passion, quality, and care.</p>
+<div class="special-features">
+<div class="special-feat fade-up">
+<div class="feat-icon">&#128104;&#8205;&#127859;</div>
+<div class="feat-text"><h4>25 Years Chef Experience</h4><p>Our head chef brings a quarter century of culinary expertise to every dish.</p></div>
+</div>
+<div class="special-feat fade-up">
+<div class="feat-icon">&#10024;</div>
+<div class="feat-text"><h4>Everything Made Fresh</h4><p>Fresh dough daily, handmade sauces, premium ingredients. Never frozen, always fresh.</p></div>
+</div>
+<div class="special-feat fade-up">
+<div class="feat-icon">&#127873;</div>
+<div class="feat-text"><h4>Free Treats With Orders</h4><p>We love surprising our loyal customers with complimentary extras in their orders.</p></div>
+</div>
+<div class="special-feat fade-up">
+<div class="feat-icon">&#9889;</div>
+<div class="feat-text"><h4>Lightning Fast Delivery</h4><p>Quick delivery times across Goldthorpe, Bolton-upon-Dearne, and surrounding areas.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-label fade-up">At A Glance</div>
+<h2 class="section-title fade-up" style="margin-bottom:40px">Numbers That Speak</h2>
+<div class="about-grid">
+<div class="about-card fade-up"><div class="about-num">15+</div><div class="about-label">Years Serving Goldthorpe</div></div>
+<div class="about-card fade-up"><div class="about-num">30</div><div class="about-label">Pizza Varieties</div></div>
+<div class="about-card fade-up"><div class="about-num">25</div><div class="about-label">Years Chef Experience</div></div>
+<div class="about-card fade-up"><div class="about-num">4.5&#9733;</div><div class="about-label">Average Rating</div></div>
+</div>
+</div>
+</section>
+
+<section id="reviews" style="padding-top:0">
+<div class="container">
+<div class="section-label fade-up">Reviews</div>
+<h2 class="section-title fade-up">What Our Customers Say</h2>
+<p class="section-desc fade-up">Don't just take our word for it. Here's what the community thinks.</p>
+<div class="reviews-grid">
+<div class="review-card fade-up">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="review-text">"The chicken and mushroom pizza is absolutely incredible. Fresh, generous portions, and always delivered hot. We order every Friday without fail!"</p>
+<div class="review-author">
+<div class="review-avatar">L</div>
+<div><div class="review-name">Laura B.</div><div class="review-src">Google Review</div></div>
+</div>
+</div>
+<div class="review-card fade-up">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="review-text">"Best kebabs in the area, hands down. The chef special with their homemade chilli sauce is legendary. Plus they always throw in free extras. Love it!"</p>
+<div class="review-author">
+<div class="review-avatar">D</div>
+<div><div class="review-name">Dave M.</div><div class="review-src">Tripadvisor</div></div>
+</div>
+</div>
+<div class="review-card fade-up">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="review-text">"Quick delivery, friendly staff, and the food is always spot on. The Goldthorpe Special Burger is massive! Best takeaway in S63 by a mile."</p>
+<div class="review-author">
+<div class="review-avatar">S</div>
+<div><div class="review-name">Sam R.</div><div class="review-src">Facebook</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+<div class="cta-box fade-up">
+<h2>Hungry? Let's Sort That Out.</h2>
+<p>Call us now for collection or fast delivery across Goldthorpe, Bolton-upon-Dearne, and surrounding areas.</p>
+<div class="cta-btns">
+<a href="tel:01709888986" class="btn btn-red" style="font-size:1.1rem;padding:18px 40px;background:var(--white);color:var(--red)">
+<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+01709 888986
+</a>
+<a href="tel:01709897249" class="btn" style="border:1px solid rgba(255,255,255,.3);color:var(--white)">
+Second Line: 01709 897249
+</a>
+</div>
+<div class="cta-hours">Open Daily 4:00 PM - Midnight | Fridays until 1:00 AM</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="brand">Pizza Palace Goldthorpe</div>
+<div class="addr">23 Barnsley Road, Goldthorpe, Rotherham S63 9LS | 01709 888986</div>
+<div class="foot-links">
+<a href="#menu">Menu</a>
+<a href="#specials">About</a>
+<a href="#reviews">Reviews</a>
+<a href="https://www.facebook.com/p/Pizza-palace-goldthorpe-100076174390044/" target="_blank">Facebook</a>
+</div>
+<div class="copy">&copy; 2026 Pizza Palace Goldthorpe. All rights reserved.</div>
+</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+</script>
+</body>
+</html>
