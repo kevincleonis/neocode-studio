@@ -8,62 +8,86 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#0a1628;--accent:#f59e0b;--accent2:#fbbf24;--light:#f8fafc;--gray:#64748b;--dark:#0f172a;--card:#ffffff}
+:root{
+  --primary:#0a1628;--navy:#0f172a;--accent:#f59e0b;--accent2:#fbbf24;
+  --electric:#3b82f6;--cyan:#06b6d4;
+  --light:#f8fafc;--card:rgba(255,255,255,0.7);--gray:#64748b;
+  --gradient:linear-gradient(135deg,#f59e0b,#f97316,#ef4444);
+  --gradient-blue:linear-gradient(135deg,#3b82f6,#06b6d4);
+  --glass:rgba(255,255,255,0.08);--glass-border:rgba(255,255,255,0.12);
+}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:#1e293b;background:#fff;overflow-x:hidden}
-.neocode-banner{background:#0f172a;color:#fff;text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.5px;font-weight:500}
-.neocode-banner a{color:#f59e0b;text-decoration:none;font-weight:700}
-.neocode-banner a:hover{text-decoration:underline}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.85);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-1{transition-delay:0.1s}.stagger-2{transition-delay:0.2s}.stagger-3{transition-delay:0.3s}
+.stagger-4{transition-delay:0.4s}.stagger-5{transition-delay:0.5s}.stagger-6{transition-delay:0.6s}
+
+.neocode-banner{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.5px;font-weight:500}
+.neocode-banner a{color:var(--accent);text-decoration:none;font-weight:700}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);padding:0 5%}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(0,0,0,0.04);padding:0 5%}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--primary)}
-.logo span{color:var(--accent)}
+.logo span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{text-decoration:none;color:var(--gray);font-size:14px;font-weight:500;transition:color 0.3s}
 .nav-links a:hover{color:var(--primary)}
-.nav-cta{background:var(--accent);color:var(--primary);padding:10px 24px;border-radius:100px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s}
-.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+.nav-cta{background:var(--gradient);color:#fff;padding:12px 28px;border-radius:100px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s;box-shadow:0 4px 16px rgba(245,158,11,0.3)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(245,158,11,0.4)}
 .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .mobile-toggle span{display:block;width:24px;height:2px;background:var(--primary);margin:6px 0;transition:0.3s}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#0a1628 0%,#1e3a5f 50%,#0a1628 100%);overflow:hidden;padding:0 5%}
-.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:80%;height:200%;background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#0a1628 0%,#1e3a5f 40%,#0f172a 100%);overflow:hidden;padding:0 5%}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:80%;height:200%;background:radial-gradient(circle,rgba(245,158,11,0.1) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:60%;height:100%;background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 50%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px}
 .hero-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2;width:100%}
 .hero-text{color:#fff}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:32px;letter-spacing:1px;text-transform:uppercase}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.1);backdrop-filter:blur(12px);border:1px solid rgba(245,158,11,0.2);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:32px;letter-spacing:1px;text-transform:uppercase}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1.1;margin-bottom:24px}
-.hero h1 span{color:var(--accent);display:block}
+.hero h1 .gradient-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
 .hero p{font-size:18px;color:rgba(255,255,255,0.7);line-height:1.8;max-width:500px;margin-bottom:40px}
 .hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:var(--primary);padding:16px 36px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,158,11,0.3)}
-.btn-outline{border:2px solid rgba(255,255,255,0.2);color:#fff;padding:14px 36px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.3s}
-.btn-outline:hover{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.05)}
+.btn-primary{background:var(--gradient);color:#fff;padding:16px 36px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(245,158,11,0.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(245,158,11,0.35)}
+.btn-glass{border:2px solid rgba(255,255,255,0.15);color:#fff;padding:14px 36px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.3s;backdrop-filter:blur(8px);background:rgba(255,255,255,0.04)}
+.btn-glass:hover{border-color:var(--accent);background:rgba(245,158,11,0.08)}
 .hero-image{position:relative}
 .hero-image img{width:100%;border-radius:24px;box-shadow:0 40px 80px rgba(0,0,0,0.4)}
+.hero-float{position:absolute;bottom:-16px;left:-16px;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:18px 24px;display:flex;align-items:center;gap:14px}
+.hero-float .num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-float .label{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px}
 .hero-stats{display:flex;gap:40px;margin-top:48px}
 .stat{text-align:left}
-.stat-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:var(--accent)}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px}
 
 /* SERVICES */
-.services{padding:120px 5%;background:var(--light)}
+.services{padding:120px 5%;background:var(--light);position:relative;overflow:hidden}
+.services::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,11,0.2),transparent)}
 .section-header{text-align:center;max-width:600px;margin:0 auto 64px}
 .section-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .section-header h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--primary);margin-bottom:16px}
 .section-header p{color:var(--gray);font-size:16px;line-height:1.7}
 .services-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.service-card{background:var(--card);border-radius:20px;padding:40px 32px;transition:all 0.4s;border:1px solid rgba(0,0,0,0.04);position:relative;overflow:hidden}
-.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.08)}
-.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform 0.4s}
-.service-card:hover::after{transform:scaleX(1)}
-.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:24px}
+.service-card{background:rgba(255,255,255,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,0,0,0.04);border-radius:24px;padding:40px 32px;transition:all 0.4s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.06)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:60px;height:60px;background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(249,115,22,0.08));border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:24px}
 .service-card h3{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--primary);margin-bottom:12px}
 .service-card p{color:var(--gray);font-size:14px;line-height:1.7}
 
@@ -71,90 +95,103 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop
 .about{padding:120px 5%;background:#fff}
 .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .about-image{position:relative}
-.about-image img{width:100%;border-radius:24px}
-.about-image::after{content:'';position:absolute;top:24px;left:24px;right:-24px;bottom:-24px;border:3px solid var(--accent);border-radius:24px;z-index:-1}
+.about-image img{width:100%;border-radius:24px;box-shadow:0 32px 64px rgba(0,0,0,0.08)}
+.about-image::after{content:'';position:absolute;top:24px;left:24px;right:-24px;bottom:-24px;border:3px solid transparent;border-image:linear-gradient(135deg,#f59e0b,#f97316) 1;border-radius:24px;z-index:-1}
+.about-glass{position:absolute;bottom:-20px;right:-20px;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);border:1px solid rgba(245,158,11,0.15);border-radius:16px;padding:20px 24px;box-shadow:0 12px 36px rgba(0,0,0,0.08)}
+.about-glass .num{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.about-glass .txt{font-size:12px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
 .about-text h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;color:var(--primary);margin-bottom:24px}
 .about-text p{color:var(--gray);font-size:16px;line-height:1.8;margin-bottom:20px}
 .about-checklist{list-style:none;margin:32px 0}
-.about-checklist li{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:15px;font-weight:500;color:var(--primary)}
-.about-checklist li::before{content:'✓';width:28px;height:28px;background:rgba(245,158,11,0.15);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.about-checklist li{display:flex;align-items:center;gap:14px;padding:10px 0;font-size:15px;font-weight:500;color:var(--primary)}
+.about-checklist li::before{content:'&#10003;';width:32px;height:32px;background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(249,115,22,0.08));color:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 
 /* TESTIMONIALS */
-.testimonials{padding:120px 5%;background:var(--primary)}
+.testimonials{padding:120px 5%;background:var(--primary);position:relative;overflow:hidden}
+.testimonials::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,0.06) 0%,transparent 60%);border-radius:50%}
 .testimonials .section-tag{color:var(--accent)}
 .testimonials .section-header h2{color:#fff}
 .testimonials .section-header p{color:rgba(255,255,255,0.6)}
 .testimonials-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.testimonial-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:40px 32px}
-.testimonial-stars{color:var(--accent);font-size:16px;letter-spacing:2px;margin-bottom:20px}
+.testimonial-card{background:rgba(255,255,255,0.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:40px 32px;transition:all 0.4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:0;transition:opacity 0.4s}
+.testimonial-card:hover{border-color:rgba(245,158,11,0.15);transform:translateY(-4px)}
+.testimonial-card:hover::before{opacity:1}
+.testimonial-stars{font-size:16px;letter-spacing:2px;margin-bottom:20px}
+.testimonial-stars span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .testimonial-card p{color:rgba(255,255,255,0.8);font-size:15px;line-height:1.8;font-style:italic;margin-bottom:24px}
 .testimonial-author{font-weight:700;color:#fff;font-size:15px}
 
 /* CTA */
-.cta-section{padding:120px 5%;background:linear-gradient(135deg,#f59e0b 0%,#d97706 100%);text-align:center}
-.cta-section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;color:var(--primary);margin-bottom:16px}
-.cta-section p{color:rgba(10,22,40,0.7);font-size:18px;max-width:500px;margin:0 auto 40px;line-height:1.7}
-.btn-dark{background:var(--primary);color:#fff;padding:16px 40px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
-.btn-dark:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,0.2)}
+.cta-section{padding:120px 5%;background:var(--gradient);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.cta-section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.cta-section p{color:rgba(255,255,255,0.9);font-size:18px;max-width:500px;margin:0 auto 40px;line-height:1.7;position:relative;z-index:1}
+.btn-dark{background:var(--primary);color:#fff;padding:16px 40px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;position:relative;z-index:1}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.cta-info{margin-top:28px;font-size:14px;color:rgba(255,255,255,0.7);position:relative;z-index:1}
+.cta-info a{color:#fff;font-weight:700;text-decoration:none}
 
 /* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:64px 5% 32px}
+footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:64px 5% 32px}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
 .footer-brand .logo{color:#fff;font-size:20px;margin-bottom:16px;display:block}
 .footer-brand p{font-size:14px;line-height:1.7}
 .footer-col h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px}
 .footer-col a{display:block;color:rgba(255,255,255,0.5);text-decoration:none;font-size:14px;padding:4px 0;transition:color 0.3s}
 .footer-col a:hover{color:var(--accent)}
-.footer-bottom{max-width:1200px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:12px}
+.footer-bottom{max-width:1200px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:12px}
 .footer-bottom a{color:var(--accent);text-decoration:none}
 
 /* RESPONSIVE */
 @media(max-width:968px){
-.nav-links{display:none}
-.mobile-toggle{display:block}
-.hero-content{grid-template-columns:1fr;text-align:center;gap:40px}
-.hero p{margin:0 auto 40px}
-.hero-buttons{justify-content:center}
-.hero-stats{justify-content:center}
-.hero-image{order:-1;max-width:500px;margin:0 auto}
-.about-inner{grid-template-columns:1fr;gap:40px}
-.about-image::after{display:none}
-.footer-inner{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .hero-content{grid-template-columns:1fr;text-align:center;gap:40px}
+  .hero p{margin:0 auto 40px}
+  .hero-buttons{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-image{order:-1;max-width:500px;margin:0 auto}
+  .hero-float{display:none}
+  .about-inner{grid-template-columns:1fr;gap:40px}
+  .about-image::after{display:none}
+  .about-glass{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-.hero{min-height:auto;padding:80px 5% 60px}
-.hero h1{font-size:30px}
-.hero p{font-size:15px}
-.hero-buttons{flex-direction:column;align-items:center}
-.btn-primary,.btn-outline,.btn-dark{width:100%;text-align:center;justify-content:center;min-height:48px;padding:14px 24px;font-size:15px}
-.hero-stats{flex-direction:column;gap:16px;align-items:center}
-.stat-num{font-size:28px}
-.services{padding:60px 5%}
-.services-grid{grid-template-columns:1fr}
-.section-header h2{font-size:26px}
-.section-header p{font-size:14px}
-.service-card{padding:28px 20px}
-.about{padding:60px 5%}
-.about-text h2{font-size:26px}
-.about-text p{font-size:14px}
-.about-checklist li{font-size:14px}
-.testimonials{padding:60px 5%}
-.testimonials-grid{grid-template-columns:1fr}
-.testimonial-card{padding:28px 20px}
-.testimonial-card p{font-size:14px}
-.cta-section{padding:60px 5%}
-.cta-section h2{font-size:26px}
-.cta-section p{font-size:15px}
-footer{padding:40px 5% 24px}
-.footer-inner{grid-template-columns:1fr}
-.footer-bottom{flex-direction:column;text-align:center}
-.nav-cta{padding:10px 16px;font-size:12px;min-height:44px;display:inline-flex;align-items:center}
+  .hero{min-height:auto;padding:80px 5% 60px}
+  .hero h1{font-size:30px}
+  .hero p{font-size:15px}
+  .hero-buttons{flex-direction:column;align-items:center}
+  .btn-primary,.btn-glass,.btn-dark{width:100%;text-align:center;justify-content:center;min-height:48px;padding:14px 24px;font-size:15px}
+  .hero-stats{flex-direction:column;gap:16px;align-items:center}
+  .stat-num{font-size:28px}
+  .services{padding:60px 5%}
+  .services-grid{grid-template-columns:1fr}
+  .section-header h2{font-size:26px}
+  .section-header p{font-size:14px}
+  .service-card{padding:28px 20px}
+  .about{padding:60px 5%}
+  .about-text h2{font-size:26px}
+  .about-text p{font-size:14px}
+  .about-checklist li{font-size:14px}
+  .testimonials{padding:60px 5%}
+  .testimonials-grid{grid-template-columns:1fr}
+  .testimonial-card{padding:28px 20px}
+  .testimonial-card p{font-size:14px}
+  .cta-section{padding:60px 5%}
+  .cta-section h2{font-size:26px}
+  .cta-section p{font-size:15px}
+  footer{padding:40px 5% 24px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .nav-cta{padding:10px 16px;font-size:12px;min-height:44px;display:inline-flex;align-items:center}
 }
 @media(max-width:600px){
-.services-grid{grid-template-columns:1fr}
-.testimonials-grid{grid-template-columns:1fr}
-.footer-inner{grid-template-columns:1fr}
-.footer-bottom{flex-direction:column;text-align:center}
+  .services-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
 }
 </style>
 </head>
@@ -187,60 +224,63 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 <div class="hero-grid"></div>
 <div class="hero-content">
 <div class="hero-text">
-<div class="hero-badge">NICEIC Accredited &bull; BS7671 Compliant</div>
-<h1>Manchester's Most Trusted <span>Electrical Experts.</span></h1>
-<p>From full rewires to emergency call-outs, our qualified team delivers flawless electrical work for commercial, industrial, and residential properties across Manchester.</p>
-<div class="hero-buttons">
+<div class="hero-badge reveal-left">NICEIC Accredited &bull; BS7671 Compliant</div>
+<h1 class="reveal-left">Manchester's Most Trusted <span class="gradient-text">Electrical Experts.</span></h1>
+<p class="reveal-left">From full rewires to emergency call-outs, our qualified team delivers flawless electrical work for commercial, industrial, and residential properties across Manchester.</p>
+<div class="hero-buttons reveal-left">
 <a href="tel:01616965606" class="btn-primary">Get a Free Quote &rarr;</a>
-<a href="#services" class="btn-outline">View Services</a>
+<a href="#services" class="btn-glass">View Services</a>
 </div>
-<div class="hero-stats">
+<div class="hero-stats reveal-left">
 <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Residential Projects</div></div>
 <div class="stat"><div class="stat-num">525+</div><div class="stat-label">Commercial Projects</div></div>
 <div class="stat"><div class="stat-num">150+</div><div class="stat-label">Industrial Projects</div></div>
 </div>
 </div>
-<div class="hero-image">
+<div class="hero-image reveal-right">
 <img src="https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional electrician at work">
+<div class="hero-float">
+<div><div class="num">975+</div><div class="label">Projects Completed</div></div>
+</div>
 </div>
 </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-<div class="section-header">
+<div class="section-header reveal">
 <div class="section-tag">Our Services</div>
 <h2>Complete Electrical Solutions</h2>
 <p>Whatever your electrical needs — whether industrial, commercial or residential — DMS Electrical provides top-quality work at cost-effective prices.</p>
 </div>
 <div class="services-grid">
-<div class="service-card">
-<div class="service-icon">⚡</div>
+<div class="service-card reveal stagger-1">
+<div class="service-icon">&#9889;</div>
 <h3>Wiring & Installations</h3>
 <p>Complete wiring solutions for new builds and renovations. From consumer unit upgrades to full property rewires, delivered to the highest standards.</p>
 </div>
-<div class="service-card">
-<div class="service-icon">🔍</div>
+<div class="service-card reveal stagger-2">
+<div class="service-icon">&#128270;</div>
 <h3>Testing & Inspection</h3>
 <p>NICEIC-accredited periodic inspection reports, portable appliance testing (PAT), and comprehensive electrical safety certificates.</p>
 </div>
-<div class="service-card">
-<div class="service-icon">📹</div>
+<div class="service-card reveal stagger-3">
+<div class="service-icon">&#128249;</div>
 <h3>CCTV & Security</h3>
 <p>Professional CCTV installation, door entry systems, intercoms, and integrated home security solutions to protect your property.</p>
 </div>
-<div class="service-card">
-<div class="service-icon">🔥</div>
+<div class="service-card reveal stagger-4">
+<div class="service-icon">&#128293;</div>
 <h3>Fire Alarms & Emergency Lighting</h3>
 <p>Design, installation, and maintenance of fire alarm systems and emergency lighting to keep your building compliant and safe.</p>
 </div>
-<div class="service-card">
-<div class="service-icon">💡</div>
+<div class="service-card reveal stagger-5">
+<div class="service-icon">&#128161;</div>
 <h3>Lighting Design</h3>
 <p>Energy-efficient lighting design for homes and businesses. LED upgrades, automated systems, and bespoke lighting solutions.</p>
 </div>
-<div class="service-card">
-<div class="service-icon">🖥️</div>
+<div class="service-card reveal stagger-6">
+<div class="service-icon">&#128421;</div>
 <h3>IT & Data Services</h3>
 <p>Structured cabling, data communications, and IT infrastructure installations for offices, warehouses, and commercial premises.</p>
 </div>
@@ -250,10 +290,14 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 <!-- ABOUT -->
 <section class="about" id="about">
 <div class="about-inner">
-<div class="about-image">
+<div class="about-image reveal-left">
 <img src="https://images.pexels.com/photos/5691631/pexels-photo-5691631.jpeg?auto=compress&cs=tinysrgb&w=600" alt="DMS Electrical team">
+<div class="about-glass">
+<div class="num">20+</div>
+<div class="txt">Years Experience</div>
 </div>
-<div class="about-text">
+</div>
+<div class="about-text reveal-right">
 <div class="section-tag">About DMS Electrical</div>
 <h2>Professional, Reliable & Cost Effective</h2>
 <p>Based in Ardwick, Manchester, DMS Electrical is a team of experienced professional electricians equipped to handle any project you throw at us — no matter how big or how small.</p>
@@ -272,24 +316,24 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
-<div class="section-header">
+<div class="section-header reveal">
 <div class="section-tag">Client Reviews</div>
 <h2>What Our Clients Say</h2>
 <p>Don't just take our word for it — here's what our clients have to say about working with DMS Electrical.</p>
 </div>
 <div class="testimonials-grid">
-<div class="testimonial-card">
-<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-card reveal stagger-1">
+<div class="testimonial-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
 <p>"Extremely professional and knowledgeable. The team at DMS Electrical were fantastic from start to finish. I wouldn't hesitate recommending them to anyone."</p>
 <div class="testimonial-author">Kevin Mullins</div>
 </div>
-<div class="testimonial-card">
-<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-card reveal stagger-2">
+<div class="testimonial-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
 <p>"DMS Electrical always provide a high level of service that is second to none! Reliable, trustworthy and always deliver quality work. Highly recommended."</p>
 <div class="testimonial-author">Teresa Peters</div>
 </div>
-<div class="testimonial-card">
-<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-card reveal stagger-3">
+<div class="testimonial-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
 <p>"Fantastic experience from start to finish. The team were punctual, tidy, and made us feel at ease throughout the entire project. Will definitely use again."</p>
 <div class="testimonial-author">James Owens</div>
 </div>
@@ -298,20 +342,20 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-<h2>Ready to Get Started?</h2>
-<p>Whether it's a small repair or a large-scale installation, our team is ready to help. Get in touch for a free, no-obligation quote.</p>
-<a href="tel:01616965606" class="btn-dark">Call 0161 696 5606 &rarr;</a>
-<p style="margin-top:24px;font-size:14px;color:rgba(10,22,40,0.5)">
+<h2 class="reveal">Ready to Get Started?</h2>
+<p class="reveal">Whether it's a small repair or a large-scale installation, our team is ready to help. Get in touch for a free, no-obligation quote.</p>
+<a href="tel:01616965606" class="btn-dark reveal">Call 0161 696 5606 &rarr;</a>
+<div class="cta-info reveal">
 Unit 12, Cariocca Business Park, Hellidon Close, Ardwick, Manchester M12 4AH<br>
-<a href="mailto:donald@dms-electrical.co.uk" style="color:var(--primary);font-weight:600">donald@dms-electrical.co.uk</a> &bull; Mon–Fri: 8am–5pm | Weekends: Emergency Only
-</p>
+<a href="mailto:donald@dms-electrical.co.uk">donald@dms-electrical.co.uk</a> &bull; Mon&ndash;Fri: 8am&ndash;5pm | Weekends: Emergency Only
+</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<span class="logo">DMS<span style="color:#f59e0b">.</span>Electrical</span>
+<span class="logo">DMS<span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">.</span>Electrical</span>
 <p>Manchester's trusted team of professional electricians delivering flawless work for commercial, industrial, and residential clients.</p>
 </div>
 <div class="footer-col">
@@ -344,16 +388,24 @@ Unit 12, Cariocca Business Park, Hellidon Close, Ardwick, Manchester M12 4AH<br>
 
 <!-- POPUP -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-<div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+<div style="background:#fff;border-radius:20px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
 <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
-<h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
+<h2 style="font-size:24px;font-weight:800;color:#0f172a;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
 <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
-<p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
+<p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#0f172a;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#0f172a;">turns visitors into paying customers</strong>.</p>
+<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
 <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
 </div>
 </div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+<script>
+// IntersectionObserver scroll animations
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){observer.observe(el)});
+
+// Popup
+var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});
+</script>
 
 </body>
 </html>
