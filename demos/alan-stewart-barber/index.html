@@ -5,94 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alan Stewart | Telford's Premier Mobile Barber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1a1a1a;--accent:#c19a6b;--accent2:#a8834f;--offwhite:#f7f4f0;--warm:#faf8f5;--gray:#7a7267;--dark:#111111;--sand:#e8e0d6}
+:root{--primary:#0f1419;--accent:#c19a6b;--accent2:#d4af7a;--accent-glow:rgba(193,154,107,0.12);--warm:#faf8f5;--offwhite:#f7f4f0;--cream:#fffbf6;--gray:#6b7280;--dark:#0a0e12;--sand:#e8e0d6;--border:#e5e1db;--glass:rgba(255,255,255,0.7);--glass-border:rgba(0,0,0,0.04)}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--primary);background:#fff;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;color:var(--primary);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* NEOCODE */
-.neocode-banner{background:var(--dark);color:#fff;text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.5px;font-weight:500}
+/* Animations */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-1{transition-delay:0.1s}.stagger-2{transition-delay:0.2s}.stagger-3{transition-delay:0.3s}.stagger-4{transition-delay:0.4s}
+
+/* Neocode */
+.neocode-banner{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.5px;font-weight:500}
 .neocode-banner a{color:var(--accent);text-decoration:none;font-weight:700}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.05);padding:0 5%}
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:0 5%}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--primary)}
-.logo span{color:var(--accent);font-weight:400}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--primary)}
+.logo span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:400}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{text-decoration:none;color:var(--gray);font-size:14px;font-weight:500;transition:color 0.3s}
 .nav-links a:hover{color:var(--primary)}
-.nav-cta{background:var(--primary);color:#fff;padding:11px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s}
-.nav-cta:hover{background:var(--accent);transform:translateY(-1px)}
+.nav-cta{background:linear-gradient(135deg,var(--primary),#2d3748);color:#fff;padding:11px 26px;border-radius:100px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s;box-shadow:0 4px 16px rgba(15,20,25,0.2)}
+.nav-cta:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));transform:translateY(-1px);box-shadow:0 8px 24px rgba(193,154,107,0.3)}
 .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .mobile-toggle span{display:block;width:22px;height:2px;background:var(--primary);margin:5px 0;transition:0.3s}
 
-/* HERO - Split layout */
+/* Hero - Split layout */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--warm)}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 5% 80px 8%}
 .hero-left .tagline{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:32px}
-.hero-left .tagline::before{content:'';width:40px;height:1.5px;background:var(--accent)}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.08;margin-bottom:28px;color:var(--primary)}
-.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-left .tagline::before{content:'';width:40px;height:1.5px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.08;margin-bottom:28px;color:var(--primary)}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-left p{font-size:17px;color:var(--gray);line-height:1.85;max-width:440px;margin-bottom:40px}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.btn-solid{background:var(--primary);color:#fff;padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;transition:all 0.3s}
-.btn-solid:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 12px 32px rgba(193,154,107,0.25)}
-.btn-text{color:var(--gray);text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.3s}
+.btn-solid{background:linear-gradient(135deg,var(--primary),#2d3748);color:#fff;padding:16px 36px;border-radius:100px;text-decoration:none;font-weight:700;font-size:14px;transition:all 0.3s;box-shadow:0 4px 20px rgba(15,20,25,0.2);display:inline-flex;align-items:center;gap:8px}
+.btn-solid:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));transform:translateY(-2px);box-shadow:0 12px 32px rgba(193,154,107,0.3)}
+.btn-text{color:var(--gray);text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.3s;padding:16px 0}
 .btn-text:hover{color:var(--primary)}
 .btn-text svg{width:20px;height:20px}
 .hero-right{position:relative;overflow:hidden}
 .hero-right img{width:100%;height:100%;object-fit:cover}
 .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--warm) 0%,transparent 15%)}
 
-/* HOW IT WORKS */
-.how-it-works{padding:120px 5%;background:#fff}
+/* Section shared */
 .section-header{text-align:center;max-width:540px;margin:0 auto 72px}
 .section-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block}
-.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--primary);margin-bottom:16px}
+.section-header h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--primary);margin-bottom:16px}
 .section-header p{color:var(--gray);font-size:16px;line-height:1.7}
+
+/* How It Works */
+.how-it-works{padding:120px 5%;background:#fff}
 .steps{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .step{text-align:center;position:relative}
-.step-num{font-family:'Playfair Display',serif;font-size:64px;font-weight:800;color:var(--sand);margin-bottom:20px;line-height:1}
-.step h3{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:12px}
+.step-num{font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;background:linear-gradient(135deg,var(--sand),rgba(193,154,107,0.15));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;line-height:1}
+.step-icon{width:64px;height:64px;background:var(--accent-glow);border:1px solid rgba(193,154,107,0.2);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 20px;transition:all 0.3s}
+.step:hover .step-icon{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent}
+.step:hover .step-icon span{filter:brightness(10)}
+.step h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--primary);margin-bottom:12px}
 .step p{color:var(--gray);font-size:14px;line-height:1.7}
 
-/* EXPERIENCE */
+/* Experience */
 .experience{padding:120px 5%;background:var(--offwhite)}
 .exp-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
-.exp-text h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--primary);margin-bottom:24px}
+.exp-text h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--primary);margin-bottom:24px}
 .exp-text p{color:var(--gray);font-size:15px;line-height:1.85;margin-bottom:20px}
 .perks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
-.perk{background:#fff;border-radius:12px;padding:20px;border:1px solid rgba(0,0,0,0.04)}
-.perk h4{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.perk{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all 0.3s}
+.perk:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.06);border-color:rgba(193,154,107,0.3)}
+.perk h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
 .perk p{font-size:12px;color:var(--gray);line-height:1.6}
-.exp-image img{width:100%;border-radius:20px}
+.exp-image{position:relative}
+.exp-image img{width:100%;border-radius:24px;box-shadow:0 24px 64px rgba(0,0,0,0.08)}
+.exp-image::after{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:2px solid rgba(193,154,107,0.2);border-radius:24px;z-index:-1}
 
-/* AREAS */
+/* Areas */
 .areas{padding:100px 5%;background:#fff;text-align:center}
 .area-pills{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.area-pill{background:var(--offwhite);padding:10px 22px;border-radius:100px;font-size:13px;font-weight:500;color:var(--gray);border:1px solid rgba(0,0,0,0.04);transition:all 0.3s}
-.area-pill:hover{background:var(--primary);color:#fff}
+.area-pill{background:var(--offwhite);backdrop-filter:blur(10px);border:1px solid var(--border);padding:10px 22px;border-radius:100px;font-size:13px;font-weight:500;color:var(--gray);transition:all 0.3s;cursor:default}
+.area-pill:hover{background:linear-gradient(135deg,var(--primary),#2d3748);color:#fff;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,20,25,0.15)}
 
 /* CTA */
 .cta-section{padding:120px 5%;background:var(--primary);text-align:center;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(193,154,107,0.1),transparent 60%)}
-.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);font-weight:700;color:#fff;margin-bottom:16px;position:relative;z-index:2}
-.cta-section h2 em{color:var(--accent);font-style:italic}
-.cta-section p{color:rgba(255,255,255,0.6);font-size:16px;max-width:480px;margin:0 auto 40px;line-height:1.7;position:relative;z-index:2}
-.cta-phone{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);color:var(--accent);text-decoration:none;display:block;margin-bottom:40px;font-weight:700;position:relative;z-index:2}
+.cta-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(193,154,107,0.08),transparent 60%)}
+.cta-section::after{content:'';position:absolute;bottom:-200px;left:-200px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(193,154,107,0.05),transparent 60%)}
+.cta-section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:700;color:#fff;margin-bottom:16px;position:relative;z-index:2}
+.cta-section h2 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-section p{color:rgba(255,255,255,0.5);font-size:16px;max-width:480px;margin:0 auto 40px;line-height:1.7;position:relative;z-index:2}
+.cta-phone{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3vw,36px);background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;display:block;margin-bottom:40px;font-weight:700;position:relative;z-index:2}
 .cta-details{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
-.cta-detail{color:rgba(255,255,255,0.5);font-size:14px}
-.cta-detail strong{color:#fff;display:block;margin-bottom:4px}
+.cta-detail{text-align:center}
+.cta-detail strong{color:#fff;display:block;margin-bottom:4px;font-family:'Space Grotesk',sans-serif;font-size:14px}
+.cta-detail span{color:rgba(255,255,255,0.4);font-size:13px}
 
-/* FOOTER */
-footer{background:var(--dark);padding:40px 5%;text-align:center}
-footer p{color:rgba(255,255,255,0.35);font-size:12px;line-height:2}
+/* Footer */
+footer{background:var(--dark);padding:40px 5%;text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
+footer p{color:rgba(255,255,255,0.3);font-size:12px;line-height:2}
 footer a{color:var(--accent);text-decoration:none}
 
-/* RESPONSIVE */
+/* Responsive */
 @media(max-width:968px){
 .nav-links{display:none}
 .mobile-toggle{display:block}
@@ -107,8 +128,6 @@ footer a{color:var(--accent);text-decoration:none}
 .perks{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-.nav-links{display:none}
-.mobile-toggle{display:block}
 nav{padding:0 16px}
 .hero{grid-template-columns:1fr;min-height:auto}
 .hero-left{padding:48px 16px;text-align:center}
@@ -129,24 +148,30 @@ nav{padding:0 16px}
 .exp-inner{grid-template-columns:1fr;gap:32px}
 .exp-text h2{font-size:26px}
 .exp-text p{font-size:14px}
+.exp-image::after{display:none}
 .perks{grid-template-columns:1fr}
+.perk{padding:20px 16px}
 .areas{padding:60px 16px}
+.area-pills{gap:8px}
+.area-pill{padding:8px 16px;font-size:12px}
 .cta-section{padding:60px 16px}
 .cta-section h2{font-size:28px}
 .cta-phone{font-size:22px}
 .cta-details{flex-direction:column;gap:20px}
 footer{padding:32px 16px}
+.neocode-banner{font-size:11px;padding:8px 12px}
+img{max-width:100%;height:auto}
 }
 </style>
 </head>
 <body>
 
-<!-- NEOCODE BANNER -->
+<!-- Neocode Banner -->
 <div class="neocode-banner">
-This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> — Premium websites that convert visitors into customers.
+This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; Premium websites that convert visitors into customers.
 </div>
 
-<!-- NAV -->
+<!-- Nav -->
 <nav>
 <div class="nav-inner">
 <div class="logo">Alan Stewart <span>Barber</span></div>
@@ -163,14 +188,14 @@ This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- Hero -->
 <section class="hero">
 <div class="hero-left">
-<div class="tagline">Mobile Barber &bull; Telford</div>
-<h1>The Barber's Chair, <em>At Your Door.</em></h1>
-<p>Everything you expect from a barber shop — expert cuts, great conversation, and a clean finish — delivered to your home, office, or care home across Telford and surrounding areas.</p>
-<div class="hero-actions">
-<a href="tel:07890208672" class="btn-solid">Book Your Appointment</a>
+<div class="tagline reveal">Mobile Barber &bull; Telford</div>
+<h1 class="reveal stagger-1">The Barber's Chair, <em>At Your Door.</em></h1>
+<p class="reveal stagger-2">Everything you expect from a barber shop &mdash; expert cuts, great conversation, and a clean finish &mdash; delivered to your home, office, or care home across Telford and surrounding areas.</p>
+<div class="hero-actions reveal stagger-3">
+<a href="tel:07890208672" class="btn-solid">Book Your Appointment &rarr;</a>
 <a href="#how" class="btn-text">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12l4 4 4-4"/></svg>
 How it works
@@ -178,105 +203,108 @@ How it works
 </div>
 </div>
 <div class="hero-right">
-<img src="https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional barber at work">
+<img src="https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional barber at work">
 </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- How It Works -->
 <section class="how-it-works" id="how">
 <div class="section-header">
-<span class="section-tag">How It Works</span>
-<h2>Your Haircut, Your Way</h2>
-<p>No queues. No waiting. No rushing across town. Just give Alan a call and he'll come to you.</p>
+<span class="section-tag reveal">How It Works</span>
+<h2 class="reveal stagger-1">Your Haircut, Your Way</h2>
+<p class="reveal stagger-2">No queues. No waiting. No rushing across town. Just give Alan a call and he'll come to you.</p>
 </div>
 <div class="steps">
-<div class="step">
+<div class="step reveal stagger-1">
 <div class="step-num">01</div>
+<div class="step-icon"><span>&#128222;</span></div>
 <h3>Call or Text</h3>
 <p>Get in touch to book a time that works for you. Available weekdays and all day Saturdays.</p>
 </div>
-<div class="step">
+<div class="step reveal stagger-2">
 <div class="step-num">02</div>
+<div class="step-icon"><span>&#128664;</span></div>
 <h3>Alan Comes to You</h3>
-<p>Whether it's your home, workplace, or a care home — Alan brings everything needed for a perfect cut.</p>
+<p>Whether it's your home, workplace, or a care home &mdash; Alan brings everything needed for a perfect cut.</p>
 </div>
-<div class="step">
+<div class="step reveal stagger-3">
 <div class="step-num">03</div>
+<div class="step-icon"><span>&#9989;</span></div>
 <h3>Fresh Cut, No Fuss</h3>
 <p>Enjoy a professional barber experience in the comfort of your own space. Low prices thanks to minimal overhead.</p>
 </div>
 </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- Experience -->
 <section class="experience" id="experience">
 <div class="exp-inner">
-<div class="exp-text">
+<div class="exp-text reveal-left">
 <span class="section-tag">Why Go Mobile?</span>
 <h2>The Barber Shop Experience, Without the Inconvenience</h2>
-<p>Alan Stewart has been cutting hair across the Telford area for years, building a reputation based entirely on word-of-mouth recommendations. From a child's first ever haircut to regular appointments for seniors — Alan provides a friendly, professional service for every age group.</p>
+<p>Alan Stewart has been cutting hair across the Telford area for years, building a reputation based entirely on word-of-mouth recommendations. From a child's first ever haircut to regular appointments for seniors &mdash; Alan provides a friendly, professional service for every age group.</p>
 <p>With low overheads and no shop costs, you get a premium barber experience at prices that are hard to beat.</p>
 <div class="perks">
-<div class="perk"><h4>No Travel Needed</h4><p>Alan comes directly to your door — home, office, or care home.</p></div>
-<div class="perk"><h4>Low Prices</h4><p>Minimal overhead means savings passed directly to you.</p></div>
-<div class="perk"><h4>All Ages Welcome</h4><p>From first haircuts to seniors, everyone is taken care of.</p></div>
-<div class="perk"><h4>Weekdays & Saturdays</h4><p>Flexible booking across the week including full Saturdays.</p></div>
+<div class="perk reveal stagger-1"><h4>No Travel Needed</h4><p>Alan comes directly to your door &mdash; home, office, or care home.</p></div>
+<div class="perk reveal stagger-2"><h4>Low Prices</h4><p>Minimal overhead means savings passed directly to you.</p></div>
+<div class="perk reveal stagger-3"><h4>All Ages Welcome</h4><p>From first haircuts to seniors, everyone is taken care of.</p></div>
+<div class="perk reveal stagger-4"><h4>Weekdays & Saturdays</h4><p>Flexible booking across the week including full Saturdays.</p></div>
 </div>
 </div>
-<div class="exp-image">
+<div class="exp-image reveal-right">
 <img src="https://images.pexels.com/photos/2040189/pexels-photo-2040189.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Barber tools">
 </div>
 </div>
 </section>
 
-<!-- AREAS -->
+<!-- Areas -->
 <section class="areas" id="areas">
 <div class="section-header">
-<span class="section-tag">Service Areas</span>
-<h2>Covering Telford & Beyond</h2>
-<p>Alan covers a wide area across Telford and surrounding villages. If you don't see your area, just give him a call.</p>
+<span class="section-tag reveal">Service Areas</span>
+<h2 class="reveal stagger-1">Covering Telford & Beyond</h2>
+<p class="reveal stagger-2">Alan covers a wide area across Telford and surrounding villages. If you don't see your area, just give him a call.</p>
 </div>
 <div class="area-pills">
-<div class="area-pill">Madeley</div>
-<div class="area-pill">Ironbridge</div>
-<div class="area-pill">Broseley</div>
-<div class="area-pill">Coalport</div>
-<div class="area-pill">Coalbrookdale</div>
-<div class="area-pill">Much Wenlock</div>
-<div class="area-pill">Wellington</div>
-<div class="area-pill">Ketley</div>
-<div class="area-pill">St Georges</div>
-<div class="area-pill">Oakengates</div>
-<div class="area-pill">Lawley</div>
-<div class="area-pill">Hollinswood</div>
-<div class="area-pill">Stirchley</div>
-<div class="area-pill">Randlay</div>
-<div class="area-pill">Woodside</div>
-<div class="area-pill">Sutton Hill</div>
-<div class="area-pill">Horsehay</div>
-<div class="area-pill">Little Dawley</div>
-<div class="area-pill">Doseley</div>
-<div class="area-pill">Buildwas</div>
-<div class="area-pill">Benthall</div>
-<div class="area-pill">Jackfield</div>
-<div class="area-pill">Halesfield</div>
-<div class="area-pill">Kemberton</div>
+<div class="area-pill reveal">Madeley</div>
+<div class="area-pill reveal stagger-1">Ironbridge</div>
+<div class="area-pill reveal stagger-1">Broseley</div>
+<div class="area-pill reveal stagger-2">Coalport</div>
+<div class="area-pill reveal stagger-2">Coalbrookdale</div>
+<div class="area-pill reveal stagger-2">Much Wenlock</div>
+<div class="area-pill reveal stagger-3">Wellington</div>
+<div class="area-pill reveal stagger-3">Ketley</div>
+<div class="area-pill reveal stagger-3">St Georges</div>
+<div class="area-pill reveal stagger-4">Oakengates</div>
+<div class="area-pill reveal stagger-4">Lawley</div>
+<div class="area-pill reveal stagger-4">Hollinswood</div>
+<div class="area-pill reveal">Stirchley</div>
+<div class="area-pill reveal stagger-1">Randlay</div>
+<div class="area-pill reveal stagger-1">Woodside</div>
+<div class="area-pill reveal stagger-2">Sutton Hill</div>
+<div class="area-pill reveal stagger-2">Horsehay</div>
+<div class="area-pill reveal stagger-3">Little Dawley</div>
+<div class="area-pill reveal stagger-3">Doseley</div>
+<div class="area-pill reveal stagger-3">Buildwas</div>
+<div class="area-pill reveal stagger-4">Benthall</div>
+<div class="area-pill reveal stagger-4">Jackfield</div>
+<div class="area-pill reveal stagger-4">Halesfield</div>
+<div class="area-pill reveal">Kemberton</div>
 </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-<h2>Ready for a <em>Fresh Cut?</em></h2>
-<p>Call or text Alan to book your appointment. Most work comes by way of recommendations — and there's a reason for that.</p>
-<a href="tel:07890208672" class="cta-phone">07890 208672</a>
-<div class="cta-details">
-<div class="cta-detail"><strong>Email</strong>alan@mobilebarber.co.uk</div>
-<div class="cta-detail"><strong>Availability</strong>Weekdays & All Day Saturdays</div>
-<div class="cta-detail"><strong>Area</strong>Telford & Surrounding Areas</div>
+<h2 class="reveal">Ready for a <em>Fresh Cut?</em></h2>
+<p class="reveal stagger-1">Call or text Alan to book your appointment. Most work comes by way of recommendations &mdash; and there's a reason for that.</p>
+<a href="tel:07890208672" class="cta-phone reveal stagger-2">07890 208672</a>
+<div class="cta-details reveal stagger-3">
+<div class="cta-detail"><strong>Email</strong><span>alan@mobilebarber.co.uk</span></div>
+<div class="cta-detail"><strong>Availability</strong><span>Weekdays & All Day Saturdays</span></div>
+<div class="cta-detail"><strong>Area</strong><span>Telford & Surrounding Areas</span></div>
 </div>
 </section>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
 <div>
 <p>&copy; 2026 Alan Stewart Mobile Barber. All rights reserved.</p>
@@ -284,7 +312,7 @@ How it works
 </div>
 </footer>
 
-<!-- POPUP -->
+<!-- Popup -->
 <div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
 <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
 <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
@@ -296,6 +324,14 @@ How it works
 </div>
 </div>
 <script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+<!-- Scroll Animations -->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){observer.observe(el);});
+});
+</script>
 
 </body>
 </html>

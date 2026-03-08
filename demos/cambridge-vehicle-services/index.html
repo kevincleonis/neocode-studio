@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge Vehicle Services | Expert Car Repairs & MOT | Cambridge</title>
+<meta name="description" content="Cambridge's trusted garage for MOT testing, car servicing, repairs and diagnostics. Expert mechanics, fair prices, and honest advice since day one.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--steel:#1e3a5f;--blue:#2563eb;--lightblue:#3b82f6;--sky:#eff6ff;--dark:#0c1929;--text:#334155;--white:#fff;--amber:#f59e0b;--red:#ef4444}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--white)}
+a{text-decoration:none;color:inherit}
+
+/* Floating Call */
+.float-call{position:fixed;bottom:2rem;right:2rem;z-index:99;background:var(--blue);color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all .3s;animation:bob 3s ease-in-out infinite}
+.float-call:hover{transform:scale(1.1);background:var(--steel)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:70px}
+nav .logo{font-weight:800;font-size:1.3rem;color:var(--steel)}
+nav .logo span{color:var(--blue)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
+nav ul a:hover{color:var(--blue)}
+.nav-call{background:var(--blue);color:#fff;padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .3s}
+.nav-call:hover{background:var(--steel)}
+
+/* Hero */
+.hero{min-height:92vh;background:linear-gradient(145deg,var(--dark) 0%,var(--steel) 50%,#1e40af 100%);display:flex;align-items:center;padding:5rem 2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border:60px solid rgba(37,99,235,0.08);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);border-radius:50%}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;width:100%;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:var(--red);padding:.4rem 1rem;border-radius:6px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--white);line-height:1.15;font-weight:800;margin-bottom:1rem}
+.hero h1 span{background:linear-gradient(135deg,var(--lightblue),#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:rgba(255,255,255,0.6);font-size:1.05rem;line-height:1.8;margin-bottom:2rem}
+.hero-pills{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
+.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);padding:.5rem 1rem;border-radius:25px;font-size:.8rem;font-weight:500;backdrop-filter:blur(4px)}
+.btn-cta{display:inline-block;background:var(--blue);color:#fff;padding:1rem 2.5rem;border-radius:10px;font-weight:700;font-size:1rem;transition:all .3s;box-shadow:0 4px 15px rgba(37,99,235,0.3)}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,0.4)}
+.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hero-stat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:1.8rem;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
+.hero-stat:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
+.hero-stat .num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#93c5fd,var(--lightblue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .lbl{color:rgba(255,255,255,0.45);font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem}
+
+/* Services */
+.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.tag{color:var(--blue);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+.services h2{font-size:2.5rem;font-weight:800;margin-bottom:.5rem}
+.services>p{color:var(--text);margin-bottom:3rem}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv-card{border:1px solid #e2e8f0;border-radius:14px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;background:var(--white)}
+.srv-card:hover{border-color:var(--blue);box-shadow:0 8px 30px rgba(37,99,235,0.08);transform:translateY(-3px)}
+.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--lightblue));transform:scaleX(0);transition:transform .3s}
+.srv-card:hover::after{transform:scaleX(1)}
+.srv-emoji{font-size:2rem;margin-bottom:1rem}
+.srv-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.srv-card p{color:#64748b;font-size:.85rem;line-height:1.7}
+.srv-card .price{margin-top:1rem;font-weight:700;color:var(--blue);font-size:.9rem}
+
+/* Promise */
+.promise{padding:5rem 2rem;background:var(--sky)}
+.promise-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.promise-item .icon{font-size:2rem;margin-bottom:.8rem}
+.promise-item h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+.promise-item p{font-size:.8rem;color:#64748b;line-height:1.5}
+
+/* Reviews */
+.reviews{padding:6rem 2rem;background:var(--white)}
+.rev-inner{max-width:1100px;margin:0 auto;text-align:center}
+.rev-inner h2{font-size:2.5rem;font-weight:800;margin-bottom:3rem}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:left}
+.rev-card{background:var(--sky);border-radius:14px;padding:2rem}
+.rev-stars{color:var(--amber);margin-bottom:.8rem;font-size:1.1rem}
+.rev-card blockquote{font-size:.92rem;line-height:1.7;color:#475569;margin-bottom:1rem}
+.rev-name{font-weight:700;font-size:.85rem}
+.rev-via{font-size:.7rem;color:#94a3b8}
+
+/* CTA */
+.cta{padding:5rem 2rem;background:linear-gradient(135deg,var(--steel),var(--blue));text-align:center;color:#fff}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.cta p{opacity:.85;font-size:1.1rem;margin-bottom:2rem}
+.btn-white{display:inline-block;background:#fff;color:var(--blue);padding:1rem 2.5rem;border-radius:10px;font-weight:700;font-size:1rem;transition:all .3s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
+.cta-phone{display:block;margin-top:1.5rem;font-size:1.8rem;font-weight:800}
+
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,0.4);padding:2.5rem 2rem;text-align:center;font-size:.8rem}
+footer .logo{color:#fff;font-size:1.1rem;font-weight:800;margin-bottom:.8rem}
+footer .logo span{color:var(--blue)}
+
+@media(max-width:768px){
+nav ul{display:none}
+.hero-grid{grid-template-columns:1fr}
+.hero-right{grid-template-columns:1fr 1fr}
+.srv-grid{grid-template-columns:1fr}
+.promise-inner{grid-template-columns:1fr 1fr}
+.rev-grid{grid-template-columns:1fr}
+.float-call{bottom:1.5rem;right:1.5rem;width:50px;height:50px;font-size:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<a href="tel:01223566475" class="float-call" title="Call Now">&#128222;</a>
+
+<nav>
+  <div class="logo">Cambridge <span>Vehicle</span> Services</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:01223566475" class="nav-call">&#128222; 01223 566 475</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">&#128295; MOT &amp; Service Centre</div>
+      <h1>Cambridge's Trusted <span>Vehicle Experts</span></h1>
+      <p>From MOTs and full servicing to complex diagnostics and repairs. Honest advice, transparent pricing, and expert mechanics you can rely on.</p>
+      <div class="hero-pills">
+        <span class="pill">&#10003; MOT Testing</span>
+        <span class="pill">&#10003; Full Servicing</span>
+        <span class="pill">&#10003; Diagnostics</span>
+        <span class="pill">&#10003; All Makes &amp; Models</span>
+      </div>
+      <a href="tel:01223566475" class="btn-cta">&#128222; Book Your MOT Today</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat"><div class="num">1000+</div><div class="lbl">Cars Serviced</div></div>
+      <div class="hero-stat"><div class="num">5&#9733;</div><div class="lbl">Google Rated</div></div>
+      <div class="hero-stat"><div class="num">All</div><div class="lbl">Makes &amp; Models</div></div>
+      <div class="hero-stat"><div class="num">&pound;0</div><div class="lbl">Free Quotes</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="tag">Our Services</div>
+  <h2>Complete Vehicle Care</h2>
+  <p>Everything your car needs under one roof, from routine maintenance to complex repairs.</p>
+  <div class="srv-grid">
+    <div class="srv-card">
+      <div class="srv-emoji">&#128203;</div>
+      <h3>MOT Testing</h3>
+      <p>Official MOT testing station. Quick turnaround with honest assessments. We'll never sell you work you don't need.</p>
+      <div class="price">From &pound;35</div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-emoji">&#128295;</div>
+      <h3>Full Servicing</h3>
+      <p>Interim and full service packages using OEM-quality parts. Keeps your warranty intact and your car running smoothly.</p>
+      <div class="price">From &pound;99</div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-emoji">&#128187;</div>
+      <h3>Diagnostics</h3>
+      <p>Advanced computer diagnostics for engine management, ABS, airbag, and electrical fault finding on all vehicle makes.</p>
+      <div class="price">From &pound;45</div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-emoji">&#9881;</div>
+      <h3>Brakes &amp; Suspension</h3>
+      <p>Brake pad and disc replacement, suspension repairs, shock absorbers, and wheel alignment for a safer ride.</p>
+    </div>
+    <div class="srv-card">
+      <div class="srv-emoji">&#127777;</div>
+      <h3>Exhaust &amp; Emissions</h3>
+      <p>Full exhaust system repairs, catalytic converter work, and emissions testing to keep you road legal.</p>
+    </div>
+    <div class="srv-card">
+      <div class="srv-emoji">&#128663;</div>
+      <h3>Clutch &amp; Gearbox</h3>
+      <p>Clutch replacement, gearbox repairs, and drivetrain servicing for both manual and automatic vehicles.</p>
+    </div>
+  </div>
+</section>
+
+<div class="promise">
+  <div class="promise-inner">
+    <div class="promise-item"><div class="icon">&#128176;</div><h4>Transparent Pricing</h4><p>No hidden charges. We quote before we start and stick to it.</p></div>
+    <div class="promise-item"><div class="icon">&#128274;</div><h4>Warranty Protected</h4><p>Service your car without voiding your manufacturer's warranty.</p></div>
+    <div class="promise-item"><div class="icon">&#9201;</div><h4>Quick Turnaround</h4><p>Most services completed same-day. We value your time.</p></div>
+    <div class="promise-item"><div class="icon">&#127942;</div><h4>Qualified Mechanics</h4><p>Fully trained, experienced technicians on every job.</p></div>
+  </div>
+</div>
+
+<section class="reviews" id="reviews">
+  <div class="rev-inner">
+    <div class="tag">Reviews</div>
+    <h2>What Cambridge Drivers Say</h2>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Brilliant service from start to finish. Honest about what needed doing and what could wait. Fair prices too. Won't go anywhere else now."</blockquote>
+        <div class="rev-name">Mark S.</div>
+        <div class="rev-via">Google Review</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Had my MOT done here and they were fantastic. Found a couple of issues, explained everything clearly, and fixed it all the same day. Highly recommend."</blockquote>
+        <div class="rev-name">Lisa P.</div>
+        <div class="rev-via">Google Review</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Been bringing my cars here for years. Always reliable, always honest. The kind of garage you can actually trust. Great team."</blockquote>
+        <div class="rev-name">James W.</div>
+        <div class="rev-via">Google Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Need Your Car Looked At?</h2>
+  <p>Free quotes. Transparent pricing. Expert mechanics in Cambridge.</p>
+  <a href="tel:01223566475" class="btn-white">Book Now</a>
+  <span class="cta-phone">&#128222; 01223 566 475</span>
+</section>
+
+<footer>
+  <div class="logo">Cambridge <span>Vehicle</span> Services</div>
+  <p>Cambridge, Cambridgeshire</p>
+  <p style="margin-top:.5rem">cvs.cambs@gmail.com</p>
+  <p style="margin-top:1rem">&copy; 2025 Cambridge Vehicle Services. All rights reserved.</p>
+  <p style="margin-top:.5rem;opacity:.5;font-size:.7rem">Demo redesign by NeoCode Studio</p>
+</footer>
+
+</body>
+</html>
