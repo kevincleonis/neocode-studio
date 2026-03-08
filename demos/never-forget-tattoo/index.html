@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Never Forget Tattoo Co | Custom Tattoos &amp; Body Art</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#151B2B;--orange:#CC5500;--cream:#FFF5E1;--dark:#0D1117;--mid:#1E2538;--gray:#9BA4B5;--white:#fff}
+body{font-family:'Barlow',sans-serif;color:var(--cream);background:var(--navy);line-height:1.7}
+h1,h2,h3,h4{font-family:'Righteous',cursive;font-weight:400;letter-spacing:.5px}
+img{max-width:100%;display:block}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:18px 0;background:rgba(21,27,43,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(204,85,0,.15)}
+nav .container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+nav .logo{font-family:'Righteous',cursive;font-size:1.4rem;color:var(--orange);text-decoration:none;letter-spacing:1px}
+nav ul{list-style:none;display:flex;gap:30px}
+nav ul li a{text-decoration:none;color:var(--cream);font-size:.9rem;font-weight:500;transition:color .3s;opacity:.8}
+nav ul li a:hover{color:var(--orange);opacity:1}
+.nav-cta{background:var(--orange)!important;color:var(--cream)!important;padding:10px 24px;border-radius:4px;opacity:1!important;font-weight:600!important;transition:background .3s!important}
+.nav-cta:hover{background:#e06000!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:25px;height:2px;background:var(--cream);border-radius:2px}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:650px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(21,27,43,.92) 0%,rgba(13,17,23,.8) 60%,rgba(204,85,0,.3) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+.hero-content .tag{display:inline-block;border:1px solid var(--orange);color:var(--orange);padding:6px 20px;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
+.hero-content h1{font-size:4rem;line-height:1.1;margin-bottom:20px;max-width:700px}
+.hero-content h1 span{color:var(--orange)}
+.hero-content p{font-size:1.2rem;opacity:.7;max-width:550px;margin-bottom:36px;font-weight:300}
+.btn{display:inline-block;padding:16px 40px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .3s;letter-spacing:.5px}
+.btn-orange{background:var(--orange);color:var(--cream);border:2px solid var(--orange)}
+.btn-orange:hover{background:transparent;color:var(--orange)}
+.btn-outline{border:2px solid var(--cream);color:var(--cream);margin-left:16px}
+.btn-outline:hover{background:var(--cream);color:var(--navy)}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:16px}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.container{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header h2{font-size:2.5rem;margin-bottom:12px}
+.section-header h2 span{color:var(--orange)}
+.section-header p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto}
+.divider{width:50px;height:3px;background:var(--orange);margin:20px auto 0}
+
+/* ARTISTS */
+.artists-section{background:var(--dark)}
+.artists-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.artist-card{background:var(--mid);border-radius:8px;overflow:hidden;transition:transform .3s}
+.artist-card:hover{transform:translateY(-6px)}
+.artist-card img{width:100%;height:320px;object-fit:cover}
+.artist-info{padding:24px}
+.artist-info h3{font-size:1.3rem;margin-bottom:6px;color:var(--cream)}
+.artist-info .specialty{color:var(--orange);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.artist-info p{color:var(--gray);font-size:.92rem}
+
+/* STYLES */
+.styles-section{background:var(--navy)}
+.styles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.style-card{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
+.style-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.style-card:hover img{transform:scale(1.06)}
+.style-card .style-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(13,17,23,.9));display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.style-card h3{font-size:1.15rem;color:var(--cream)}
+.style-card p{color:var(--gray);font-size:.85rem;margin-top:4px}
+
+/* STUDIO */
+.studio-section{background:var(--dark)}
+.studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.studio-images{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.studio-images img{border-radius:8px;width:100%;height:220px;object-fit:cover}
+.studio-images img:first-child{grid-column:1/-1;height:280px}
+.studio-text h2{font-size:2.2rem;margin-bottom:20px}
+.studio-text h2 span{color:var(--orange)}
+.studio-text p{color:var(--gray);margin-bottom:16px;font-size:1rem}
+.studio-features{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.studio-features span{background:var(--mid);border:1px solid rgba(204,85,0,.2);padding:8px 18px;border-radius:4px;font-size:.85rem;color:var(--cream)}
+
+/* FAQ */
+.faq-section{background:var(--navy)}
+.faq-grid{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,245,225,.08);padding:24px 0}
+.faq-item h3{font-size:1.1rem;color:var(--cream);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.faq-item h3::before{content:"";width:8px;height:8px;background:var(--orange);border-radius:50%;flex-shrink:0}
+.faq-item p{color:var(--gray);font-size:.95rem;padding-left:20px}
+
+/* CONTACT / CTA */
+.cta-section{background:linear-gradient(135deg,var(--dark),var(--navy));text-align:center;border-top:1px solid rgba(204,85,0,.2);border-bottom:1px solid rgba(204,85,0,.2)}
+.cta-section h2{font-size:2.8rem;margin-bottom:16px}
+.cta-section h2 span{color:var(--orange)}
+.cta-section p{color:var(--gray);font-size:1.1rem;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-details{display:flex;justify-content:center;gap:50px;margin-top:40px;flex-wrap:wrap}
+.cta-detail{text-align:center}
+.cta-detail .label{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--orange);margin-bottom:8px}
+.cta-detail .value{font-size:1.1rem;color:var(--cream)}
+.cta-detail .value a{color:var(--cream);text-decoration:none}
+.cta-detail .value a:hover{color:var(--orange)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:50px 24px 30px;text-align:center;border-top:1px solid rgba(255,245,225,.05)}
+footer .logo{font-family:'Righteous',cursive;font-size:1.4rem;color:var(--orange);margin-bottom:16px;display:inline-block}
+footer p{color:var(--gray);font-size:.85rem;margin-bottom:6px}
+footer .credit{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,245,225,.05);font-size:.8rem;color:rgba(255,245,225,.3)}
+footer .credit a{color:var(--orange);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+ nav ul{display:none}
+ .hamburger{display:flex}
+ .hero-content h1{font-size:2.8rem}
+ .artists-grid{grid-template-columns:1fr 1fr}
+ .styles-grid{grid-template-columns:repeat(2,1fr)}
+ .studio-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:600px){
+ .hero-content h1{font-size:2.2rem}
+ .hero-content p{font-size:1rem}
+ .artists-grid{grid-template-columns:1fr}
+ .styles-grid{grid-template-columns:1fr 1fr}
+ section{padding:70px 20px}
+ .section-header h2{font-size:2rem}
+ .cta-section h2{font-size:2rem}
+ .hero-buttons{flex-direction:column}
+ .btn-outline{margin-left:0}
+ .cta-details{flex-direction:column;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="container">
+ <a href="#" class="logo">NEVER FORGET TATTOO CO</a>
+ <ul>
+  <li><a href="#artists">Artists</a></li>
+  <li><a href="#styles">Styles</a></li>
+  <li><a href="#studio">Studio</a></li>
+  <li><a href="#faq">FAQ</a></li>
+  <li><a href="#contact" class="nav-cta">Book Now</a></li>
+ </ul>
+ <button class="hamburger" onclick="this.classList.toggle('active')">
+  <span></span><span></span><span></span>
+ </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+ <div class="tag">Est. Manchester, UK</div>
+ <h1>Ink That Tells <span>Your Story</span></h1>
+ <p>Custom tattoo artistry in a welcoming, professional studio. Walk-ins welcome. Consultations always free.</p>
+ <div class="hero-buttons">
+  <a href="#contact" class="btn btn-orange">Book a Consultation</a>
+  <a href="#styles" class="btn btn-outline">View Our Work</a>
+ </div>
+</div>
+</section>
+
+<!-- ARTISTS -->
+<section class="artists-section" id="artists">
+<div class="container">
+ <div class="section-header">
+  <h2>Meet Our <span>Artists</span></h2>
+  <p>Talented, experienced, and passionate about creating art that lasts a lifetime.</p>
+  <div class="divider"></div>
+ </div>
+ <div class="artists-grid">
+  <div class="artist-card">
+   <img src="https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo Artist">
+   <div class="artist-info">
+    <h3>Custom Work</h3>
+    <div class="specialty">Bespoke Designs</div>
+    <p>Every piece is one-of-a-kind. We work closely with you to bring your vision to life, from concept sketch to finished ink.</p>
+   </div>
+  </div>
+  <div class="artist-card">
+   <img src="https://images.pexels.com/photos/4125632/pexels-photo-4125632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Cover-up specialist">
+   <div class="artist-info">
+    <h3>Cover-Ups</h3>
+    <div class="specialty">Expert Reworks</div>
+    <p>Got old ink you're not in love with? Our cover-up specialists can transform any existing tattoo into something you'll be proud of.</p>
+   </div>
+  </div>
+  <div class="artist-card">
+   <img src="https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Traditional tattoo">
+   <div class="artist-info">
+    <h3>Traditional</h3>
+    <div class="specialty">Classic Americana</div>
+    <p>Bold lines, vibrant colours, and timeless designs. Classic American traditional tattooing at its finest.</p>
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- STYLES -->
+<section class="styles-section" id="styles">
+<div class="container">
+ <div class="section-header">
+  <h2>Tattoo <span>Styles</span></h2>
+  <p>From bold traditional to photorealistic portraits, we cover every style imaginable.</p>
+  <div class="divider"></div>
+ </div>
+ <div class="styles-grid">
+  <div class="style-card">
+   <img src="https://images.pexels.com/photos/1461519/pexels-photo-1461519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="American Traditional">
+   <div class="style-overlay">
+    <h3>American Traditional</h3>
+    <p>Bold lines, solid colours</p>
+   </div>
+  </div>
+  <div class="style-card">
+   <img src="https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Neo Traditional">
+   <div class="style-overlay">
+    <h3>Neo-Traditional</h3>
+    <p>Modern twist on classics</p>
+   </div>
+  </div>
+  <div class="style-card">
+   <img src="https://images.pexels.com/photos/1304647/pexels-photo-1304647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Realism">
+   <div class="style-overlay">
+    <h3>Realism</h3>
+    <p>Photorealistic detail</p>
+   </div>
+  </div>
+  <div class="style-card">
+   <img src="https://images.pexels.com/photos/1684187/pexels-photo-1684187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Lettering">
+   <div class="style-overlay">
+    <h3>Lettering &amp; Script</h3>
+    <p>Words that last forever</p>
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio-section" id="studio">
+<div class="container">
+ <div class="studio-grid">
+  <div class="studio-images">
+   <img src="https://images.pexels.com/photos/4123737/pexels-photo-4123737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo studio interior">
+   <img src="https://images.pexels.com/photos/4125681/pexels-photo-4125681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo equipment">
+   <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Studio space">
+  </div>
+  <div class="studio-text">
+   <h2>Our <span>Studio</span></h2>
+   <p>Step into a space designed with your comfort and safety in mind. Our studio is fully licensed, immaculately clean, and built to feel welcoming from the moment you walk through the door.</p>
+   <p>We use only the highest quality inks, single-use needles, and hospital-grade sterilisation equipment. Your safety is our number one priority.</p>
+   <div class="studio-features">
+    <span>Fully Licensed</span>
+    <span>Hospital-Grade Hygiene</span>
+    <span>Premium Inks</span>
+    <span>Private Stations</span>
+    <span>Walk-Ins Welcome</span>
+    <span>Free Parking</span>
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+<div class="container">
+ <div class="section-header">
+  <h2>Frequently <span>Asked</span></h2>
+  <p>Everything you need to know before getting inked.</p>
+  <div class="divider"></div>
+ </div>
+ <div class="faq-grid">
+  <div class="faq-item">
+   <h3>How much does a tattoo cost?</h3>
+   <p>Pricing depends on the size, detail, placement, and time required. Small pieces start from &pound;60. We offer free consultations where we can provide an accurate quote for your design.</p>
+  </div>
+  <div class="faq-item">
+   <h3>Do you accept walk-ins?</h3>
+   <p>Absolutely! Walk-ins are always welcome, subject to artist availability. For larger or more complex pieces, we recommend booking in advance to guarantee your preferred artist and time slot.</p>
+  </div>
+  <div class="faq-item">
+   <h3>What age do I need to be?</h3>
+   <p>You must be 18 or over to get a tattoo. We require a valid photo ID (passport or driving licence) before any work begins. No exceptions.</p>
+  </div>
+  <div class="faq-item">
+   <h3>How do I book a consultation?</h3>
+   <p>You can call us, email us, or drop into the studio. Consultations are always free and there's no pressure. Bring any reference images or ideas and we'll work together to create something perfect.</p>
+  </div>
+  <div class="faq-item">
+   <h3>What about aftercare?</h3>
+   <p>We provide a detailed aftercare guide with every tattoo. Keep it clean, moisturised, and out of direct sunlight during healing. We're always available if you have any questions during recovery.</p>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+<div class="container">
+ <h2>Ready to Get <span>Inked?</span></h2>
+ <p>Whether you've got a clear vision or just an idea, we're here to make it happen. Walk in or book ahead &mdash; let's create something unforgettable.</p>
+ <a href="tel:+441234567890" class="btn btn-orange">Call the Studio</a>
+ <div class="cta-details">
+  <div class="cta-detail">
+   <div class="label">Phone</div>
+   <div class="value"><a href="tel:+441234567890">01234 567 890</a></div>
+  </div>
+  <div class="cta-detail">
+   <div class="label">Email</div>
+   <div class="value"><a href="mailto:info@neverforgettattooco.com">info@neverforgettattooco.com</a></div>
+  </div>
+  <div class="cta-detail">
+   <div class="label">Walk-Ins</div>
+   <div class="value">Mon&ndash;Sat, 10am&ndash;7pm</div>
+  </div>
+  <div class="cta-detail">
+   <div class="label">Location</div>
+   <div class="value">Manchester, UK</div>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+ <div class="logo">NEVER FORGET TATTOO CO</div>
+ <p>Custom Tattoos &amp; Body Art &mdash; Manchester, UK</p>
+ <p>Walk-Ins Welcome &bull; Free Consultations</p>
+ <div class="credit">
+  <p>Website designed by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &copy; 2026</p>
+ </div>
+</div>
+</footer>
+
+<!-- POPUP -->
+<div id="demo-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;justify-content:center;align-items:center"><div style="background:#fff;padding:40px;border-radius:12px;max-width:480px;width:90%;text-align:center;position:relative"><span onclick="document.getElementById('demo-popup').style.display='none'" style="position:absolute;top:12px;right:18px;font-size:28px;cursor:pointer">&times;</span><h2 style="margin:0 0 12px">Like what you see?</h2><p style="margin:0 0 20px;color:#666">This is a free concept designed for your business by <strong>Neocode Studio</strong>.</p><a href="https://neocodestudio.co.uk" style="display:inline-block;padding:14px 32px;background:#111;color:#fff;text-decoration:none;border-radius:8px;font-weight:600">Get in touch</a></div></div>
+
+<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+</body>
+</html>

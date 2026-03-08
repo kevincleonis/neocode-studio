@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul's Pooch Boutique | Professional Dog Grooming</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--coral:#FF6B6B;--teal:#4ECDC4;--white:#ffffff;--light:#F9F9F9;--dark:#2C3E50;--gray:#666}
+body{font-family:'Poppins',sans-serif;color:var(--dark);line-height:1.6}
+h1,h2,h3,h4{font-family:'Quicksand',sans-serif;font-weight:700}
+img{max-width:100%;display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:1000;padding:15px 0;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+nav .container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 24px}
+nav .logo{font-family:'Quicksand',sans-serif;font-size:1.5rem;font-weight:700;color:var(--coral);text-decoration:none}
+nav .logo span{color:var(--teal)}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul li a{text-decoration:none;color:var(--dark);font-size:.9rem;font-weight:500;transition:color .3s}
+nav ul li a:hover{color:var(--coral)}
+.nav-btn{background:var(--coral);color:#fff!important;padding:10px 24px;border-radius:50px;font-weight:600!important;transition:background .3s!important}
+.nav-btn:hover{background:#e55a5a}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:25px;height:3px;background:var(--dark);border-radius:2px;transition:.3s}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,107,.85) 0%,rgba(78,205,196,.7) 100%)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:0 24px;max-width:800px}
+.hero-content h1{font-size:3.5rem;margin-bottom:16px;line-height:1.15}
+.hero-content p{font-size:1.25rem;margin-bottom:32px;opacity:.95;font-weight:300}
+.btn{display:inline-block;padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .3s}
+.btn-white{background:#fff;color:var(--coral)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.15)}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{background:#e55a5a;transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,107,.3)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#3dbdb5;transform:translateY(-2px);box-shadow:0 8px 25px rgba(78,205,196,.3)}
+.paw{font-size:1.2em}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.container{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header h2{font-size:2.5rem;color:var(--dark);margin-bottom:12px}
+.section-header p{color:var(--gray);font-size:1.1rem;max-width:600px;margin:0 auto}
+.section-header .underline{width:60px;height:4px;background:var(--coral);border-radius:2px;margin:16px auto 0}
+
+/* SERVICES */
+.services-section{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.service-card{background:#fff;border-radius:16px;padding:40px 30px;text-align:center;transition:all .3s;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 35px rgba(0,0,0,.1)}
+.service-icon{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem}
+.service-card:nth-child(odd) .service-icon{background:rgba(255,107,107,.12);color:var(--coral)}
+.service-card:nth-child(even) .service-icon{background:rgba(78,205,196,.12);color:var(--teal)}
+.service-card h3{font-size:1.25rem;margin-bottom:10px}
+.service-card p{color:var(--gray);font-size:.95rem}
+
+/* BREEDS */
+.breeds-section{background:#fff}
+.breeds-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.breed-img{border-radius:16px;overflow:hidden;aspect-ratio:1;position:relative}
+.breed-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.breed-img:hover img{transform:scale(1.08)}
+.breed-img .breed-label{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-family:'Quicksand',sans-serif;font-weight:600;font-size:.95rem}
+
+/* ABOUT */
+.about-section{background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.1)}
+.about-img img{width:100%;height:500px;object-fit:cover}
+.about-text h2{font-size:2.2rem;margin-bottom:20px;color:var(--dark)}
+.about-text p{color:var(--gray);margin-bottom:16px;font-size:1rem}
+.about-stats{display:flex;gap:40px;margin-top:30px}
+.stat{text-align:center}
+.stat .number{font-family:'Quicksand',sans-serif;font-size:2.5rem;font-weight:700;color:var(--coral)}
+.stat .label{font-size:.85rem;color:var(--gray);margin-top:4px}
+
+/* PRICING */
+.pricing-section{background:#fff}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.price-card{border:2px solid #eee;border-radius:16px;padding:35px 30px;text-align:center;transition:all .3s}
+.price-card:hover{border-color:var(--teal);box-shadow:0 8px 30px rgba(78,205,196,.15)}
+.price-card.featured{border-color:var(--coral);background:linear-gradient(135deg,rgba(255,107,107,.04),rgba(78,205,196,.04));position:relative}
+.price-card.featured::before{content:'POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font-size:.75rem;font-weight:600;padding:4px 16px;border-radius:20px;letter-spacing:1px}
+.price-card h3{font-size:1.2rem;margin-bottom:8px}
+.price-card .price{font-family:'Quicksand',sans-serif;font-size:2.5rem;font-weight:700;color:var(--coral);margin-bottom:16px}
+.price-card .price span{font-size:1rem;color:var(--gray);font-weight:400}
+.price-card ul{list-style:none;margin-bottom:24px;text-align:left}
+.price-card ul li{padding:8px 0;border-bottom:1px solid #f0f0f0;color:var(--gray);font-size:.92rem}
+.price-card ul li::before{content:"✓ ";color:var(--teal);font-weight:700}
+
+/* BOOKING CTA */
+.cta-section{background:linear-gradient(135deg,var(--coral),var(--teal));text-align:center;color:#fff}
+.cta-section h2{font-size:2.5rem;margin-bottom:16px}
+.cta-section p{font-size:1.15rem;opacity:.9;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* CONTACT */
+.contact-section{background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.contact-card{text-align:center;padding:30px;background:#fff;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+.contact-card .icon{font-size:2rem;margin-bottom:12px}
+.contact-card h4{margin-bottom:8px;font-size:1.1rem}
+.contact-card p{color:var(--gray);font-size:.95rem}
+.contact-card a{color:var(--coral);text-decoration:none;font-weight:500}
+.contact-card a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:var(--dark);color:#fff;padding:50px 24px 30px;text-align:center}
+footer .logo{font-family:'Quicksand',sans-serif;font-size:1.6rem;font-weight:700;color:var(--coral);margin-bottom:16px;display:inline-block}
+footer .logo span{color:var(--teal)}
+footer p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:8px}
+footer .credit{margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem;color:rgba(255,255,255,.4)}
+footer .credit a{color:var(--teal);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+ nav ul{display:none}
+ .hamburger{display:flex}
+ .hero-content h1{font-size:2.5rem}
+ .services-grid,.pricing-grid{grid-template-columns:repeat(2,1fr)}
+ .breeds-gallery{grid-template-columns:repeat(2,1fr)}
+ .about-grid{grid-template-columns:1fr;gap:40px}
+ .about-img img{height:350px}
+ .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .hero-content h1{font-size:2rem}
+ .hero-content p{font-size:1rem}
+ .services-grid,.pricing-grid{grid-template-columns:1fr}
+ .breeds-gallery{grid-template-columns:repeat(2,1fr)}
+ section{padding:70px 20px}
+ .section-header h2{font-size:2rem}
+ .about-stats{flex-direction:column;gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="container">
+ <a href="#" class="logo">Paul's Pooch <span>Boutique</span></a>
+ <ul>
+  <li><a href="#services">Services</a></li>
+  <li><a href="#breeds">Breeds</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#pricing">Prices</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#book" class="nav-btn">Book Now</a></li>
+ </ul>
+ <button class="hamburger" onclick="this.classList.toggle('active')">
+  <span></span><span></span><span></span>
+ </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+ <h1>Pampered Pooches, Happy Owners <span class="paw">🐾</span></h1>
+ <p>Professional, gentle dog grooming in a calm and loving environment. Every pup leaves looking and feeling their absolute best.</p>
+ <a href="#book" class="btn btn-white">Book an Appointment</a>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+<div class="container">
+ <div class="section-header">
+  <h2>Our Grooming Services</h2>
+  <p>From a simple bath to a full pamper session, we've got every breed covered with gentle, expert care.</p>
+  <div class="underline"></div>
+ </div>
+ <div class="services-grid">
+  <div class="service-card">
+   <div class="service-icon">✂️</div>
+   <h3>Full Groom</h3>
+   <p>Complete wash, dry, clip, style, nail trim, ear clean and finishing spritz. Your pooch will look show-ready!</p>
+  </div>
+  <div class="service-card">
+   <div class="service-icon">🛁</div>
+   <h3>Bath &amp; Brush</h3>
+   <p>A thorough wash with premium shampoo, conditioner, blow dry and full brush-out. Perfect for a quick refresh.</p>
+  </div>
+  <div class="service-card">
+   <div class="service-icon">🐶</div>
+   <h3>Puppy's First Groom</h3>
+   <p>A gentle introduction to grooming for your puppy. We take it slow to build confidence and trust.</p>
+  </div>
+  <div class="service-card">
+   <div class="service-icon">💅</div>
+   <h3>Nail Clipping</h3>
+   <p>Quick, safe nail trimming with care. Walk-in friendly or add it onto any grooming appointment.</p>
+  </div>
+  <div class="service-card">
+   <div class="service-icon">🪮</div>
+   <h3>De-matting</h3>
+   <p>Careful, pain-free removal of knots and tangles. We restore your dog's coat to silky smooth perfection.</p>
+  </div>
+  <div class="service-card">
+   <div class="service-icon">🦷</div>
+   <h3>Teeth Cleaning</h3>
+   <p>Fresh breath and healthy gums with our gentle teeth cleaning service. Your pooch will thank you!</p>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- BREEDS GALLERY -->
+<section class="breeds-section" id="breeds">
+<div class="container">
+ <div class="section-header">
+  <h2>We Groom All Breeds!</h2>
+  <p>From tiny Chihuahuas to gentle Great Danes, every dog gets a tailored grooming experience.</p>
+  <div class="underline"></div>
+ </div>
+ <div class="breeds-gallery">
+  <div class="breed-img">
+   <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Golden Retriever">
+   <div class="breed-label">Golden Retrievers</div>
+  </div>
+  <div class="breed-img">
+   <img src="https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Poodle">
+   <div class="breed-label">Poodles</div>
+  </div>
+  <div class="breed-img">
+   <img src="https://images.pexels.com/photos/2623968/pexels-photo-2623968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="French Bulldog">
+   <div class="breed-label">French Bulldogs</div>
+  </div>
+  <div class="breed-img">
+   <img src="https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Cockapoo">
+   <div class="breed-label">Cockapoos</div>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+<div class="container">
+ <div class="about-grid">
+  <div class="about-img">
+   <img src="https://images.pexels.com/photos/6816860/pexels-photo-6816860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Dog grooming">
+  </div>
+  <div class="about-text">
+   <h2>Meet Paul &mdash; Your Dog's New Best Friend</h2>
+   <p>With over 15 years of professional grooming experience, Paul has dedicated his career to making every dog feel safe, comfortable, and beautiful. His calm and patient approach means even the most nervous pups leave with tails wagging.</p>
+   <p>Paul's Pooch Boutique was born from a simple belief: every dog deserves to be treated with love and care. We use only premium, dog-friendly products and maintain a calm, stress-free salon environment.</p>
+   <p>Whether your furry friend is a regular visitor or coming in for the very first time, Paul and the team will make sure they have an experience they'll love coming back to.</p>
+   <div class="about-stats">
+    <div class="stat">
+     <div class="number">15+</div>
+     <div class="label">Years Experience</div>
+    </div>
+    <div class="stat">
+     <div class="number">5,000+</div>
+     <div class="label">Happy Pooches</div>
+    </div>
+    <div class="stat">
+     <div class="number">50+</div>
+     <div class="label">Breeds Groomed</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+<div class="container">
+ <div class="section-header">
+  <h2>Our Price List</h2>
+  <p>Transparent pricing with no hidden fees. Prices may vary depending on breed, size and coat condition.</p>
+  <div class="underline"></div>
+ </div>
+ <div class="pricing-grid">
+  <div class="price-card">
+   <h3>Bath &amp; Brush</h3>
+   <div class="price">&pound;25 <span>from</span></div>
+   <ul>
+    <li>Premium shampoo &amp; conditioner</li>
+    <li>Full blow dry</li>
+    <li>Brush out &amp; detangle</li>
+    <li>Ear cleaning</li>
+    <li>Finishing cologne spritz</li>
+   </ul>
+   <a href="#book" class="btn btn-teal">Book Now</a>
+  </div>
+  <div class="price-card featured">
+   <h3>Full Groom</h3>
+   <div class="price">&pound;40 <span>from</span></div>
+   <ul>
+    <li>Everything in Bath &amp; Brush</li>
+    <li>Full body clip &amp; styling</li>
+    <li>Nail trimming</li>
+    <li>Sanitary trim</li>
+    <li>Paw pad tidy</li>
+    <li>Bandana or bow</li>
+   </ul>
+   <a href="#book" class="btn btn-coral">Book Now</a>
+  </div>
+  <div class="price-card">
+   <h3>Puppy Package</h3>
+   <div class="price">&pound;20 <span>from</span></div>
+   <ul>
+    <li>Gentle introduction wash</li>
+    <li>Soft blow dry</li>
+    <li>Light face &amp; paw trim</li>
+    <li>Nail clip</li>
+    <li>Lots of treats &amp; cuddles</li>
+   </ul>
+   <a href="#book" class="btn btn-teal">Book Now</a>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="cta-section" id="book">
+<div class="container">
+ <h2>Ready to Book Your Pooch In? 🐾</h2>
+ <p>Give your furry friend the pamper session they deserve. Call us or drop a message to secure your appointment.</p>
+ <a href="tel:+441234567890" class="btn btn-white">Call Us: 01onal 234 567 890</a>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<div class="container">
+ <div class="section-header">
+  <h2>Get in Touch</h2>
+  <p>We'd love to hear from you. Reach out anytime!</p>
+  <div class="underline"></div>
+ </div>
+ <div class="contact-grid">
+  <div class="contact-card">
+   <div class="icon">📞</div>
+   <h4>Phone</h4>
+   <p><a href="tel:+441onal234567890">01234 567 890</a></p>
+  </div>
+  <div class="contact-card">
+   <div class="icon">✉️</div>
+   <h4>Email</h4>
+   <p><a href="mailto:info@paulspoochboutique.co.uk">info@paulspoochboutique.co.uk</a></p>
+  </div>
+  <div class="contact-card">
+   <div class="icon">📍</div>
+   <h4>Location</h4>
+   <p>Manchester, UK<br>Open Mon&ndash;Sat, 9am&ndash;5:30pm</p>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+ <div class="logo">Paul's Pooch <span>Boutique</span></div>
+ <p>Professional Dog Grooming &mdash; Manchester, UK</p>
+ <p>Open Monday to Saturday, 9:00am &ndash; 5:30pm</p>
+ <div class="credit">
+  <p>Website designed by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &copy; 2026</p>
+ </div>
+</div>
+</footer>
+
+<!-- POPUP -->
+<div id="demo-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;justify-content:center;align-items:center"><div style="background:#fff;padding:40px;border-radius:12px;max-width:480px;width:90%;text-align:center;position:relative"><span onclick="document.getElementById('demo-popup').style.display='none'" style="position:absolute;top:12px;right:18px;font-size:28px;cursor:pointer">&times;</span><h2 style="margin:0 0 12px">Like what you see?</h2><p style="margin:0 0 20px;color:#666">This is a free concept designed for your business by <strong>Neocode Studio</strong>.</p><a href="https://neocodestudio.co.uk" style="display:inline-block;padding:14px 32px;background:#111;color:#fff;text-decoration:none;border-radius:8px;font-weight:600">Get in touch</a></div></div>
+
+<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+</body>
+</html>

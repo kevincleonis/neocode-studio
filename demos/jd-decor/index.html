@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JD Decor Southside | Professional Painting & Decorating - Glasgow & Hamilton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--charcoal:#2B2B2B;--rose:#C9A9A6;--offwhite:#F8F5F1;--rose-light:#e8d6d4}
+body{font-family:'Lato',sans-serif;color:var(--charcoal);background:var(--offwhite);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.2}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(248,245,241,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,169,166,.2);padding:16px 0;transition:all .3s}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--charcoal);letter-spacing:1px}
+.logo span{color:var(--rose)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:14px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--charcoal);transition:color .3s}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{background:var(--charcoal);color:#fff;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:background .3s}
+.nav-cta:hover{background:var(--rose)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.menu-toggle span{width:24px;height:2px;background:var(--charcoal)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(43,43,43,.75),rgba(201,169,166,.3))}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px;color:#fff}
+.hero-tag{font-family:'Lato',sans-serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--rose-light);margin-bottom:20px;display:block}
+.hero h1{font-size:clamp(40px,6vw,72px);max-width:700px;margin-bottom:24px}
+.hero p{font-size:18px;max-width:520px;margin-bottom:36px;opacity:.9;font-weight:300}
+.btn{display:inline-block;padding:16px 36px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .3s}
+.btn-primary{background:var(--rose);color:#fff}
+.btn-primary:hover{background:#b8928f}
+.btn-outline{border:2px solid #fff;color:#fff;margin-left:12px}
+.btn-outline:hover{background:#fff;color:var(--charcoal)}
+
+/* SECTION COMMON */
+section{padding:100px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;display:block}
+.section-title{font-size:clamp(32px,4vw,48px);margin-bottom:20px;color:var(--charcoal)}
+.section-sub{font-size:17px;color:#777;max-width:560px;margin-bottom:48px;font-weight:300}
+
+/* SERVICES */
+.services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.service-card{padding:36px;border:1px solid #eee;border-radius:10px;transition:all .3s;text-align:center}
+.service-card:hover{border-color:var(--rose);box-shadow:0 12px 40px rgba(201,169,166,.15);transform:translateY(-4px)}
+.service-icon{width:56px;height:56px;background:var(--offwhite);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px}
+.service-card h3{font-size:22px;margin-bottom:10px}
+.service-card p{font-size:15px;color:#888;line-height:1.6}
+
+/* BEFORE AFTER */
+.before-after{background:var(--offwhite)}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ba-images{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ba-images img{border-radius:10px;height:280px;object-fit:cover;width:100%}
+.ba-content .section-tag,.ba-content .section-title,.ba-content .section-sub{text-align:left}
+.ba-list{list-style:none;margin-bottom:32px}
+.ba-list li{padding:10px 0;font-size:16px;border-bottom:1px solid #e0d8d3;display:flex;align-items:center;gap:12px}
+.ba-list li::before{content:"\2713";color:var(--rose);font-weight:700;font-size:18px}
+
+/* COVERAGE */
+.coverage{background:var(--charcoal);color:#fff}
+.coverage .section-tag{color:var(--rose-light)}
+.coverage .section-title{color:#fff}
+.coverage .section-sub{color:rgba(255,255,255,.6)}
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.area-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:28px;text-align:center;transition:all .3s}
+.area-card:hover{background:rgba(201,169,166,.15);border-color:var(--rose)}
+.area-card h3{font-size:20px;margin-bottom:6px;font-family:'Cormorant Garamond',serif}
+.area-card p{font-size:14px;color:rgba(255,255,255,.5)}
+
+/* TESTIMONIALS */
+.testimonials{background:#fff}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.test-card{padding:32px;border-radius:10px;background:var(--offwhite);position:relative}
+.test-card .stars{color:var(--rose);font-size:18px;margin-bottom:16px;letter-spacing:2px}
+.test-card p{font-size:15px;color:#666;font-style:italic;margin-bottom:20px;line-height:1.7}
+.test-card .author{font-weight:700;font-size:14px;color:var(--charcoal)}
+.test-card .location{font-size:13px;color:#999}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--rose),#b8928f);color:#fff;text-align:center;padding:80px 24px}
+.cta-section h2{font-size:clamp(32px,4vw,52px);margin-bottom:16px;color:#fff}
+.cta-section p{font-size:18px;opacity:.9;margin-bottom:32px;font-weight:300}
+.btn-white{background:#fff;color:var(--charcoal);padding:16px 40px;border-radius:6px;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;display:inline-block;transition:all .3s}
+.btn-white:hover{background:var(--charcoal);color:#fff}
+
+/* FOOTER */
+footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:60px 24px 30px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-col h4{color:#fff;font-size:18px;margin-bottom:16px;font-family:'Cormorant Garamond',serif}
+.footer-col p,.footer-col a{font-size:14px;color:rgba(255,255,255,.5);line-height:2}
+.footer-col a:hover{color:var(--rose-light)}
+.footer-col ul{list-style:none}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .services-grid,.test-grid{grid-template-columns:1fr 1fr}
+  .ba-grid{grid-template-columns:1fr}
+  .areas-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .services-grid,.test-grid,.areas-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .menu-toggle{display:flex}
+  .btn-outline{display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+  <a href="#" class="logo">JD <span>Decor</span> Southside</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#approach">Our Approach</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="#estimate" class="nav-cta">Free Estimate</a>
+  <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Professional Painting & Decorating</span>
+    <h1>Transform Your Space with Expert Decorating</h1>
+    <p>Bringing elegance and precision to homes and businesses across Glasgow, Hamilton, and surrounding areas. Every surface, every detail, done right.</p>
+    <a href="#estimate" class="btn btn-primary">Get a Free Estimate</a>
+    <a href="#services" class="btn btn-outline">Our Services</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+<div class="section-inner">
+  <span class="section-tag">What We Do</span>
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-sub">From a single feature wall to a full property restoration, we bring the same care and attention to every project.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#127912;</div>
+      <h3>Interior Painting</h3>
+      <p>Flawless finishes for living rooms, bedrooms, kitchens, and hallways. We prep every surface for a lasting result.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127969;</div>
+      <h3>Exterior Painting</h3>
+      <p>Weather-resistant coatings that protect and beautify your property's facade, fences, and outbuildings.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128220;</div>
+      <h3>Wallpapering</h3>
+      <p>Expert hanging of all wallpaper types, from feature walls to full room installations with seamless pattern matching.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128736;</div>
+      <h3>Property Restoration</h3>
+      <p>Breathing new life into tired properties. Complete preparation, repair, and finishing for landlords and homeowners.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127963;</div>
+      <h3>Commercial Decorating</h3>
+      <p>Professional finishes for offices, shops, and hospitality venues. Minimal disruption, maximum impact.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127912;</div>
+      <h3>Colour Consultation</h3>
+      <p>Not sure where to start? We help you choose palettes that complement your space, lighting, and personal style.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section class="before-after" id="approach">
+<div class="section-inner">
+  <div class="ba-grid">
+    <div class="ba-images">
+      <img src="https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Painting preparation">
+      <img src="https://images.pexels.com/photos/1579739/pexels-photo-1579739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Finished room">
+      <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Interior detail">
+      <img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Beautiful interior">
+    </div>
+    <div class="ba-content">
+      <span class="section-tag">Our Approach</span>
+      <h2 class="section-title">Attention to Detail, Every Time</h2>
+      <p class="section-sub">We believe the difference between a good job and a great one lies in the preparation. That's why we never cut corners.</p>
+      <ul class="ba-list">
+        <li>Full surface preparation &mdash; filling, sanding, priming</li>
+        <li>Premium paints from trusted brands</li>
+        <li>Dust sheets and full property protection</li>
+        <li>Clean, tidy workspace throughout</li>
+        <li>Final walkthrough with every client</li>
+      </ul>
+      <a href="#estimate" class="btn btn-primary">Request a Free Estimate</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage" id="coverage">
+<div class="section-inner">
+  <span class="section-tag">Where We Work</span>
+  <h2 class="section-title">Covering Glasgow, Hamilton & Beyond</h2>
+  <p class="section-sub">Proudly serving residential and commercial clients across the central belt.</p>
+  <div class="areas-grid">
+    <div class="area-card">
+      <h3>Glasgow Southside</h3>
+      <p>Shawlands, Pollokshields, Giffnock, Cathcart</p>
+    </div>
+    <div class="area-card">
+      <h3>Glasgow City</h3>
+      <p>City Centre, West End, East End, North</p>
+    </div>
+    <div class="area-card">
+      <h3>Hamilton</h3>
+      <p>Hamilton, Blantyre, Bothwell, Uddingston</p>
+    </div>
+    <div class="area-card">
+      <h3>East Kilbride</h3>
+      <p>East Kilbride, Stewartfield, Thorntonhall</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+<div class="section-inner">
+  <span class="section-tag">Client Reviews</span>
+  <h2 class="section-title">What Our Clients Say</h2>
+  <p class="section-sub">We let our work speak for itself &mdash; and our clients back it up.</p>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Absolutely brilliant job on our living room and hallway. The attention to detail was second to none. Would highly recommend JD Decor to anyone."</p>
+      <div class="author">Margaret T.</div>
+      <div class="location">Shawlands, Glasgow</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Had our entire rental property decorated between tenancies. Fast, clean, and professional. The finish was immaculate. Will definitely use again."</p>
+      <div class="author">David R.</div>
+      <div class="location">Hamilton</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"JD Decor transformed our office space. They worked around our schedule and the result exceeded expectations. Top quality service."</p>
+      <div class="author">Sarah K.</div>
+      <div class="location">Glasgow City Centre</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="estimate">
+  <h2>Ready to Transform Your Space?</h2>
+  <p>Get a free, no-obligation estimate for your next project. We'd love to hear from you.</p>
+  <a href="tel:01234567890" class="btn-white">Call for Free Estimate</a>
+  <p style="margin-top:20px;font-size:15px;opacity:.8">Or email us at <a href="mailto:info@jddecorsouthside.co.uk" style="color:#fff;text-decoration:underline">info@jddecorsouthside.co.uk</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>JD Decor Southside</h4>
+      <p style="margin-bottom:16px">Professional painting and decorating services across Glasgow, Hamilton, and the surrounding areas. Residential and commercial.</p>
+      <p>Phone: <a href="tel:01234567890">0123 456 7890</a><br>Email: <a href="mailto:info@jddecorsouthside.co.uk">info@jddecorsouthside.co.uk</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Interior Painting</a></li>
+        <li><a href="#services">Exterior Painting</a></li>
+        <li><a href="#services">Wallpapering</a></li>
+        <li><a href="#services">Property Restoration</a></li>
+        <li><a href="#services">Commercial</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Areas Covered</h4>
+      <ul>
+        <li><a href="#coverage">Glasgow Southside</a></li>
+        <li><a href="#coverage">Glasgow City</a></li>
+        <li><a href="#coverage">Hamilton</a></li>
+        <li><a href="#coverage">East Kilbride</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#approach">Our Approach</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#estimate">Free Estimate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 JD Decor Southside. All rights reserved.</span>
+    <span>Glasgow &amp; Hamilton</span>
+  </div>
+</div>
+</footer>
+
+<!-- POPUP -->
+<div id="demo-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;justify-content:center;align-items:center"><div style="background:#fff;padding:40px;border-radius:12px;max-width:480px;width:90%;text-align:center;position:relative"><span onclick="document.getElementById('demo-popup').style.display='none'" style="position:absolute;top:12px;right:18px;font-size:28px;cursor:pointer">&times;</span><h2 style="margin:0 0 12px">Like what you see?</h2><p style="margin:0 0 20px;color:#666">This is a free concept designed for your business by <strong>Neocode Studio</strong>.</p><a href="https://neocodestudio.co.uk" style="display:inline-block;padding:14px 32px;background:#111;color:#fff;text-decoration:none;border-radius:8px;font-weight:600">Get in touch</a></div></div>
+
+<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+</body>
+</html>
