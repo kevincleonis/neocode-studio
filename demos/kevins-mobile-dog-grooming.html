@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin's Mobile Dog Grooming | Professional Dog Grooming in Dundee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#1B8A6B;--teal-dark:#147A5E;--teal-light:#E8F5F0;--warm:#F4A261;--cream:#FFF9F2;--brown:#5C4033;--dark:#1E2A28;--sage:#8FBC8F}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:#444;overflow-x:hidden;background:#fff}
+/* NAV */
+.nav{position:fixed;top:0;width:100%;z-index:1000;padding:18px 0;transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(0,0,0,.06);padding:12px 0}
+.nav-wrap{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--dark);text-decoration:none;font-weight:600}
+.nav-logo span{color:var(--teal)}
+.nav.scrolled .nav-logo{color:var(--dark)}
+.nav:not(.scrolled) .nav-logo{color:#fff}
+.nav-menu{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-menu a{text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
+.nav:not(.scrolled) .nav-menu a{color:rgba(255,255,255,.85)}
+.nav.scrolled .nav-menu a{color:#555}
+.nav-menu a:hover{color:var(--teal)!important}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:10px 25px;border-radius:50px;transition:all .3s!important}
+.nav-cta:hover{background:var(--teal-dark)!important;transform:translateY(-2px)}
+.mob-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.mob-btn span{width:24px;height:2px;transition:.3s}
+.nav:not(.scrolled) .mob-btn span{background:#fff}
+.nav.scrolled .mob-btn span{background:var(--dark)}
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,rgba(27,138,107,.9),rgba(30,42,40,.85)),url('https://images.pexels.com/photos/1390784/pexels-photo-1390784.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;display:flex;align-items:center;color:#fff;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,#fff)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 30px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-text{animation:slideIn .8s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);padding:8px 20px;border-radius:50px;font-size:.8rem;font-weight:500;margin-bottom:25px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,3.8rem);line-height:1.15;margin-bottom:20px;font-weight:700}
+.hero h1 em{font-style:italic;color:var(--warm)}
+.hero p{font-size:1.1rem;line-height:1.8;opacity:.9;margin-bottom:35px;max-width:500px}
+.hero-actions{display:flex;gap:15px;flex-wrap:wrap}
+.btn-white{padding:15px 35px;background:#fff;color:var(--teal);border-radius:50px;font-weight:600;text-decoration:none;transition:all .3s;font-size:.95rem}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.btn-ghost{padding:15px 35px;background:transparent;border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:50px;font-weight:500;text-decoration:none;transition:all .3s;font-size:.95rem}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-image{position:relative;animation:slideIn .8s ease .2s both}
+.hero-image img{width:100%;max-width:480px;height:500px;object-fit:cover;border-radius:30px;box-shadow:0 30px 60px rgba(0,0,0,.2)}
+.hero-float{position:absolute;background:#fff;border-radius:16px;padding:15px 20px;box-shadow:0 10px 30px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px}
+.hero-float.top{top:30px;right:-20px;color:var(--teal)}
+.hero-float.bottom{bottom:40px;left:-20px;color:var(--brown)}
+.hero-float .icon{font-size:1.5rem}
+.hero-float .label{font-size:.75rem;color:#888}
+.hero-float .value{font-weight:700;font-size:1rem;color:var(--dark)}
+/* TRUST */
+.trust-bar{background:var(--teal-light);padding:30px 0;text-align:center}
+.trust-items{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.trust-item{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--teal-dark);font-size:.9rem}
+.trust-icon{font-size:1.3rem}
+/* SECTIONS */
+section{padding:100px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 30px}
+.sec-header{text-align:center;margin-bottom:60px}
+.sec-label{color:var(--teal);font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.75rem;margin-bottom:10px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--dark);margin-bottom:15px;font-weight:700}
+.sec-desc{color:#777;max-width:550px;margin:0 auto;line-height:1.7}
+/* SERVICES */
+.services-section{background:var(--cream)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.service-card{background:#fff;border-radius:24px;padding:40px 30px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.04);transition:all .4s;border:1px solid transparent}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.08);border-color:var(--teal-light)}
+.service-icon{width:70px;height:70px;border-radius:20px;background:var(--teal-light);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;transition:all .3s}
+.service-card:hover .service-icon{background:var(--teal);transform:scale(1.1)}
+.service-card:hover .service-icon span{filter:brightness(10)}
+.service-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:10px}
+.service-card p{color:#777;font-size:.9rem;line-height:1.7;margin-bottom:15px}
+.service-price{color:var(--teal);font-weight:700;font-size:1.1rem}
+/* HOW IT WORKS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:60px}
+.step{text-align:center;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:35px;right:-15px;width:30px;height:2px;background:var(--teal-light)}
+.step-num{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 25px rgba(27,138,107,.25)}
+.step h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin-bottom:8px}
+.step p{color:#888;font-size:.85rem;line-height:1.6}
+/* ABOUT */
+.about-section{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img-wrap img{width:100%;height:500px;object-fit:cover;border-radius:24px}
+.about-badge{position:absolute;bottom:-20px;right:30px;background:var(--teal);color:#fff;padding:20px 30px;border-radius:16px;text-align:center;box-shadow:0 10px 30px rgba(27,138,107,.3)}
+.about-badge .num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700}
+.about-badge .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;opacity:.8}
+.about-text h3{font-family:'Playfair Display',serif;font-size:2rem;color:var(--dark);margin-bottom:20px}
+.about-text p{color:#666;line-height:1.8;margin-bottom:18px}
+.about-list{list-style:none;margin-top:25px}
+.about-list li{padding:10px 0;display:flex;align-items:center;gap:12px;color:#555;font-weight:500}
+.about-list li::before{content:'&#10003;';width:28px;height:28px;background:var(--teal-light);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;font-weight:700}
+/* REVIEWS */
+.reviews-section{background:#fff}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.review-card{background:var(--cream);border-radius:24px;padding:35px;transition:all .3s}
+.review-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.06)}
+.review-stars{color:var(--warm);font-size:1rem;letter-spacing:2px;margin-bottom:15px}
+.review-card blockquote{color:#555;line-height:1.7;font-style:italic;margin-bottom:20px;font-size:.95rem}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--sage));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Playfair Display',serif}
+.review-name{font-weight:600;color:var(--dark);font-size:.9rem}
+.review-from{font-size:.8rem;color:#999}
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;text-align:center;padding:80px 0;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.05)}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:15px;position:relative}
+.cta-section p{opacity:.85;margin-bottom:30px;font-size:1.05rem;position:relative}
+.cta-section .btn-white{position:relative}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-form{background:var(--cream);border-radius:24px;padding:40px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-weight:600;margin-bottom:6px;color:var(--dark);font-size:.85rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:2px solid #eee;border-radius:14px;font-family:inherit;font-size:.9rem;transition:border .3s;background:#fff}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--teal)}
+.form-group textarea{height:120px;resize:vertical}
+.form-submit{width:100%;padding:16px;background:var(--teal);color:#fff;border:none;border-radius:14px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s;font-family:inherit}
+.form-submit:hover{background:var(--teal-dark);transform:translateY(-2px)}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.c-info-card{display:flex;gap:15px;align-items:flex-start;padding:22px;background:var(--cream);border-radius:16px;transition:all .3s}
+.c-info-card:hover{background:var(--teal-light)}
+.c-info-icon{width:48px;height:48px;border-radius:14px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.c-info-card h4{font-weight:600;color:var(--dark);margin-bottom:4px;font-size:.95rem}
+.c-info-card p{color:#777;font-size:.9rem;line-height:1.5}
+.c-info-card a{color:var(--teal);text-decoration:none;font-weight:600}
+.map-box{margin-top:20px;border-radius:16px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.06)}
+.map-box iframe{width:100%;height:220px;border:none}
+/* FOOTER */
+footer{background:var(--dark);color:#fff;padding:50px 0 25px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:35px}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px}
+.footer-brand h3 span{color:var(--teal)}
+.footer-brand p{color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7}
+.footer-social{display:flex;gap:10px;margin-top:15px}
+.footer-social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:all .3s;font-size:.85rem}
+.footer-social a:hover{background:var(--teal)}
+.footer-col h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:18px;color:var(--warm)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:color .3s}
+.footer-col a:hover{color:var(--teal)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;color:rgba(255,255,255,.3);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:var(--teal);text-decoration:none}
+/* RESPONSIVE */
+@media(max-width:768px){
+.nav-menu{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 30px;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.nav-menu.active{display:flex}
+.nav-menu a{color:#555!important}
+.mob-btn{display:flex}
+.hero-inner{grid-template-columns:1fr}
+.hero-image{display:none}
+.services-grid,.reviews-grid{grid-template-columns:1fr}
+.steps-grid{grid-template-columns:repeat(2,1fr)}
+.step::after{display:none}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+section{padding:60px 0}
+.trust-items{gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="nav-wrap">
+<a href="#" class="nav-logo">Kevin's <span>Grooming</span></a>
+<ul class="nav-menu" id="navMenu">
+<li><a href="#services">Services</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="tel:07909824590" class="nav-cta">Book Now</a></li>
+</ul>
+<button class="mob-btn" onclick="document.getElementById('navMenu').classList.toggle('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<div class="hero-text">
+<div class="hero-badge">&#127775; Dundee's Most Trusted Mobile Groomer</div>
+<h1>Professional Grooming, Delivered to <em>Your Door</em></h1>
+<p>Stress-free, professional dog grooming in the comfort of your home. No cages, no waiting rooms &mdash; just happy, pampered pups across Dundee &amp; Angus.</p>
+<div class="hero-actions">
+<a href="tel:07909824590" class="btn-white">&#128222; Call Kevin</a>
+<a href="#services" class="btn-ghost">View Services</a>
+</div>
+</div>
+<div class="hero-image">
+<img src="https://images.pexels.com/photos/6816860/pexels-photo-6816860.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Happy groomed dog">
+<div class="hero-float top">
+<div class="icon">&#11088;</div>
+<div>
+<div class="label">Rating</div>
+<div class="value">98% Recommended</div>
+</div>
+</div>
+<div class="hero-float bottom">
+<div class="icon">&#128054;</div>
+<div>
+<div class="label">Happy Pups</div>
+<div class="value">1,400+ Followers</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+<div class="trust-items">
+<div class="trust-item"><span class="trust-icon">&#128663;</span> We Come To You</div>
+<div class="trust-item"><span class="trust-icon">&#128156;</span> Gentle &amp; Patient</div>
+<div class="trust-item"><span class="trust-icon">&#127919;</span> All Breeds Welcome</div>
+<div class="trust-item"><span class="trust-icon">&#11088;</span> 5-Star Reviews</div>
+</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+<div class="container">
+<div class="sec-header">
+<div class="sec-label">Our Services</div>
+<h2 class="sec-title">Grooming Packages for Every Pup</h2>
+<p class="sec-desc">From a quick nail clip to a full pamper session, we offer services tailored to your dog's breed, coat type, and temperament.</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon"><span>&#9988;</span></div>
+<h3>Full Groom</h3>
+<p>Complete wash, blow-dry, clip, brush, nail trim, ear clean, and finishing spray. Your dog leaves looking and feeling amazing.</p>
+<div class="service-price">From &pound;15</div>
+</div>
+<div class="service-card">
+<div class="service-icon"><span>&#128703;</span></div>
+<h3>Bath &amp; Dry</h3>
+<p>Deep cleansing shampoo, conditioning treatment, and professional blow-dry. Perfect between full grooming sessions.</p>
+<div class="service-price">Enquire</div>
+</div>
+<div class="service-card">
+<div class="service-icon"><span>&#128062;</span></div>
+<h3>Clipping Only</h3>
+<p>Breed-specific clips and trims. Whether it's a summer shave or a breed-standard cut, we know exactly what your pup needs.</p>
+<div class="service-price">Enquire</div>
+</div>
+<div class="service-card">
+<div class="service-icon"><span>&#128133;</span></div>
+<h3>Nail Trimming</h3>
+<p>Quick, gentle nail clipping to keep your dog comfortable and healthy. No stress, no fuss, done in minutes.</p>
+<div class="service-price">Enquire</div>
+</div>
+<div class="service-card">
+<div class="service-icon"><span>&#129466;</span></div>
+<h3>De-Shedding</h3>
+<p>Specialist de-shedding treatment for heavy-coated breeds. Reduces loose fur by up to 80% and keeps your home cleaner.</p>
+<div class="service-price">Enquire</div>
+</div>
+<div class="service-card">
+<div class="service-icon"><span>&#128021;</span></div>
+<h3>Puppy's First Groom</h3>
+<p>A gentle introduction to grooming for puppies. Short session to build confidence and create positive associations.</p>
+<div class="service-price">Enquire</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+<div class="container">
+<div class="sec-header">
+<div class="sec-label">How It Works</div>
+<h2 class="sec-title">Grooming Made Simple</h2>
+</div>
+<div class="steps-grid">
+<div class="step">
+<div class="step-num">1</div>
+<h4>Call or Text</h4>
+<p>Ring Kevin on 07909 824 590 to discuss your dog's needs and book a time that suits you.</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h4>We Come To You</h4>
+<p>Kevin arrives at your home at the agreed time, fully equipped with everything needed.</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h4>Pamper Time</h4>
+<p>Your dog is groomed with care and patience. No rushing, no stress &mdash; just expert attention.</p>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<h4>Happy Pup!</h4>
+<p>A freshly groomed, happy dog &mdash; without ever leaving the comfort of home.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img-wrap">
+<img src="https://images.pexels.com/photos/5731874/pexels-photo-5731874.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dog grooming">
+<div class="about-badge">
+<div class="num">1.4K+</div>
+<div class="lbl">Facebook Followers</div>
+</div>
+</div>
+<div class="about-text">
+<div class="sec-label">About Kevin</div>
+<h3>Dundee's Trusted Mobile Dog Groomer</h3>
+<p>Kevin has been grooming dogs across Dundee and the surrounding area for years, building a loyal following of happy customers and even happier pups. With a 98% recommendation rate, his gentle approach and professional results speak for themselves.</p>
+<p>As a mobile groomer, Kevin comes directly to your door &mdash; meaning less stress for your dog and more convenience for you. No cages, no car rides, no anxiety. Just professional grooming in a familiar, comfortable environment.</p>
+<ul class="about-list">
+<li>98% recommendation rate from customers</li>
+<li>Experienced with all breeds and temperaments</li>
+<li>Fully mobile &mdash; we come to you in Dundee &amp; Angus</li>
+<li>Gentle with nervous and anxious dogs</li>
+<li>Flexible scheduling to suit your routine</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+<div class="container">
+<div class="sec-header">
+<div class="sec-label">Reviews</div>
+<h2 class="sec-title">What Dundee Dog Owners Say</h2>
+</div>
+<div class="reviews-grid">
+<div class="review-card">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Kevin is absolutely brilliant with our anxious rescue dog. She used to hate being groomed but now she's completely relaxed when Kevin arrives. Wouldn't go anywhere else."</blockquote>
+<div class="review-author">
+<div class="review-avatar">SM</div>
+<div>
+<div class="review-name">Sarah M.</div>
+<div class="review-from">Broughty Ferry, Dundee</div>
+</div>
+</div>
+</div>
+<div class="review-card">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Always does a fantastic job with our cockapoo. So convenient having him come to the house, and the price is very fair. Highly recommend Kevin to anyone in Dundee."</blockquote>
+<div class="review-author">
+<div class="review-avatar">AT</div>
+<div>
+<div class="review-name">Alan T.</div>
+<div class="review-from">Lochee, Dundee</div>
+</div>
+</div>
+</div>
+<div class="review-card">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"We've been using Kevin for over two years now. He's patient, professional, and our Labrador absolutely loves seeing him. If he's busy, he always calls back promptly."</blockquote>
+<div class="review-author">
+<div class="review-avatar">JH</div>
+<div>
+<div class="review-name">Julie H.</div>
+<div class="review-from">Monifieth, Angus</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+<div class="container">
+<h2>Ready to Book Your Dog's Pamper Session?</h2>
+<p>Call or text Kevin today to arrange a mobile grooming appointment at your home.</p>
+<a href="tel:07909824590" class="btn-white">&#128222; Call 07909 824 590</a>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<div class="sec-header">
+<div class="sec-label">Contact</div>
+<h2 class="sec-title">Get In Touch</h2>
+</div>
+<div class="contact-grid">
+<div class="contact-form">
+<form onsubmit="event.preventDefault();alert('Thank you! Kevin will get back to you shortly.')">
+<div class="form-group">
+<label>Your Name</label>
+<input type="text" placeholder="Full name" required>
+</div>
+<div class="form-group">
+<label>Phone Number</label>
+<input type="tel" placeholder="Your phone number" required>
+</div>
+<div class="form-group">
+<label>Dog's Breed</label>
+<input type="text" placeholder="e.g. Cockapoo, Labrador, Spaniel">
+</div>
+<div class="form-group">
+<label>Service Needed</label>
+<select>
+<option>Full Groom</option>
+<option>Bath &amp; Dry</option>
+<option>Clipping Only</option>
+<option>Nail Trimming</option>
+<option>Puppy First Groom</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-group">
+<label>Additional Notes</label>
+<textarea placeholder="Any allergies, temperament notes, or special requirements..."></textarea>
+</div>
+<button type="submit" class="form-submit">Send Booking Request</button>
+</form>
+</div>
+<div class="contact-info">
+<div class="c-info-card">
+<div class="c-info-icon">&#128222;</div>
+<div>
+<h4>Phone</h4>
+<p><a href="tel:07909824590">07909 824 590</a><br>
+<a href="tel:01382525159">01382 525 159</a></p>
+</div>
+</div>
+<div class="c-info-card">
+<div class="c-info-icon">&#128205;</div>
+<div>
+<h4>Service Area</h4>
+<p>Dundee, Broughty Ferry, Monifieth,<br>Lochee, Carnoustie &amp; surrounding areas</p>
+</div>
+</div>
+<div class="c-info-card">
+<div class="c-info-icon">&#128337;</div>
+<div>
+<h4>Hours</h4>
+<p>Mon&ndash;Sat: 8am &ndash; 6pm<br>By appointment only</p>
+</div>
+</div>
+<div class="c-info-card">
+<div class="c-info-icon">&#128246;</div>
+<div>
+<h4>Facebook</h4>
+<p><a href="https://www.facebook.com/p/Kevins-mobile-dog-grooming-100058870426275/" target="_blank">Follow us on Facebook</a><br>1,400+ followers</p>
+</div>
+</div>
+<div class="map-box">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35000!2d-2.97!3d56.46!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48865ce78d3b85fd%3A0x5ae44e84e7a1e90!2sDundee!5e0!3m2!1sen!2suk!4v1" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>Kevin's <span>Mobile Grooming</span></h3>
+<p>Professional, stress-free dog grooming delivered to your door across Dundee and Angus. Every pup deserves to look and feel their best.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/p/Kevins-mobile-dog-grooming-100058870426275/" target="_blank">f</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Services</h4>
+<ul>
+<li><a href="#services">Full Groom</a></li>
+<li><a href="#services">Bath &amp; Dry</a></li>
+<li><a href="#services">Clipping</a></li>
+<li><a href="#services">Nail Trimming</a></li>
+<li><a href="#services">Puppy Groom</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<ul>
+<li><a href="tel:07909824590">07909 824 590</a></li>
+<li><a href="tel:01382525159">01382 525 159</a></li>
+<li><a href="#">51 Dean Avenue</a></li>
+<li><a href="#">Dundee DD4 7LG</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Kevin's Mobile Dog Grooming. All rights reserved.</p>
+<p>Website by <a href="#">NeoCode Studio</a></p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('.nav').classList.toggle('scrolled',window.scrollY>80)});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.getElementById('navMenu').classList.remove('active')})});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.service-card,.review-card,.step,.c-info-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(25px)';el.style.transition='all .6s ease';obs.observe(el)});
+</script>
+</body>
+</html>

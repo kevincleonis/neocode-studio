@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yum Yum Pizza & Kebab | Birmingham's Finest Takeaway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#E63946;--secondary:#FF8C42;--dark:#1A1A2E;--darker:#0F0F23;--light:#FAFAFA;--gold:#FFD700;--accent:#FF6B35}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#333;overflow-x:hidden;background:#fff}
+/* NAVBAR */
+.navbar{position:fixed;top:0;width:100%;z-index:1000;padding:15px 0;transition:all .4s ease}
+.navbar.scrolled{background:rgba(26,26,46,.97);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.3);padding:10px 0}
+.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#fff;text-decoration:none;letter-spacing:2px}
+.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--secondary)}
+.mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.mobile-toggle span{width:25px;height:2px;background:#fff;transition:.3s}
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,rgba(15,15,35,.92),rgba(230,57,70,.75)),url('https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#fff)}
+.hero-content{max-width:800px;padding:0 30px;animation:fadeUp 1s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-block;background:rgba(255,140,66,.2);border:1px solid rgba(255,140,66,.4);color:var(--secondary);padding:8px 24px;border-radius:50px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:25px}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);line-height:1;margin-bottom:20px;letter-spacing:3px}
+.hero h1 span{color:var(--secondary)}
+.hero p{font-size:1.15rem;line-height:1.7;opacity:.9;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+.btn-group{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.btn{padding:16px 40px;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px;letter-spacing:.5px}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;box-shadow:0 8px 30px rgba(230,57,70,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(230,57,70,.5)}
+.btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
+.btn-secondary:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
+/* FEATURES BAR */
+.features-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:-60px;position:relative;z-index:10;max-width:1000px;margin-left:auto;margin-right:auto;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.feature-item{background:var(--dark);color:#fff;padding:30px 20px;text-align:center;transition:background .3s}
+.feature-item:nth-child(even){background:var(--darker)}
+.feature-item:hover{background:var(--primary)}
+.feature-icon{font-size:2rem;margin-bottom:10px}
+.feature-item h4{font-size:.85rem;text-transform:uppercase;letter-spacing:1px;opacity:.9}
+/* SECTIONS */
+section{padding:100px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 30px}
+.section-header{text-align:center;margin-bottom:60px}
+.section-label{color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.8rem;margin-bottom:10px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);color:var(--dark);letter-spacing:2px;margin-bottom:15px}
+.section-desc{color:#666;max-width:600px;margin:0 auto;line-height:1.7}
+/* MENU */
+.menu-section{background:#FAFAFA}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.menu-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.06);transition:all .4s}
+.menu-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.menu-card-img{height:200px;background-size:cover;background-position:center;position:relative}
+.menu-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,.4))}
+.menu-card-body{padding:25px}
+.menu-card-body h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--dark);letter-spacing:1px;margin-bottom:8px}
+.menu-card-body p{color:#666;font-size:.9rem;line-height:1.6;margin-bottom:15px}
+.menu-price{color:var(--primary);font-weight:700;font-size:1.2rem}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:500px;object-fit:cover;display:block}
+.about-img::before{content:'';position:absolute;top:-20px;left:-20px;width:100px;height:100px;border-top:4px solid var(--primary);border-left:4px solid var(--primary);z-index:1;border-radius:5px 0 0 0}
+.about-content h3{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--dark);letter-spacing:2px;margin-bottom:20px}
+.about-content p{color:#555;line-height:1.8;margin-bottom:20px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.stat{text-align:center;padding:20px;background:linear-gradient(135deg,#fff5f5,#fff);border-radius:15px;border:1px solid #fee}
+.stat-number{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--primary)}
+.stat-label{font-size:.75rem;color:#888;text-transform:uppercase;letter-spacing:1px}
+/* TESTIMONIALS */
+.testimonials{background:linear-gradient(135deg,var(--dark),var(--darker));color:#fff}
+.testimonials .section-title{color:#fff}
+.testimonials .section-desc{color:rgba(255,255,255,.6)}
+.testimonials .section-label{color:var(--secondary)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
+.review-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:35px;backdrop-filter:blur(10px);transition:all .3s}
+.review-card:hover{background:rgba(255,255,255,.08);transform:translateY(-5px)}
+.stars{color:var(--gold);font-size:1.1rem;margin-bottom:15px;letter-spacing:3px}
+.review-card p{color:rgba(255,255,255,.8);line-height:1.7;font-style:italic;margin-bottom:20px}
+.reviewer{display:flex;align-items:center;gap:12px}
+.reviewer-avatar{width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}
+.reviewer-info h5{font-weight:600;margin-bottom:2px}
+.reviewer-info span{font-size:.8rem;color:rgba(255,255,255,.5)}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-form{background:#fff;border-radius:20px;padding:40px;box-shadow:0 15px 50px rgba(0,0,0,.08)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-weight:600;margin-bottom:8px;color:var(--dark);font-size:.9rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:2px solid #eee;border-radius:12px;font-family:inherit;font-size:.95rem;transition:border .3s;background:#fafafa}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--primary);background:#fff}
+.form-group textarea{height:120px;resize:vertical}
+.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s;letter-spacing:.5px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(230,57,70,.3)}
+.contact-info{display:flex;flex-direction:column;gap:25px}
+.info-card{background:#fff;border-radius:16px;padding:25px;box-shadow:0 8px 30px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:15px;transition:all .3s}
+.info-card:hover{transform:translateX(5px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.info-icon{width:50px;height:50px;background:linear-gradient(135deg,#fff0f0,#ffe0e0);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.info-card h4{font-weight:600;color:var(--dark);margin-bottom:5px}
+.info-card p{color:#666;font-size:.9rem;line-height:1.5}
+.map-container{margin-top:25px;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.map-container iframe{width:100%;height:250px;border:none}
+/* FOOTER */
+footer{background:var(--darker);color:#fff;padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;margin-bottom:15px}
+.footer-brand h3 span{color:var(--primary)}
+.footer-brand p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.7}
+.footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;margin-bottom:20px;color:var(--secondary)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul li a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .3s}
+.footer-col ul li a:hover{color:var(--secondary)}
+.footer-social{display:flex;gap:12px;margin-top:20px}
+.footer-social a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:.9rem;transition:all .3s}
+.footer-social a:hover{background:var(--primary);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:25px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.footer-bottom p{color:rgba(255,255,255,.4);font-size:.85rem}
+/* RESPONSIVE */
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(26,26,46,.98);flex-direction:column;padding:20px 30px;gap:15px}
+.nav-links.active{display:flex}
+.mobile-toggle{display:flex}
+.features-bar{grid-template-columns:repeat(2,1fr);margin:0 15px;margin-top:-40px}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.menu-grid{grid-template-columns:1fr}
+.about-img img{height:350px}
+.hero h1{font-size:3rem}
+section{padding:60px 0}
+}
+@media(max-width:480px){
+.features-bar{grid-template-columns:1fr 1fr}
+.about-stats{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.btn-group{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nav-container">
+<a href="#" class="logo">YUM YUM <span>PIZZA</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#menu">Menu</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="tel:01217431100" class="btn btn-primary" style="padding:10px 25px;font-size:.85rem">Order Now</a></li>
+</ul>
+<button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<div class="hero-badge">Birmingham's Favourite Since Day One</div>
+<h1>Handmade Pizza &amp; <span>Authentic Kebabs</span></h1>
+<p>Fresh dough, premium toppings, and kebabs marinated in rich spices &mdash; cooked to perfection and delivered hot to your door in Sheldon, Yardley &amp; across Birmingham.</p>
+<div class="btn-group">
+<a href="tel:01217431100" class="btn btn-primary">&#128222; Call to Order</a>
+<a href="#menu" class="btn btn-secondary">View Our Menu</a>
+</div>
+</div>
+</section>
+
+<!-- FEATURES BAR -->
+<div class="features-bar">
+<div class="feature-item">
+<div class="feature-icon">&#128293;</div>
+<h4>Stone-Baked Fresh</h4>
+</div>
+<div class="feature-item">
+<div class="feature-icon">&#128666;</div>
+<h4>Fast Delivery</h4>
+</div>
+<div class="feature-item">
+<div class="feature-icon">&#11088;</div>
+<h4>5-Star Rated</h4>
+</div>
+<div class="feature-item">
+<div class="feature-icon">&#127860;</div>
+<h4>Meal Deals</h4>
+</div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+<div class="container">
+<div class="section-header">
+<div class="section-label">Our Menu</div>
+<h2 class="section-title">Freshly Made, Always Delicious</h2>
+<p class="section-desc">From classic margheritas to loaded kebab wraps, every dish is prepared fresh with quality ingredients.</p>
+</div>
+<div class="menu-grid">
+<div class="menu-card">
+<div class="menu-card-img" style="background-image:url('https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+<div class="menu-card-body">
+<h3>Signature Pizzas</h3>
+<p>Hand-stretched dough, premium mozzarella, and your choice of over 20 toppings. Available in 10", 12" &amp; 16".</p>
+<span class="menu-price">From &pound;6.99</span>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-card-img" style="background-image:url('https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+<div class="menu-card-body">
+<h3>Kebabs &amp; Wraps</h3>
+<p>Chicken doner, lamb shish, and mixed kebabs marinated in our secret spice blend, served with fresh salad and sauces.</p>
+<span class="menu-price">From &pound;5.99</span>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-card-img" style="background-image:url('https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+<div class="menu-card-body">
+<h3>Gourmet Burgers</h3>
+<p>Juicy quarter and half-pounder burgers with melted cheese, crispy onion rings, and our house-made relish.</p>
+<span class="menu-price">From &pound;5.49</span>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-card-img" style="background-image:url('https://images.pexels.com/photos/2673353/pexels-photo-2673353.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+<div class="menu-card-body">
+<h3>Fish &amp; Chips</h3>
+<p>Battered cod, haddock, and scampi with golden chips. A British classic done right, every single time.</p>
+<span class="menu-price">From &pound;6.49</span>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-card-img" style="background-image:url('https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+<div class="menu-card-body">
+<h3>Calzones</h3>
+<p>Folded, stuffed, and oven-baked with your favourite fillings. The pizza's delicious cousin.</p>
+<span class="menu-price">From &pound;7.49</span>
+</div>
+</div>
+<div class="menu-card">
+<div class="menu-card-img" style="background-image:url('https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+<div class="menu-card-body">
+<h3>Meal Deals</h3>
+<p>Feed the family for less. Combo offers with pizza, sides, drinks &amp; desserts &mdash; unbeatable value.</p>
+<span class="menu-price">From &pound;12.99</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.pexels.com/photos/3682837/pexels-photo-3682837.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Yum Yum Pizza kitchen">
+</div>
+<div class="about-content">
+<div class="section-label">About Us</div>
+<h3>Birmingham's Go-To Takeaway on Coventry Road</h3>
+<p>At Yum Yum Pizza &amp; Kebab, we believe great food starts with great ingredients. Our dough is made fresh every morning, our kebab meats are marinated for 24 hours, and every dish leaves our kitchen with pride.</p>
+<p>Located on Coventry Road in the heart of Sheldon, we've been serving the local community with delicious pizzas, kebabs, burgers, and fish &amp; chips. Whether you're picking up on the way home or ordering delivery for a family night in, we guarantee flavour that keeps you coming back.</p>
+<div class="about-stats">
+<div class="stat">
+<div class="stat-number">4.5&#11088;</div>
+<div class="stat-label">Google Rating</div>
+</div>
+<div class="stat">
+<div class="stat-number">2000+</div>
+<div class="stat-label">Happy Customers</div>
+</div>
+<div class="stat">
+<div class="stat-number">20+</div>
+<div class="stat-label">Pizza Varieties</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+<div class="container">
+<div class="section-header">
+<div class="section-label">Reviews</div>
+<h2 class="section-title">What Our Customers Say</h2>
+<p class="section-desc">Don't just take our word for it &mdash; hear from the people who order from us week after week.</p>
+</div>
+<div class="reviews-grid">
+<div class="review-card">
+<div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p>"Best pizza in Sheldon, hands down. The meat feast is absolutely loaded and always arrives hot. My family's Friday night go-to."</p>
+<div class="reviewer">
+<div class="reviewer-avatar">JT</div>
+<div class="reviewer-info">
+<h5>James T.</h5>
+<span>Sheldon, Birmingham</span>
+</div>
+</div>
+</div>
+<div class="review-card">
+<div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p>"The lamb shish kebab is unreal &mdash; perfectly seasoned and so tender. And the garlic sauce? Addictive. Easily the best kebab I've had locally."</p>
+<div class="reviewer">
+<div class="reviewer-avatar">SP</div>
+<div class="reviewer-info">
+<h5>Sarah P.</h5>
+<span>Yardley, Birmingham</span>
+</div>
+</div>
+</div>
+<div class="review-card">
+<div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p>"Quick delivery, generous portions, and always consistent. We order the family meal deal at least twice a month. Brilliant value for money."</p>
+<div class="reviewer">
+<div class="reviewer-avatar">MK</div>
+<div class="reviewer-info">
+<h5>Mohammed K.</h5>
+<span>South Yardley</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<div class="section-header">
+<div class="section-label">Get In Touch</div>
+<h2 class="section-title">Order or Visit Us Today</h2>
+</div>
+<div class="contact-grid">
+<div class="contact-form">
+<form onsubmit="event.preventDefault();alert('Thank you! We will get back to you shortly.')">
+<div class="form-group">
+<label>Your Name</label>
+<input type="text" placeholder="Enter your full name" required>
+</div>
+<div class="form-group">
+<label>Phone Number</label>
+<input type="tel" placeholder="Your phone number" required>
+</div>
+<div class="form-group">
+<label>Order Type</label>
+<select>
+<option>Collection</option>
+<option>Delivery</option>
+<option>General Enquiry</option>
+</select>
+</div>
+<div class="form-group">
+<label>Your Message</label>
+<textarea placeholder="Tell us what you'd like to order or ask us anything..."></textarea>
+</div>
+<button type="submit" class="submit-btn">Send Message &#10148;</button>
+</form>
+</div>
+<div class="contact-info">
+<div class="info-card">
+<div class="info-icon">&#128205;</div>
+<div>
+<h4>Our Location</h4>
+<p>2266 Coventry Road<br>Birmingham B26 3JR</p>
+</div>
+</div>
+<div class="info-card">
+<div class="info-icon">&#128222;</div>
+<div>
+<h4>Call Us</h4>
+<p><a href="tel:01217431100" style="color:var(--primary);text-decoration:none;font-weight:600">0121 743 1100</a></p>
+</div>
+</div>
+<div class="info-card">
+<div class="info-icon">&#128337;</div>
+<div>
+<h4>Opening Hours</h4>
+<p>Mon&ndash;Sun: 4:00 PM &ndash; 11:00 PM<br>Open 7 days a week</p>
+</div>
+</div>
+<div class="info-card">
+<div class="info-icon">&#128231;</div>
+<div>
+<h4>Email</h4>
+<p>info@yumyumpizzakebab.co.uk</p>
+</div>
+</div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.5!2d-1.7856!3d52.4520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bce4a0000001%3A0x1!2sCoventry+Road%2C+Birmingham+B26!5e0!3m2!1sen!2suk!4v1" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>YUM YUM <span>PIZZA</span> &amp; KEBAB</h3>
+<p>Serving Birmingham's favourite pizza, kebabs, burgers and more. Fresh ingredients, bold flavours, fast delivery.</p>
+<div class="footer-social">
+<a href="#">f</a>
+<a href="#">in</a>
+<a href="#">&#9679;</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Menu</h4>
+<ul>
+<li><a href="#menu">Pizzas</a></li>
+<li><a href="#menu">Kebabs</a></li>
+<li><a href="#menu">Burgers</a></li>
+<li><a href="#menu">Fish &amp; Chips</a></li>
+<li><a href="#menu">Meal Deals</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#">Allergen Info</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<ul>
+<li><a href="tel:01217431100">0121 743 1100</a></li>
+<li><a href="#">2266 Coventry Rd</a></li>
+<li><a href="#">Birmingham B26 3JR</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Yum Yum Pizza &amp; Kebab. All rights reserved.</p>
+<p>Website by NeoCode Studio</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('.navbar').classList.toggle('scrolled',window.scrollY>80)});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('active')})});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.menu-card,.review-card,.info-card,.stat').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='all .6s ease';obs.observe(el)});
+</script>
+</body>
+</html>

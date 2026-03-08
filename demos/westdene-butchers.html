@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Westdene Butchers | Quality Local Butcher in Brighton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--maroon:#6B1D1D;--maroon-light:#8B2E2E;--cream:#FAF6F0;--warm-cream:#F5EDE3;--dark:#1C1411;--brown:#3E2723;--gold:#C49A6C;--sage:#7D8B75;--text:#4A3F35}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:var(--text);overflow-x:hidden;background:var(--cream)}
+/* NAV */
+.nav{position:fixed;top:0;width:100%;z-index:1000;padding:18px 0;transition:all .4s}
+.nav.scrolled{background:rgba(250,246,240,.97);backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,.06);padding:12px 0}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;text-decoration:none;font-weight:700;letter-spacing:1px}
+.nav.scrolled .nav-brand{color:var(--maroon)}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s;letter-spacing:.5px}
+.nav:not(.scrolled) .nav-links a{color:rgba(255,255,255,.8)}
+.nav.scrolled .nav-links a{color:var(--text)}
+.nav-links a:hover{color:var(--maroon)!important}
+.nav-order{background:var(--maroon)!important;color:#fff!important;padding:10px 25px;border-radius:6px;transition:all .3s!important}
+.nav-order:hover{background:var(--maroon-light)!important}
+.mob-nav{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.mob-nav span{width:24px;height:2px;transition:.3s}
+.nav:not(.scrolled) .mob-nav span{background:#fff}
+.nav.scrolled .mob-nav span{background:var(--dark)}
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,rgba(107,29,29,.85),rgba(28,20,17,.75)),url('https://images.pexels.com/photos/1927383/pexels-photo-1927383.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;display:flex;align-items:center;color:#fff;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--cream))}
+.hero-content{max-width:1200px;margin:0 auto;padding:0 30px;width:100%}
+.hero-sub{font-size:.8rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;font-weight:500}
+.hero-sub::before{content:'';width:35px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5rem);line-height:1.1;margin-bottom:20px;font-weight:700;max-width:700px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.1rem;line-height:1.8;max-width:550px;opacity:.85;margin-bottom:40px}
+.hero-btns{display:flex;gap:15px;flex-wrap:wrap}
+.btn-cream{padding:16px 40px;background:var(--cream);color:var(--maroon);font-weight:600;text-decoration:none;border-radius:6px;transition:all .3s;font-size:.9rem}
+.btn-cream:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.btn-border{padding:16px 40px;border:2px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;border-radius:6px;transition:all .3s;font-size:.9rem;font-weight:500}
+.btn-border:hover{border-color:var(--gold);color:var(--gold)}
+/* MARQUEE */
+.marquee{background:var(--maroon);color:var(--cream);padding:14px 0;overflow:hidden;white-space:nowrap}
+.marquee-content{display:inline-block;animation:scroll 20s linear infinite}
+.marquee-content span{margin-right:50px;font-size:.85rem;font-weight:500;letter-spacing:1px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* SECTIONS */
+section{padding:100px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 30px}
+.sec-head{text-align:center;margin-bottom:60px}
+.sec-tag{color:var(--maroon);font-weight:600;text-transform:uppercase;letter-spacing:4px;font-size:.7rem;margin-bottom:10px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3rem);color:var(--dark);margin-bottom:15px;font-weight:700}
+.sec-sub{color:#888;max-width:550px;margin:0 auto;line-height:1.7;font-size:.95rem}
+/* PRODUCTS */
+.products-section{background:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product-card{background:var(--cream);border-radius:16px;overflow:hidden;transition:all .4s;border:1px solid transparent}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.08);border-color:rgba(196,154,108,.2)}
+.product-img{height:220px;background-size:cover;background-position:center;position:relative}
+.product-badge{position:absolute;top:15px;left:15px;background:var(--maroon);color:#fff;padding:5px 14px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.product-body{padding:20px}
+.product-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--dark);margin-bottom:8px;font-weight:600}
+.product-body p{color:#888;font-size:.85rem;line-height:1.6;margin-bottom:12px}
+.product-origin{display:flex;align-items:center;gap:6px;color:var(--sage);font-size:.8rem;font-weight:500}
+/* STORY */
+.story-section{background:var(--warm-cream)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.story-img{position:relative}
+.story-img img{width:100%;height:520px;object-fit:cover;border-radius:16px}
+.story-year{position:absolute;bottom:-15px;left:30px;background:var(--maroon);color:#fff;padding:18px 25px;border-radius:10px;font-family:'Cormorant Garamond',serif}
+.story-year .yr{font-size:2rem;font-weight:700;line-height:1}
+.story-year .lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;opacity:.7}
+.story-text h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--dark);margin-bottom:20px;font-weight:700}
+.story-text p{color:#666;line-height:1.8;margin-bottom:18px}
+.story-values{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:30px}
+.value-item{padding:18px;background:rgba(255,255,255,.7);border-radius:10px;border-left:3px solid var(--maroon)}
+.value-item h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--maroon);margin-bottom:5px}
+.value-item p{font-size:.8rem;color:#888;line-height:1.5}
+/* CATERING */
+.catering{background:linear-gradient(160deg,rgba(28,20,17,.88),rgba(107,29,29,.8)),url('https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;color:#fff;text-align:center}
+.catering .sec-title{color:#fff}
+.catering .sec-sub{color:rgba(255,255,255,.7)}
+.catering .sec-tag{color:var(--gold)}
+.catering-features{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:50px}
+.cat-feature{padding:40px 30px;border:1px solid rgba(255,255,255,.1);border-radius:12px;transition:all .3s}
+.cat-feature:hover{border-color:rgba(196,154,108,.3);background:rgba(255,255,255,.03)}
+.cat-icon{font-size:2.5rem;margin-bottom:15px}
+.cat-feature h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:10px;color:var(--gold)}
+.cat-feature p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.6}
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.rev-card{background:#fff;border-radius:16px;padding:35px;box-shadow:0 5px 25px rgba(0,0,0,.04);transition:all .3s}
+.rev-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.rev-stars{color:#E8B931;margin-bottom:12px;letter-spacing:2px}
+.rev-card blockquote{color:#555;line-height:1.7;font-style:italic;margin-bottom:18px;font-size:.95rem}
+.rev-author{display:flex;align-items:center;gap:10px}
+.rev-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--maroon),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-family:'Cormorant Garamond',serif;font-size:1rem}
+.rev-name{font-weight:600;color:var(--dark);font-size:.9rem}
+.rev-from{font-size:.8rem;color:#aaa}
+/* CONTACT */
+.contact-section{background:var(--warm-cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.ct-form{background:#fff;border-radius:16px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,.04)}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-weight:600;margin-bottom:6px;color:var(--dark);font-size:.85rem}
+.fg input,.fg textarea,.fg select{width:100%;padding:13px 16px;border:2px solid #eee;border-radius:8px;font-family:inherit;font-size:.9rem;transition:border .3s;background:var(--cream)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--maroon)}
+.fg textarea{height:110px;resize:vertical}
+.ct-submit{width:100%;padding:15px;background:var(--maroon);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s;font-family:inherit}
+.ct-submit:hover{background:var(--maroon-light);transform:translateY(-2px)}
+.ct-info{display:flex;flex-direction:column;gap:18px}
+.ct-card{display:flex;gap:15px;padding:22px;background:#fff;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,.03);transition:all .3s}
+.ct-card:hover{transform:translateX(5px);box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.ct-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--maroon),var(--maroon-light));color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ct-card h4{font-weight:600;color:var(--dark);margin-bottom:4px;font-size:.9rem}
+.ct-card p{color:#888;font-size:.85rem;line-height:1.5}
+.ct-card a{color:var(--maroon);text-decoration:none;font-weight:600}
+.ct-map{margin-top:18px;border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.04)}
+.ct-map iframe{width:100%;height:230px;border:none}
+/* FOOTER */
+footer{background:var(--dark);color:#fff;padding:50px 0 25px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+.ft-brand h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:10px}
+.ft-brand h3 span{color:var(--gold)}
+.ft-brand p{color:rgba(255,255,255,.45);font-size:.85rem;line-height:1.7}
+.ft-social{display:flex;gap:10px;margin-top:15px}
+.ft-social a{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:all .3s;font-size:.8rem}
+.ft-social a:hover{background:var(--maroon)}
+.ft-col h4{font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:16px;color:var(--gold)}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.85rem;transition:color .3s}
+.ft-col a:hover{color:var(--gold)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;color:rgba(255,255,255,.3);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.ft-bottom a{color:var(--gold);text-decoration:none}
+@media(max-width:1024px){.product-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:20px 30px;gap:12px;box-shadow:0 10px 20px rgba(0,0,0,.05)}
+.nav-links.active{display:flex}
+.nav-links a{color:var(--text)!important}
+.mob-nav{display:flex}
+.product-grid{grid-template-columns:1fr}
+.story-grid,.contact-grid{grid-template-columns:1fr}
+.reviews-grid{grid-template-columns:1fr}
+.catering-features{grid-template-columns:1fr}
+.ft-grid{grid-template-columns:1fr}
+.story-values{grid-template-columns:1fr}
+section{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="nav-inner">
+<a href="#" class="nav-brand">Westdene Butchers</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#products">Our Meats</a></li>
+<li><a href="#story">Our Story</a></li>
+<li><a href="#catering">Catering</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact" class="nav-order">Visit Us</a></li>
+</ul>
+<button class="mob-nav" onclick="document.getElementById('navLinks').classList.toggle('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<div class="hero-sub">Brighton's Independent Butcher Since 2006</div>
+<h1>Quality Cuts, Locally <span>Sourced</span></h1>
+<p>Premium Sussex beef and lamb from the South Downs, traditional biltong, and specialist catering &mdash; all from your trusted neighbourhood butcher on Eldred Avenue.</p>
+<div class="hero-btns">
+<a href="#products" class="btn-cream">Explore Our Meats</a>
+<a href="#catering" class="btn-border">Catering Services</a>
+</div>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+<div class="marquee-content">
+<span>&#127830; Sussex Beef &amp; Lamb</span>
+<span>&#127860; Outside Catering Available</span>
+<span>&#128205; 34 Eldred Avenue, Brighton</span>
+<span>&#11088; South Downs Sourced</span>
+<span>&#127830; Biltong &amp; African Flavours</span>
+<span>&#128222; 01273 506 180</span>
+<span>&#127830; Sussex Beef &amp; Lamb</span>
+<span>&#127860; Outside Catering Available</span>
+<span>&#128205; 34 Eldred Avenue, Brighton</span>
+<span>&#11088; South Downs Sourced</span>
+<span>&#127830; Biltong &amp; African Flavours</span>
+<span>&#128222; 01273 506 180</span>
+</div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Our Selection</div>
+<h2 class="sec-title">Premium Cuts &amp; Specialities</h2>
+<p class="sec-sub">Every cut is hand-selected from local Sussex farms. We know our farmers, we know our animals, and we take pride in every piece that crosses our counter.</p>
+</div>
+<div class="product-grid">
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/618775/pexels-photo-618775.jpeg?auto=compress&cs=tinysrgb&w=500')">
+<div class="product-badge">Bestseller</div>
+</div>
+<div class="product-body">
+<h3>Sussex Beef Steaks</h3>
+<p>Ribeye, sirloin, fillet, and rump &mdash; dry-aged for exceptional flavour and tenderness.</p>
+<div class="product-origin">&#127793; South Downs Farms</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/8753647/pexels-photo-8753647.jpeg?auto=compress&cs=tinysrgb&w=500')"></div>
+<div class="product-body">
+<h3>Lamb Selection</h3>
+<p>Sussex spring lamb &mdash; chops, legs, shoulders, and racks, sourced from local downland farms.</p>
+<div class="product-origin">&#127793; Sussex Downland</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/3622479/pexels-photo-3622479.jpeg?auto=compress&cs=tinysrgb&w=500')">
+<div class="product-badge">Signature</div>
+</div>
+<div class="product-body">
+<h3>House-Made Sausages</h3>
+<p>Traditional pork, Cumberland, and speciality sausages made in-house with our own seasoning blends.</p>
+<div class="product-origin">&#128293; Made In-Store</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/6941010/pexels-photo-6941010.jpeg?auto=compress&cs=tinysrgb&w=500')">
+<div class="product-badge">Unique</div>
+</div>
+<div class="product-body">
+<h3>Biltong &amp; African Flavours</h3>
+<p>Authentic biltong and dried meats with South African-inspired seasoning. A Westdene speciality.</p>
+<div class="product-origin">&#127758; African Heritage</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/5718025/pexels-photo-5718025.jpeg?auto=compress&cs=tinysrgb&w=500')"></div>
+<div class="product-body">
+<h3>Steak Pies</h3>
+<p>Handmade with slow-cooked prime beef in rich gravy, wrapped in golden shortcrust pastry.</p>
+<div class="product-origin">&#128293; Made In-Store</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/6287523/pexels-photo-6287523.jpeg?auto=compress&cs=tinysrgb&w=500')"></div>
+<div class="product-body">
+<h3>Black Pudding</h3>
+<p>Traditional black pudding, perfect for a proper breakfast or as a gourmet accompaniment.</p>
+<div class="product-origin">&#127793; Traditional Recipe</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/1352270/pexels-photo-1352270.jpeg?auto=compress&cs=tinysrgb&w=500')"></div>
+<div class="product-body">
+<h3>Free-Range Poultry</h3>
+<p>Whole chickens, breasts, thighs, and crowns. All free-range, all local.</p>
+<div class="product-origin">&#127793; Free Range</div>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img" style="background-image:url('https://images.pexels.com/photos/8251254/pexels-photo-8251254.jpeg?auto=compress&cs=tinysrgb&w=500')"></div>
+<div class="product-body">
+<h3>BBQ &amp; Seasonal</h3>
+<p>Marinated meats, kebabs, and seasonal specials &mdash; everything you need for a perfect barbecue.</p>
+<div class="product-origin">&#128293; Seasonal</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+<div class="container">
+<div class="story-grid">
+<div class="story-img">
+<img src="https://images.pexels.com/photos/4252137/pexels-photo-4252137.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Westdene Butchers shop">
+<div class="story-year">
+<div class="yr">2006</div>
+<div class="lbl">Established</div>
+</div>
+</div>
+<div class="story-text">
+<div class="sec-tag">Our Story</div>
+<h3>A Brighton Institution on Eldred Avenue</h3>
+<p>Westdene Butchers has been the heart of the Westdene community since 2006. We're not just a butcher's shop &mdash; we're your neighbours, your trusted source for quality meat, and a proud champion of Sussex farming.</p>
+<p>Every cut that crosses our counter comes from farms we know personally. Our Sussex beef and lamb graze on the South Downs, and our commitment to provenance and quality means you always know exactly where your meat comes from.</p>
+<div class="story-values">
+<div class="value-item">
+<h4>Locally Sourced</h4>
+<p>Beef and lamb from Sussex farms on the South Downs.</p>
+</div>
+<div class="value-item">
+<h4>Expert Butchery</h4>
+<p>Traditional craft and precision in every cut we make.</p>
+</div>
+<div class="value-item">
+<h4>African Heritage</h4>
+<p>Unique biltong and South African flavours you won't find elsewhere.</p>
+</div>
+<div class="value-item">
+<h4>Community First</h4>
+<p>Proudly serving Westdene, Patcham, and all of Brighton.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CATERING -->
+<section class="catering" id="catering">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Outside Catering</div>
+<h2 class="sec-title">Events &amp; Catering Services</h2>
+<p class="sec-sub">From intimate garden parties to grand weddings, we prepare, roast or barbecue, then carve and serve on-site.</p>
+</div>
+<div class="catering-features">
+<div class="cat-feature">
+<div class="cat-icon">&#127880;</div>
+<h4>Private Parties</h4>
+<p>Hog roasts, barbecues, and carved meats for garden parties and celebrations. We handle everything so you can enjoy the occasion.</p>
+</div>
+<div class="cat-feature">
+<div class="cat-icon">&#128141;</div>
+<h4>Weddings</h4>
+<p>Premium wedding catering with on-site preparation and carving. Make your special day unforgettable with Sussex's finest meats.</p>
+</div>
+<div class="cat-feature">
+<div class="cat-icon">&#128188;</div>
+<h4>Corporate Events</h4>
+<p>Professional catering for corporate functions, office events, and business lunches. Quality that impresses every time.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Reviews</div>
+<h2 class="sec-title">What Brighton Says About Us</h2>
+</div>
+<div class="reviews-grid">
+<div class="rev-card">
+<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Best butcher in Brighton, no question. The Sussex beef is superb quality and the biltong is dangerously addictive. We're in here every Saturday without fail."</blockquote>
+<div class="rev-author">
+<div class="rev-avatar">PW</div>
+<div>
+<div class="rev-name">Peter W.</div>
+<div class="rev-from">Westdene, Brighton</div>
+</div>
+</div>
+</div>
+<div class="rev-card">
+<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"They catered our wedding and the hog roast was the highlight of the day. Professional, friendly, and the food was absolutely outstanding. Highly recommended."</blockquote>
+<div class="rev-author">
+<div class="rev-avatar">EH</div>
+<div>
+<div class="rev-name">Emma H.</div>
+<div class="rev-from">Patcham, Brighton</div>
+</div>
+</div>
+</div>
+<div class="rev-card">
+<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Proper old-fashioned butcher with proper quality. Always happy to advise on cuts and cooking methods. The steak pies are incredible, and the sausages are the best we've ever had."</blockquote>
+<div class="rev-author">
+<div class="rev-avatar">MG</div>
+<div>
+<div class="rev-name">Mark G.</div>
+<div class="rev-from">Preston Park</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Visit Us</div>
+<h2 class="sec-title">Find Us on Eldred Avenue</h2>
+</div>
+<div class="contact-grid">
+<div class="ct-form">
+<form onsubmit="event.preventDefault();alert('Thank you! We\'ll get back to you shortly.')">
+<div class="fg">
+<label>Your Name</label>
+<input type="text" placeholder="Full name" required>
+</div>
+<div class="fg">
+<label>Email</label>
+<input type="email" placeholder="Your email address" required>
+</div>
+<div class="fg">
+<label>Enquiry Type</label>
+<select>
+<option>General Enquiry</option>
+<option>Catering Quote</option>
+<option>Special Order</option>
+<option>Wholesale</option>
+</select>
+</div>
+<div class="fg">
+<label>Message</label>
+<textarea placeholder="Tell us how we can help..."></textarea>
+</div>
+<button type="submit" class="ct-submit">Send Enquiry</button>
+</form>
+</div>
+<div class="ct-info">
+<div class="ct-card">
+<div class="ct-icon">&#128205;</div>
+<div>
+<h4>Our Shop</h4>
+<p>34 Eldred Avenue<br>Brighton, BN1 5EG</p>
+</div>
+</div>
+<div class="ct-card">
+<div class="ct-icon">&#128222;</div>
+<div>
+<h4>Phone</h4>
+<p><a href="tel:01273506180">01273 506 180</a></p>
+</div>
+</div>
+<div class="ct-card">
+<div class="ct-icon">&#128231;</div>
+<div>
+<h4>Email</h4>
+<p><a href="mailto:westdenebutchers@googlemail.com">westdenebutchers@googlemail.com</a></p>
+</div>
+</div>
+<div class="ct-card">
+<div class="ct-icon">&#128337;</div>
+<div>
+<h4>Opening Hours</h4>
+<p>Mon&ndash;Fri: 7:00am &ndash; 5:00pm<br>Saturday: 7:00am &ndash; 4:00pm<br>Sunday: Closed</p>
+</div>
+</div>
+<div class="ct-map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2500!2d-0.1465!3d50.8483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875859c3a5b0b55%3A0x1!2s34+Eldred+Ave%2C+Brighton+BN1+5EG!5e0!3m2!1sen!2suk!4v1" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="ft-grid">
+<div class="ft-brand">
+<h3>Westdene <span>Butchers</span></h3>
+<p>Brighton's independent butcher since 2006. Sussex beef, lamb, biltong, and outside catering &mdash; quality you can trust from a shop that cares.</p>
+<div class="ft-social">
+<a href="https://www.facebook.com/WestdeneButchers/" target="_blank">f</a>
+</div>
+</div>
+<div class="ft-col">
+<h4>Our Meats</h4>
+<ul>
+<li><a href="#products">Sussex Beef</a></li>
+<li><a href="#products">Local Lamb</a></li>
+<li><a href="#products">Sausages</a></li>
+<li><a href="#products">Biltong</a></li>
+<li><a href="#products">Pies &amp; Puddings</a></li>
+</ul>
+</div>
+<div class="ft-col">
+<h4>Contact</h4>
+<ul>
+<li><a href="tel:01273506180">01273 506 180</a></li>
+<li><a href="#">34 Eldred Avenue</a></li>
+<li><a href="#">Brighton BN1 5EG</a></li>
+<li><a href="#catering">Catering Enquiries</a></li>
+</ul>
+</div>
+</div>
+<div class="ft-bottom">
+<p>&copy; 2026 Westdene Butchers Ltd. All rights reserved.</p>
+<p>Website by <a href="#">NeoCode Studio</a></p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('.nav').classList.toggle('scrolled',window.scrollY>80)});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('active')})});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.product-card,.rev-card,.ct-card,.cat-feature,.value-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(25px)';el.style.transition='all .6s ease';obs.observe(el)});
+</script>
+</body>
+</html>

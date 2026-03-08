@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barnsley Takeaway & Cafe | Fresh Food, Friendly Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#FF6B2C;--orange-dark:#E85A20;--yellow:#FFB830;--navy:#1B2A4A;--navy-light:#263B5E;--sky:#E8F4FD;--light:#F8FBFF;--white:#fff;--text:#3A3A4F;--warm-bg:#FFF5EC}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden;background:#fff}
+/* NAV */
+.top-bar{background:var(--navy);color:#fff;padding:8px 0;text-align:center;font-size:.78rem;letter-spacing:.5px}
+.top-bar span{opacity:.7}
+.top-bar strong{color:var(--yellow)}
+.navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,.05);padding:12px 0}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.nav-logo{font-family:'Satisfy',cursive;font-size:1.8rem;color:var(--orange);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
+.nav-links a:hover{color:var(--orange)}
+.nav-phone{background:var(--orange);color:#fff!important;padding:10px 22px;border-radius:50px;font-weight:600;transition:all .3s!important}
+.nav-phone:hover{background:var(--orange-dark);transform:translateY(-2px)}
+.mob-menu{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.mob-menu span{width:24px;height:2px;background:var(--navy);transition:.3s}
+/* HERO */
+.hero{padding:80px 0 100px;background:linear-gradient(135deg,var(--warm-bg) 0%,#fff 50%,var(--sky) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,107,44,.06)}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,184,48,.06)}
+.hero-grid{max-width:1200px;margin:0 auto;padding:0 30px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text{animation:fadeRight .8s ease}
+@keyframes fadeRight{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;padding:8px 18px;border-radius:50px;font-size:.75rem;font-weight:600;margin-bottom:20px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;line-height:1.15;color:var(--navy);margin-bottom:18px}
+.hero h1 span{color:var(--orange);position:relative}
+.hero h1 span::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:8px;background:rgba(255,184,48,.3);z-index:-1}
+.hero p{font-size:1.05rem;line-height:1.7;color:#666;margin-bottom:30px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-orange{padding:15px 35px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:#fff;border-radius:50px;font-weight:600;text-decoration:none;transition:all .3s;box-shadow:0 8px 25px rgba(255,107,44,.3);font-size:.9rem}
+.btn-orange:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,107,44,.4)}
+.btn-navy{padding:15px 35px;background:var(--navy);color:#fff;border-radius:50px;font-weight:500;text-decoration:none;transition:all .3s;font-size:.9rem}
+.btn-navy:hover{background:var(--navy-light);transform:translateY(-3px)}
+.hero-img{position:relative;animation:fadeRight .8s ease .2s both}
+.hero-img img{width:100%;border-radius:24px;box-shadow:0 25px 50px rgba(0,0,0,.1)}
+.hero-badge{position:absolute;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 8px 25px rgba(0,0,0,.08);display:flex;align-items:center;gap:10px}
+.hero-badge.top-r{top:20px;right:-15px}
+.hero-badge.bot-l{bottom:20px;left:-15px}
+.badge-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.badge-icon.org{background:rgba(255,107,44,.1);color:var(--orange)}
+.badge-icon.grn{background:rgba(40,167,69,.1);color:#28a745}
+.badge-label{font-size:.7rem;color:#999}
+.badge-value{font-weight:700;font-size:.9rem;color:var(--navy)}
+/* CATEGORIES */
+.cat-section{padding:80px 0;background:var(--light)}
+.container{max-width:1200px;margin:0 auto;padding:0 30px}
+.sec-head{text-align:center;margin-bottom:50px}
+.sec-tag{color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.72rem;margin-bottom:8px}
+.sec-title{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--navy);margin-bottom:12px;font-weight:700}
+.sec-desc{color:#888;max-width:520px;margin:0 auto;line-height:1.7;font-size:.92rem}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat-card{background:#fff;border-radius:20px;overflow:hidden;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,.04);transition:all .4s;cursor:pointer;border:2px solid transparent}
+.cat-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(0,0,0,.08);border-color:rgba(255,107,44,.15)}
+.cat-img{height:160px;background-size:cover;background-position:center}
+.cat-card h3{padding:18px 15px;font-size:1rem;color:var(--navy);font-weight:600}
+/* MENU HIGHLIGHTS */
+.menu-section{padding:80px 0}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.menu-item{display:flex;gap:18px;padding:22px;background:var(--light);border-radius:16px;transition:all .3s;align-items:center}
+.menu-item:hover{background:var(--warm-bg);transform:translateX(5px)}
+.menu-item img{width:90px;height:90px;border-radius:14px;object-fit:cover;flex-shrink:0}
+.menu-info h4{font-size:1rem;color:var(--navy);margin-bottom:5px;font-weight:600}
+.menu-info p{font-size:.82rem;color:#999;line-height:1.5;margin-bottom:6px}
+.menu-info .price{color:var(--orange);font-weight:700;font-size:1rem}
+/* ABOUT */
+.about-section{background:var(--warm-bg);padding:80px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img img{width:100%;height:420px;object-fit:cover;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,.1)}
+.about-text h3{font-size:2rem;color:var(--navy);margin-bottom:18px;font-weight:700}
+.about-text p{color:#666;line-height:1.8;margin-bottom:16px}
+.about-perks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
+.perk{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.perk-icon{font-size:1.3rem}
+.perk span{font-weight:500;font-size:.85rem;color:var(--navy)}
+/* REVIEWS */
+.review-section{padding:80px 0;background:var(--navy);color:#fff}
+.review-section .sec-title{color:#fff}
+.review-section .sec-desc{color:rgba(255,255,255,.6)}
+.review-section .sec-tag{color:var(--yellow)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:30px;backdrop-filter:blur(10px);transition:all .3s}
+.rev:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.rev-stars{color:var(--yellow);margin-bottom:12px;letter-spacing:2px;font-size:.95rem}
+.rev blockquote{color:rgba(255,255,255,.8);line-height:1.7;font-style:italic;margin-bottom:18px;font-size:.9rem}
+.rev-who{display:flex;align-items:center;gap:10px}
+.rev-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--yellow));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.rev-nm{font-weight:600;font-size:.9rem}
+.rev-loc{font-size:.75rem;color:rgba(255,255,255,.5)}
+/* CONTACT */
+.contact-section{padding:80px 0;background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.cf{background:#fff;border-radius:20px;padding:35px;box-shadow:0 8px 30px rgba(0,0,0,.04)}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-weight:600;margin-bottom:5px;color:var(--navy);font-size:.82rem}
+.fg input,.fg textarea,.fg select{width:100%;padding:13px 16px;border:2px solid #eee;border-radius:12px;font-family:inherit;font-size:.88rem;transition:border .3s;background:#fafafa}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--orange)}
+.fg textarea{height:100px;resize:vertical}
+.cf-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:#fff;border:none;border-radius:12px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .3s;font-family:inherit}
+.cf-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,44,.3)}
+.ci{display:flex;flex-direction:column;gap:16px}
+.ci-card{display:flex;gap:14px;padding:20px;background:#fff;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.04);transition:all .3s}
+.ci-card:hover{transform:translateX(5px)}
+.ci-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--orange),var(--yellow));color:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-card h4{font-weight:600;color:var(--navy);margin-bottom:3px;font-size:.9rem}
+.ci-card p{color:#888;font-size:.82rem;line-height:1.5}
+.ci-card a{color:var(--orange);text-decoration:none;font-weight:600}
+.ci-map{margin-top:16px;border-radius:14px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+.ci-map iframe{width:100%;height:200px;border:none}
+/* FOOTER */
+footer{background:var(--navy);color:#fff;padding:50px 0 22px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px;margin-bottom:30px}
+.ft-brand{font-family:'Satisfy',cursive;font-size:1.5rem;color:var(--orange);margin-bottom:10px}
+.ft-p{color:rgba(255,255,255,.4);font-size:.85rem;line-height:1.7}
+.ft-soc{display:flex;gap:10px;margin-top:14px}
+.ft-soc a{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:all .3s;font-size:.8rem}
+.ft-soc a:hover{background:var(--orange)}
+.ft-col h4{font-size:.85rem;font-weight:600;margin-bottom:15px;color:var(--yellow);text-transform:uppercase;letter-spacing:1px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:7px}
+.ft-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.82rem;transition:color .3s}
+.ft-col a:hover{color:var(--orange)}
+.ft-btm{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;display:flex;justify-content:space-between;color:rgba(255,255,255,.25);font-size:.78rem;flex-wrap:wrap;gap:10px}
+.ft-btm a{color:var(--orange);text-decoration:none}
+@media(max-width:1024px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+.top-bar{display:none}
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 30px;gap:12px;box-shadow:0 10px 20px rgba(0,0,0,.05)}
+.nav-links.active{display:flex}
+.mob-menu{display:flex}
+.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+.hero-img{display:none}
+.cat-grid{grid-template-columns:1fr 1fr}
+.menu-grid,.rev-grid{grid-template-columns:1fr}
+.about-perks{grid-template-columns:1fr}
+.ft-grid{grid-template-columns:1fr}
+section,.cat-section,.about-section,.review-section,.contact-section{padding:50px 0}
+.hero{padding:50px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+<span>&#128205; Market Street, Barnsley &nbsp;|&nbsp; <strong>Open Mon&ndash;Sat</strong> &nbsp;|&nbsp; Pickup &amp; Dine-In Available</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nav-inner">
+<a href="#" class="nav-logo">Barnsley T&C</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#menu">Menu</a></li>
+<li><a href="#highlights">Highlights</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#contact" class="nav-phone">Order Now</a></li>
+</ul>
+<button class="mob-menu" onclick="document.getElementById('navLinks').classList.toggle('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-grid">
+<div class="hero-text">
+<div class="hero-chip">&#127860; Fresh &amp; Homemade Daily</div>
+<h1>Great Food, Made With <span>Love</span> in Barnsley</h1>
+<p>From hearty hot meals and fresh sandwiches to golden fish &amp; chips and cafe favourites &mdash; your local spot for proper food at honest prices.</p>
+<div class="hero-btns">
+<a href="#menu" class="btn-orange">View Our Menu</a>
+<a href="#contact" class="btn-navy">Find Us</a>
+</div>
+</div>
+<div class="hero-img">
+<img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Fresh food">
+<div class="hero-badge top-r">
+<div class="badge-icon org">&#11088;</div>
+<div>
+<div class="badge-label">Locals Love</div>
+<div class="badge-value">Top Rated</div>
+</div>
+</div>
+<div class="hero-badge bot-l">
+<div class="badge-icon grn">&#128337;</div>
+<div>
+<div class="badge-label">Open From</div>
+<div class="badge-value">9am Daily</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cat-section" id="menu">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">What We Serve</div>
+<h2 class="sec-title">Something for Everyone</h2>
+<p class="sec-desc">Whether you're popping in for a quick bite or ordering a family feast, we've got you covered.</p>
+</div>
+<div class="cat-grid">
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/2673353/pexels-photo-2673353.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Seafood &amp; Fish Packs</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Burgers &amp; Steaks</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Sandwiches &amp; Wraps</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/2092507/pexels-photo-2092507.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Hot Meals &amp; Pies</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/2280551/pexels-photo-2280551.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Kids Meals</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Coffee &amp; Drinks</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Combo Deals</h3>
+</div>
+<div class="cat-card">
+<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
+<h3>Cafe Favourites</h3>
+</div>
+</div>
+</div>
+</section>
+
+<!-- MENU HIGHLIGHTS -->
+<section id="highlights">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Popular Picks</div>
+<h2 class="sec-title">Customer Favourites</h2>
+</div>
+<div class="menu-grid">
+<div class="menu-item">
+<img src="https://images.pexels.com/photos/2673353/pexels-photo-2673353.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Fish and chips">
+<div class="menu-info">
+<h4>Classic Fish &amp; Chips</h4>
+<p>Crispy battered cod with golden chips, mushy peas &amp; tartar sauce</p>
+<span class="price">From &pound;5.99</span>
+</div>
+</div>
+<div class="menu-item">
+<img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Burger">
+<div class="menu-info">
+<h4>Quarter Pounder Burger</h4>
+<p>Freshly made beef patty with cheese, salad &amp; relish in a toasted bun</p>
+<span class="price">From &pound;4.49</span>
+</div>
+</div>
+<div class="menu-item">
+<img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Sandwich">
+<div class="menu-info">
+<h4>Steak Roll</h4>
+<p>Tender steak in a fresh bread roll with onions &amp; sauce of your choice</p>
+<span class="price">From &pound;4.99</span>
+</div>
+</div>
+<div class="menu-item">
+<img src="https://images.pexels.com/photos/2092507/pexels-photo-2092507.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Pie">
+<div class="menu-info">
+<h4>Homemade Pie &amp; Chips</h4>
+<p>Freshly baked pie with chunky chips, gravy &amp; a side of your choice</p>
+<span class="price">From &pound;5.49</span>
+</div>
+</div>
+<div class="menu-item">
+<img src="https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Combo deal">
+<div class="menu-info">
+<h4>Family Combo Deal</h4>
+<p>2 mains, 2 kids meals, 4 drinks &amp; a sharing side &mdash; great value</p>
+<span class="price">From &pound;16.99</span>
+</div>
+</div>
+<div class="menu-item">
+<img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coffee">
+<div class="menu-info">
+<h4>Freshly Ground Coffee</h4>
+<p>Latte, cappuccino, americano &amp; more. Made fresh, just how you like it</p>
+<span class="price">From &pound;2.50</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cafe interior">
+</div>
+<div class="about-text">
+<div class="sec-tag">About Us</div>
+<h3>Barnsley's Friendly Local Cafe &amp; Takeaway</h3>
+<p>Barnsley Takeaway &amp; Cafe is your neighbourhood go-to for proper food done right. Whether you're grabbing a quick coffee and a sandwich on the way to work, or sitting down for a hearty hot meal, we serve everything fresh with a smile.</p>
+<p>Located on Market Street in the heart of Barnsley, we're proud to offer generous portions, honest prices, and the kind of friendly service that keeps our regulars coming back day after day.</p>
+<div class="about-perks">
+<div class="perk"><span class="perk-icon">&#127860;</span><span>Freshly Made Daily</span></div>
+<div class="perk"><span class="perk-icon">&#128176;</span><span>Honest Prices</span></div>
+<div class="perk"><span class="perk-icon">&#128522;</span><span>Friendly Service</span></div>
+<div class="perk"><span class="perk-icon">&#127968;</span><span>Dine-In or Takeaway</span></div>
+<div class="perk"><span class="perk-icon">&#128118;</span><span>Kids Menu</span></div>
+<div class="perk"><span class="perk-icon">&#9749;</span><span>Real Coffee</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="review-section" id="reviews">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Reviews</div>
+<h2 class="sec-title">What Our Customers Say</h2>
+<p class="sec-desc">The people of Barnsley love us &mdash; and the feeling is mutual.</p>
+</div>
+<div class="rev-grid">
+<div class="rev">
+<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Best fish and chips in Barnsley, honestly. Massive portions, always piping hot, and the staff are lovely. Our Friday night regular."</blockquote>
+<div class="rev-who">
+<div class="rev-av">KD</div>
+<div>
+<div class="rev-nm">Karen D.</div>
+<div class="rev-loc">Barnsley Town Centre</div>
+</div>
+</div>
+</div>
+<div class="rev">
+<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Pop in for a coffee and a bacon roll most mornings. Friendly faces, quick service, and it's proper food &mdash; none of that fancy nonsense. Just what you need."</blockquote>
+<div class="rev-who">
+<div class="rev-av">TB</div>
+<div>
+<div class="rev-nm">Tom B.</div>
+<div class="rev-loc">Worsborough</div>
+</div>
+</div>
+</div>
+<div class="rev">
+<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<blockquote>"Great value combo deals for the family. The kids love it and my wallet appreciates it too! Clean, welcoming, and the staff always remember our order."</blockquote>
+<div class="rev-who">
+<div class="rev-av">LM</div>
+<div>
+<div class="rev-nm">Lisa M.</div>
+<div class="rev-loc">Dodworth</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<div class="container">
+<div class="sec-head">
+<div class="sec-tag">Find Us</div>
+<h2 class="sec-title">Visit or Order Today</h2>
+</div>
+<div class="contact-grid">
+<div class="cf">
+<form onsubmit="event.preventDefault();alert('Thank you for your message! We\'ll be in touch soon.')">
+<div class="fg">
+<label>Your Name</label>
+<input type="text" placeholder="Full name" required>
+</div>
+<div class="fg">
+<label>Phone Number</label>
+<input type="tel" placeholder="Your phone number" required>
+</div>
+<div class="fg">
+<label>Enquiry Type</label>
+<select>
+<option>General Enquiry</option>
+<option>Catering / Large Order</option>
+<option>Feedback</option>
+<option>Other</option>
+</select>
+</div>
+<div class="fg">
+<label>Your Message</label>
+<textarea placeholder="How can we help?"></textarea>
+</div>
+<button type="submit" class="cf-btn">Send Message</button>
+</form>
+</div>
+<div class="ci">
+<div class="ci-card">
+<div class="ci-icon">&#128205;</div>
+<div>
+<h4>Our Location</h4>
+<p>Market Street<br>Barnsley, South Yorkshire</p>
+</div>
+</div>
+<div class="ci-card">
+<div class="ci-icon">&#128337;</div>
+<div>
+<h4>Opening Hours</h4>
+<p>Mon&ndash;Fri: 9:00am &ndash; 5:00pm<br>Saturday: 9:00am &ndash; 5:00pm<br>Sunday: Closed</p>
+</div>
+</div>
+<div class="ci-card">
+<div class="ci-icon">&#127860;</div>
+<div>
+<h4>Dine-In &amp; Takeaway</h4>
+<p>Eat in our cosy cafe or grab your order to go. Both always welcome!</p>
+</div>
+</div>
+<div class="ci-card">
+<div class="ci-icon">&#128176;</div>
+<div>
+<h4>Payment</h4>
+<p>Cash &amp; card accepted. Contactless available.</p>
+</div>
+</div>
+<div class="ci-map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9500!2d-1.479!3d53.553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790555de66e12f%3A0x6c3c3573cf0b6563!2sBarnsley!5e0!3m2!1sen!2suk!4v1" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="ft-grid">
+<div>
+<div class="ft-brand">Barnsley T&C</div>
+<p class="ft-p">Your friendly local cafe and takeaway on Market Street, Barnsley. Fresh food, honest prices, and a warm welcome every time.</p>
+<div class="ft-soc">
+<a href="#">f</a>
+<a href="#">in</a>
+</div>
+</div>
+<div class="ft-col">
+<h4>Menu</h4>
+<ul>
+<li><a href="#menu">Seafood &amp; Fish</a></li>
+<li><a href="#menu">Burgers &amp; Steaks</a></li>
+<li><a href="#menu">Sandwiches</a></li>
+<li><a href="#menu">Hot Meals</a></li>
+<li><a href="#menu">Kids Meals</a></li>
+</ul>
+</div>
+<div class="ft-col">
+<h4>Info</h4>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#">Allergen Info</a></li>
+</ul>
+</div>
+</div>
+<div class="ft-btm">
+<p>&copy; 2026 Barnsley Takeaway &amp; Cafe. All rights reserved.</p>
+<p>Website by <a href="#">NeoCode Studio</a></p>
+</div>
+</div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('active')})});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.cat-card,.menu-item,.rev,.ci-card,.perk').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='all .5s ease';obs.observe(el)});
+</script>
+</body>
+</html>
