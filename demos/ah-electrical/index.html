@@ -9,126 +9,157 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #0b0f14;
-            --bg-card: #111820;
-            --bg-card-hover: #161e28;
+            --bg: #0c1929;
+            --bg-light: #112240;
+            --bg-card: #0f2035;
+            --bg-card-hover: #153050;
             --text: #e8ecf1;
             --text-dim: #8899aa;
             --accent: #f59e0b;
             --accent-glow: rgba(245, 158, 11, 0.15);
-            --accent-strong: rgba(245, 158, 11, 0.3);
-            --blue: #3b82f6;
-            --blue-glow: rgba(59, 130, 246, 0.15);
-            --green: #10b981;
-            --border: rgba(255,255,255,0.06);
+            --accent-strong: rgba(245, 158, 11, 0.35);
+            --blue: #1e5fa8;
+            --blue-light: #2d7dd2;
+            --border: rgba(255,255,255,0.08);
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
         /* Neocode Banner */
-        .nc-banner { background: linear-gradient(90deg, #00ff88, #00cc6a); color: #0a0a0a; text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+        .nc-banner { background: linear-gradient(90deg, #00ff88, #00cc6a); color: #0a0a0a; text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; position: relative; z-index: 200; }
         .nc-banner a { color: #0a0a0a; text-decoration: underline; font-weight: 700; }
 
+        /* Emergency Strip */
+        .emergency-strip { background: linear-gradient(90deg, #dc2626, #b91c1c); text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; z-index: 200; }
+        .emergency-strip i { animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
         /* Nav */
-        .nav { position: sticky; top: 0; z-index: 100; background: rgba(11,15,20,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 40px; }
+        .nav { position: sticky; top: 0; z-index: 100; background: rgba(12,25,41,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 40px; }
         .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
         .nav-brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; }
         .nav-brand i { color: var(--accent); font-size: 24px; }
         .nav-links { display: flex; gap: 32px; list-style: none; }
         .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
-        .nav-cta { background: var(--accent); color: #0b0f14; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.3s; }
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-strong); }
 
-        /* Hero */
-        .hero { padding: 100px 40px 80px; text-align: center; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--accent); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
-        .hero-badge i { font-size: 12px; }
-        .hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.15; max-width: 800px; margin: 0 auto 20px; position: relative; }
+        /* Hero - Full Screen with Image */
+        .hero { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(12,25,41,0.92) 0%, rgba(12,25,41,0.7) 50%, rgba(12,25,41,0.5) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 80px 40px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.15); border: 1px solid var(--accent); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+        .hero h1 { font-size: clamp(38px, 5.5vw, 64px); font-weight: 800; line-height: 1.1; max-width: 700px; margin-bottom: 20px; }
         .hero h1 span { color: var(--accent); }
-        .hero p { font-size: 18px; color: var(--text-dim); max-width: 550px; margin: 0 auto 40px; line-height: 1.7; }
-        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: var(--accent); color: #0b0f14; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .hero-desc { font-size: 19px; color: rgba(255,255,255,0.8); max-width: 520px; margin-bottom: 40px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary { background: var(--accent); color: var(--bg); padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px var(--accent-strong); }
-        .btn-secondary { background: transparent; color: var(--text); padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
-        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: var(--accent); }
 
         /* Trust Bar */
-        .trust-bar { display: flex; justify-content: center; gap: 48px; padding: 48px 40px; flex-wrap: wrap; }
+        .trust-bar { background: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; justify-content: center; gap: 48px; padding: 32px 40px; flex-wrap: wrap; }
         .trust-item { display: flex; align-items: center; gap: 12px; color: var(--text-dim); font-size: 14px; font-weight: 500; }
         .trust-item i { color: var(--accent); font-size: 20px; }
         .trust-item .stars { color: var(--accent); letter-spacing: 2px; }
 
         /* Sections */
-        .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 56px; }
-        .section-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 38px; font-weight: 700; margin-bottom: 16px; }
         .section-header h2 span { color: var(--accent); }
-        .section-header p { color: var(--text-dim); font-size: 17px; max-width: 500px; margin: 0 auto; }
+        .section-header p { color: var(--text-dim); font-size: 17px; max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
-        /* Services Grid */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; transition: all 0.3s; }
-        .service-card:hover { border-color: rgba(245,158,11,0.3); transform: translateY(-4px); background: var(--bg-card-hover); }
-        .service-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .service-icon i { color: var(--accent); font-size: 22px; }
-        .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .service-card p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+        /* Services with Images */
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s; }
+        .service-card:hover { border-color: rgba(245,158,11,0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .service-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .service-body { padding: 28px 24px; }
+        .service-body h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .service-body p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+
+        /* Image + Text Split Section */
+        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+        .split-img { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 400px; }
+        .split-text h2 { font-size: 36px; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+        .split-text h2 span { color: var(--accent); }
+        .split-text p { font-size: 16px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; }
+        .split-list { list-style: none; margin-bottom: 32px; }
+        .split-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--text-dim); padding: 8px 0; }
+        .split-list li i { color: var(--accent); font-size: 16px; min-width: 20px; }
 
         /* Why Us */
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
-        .why-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; text-align: center; }
-        .why-number { font-size: 42px; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
+        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .why-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 36px 24px; text-align: center; transition: all 0.3s; }
+        .why-card:hover { border-color: rgba(245,158,11,0.2); transform: translateY(-4px); }
+        .why-number { font-size: 46px; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
         .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
         .why-card p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
 
-        /* Testimonials */
+        /* Testimonials with image bg */
+        .testimonials-section { background: var(--bg-light); padding: 100px 40px; position: relative; overflow: hidden; }
+        .testimonials-section::before { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: url('https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover; opacity: 0.08; }
+        .testimonials-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-        .testimonial { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
-        .testimonial-stars { color: var(--accent); margin-bottom: 16px; letter-spacing: 3px; }
+        .testimonial { background: rgba(15,32,53,0.8); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+        .testimonial-stars { color: var(--accent); margin-bottom: 16px; letter-spacing: 3px; font-size: 18px; }
         .testimonial p { font-size: 15px; color: var(--text-dim); line-height: 1.8; font-style: italic; margin-bottom: 20px; }
         .testimonial-author { font-size: 14px; font-weight: 600; color: var(--text); }
         .testimonial-location { font-size: 13px; color: var(--text-dim); }
 
         /* Areas */
         .areas-list { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-        .area-tag { background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; padding: 10px 22px; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: all 0.3s; }
+        .area-tag { background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; padding: 12px 24px; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: all 0.3s; }
         .area-tag:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* CTA */
-        .cta { text-align: center; padding: 80px 40px; background: linear-gradient(180deg, transparent, rgba(245,158,11,0.05)); }
-        .cta h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        /* CTA with background image */
+        .cta { text-align: center; padding: 100px 40px; position: relative; overflow: hidden; }
+        .cta-bg { position: absolute; inset: 0; z-index: 0; }
+        .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .cta-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(12,25,41,0.85) 50%, var(--bg) 100%); z-index: 1; }
+        .cta-content { position: relative; z-index: 2; }
+        .cta h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
         .cta h2 span { color: var(--accent); }
         .cta p { color: var(--text-dim); font-size: 17px; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .cta-phone { font-size: 28px; font-weight: 800; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .cta-phone { font-size: 32px; font-weight: 800; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; transition: all 0.3s; }
+        .cta-phone:hover { text-shadow: 0 0 30px var(--accent-strong); }
 
         /* Footer */
-        .footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 48px 40px; }
+        .footer { background: var(--bg-light); border-top: 1px solid var(--border); padding: 56px 40px; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-        .footer-brand { font-size: 18px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .footer-brand { font-size: 20px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .footer-brand i { color: var(--accent); }
-        .footer-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 16px; }
-        .footer h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; color: var(--text-dim); }
+        .footer-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
+        .footer h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; color: var(--accent); }
         .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
+        .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.3s; }
         .footer-links a:hover { color: var(--accent); }
-        .footer-bottom { text-align: center; padding: 20px 40px; font-size: 12px; color: var(--text-dim); border-top: 1px solid var(--border); }
-
-        /* 24h Badge */
-        .emergency-strip { background: linear-gradient(90deg, #dc2626, #b91c1c); text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .emergency-strip i { animation: pulse 1.5s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .footer-bottom { background: var(--bg); text-align: center; padding: 20px 40px; font-size: 12px; color: var(--text-dim); }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .split { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+            .split-img img { min-height: 280px; }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 60px 20px 40px; }
+            .hero-content { padding: 60px 20px; }
+            .hero { min-height: 70vh; }
             .section { padding: 60px 20px; }
-            .trust-bar { gap: 24px; }
+            .trust-bar { gap: 20px; padding: 24px 20px; }
+            .trust-item { font-size: 12px; }
             .footer-inner { grid-template-columns: 1fr; }
             .cta { padding: 60px 20px; }
+            .testimonials-section { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -155,13 +186,20 @@
         </div>
     </nav>
 
+    <!-- HERO with full-screen image -->
     <section class="hero">
-        <div class="hero-badge"><i class="fas fa-star"></i> Rated 5 Stars on Google</div>
-        <h1>Your Trusted <span>Electrician</span> in Manchester</h1>
-        <p>NAPIT registered, fully insured, and backed by a 10-year guarantee on all work. From rewires to EV chargers, we've got you covered.</p>
-        <div class="hero-btns">
-            <a href="tel:01617067671" class="btn-primary"><i class="fas fa-phone"></i> Call Now</a>
-            <a href="#services" class="btn-secondary"><i class="fas fa-bolt"></i> View Services</a>
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Electrician at work">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-star"></i> Rated 5 Stars on Google</div>
+            <h1>Your Trusted <span>Electrician</span> in Manchester</h1>
+            <p class="hero-desc">NAPIT registered, fully insured, and backed by a 10-year guarantee on all work. From rewires to EV chargers, we've got you covered.</p>
+            <div class="hero-btns">
+                <a href="tel:01617067671" class="btn-primary"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="#services" class="btn-secondary"><i class="fas fa-bolt"></i> View Services</a>
+            </div>
         </div>
     </section>
 
@@ -172,6 +210,7 @@
         <div class="trust-item"><i class="fas fa-clock"></i> 20+ Years Experience</div>
     </div>
 
+    <!-- SERVICES with images -->
     <section class="section" id="services">
         <div class="section-header">
             <h2>Our <span>Services</span></h2>
@@ -179,42 +218,72 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-plug"></i></div>
-                <h3>Rewiring & Upgrades</h3>
-                <p>Full and partial house rewires, consumer unit upgrades, and fusebox replacements. All certified and compliant with Part P regulations.</p>
+                <img class="service-img" src="https://images.pexels.com/photos/5691631/pexels-photo-5691631.jpeg?auto=compress&cs=tinysrgb&w=600" alt="House rewiring">
+                <div class="service-body">
+                    <h3>Rewiring & Upgrades</h3>
+                    <p>Full and partial house rewires, consumer unit upgrades, and fusebox replacements. All certified and compliant with Part P regulations.</p>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                <h3>Lighting Design</h3>
-                <p>LED strips, under-cabinet lighting, spotlights, chandeliers, outdoor and security lighting. Transform any space.</p>
+                <img class="service-img" src="https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Modern lighting design">
+                <div class="service-body">
+                    <h3>Lighting Design</h3>
+                    <p>LED strips, under-cabinet lighting, spotlights, chandeliers, outdoor and security lighting. Transform any space.</p>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
-                <h3>Smart Home & Security</h3>
-                <p>Ring doorbells, CCTV systems, burglar alarms, smoke detectors, and automated lighting circuits.</p>
+                <img class="service-img" src="https://images.pexels.com/photos/6077368/pexels-photo-6077368.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Smart home security">
+                <div class="service-body">
+                    <h3>Smart Home & Security</h3>
+                    <p>Ring doorbells, CCTV systems, burglar alarms, smoke detectors, and automated lighting circuits.</p>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-car"></i></div>
-                <h3>EV Charger Installation</h3>
-                <p>Future-proof your home with a professionally installed electric vehicle charging point. OZEV approved.</p>
+                <img class="service-img" src="https://images.pexels.com/photos/9800092/pexels-photo-9800092.jpeg?auto=compress&cs=tinysrgb&w=600" alt="EV charger installation">
+                <div class="service-body">
+                    <h3>EV Charger Installation</h3>
+                    <p>Future-proof your home with a professionally installed electric vehicle charging point. OZEV approved.</p>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-fire"></i></div>
-                <h3>Heating & Showers</h3>
-                <p>Electric underfloor heating, shower installations, cookers, hobs, and extractor fans fitted safely.</p>
+                <img class="service-img" src="https://images.pexels.com/photos/6444964/pexels-photo-6444964.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Electric heating installation">
+                <div class="service-body">
+                    <h3>Heating & Showers</h3>
+                    <p>Electric underfloor heating, shower installations, cookers, hobs, and extractor fans fitted safely.</p>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-file-signature"></i></div>
-                <h3>Inspections & Reports</h3>
-                <p>Electrical Installation Condition Reports (EICR) for landlords, homeowners, and commercial properties.</p>
+                <img class="service-img" src="https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Electrical inspection report">
+                <div class="service-body">
+                    <h3>Inspections & Reports</h3>
+                    <p>Electrical Installation Condition Reports (EICR) for landlords, homeowners, and commercial properties.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="why">
-        <div class="section-header">
-            <h2>Why Choose <span>AH Electrical</span>?</h2>
+    <!-- SPLIT SECTION: Image + Text -->
+    <div class="split">
+        <div class="split-img">
+            <img src="https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional electrician working">
         </div>
+        <div class="split-text">
+            <h2>Why Choose <span>AH Electrical</span>?</h2>
+            <p>With over 20 years of experience across Manchester and the Northwest, we deliver quality electrical work you can trust.</p>
+            <ul class="split-list">
+                <li><i class="fas fa-check-circle"></i> NAPIT registered competent person</li>
+                <li><i class="fas fa-check-circle"></i> All work guaranteed for 10 years</li>
+                <li><i class="fas fa-check-circle"></i> Fully compliant with Part P regulations</li>
+                <li><i class="fas fa-check-circle"></i> 24-hour emergency callout service</li>
+                <li><i class="fas fa-check-circle"></i> Free, no-obligation quotes</li>
+                <li><i class="fas fa-check-circle"></i> Clean, tidy, and respectful of your home</li>
+            </ul>
+            <a href="tel:01617067671" class="btn-primary"><i class="fas fa-phone"></i> Get a Free Quote</a>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <section class="section" id="why">
         <div class="why-grid">
             <div class="why-card">
                 <div class="why-number">20+</div>
@@ -239,71 +308,85 @@
         </div>
     </section>
 
-    <section class="section" id="reviews">
-        <div class="section-header">
-            <h2>What Our <span>Customers</span> Say</h2>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"Adam promptly turned up, checked all electrics thoroughly. Very professional and reasonably priced. Would use him every time."</p>
-                <div class="testimonial-author">Tracey</div>
-                <div class="testimonial-location">M28, Manchester</div>
+    <!-- TESTIMONIALS with background -->
+    <section class="testimonials-section" id="reviews">
+        <div class="testimonials-inner">
+            <div class="section-header">
+                <h2>What Our <span>Customers</span> Say</h2>
+                <p>Don't just take our word for it. Here's what homeowners across Manchester think.</p>
             </div>
-            <div class="testimonial">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"He was polite, professional, identified the problem quickly and fixed it on the spot. Highly recommend AH Electrical to anyone."</p>
-                <div class="testimonial-author">Tristan</div>
-                <div class="testimonial-location">M4, Manchester</div>
-            </div>
-            <div class="testimonial">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p>"Fantastic service from start to finish. The team rewired our entire house with minimal disruption. Couldn't be happier with the result."</p>
-                <div class="testimonial-author">Sarah</div>
-                <div class="testimonial-location">Stockport</div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Adam promptly turned up, checked all electrics thoroughly. Very professional and reasonably priced. Would use him every time."</p>
+                    <div class="testimonial-author">Tracey</div>
+                    <div class="testimonial-location">M28, Manchester</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"He was polite, professional, identified the problem quickly and fixed it on the spot. Highly recommend AH Electrical to anyone."</p>
+                    <div class="testimonial-author">Tristan</div>
+                    <div class="testimonial-location">M4, Manchester</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Fantastic service from start to finish. The team rewired our entire house with minimal disruption. Couldn't be happier with the result."</p>
+                    <div class="testimonial-author">Sarah</div>
+                    <div class="testimonial-location">Stockport</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- AREAS -->
     <section class="section" id="areas">
         <div class="section-header">
             <h2>Areas We <span>Cover</span></h2>
             <p>Serving homes and businesses across Greater Manchester and beyond.</p>
         </div>
         <div class="areas-list">
-            <div class="area-tag">Manchester</div>
-            <div class="area-tag">Stockport</div>
-            <div class="area-tag">Cheshire</div>
-            <div class="area-tag">Oldham</div>
-            <div class="area-tag">Rochdale</div>
-            <div class="area-tag">Salford</div>
-            <div class="area-tag">Wilmslow</div>
-            <div class="area-tag">Bramhall</div>
-            <div class="area-tag">Bolton</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Manchester</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Stockport</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Cheshire</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Oldham</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Rochdale</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Salford</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Wilmslow</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Bramhall</div>
+            <div class="area-tag"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:6px;"></i> Bolton</div>
         </div>
     </section>
 
+    <!-- CTA with background image -->
     <section class="cta">
-        <h2>Need an <span>Electrician</span>?</h2>
-        <p>Get a free, no-obligation quote today. We respond to all enquiries within the hour.</p>
-        <a href="tel:01617067671" class="cta-phone"><i class="fas fa-phone"></i> 0161 706 7671</a>
-        <br><br>
-        <a href="mailto:ahelectricians@gmail.com" class="btn-primary"><i class="fas fa-envelope"></i> Email Us</a>
+        <div class="cta-bg">
+            <img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Electrical work background">
+        </div>
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2>Need an <span>Electrician</span>?</h2>
+            <p>Get a free, no-obligation quote today. We respond to all enquiries within the hour.</p>
+            <a href="tel:01617067671" class="cta-phone"><i class="fas fa-phone"></i> 0161 706 7671</a>
+            <br><br>
+            <a href="mailto:ahelectricians@gmail.com" class="btn-primary"><i class="fas fa-envelope"></i> Email Us</a>
+        </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-inner">
             <div>
                 <div class="footer-brand"><i class="fas fa-bolt"></i> AH Electrical Services</div>
                 <p class="footer-desc">Your trusted local electrician in Manchester. NAPIT registered, fully insured, with over 20 years of experience. All work guaranteed for 10 years.</p>
-                <p style="font-size:14px; color: var(--text-dim);"><i class="fas fa-phone" style="color:var(--accent);margin-right:8px;"></i> 0161 706 7671</p>
-                <p style="font-size:14px; color: var(--text-dim); margin-top:6px;"><i class="fas fa-envelope" style="color:var(--accent);margin-right:8px;"></i> ahelectricians@gmail.com</p>
+                <p style="font-size:14px; color: var(--text-dim); margin-bottom: 8px;"><i class="fas fa-phone" style="color:var(--accent);margin-right:8px;"></i> 0161 706 7671</p>
+                <p style="font-size:14px; color: var(--text-dim); margin-bottom: 8px;"><i class="fas fa-envelope" style="color:var(--accent);margin-right:8px;"></i> ahelectricians@gmail.com</p>
+                <p style="font-size:14px; color: var(--text-dim);"><i class="fas fa-location-dot" style="color:var(--accent);margin-right:8px;"></i> Manchester, Northwest England</p>
             </div>
             <div>
                 <h4>Services</h4>
                 <ul class="footer-links">
                     <li><a href="#services">Rewiring</a></li>
-                    <li><a href="#services">Lighting</a></li>
+                    <li><a href="#services">Lighting Design</a></li>
                     <li><a href="#services">Smart Home</a></li>
                     <li><a href="#services">EV Chargers</a></li>
                     <li><a href="#services">Inspections</a></li>
@@ -312,9 +395,10 @@
             <div>
                 <h4>Company</h4>
                 <ul class="footer-links">
-                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#reviews">Customer Reviews</a></li>
                     <li><a href="#areas">Service Areas</a></li>
                     <li><a href="tel:01617067671">Emergency Callout</a></li>
+                    <li><a href="#why">Why Choose Us</a></li>
                 </ul>
             </div>
         </div>
