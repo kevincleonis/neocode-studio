@@ -173,8 +173,10 @@
             .pricing-price .amount { font-size: 42px; }
         }
         @media (max-width: 900px) {
-            .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
-            .pricing-card.featured { order: -1; }
+            .pricing-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 16px; padding: 0 24px 20px; max-width: 100%; }
+            .pricing-grid::-webkit-scrollbar { height: 4px; }
+            .pricing-grid::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 2px; }
+            .pricing-card { min-width: 300px; flex-shrink: 0; scroll-snap-align: center; }
         }
         @media (max-width: 768px) {
             .navbar { padding: 0 24px; }
