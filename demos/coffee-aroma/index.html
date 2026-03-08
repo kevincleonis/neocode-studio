@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee Aroma | Award-Winning Independent Coffee Shop - Lincoln</title>
+<meta name="description" content="Lincoln's award-winning independent coffee shop since 2005. Featured in The Guardian & Sunday Times. Championship-standard barista coffee & freshly baked goods.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--espresso:#1a0e0a;--latte:#f5ece3;--caramel:#c8956c;--cream:#faf7f3;--mocha:#3d2b1f;--gold:#d4a859;--text:#2c1810}
+body{font-family:'Georgia','Times New Roman',serif;color:var(--text);background:var(--cream)}
+a{text-decoration:none;color:inherit}
+.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(26,14,10,0.95);backdrop-filter:blur(12px);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:70px}
+nav .logo{font-size:1.5rem;color:var(--latte);letter-spacing:3px;text-transform:uppercase}
+nav .logo span{color:var(--caramel)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:var(--latte);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;transition:color .3s;font-family:-apple-system,sans-serif}
+nav ul a:hover{color:var(--caramel)}
+nav .cta-btn{background:var(--caramel);color:#fff;padding:.6rem 1.5rem;border-radius:25px;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;font-family:-apple-system,sans-serif;transition:all .3s}
+nav .cta-btn:hover{background:var(--gold);transform:translateY(-1px)}
+
+/* Hero */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--espresso) 0%,var(--mocha) 50%,#5a3d2e 100%);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:2rem}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1280') center/cover;opacity:.2}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--cream))}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-badge{display:inline-block;border:1px solid var(--caramel);color:var(--caramel);padding:.4rem 1.5rem;border-radius:25px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:2rem;font-family:-apple-system,sans-serif}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--latte);line-height:1.1;margin-bottom:1.5rem;font-weight:400}
+.hero h1 em{font-style:italic;color:var(--caramel)}
+.hero p{color:rgba(245,236,227,0.8);font-size:1.15rem;line-height:1.8;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--caramel);color:#fff;padding:.9rem 2.5rem;border-radius:30px;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;font-family:-apple-system,sans-serif}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,149,108,0.3)}
+.btn-outline{border:1px solid rgba(245,236,227,0.4);color:var(--latte);padding:.9rem 2.5rem;border-radius:30px;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;font-family:-apple-system,sans-serif}
+.btn-outline:hover{border-color:var(--caramel);color:var(--caramel)}
+
+/* Awards */
+.awards{padding:3rem 2rem;background:var(--cream);text-align:center}
+.awards-row{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;align-items:center;opacity:.6}
+.awards-row span{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;font-family:-apple-system,sans-serif;color:var(--mocha)}
+
+/* About */
+.about{padding:6rem 2rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative;height:500px;border-radius:16px;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img .overlay{position:absolute;bottom:2rem;left:2rem;background:var(--espresso);color:var(--latte);padding:1.2rem 2rem;border-radius:12px}
+.about-img .overlay .big{font-size:2.5rem;font-weight:700;color:var(--caramel);font-family:-apple-system,sans-serif}
+.about-img .overlay .small{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;font-family:-apple-system,sans-serif}
+.section-tag{color:var(--caramel);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;font-family:-apple-system,sans-serif;margin-bottom:1rem}
+.about h2{font-size:2.5rem;line-height:1.2;margin-bottom:1.5rem;font-weight:400}
+.about p{color:#5a4a3a;line-height:1.9;margin-bottom:1.5rem;font-size:1.05rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.about-feature{display:flex;align-items:center;gap:.8rem;padding:.8rem 0}
+.about-feature .icon{width:40px;height:40px;background:var(--latte);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.about-feature span{font-size:.85rem;color:var(--mocha);font-family:-apple-system,sans-serif}
+
+/* Menu */
+.menu{padding:6rem 2rem;background:var(--espresso);color:var(--latte)}
+.menu-inner{max-width:1200px;margin:0 auto;text-align:center}
+.menu .section-tag{color:var(--gold)}
+.menu h2{font-size:2.5rem;margin-bottom:1rem;font-weight:400}
+.menu>p,.menu-inner>p{color:rgba(245,236,227,0.6);margin-bottom:3rem}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.menu-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2.5rem 2rem;text-align:left;transition:all .3s}
+.menu-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-4px)}
+.menu-card .emoji{font-size:2.5rem;margin-bottom:1.2rem}
+.menu-card h3{font-size:1.3rem;margin-bottom:.8rem;color:var(--caramel);font-weight:400}
+.menu-card p{color:rgba(245,236,227,0.6);font-size:.9rem;line-height:1.7;font-family:-apple-system,sans-serif}
+.menu-card .price{display:inline-block;margin-top:1rem;color:var(--gold);font-size:1rem;font-family:-apple-system,sans-serif}
+
+/* Testimonials */
+.testimonials{padding:6rem 2rem;background:var(--cream)}
+.test-inner{max-width:1100px;margin:0 auto;text-align:center}
+.test-inner .section-tag{margin-bottom:1rem}
+.test-inner h2{font-size:2.5rem;margin-bottom:3rem;font-weight:400}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.test-card{background:#fff;border-radius:16px;padding:2.5rem;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+.test-stars{color:var(--gold);font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
+.test-card blockquote{font-size:1rem;line-height:1.8;color:#5a4a3a;margin-bottom:1.5rem;font-style:italic}
+.test-author{display:flex;align-items:center;gap:.8rem}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--caramel);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:-apple-system,sans-serif;font-size:.85rem}
+.test-name{font-size:.85rem;font-weight:700;font-family:-apple-system,sans-serif}
+.test-via{font-size:.7rem;color:#999;font-family:-apple-system,sans-serif}
+
+/* Visit */
+.visit{padding:6rem 2rem;background:var(--latte)}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.visit h2{font-size:2.5rem;margin-bottom:1.5rem;font-weight:400}
+.visit p{color:#5a4a3a;line-height:1.8;font-size:1.05rem;margin-bottom:2rem}
+.hours-table{width:100%}
+.hours-row{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid rgba(0,0,0,0.06);font-family:-apple-system,sans-serif;font-size:.9rem}
+.hours-row:last-child{border-bottom:none}
+.visit-right{background:var(--espresso);border-radius:20px;padding:3rem;color:var(--latte);text-align:center}
+.visit-right h3{font-size:1.5rem;margin-bottom:1rem;font-weight:400}
+.visit-right p{color:rgba(245,236,227,0.7);font-size:.9rem;line-height:1.7;margin-bottom:2rem;font-family:-apple-system,sans-serif}
+.visit-right .location{font-size:1rem;color:var(--caramel);margin-bottom:.5rem;font-family:-apple-system,sans-serif}
+
+/* Footer */
+footer{background:var(--espresso);color:var(--latte);padding:3rem 2rem;text-align:center}
+footer .logo{font-size:1.3rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem}
+footer .logo span{color:var(--caramel)}
+footer p{color:rgba(245,236,227,0.4);font-size:.8rem;font-family:-apple-system,sans-serif}
+footer .social{display:flex;gap:1.5rem;justify-content:center;margin:1.5rem 0}
+footer .social a{color:rgba(245,236,227,0.5);font-size:.8rem;letter-spacing:1px;text-transform:uppercase;font-family:-apple-system,sans-serif;transition:color .3s}
+footer .social a:hover{color:var(--caramel)}
+
+/* Mobile */
+@media(max-width:768px){
+nav ul{display:none}
+.about{grid-template-columns:1fr;gap:2rem}
+.about-img{height:300px}
+.menu-grid,.test-grid{grid-template-columns:1fr}
+.visit-inner{grid-template-columns:1fr}
+.about-features{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Coffee <span>Aroma</span></div>
+  <ul>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit Us</a></li>
+  </ul>
+  <a href="#visit" class="cta-btn">Find Us</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Est. 2005 &bull; Lincoln</div>
+    <h1>Where Every Cup Tells a <em>Story</em></h1>
+    <p>Award-winning independent coffee shop serving championship-standard barista coffee and freshly baked goods. Featured in The Guardian & Sunday Times.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">Explore Our Menu</a>
+      <a href="#visit" class="btn-outline">Visit Us Today</a>
+    </div>
+  </div>
+</section>
+
+<div class="awards">
+  <div class="awards-row">
+    <span>&#9733; The Guardian Top 10 UK Coffee Shops</span>
+    <span>&#9733; Sunday Times Featured</span>
+    <span>&#9733; Championship-Standard Barista</span>
+    <span>&#9733; Since 2005</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="about-img">
+    <img src="https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Coffee being prepared" loading="lazy">
+    <div class="overlay">
+      <div class="big">20+</div>
+      <div class="small">Years Serving Lincoln</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-tag">Our Story</div>
+    <h2>Crafted With Passion, Served With Love</h2>
+    <p>Since 2005, Coffee Aroma has been Lincoln's home for exceptional coffee. We offer the widest selection of single-origin coffees in the region, with our espresso blend changing seasonally as different producing regions come into harvest.</p>
+    <p>Our baristas are trained to championship standards, ensuring every cup is crafted with precision and care. Everything is baked fresh daily - first batch at 8am, second around 10:30am.</p>
+    <div class="about-features">
+      <div class="about-feature"><div class="icon">&#9749;</div><span>Single Origin Coffee</span></div>
+      <div class="about-feature"><div class="icon">&#127838;</div><span>Fresh Baked Daily</span></div>
+      <div class="about-feature"><div class="icon">&#127942;</div><span>Award-Winning</span></div>
+      <div class="about-feature"><div class="icon">&#127793;</div><span>Seasonal Blends</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-inner">
+    <div class="section-tag">Our Menu</div>
+    <h2>Crafted Beverages & Fresh Bakes</h2>
+    <p>From single-origin pour-overs to our signature seasonal blends, every drink is crafted to perfection.</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="emoji">&#9749;</div>
+        <h3>Signature Espresso</h3>
+        <p>Our house blend changes with the seasons. Rich, complex, and always freshly roasted from the finest beans worldwide.</p>
+        <span class="price">From &pound;2.80</span>
+      </div>
+      <div class="menu-card">
+        <div class="emoji">&#127861;</div>
+        <h3>Pour-Over &amp; Filter</h3>
+        <p>Hand-brewed single origin coffees. Ask our baristas about today's selection and discover new flavour profiles.</p>
+        <span class="price">From &pound;3.50</span>
+      </div>
+      <div class="menu-card">
+        <div class="emoji">&#127856;</div>
+        <h3>Speciality Lattes</h3>
+        <p>From classic to creative - vanilla, caramel, hazelnut, and seasonal specials crafted with silky steamed milk.</p>
+        <span class="price">From &pound;3.20</span>
+      </div>
+      <div class="menu-card">
+        <div class="emoji">&#127838;</div>
+        <h3>Fresh Pastries</h3>
+        <p>Baked fresh every morning at 8am. Croissants, pain au chocolat, scones, and rotating daily specials.</p>
+        <span class="price">From &pound;2.50</span>
+      </div>
+      <div class="menu-card">
+        <div class="emoji">&#129380;</div>
+        <h3>Brunch &amp; Light Bites</h3>
+        <p>Sourdough toasts, avocado, eggs your way, and hearty sandwiches made with locally sourced ingredients.</p>
+        <span class="price">From &pound;5.50</span>
+      </div>
+      <div class="menu-card">
+        <div class="emoji">&#127863;</div>
+        <h3>Afternoon Treats</h3>
+        <p>Homemade cakes, brownies, and sweet treats. Perfect paired with one of our signature coffees.</p>
+        <span class="price">From &pound;3.00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="test-inner">
+    <div class="section-tag">What People Say</div>
+    <h2>Loved by Lincoln</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Hands down the best coffee in Lincoln. The atmosphere is wonderful and the staff genuinely care about what they serve. A real gem."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">S</div>
+          <div><div class="test-name">Sarah M.</div><div class="test-via">Google Review</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"I visit every week without fail. The seasonal blends keep things exciting and the pastries are incredible. Worth every penny."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">J</div>
+          <div><div class="test-name">James T.</div><div class="test-via">TripAdvisor</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Featured in The Guardian for good reason. This place has soul. The single origin selection is unmatched anywhere in the county."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">R</div>
+          <div><div class="test-name">Rachel D.</div><div class="test-via">Google Review</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div>
+      <div class="section-tag">Visit Us</div>
+      <h2>We're in the Heart of Lincoln</h2>
+      <p>Pop in for your morning coffee, a leisurely brunch, or an afternoon escape. We'd love to see you.</p>
+      <div class="hours-table">
+        <div class="hours-row"><span>Monday - Friday</span><span>7:30am - 5:00pm</span></div>
+        <div class="hours-row"><span>Saturday</span><span>8:00am - 5:30pm</span></div>
+        <div class="hours-row"><span>Sunday</span><span>9:00am - 4:00pm</span></div>
+      </div>
+    </div>
+    <div class="visit-right">
+      <h3>Come Say Hello</h3>
+      <p>We're conveniently located in the heart of Lincoln city centre, just a short walk from the cathedral quarter.</p>
+      <div class="location">&#128205; Lincoln City Centre</div>
+      <div class="location" style="font-size:.85rem;color:rgba(245,236,227,0.6)">Lincolnshire, UK</div>
+      <br>
+      <a href="#" class="btn-primary">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Coffee <span>Aroma</span></div>
+  <div class="social">
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">TripAdvisor</a>
+  </div>
+  <p>&copy; 2025 Coffee Aroma Lincoln. All rights reserved.</p>
+  <p style="margin-top:.8rem;color:rgba(245,236,227,0.25);font-size:.7rem">Demo redesign by NeoCode Studio</p>
+</footer>
+
+</body>
+</html>

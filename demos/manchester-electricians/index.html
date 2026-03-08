@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manchester Electricians | NICEIC Approved Electrical Services</title>
+<meta name="description" content="NICEIC approved electricians in Manchester. Domestic, commercial & emergency electrical services. Free quotes, fully insured, guaranteed work.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--electric:#3b82f6;--spark:#f59e0b;--white:#ffffff;--light:#f0f4f8;--gray:#64748b;--dark:#1e293b}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--dark);background:var(--white)}
+a{text-decoration:none;color:inherit}
+
+/* Top Bar */
+.topbar{background:var(--navy);color:rgba(255,255,255,0.8);font-size:.8rem;padding:.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.topbar a{color:var(--spark)}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,0.06);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:70px}
+nav .logo{font-size:1.4rem;font-weight:800;color:var(--navy)}
+nav .logo span{color:var(--electric)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{font-size:.85rem;font-weight:500;color:var(--gray);transition:color .3s}
+nav ul a:hover{color:var(--electric)}
+.nav-cta{background:var(--electric);color:#fff;padding:.7rem 1.8rem;border-radius:8px;font-size:.85rem;font-weight:600;transition:all .3s}
+.nav-cta:hover{background:#2563eb;transform:translateY(-1px)}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#162544 60%,#1a3a6a 100%);min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:6rem 2rem}
+.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,0.15) 0%,transparent 70%);border-radius:50%}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);color:var(--electric);padding:.5rem 1.2rem;border-radius:25px;font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
+.hero-badge .dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--white);line-height:1.15;margin-bottom:1.5rem;font-weight:800}
+.hero h1 span{color:var(--electric)}
+.hero p{color:rgba(255,255,255,0.65);font-size:1.1rem;line-height:1.8;margin-bottom:2rem}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2rem}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--spark)}
+.stat-label{font-size:.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:.3rem}
+.hero-right{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px)}
+.hero-right h3{color:var(--white);font-size:1.3rem;margin-bottom:.5rem}
+.hero-right p{color:rgba(255,255,255,0.5);font-size:.85rem;margin-bottom:1.5rem}
+.form-group{margin-bottom:1rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.8rem 1rem;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;border-radius:10px;font-size:.9rem;font-family:inherit}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.3)}
+.form-group select{color:rgba(255,255,255,0.3)}
+.form-group select option{background:var(--navy);color:#fff}
+.form-btn{width:100%;padding:1rem;background:var(--electric);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s}
+.form-btn:hover{background:#2563eb}
+
+/* Trust */
+.trust{padding:3rem 2rem;background:var(--light);border-bottom:1px solid #e2e8f0}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;align-items:center}
+.trust-item{display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--gray);font-weight:500}
+.trust-icon{width:36px;height:36px;background:var(--white);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+
+/* Services */
+.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.section-label{color:var(--electric);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem}
+.services h2{font-size:2.5rem;font-weight:800;margin-bottom:.8rem}
+.services>p{color:var(--gray);font-size:1.05rem;margin-bottom:3rem;max-width:600px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--white);border:1px solid #e2e8f0;border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.service-card:hover{border-color:var(--electric);transform:translateY(-4px);box-shadow:0 12px 40px rgba(59,130,246,0.1)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--electric);transform:scaleX(0);transition:transform .3s}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:50px;height:50px;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(59,130,246,0.05));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem}
+.service-card h3{font-size:1.1rem;margin-bottom:.6rem;font-weight:700}
+.service-card p{color:var(--gray);font-size:.88rem;line-height:1.7}
+
+/* Why Us */
+.why{padding:6rem 2rem;background:var(--navy);color:var(--white)}
+.why-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.why .section-label{color:var(--spark)}
+.why h2{font-size:2.5rem;font-weight:800;margin-bottom:1.5rem}
+.why>p,.why-inner>div>p{color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:2rem}
+.why-list{list-style:none}
+.why-list li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.why-list li:last-child{border-bottom:none}
+.check{width:28px;height:28px;background:rgba(34,197,94,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#22c55e;font-size:.9rem;flex-shrink:0}
+.why-list .title{font-weight:700;font-size:.95rem}
+.why-list .desc{color:rgba(255,255,255,0.5);font-size:.8rem;margin-top:.2rem}
+.why-right{position:relative}
+.why-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.5rem;margin-bottom:1.5rem}
+.why-card .big{font-size:3rem;font-weight:800;color:var(--electric)}
+.why-card .label{color:rgba(255,255,255,0.5);font-size:.85rem;margin-top:.3rem}
+
+/* Reviews */
+.reviews{padding:6rem 2rem;background:var(--light)}
+.reviews-inner{max-width:1100px;margin:0 auto;text-align:center}
+.reviews h2{font-size:2.5rem;font-weight:800;margin-bottom:3rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:left}
+.review-card{background:var(--white);border-radius:16px;padding:2rem;box-shadow:0 4px 15px rgba(0,0,0,0.04)}
+.review-stars{color:var(--spark);margin-bottom:.8rem}
+.review-card blockquote{font-size:.95rem;line-height:1.7;color:#475569;margin-bottom:1.2rem}
+.review-name{font-weight:700;font-size:.85rem}
+.review-loc{font-size:.75rem;color:var(--gray)}
+
+/* CTA */
+.cta{padding:5rem 2rem;background:linear-gradient(135deg,var(--electric),#2563eb);text-align:center;color:#fff}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.cta p{opacity:.85;font-size:1.1rem;margin-bottom:2rem}
+.cta-btn-white{display:inline-block;background:#fff;color:var(--electric);padding:1rem 2.5rem;border-radius:10px;font-weight:700;font-size:1rem;transition:all .3s}
+.cta-btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.cta-phone{display:block;margin-top:1.5rem;font-size:1.8rem;font-weight:800}
+
+/* Footer */
+footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:3rem 2rem;text-align:center;font-size:.8rem}
+footer .logo{color:#fff;font-size:1.2rem;font-weight:800;margin-bottom:1rem}
+footer .logo span{color:var(--electric)}
+
+/* Mobile */
+@media(max-width:768px){
+.topbar{flex-direction:column;gap:.3rem;text-align:center}
+nav ul{display:none}
+.hero-grid{grid-template-columns:1fr}
+.hero-stats{gap:1.5rem}
+.services-grid{grid-template-columns:1fr}
+.why-inner{grid-template-columns:1fr}
+.reviews-grid{grid-template-columns:1fr}
+.trust-inner{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>&#9889; NICEIC Approved &bull; Fully Insured &bull; Free Quotes</span>
+  <span>Call Now: <a href="tel:01onal">0161 XXX XXXX</a> &bull; 24/7 Emergency</span>
+</div>
+
+<nav>
+  <div class="logo">Manchester<span>Elec</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Available Today</div>
+      <h1>Manchester's Trusted <span>NICEIC Electricians</span></h1>
+      <p>Professional, fully insured electrical services for homes and businesses across Greater Manchester. No call-out charge, guaranteed work, and competitive pricing.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat"><div class="stat-num">2,500+</div><div class="stat-label">Jobs Completed</div></div>
+        <div class="stat"><div class="stat-num">5&#9733;</div><div class="stat-label">Google Rating</div></div>
+      </div>
+    </div>
+    <div class="hero-right" id="contact">
+      <h3>Get a Free Quote</h3>
+      <p>Fill in the form below and we'll get back to you within 1 hour.</p>
+      <div class="form-group"><input type="text" placeholder="Your Name"></div>
+      <div class="form-group"><input type="tel" placeholder="Phone Number"></div>
+      <div class="form-group"><input type="email" placeholder="Email Address"></div>
+      <div class="form-group">
+        <select><option>Select Service Required</option><option>Rewiring</option><option>Fuse Board Upgrade</option><option>Electrical Testing</option><option>New Installation</option><option>Emergency Repair</option><option>Other</option></select>
+      </div>
+      <div class="form-group"><textarea rows="3" placeholder="Describe your electrical issue..."></textarea></div>
+      <button class="form-btn">Request Free Quote &#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-icon">&#9889;</div>NICEIC Approved</div>
+    <div class="trust-item"><div class="trust-icon">&#128737;</div>Fully Insured</div>
+    <div class="trust-item"><div class="trust-icon">&#9733;</div>5-Year Guarantee</div>
+    <div class="trust-item"><div class="trust-icon">&#128176;</div>No Call-Out Fee</div>
+    <div class="trust-item"><div class="trust-icon">&#127760;</div>Part P Certified</div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Expert Electrical Solutions</h2>
+  <p>From simple repairs to complete rewires, we handle every electrical project with precision and care.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#127969;</div>
+      <h3>Full House Rewiring</h3>
+      <p>Complete domestic rewiring to bring your home up to current safety standards. Minimal disruption, maximum safety.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9889;</div>
+      <h3>Fuse Board Upgrades</h3>
+      <p>Modern consumer unit installations with RCD protection. Essential for older properties. Certified and guaranteed.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128269;</div>
+      <h3>Electrical Testing &amp; Inspection</h3>
+      <p>EICR reports, PAT testing, and periodic inspections for landlords, homeowners, and commercial properties.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128161;</div>
+      <h3>Lighting Design &amp; Install</h3>
+      <p>Interior and exterior lighting, LED upgrades, smart lighting controls, and architectural lighting design.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128268;</div>
+      <h3>Socket &amp; Switch Install</h3>
+      <p>Additional sockets, USB charging points, outdoor sockets, dimmer switches, and smart home integration.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128680;</div>
+      <h3>Emergency Call-Out</h3>
+      <p>24/7 emergency electrical service across Manchester. Power outages, tripping circuits, and urgent fault finding.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-label">Why Choose Us</div>
+      <h2>The Safe Choice for Manchester</h2>
+      <p>We're not just electricians - we're your neighbours. Trusted by thousands of homes and businesses across Greater Manchester.</p>
+      <ul class="why-list">
+        <li>
+          <div class="check">&#10003;</div>
+          <div><div class="title">NICEIC Approved Contractor</div><div class="desc">Government-recognised certification for highest standards</div></div>
+        </li>
+        <li>
+          <div class="check">&#10003;</div>
+          <div><div class="title">5-Year Workmanship Guarantee</div><div class="desc">Full guarantee on all electrical work we carry out</div></div>
+        </li>
+        <li>
+          <div class="check">&#10003;</div>
+          <div><div class="title">Transparent Pricing</div><div class="desc">Written quotes upfront, no hidden costs or surprise charges</div></div>
+        </li>
+        <li>
+          <div class="check">&#10003;</div>
+          <div><div class="title">Part P Compliant</div><div class="desc">All work certified to Building Regulations standards</div></div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-right">
+      <div class="why-card"><div class="big">100%</div><div class="label">Customer Satisfaction Rate</div></div>
+      <div class="why-card"><div class="big">&lt;1hr</div><div class="label">Average Emergency Response</div></div>
+      <div class="why-card"><div class="big">&pound;0</div><div class="label">Call-Out Charges</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="section-label">Reviews</div>
+    <h2>What Our Customers Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Brilliant service from start to finish. Rewired our entire house with minimal mess and disruption. Very professional team."</blockquote>
+        <div class="review-name">David R.</div>
+        <div class="review-loc">Didsbury, Manchester</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Called for an emergency at 10pm and they were here within 40 minutes. Fixed the issue quickly and at a very fair price. Lifesaver."</blockquote>
+        <div class="review-name">Karen L.</div>
+        <div class="review-loc">Stockport</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Used them for our EICR as landlords. Thorough, professional, and the report was delivered next day. Highly recommended."</blockquote>
+        <div class="review-name">Mark &amp; Julie W.</div>
+        <div class="review-loc">Sale, Manchester</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Need an Electrician Today?</h2>
+  <p>Free quotes, no call-out charge, and same-day service available across Greater Manchester.</p>
+  <a href="#contact" class="cta-btn-white">Get Your Free Quote</a>
+  <span class="cta-phone">&#128222; 0161 XXX XXXX</span>
+</section>
+
+<footer>
+  <div class="logo">Manchester<span>Elec</span></div>
+  <p>NICEIC Approved Contractor &bull; Part P Certified &bull; Fully Insured</p>
+  <p style="margin-top:.5rem">Covering all Greater Manchester: Didsbury, Stockport, Sale, Altrincham, Stretford, Salford, Bolton, Bury & more</p>
+  <p style="margin-top:1.5rem">&copy; 2025 Manchester Electricians. All rights reserved.</p>
+  <p style="margin-top:.5rem;opacity:.4;font-size:.7rem">Demo redesign by NeoCode Studio</p>
+</footer>
+
+</body>
+</html>
