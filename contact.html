@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Neocode Studio | Get Your Free Audit</title>
+    <meta name="description" content="Get a free website audit from Neocode Studio. Fill in the form and we'll show you what's costing you customers.">
+    <link rel="canonical" href="https://neocodestudio.co.uk/contact.html">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --accent-glow-strong: rgba(0, 255, 136, 0.3);
+            --accent-glow-intense: rgba(0, 255, 136, 0.5);
+            --border: rgba(255,255,255,0.06);
+            --border-accent: rgba(0, 255, 136, 0.2);
+            --border-accent-strong: rgba(0, 255, 136, 0.4);
+            --font-main: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+        /* NAV */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 80px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .navbar.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 1px 0 var(--border-accent); }
+        .navbar-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .navbar-logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .navbar-logo .neo { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-logo .cursor { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; box-shadow: 0 0 8px var(--accent); }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .navbar-menu { display: flex; align-items: center; gap: 8px; }
+        .navbar-link { padding: 12px 24px; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; border-radius: 100px; transition: all 0.3s ease; letter-spacing: 0.05em; text-transform: uppercase; }
+        .navbar-link:hover, .navbar-link.active { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta { margin-left: 24px; padding: 14px 32px; font-size: 12px; font-weight: 600; color: var(--bg-primary); background: var(--accent); text-decoration: none; border-radius: 100px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 0 20px var(--accent-glow); }
+        .navbar-cta:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(0,255,136,0.25); }
+        .navbar-toggle { display: none; flex-direction: column; gap: 6px; padding: 10px; background: none; border: none; cursor: pointer; }
+        .navbar-toggle span { width: 28px; height: 1px; background: var(--text-primary); transition: all 0.3s ease; }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glowPulseIntense { 0%, 100% { box-shadow: 0 0 60px var(--accent-glow-strong); } 50% { box-shadow: 0 0 120px var(--accent-glow-intense); } }
+        @keyframes neonFlicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow-strong); opacity: 1; } 20%, 24%, 55% { opacity: 0.8; text-shadow: none; } }
+        .animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.15s; } .delay-2 { animation-delay: 0.3s; }
+
+        /* PAGE */
+        .page-header { min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: 140px 80px 40px; position: relative; overflow: hidden; text-align: center; }
+        .page-header::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 60%); border-radius: 50%; top: -80px; left: 50%; transform: translateX(-50%); pointer-events: none; animation: glowPulseIntense 6s ease-in-out infinite; }
+        .page-header-grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+        .page-header-content { position: relative; z-index: 2; }
+        .page-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--accent); margin-bottom: 24px; text-shadow: 0 0 10px var(--accent-glow); }
+        .page-eyebrow::before { content: '>'; color: var(--accent); animation: blink 1.5s step-end infinite; }
+        .page-header h1 { font-size: 52px; font-weight: 700; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.03em; }
+        .page-header h1 .accent { color: var(--accent); text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow); animation: neonFlicker 4s ease-in-out infinite; }
+        .page-header p { font-size: 17px; color: #c0c0c0; max-width: 500px; margin: 0 auto; line-height: 1.8; }
+
+        .glow-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), var(--accent), var(--accent-dim), transparent); opacity: 0.4; box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+
+        /* FORM SECTION */
+        .form-section { padding: 80px 80px 100px; position: relative; z-index: 1; }
+        .form-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+
+        /* LEFT - INFO */
+        .contact-info { padding-top: 20px; }
+        .contact-info h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+        .contact-info h2 .accent { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .contact-info > p { font-size: 15px; color: #c0c0c0; line-height: 1.8; margin-bottom: 40px; }
+        .info-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
+        .info-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 16px; border: 1px solid var(--border-accent); flex-shrink: 0; box-shadow: 0 0 15px var(--accent-glow); }
+        .info-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .info-text p { font-size: 13px; color: #c0c0c0; }
+        .info-text a { color: var(--accent); text-decoration: none; }
+        .info-text a:hover { text-shadow: 0 0 10px var(--accent-glow); }
+        .response-badge { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; padding: 10px 20px; background: var(--accent-glow); border: 1px solid var(--border-accent); border-radius: 100px; margin-top: 12px; }
+        .response-badge i { font-size: 10px; }
+
+        /* RIGHT - FORM */
+        .contact-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 44px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+        .form-input, .form-textarea, .form-select { width: 100%; padding: 14px 18px; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-family: var(--font-main); font-size: 14px; transition: all 0.3s ease; outline: none; }
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+        .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300ff88' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-color: var(--bg-primary); }
+        .form-select option { background: var(--bg-primary); color: var(--text-primary); }
+        .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-main); cursor: pointer; border: none; }
+        .btn-primary { background: var(--accent); color: var(--bg-primary); box-shadow: 0 0 30px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 60px rgba(0,255,136,0.25); }
+        .form-submit { width: 100%; justify-content: center; margin-top: 8px; }
+
+        /* FOOTER */
+        .footer { padding: 60px 80px 40px; border-top: 1px solid var(--border-accent); position: relative; z-index: 1; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); box-shadow: 0 0 20px var(--accent-glow); }
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
+        .footer-logo .neo { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+        .footer-text { font-size: 13px; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 24px; align-items: center; }
+        .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.3s; }
+        .footer-link:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .navbar { padding: 0 40px; } .page-header { padding: 120px 40px 40px; } .form-section { padding: 60px 40px 80px; }
+            .form-wrapper { gap: 48px; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 24px; }
+            .navbar-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+            .navbar-menu.open { display: flex; } .navbar-toggle { display: flex; }
+            .navbar-cta { margin-left: 0; margin-top: 16px; text-align: center; }
+            .page-header { padding: 110px 24px 30px; } .page-header h1 { font-size: 32px; }
+            .form-section { padding: 40px 24px 60px; }
+            .form-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form { padding: 28px; }
+            .footer { padding: 40px 24px; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo"><span class="neo">neo</span>code studio<span class="cursor"></span></a>
+        <div class="navbar-menu" id="navMenu">
+            <a href="services.html" class="navbar-link">Services</a>
+            <a href="index.html#process" class="navbar-link">Process</a>
+            <a href="index.html#work" class="navbar-link">Work</a>
+            <a href="index.html#testimonials" class="navbar-link">Clients</a>
+            <a href="contact.html" class="navbar-cta active">Get a Free Audit</a>
+        </div>
+        <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="page-header-grid"></div>
+    <div class="page-header-content">
+        <div class="page-eyebrow animate">Get in Touch</div>
+        <h1 class="animate delay-1">Let's <span class="accent">talk</span></h1>
+        <p class="animate delay-2">Tell us about your business and we'll get back to you within 24 hours with a free website audit.</p>
+    </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- FORM SECTION -->
+<section class="form-section">
+    <div class="form-wrapper">
+
+        <!-- LEFT - INFO -->
+        <div class="contact-info">
+            <h2>How can we <span class="accent">help</span>?</h2>
+            <p>Whether you need a full website redesign, a quick audit, or just want to chat about your online presence &mdash; we're here to help.</p>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div class="info-text">
+                    <h4>Email</h4>
+                    <p><a href="mailto:hello@neocodestudio.co.uk">hello@neocodestudio.co.uk</a></p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-text">
+                    <h4>Location</h4>
+                    <p>Manchester, United Kingdom</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-globe"></i></div>
+                <div class="info-text">
+                    <h4>Working With</h4>
+                    <p>Clients across UK, US &amp; Australia</p>
+                </div>
+            </div>
+
+            <div class="response-badge"><i class="fas fa-bolt"></i> Typical response: under 24 hours</div>
+        </div>
+
+        <!-- RIGHT - FORM -->
+        <form class="contact-form" action="https://formsubmit.co/so.marketing.center@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Lead - Free Website Audit">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://neocodestudio.co.uk/thank-you.html">
+            <input type="text" name="_honey" style="display:none">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="name">Your Name *</label>
+                    <input class="form-input" type="text" name="Name" id="name" placeholder="John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input class="form-input" type="email" name="Email" id="email" placeholder="john@company.com" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input class="form-input" type="tel" name="Phone" id="phone" placeholder="+44 7XXX XXX XXX">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="website">Website URL *</label>
+                    <input class="form-input" type="url" name="Website" id="website" placeholder="https://yourwebsite.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="business">Business Name &amp; Industry</label>
+                <input class="form-input" type="text" name="Business" id="business" placeholder="e.g. Smith's Plumbing, London">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="service">Service Interested In</label>
+                <select class="form-select" name="Service" id="service">
+                    <option value="Free Audit">Free Website Audit</option>
+                    <option value="Starter - £497">Starter &mdash; &pound;497</option>
+                    <option value="Professional - £1,497">Professional &mdash; &pound;1,497</option>
+                    <option value="Growth - £2,997">Growth &mdash; &pound;2,997</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-textarea" name="Message" id="message" placeholder="Tell us about your business and what you'd like to improve..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">Send Request <i class="fas fa-arrow-right"></i></button>
+        </form>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo"><span class="neo">neo</span>code studio</div>
+        <p class="footer-text">&copy; 2026 Neocode Studio. Trading name of So Marketing Center Ltd.</p>
+        <div class="footer-links">
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="index.html#work" class="footer-link">Work</a>
+            <a href="index.html#testimonials" class="footer-link">Clients</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+// Mobile menu toggle
+document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navMenu').classList.toggle('open');
+});
+</script>
+</body>
+</html>
