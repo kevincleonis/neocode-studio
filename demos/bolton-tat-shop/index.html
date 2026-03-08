@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bolton Tat Shop | Award-Winning Tattoo Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #d4a843;
+  --gold-light: #f0d78c;
+  --bg-dark: #0a0a0a;
+  --bg-card: #141414;
+  --bg-section: #0f0f0f;
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --accent-glow: rgba(212, 168, 67, 0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === NEOCODE BANNER === */
+.neocode-banner {
+  background: linear-gradient(90deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 100;
+}
+.neocode-banner a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+.neocode-banner a:hover { text-decoration: underline; }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: all 0.3s;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 3px;
+  color: #fff;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold);
+  color: #0a0a0a;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.mobile-menu { display: none; background: none; border: none; cursor: pointer; }
+.mobile-menu span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 60px 80px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
+  opacity: 0.15;
+  filter: grayscale(40%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.9) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 168, 67, 0.1);
+  border: 1px solid rgba(212, 168, 67, 0.25);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+.hero h1 .outline {
+  -webkit-text-stroke: 1.5px var(--gold);
+  color: transparent;
+}
+.hero p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--gold);
+  color: #0a0a0a;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,168,67,0.25); }
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.hero-stat h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* === SECTIONS === */
+section { padding: 100px 60px; }
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  line-height: 1.05;
+}
+.section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+/* === ABOUT === */
+.about { background: var(--bg-section); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+.about-image {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+.about-image img { width: 100%; height: 500px; object-fit: cover; display: block; filter: grayscale(20%); }
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(212,168,67,0.15);
+  border-radius: 16px;
+  pointer-events: none;
+}
+.about-text h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1px; margin-bottom: 20px; }
+.about-text p { color: var(--text-muted); line-height: 1.9; margin-bottom: 16px; font-size: 15px; }
+.about-features { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.about-feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.about-feature .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(212,168,67,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* === SERVICES === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 40px 32px;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.service-card:hover { transform: translateY(-4px); border-color: rgba(212,168,67,0.15); }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+.service-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+/* === GALLERY === */
+.gallery { background: var(--bg-section); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 60px;
+}
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; filter: grayscale(30%); }
+.gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+/* === ARTISTS === */
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+.artist-card {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 16px;
+  transition: all 0.4s;
+}
+.artist-card:hover { border-color: rgba(212,168,67,0.15); transform: translateY(-4px); }
+.artist-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 2px solid rgba(212,168,67,0.3);
+}
+.artist-avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
+.artist-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; margin-bottom: 6px; }
+.artist-card p { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+/* === CONTACT === */
+.contact { background: var(--bg-section); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 32px; }
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.contact-item .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(212,168,67,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.contact-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.contact-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.contact-form input, .contact-form textarea {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.contact-form input:focus, .contact-form textarea:focus { border-color: rgba(212,168,67,0.4); }
+.contact-form textarea { resize: vertical; min-height: 120px; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #555; }
+
+/* === FOOTER === */
+footer {
+  padding: 40px 60px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+footer p { font-size: 13px; color: var(--text-muted); }
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* === MOBILE === */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .artists-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  section { padding: 60px 24px; }
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .mobile-menu { display: block; }
+  .hero { padding: 100px 24px 60px; min-height: auto; padding-top: 120px; }
+  .hero h1 { font-size: 48px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-stat h3 { font-size: 32px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-image img { height: 300px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .artists-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; padding: 30px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NEOCODE BANNER -->
+<div class="neocode-banner">
+  Redesigned by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; Web Design & Conversion Optimisation
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BOLTON <span>TAT</span> SHOP</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Now</a>
+  <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">&#9733; Award-Winning Studio</div>
+    <h1>INK THAT<br>TELLS <span class="outline">YOUR</span><br>STORY</h1>
+    <p>Bolton's premier tattoo studio with over 11 years of excellence. Three award-winning artists covering every style, from fine-line to full colour. Walk-ins welcome, consultations always free.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#gallery" class="btn-secondary">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <h3>11+</h3>
+        <p>Years in Bolton</p>
+      </div>
+      <div class="hero-stat">
+        <h3>4</h3>
+        <p>Expert Artists</p>
+      </div>
+      <div class="hero-stat">
+        <h3>3</h3>
+        <p>Awards Won</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">Who We Are</div>
+  <div class="section-title">More Than Just<br>A Tattoo Studio</div>
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="https://images.pexels.com/photos/4123833/pexels-photo-4123833.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo studio interior">
+    </div>
+    <div class="about-text">
+      <h3>A Comfortable & Friendly Atmosphere</h3>
+      <p>For over 11 years, The Bolton Tat Shop has been a trusted name on Newport Street. Our studio is designed to make your tattooing experience as pleasant as possible &mdash; whether it's your first piece or your fiftieth.</p>
+      <p>We pride ourselves on creating a welcoming environment where every client feels at ease. From the moment you walk through our doors, you'll experience the passion and professionalism that has earned us our reputation in Bolton and beyond.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="icon">&#10003;</div>
+          <span>Free custom design consultations</span>
+        </div>
+        <div class="about-feature">
+          <div class="icon">&#10003;</div>
+          <span>Walk-ins welcome (booking recommended)</span>
+        </div>
+        <div class="about-feature">
+          <div class="icon">&#10003;</div>
+          <span>Award-winning artists, every style covered</span>
+        </div>
+        <div class="about-feature">
+          <div class="icon">&#10003;</div>
+          <span>Strict hygiene & sterilisation standards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <div class="section-title">Our Services</div>
+  <div class="section-desc">From intricate fine-line work to bold traditional pieces, our artists specialise in bringing your vision to life.</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#9998;</div>
+      <h3>Custom Tattoo Design</h3>
+      <p>Every piece starts with your story. Our artists work closely with you to create a completely bespoke design that's uniquely yours. Consultations are always free.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128142;</div>
+      <h3>Professional Piercing</h3>
+      <p>Expert piercing services for men and women. Our trained piercers ensure a safe, comfortable experience with premium-quality jewellery and aftercare guidance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127912;</div>
+      <h3>All Styles Covered</h3>
+      <p>Traditional, neo-traditional, realism, fine-line, geometric, Japanese, blackwork &mdash; whatever your vision, we have an artist who specialises in it.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128172;</div>
+      <h3>Free Consultations</h3>
+      <p>Not sure what you want? Come in for a free chat. We'll help you explore ideas, placement, sizing, and style &mdash; no pressure, no commitment.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9889;</div>
+      <h3>Cover-Ups & Reworks</h3>
+      <p>Got a tattoo you're not happy with? Our artists are experienced in transforming old ink into something you'll love again.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128274;</div>
+      <h3>Walk-In Sessions</h3>
+      <p>Feeling spontaneous? We welcome walk-ins for smaller pieces and flash designs. Pop in Tuesday to Saturday and see what's available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-label">Our Work</div>
+  <div class="section-title">Portfolio</div>
+  <div class="section-desc">A glimpse at the artistry that walks out our doors every day.</div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1304473/pexels-photo-1304473.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo work">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo work">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/2183131/pexels-photo-2183131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo work">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo studio">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1461519/pexels-photo-1461519.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo art">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/4123830/pexels-photo-4123830.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo process">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/4125635/pexels-photo-4125635.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo detail">
+    </div>
+  </div>
+</section>
+
+<!-- ARTISTS -->
+<section id="artists">
+  <div class="section-label">The Team</div>
+  <div class="section-title">Meet Our Artists</div>
+  <div class="section-desc">Four talented artists, each with their own unique style and speciality.</div>
+  <div class="artists-grid">
+    <div class="artist-card">
+      <div class="artist-avatar">
+        <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Gary Parkinson">
+      </div>
+      <h3>Gary Parkinson</h3>
+      <p>Tattoo Artist</p>
+    </div>
+    <div class="artist-card">
+      <div class="artist-avatar">
+        <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Matt McHugh">
+      </div>
+      <h3>Matt McHugh</h3>
+      <p>Tattoo Artist</p>
+    </div>
+    <div class="artist-card">
+      <div class="artist-avatar">
+        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Alex Kelly">
+      </div>
+      <h3>Alex Kelly</h3>
+      <p>Tattoo Artist</p>
+    </div>
+    <div class="artist-card">
+      <div class="artist-avatar">
+        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Phill Delaney">
+      </div>
+      <h3>Phill Delaney</h3>
+      <p>Tattoo Artist</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <div class="section-title">Book Your Session</div>
+  <div class="section-desc">Ready to get inked? Drop us a message or pop into the studio. Free consultations, always.</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="icon">&#128205;</div>
+        <div>
+          <h4>Visit Us</h4>
+          <p>72 &ndash; 74 Newport Street<br>Bolton, BL1 1PB</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">&#128222;</div>
+        <div>
+          <h4>Call Us</h4>
+          <p>01204 388 377</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">&#9993;</div>
+        <div>
+          <h4>Email Us</h4>
+          <p>info@theboltontatshop.co.uk</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">&#128336;</div>
+        <div>
+          <h4>Opening Hours</h4>
+          <p>Tuesday &ndash; Saturday: 10:00 &ndash; 17:00<br>Sunday &amp; Monday: Closed</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a demo &mdash; form not connected.');">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="tel" placeholder="Your Phone">
+      <textarea placeholder="Tell us about your tattoo idea..."></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;text-align:center;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 The Bolton Tat Shop. All rights reserved.</p>
+  <p>Original website: <a href="https://theboltontatshop.wordpress.com/" target="_blank">theboltontatshop.wordpress.com</a></p>
+  <p>Demo by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a></p>
+</footer>
+
+<!-- POPUP -->
+<div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
+    <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
+    <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
+    <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
+    <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
+    <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
+  </div>
+</div>
+<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+
+</body>
+</html>
