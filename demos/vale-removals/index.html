@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vale Removals | Man & Van Cardiff, Vale of Glamorgan & South Wales</title>
+<meta name="description" content="Professional house removals, office moves and man & van services across Cardiff, the Vale of Glamorgan and South Wales. Fully insured, no hidden fees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400;500;600;700&family=Catamaran:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--teal:#006d77;
+--teal-dark:#005a63;
+--teal-light:#008891;
+--yellow:#eec643;
+--yellow-light:#f5d56a;
+--yellow-dark:#d4af2e;
+--yellow-glow:rgba(238,198,67,0.15);
+--offwhite:#f9f7f3;
+--cream:#f0ede6;
+--white:#ffffff;
+--text:#1a1a2e;
+--text-light:#4a4a68;
+--slate:#475569;
+--slate-light:#94a3b8;
+--radius:14px;
+--radius-sm:10px;
+--shadow:0 4px 24px rgba(0,109,119,0.08);
+--shadow-lg:0 12px 48px rgba(0,109,119,0.12);
+--shadow-yellow:0 8px 32px rgba(238,198,67,0.3);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Catamaran',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}.reveal.d5{transition-delay:.5s}.reveal.d6{transition-delay:.6s}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity .6s ease,transform .6s ease}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* DEMO BAR */
+.demo-bar{background:var(--teal-dark);color:rgba(255,255,255,.85);text-align:center;padding:10px 20px;font-size:12px;letter-spacing:.3px;position:relative;z-index:1001}
+.demo-bar a{color:var(--yellow);text-decoration:none;font-weight:700}
+.demo-bar a:hover{text-decoration:underline}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:999;padding:16px 0;transition:all .4s ease}
+.navbar.scrolled{background:rgba(0,109,119,.97);backdrop-filter:blur(20px);padding:10px 0;box-shadow:0 2px 30px rgba(0,0,0,.15)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:44px;height:44px;background:var(--yellow);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--teal-dark);font-weight:800;font-family:'Yanone Kaffeesatz',sans-serif;transition:transform .3s ease}
+.nav-logo:hover .nav-logo-icon{transform:rotate(-5deg) scale(1.05)}
+.nav-logo-text{font-family:'Yanone Kaffeesatz',sans-serif;font-size:20px;font-weight:700;color:var(--white);line-height:1.1}
+.nav-logo-text span{display:block;font-size:11px;font-weight:400;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-family:'Catamaran',sans-serif}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;font-weight:600;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--yellow);transition:width .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-links a:focus-visible{outline:2px solid var(--yellow);outline-offset:4px;border-radius:4px}
+.nav-cta{background:var(--yellow);color:var(--teal-dark);padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700;font-size:14px;transition:all .3s;border:none;cursor:pointer;font-family:'Catamaran',sans-serif}
+.nav-cta:hover{background:var(--yellow-light);transform:translateY(-1px);box-shadow:var(--shadow-yellow)}
+.nav-cta:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1001}
+.hamburger:focus-visible{outline:2px solid var(--yellow);outline-offset:4px;border-radius:4px}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--white);border-radius:3px;transition:all .35s cubic-bezier(.68,-.55,.27,1.55)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;top:0;left:0;width:100%;height:100dvh;background:rgba(0,109,119,.98);backdrop-filter:blur(20px);z-index:998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-link{color:var(--white);text-decoration:none;font-family:'Yanone Kaffeesatz',sans-serif;font-size:32px;font-weight:600;transition:color .3s}
+.mobile-link:hover{color:var(--yellow)}
+.mobile-link:focus-visible{outline:2px solid var(--yellow);outline-offset:4px;border-radius:4px}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(165deg,var(--teal-dark) 0%,var(--teal) 40%,var(--teal-light) 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;opacity:.15}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--offwhite),transparent)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:120px 24px 80px;animation:slideUp .8s ease}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(238,198,67,.15);border:1px solid rgba(238,198,67,.3);padding:8px 20px;border-radius:50px;color:var(--yellow);font-size:13px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:24px;backdrop-filter:blur(10px)}
+.hero h1{font-family:'Yanone Kaffeesatz',sans-serif;font-size:clamp(48px,8vw,84px);font-weight:700;color:var(--white);line-height:1.05;margin-bottom:20px;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--yellow)}
+.hero-sub{font-size:clamp(17px,2.5vw,20px);color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 36px;line-height:1.65;font-weight:400}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--yellow);color:var(--teal-dark);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:16px;transition:all .3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:'Catamaran',sans-serif}
+.btn-primary:hover{background:var(--yellow-light);transform:translateY(-2px);box-shadow:var(--shadow-yellow)}
+.btn-primary:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+.btn-outline{background:transparent;color:var(--white);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:600;font-size:16px;transition:all .3s;border:2px solid rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:8px;font-family:'Catamaran',sans-serif}
+.btn-outline:hover{border-color:var(--yellow);color:var(--yellow);transform:translateY(-2px)}
+.btn-outline:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.hero-trust{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:48px}
+.trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);font-size:14px;font-weight:500}
+.trust-item svg{flex-shrink:0}
+
+/* SECTION DEFAULTS */
+.section{padding:100px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--yellow-glow);color:var(--teal);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:6px 16px;border-radius:50px;margin-bottom:16px}
+.section-title{font-family:'Yanone Kaffeesatz',sans-serif;font-size:clamp(36px,5vw,52px);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:16px}
+.section-desc{font-size:17px;color:var(--text-light);max-width:600px;line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-desc{margin-left:auto;margin-right:auto}
+
+/* ABOUT */
+.about{background:var(--offwhite)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.about-img{border-radius:20px;overflow:hidden;position:relative;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.about-img:hover img{transform:scale(1.03)}
+.about-img-badge{position:absolute;bottom:20px;left:20px;background:var(--teal);color:var(--white);padding:12px 20px;border-radius:12px;font-family:'Yanone Kaffeesatz',sans-serif;font-size:20px;font-weight:600}
+.about-text h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:28px;font-weight:600;color:var(--teal);margin-bottom:16px}
+.about-text p{font-size:16px;color:var(--text-light);line-height:1.75;margin-bottom:16px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.stat-box{background:var(--white);padding:20px;border-radius:var(--radius-sm);text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'Yanone Kaffeesatz',sans-serif;font-size:36px;font-weight:700;color:var(--teal)}
+.stat-label{font-size:13px;color:var(--slate);font-weight:500;margin-top:2px}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.service-card{background:var(--white);border-radius:var(--radius);padding:36px 28px;transition:all .35s ease;border:1px solid rgba(0,109,119,0.06);position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(0,109,119,0.12)}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--yellow));transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--teal),var(--teal-light));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:26px;color:var(--white)}
+.service-card h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:24px;font-weight:600;color:var(--text);margin-bottom:10px}
+.service-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+
+/* SERVICES BG */
+.services-section{background:var(--offwhite)}
+
+/* HOW IT WORKS */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;position:relative}
+.how-grid::before{content:'';position:absolute;top:50px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:linear-gradient(90deg,var(--teal),var(--yellow),var(--teal));opacity:.3}
+.how-card{text-align:center;position:relative;z-index:1}
+.how-num{width:64px;height:64px;background:var(--teal);color:var(--white);font-family:'Yanone Kaffeesatz',sans-serif;font-size:28px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 4px 20px rgba(0,109,119,0.25);border:4px solid var(--offwhite)}
+.how-card h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:24px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.how-card p{font-size:15px;color:var(--text-light);line-height:1.65;max-width:320px;margin:0 auto}
+
+/* PRICING */
+.pricing-section{background:var(--offwhite)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.price-card{background:var(--white);border-radius:var(--radius);padding:36px 28px;text-align:center;border:2px solid transparent;transition:all .35s;position:relative;overflow:hidden}
+.price-card.featured{border-color:var(--yellow);box-shadow:var(--shadow-lg)}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:16px;right:-30px;background:var(--yellow);color:var(--teal-dark);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:4px 40px;transform:rotate(45deg)}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.price-card h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:26px;font-weight:600;color:var(--text);margin-bottom:8px}
+.price-desc{font-size:14px;color:var(--text-light);margin-bottom:20px}
+.price-list{list-style:none;text-align:left;margin-bottom:24px}
+.price-list li{padding:10px 0;border-bottom:1px solid var(--cream);font-size:14px;color:var(--text-light);display:flex;align-items:center;gap:10px}
+.price-list li svg{flex-shrink:0;color:var(--teal)}
+.price-amount{font-family:'Yanone Kaffeesatz',sans-serif;font-size:42px;font-weight:700;color:var(--teal);margin-bottom:4px}
+.price-amount span{font-size:16px;font-weight:400;color:var(--slate)}
+.price-note{font-size:12px;color:var(--slate-light);margin-bottom:20px}
+.price-cta{display:inline-block;background:var(--teal);color:var(--white);padding:12px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:14px;transition:all .3s;font-family:'Catamaran',sans-serif}
+.price-cta:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,109,119,0.3)}
+.price-cta:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.price-card.featured .price-cta{background:var(--yellow);color:var(--teal-dark)}
+.price-card.featured .price-cta:hover{background:var(--yellow-light)}
+
+/* COVERAGE */
+.coverage-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.coverage-map{background:linear-gradient(135deg,var(--teal),var(--teal-light));border-radius:20px;padding:48px;text-align:center;color:var(--white);position:relative;overflow:hidden}
+.coverage-map::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/1078850/pexels-photo-1078850.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;opacity:.08}
+.coverage-map svg{position:relative;z-index:1}
+.coverage-map h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:32px;font-weight:700;margin-top:20px;position:relative;z-index:1}
+.coverage-map p{font-size:15px;opacity:.85;margin-top:8px;position:relative;z-index:1}
+.coverage-areas{display:flex;flex-direction:column;gap:16px}
+.area-item{background:var(--white);padding:20px 24px;border-radius:var(--radius-sm);display:flex;align-items:center;gap:16px;box-shadow:var(--shadow);transition:all .3s;border:1px solid transparent}
+.area-item:hover{border-color:var(--teal);transform:translateX(6px)}
+.area-icon{width:48px;height:48px;background:var(--yellow-glow);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.area-item h4{font-family:'Yanone Kaffeesatz',sans-serif;font-size:20px;font-weight:600;color:var(--text)}
+.area-item p{font-size:13px;color:var(--text-light);line-height:1.5;margin-top:2px}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--offwhite)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.test-card{background:var(--white);border-radius:var(--radius);padding:32px 28px;position:relative;transition:all .3s;border:1px solid rgba(0,109,119,0.05)}
+.test-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.test-stars{display:flex;gap:3px;margin-bottom:16px}
+.test-stars svg{color:var(--yellow)}
+.test-card blockquote{font-size:15px;color:var(--text-light);line-height:1.7;margin-bottom:20px;font-style:normal}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:44px;height:44px;background:linear-gradient(135deg,var(--teal),var(--teal-light));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Yanone Kaffeesatz',sans-serif;font-size:18px;font-weight:700}
+.test-author-info h4{font-size:15px;font-weight:700;color:var(--text)}
+.test-author-info p{font-size:12px;color:var(--slate-light)}
+
+/* CONTACT / QUOTE */
+.contact-section{background:linear-gradient(165deg,var(--teal-dark),var(--teal));position:relative;overflow:hidden}
+.contact-section::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/4246091/pexels-photo-4246091.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;opacity:.06}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px;position:relative;z-index:1}
+.contact-info h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:28px;font-weight:600;color:var(--white);margin-bottom:16px}
+.contact-info p{font-size:16px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:28px}
+.contact-detail{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.contact-detail-icon{width:44px;height:44px;background:rgba(238,198,67,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-detail-icon svg{color:var(--yellow)}
+.contact-detail-text{color:rgba(255,255,255,.85);font-size:15px}
+.contact-detail-text strong{display:block;color:var(--white);font-size:14px;margin-bottom:2px}
+.contact-form{background:var(--white);border-radius:20px;padding:40px;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.contact-form h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:28px;font-weight:600;color:var(--text);margin-bottom:6px}
+.contact-form .form-sub{font-size:14px;color:var(--text-light);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid var(--cream);border-radius:var(--radius-sm);font-size:15px;font-family:'Catamaran',sans-serif;color:var(--text);transition:border-color .3s;background:var(--offwhite)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--teal);background:var(--white)}
+.form-group input:focus-visible,.form-group select:focus-visible,.form-group textarea:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{width:100%;background:var(--teal);color:var(--white);padding:16px;border:none;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;font-family:'Catamarin',sans-serif;margin-top:8px}
+.form-submit:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,109,119,0.3)}
+.form-submit:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+/* FOOTER */
+.footer{background:#04333a;padding:48px 24px 24px;color:rgba(255,255,255,.6)}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:24px;color:var(--white);font-weight:700;margin-bottom:10px}
+.footer-brand p{font-size:14px;line-height:1.7;max-width:340px}
+.footer-links h4{font-family:'Yanone Kaffeesatz',sans-serif;font-size:18px;color:var(--white);font-weight:600;margin-bottom:14px}
+.footer-links a{display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;padding:4px 0;transition:color .3s}
+.footer-links a:hover{color:var(--yellow)}
+.footer-links a:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;border-radius:2px}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px}
+.footer-bottom a{color:var(--yellow);text-decoration:none}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* NEOCODE POPUP */
+.neocode-popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:9998;animation:fadeIn .3s}
+.neocode-popup-overlay.show{display:flex;align-items:center;justify-content:center}
+.neocode-popup{background:var(--white);border-radius:20px;padding:48px 40px;max-width:480px;width:90%;position:relative;animation:popIn .4s cubic-bezier(.22,1,.36,1);text-align:center;box-shadow:0 25px 80px rgba(0,0,0,.25)}
+.neocode-popup-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--slate);transition:color .3s;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.neocode-popup-close:hover{color:var(--text);background:var(--cream)}
+.neocode-popup-close:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.neocode-popup h3{font-family:'Yanone Kaffeesatz',sans-serif;font-size:28px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.neocode-popup p{font-size:15px;color:var(--text-light);line-height:1.65;margin-bottom:24px}
+.neocode-popup .popup-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:all .3s;font-family:'Catamaran',sans-serif}
+.neocode-popup .popup-cta:hover{background:var(--yellow);color:var(--teal-dark);transform:translateY(-2px)}
+.neocode-popup .popup-cta:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+.nav-links,.nav-cta{display:none}
+.hamburger{display:flex}
+.about-grid,.contact-grid,.coverage-wrap,.footer-inner{grid-template-columns:1fr}
+.services-grid,.pricing-grid,.test-grid,.how-grid{grid-template-columns:1fr 1fr}
+.how-grid::before{display:none}
+.hero h1{font-size:clamp(42px,8vw,64px)}
+.section{padding:72px 24px}
+.contact-form{padding:28px}
+}
+@media(max-width:640px){
+.services-grid,.pricing-grid,.test-grid,.how-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.hero-btns{flex-direction:column;align-items:center}
+.hero-trust{flex-direction:column;align-items:center;gap:16px}
+.about-stats{grid-template-columns:repeat(3,1fr)}
+.stat-num{font-size:28px}
+.stat-label{font-size:11px}
+.footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="demo-bar">
+&#9889; This is a free demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; see what your site could look like.
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="#hero" class="nav-logo">
+<div class="nav-logo-icon">VR</div>
+<div class="nav-logo-text">Vale Removals<span>Cardiff &amp; South Wales</span></div>
+</a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#coverage">Areas</a></li>
+<li><a href="#reviews">Reviews</a></li>
+</ul>
+<a href="#contact" class="nav-cta">Get a Quote</a>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+<a href="#about" class="mobile-link">About</a>
+<a href="#services" class="mobile-link">Services</a>
+<a href="#how" class="mobile-link">How It Works</a>
+<a href="#pricing" class="mobile-link">Pricing</a>
+<a href="#coverage" class="mobile-link">Areas</a>
+<a href="#reviews" class="mobile-link">Reviews</a>
+<a href="#contact" class="mobile-link">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-content">
+<div class="hero-badge">&#128666; Trusted in South Wales</div>
+<h1>Your Move, <em>Sorted.</em></h1>
+<p class="hero-sub">We're a friendly, fully insured removals team based in the Vale of Glamorgan. From a single sofa to a full house move, we've got you covered across Cardiff and South Wales.</p>
+<div class="hero-btns">
+<a href="#contact" class="btn-primary">
+Get Your Free Quote
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+</a>
+<a href="#services" class="btn-outline">
+Our Services
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>
+</a>
+</div>
+<div class="hero-trust">
+<div class="trust-item">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+Fully Insured
+</div>
+<div class="trust-item">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+No Hidden Fees
+</div>
+<div class="trust-item">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+Friendly Local Team
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+<div class="section-inner">
+<div class="about-grid">
+<div class="about-img reveal-left">
+<img src="https://images.pexels.com/photos/4246196/pexels-photo-4246196.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Vale Removals team loading a van" loading="lazy">
+<div class="about-img-badge">&#127470;&#127463; Proudly Welsh</div>
+</div>
+<div class="about-text reveal-right">
+<div class="section-tag">About Us</div>
+<h2 class="section-title">We Don't Just Move Boxes. We Move Lives.</h2>
+<p>We know that moving can be stressful, so we keep things simple and honest. No jargon, no surprise charges, and definitely no cutting corners. Just a solid team who'll treat your stuff like it's our own.</p>
+<p>Based in the Vale of Glamorgan, we've been helping families and businesses across South Wales for years. Whether you're moving across the street or across the region, we'll make sure it goes smoothly.</p>
+<div class="about-stats">
+<div class="stat-box reveal d1">
+<div class="stat-num">1,200+</div>
+<div class="stat-label">Moves Completed</div>
+</div>
+<div class="stat-box reveal d2">
+<div class="stat-num">4.9/5</div>
+<div class="stat-label">Google Rating</div>
+</div>
+<div class="stat-box reveal d3">
+<div class="stat-num">100%</div>
+<div class="stat-label">Insured</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services-section" id="services">
+<div class="section-inner text-center">
+<div class="section-tag reveal">What We Do</div>
+<h2 class="section-title reveal">Services That Cover Every Type of Move</h2>
+<p class="section-desc reveal">From a single item to a full property clearance, we've got the right service for you. Everything's handled with care and professionalism.</p>
+<div class="services-grid">
+<div class="service-card reveal d1">
+<div class="service-icon">&#127968;</div>
+<h3>House Removals</h3>
+<p>Full house moves across South Wales. We'll pack, load, transport and unload, so you don't have to lift a finger. Flats, terraces, detached homes, we've done them all.</p>
+</div>
+<div class="service-card reveal d2">
+<div class="service-icon">&#127970;</div>
+<h3>Office Moves</h3>
+<p>Minimal downtime, maximum efficiency. We'll get your team relocated quickly so you can get back to business. Evenings and weekends available too.</p>
+</div>
+<div class="service-card reveal d3">
+<div class="service-icon">&#128666;</div>
+<h3>Man &amp; Van</h3>
+<p>Need to move a few items? Our man and van service is perfect for smaller loads, furniture deliveries, or eBay pickups. Flexible and affordable.</p>
+</div>
+<div class="service-card reveal d4">
+<div class="service-icon">&#128230;</div>
+<h3>Packing Services</h3>
+<p>Don't fancy packing? We'll do it for you. Professional packing materials and careful handling for fragile items. Your belongings are safe with us.</p>
+</div>
+<div class="service-card reveal d5">
+<div class="service-icon">&#128451;</div>
+<h3>Storage Solutions</h3>
+<p>Secure, dry storage facilities for short or long-term needs. Ideal if there's a gap between moving out and moving in, or you just need extra space.</p>
+</div>
+<div class="service-card reveal d6">
+<div class="service-icon">&#128465;</div>
+<h3>House Clearance</h3>
+<p>Full or partial property clearances handled responsibly. We'll sort, remove and dispose of items properly, including recycling where we can.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+<div class="section-inner text-center">
+<div class="section-tag reveal">How It Works</div>
+<h2 class="section-title reveal">Three Steps to a Stress-Free Move</h2>
+<p class="section-desc reveal">We've streamlined the process so you can focus on the exciting part of moving, not the logistics.</p>
+<div class="how-grid">
+<div class="how-card reveal d1">
+<div class="how-num">1</div>
+<h3>Get Your Free Quote</h3>
+<p>Tell us what you need. Fill in the form, give us a ring, or drop us an email. We'll come back to you with an honest, no-obligation quote.</p>
+</div>
+<div class="how-card reveal d2">
+<div class="how-num">2</div>
+<h3>We Plan Your Move</h3>
+<p>Once you're happy, we'll agree a date and go through the details. You'll know exactly who's coming, when, and how the day will run.</p>
+</div>
+<div class="how-card reveal d3">
+<div class="how-num">3</div>
+<h3>Sit Back &amp; Relax</h3>
+<p>Our crew turns up, gets it done, and makes sure everything's where you want it. You won't have to worry about a thing.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing-section" id="pricing">
+<div class="section-inner text-center">
+<div class="section-tag reveal">Pricing Guide</div>
+<h2 class="section-title reveal">Transparent Pricing, No Surprises</h2>
+<p class="section-desc reveal">Every move is different, so these are starting prices. We'll give you an exact quote once we know what you need.</p>
+<div class="pricing-grid">
+<div class="price-card reveal d1">
+<h3>Man &amp; Van</h3>
+<p class="price-desc">Perfect for smaller moves, single items, or furniture deliveries.</p>
+<ul class="price-list">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 man + van</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Loading &amp; unloading</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Blankets &amp; straps included</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Flexible scheduling</li>
+</ul>
+<div class="price-amount">&pound;35 <span>/hr</span></div>
+<p class="price-note">Minimum 2 hours</p>
+<a href="#contact" class="price-cta">Get a Quote</a>
+</div>
+<div class="price-card featured reveal d2">
+<h3>House Removal</h3>
+<p class="price-desc">Our most popular service. Full house moves handled from start to finish.</p>
+<ul class="price-list">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>2-3 man team</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Large removal vehicle</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Furniture wrapping</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Fully insured</li>
+</ul>
+<div class="price-amount">&pound;299 <span>from</span></div>
+<p class="price-note">Based on 2-bed property, local move</p>
+<a href="#contact" class="price-cta">Get a Quote</a>
+</div>
+<div class="price-card reveal d3">
+<h3>Office Move</h3>
+<p class="price-desc">Business relocations with minimal disruption. Evenings and weekends available.</p>
+<ul class="price-list">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dedicated project manager</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>IT equipment handling</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Out-of-hours available</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full commercial insurance</li>
+</ul>
+<div class="price-amount">&pound;499 <span>from</span></div>
+<p class="price-note">Tailored quote for your office size</p>
+<a href="#contact" class="price-cta">Get a Quote</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COVERAGE -->
+<section class="section" id="coverage">
+<div class="section-inner">
+<div class="text-center" style="margin-bottom:8px">
+<div class="section-tag reveal">Coverage Areas</div>
+<h2 class="section-title reveal">Serving Cardiff, the Vale &amp; Beyond</h2>
+<p class="section-desc reveal">We're based in the Vale of Glamorgan but cover the whole of South Wales. Here's where we work most often.</p>
+</div>
+<div class="coverage-wrap">
+<div class="coverage-map reveal-left">
+<svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".9"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<h3>South Wales</h3>
+<p>Covering 30+ miles from our base in the Vale of Glamorgan</p>
+</div>
+<div class="coverage-areas">
+<div class="area-item reveal d1">
+<div class="area-icon">&#127987;</div>
+<div>
+<h4>Cardiff</h4>
+<p>City centre, Canton, Cathays, Roath, Splott, Grangetown, Heath, Llandaff, Pontcanna, and all CF postcodes.</p>
+</div>
+</div>
+<div class="area-item reveal d2">
+<div class="area-icon">&#127966;</div>
+<div>
+<h4>Vale of Glamorgan</h4>
+<p>Barry, Penarth, Cowbridge, Llantwit Major, Dinas Powys, Sully, Rhoose, and surrounding villages.</p>
+</div>
+</div>
+<div class="area-item reveal d3">
+<div class="area-icon">&#9968;</div>
+<div>
+<h4>Wider South Wales</h4>
+<p>Bridgend, Swansea, Newport, Caerphilly, Pontypridd, Merthyr Tydfil, and the Valleys. Just ask!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section" id="reviews">
+<div class="section-inner text-center">
+<div class="section-tag reveal">Reviews</div>
+<h2 class="section-title reveal">What Our Customers Say</h2>
+<p class="section-desc reveal">Don't just take our word for it. Here's what recent customers have to say about their experience with us.</p>
+<div class="test-grid">
+<div class="test-card reveal d1">
+<div class="test-stars">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<blockquote>"Absolutely brilliant from start to finish. The lads were careful with everything, turned up on time, and even helped us rearrange the furniture in the new place. Can't recommend them enough."</blockquote>
+<div class="test-author">
+<div class="test-avatar">RH</div>
+<div class="test-author-info">
+<h4>Rhiannon Hughes</h4>
+<p>House move, Penarth to Cardiff</p>
+</div>
+</div>
+</div>
+<div class="test-card reveal d2">
+<div class="test-stars">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<blockquote>"Used them for our office relocation in Cardiff Bay. They worked evenings so we didn't lose any business days. Really professional and the price was very fair. We'll use them again."</blockquote>
+<div class="test-author">
+<div class="test-avatar">DM</div>
+<div class="test-author-info">
+<h4>David Morgan</h4>
+<p>Office move, Cardiff Bay</p>
+</div>
+</div>
+</div>
+<div class="test-card reveal d3">
+<div class="test-stars">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<blockquote>"I only needed a man and van for a wardrobe and some boxes. They squeezed me in last minute and the chap was so friendly. Great value compared to others I called. Would definitely use again."</blockquote>
+<div class="test-author">
+<div class="test-avatar">SE</div>
+<div class="test-author-info">
+<h4>Sarah Evans</h4>
+<p>Man &amp; van, Barry</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT / QUOTE -->
+<section class="section contact-section" id="contact">
+<div class="section-inner">
+<div class="text-center" style="position:relative;z-index:1">
+<div class="section-tag reveal" style="background:rgba(238,198,67,.15);color:var(--yellow)">Get In Touch</div>
+<h2 class="section-title reveal" style="color:var(--white)">Ready to Get Moving?</h2>
+<p class="section-desc reveal" style="color:rgba(255,255,255,.8)">Fill in the form and we'll get back to you within a few hours. Or give us a call if you'd rather chat.</p>
+</div>
+<div class="contact-grid">
+<div class="contact-info reveal-left">
+<h3>Let's Make Your Move Easy</h3>
+<p>Whether you're moving across Cardiff or across South Wales, we're here to help. No job's too big or too small for our team.</p>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</div>
+<div class="contact-detail-text">
+<strong>Email Us</strong>
+info@valeremovals.com
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</div>
+<div class="contact-detail-text">
+<strong>Call Us</strong>
+01446 123 456
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<div class="contact-detail-text">
+<strong>Working Hours</strong>
+Mon - Sat: 7am - 7pm | Sun: By arrangement
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div class="contact-detail-text">
+<strong>Based In</strong>
+Vale of Glamorgan, South Wales
+</div>
+</div>
+</div>
+<div class="contact-form reveal-right">
+<h3>Get Your Free Quote</h3>
+<p class="form-sub">We'll get back to you within a few hours.</p>
+<form action="#" method="POST" onsubmit="return false;">
+<div class="form-row">
+<div class="form-group">
+<label for="name">Your Name</label>
+<input type="text" id="name" name="name" placeholder="e.g. John Davies" required>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000" required>
+</div>
+</div>
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="e.g. john@email.com" required>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="service">Service Needed</label>
+<select id="service" name="service" required>
+<option value="">Select a service</option>
+<option>House Removal</option>
+<option>Office Move</option>
+<option>Man &amp; Van</option>
+<option>Packing Service</option>
+<option>Storage</option>
+<option>House Clearance</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-group">
+<label for="date">Preferred Date</label>
+<input type="date" id="date" name="date">
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="from">Moving From</label>
+<input type="text" id="from" name="from" placeholder="e.g. CF5 1AA">
+</div>
+<div class="form-group">
+<label for="to">Moving To</label>
+<input type="text" id="to" name="to" placeholder="e.g. CF64 3HD">
+</div>
+</div>
+<div class="form-group">
+<label for="message">Anything Else?</label>
+<textarea id="message" name="message" placeholder="Tell us about your move, any heavy items, access issues, etc."></textarea>
+</div>
+<button type="submit" class="form-submit">Send My Quote Request</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-brand">
+<h3>Vale Removals</h3>
+<p>Professional removals and man &amp; van services across Cardiff, the Vale of Glamorgan and South Wales. Fully insured, no hidden fees, and a team that genuinely cares.</p>
+</div>
+<div class="footer-links">
+<h4>Quick Links</h4>
+<a href="#about">About Us</a>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#coverage">Coverage Areas</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Get a Quote</a>
+</div>
+<div class="footer-links">
+<h4>Services</h4>
+<a href="#services">House Removals</a>
+<a href="#services">Office Moves</a>
+<a href="#services">Man &amp; Van</a>
+<a href="#services">Packing</a>
+<a href="#services">Storage</a>
+<a href="#services">Clearance</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Vale Removals. All rights reserved.</p>
+<p>Demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+</div>
+</footer>
+
+<!-- NEOCODE POPUP -->
+<div class="neocode-popup-overlay" id="neocodePopup">
+<div class="neocode-popup" role="dialog" aria-label="Website redesign offer">
+<button class="neocode-popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+<div style="font-size:36px;margin-bottom:16px">&#9889;</div>
+<h3>Like What You See?</h3>
+<p>This is a free demo redesign built by NeoCode Studio. We build high-converting websites for local businesses across the UK. No templates, no fluff, just results.</p>
+<a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">
+Let's Talk
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+</a>
+</div>
+</div>
+
+<script>
+// NAVBAR SCROLL
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+navbar.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// HAMBURGER
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+const isOpen=hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('open');
+hamburger.setAttribute('aria-expanded',isOpen);
+document.body.style.overflow=isOpen?'hidden':'';
+});
+document.querySelectorAll('.mobile-link').forEach(link=>{
+link.addEventListener('click',()=>{
+hamburger.classList.remove('active');
+mobileMenu.classList.remove('open');
+hamburger.setAttribute('aria-expanded','false');
+document.body.style.overflow='';
+});
+});
+
+// SCROLL ANIMATIONS (IntersectionObserver)
+const revealElements=document.querySelectorAll('.reveal,.reveal-scale,.reveal-left,.reveal-right');
+const revealObserver=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+revealObserver.unobserve(entry.target);
+}
+});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+revealElements.forEach(el=>revealObserver.observe(el));
+
+// NEOCODE POPUP AT 70% SCROLL
+let popupShown=false;
+window.addEventListener('scroll',()=>{
+if(popupShown)return;
+const scrollPercent=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+if(scrollPercent>=70){
+popupShown=true;
+document.getElementById('neocodePopup').classList.add('show');
+document.body.style.overflow='hidden';
+}
+});
+document.getElementById('popupClose').addEventListener('click',()=>{
+document.getElementById('neocodePopup').classList.remove('show');
+document.body.style.overflow='';
+});
+document.getElementById('neocodePopup').addEventListener('click',(e)=>{
+if(e.target===e.currentTarget){
+document.getElementById('neocodePopup').classList.remove('show');
+document.body.style.overflow='';
+}
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{
+const target=document.querySelector(a.getAttribute('href'));
+if(target){
+e.preventDefault();
+target.scrollIntoView({behavior:'smooth'});
+}
+});
+});
+</script>
+</body>
+</html>

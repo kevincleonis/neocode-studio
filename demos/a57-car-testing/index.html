@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A57 Car Testing Centre | MOT, Servicing & Repairs</title>
+    <meta name="description" content="A57 Car Testing Centre - Your trusted local garage for MOT testing, servicing, repairs and diagnostics. Professional, honest and affordable.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --graphite: #363636;
+            --graphite-light: #4a4a4a;
+            --green: #4caf50;
+            --green-hover: #43a047;
+            --green-glow: rgba(76, 175, 80, 0.15);
+            --warm-white: #fafafa;
+            --off-white: #f0f0f0;
+            --text-dark: #2a2a2a;
+            --text-body: #555555;
+            --text-light: #888888;
+            --border: #e0e0e0;
+            --shadow: 0 4px 24px rgba(54, 54, 54, 0.08);
+            --shadow-lg: 0 12px 48px rgba(54, 54, 54, 0.14);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Mulish', 'Muli', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            background: var(--warm-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Signika', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.25;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(54, 54, 54, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Signika', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--green); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--green);
+            outline: none;
+        }
+
+        .nav-links a:focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--green) !important;
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: background 0.3s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--green-hover) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger:focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile nav */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--graphite);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 24px;
+                transition: right 0.3s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.open { right: 0; }
+
+            .nav-links a { font-size: 1.1rem; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--graphite) 0%, #2a2a2a 50%, #1f1f1f 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            opacity: 0.2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(54, 54, 54, 0.92) 0%, rgba(42, 42, 42, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 120px 0 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-glow);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span { color: var(--green); }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 36px;
+            max-width: 560px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-family: 'Signika', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--green);
+            outline-offset: 3px;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 4px;
+        }
+
+        .stat p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin: 0;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section { padding: 100px 0; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--green);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== ABOUT ===== */
+        .about { background: #fff; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--green);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Signika', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .about-feature .icon {
+            width: 28px;
+            height: 28px;
+            background: var(--green-glow);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services { background: var(--warm-white); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--green);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--green-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing { background: #fff; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .pricing-card {
+            background: var(--warm-white);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: var(--graphite);
+            border-color: var(--green);
+        }
+
+        .pricing-card.featured h3,
+        .pricing-card.featured p,
+        .pricing-card.featured li {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .pricing-card.featured h3 { color: #fff; }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: #fff;
+            padding: 4px 20px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card > p {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .pricing-list {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-list li {
+            padding: 10px 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .pricing-card.featured .pricing-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .pricing-list li .check {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .pricing-amount {
+            margin-bottom: 24px;
+        }
+
+        .pricing-amount .from {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .pricing-card.featured .pricing-amount .from {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .pricing-amount .price {
+            font-family: 'Signika', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .btn-pricing {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-dark {
+            background: var(--graphite);
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background: var(--graphite-light);
+            transform: translateY(-2px);
+        }
+
+        .pricing-card.featured .btn-pricing {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .pricing-card.featured .btn-pricing:hover {
+            background: var(--green-hover);
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-us { background: var(--graphite); }
+
+        .why-us .section-label { color: var(--green); }
+        .why-us .section-label::before { background: var(--green); }
+        .why-us .section-title { color: #fff; }
+        .why-us .section-subtitle { color: rgba(255, 255, 255, 0.6); }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 32px 20px;
+        }
+
+        .why-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(76, 175, 80, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+
+        .why-card h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { background: var(--warm-white); }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 36px 28px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-stars {
+            color: #f5a623;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--green-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Signika', sans-serif;
+            font-weight: 700;
+            color: var(--green);
+            font-size: 1rem;
+        }
+
+        .testimonial-author h4 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-author span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact { background: #fff; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contact-detail-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--green-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-detail p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        .contact-detail a {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .contact-detail a:hover { text-decoration: underline; }
+
+        .contact-form {
+            background: var(--warm-white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px var(--green-glow);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--graphite);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer ul li a:hover { color: var(--green); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom a {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover { text-decoration: underline; }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--graphite);
+            color: #fff;
+            padding: 28px 32px;
+            border-radius: var(--radius);
+            box-shadow: 0 16px 60px rgba(0, 0, 0, 0.35);
+            z-index: 9999;
+            max-width: 360px;
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .neocode-popup.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s;
+        }
+
+        .neocode-popup-close:hover { color: #fff; }
+
+        .neocode-popup-close:focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .neocode-popup h4 {
+            color: #fff;
+            font-family: 'Signika', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .neocode-popup p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .neocode-popup .btn {
+            font-size: 0.9rem;
+            padding: 10px 22px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid,
+            .pricing-grid,
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 70px 0; }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid,
+            .pricing-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .hero-stats {
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+
+            .stat h3 { font-size: 1.5rem; }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .neocode-popup {
+                left: 16px;
+                right: 16px;
+                max-width: none;
+                bottom: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn { width: 100%; justify-content: center; }
+
+            .why-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#hero" class="logo">A57 <span>Car Testing</span></a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact" class="nav-cta">Get in Touch</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Trusted Local Garage</div>
+                <h1>Your Car's in <span>Safe Hands</span> with A57</h1>
+                <p>We're the honest, no-nonsense garage you've been looking for. From MOTs to full servicing, our experienced team will keep your car running smoothly without breaking the bank.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Book Your MOT</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>1000+</h3>
+                        <p>MOTs Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>4.8/5</h3>
+                        <p>Customer Rating</p>
+                    </div>
+                    <div class="stat">
+                        <h3>15+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mechanic working on a car engine at A57 Car Testing Centre">
+                    <div class="about-image-badge">Experienced Team</div>
+                </div>
+                <div class="about-text reveal">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">We're Not Just a Garage. We're Your Garage.</h2>
+                    <p>At A57 Car Testing Centre, we believe car maintenance shouldn't be stressful or overpriced. We've built our reputation on honest advice, fair prices and getting the job done right the first time.</p>
+                    <p>Whether you need a quick MOT, a full service or a tricky repair, our skilled mechanics treat every vehicle like it's their own. No hidden fees, no unnecessary upselling. Just straight-talking service you can rely on.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>MOT Approved Centre</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>All Makes &amp; Models</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Competitive Pricing</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>No Hidden Charges</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Everything Your Car Needs Under One Roof</h2>
+                <p class="section-subtitle">From routine MOTs to complex diagnostics, we've got the tools and expertise to keep you on the road.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128736;</div>
+                    <h3>MOT Testing</h3>
+                    <p>Don't let your MOT catch you off guard. We'll carry out a thorough inspection and let you know exactly what needs attention. Quick, efficient and hassle-free.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9881;</div>
+                    <h3>Full Servicing</h3>
+                    <p>Keep your car in top shape with our comprehensive servicing. We'll check everything from oil and filters to brakes and belts, so you can drive with confidence.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128295;</div>
+                    <h3>Repairs</h3>
+                    <p>Something not right with your car? Bring it in and we'll diagnose the problem, give you an honest quote and get it sorted fast. No surprises, no nonsense.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128187;</div>
+                    <h3>Diagnostics</h3>
+                    <p>Dashboard warning light on? Our advanced diagnostic equipment can pinpoint the issue quickly, saving you time and money on unnecessary guesswork.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#127811;</div>
+                    <h3>Emissions Testing</h3>
+                    <p>We'll check your vehicle's emissions to make sure you're meeting the latest standards. Essential for your MOT and better for the environment.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128269;</div>
+                    <h3>Pre-Purchase Inspection</h3>
+                    <p>Buying a used car? Let us inspect it first. We'll give you an honest, detailed report so you know exactly what you're getting before you hand over your cash.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Transparent Pricing</div>
+                <h2 class="section-title">Fair Prices, No Surprises</h2>
+                <p class="section-subtitle">We keep our pricing simple and honest. What we quote is what you'll pay.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3>MOT Test</h3>
+                    <p>Annual check to keep you legal and safe on the road.</p>
+                    <ul class="pricing-list">
+                        <li><span class="check">&#10003;</span> Full vehicle inspection</li>
+                        <li><span class="check">&#10003;</span> Emissions check</li>
+                        <li><span class="check">&#10003;</span> Safety assessment</li>
+                        <li><span class="check">&#10003;</span> Digital certificate</li>
+                    </ul>
+                    <div class="pricing-amount">
+                        <span class="from">From</span>
+                        <div class="price">&pound;35</div>
+                    </div>
+                    <a href="#contact" class="btn btn-dark btn-pricing">Book MOT</a>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Full Service</h3>
+                    <p>Complete bumper-to-bumper service for peace of mind.</p>
+                    <ul class="pricing-list">
+                        <li><span class="check">&#10003;</span> Oil &amp; filter change</li>
+                        <li><span class="check">&#10003;</span> Brake inspection</li>
+                        <li><span class="check">&#10003;</span> Fluid top-ups</li>
+                        <li><span class="check">&#10003;</span> 50+ point check</li>
+                        <li><span class="check">&#10003;</span> Free MOT with service</li>
+                    </ul>
+                    <div class="pricing-amount">
+                        <span class="from">From</span>
+                        <div class="price">&pound;149</div>
+                    </div>
+                    <a href="#contact" class="btn btn-pricing">Book Service</a>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3>Diagnostics</h3>
+                    <p>Find out exactly what's going on under the bonnet.</p>
+                    <ul class="pricing-list">
+                        <li><span class="check">&#10003;</span> Full computer scan</li>
+                        <li><span class="check">&#10003;</span> Fault code reading</li>
+                        <li><span class="check">&#10003;</span> Detailed report</li>
+                        <li><span class="check">&#10003;</span> Repair recommendation</li>
+                    </ul>
+                    <div class="pricing-amount">
+                        <span class="from">From</span>
+                        <div class="price">&pound;45</div>
+                    </div>
+                    <a href="#contact" class="btn btn-dark btn-pricing">Book Diagnostic</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Why Choose Us</div>
+                <h2 class="section-title">What Sets A57 Apart</h2>
+                <p class="section-subtitle">We don't just fix cars. We build trust. Here's why our customers keep coming back.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128170;</div>
+                    <h3>Experienced Mechanics</h3>
+                    <p>Our team's got years of hands-on experience. Whatever the make or model, we know what we're doing.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128176;</div>
+                    <h3>Honest Pricing</h3>
+                    <p>We'll never charge you for work that doesn't need doing. Our quotes are upfront and fair, every time.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#9201;</div>
+                    <h3>Quick Turnaround</h3>
+                    <p>We know you need your car. That's why we work efficiently to get you back on the road as fast as possible.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#11088;</div>
+                    <h3>5-Star Reviews</h3>
+                    <p>Our customers love us, and their reviews say it all. We're proud of the trust we've built over the years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what real customers have to say about their experience with us.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Absolutely brilliant service. They found a couple of issues during my MOT and fixed them on the spot at a really fair price. Won't go anywhere else now."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JT</div>
+                        <div>
+                            <h4>James T.</h4>
+                            <span>MOT &amp; Repairs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Honest, friendly and reasonably priced. They didn't try to upsell me on things I didn't need, which is refreshing. Highly recommend A57 to anyone."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SR</div>
+                        <div>
+                            <h4>Sarah R.</h4>
+                            <span>Full Service</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Had a warning light come on and they got me in the same day. Diagnosed the issue quickly and had it sorted by the afternoon. Top quality garage."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MD</div>
+                        <div>
+                            <h4>Mark D.</h4>
+                            <span>Diagnostics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Get in Touch</div>
+                <h2 class="section-title">Ready to Book? Let's Talk.</h2>
+                <p class="section-subtitle">Drop us a message or give us a call. We're always happy to help.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Contact Details</h3>
+                    <p>Whether you've got a quick question or want to book in, don't hesitate to get in touch. We'll get back to you as soon as we can.</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128231;</div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:nickbrennan57@gmail.com">nickbrennan57@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128205;</div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>A57 Car Testing Centre</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128337;</div>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Mon - Fri: 8:00am - 5:30pm<br>Sat: 8:00am - 12:30pm<br>Sun: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07700 000000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="mot">MOT Test</option>
+                                <option value="service">Full Service</option>
+                                <option value="repair">Repairs</option>
+                                <option value="diagnostics">Diagnostics</option>
+                                <option value="emissions">Emissions Testing</option>
+                                <option value="inspection">Pre-Purchase Inspection</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your vehicle and what you need..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-pricing">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">A57 <span>Car Testing</span></a>
+                    <p>Your trusted local garage for MOT testing, servicing, repairs and more. Honest work at honest prices.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">MOT Testing</a></li>
+                        <li><a href="#services">Full Servicing</a></li>
+                        <li><a href="#services">Repairs</a></li>
+                        <li><a href="#services">Diagnostics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li>Mon - Fri: 8am - 5:30pm</li>
+                        <li>Sat: 8am - 12:30pm</li>
+                        <li>Sun: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 A57 Car Testing Centre. All rights reserved.</p>
+                <p>Website by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+        <h4>Like What You See?</h4>
+        <p>This demo was built by NeoCode Studio. We create modern, high-converting websites for local businesses. Want one for yours?</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Let's Talk</a>
+    </div>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !expanded);
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // IntersectionObserver reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // NeoCode popup at 70% scroll
+        let popupShown = false;
+        const popup = document.getElementById('neocodePopup');
+        const popupClose = document.getElementById('popupClose');
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                popup.classList.add('show');
+                popupShown = true;
+            }
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('show');
+        });
+
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = 'Message Sent!';
+            btn.style.background = '#43a047';
+            setTimeout(() => {
+                btn.textContent = 'Send Message';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
