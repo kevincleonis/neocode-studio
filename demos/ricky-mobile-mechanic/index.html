@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricky Mobile Mechanic & Diagnostics | We Come To You</title>
+<meta name="description" content="Professional mobile mechanic and diagnostics service. We come to your home or workplace. Servicing, brakes, clutch, electrical, pre-MOT checks and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Pathway+Extreme:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --anthracite:#292b2c;
+  --anthracite-deep:#1a1b1c;
+  --anthracite-mid:#3a3c3d;
+  --lime:#84cc16;
+  --lime-dark:#65a30d;
+  --lime-glow:rgba(132,204,22,.15);
+  --light:#f3f4f6;
+  --white:#ffffff;
+  --text:#1a1a1a;
+  --text-mid:#4a4a4a;
+  --text-soft:#6b7280;
+  --text-on-dark:rgba(255,255,255,.85);
+  --border:rgba(41,43,44,.1);
+  --radius:12px;
+  --radius-lg:20px;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.12);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Pathway Extreme',sans-serif;line-height:1.15;font-weight:800}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+:focus{outline:3px solid var(--lime);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+
+/* Reveal Animations */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal-right.visible{opacity:1;transform:none}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.25s}
+.stagger-4{transition-delay:.3s}.stagger-5{transition-delay:.35s}.stagger-6{transition-delay:.4s}
+
+/* NeoCode Banner */
+.nc-banner{background:var(--anthracite-deep);color:rgba(255,255,255,.6);text-align:center;padding:10px 20px;font-size:12px;font-weight:500;letter-spacing:.03em}
+.nc-banner a{color:var(--lime);font-weight:700}
+.nc-banner a:hover{text-decoration:underline}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 28px}
+.nav-brand{font-family:'Pathway Extreme',sans-serif;font-size:1.2rem;font-weight:800;color:var(--anthracite);display:flex;align-items:center;gap:10px}
+.nav-brand .mark{width:40px;height:40px;background:var(--anthracite);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--lime);font-family:'Pathway Extreme',sans-serif;font-weight:900;font-size:1.1rem}
+.nav-links{list-style:none;display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--text-mid);transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--lime);transition:width .3s}
+.nav-links a:hover{color:var(--anthracite)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--lime);color:var(--anthracite);padding:11px 24px;border-radius:100px;font-size:.85rem;font-weight:700;transition:all .3s;display:flex;align-items:center;gap:8px}
+.nav-cta:hover{background:var(--lime-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(132,204,22,.3)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:200}
+.hamburger span{width:24px;height:2.5px;background:var(--anthracite);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Nav */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--white);flex-direction:column;padding:100px 40px 40px;gap:24px;box-shadow:var(--shadow-lg);transition:right .4s var(--ease);z-index:150}
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1.1rem}
+}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--anthracite) 0%,var(--anthracite-deep) 60%,#1f2937 100%);color:var(--white);padding:100px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-120px;top:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(132,204,22,.12) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;left:-80px;bottom:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(132,204,22,.08) 0%,transparent 70%);border-radius:50%}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--lime-glow);border:1px solid rgba(132,204,22,.3);color:var(--lime);padding:8px 18px;border-radius:100px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+.hero-badge .pulse{width:8px;height:8px;background:var(--lime);border-radius:50%;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%{box-shadow:0 0 0 0 rgba(132,204,22,.5)}70%{box-shadow:0 0 0 10px rgba(132,204,22,0)}100%{box-shadow:0 0 0 0 rgba(132,204,22,0)}}
+.hero h1{font-size:3.2rem;font-weight:900;margin-bottom:20px;line-height:1.1}
+.hero h1 .accent{color:var(--lime)}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:32px;max-width:500px;line-height:1.7}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:100px;font-weight:700;font-size:.95rem;background:var(--lime);color:var(--anthracite);transition:all .3s}
+.btn-primary:hover{background:var(--lime-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(132,204,22,.3)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:100px;font-weight:700;font-size:.95rem;border:2px solid rgba(255,255,255,.2);color:var(--white);transition:all .3s}
+.btn-outline:hover{border-color:var(--lime);color:var(--lime)}
+.hero-img{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img-badge{position:absolute;bottom:20px;left:20px;background:var(--anthracite);color:var(--white);padding:14px 22px;border-radius:var(--radius);display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem;border:1px solid rgba(132,204,22,.3)}
+.hero-img-badge svg{color:var(--lime)}
+
+/* Section */
+section{padding:90px 0}
+.section-label{display:inline-flex;align-items:center;gap:8px;background:var(--lime-glow);color:var(--lime-dark);padding:8px 18px;border-radius:100px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.section-heading{font-size:2.4rem;margin-bottom:16px;color:var(--anthracite)}
+.section-sub{font-size:1.05rem;color:var(--text-soft);max-width:600px;line-height:1.7}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header .section-sub{margin:0 auto}
+.bg-light{background:var(--light)}
+.bg-dark{background:var(--anthracite);color:var(--white)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img-badge{position:absolute;bottom:20px;left:20px;background:var(--anthracite);color:var(--white);padding:14px 22px;border-radius:var(--radius);font-weight:700;font-size:.9rem;border:1px solid rgba(132,204,22,.3);display:flex;align-items:center;gap:10px}
+.about-img-badge svg{color:var(--lime)}
+.about-text h2{margin-bottom:20px}
+.about-text p{color:var(--text-mid);margin-bottom:16px;line-height:1.8}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.value-item{display:flex;gap:12px;align-items:flex-start}
+.value-icon{width:40px;height:40px;background:var(--lime-glow);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--lime-dark)}
+.value-item .v-title{font-weight:700;font-size:.88rem;color:var(--text)}
+.value-item .v-desc{font-size:.8rem;color:var(--text-soft)}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(132,204,22,.3)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:52px;height:52px;background:var(--lime-glow);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--lime-dark);transition:all .3s}
+.service-card:hover .service-icon{background:var(--lime);color:var(--anthracite)}
+.service-card h3{font-family:'Pathway Extreme',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:10px;color:var(--text)}
+.service-card p{font-size:.88rem;color:var(--text-soft);line-height:1.7}
+
+/* How It Works */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:40px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:2px;background:linear-gradient(90deg,var(--lime),var(--lime-dark));opacity:.3}
+.step-card{text-align:center;position:relative}
+.step-num{width:80px;height:80px;border-radius:50%;background:var(--anthracite);color:var(--lime);font-family:'Pathway Extreme',sans-serif;font-size:1.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:3px solid var(--lime);position:relative;z-index:2}
+.step-card h3{font-size:1.2rem;margin-bottom:10px;color:var(--anthracite)}
+.step-card p{font-size:.9rem;color:var(--text-soft);line-height:1.7;max-width:280px;margin:0 auto}
+
+/* Why Choose Us */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:32px;transition:all .4s var(--ease);display:flex;gap:20px;align-items:flex-start}
+.why-card:hover{border-color:rgba(132,204,22,.4);background:rgba(132,204,22,.05);transform:translateY(-2px)}
+.why-icon{width:48px;height:48px;background:var(--lime-glow);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--lime)}
+.why-card h3{font-family:'Pathway Extreme',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--white)}
+.why-card p{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.7}
+
+/* Coverage */
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:40px}
+.area-tag{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;font-weight:600;font-size:.88rem;text-align:center;transition:all .3s}
+.area-tag:hover{border-color:var(--lime);background:var(--lime-glow);color:var(--lime-dark)}
+
+/* Testimonials */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:all .3s}
+.review-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.review-stars{color:var(--lime);margin-bottom:16px;font-size:1.1rem;letter-spacing:2px}
+.review-text{font-size:.92rem;color:var(--text-mid);line-height:1.8;margin-bottom:20px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:42px;height:42px;background:var(--lime-glow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--lime-dark);font-size:.9rem}
+.review-name{font-weight:700;font-size:.88rem;color:var(--text)}
+.review-loc{font-size:.78rem;color:var(--text-soft)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h3{font-size:1.4rem;margin-bottom:16px}
+.contact-info p{color:var(--text-mid);margin-bottom:28px;line-height:1.7}
+.contact-item{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.contact-item:last-child{border-bottom:none}
+.contact-icon{width:44px;height:44px;background:var(--lime-glow);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--lime-dark)}
+.contact-item .c-label{font-size:.78rem;color:var(--text-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.contact-item .c-value{font-weight:600;color:var(--text);font-size:.95rem}
+.contact-item .c-value a{color:var(--lime-dark);transition:color .3s}
+.contact-item .c-value a:hover{color:var(--lime)}
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow)}
+.contact-form h3{font-size:1.3rem;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px;color:var(--text-mid)}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:.92rem;transition:border-color .3s;background:var(--light)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--lime);outline:none;box-shadow:0 0 0 3px rgba(132,204,22,.15)}
+.form-group textarea{resize:vertical;min-height:100px}
+.btn-submit{width:100%;padding:16px;border-radius:var(--radius);background:var(--lime);color:var(--anthracite);font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif}
+.btn-submit:hover{background:var(--lime-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(132,204,22,.3)}
+
+/* CTA Section */
+.cta-section{background:var(--anthracite);color:var(--white);padding:80px 0;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(132,204,22,.12) 0%,transparent 70%);border-radius:50%}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.cta-inner h2{font-size:2.2rem;margin-bottom:16px}
+.cta-inner p{color:rgba(255,255,255,.7);margin-bottom:32px;font-size:1.05rem}
+
+/* Footer */
+.footer{background:var(--anthracite-deep);color:rgba(255,255,255,.6);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand{font-family:'Pathway Extreme',sans-serif;font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:12px}
+.footer-desc{font-size:.88rem;line-height:1.7;margin-bottom:20px}
+.footer h4{font-family:'Pathway Extreme',sans-serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:16px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:10px}
+.footer ul a{font-size:.88rem;transition:color .3s}
+.footer ul a:hover{color:var(--lime)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.8rem}
+.footer-bottom a{color:var(--lime);font-weight:600}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* NeoCode Popup */
+.neocode-popup{display:none;position:fixed;bottom:24px;right:24px;z-index:9999;animation:slideUp .6s cubic-bezier(.16,1,.3,1)}
+.neocode-popup.visible{display:block}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.neocode-popup-card{background:linear-gradient(135deg,#0d0d1a 0%,#1a1a2e 100%);border:1px solid rgba(132,204,22,.3);border-radius:20px;padding:28px;max-width:340px;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(132,204,22,.1);position:relative}
+.neocode-popup-close{position:absolute;top:12px;right:12px;color:rgba(255,255,255,.4);font-size:1.4rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .3s;background:none;border:none;cursor:pointer}
+.neocode-popup-close:hover,.neocode-popup-close:focus{background:rgba(255,255,255,.08);color:var(--white)}
+.neocode-popup-card h4{font-size:1.05rem;margin-bottom:8px;font-weight:700;color:var(--white);font-family:'Pathway Extreme',sans-serif}
+.neocode-popup-card h4 span{color:var(--lime)}
+.neocode-popup-card p{font-size:.85rem;line-height:1.7;margin-bottom:16px;color:rgba(255,255,255,.6)}
+.neocode-popup-card .neocode-btn{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--anthracite);padding:12px 24px;border-radius:100px;font-weight:700;font-size:.85rem;transition:all .3s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.neocode-popup-card .neocode-btn:hover{background:var(--lime-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(132,204,22,.35)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero p{margin:0 auto 32px}
+  .hero-btns{justify-content:center}
+  .hero-img{max-width:500px;margin:0 auto}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-img{max-width:500px;margin:0 auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:768px){
+  .hero{padding:70px 0 60px}
+  .hero h1{font-size:2.2rem}
+  .section-heading{font-size:1.8rem}
+  .services-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr;gap:32px}
+  .steps-grid::before{display:none}
+  .reviews-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .about-values{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .neocode-popup{left:16px;right:16px;bottom:16px}
+  .neocode-popup-card{max-width:100%}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="nc-banner">Demo designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a> for Ricky Mobile Mechanic & Diagnostics</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <div class="mark">R</div>
+      Ricky Mobile Mechanic
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Get a Quote
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge reveal"><span class="pulse"></span> Mobile Service - We Come To You</div>
+      <h1 class="reveal stagger-1">Your Mechanic,<br><span class="accent">At Your Door.</span></h1>
+      <p class="reveal stagger-2">No need to take time off work or wait around at a garage. Ricky brings professional diagnostics and repairs straight to your home, office, or wherever you need us.</p>
+      <div class="hero-btns reveal stagger-3">
+        <a href="#contact" class="btn-primary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Book a Call-Out
+        </a>
+        <a href="#services" class="btn-outline">
+          View Services
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-img reveal-right">
+      <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile mechanic working under car bonnet" width="800" height="600" loading="eager">
+      <div class="hero-img-badge">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        We Come To You
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="bg-light">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal-left">
+        <img src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ricky performing mobile diagnostics on vehicle" width="800" height="600" loading="lazy">
+        <div class="about-img-badge">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          Trusted Local Mechanic
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <div class="section-label">About Ricky</div>
+        <h2 class="section-heading">Honest, Reliable Mobile Mechanic</h2>
+        <p>Ricky's been getting his hands dirty under bonnets for years, and he wouldn't have it any other way. What started as a passion for fixing cars turned into a fully mobile service that saves you the hassle of dropping your vehicle off at a workshop.</p>
+        <p>Whether it's a warning light on your dash, a strange noise from the engine, or you just need a solid service before your MOT, Ricky's got you covered. He'll come to your home, your workplace, or wherever suits you best.</p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div><div class="v-title">Fully Equipped Van</div><div class="v-desc">Professional tools on every job</div></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div><div class="v-title">Fair Pricing</div><div class="v-desc">No hidden fees, honest quotes</div></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div><div class="v-title">Flexible Hours</div><div class="v-desc">Evenings and weekends available</div></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div><div class="v-title">All Makes & Models</div><div class="v-desc">Cars, vans, and light commercial</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal">Our Services</div>
+      <h2 class="section-heading reveal stagger-1">Everything Your Car Needs,<br>Right Where You Are</h2>
+      <p class="section-sub reveal stagger-2">From full diagnostics to brake replacements, Ricky handles it all without you having to leave your driveway.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal stagger-1">
+        <div class="service-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Diagnostics</h3>
+        <p>Professional OBD diagnostics to find out exactly what's wrong. We'll read fault codes, run live data checks, and give you a clear explanation of every issue.</p>
+      </div>
+      <div class="service-card reveal stagger-2">
+        <div class="service-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Full Servicing</h3>
+        <p>Interim and full services carried out on your driveway. Oil change, filter replacements, fluid top-ups, and a thorough multi-point inspection included.</p>
+      </div>
+      <div class="service-card reveal stagger-3">
+        <div class="service-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <h3>Brakes</h3>
+        <p>Pads, discs, callipers, and brake fluid changes. Don't compromise on safety. We'll get your stopping power back to where it should be.</p>
+      </div>
+      <div class="service-card reveal stagger-4">
+        <div class="service-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <h3>Clutch Repairs</h3>
+        <p>Clutch feeling heavy or slipping? We'll diagnose the problem and carry out full clutch replacements, including the flywheel if needed.</p>
+      </div>
+      <div class="service-card reveal stagger-5">
+        <div class="service-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Electrical</h3>
+        <p>Battery testing, alternator checks, starter motor issues, and wiring faults. If it's an electrical gremlin, we'll track it down.</p>
+      </div>
+      <div class="service-card reveal stagger-6">
+        <div class="service-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Pre-MOT Check</h3>
+        <p>Don't waste money on a failed MOT. We'll run through everything the tester looks at and fix any issues before you book in, so you pass first time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works" class="bg-light">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal">How It Works</div>
+      <h2 class="section-heading reveal stagger-1">Three Simple Steps</h2>
+      <p class="section-sub reveal stagger-2">Getting your car fixed shouldn't be complicated. Here's how we keep it easy.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal stagger-1">
+        <div class="step-num">1</div>
+        <h3>Get in Touch</h3>
+        <p>Give Ricky a call or send a message. Tell us what's going on with your vehicle and where you'd like us to come.</p>
+      </div>
+      <div class="step-card reveal stagger-2">
+        <div class="step-num">2</div>
+        <h3>We Come To You</h3>
+        <p>Ricky arrives at your chosen location fully equipped. No need to arrange lifts or lose your car for the day.</p>
+      </div>
+      <div class="step-card reveal stagger-3">
+        <div class="step-num">3</div>
+        <h3>Job Done</h3>
+        <p>We'll get the work done on the spot and explain everything clearly. You'll know exactly what was fixed and why.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="bg-dark" id="why-us">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal" style="background:rgba(132,204,22,.12);color:var(--lime)">Why Choose Us</div>
+      <h2 class="section-heading reveal stagger-1" style="color:var(--white)">What Makes Ricky Different</h2>
+      <p class="section-sub reveal stagger-2" style="color:rgba(255,255,255,.6)">There's no shortage of mechanics out there. Here's why customers keep coming back to Ricky.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal stagger-1">
+        <div class="why-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h3>Truly Mobile</h3>
+          <p>We come to your home, office, or wherever your car is. You don't need to rearrange your whole day just to get a service done.</p>
+        </div>
+      </div>
+      <div class="why-card reveal stagger-2">
+        <div class="why-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div>
+          <h3>No Hidden Costs</h3>
+          <p>You'll get a clear quote before any work starts. We don't add surprise charges or inflate the bill. What we say is what you pay.</p>
+        </div>
+      </div>
+      <div class="why-card reveal stagger-3">
+        <div class="why-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <h3>Plain English</h3>
+          <p>We'll explain what's wrong in words you actually understand. No jargon, no upselling. Just honest, straight-up advice.</p>
+        </div>
+      </div>
+      <div class="why-card reveal stagger-4">
+        <div class="why-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h3>Flexible Scheduling</h3>
+          <p>Early mornings, evenings, weekends. We work around your schedule so you don't have to take time off for repairs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coverage Areas -->
+<section id="coverage" class="bg-light">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal">Coverage Area</div>
+      <h2 class="section-heading reveal stagger-1">Where We Operate</h2>
+      <p class="section-sub reveal stagger-2">Ricky covers a wide area and is happy to travel. If you're not sure whether we reach your location, just get in touch.</p>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="area-tag">Manchester</div>
+      <div class="area-tag">Salford</div>
+      <div class="area-tag">Bolton</div>
+      <div class="area-tag">Bury</div>
+      <div class="area-tag">Stockport</div>
+      <div class="area-tag">Oldham</div>
+      <div class="area-tag">Rochdale</div>
+      <div class="area-tag">Wigan</div>
+      <div class="area-tag">Tameside</div>
+      <div class="area-tag">Trafford</div>
+      <div class="area-tag">Ashton-under-Lyne</div>
+      <div class="area-tag">Leigh</div>
+      <div class="area-tag">Denton</div>
+      <div class="area-tag">Hyde</div>
+      <div class="area-tag">Middleton</div>
+      <div class="area-tag">And Surrounding Areas</div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal">Testimonials</div>
+      <h2 class="section-heading reveal stagger-1">What Customers Say</h2>
+      <p class="section-sub reveal stagger-2">Don't just take our word for it. Here's what real customers have to say about Ricky's service.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal stagger-1">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Ricky came out to my house on a Saturday morning when my car wouldn't start. Diagnosed the issue in minutes and had it sorted within the hour. Absolute lifesaver."</p>
+        <div class="review-author">
+          <div class="review-avatar">DH</div>
+          <div>
+            <div class="review-name">Dave H.</div>
+            <div class="review-loc">Bolton</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal stagger-2">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Honest, reliable, and knows his stuff. I've been using Ricky for a couple of years now and he's never let me down. Fair prices and he explains everything properly."</p>
+        <div class="review-author">
+          <div class="review-avatar">SK</div>
+          <div>
+            <div class="review-name">Sarah K.</div>
+            <div class="review-loc">Stockport</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal stagger-3">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"My brake warning light came on and I was panicking. Ricky came to my workplace, checked everything over, and replaced the pads on the spot. Couldn't ask for better service."</p>
+        <div class="review-author">
+          <div class="review-avatar">MP</div>
+          <div>
+            <div class="review-name">Mark P.</div>
+            <div class="review-loc">Salford</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <h2>Car Trouble? We'll Come To You.</h2>
+      <p>Whether it's a quick diagnostic check or a full service, Ricky's just a phone call away. Get in touch and we'll be there.</p>
+      <a href="#contact" class="btn-primary" style="font-size:1rem;padding:18px 40px;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Get a Free Quote
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="bg-light">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="section-heading reveal stagger-1">Book Your Call-Out</h2>
+      <p class="section-sub reveal stagger-2">Fill in the form or reach out directly. We'll get back to you as quickly as we can.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3>Contact Details</h3>
+        <p>Got a question or want to book Ricky in? Here's how to reach us. We're always happy to have a quick chat about your car before you commit to anything.</p>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-value"><a href="mailto:rickymobilemechanicdiagnostics@gmail.com">rickymobilemechanicdiagnostics@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="c-label">Service Area</div>
+            <div class="c-value">Greater Manchester & Surrounding Areas</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div class="c-label">Availability</div>
+            <div class="c-value">Mon - Sat, Flexible Hours</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <h3>Send a Message</h3>
+        <form action="https://formsubmit.co/rickymobilemechanicdiagnostics@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from website">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="diagnostics">Diagnostics</option>
+              <option value="servicing">Full Servicing</option>
+              <option value="brakes">Brakes</option>
+              <option value="clutch">Clutch Repairs</option>
+              <option value="electrical">Electrical</option>
+              <option value="pre-mot">Pre-MOT Check</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us What's Going On</label>
+            <textarea id="message" name="message" placeholder="Describe the issue or what you need..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Ricky Mobile Mechanic & Diagnostics</div>
+        <p class="footer-desc">Professional mobile mechanic service covering Greater Manchester and beyond. We bring the workshop to you, so you can get on with your day.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Diagnostics</a></li>
+          <li><a href="#services">Full Servicing</a></li>
+          <li><a href="#services">Brakes</a></li>
+          <li><a href="#services">Clutch Repairs</a></li>
+          <li><a href="#services">Electrical</a></li>
+          <li><a href="#services">Pre-MOT Check</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#coverage">Coverage Areas</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ricky Mobile Mechanic & Diagnostics. All rights reserved.</span>
+      <span>Demo site by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="neocode-popup" id="neocodePopup">
+  <div class="neocode-popup-card">
+    <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+    <h4>Like what you see? <span>We built this.</span></h4>
+    <p>This demo was designed by NeoCode Studio to show what your business could look like online. Premium web design that actually brings in customers.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="neocode-btn">
+      Get Your Own Site
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+// Hamburger Menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// IntersectionObserver reveal
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// NeoCode Popup at 70% scroll
+const neocodePopup = document.getElementById('neocodePopup');
+const neocodeClose = document.getElementById('neocodeClose');
+let popupShown = false;
+
+window.addEventListener('scroll', () => {
+  if (popupShown) return;
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  if (scrollPercent >= 70) {
+    neocodePopup.classList.add('visible');
+    popupShown = true;
+  }
+});
+
+neocodeClose.addEventListener('click', () => {
+  neocodePopup.classList.remove('visible');
+});
+</script>
+</body>
+</html>

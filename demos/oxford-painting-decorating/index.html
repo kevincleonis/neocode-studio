@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxford Painting & Decorating | Professional Painters in Oxford & Kidlington</title>
+<meta name="description" content="Premium painting and decorating services across Oxford, Kidlington & Summertown. Interior, exterior, wallpapering, plastering and commercial work. Get your free quote today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#1a237e;
+--navy-light:#283593;
+--peach:#ff8a65;
+--peach-dark:#f4784e;
+--linen:#faf3eb;
+--white:#ffffff;
+--dark:#1a1a2e;
+--gray:#6b7280;
+--gray-light:#e5e7eb;
+--radius:12px;
+--shadow:0 4px 24px rgba(26,35,126,0.10);
+--shadow-lg:0 12px 48px rgba(26,35,126,0.15);
+--transition:0.3s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+font-family:'Geist','Inter',system-ui,-apple-system,sans-serif;
+color:var(--dark);
+background:var(--white);
+line-height:1.7;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5,h6{font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.2;font-weight:700}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:color var(--transition)}
+ul{list-style:none}
+
+/* ===== HEADER ===== */
+.header{
+position:fixed;top:0;left:0;width:100%;z-index:1000;
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(26,35,126,0.06);
+transition:box-shadow var(--transition);
+}
+.header.scrolled{box-shadow:0 2px 20px rgba(26,35,126,0.08)}
+.header-inner{
+max-width:1200px;margin:0 auto;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 24px;height:72px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Instrument Sans',system-ui,sans-serif;font-weight:700;font-size:1.25rem;color:var(--navy)}
+.logo-icon{
+width:40px;height:40px;background:var(--navy);border-radius:10px;
+display:flex;align-items:center;justify-content:center;
+color:var(--peach);font-size:1.1rem;font-weight:800;
+}
+.nav{display:flex;align-items:center;gap:32px}
+.nav a{
+font-size:0.925rem;font-weight:500;color:var(--dark);
+position:relative;padding:4px 0;
+}
+.nav a::after{
+content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+background:var(--peach);transition:width var(--transition);
+}
+.nav a:hover::after,.nav a:focus::after{width:100%}
+.nav a:focus{outline:2px solid var(--peach);outline-offset:4px;border-radius:4px}
+.nav-cta{
+background:var(--peach);color:var(--white)!important;
+padding:10px 24px!important;border-radius:50px;font-weight:600!important;
+transition:all var(--transition)!important;
+}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--peach-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,138,101,0.35)}
+.nav-cta:focus{outline:2px solid var(--navy);outline-offset:3px}
+
+/* Hamburger */
+.hamburger{
+display:none;flex-direction:column;gap:5px;cursor:pointer;
+background:none;border:none;padding:8px;z-index:1001;
+}
+.hamburger:focus{outline:2px solid var(--peach);outline-offset:4px;border-radius:4px}
+.hamburger span{width:24px;height:2.5px;background:var(--navy);border-radius:4px;transition:all var(--transition)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ===== HERO ===== */
+.hero{
+position:relative;min-height:100vh;display:flex;align-items:center;
+background:linear-gradient(135deg,var(--navy) 0%,#0d1554 100%);
+overflow:hidden;padding-top:72px;
+}
+.hero-bg{
+position:absolute;inset:0;
+background:url('https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+opacity:0.18;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,35,126,0.92) 0%,rgba(13,21,84,0.85) 100%)}
+.hero-shapes{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-shapes .circle{
+position:absolute;border-radius:50%;border:1px solid rgba(255,138,101,0.12);
+}
+.hero-shapes .circle:nth-child(1){width:500px;height:500px;top:-100px;right:-100px}
+.hero-shapes .circle:nth-child(2){width:300px;height:300px;bottom:-50px;left:-50px}
+.hero-shapes .circle:nth-child(3){width:200px;height:200px;top:40%;left:60%;border-color:rgba(255,138,101,0.06)}
+.hero-content{
+position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:80px 24px;
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.hero-text{color:var(--white)}
+.hero-badge{
+display:inline-flex;align-items:center;gap:8px;
+background:rgba(255,138,101,0.15);border:1px solid rgba(255,138,101,0.25);
+padding:8px 18px;border-radius:50px;font-size:0.85rem;font-weight:500;
+color:var(--peach);margin-bottom:28px;
+}
+.hero-badge svg{width:16px;height:16px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 span{color:var(--peach)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,0.75);margin-bottom:36px;max-width:500px;line-height:1.8}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+display:inline-flex;align-items:center;gap:8px;
+padding:14px 32px;border-radius:50px;font-weight:600;font-size:0.95rem;
+transition:all var(--transition);cursor:pointer;border:none;
+font-family:'Instrument Sans',system-ui,sans-serif;
+}
+.btn:focus{outline:2px solid var(--peach);outline-offset:3px}
+.btn-primary{background:var(--peach);color:var(--white)}
+.btn-primary:hover{background:var(--peach-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,138,101,0.35)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.3)}
+.btn-outline:hover{border-color:var(--peach);color:var(--peach);transform:translateY(-2px)}
+.hero-stats{
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;
+padding-top:36px;border-top:1px solid rgba(255,255,255,0.1);
+}
+.stat-num{font-family:'Instrument Sans',system-ui,sans-serif;font-size:1.8rem;font-weight:700;color:var(--peach)}
+.stat-label{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:4px}
+.hero-visual{position:relative}
+.hero-card{
+background:var(--white);border-radius:20px;padding:28px;
+box-shadow:0 24px 64px rgba(0,0,0,0.3);
+transform:rotate(2deg);
+}
+.hero-card img{border-radius:12px;width:100%;height:320px;object-fit:cover}
+.hero-card-badge{
+position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
+background:var(--peach);color:var(--white);padding:10px 24px;
+border-radius:50px;font-weight:600;font-size:0.9rem;white-space:nowrap;
+box-shadow:0 4px 16px rgba(255,138,101,0.4);
+}
+.hero-float{
+position:absolute;top:-20px;right:-20px;
+background:var(--white);border-radius:16px;padding:16px 20px;
+box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;
+animation:float 4s ease-in-out infinite;
+}
+.hero-float-icon{width:42px;height:42px;background:rgba(255,138,101,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.hero-float-text span{display:block;font-weight:600;font-size:0.9rem;color:var(--navy)}
+.hero-float-text small{color:var(--gray);font-size:0.8rem}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* ===== SECTIONS ===== */
+.section{padding:100px 24px}
+.section-alt{background:var(--linen)}
+.container{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;max-width:640px;margin:0 auto 60px}
+.section-tag{
+display:inline-flex;align-items:center;gap:6px;
+font-size:0.85rem;font-weight:600;color:var(--peach);
+text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;
+}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--navy);margin-bottom:16px}
+.section-header p{color:var(--gray);font-size:1.05rem}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-img img{width:100%;height:450px;object-fit:cover}
+.about-accent{
+position:absolute;bottom:-20px;right:-20px;
+width:200px;height:200px;background:var(--peach);
+border-radius:20px;z-index:-1;opacity:0.15;
+}
+.about-text h2{font-size:2rem;color:var(--navy);margin-bottom:20px}
+.about-text p{color:var(--gray);margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{
+display:flex;align-items:center;gap:10px;
+padding:12px 16px;background:var(--linen);border-radius:10px;
+font-weight:500;font-size:0.9rem;color:var(--navy);
+}
+.about-feature svg{width:20px;height:20px;color:var(--peach);flex-shrink:0}
+
+/* ===== SERVICES ===== */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{
+background:var(--white);border-radius:var(--radius);
+padding:36px 28px;border:1px solid var(--gray-light);
+transition:all var(--transition);position:relative;overflow:hidden;
+}
+.service-card::before{
+content:'';position:absolute;top:0;left:0;width:100%;height:4px;
+background:var(--peach);transform:scaleX(0);transform-origin:left;
+transition:transform var(--transition);
+}
+.service-card:hover{
+transform:translateY(-6px);box-shadow:var(--shadow-lg);
+border-color:transparent;
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{
+width:56px;height:56px;border-radius:14px;
+background:linear-gradient(135deg,rgba(255,138,101,0.12),rgba(26,35,126,0.06));
+display:flex;align-items:center;justify-content:center;
+margin-bottom:20px;font-size:1.5rem;
+}
+.service-card h3{font-size:1.15rem;color:var(--navy);margin-bottom:10px}
+.service-card p{color:var(--gray);font-size:0.92rem;line-height:1.7}
+
+/* ===== BEFORE/AFTER ===== */
+.ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px}
+.ba-item{
+position:relative;border-radius:var(--radius);overflow:hidden;
+box-shadow:var(--shadow);
+}
+.ba-item img{width:100%;height:300px;object-fit:cover;display:block}
+.ba-label{
+position:absolute;top:16px;left:16px;
+padding:6px 14px;border-radius:50px;font-size:0.8rem;font-weight:600;
+color:var(--white);
+}
+.ba-label.before{background:var(--navy)}
+.ba-label.after{background:var(--peach)}
+.ba-desc{
+position:absolute;bottom:0;left:0;right:0;
+padding:20px;background:linear-gradient(transparent,rgba(26,35,126,0.85));
+color:var(--white);font-size:0.9rem;font-weight:500;
+}
+
+/* ===== WHY US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.why-card{
+text-align:center;padding:36px 24px;
+background:var(--white);border-radius:var(--radius);
+border:1px solid var(--gray-light);
+transition:all var(--transition);
+}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.why-icon{
+width:64px;height:64px;border-radius:50%;
+background:linear-gradient(135deg,var(--navy),var(--navy-light));
+display:flex;align-items:center;justify-content:center;
+margin:0 auto 18px;color:var(--peach);font-size:1.4rem;
+}
+.why-card h3{font-size:1.05rem;color:var(--navy);margin-bottom:8px}
+.why-card p{color:var(--gray);font-size:0.88rem}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial{
+background:var(--white);border-radius:var(--radius);
+padding:32px;border:1px solid var(--gray-light);
+transition:all var(--transition);position:relative;
+}
+.testimonial:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.testimonial-stars{color:var(--peach);font-size:1rem;margin-bottom:14px;letter-spacing:2px}
+.testimonial p{color:var(--gray);font-size:0.95rem;font-style:italic;margin-bottom:18px;line-height:1.7}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{
+width:44px;height:44px;border-radius:50%;
+background:linear-gradient(135deg,var(--navy),var(--peach));
+display:flex;align-items:center;justify-content:center;
+color:var(--white);font-weight:700;font-size:0.9rem;
+}
+.testimonial-name{font-weight:600;font-size:0.9rem;color:var(--navy)}
+.testimonial-loc{font-size:0.8rem;color:var(--gray)}
+
+/* ===== AREAS ===== */
+.areas-wrap{
+display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.areas-list{display:flex;flex-direction:column;gap:16px}
+.area-item{
+display:flex;align-items:center;gap:16px;
+padding:20px 24px;background:var(--white);
+border-radius:var(--radius);border:1px solid var(--gray-light);
+transition:all var(--transition);
+}
+.area-item:hover{border-color:var(--peach);box-shadow:var(--shadow);transform:translateX(6px)}
+.area-pin{
+width:44px;height:44px;border-radius:12px;
+background:linear-gradient(135deg,rgba(255,138,101,0.12),rgba(26,35,126,0.06));
+display:flex;align-items:center;justify-content:center;flex-shrink:0;
+color:var(--peach);font-size:1.1rem;
+}
+.area-item h3{font-size:1.05rem;color:var(--navy);margin-bottom:2px}
+.area-item p{font-size:0.85rem;color:var(--gray)}
+.areas-text h2{font-size:2rem;color:var(--navy);margin-bottom:16px}
+.areas-text p{color:var(--gray);margin-bottom:24px;line-height:1.8}
+
+/* ===== CONTACT ===== */
+.contact-section{background:var(--navy);color:var(--white);padding:100px 24px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info h2{font-size:2.2rem;margin-bottom:16px}
+.contact-info>p{color:rgba(255,255,255,0.65);margin-bottom:36px;line-height:1.8}
+.contact-detail{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.contact-detail-icon{
+width:44px;height:44px;border-radius:12px;
+background:rgba(255,138,101,0.15);
+display:flex;align-items:center;justify-content:center;
+color:var(--peach);flex-shrink:0;
+}
+.contact-detail span{font-size:0.95rem;color:rgba(255,255,255,0.85)}
+.contact-detail a{color:var(--peach)}
+.contact-detail a:hover{text-decoration:underline}
+.contact-form{
+background:var(--white);border-radius:20px;padding:40px;
+box-shadow:0 24px 64px rgba(0,0,0,0.2);
+}
+.contact-form h3{font-family:'Instrument Sans',system-ui,sans-serif;font-size:1.4rem;color:var(--navy);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:6px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group input,.form-group select,.form-group textarea{
+width:100%;padding:12px 16px;border:2px solid var(--gray-light);
+border-radius:10px;font-size:0.95rem;font-family:inherit;
+transition:border-color var(--transition);
+background:var(--linen);color:var(--dark);
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+outline:none;border-color:var(--peach);box-shadow:0 0 0 3px rgba(255,138,101,0.15);
+}
+.form-group textarea{height:110px;resize:vertical}
+.form-submit{
+width:100%;padding:14px;border:none;border-radius:50px;
+background:var(--peach);color:var(--white);font-size:1rem;
+font-weight:700;cursor:pointer;transition:all var(--transition);
+font-family:'Instrument Sans',system-ui,sans-serif;
+}
+.form-submit:hover{background:var(--peach-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,138,101,0.35)}
+.form-submit:focus{outline:2px solid var(--navy);outline-offset:3px}
+
+/* ===== FOOTER ===== */
+.footer{background:#0d1554;color:rgba(255,255,255,0.6);padding:48px 24px}
+.footer-inner{
+max-width:1200px;margin:0 auto;
+display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;
+}
+.footer p{font-size:0.88rem}
+.footer a{color:var(--peach);transition:opacity var(--transition)}
+.footer a:hover{opacity:0.8}
+.footer a:focus{outline:2px solid var(--peach);outline-offset:3px;border-radius:4px}
+
+/* ===== NEOCODE POPUP ===== */
+.neo-popup-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,0.5);
+z-index:9999;display:none;align-items:center;justify-content:center;
+backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+opacity:0;transition:opacity 0.4s ease;
+}
+.neo-popup-overlay.show{display:flex;opacity:1}
+.neo-popup{
+background:var(--white);border-radius:20px;padding:44px;
+max-width:480px;width:90%;text-align:center;position:relative;
+box-shadow:0 32px 80px rgba(0,0,0,0.25);
+transform:scale(0.9);transition:transform 0.4s ease;
+}
+.neo-popup-overlay.show .neo-popup{transform:scale(1)}
+.neo-popup-close{
+position:absolute;top:16px;right:16px;
+width:36px;height:36px;border-radius:50%;border:none;
+background:var(--gray-light);cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+font-size:1.1rem;color:var(--gray);
+transition:all var(--transition);
+}
+.neo-popup-close:hover{background:var(--navy);color:var(--white)}
+.neo-popup-close:focus{outline:2px solid var(--peach);outline-offset:3px}
+.neo-popup h3{font-size:1.5rem;color:var(--navy);margin:16px 0 10px}
+.neo-popup p{color:var(--gray);font-size:0.95rem;margin-bottom:24px;line-height:1.7}
+.neo-popup .btn-primary{display:inline-flex}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.hero-content{grid-template-columns:1fr;text-align:center;gap:40px}
+.hero-sub{margin:0 auto 36px}
+.hero-btns{justify-content:center}
+.hero-stats{max-width:400px;margin:48px auto 0}
+.hero-visual{max-width:480px;margin:0 auto}
+.hero-float{top:-10px;right:0}
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+.about-grid,.areas-wrap,.contact-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:768px){
+.nav{
+position:fixed;top:0;right:-100%;width:280px;height:100vh;
+background:var(--white);flex-direction:column;
+padding:100px 40px 40px;gap:24px;
+box-shadow:-4px 0 30px rgba(0,0,0,0.1);
+transition:right var(--transition);
+}
+.nav.open{right:0}
+.hamburger{display:flex}
+.nav-cta{text-align:center;width:100%}
+.hero{min-height:auto;padding:120px 0 60px}
+.hero-card img{height:240px}
+.ba-grid{grid-template-columns:1fr}
+.testimonials-grid{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:1fr}
+.hero-stats{grid-template-columns:repeat(3,1fr);gap:12px}
+.section{padding:70px 24px}
+.form-row{grid-template-columns:1fr}
+.footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+<div class="header-inner">
+<a href="#hero" class="logo" aria-label="Oxford Painting & Decorating Home">
+<div class="logo-icon">OPD</div>
+<span>Oxford Painting<br><small style="font-weight:400;font-size:0.75rem;opacity:0.6">& Decorating</small></span>
+</a>
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#testimonials">Reviews</a>
+<a href="#areas">Areas</a>
+<a href="#contact" class="nav-cta">Free Quote</a>
+</nav>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-shapes">
+<div class="circle"></div><div class="circle"></div><div class="circle"></div>
+</div>
+<div class="hero-content">
+<div class="hero-text reveal">
+<div class="hero-badge">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+Oxford's Trusted Decorators
+</div>
+<h1>Beautiful Spaces, <span>Expertly Painted</span></h1>
+<p class="hero-sub">We're a team of skilled painters and decorators transforming homes and businesses across Oxford, Kidlington, and Summertown. Quality finishes you'll love for years to come.</p>
+<div class="hero-btns">
+<a href="#contact" class="btn btn-primary">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<a href="#services" class="btn btn-outline">Our Services</a>
+</div>
+<div class="hero-stats">
+<div><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+<div><div class="stat-num">500+</div><div class="stat-label">Projects Done</div></div>
+<div><div class="stat-num">100%</div><div class="stat-label">Satisfaction</div></div>
+</div>
+</div>
+<div class="hero-visual reveal">
+<div class="hero-card">
+<img src="https://images.pexels.com/photos/6474475/pexels-photo-6474475.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional painting and decorating work by OPD" loading="eager">
+<div class="hero-card-badge">Transforming Oxford, One Room at a Time</div>
+</div>
+<div class="hero-float">
+<div class="hero-float-icon">&#9733;</div>
+<div class="hero-float-text">
+<span>5-Star Rated</span>
+<small>on Google Reviews</small>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img-wrap reveal">
+<div class="about-img">
+<img src="https://images.pexels.com/photos/6474434/pexels-photo-6474434.jpeg?auto=compress&cs=tinysrgb&w=800" alt="OPD decorator carefully painting a wall" loading="lazy">
+</div>
+<div class="about-accent"></div>
+</div>
+<div class="about-text reveal">
+<div class="section-tag">About Us</div>
+<h2>We Don't Just Paint Walls. We Transform Spaces.</h2>
+<p>Oxford Painting & Decorating has been helping homeowners and businesses across Oxfordshire achieve stunning interiors and exteriors for over 15 years. We're not about cutting corners or rushing through jobs.</p>
+<p>Every project gets the same level of care, whether it's a single room refresh or a full commercial refurbishment. We'll talk you through every step, help you choose the right colours, and leave your space looking incredible.</p>
+<div class="about-features">
+<div class="about-feature">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+Fully Insured
+</div>
+<div class="about-feature">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+Free Estimates
+</div>
+<div class="about-feature">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+Clean & Tidy
+</div>
+<div class="about-feature">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+Premium Materials
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section section-alt" id="services">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">What We Do</div>
+<h2>Professional Services You Can Count On</h2>
+<p>From a fresh coat of emulsion to a full property makeover, we've got the skills and experience to handle it all.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal">
+<div class="service-icon">&#127912;</div>
+<h3>Interior Painting</h3>
+<p>Walls, ceilings, woodwork, and trim. We'll prep every surface properly and apply flawless finishes that last. Your home's going to look stunning.</p>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">&#127960;</div>
+<h3>Exterior Painting</h3>
+<p>Protect and refresh your property's kerb appeal. We handle weather-resistant coatings, fascias, soffits, and everything in between.</p>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">&#128220;</div>
+<h3>Wallpapering</h3>
+<p>Feature walls, full rooms, tricky patterns. We're experienced with all types of wallpaper and will hang it perfectly every time.</p>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">&#129521;</div>
+<h3>Plastering</h3>
+<p>Skimming, patching, and full re-plastering. We'll get your walls smooth and ready for a beautiful finish before any paint goes on.</p>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">&#128168;</div>
+<h3>Spray Painting</h3>
+<p>Perfect for kitchens, furniture, and large areas. Our spray finishes deliver a smooth, factory-like look that brushwork can't match.</p>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">&#127970;</div>
+<h3>Commercial</h3>
+<p>Offices, shops, restaurants, and landlord properties. We'll work around your schedule to minimise disruption and get the job done fast.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== BEFORE/AFTER ===== -->
+<section class="section" id="gallery">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">Our Work</div>
+<h2>See the Difference We Make</h2>
+<p>Nothing tells the story better than seeing the transformation for yourself. Here's a glimpse of what we do.</p>
+</div>
+<div class="ba-grid">
+<div class="ba-item reveal">
+<img src="https://images.pexels.com/photos/6758773/pexels-photo-6758773.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Room before painting - dated walls and scuffed surfaces" loading="lazy">
+<span class="ba-label before">Before</span>
+<div class="ba-desc">Living Room - Peeling paint, water stains</div>
+</div>
+<div class="ba-item reveal">
+<img src="https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Room after painting - fresh modern finish" loading="lazy">
+<span class="ba-label after">After</span>
+<div class="ba-desc">Living Room - Clean, modern finish</div>
+</div>
+<div class="ba-item reveal">
+<img src="https://images.pexels.com/photos/6474456/pexels-photo-6474456.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kitchen before renovation and spray painting" loading="lazy">
+<span class="ba-label before">Before</span>
+<div class="ba-desc">Kitchen Cabinets - Worn and faded</div>
+</div>
+<div class="ba-item reveal">
+<img src="https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kitchen after spray paint transformation" loading="lazy">
+<span class="ba-label after">After</span>
+<div class="ba-desc">Kitchen Cabinets - Spray painted finish</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="section section-alt" id="why">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">Why Choose Us</div>
+<h2>What Sets Us Apart</h2>
+<p>We're not the cheapest, and we're not trying to be. But we'll deliver quality that speaks for itself.</p>
+</div>
+<div class="why-grid">
+<div class="why-card reveal">
+<div class="why-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<h3>15+ Years Experience</h3>
+<p>We've seen it all and painted it all. There's no job too big or too tricky for our team.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<h3>Attention to Detail</h3>
+<p>Proper prep, clean lines, and perfect finishes. We don't move on until it's right.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<h3>On Time, Every Time</h3>
+<p>We'll agree a timeline and stick to it. No ghosting, no excuses, no dragging things out.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3>Trusted Locally</h3>
+<p>Most of our work comes from referrals and repeat customers. That's the best kind of recommendation.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section" id="testimonials">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">Reviews</div>
+<h2>What Our Customers Say</h2>
+<p>Don't take our word for it. Here's what real customers across Oxford have to say about our work.</p>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial reveal">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p>"They did an amazing job on our entire downstairs. Every wall is perfect and they were so tidy throughout. Wouldn't hesitate to recommend them to anyone."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">SC</div>
+<div>
+<div class="testimonial-name">Sarah C.</div>
+<div class="testimonial-loc">Summertown, Oxford</div>
+</div>
+</div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p>"We had our kitchen cabinets spray painted and it's like having a brand new kitchen. The finish is incredible and it saved us thousands compared to a full replacement."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">MR</div>
+<div>
+<div class="testimonial-name">Mark R.</div>
+<div class="testimonial-loc">Kidlington</div>
+</div>
+</div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p>"Really professional team. They helped us pick colours, prepped everything properly, and the exterior of our house looks fantastic now. Great communication too."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">JT</div>
+<div>
+<div class="testimonial-name">James T.</div>
+<div class="testimonial-loc">Headington, Oxford</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section class="section section-alt" id="areas">
+<div class="container">
+<div class="areas-wrap">
+<div class="areas-text reveal">
+<div class="section-tag">Where We Work</div>
+<h2>Covering Oxford & Surrounding Areas</h2>
+<p>We're based in Kidlington and cover all of Oxfordshire. Whether you're in the city centre or the surrounding villages, we'll come to you for a free, no-obligation quote.</p>
+<a href="#contact" class="btn btn-primary" style="margin-top:8px">Get Your Free Quote</a>
+</div>
+<div class="areas-list reveal">
+<div class="area-item">
+<div class="area-pin">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<h3>Oxford City</h3>
+<p>Jericho, Cowley, Headington, Botley & more</p>
+</div>
+</div>
+<div class="area-item">
+<div class="area-pin">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<h3>Kidlington</h3>
+<p>Our home base. Quick response, local knowledge.</p>
+</div>
+</div>
+<div class="area-item">
+<div class="area-pin">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<h3>Summertown</h3>
+<p>North Oxford's finest. Period homes a speciality.</p>
+</div>
+</div>
+<div class="area-item">
+<div class="area-pin">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<h3>Wider Oxfordshire</h3>
+<p>Bicester, Witney, Abingdon, Woodstock & beyond</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact-section" id="contact">
+<div class="container">
+<div class="contact-grid">
+<div class="contact-info reveal">
+<div class="section-tag" style="color:var(--peach)">Get In Touch</div>
+<h2>Let's Talk About Your Project</h2>
+<p>Whether you've got a clear idea of what you want or you're looking for advice, we're happy to help. Fill in the form and we'll get back to you within 24 hours with a free, no-obligation quote.</p>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</div>
+<span><a href="mailto:kidlingtondecorators@gmail.com">kidlingtondecorators@gmail.com</a></span>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<span>Kidlington, Oxford, OX5</span>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<span>Mon - Sat: 8am - 6pm</span>
+</div>
+</div>
+<div class="contact-form reveal">
+<h3>Request a Free Quote</h3>
+<form id="quoteForm">
+<div class="form-row">
+<div class="form-group">
+<label for="name">Your Name</label>
+<input type="text" id="name" name="name" placeholder="John Smith" required>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx">
+</div>
+</div>
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="john@example.com" required>
+</div>
+<div class="form-group">
+<label for="service">Service Needed</label>
+<select id="service" name="service">
+<option value="">Select a service...</option>
+<option value="interior">Interior Painting</option>
+<option value="exterior">Exterior Painting</option>
+<option value="wallpapering">Wallpapering</option>
+<option value="plastering">Plastering</option>
+<option value="spray">Spray Painting</option>
+<option value="commercial">Commercial</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group">
+<label for="message">Tell Us About Your Project</label>
+<textarea id="message" name="message" placeholder="What rooms need painting? Any specific colours in mind? Rough timeline?"></textarea>
+</div>
+<button type="submit" class="form-submit">Send My Free Quote Request</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+<div class="footer-inner">
+<p>&copy; 2026 Oxford Painting & Decorating. All rights reserved.</p>
+<p>Website designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+</div>
+</footer>
+
+<!-- ===== NEOCODE POPUP ===== -->
+<div class="neo-popup-overlay" id="neoPopup">
+<div class="neo-popup">
+<button class="neo-popup-close" id="neoPopupClose" aria-label="Close popup">&times;</button>
+<div style="font-size:2.4rem;margin-bottom:4px">&#128640;</div>
+<h3>Want a Website Like This?</h3>
+<p>This demo was built by NeoCode Studio. We create high-converting websites for local businesses that actually bring in customers. Interested?</p>
+<a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Let's Chat <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+
+<script>
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav');
+hamburger.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Header scroll shadow
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// IntersectionObserver reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// NeoCode popup at 70% scroll
+let popupShown = false;
+window.addEventListener('scroll', () => {
+  if (popupShown) return;
+  const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+  if (scrollPercent >= 0.7) {
+    popupShown = true;
+    const popup = document.getElementById('neoPopup');
+    popup.classList.add('show');
+  }
+}, { passive: true });
+document.getElementById('neoPopupClose').addEventListener('click', () => {
+  document.getElementById('neoPopup').classList.remove('show');
+});
+document.getElementById('neoPopup').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    document.getElementById('neoPopup').classList.remove('show');
+  }
+});
+
+// Form submission
+document.getElementById('quoteForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Quote Request Sent!';
+    btn.style.background = '#4caf50';
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = 'Send My Free Quote Request';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }, 1200);
+});
+</script>
+</body>
+</html>

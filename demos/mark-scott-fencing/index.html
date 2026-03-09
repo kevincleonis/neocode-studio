@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Scott Fencing | Quality Fencing & Gates | Professional Installation</title>
+<meta name="description" content="Mark Scott Fencing provides expert fence and gate installation, repairs, and replacements. Panel fencing, close board, picket fences, trellis, and bespoke gates. Get a free quote today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --wood:#3e2723;
+  --wood-light:#5d4037;
+  --wood-deep:#2c1a12;
+  --green:#388e3c;
+  --green-dark:#2e7d32;
+  --green-light:#4caf50;
+  --sand:#f5f0e1;
+  --sand-dark:#e8e0cc;
+  --cream:#faf7f0;
+  --white:#ffffff;
+  --text:#2c1a12;
+  --text-mid:#4e342e;
+  --text-soft:#6d4c41;
+  --border:rgba(62,39,35,0.12);
+  --radius:10px;
+  --radius-lg:18px;
+  --shadow:0 4px 24px rgba(62,39,35,0.08);
+  --shadow-lg:0 16px 48px rgba(62,39,35,0.12);
+  --ease:cubic-bezier(0.4,0,0.2,1);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Hind',sans-serif;color:var(--text);background:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Arvo',serif;line-height:1.2;font-weight:700}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+:focus{outline:3px solid var(--green);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+
+/* Animations */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal-right.visible{opacity:1;transform:none}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.25s}
+.stagger-4{transition-delay:.3s}.stagger-5{transition-delay:.35s}.stagger-6{transition-delay:.4s}
+
+/* NeoCode Banner */
+.nc-banner{background:var(--wood-deep);color:rgba(255,255,255,.7);text-align:center;padding:10px 20px;font-size:12px;font-weight:500;letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.08)}
+.nc-banner a{color:var(--green-light);font-weight:700}
+.nc-banner a:hover{text-decoration:underline}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,247,240,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(62,39,35,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 28px}
+.nav-brand{font-family:'Arvo',serif;font-size:1.3rem;font-weight:700;color:var(--wood);display:flex;align-items:center;gap:10px}
+.nav-brand .mark{width:40px;height:40px;background:var(--wood);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--sand);font-family:'Hind',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px}
+.nav-links{list-style:none;display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--text-mid);transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--green);transition:width .3s}
+.nav-links a:hover{color:var(--wood)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--green);color:var(--white);padding:11px 26px;border-radius:100px;font-size:.85rem;font-weight:600;transition:all .3s;display:flex;align-items:center;gap:8px}
+.nav-cta:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(56,142,60,.3)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:200}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--wood);border-radius:4px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Menu */
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--cream);z-index:150;flex-direction:column;justify-content:center;align-items:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{display:flex;opacity:1;pointer-events:all}
+.mobile-menu a{font-family:'Arvo',serif;font-size:1.4rem;color:var(--wood);font-weight:700;transition:color .3s}
+.mobile-menu a:hover{color:var(--green)}
+
+/* Hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:var(--wood-deep)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;opacity:.35}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,26,18,.85) 0%,rgba(62,39,35,.6) 50%,rgba(56,142,60,.2) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 28px 80px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(56,142,60,.2);border:1px solid rgba(56,142,60,.4);color:var(--green-light);padding:8px 18px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:24px}
+.hero-badge svg{width:16px;height:16px;fill:var(--green-light)}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);color:var(--white);margin-bottom:20px;max-width:700px}
+.hero h1 span{color:var(--green-light)}
+.hero p{color:rgba(255,255,255,.8);font-size:1.15rem;max-width:560px;margin-bottom:36px;line-height:1.8}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:var(--white);padding:15px 34px;border-radius:100px;font-size:.95rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(56,142,60,.35)}
+.btn-outline{background:transparent;color:var(--white);padding:15px 34px;border-radius:100px;font-size:.95rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:10px;border:2px solid rgba(255,255,255,.3);cursor:pointer}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.hero-stats{display:flex;gap:48px;margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12)}
+.hero-stat h3{font-size:2rem;color:var(--green-light);font-weight:700}
+.hero-stat p{color:rgba(255,255,255,.6);font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+
+/* Sections */
+.section{padding:100px 28px}
+.section-sm{padding:80px 28px}
+.container{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:64px}
+.section-header .tag{display:inline-block;background:rgba(56,142,60,.1);color:var(--green-dark);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.section-header h2{font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--wood);margin-bottom:16px}
+.section-header p{color:var(--text-soft);font-size:1.05rem;max-width:600px;margin:0 auto;line-height:1.8}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-img{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-img img{width:100%;height:480px;object-fit:cover}
+.about-img-badge{position:absolute;bottom:24px;left:24px;background:var(--green);color:var(--white);padding:14px 22px;border-radius:var(--radius);font-weight:700;font-size:1.1rem;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.about-text h2{font-size:2rem;color:var(--wood);margin-bottom:20px}
+.about-text p{color:var(--text-mid);margin-bottom:16px;line-height:1.8}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{display:flex;align-items:start;gap:12px;padding:14px;background:var(--sand);border-radius:var(--radius);transition:transform .3s}
+.about-feature:hover{transform:translateY(-2px)}
+.about-feature svg{width:22px;height:22px;fill:var(--green);flex-shrink:0;margin-top:2px}
+.about-feature span{font-size:.88rem;font-weight:500;color:var(--text-mid)}
+
+/* Services */
+.services-section{background:var(--sand)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:all .35s var(--ease);border:1px solid var(--border)}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card-img{height:200px;overflow:hidden}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.service-card:hover .service-card-img img{transform:scale(1.05)}
+.service-card-body{padding:28px}
+.service-card-body h3{font-size:1.15rem;color:var(--wood);margin-bottom:10px}
+.service-card-body p{color:var(--text-soft);font-size:.9rem;line-height:1.7;margin-bottom:16px}
+.service-card-body .learn-more{color:var(--green);font-weight:600;font-size:.85rem;display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.service-card-body .learn-more:hover{gap:10px}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:1/1}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,18,.5) 0%,transparent 50%);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item span{position:absolute;bottom:16px;left:16px;color:var(--white);font-weight:600;font-size:.85rem;z-index:2;opacity:0;transform:translateY(8px);transition:all .3s}
+.gallery-item:hover span{opacity:1;transform:none}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+
+/* Why Us */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.why-card{text-align:center;padding:36px 24px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);transition:all .35s;border:1px solid var(--border)}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--green)}
+.why-icon{width:64px;height:64px;border-radius:16px;background:rgba(56,142,60,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.why-icon svg{width:28px;height:28px;fill:var(--green)}
+.why-card h3{font-size:1.05rem;color:var(--wood);margin-bottom:10px}
+.why-card p{color:var(--text-soft);font-size:.88rem;line-height:1.7}
+
+/* Testimonials */
+.testimonials-section{background:var(--wood-deep);color:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:36px;transition:all .35s}
+.testimonial-card:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.testimonial-stars{display:flex;gap:4px;margin-bottom:16px}
+.testimonial-stars svg{width:18px;height:18px;fill:#ffc107}
+.testimonial-card p{color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.8;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--white)}
+.testimonial-loc{font-size:.78rem;color:rgba(255,255,255,.5)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{padding:40px;background:var(--wood);color:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+.contact-info h3{font-size:1.5rem;margin-bottom:12px}
+.contact-info>p{color:rgba(255,255,255,.75);margin-bottom:28px;line-height:1.8}
+.contact-item{display:flex;align-items:start;gap:14px;padding:16px 0;border-top:1px solid rgba(255,255,255,.1)}
+.contact-item svg{width:22px;height:22px;fill:var(--green-light);flex-shrink:0;margin-top:2px}
+.contact-item .label{font-size:.78rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.contact-item .value{font-weight:600;font-size:.95rem}
+.contact-item a{color:var(--white);transition:color .3s}
+.contact-item a:hover{color:var(--green-light)}
+.contact-form{background:var(--white);padding:40px;border-radius:var(--radius-lg);box-shadow:var(--shadow);border:1px solid var(--border)}
+.contact-form h3{font-size:1.5rem;color:var(--wood);margin-bottom:8px}
+.contact-form>p{color:var(--text-soft);margin-bottom:28px;font-size:.92rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text-mid);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Hind',sans-serif;font-size:.92rem;color:var(--text);background:var(--cream);transition:border-color .3s,box-shadow .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(56,142,60,.12);outline:none}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{width:100%;background:var(--green);color:var(--white);padding:16px;border-radius:100px;font-size:1rem;font-weight:600;transition:all .3s;border:none;cursor:pointer}
+.form-submit:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(56,142,60,.3)}
+
+/* Footer */
+.footer{background:var(--wood-deep);color:rgba(255,255,255,.6);padding:48px 28px 28px;text-align:center}
+.footer-brand{font-family:'Arvo',serif;font-size:1.4rem;color:var(--white);font-weight:700;margin-bottom:8px}
+.footer p{font-size:.85rem;margin-bottom:6px;line-height:1.7}
+.footer a{color:var(--green-light);transition:color .3s}
+.footer a:hover{color:var(--white)}
+.footer-divider{width:60px;height:2px;background:rgba(255,255,255,.1);margin:24px auto}
+.footer-neo{font-size:.78rem;color:rgba(255,255,255,.35)}
+
+/* NeoCode Popup */
+.nc-popup{position:fixed;bottom:28px;right:28px;background:var(--white);border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,.2);padding:32px;max-width:380px;z-index:999;transform:translateY(20px);opacity:0;pointer-events:none;transition:all .4s var(--ease);border:1px solid var(--border)}
+.nc-popup.show{transform:none;opacity:1;pointer-events:all}
+.nc-popup-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;transition:background .3s;cursor:pointer;border:none}
+.nc-popup-close:hover{background:var(--sand-dark)}
+.nc-popup-close svg{width:14px;height:14px;fill:var(--text-soft)}
+.nc-popup .tag{display:inline-block;background:rgba(56,142,60,.1);color:var(--green-dark);padding:4px 12px;border-radius:100px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.nc-popup h4{font-family:'Arvo',serif;font-size:1.15rem;color:var(--wood);margin-bottom:8px}
+.nc-popup p{color:var(--text-soft);font-size:.85rem;line-height:1.6;margin-bottom:20px}
+.nc-popup-btn{display:block;width:100%;background:var(--green);color:var(--white);padding:13px;border-radius:100px;font-size:.9rem;font-weight:600;text-align:center;transition:all .3s;border:none;cursor:pointer}
+.nc-popup-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .gallery-item:nth-child(1){grid-column:span 2;grid-row:span 1;aspect-ratio:2/1}
+}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{min-height:80vh}
+  .hero h1{font-size:2rem}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .about-img img{height:320px}
+  .services-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item:nth-child(1){grid-column:span 2;aspect-ratio:2/1}
+  .testimonials-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  .nc-popup{left:16px;right:16px;bottom:16px;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="nc-banner">
+  This is a demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; showing what's possible for Mark Scott Fencing
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <div class="mark">MSF</div>
+      Mark Scott Fencing
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#why" onclick="closeMenu()">Why Us</a>
+  <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMenu()">Get a Quote</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      Trusted Local Fencing Specialist
+    </div>
+    <h1 class="reveal stagger-1">Quality Fencing &amp; Gates <span>Built to Last</span></h1>
+    <p class="reveal stagger-2">We've been helping homeowners and businesses across the area with professional fence installation, repairs, and bespoke gates. If you're looking for a fencing contractor who takes pride in their work, you've found the right team.</p>
+    <div class="hero-btns reveal stagger-3">
+      <a href="#contact" class="btn-primary">Get a Free Quote <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+      <a href="#services" class="btn-outline">View Our Services</a>
+    </div>
+    <div class="hero-stats reveal stagger-4">
+      <div class="hero-stat">
+        <h3>15+</h3>
+        <p>Years Experience</p>
+      </div>
+      <div class="hero-stat">
+        <h3>500+</h3>
+        <p>Projects Completed</p>
+      </div>
+      <div class="hero-stat">
+        <h3>100%</h3>
+        <p>Satisfaction Rate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal-left">
+        <img src="https://images.pexels.com/photos/6444267/pexels-photo-6444267.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional fencing installation" loading="lazy">
+        <div class="about-img-badge">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          Fully Insured
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <h2>Meet Mark Scott</h2>
+        <p>With over 15 years in the fencing trade, Mark's built a reputation for honest work, quality materials, and fences that genuinely stand the test of time. What started as a one-man operation has grown into a trusted local business that homeowners come back to again and again.</p>
+        <p>Every project starts with a free, no-pressure site visit. Mark will talk you through your options, give you straightforward advice, and provide a clear quote with no hidden costs. It's that simple.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <svg viewBox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Free site surveys and honest quotes</span>
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Quality timber and premium materials</span>
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Fully insured for your peace of mind</span>
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Clean, tidy work every single time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">What We Do</span>
+      <h2>Our Fencing &amp; Gate Services</h2>
+      <p>From a simple fence repair to a full garden transformation, we've got you covered. Every job gets the same attention to detail, no matter the size.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal stagger-1">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/6444256/pexels-photo-6444256.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Panel fencing installation" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>Panel Fencing</h3>
+          <p>Our most popular choice for residential boundaries. We supply and fit high-quality lap panel and overlap fencing that looks great and provides solid privacy for your garden.</p>
+          <a href="#contact" class="learn-more">Get a Quote <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        </div>
+      </div>
+      <div class="service-card reveal stagger-2">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/5997992/pexels-photo-5997992.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Close board fencing" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>Close Board Fencing</h3>
+          <p>The strongest, most durable option for any boundary. Built on-site with individual featherboard slats, concrete posts, and gravel boards for a fence that'll last decades.</p>
+          <a href="#contact" class="learn-more">Get a Quote <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        </div>
+      </div>
+      <div class="service-card reveal stagger-3">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/6912836/pexels-photo-6912836.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Picket fencing" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>Picket Fencing</h3>
+          <p>Classic, charming, and perfect for front gardens. Our picket fences add real kerb appeal while keeping boundaries clear. Available in a range of styles and heights.</p>
+          <a href="#contact" class="learn-more">Get a Quote <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        </div>
+      </div>
+      <div class="service-card reveal stagger-1">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/6316065/pexels-photo-6316065.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Garden gates" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>Gates</h3>
+          <p>From simple side gates to impressive entrance gates, we design and install gates that complement your fencing perfectly. Timber, metal, or combination styles available.</p>
+          <a href="#contact" class="learn-more">Get a Quote <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        </div>
+      </div>
+      <div class="service-card reveal stagger-2">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/1599452/pexels-photo-1599452.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Trellis fencing" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>Trellis</h3>
+          <p>Add height, privacy, and style to your garden with trellis panels. They're brilliant for climbing plants and work as standalone features or as fence toppers.</p>
+          <a href="#contact" class="learn-more">Get a Quote <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        </div>
+      </div>
+      <div class="service-card reveal stagger-3">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/5997996/pexels-photo-5997996.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fence repairs" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>Fence Repairs</h3>
+          <p>Storm damage? Rotten posts? Broken panels? We'll get your fence back in shape quickly. Sometimes a repair is all you need, and we'll always tell you honestly.</p>
+          <a href="#contact" class="learn-more">Get a Quote <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Our Work</span>
+      <h2>Recent Projects</h2>
+      <p>Here's a look at some of our recent installations. Every fence is built to the same high standard, whether it's a small repair or a full garden perimeter.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6444267/pexels-photo-6444267.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Close board fence installation" loading="lazy">
+        <span>Close Board Installation</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6444256/pexels-photo-6444256.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Panel fence project" loading="lazy">
+        <span>Panel Fencing</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Garden boundary fencing" loading="lazy">
+        <span>Garden Boundary</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6316065/pexels-photo-6316065.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bespoke garden gate" loading="lazy">
+        <span>Bespoke Gate</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/5997992/pexels-photo-5997992.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Featherboard fencing" loading="lazy">
+        <span>Featherboard Fence</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/1599452/pexels-photo-1599452.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Trellis with climbing plants" loading="lazy">
+        <span>Trellis Feature</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6912836/pexels-photo-6912836.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Picket fencing front garden" loading="lazy">
+        <span>Picket Fence</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-sm" id="why" style="background:var(--sand)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">The Difference</span>
+      <h2>Why Choose Mark Scott Fencing?</h2>
+      <p>There are plenty of fencing contractors out there. Here's what makes us different.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal stagger-1">
+        <div class="why-icon">
+          <svg viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3>Clear, Honest Quotes</h3>
+        <p>No surprises, no hidden extras. You'll know exactly what you're paying before any work starts. We price fairly and stand by our quotes.</p>
+      </div>
+      <div class="why-card reveal stagger-2">
+        <div class="why-icon">
+          <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3>Quality Materials</h3>
+        <p>We don't cut corners. Every fence is built with premium pressure-treated timber, concrete posts, and gravel boards that are made to last.</p>
+      </div>
+      <div class="why-card reveal stagger-3">
+        <div class="why-icon">
+          <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3>Reliable &amp; Punctual</h3>
+        <p>When we say we'll be there, we'll be there. We turn up on time, get the job done efficiently, and leave your property tidy when we're finished.</p>
+      </div>
+      <div class="why-card reveal stagger-4">
+        <div class="why-icon">
+          <svg viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+        </div>
+        <h3>Local &amp; Trusted</h3>
+        <p>We're not a faceless national company. Mark personally oversees every project. Most of our work comes from recommendations, and that says it all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag" style="background:rgba(56,142,60,.2)">What People Say</span>
+      <h2 style="color:var(--white)">Customer Reviews</h2>
+      <p style="color:rgba(255,255,255,.6)">Don't just take our word for it. Here's what our customers have to say about working with Mark Scott Fencing.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal stagger-1">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p>"Mark replaced our entire back garden fence after storm damage. He was round within days of us calling, gave us a fair price, and the result is absolutely brilliant. Couldn't recommend him more."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JW</div>
+          <div>
+            <div class="testimonial-name">James Walker</div>
+            <div class="testimonial-loc">Homeowner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal stagger-2">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p>"We've used Mark twice now. Once for close board fencing and once for a new side gate. Both times the workmanship was spot on. He's reliable, reasonably priced, and genuinely good at what he does."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SP</div>
+          <div>
+            <div class="testimonial-name">Sarah Patterson</div>
+            <div class="testimonial-loc">Repeat Customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal stagger-3">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p>"Had Mark install picket fencing along the front of our property. It looks absolutely fantastic and really transformed the look of the house. Professional from start to finish. Top bloke."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DH</div>
+          <div>
+            <div class="testimonial-name">David Hughes</div>
+            <div class="testimonial-loc">Homeowner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Get In Touch</span>
+      <h2>Request a Free Quote</h2>
+      <p>Tell us about your fencing project and we'll get back to you with a no-obligation quote. Most quotes are provided within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-form reveal-left">
+        <h3>Send Us Your Details</h3>
+        <p>Fill in the form below and we'll be in touch shortly.</p>
+        <form id="quoteForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="panel-fencing">Panel Fencing</option>
+              <option value="close-board">Close Board Fencing</option>
+              <option value="picket-fencing">Picket Fencing</option>
+              <option value="gates">Gates</option>
+              <option value="trellis">Trellis</option>
+              <option value="fence-repair">Fence Repair</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Project</label>
+            <textarea id="message" name="message" placeholder="Approximate length of fencing, type of fence, access requirements, anything else we should know..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send My Quote Request</button>
+        </form>
+      </div>
+      <div class="contact-info reveal-right">
+        <h3>Get in Touch Directly</h3>
+        <p>Prefer to pick up the phone or drop us a message? No problem at all. We're always happy to chat about your project.</p>
+        <div class="contact-item">
+          <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          <div>
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:mark@markscottfencing.co.uk">mark@markscottfencing.co.uk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+          <div>
+            <div class="label">Working Hours</div>
+            <div class="value">Mon - Fri: 7:30am - 6:00pm<br>Sat: 8:00am - 1:00pm</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+          <div>
+            <div class="label">Response Time</div>
+            <div class="value">Most quotes within 24 hours</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <div>
+            <div class="label">Insurance</div>
+            <div class="value">Fully insured for all works</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-brand">Mark Scott Fencing</div>
+  <p>Quality fencing and gates you can rely on.</p>
+  <p><a href="mailto:mark@markscottfencing.co.uk">mark@markscottfencing.co.uk</a></p>
+  <div class="footer-divider"></div>
+  <p class="footer-neo">Demo website designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="nc-popup" id="ncPopup">
+  <button class="nc-popup-close" id="ncPopupClose" aria-label="Close popup">
+    <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+  </button>
+  <span class="tag">NeoCode Studio</span>
+  <h4>Want a Site Like This?</h4>
+  <p>We built this demo to show what's possible for Mark Scott Fencing. If you'd like a modern, professional website that actually brings in customers, let's chat.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="nc-popup-btn">Get Your Free Consultation</a>
+</div>
+
+<script>
+// Hamburger Menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMenu() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// IntersectionObserver for reveals
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// NeoCode Popup at 70% scroll
+let popupShown = false;
+let popupDismissed = false;
+
+window.addEventListener('scroll', () => {
+  if (popupDismissed) return;
+  const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+  if (scrollPercent >= 70 && !popupShown) {
+    popupShown = true;
+    document.getElementById('ncPopup').classList.add('show');
+  }
+});
+
+document.getElementById('ncPopupClose').addEventListener('click', () => {
+  document.getElementById('ncPopup').classList.remove('show');
+  popupDismissed = true;
+});
+
+// Form handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Quote Request Sent!';
+    btn.style.background = 'var(--wood)';
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = 'Send My Quote Request';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }, 1200);
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
