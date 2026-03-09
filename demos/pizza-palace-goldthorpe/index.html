@@ -4,337 +4,934 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pizza Palace Goldthorpe | Fresh Pizza, Kebabs & Burgers | Order Now</title>
-<meta name="description" content="Goldthorpe's favourite takeaway. Fresh handmade pizzas, kebabs with homemade chilli sauce, southern fried chicken & burgers. 25 years chef experience. Order now!">
+<meta name="description" content="Goldthorpe's favourite takeaway. 30+ handmade pizzas, signature kebabs, southern fried chicken & burgers. Open daily from 4PM. Call 01709 888986 to order.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#dc2626;--red-dark:#991b1b;--red-glow:rgba(220,38,38,.2);--gold:#f59e0b;--gold-light:#fbbf24;--dark:#0f0f0f;--darker:#080808;--charcoal:#1a1a1a;--gray:#9ca3af;--white:#fff;--glass:rgba(255,255,255,.04);--glass-border:rgba(255,255,255,.08)}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans','Space Grotesk',system-ui,sans-serif;color:var(--white);background:var(--darker);overflow-x:hidden;line-height:1.6}
-h1,h2,h3,h4{font-family:'Space Grotesk',system-ui,sans-serif}
+:root{
+  --purple:#a855f7;--purple-light:#c084fc;--purple-dark:#7c3aed;--purple-deep:#6d28d9;
+  --neon:#d946ef;--neon-light:#e879f9;--neon-glow:rgba(217,70,239,.25);
+  --dark:#09090b;--darker:#050507;--surface:#13111a;--surface-light:#1c1926;
+  --border:rgba(168,85,247,.12);--border-hover:rgba(168,85,247,.35);
+  --gray:#a1a1aa;--gray-light:#d4d4d8;--white:#fafafa;
+  --glass:rgba(168,85,247,.06);--radius:16px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--white);background:var(--darker);overflow-x:hidden;line-height:1.65}
+h1,h2,h3,h4,h5{font-family:'Outfit',system-ui,sans-serif;line-height:1.15}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:4px}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--darker)}
+::-webkit-scrollbar-thumb{background:var(--purple-dark);border-radius:4px}
+
+/* NOISE OVERLAY */
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;transition:all .3s}
-nav.scrolled{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 24px;transition:all .35s cubic-bezier(.4,0,.2,1)}
+nav.scrolled{background:rgba(5,5,7,.92);backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:'Space Grotesk';font-size:1.2rem;font-weight:700;color:var(--white);text-decoration:none}
-.nav-brand span{color:var(--red)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
-.nav-order{background:var(--red)!important;color:var(--white)!important;padding:10px 24px!important;border-radius:12px!important;font-weight:600!important}
-.nav-order:hover{background:var(--red-dark)!important}
-.mobile-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+.nav-brand{font-family:'Outfit';font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+.nav-brand span{background:linear-gradient(135deg,var(--purple),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:var(--gray);font-size:.875rem;font-weight:500;padding:8px 16px;border-radius:10px;transition:all .25s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--white);background:var(--glass)}
+.nav-cta{background:linear-gradient(135deg,var(--purple-dark),var(--neon))!important;color:var(--white)!important;font-weight:600!important;padding:10px 24px!important;border-radius:12px!important;box-shadow:0 4px 20px rgba(168,85,247,.3)!important}
+.nav-cta:hover{box-shadow:0 6px 28px rgba(168,85,247,.45)!important;transform:translateY(-1px)}
+
+/* HAMBURGER */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:300}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);margin:6px 0;transition:all .3s;border-radius:2px}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+/* MOBILE NAV */
+.mobile-nav{position:fixed;inset:0;z-index:190;background:rgba(5,5,7,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);padding:24px}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{font-family:'Outfit';font-size:1.5rem;font-weight:600;color:var(--gray-light);padding:16px 32px;border-radius:14px;transition:all .25s;width:100%;text-align:center;max-width:320px}
+.mobile-nav a:hover{background:var(--glass);color:var(--purple-light)}
+.mobile-nav .mob-cta{background:linear-gradient(135deg,var(--purple-dark),var(--neon));color:var(--white);margin-top:16px}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.3}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.6) 0%,rgba(8,8,8,.9) 70%,var(--darker) 100%)}
-.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(220,38,38,.2),transparent 70%);z-index:1;animation:pulse-glow 4s ease-in-out infinite}
-@keyframes pulse-glow{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
-.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:140px 24px 80px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:100px;padding:8px 24px;font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:28px}
-.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.05;margin-bottom:24px}
-.hero h1 .highlight{display:block;background:linear-gradient(135deg,var(--red),#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.2rem;color:var(--gray);max-width:550px;margin:0 auto 40px}
-.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:14px;font-size:1rem;font-weight:600;text-decoration:none;transition:all .3s;border:none;cursor:pointer;font-family:'Space Grotesk',system-ui,sans-serif}
-.btn-red{background:linear-gradient(135deg,var(--red),#ef4444);color:var(--white);box-shadow:0 8px 32px rgba(220,38,38,.4)}
-.btn-red:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(220,38,38,.5)}
-.btn-dark{background:var(--charcoal);color:var(--white);border:1px solid var(--glass-border)}
-.btn-dark:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
-.hero-info{display:flex;gap:32px;justify-content:center;margin-top:48px;flex-wrap:wrap}
-.hero-info-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--gray)}
-.hero-info-item .icon{width:36px;height:36px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.22;filter:saturate(.6)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,5,7,.7) 0%,rgba(9,9,11,.85) 50%,var(--darker) 100%)}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);z-index:1;animation:orb-float 8s ease-in-out infinite}
+.hero-orb-1{width:500px;height:500px;background:rgba(168,85,247,.15);top:10%;left:55%}
+.hero-orb-2{width:350px;height:350px;background:rgba(217,70,239,.1);bottom:15%;left:10%;animation-delay:-3s}
+@keyframes orb-float{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:160px 24px 100px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);border-radius:100px;padding:6px 20px;font-size:.78rem;color:var(--purple-light);font-weight:600;margin-bottom:24px;letter-spacing:.3px}
+.hero-badge .dot{width:6px;height:6px;background:var(--neon);border-radius:50%;animation:dot-pulse 2s infinite}
+@keyframes dot-pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:20px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--purple-light),var(--neon),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:grad-shift 5s ease infinite}
+@keyframes grad-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero-sub{font-size:1.05rem;color:var(--gray);max-width:480px;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:14px;font-size:.95rem;font-weight:600;transition:all .3s cubic-bezier(.4,0,.2,1);border:none;cursor:pointer;font-family:'Outfit',system-ui,sans-serif}
+.btn-primary{background:linear-gradient(135deg,var(--purple-dark),var(--neon));color:var(--white);box-shadow:0 8px 32px rgba(168,85,247,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 44px rgba(168,85,247,.5)}
+.btn-primary:focus-visible{outline-offset:4px}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--border-hover)}
+.btn-ghost:hover{background:var(--glass);border-color:var(--purple);transform:translateY(-2px)}
+.hero-chips{display:flex;gap:24px;flex-wrap:wrap}
+.hero-chip{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--gray)}
+.hero-chip-icon{width:38px;height:38px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-card{width:100%;max-width:420px;aspect-ratio:3/4;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 60px rgba(168,85,247,.1);position:relative}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+.hero-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(5,5,7,.7))}
+.hero-card-info{position:absolute;bottom:24px;left:24px;right:24px;z-index:2}
+.hero-card-tag{display:inline-block;background:rgba(168,85,247,.8);backdrop-filter:blur(10px);color:var(--white);font-size:.7rem;font-weight:700;padding:5px 14px;border-radius:8px;margin-bottom:10px;letter-spacing:.5px;text-transform:uppercase}
+.hero-card-info h3{font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.hero-card-info p{font-size:.82rem;color:rgba(255,255,255,.7)}
+.hero-float-badge{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 18px;display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;box-shadow:0 16px 40px rgba(0,0,0,.4);z-index:3;animation:badge-float 4s ease-in-out infinite}
+.hero-float-badge.top{top:30px;right:-20px;animation-delay:-1s}
+.hero-float-badge.bot{bottom:50px;left:-20px}
+@keyframes badge-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-float-badge .badge-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--purple-dark),var(--neon));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem}
 
-/* MENU SECTION */
+/* MARQUEE */
+.marquee-section{padding:0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:12px;padding:18px 40px;font-family:'Outfit';font-size:.95rem;font-weight:600;color:var(--gray);white-space:nowrap}
+.marquee-item .sep{width:6px;height:6px;background:var(--purple);border-radius:50%;flex-shrink:0}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION */
 section{padding:100px 24px}
 .container{max-width:1200px;margin:0 auto}
-.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
-.section-label::before{content:'';width:20px;height:2px;background:var(--gold)}
-.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;line-height:1.15}
-.section-desc{font-size:1rem;color:var(--gray);max-width:550px;margin-bottom:48px}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.menu-card{background:var(--charcoal);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;transition:all .4s}
-.menu-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 20px 60px rgba(220,38,38,.1)}
-.menu-img{width:100%;height:200px;object-fit:cover;transition:transform .5s}
-.menu-card:hover .menu-img{transform:scale(1.05)}
-.menu-content{padding:24px}
-.menu-tag{display:inline-block;background:rgba(220,38,38,.15);color:var(--red);font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
-.menu-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
-.menu-card p{font-size:.85rem;color:var(--gray);line-height:1.6;margin-bottom:16px}
-.menu-price{font-size:1.1rem;font-weight:700;color:var(--gold)}
+.section-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:700;color:var(--purple-light);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:14px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:linear-gradient(90deg,var(--purple),var(--neon))}
+.section-title{font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.section-desc{font-size:1rem;color:var(--gray);max-width:520px;margin-bottom:52px}
 
-/* SPECIALS */
-.specials-section{background:var(--charcoal);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
-.specials-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.special-img-wrap{position:relative;border-radius:24px;overflow:hidden}
-.special-img-wrap img{width:100%;height:450px;object-fit:cover}
-.special-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6))}
-.special-badge{position:absolute;top:20px;right:20px;background:var(--red);color:var(--white);font-family:'Space Grotesk';font-weight:700;font-size:.8rem;padding:8px 16px;border-radius:10px;z-index:2}
-.special-features{display:flex;flex-direction:column;gap:20px}
-.special-feat{display:flex;gap:16px;padding:20px;background:var(--dark);border:1px solid var(--glass-border);border-radius:16px;transition:all .3s}
-.special-feat:hover{border-color:rgba(220,38,38,.3)}
-.feat-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--red-glow),rgba(220,38,38,.05));border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem}
-.feat-text h4{font-size:1rem;font-weight:700;margin-bottom:4px}
-.feat-text p{font-size:.85rem;color:var(--gray)}
+/* MENU TABS */
+.menu-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.menu-tab{padding:10px 22px;border-radius:12px;font-size:.85rem;font-weight:600;color:var(--gray);background:var(--surface);border:1px solid var(--border);cursor:pointer;transition:all .25s;font-family:'Outfit',system-ui,sans-serif}
+.menu-tab:hover,.menu-tab:focus-visible{color:var(--white);border-color:var(--border-hover)}
+.menu-tab.active{background:linear-gradient(135deg,var(--purple-dark),var(--neon));color:var(--white);border-color:transparent}
+.menu-panel{display:none}.menu-panel.active{display:block}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.about-card{background:var(--charcoal);border:1px solid var(--glass-border);border-radius:20px;padding:32px;text-align:center;transition:all .3s}
-.about-card:hover{transform:translateY(-3px);border-color:rgba(245,158,11,.3)}
-.about-num{font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
-.about-label{font-size:.85rem;color:var(--gray)}
+/* MENU GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.menu-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.menu-item:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:0 20px 50px rgba(168,85,247,.08)}
+.menu-item-img{width:100%;height:200px;object-fit:cover;transition:transform .5s}
+.menu-item:hover .menu-item-img{transform:scale(1.04)}
+.menu-item-body{padding:20px}
+.menu-item-cat{display:inline-block;background:rgba(168,85,247,.12);color:var(--purple-light);font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.menu-item h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.menu-item p{font-size:.83rem;color:var(--gray);margin-bottom:14px}
+.menu-item-price{font-family:'Outfit';font-size:1.15rem;font-weight:700;background:linear-gradient(135deg,var(--purple-light),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* DEAL CARDS */
+.deals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.deal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:all .35s}
+.deal-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.deal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--neon))}
+.deal-num{font-family:'Outfit';font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--purple-light),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.deal-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.deal-card p{font-size:.82rem;color:var(--gray);line-height:1.6}
+.deal-price{margin-top:14px;font-family:'Outfit';font-size:1.3rem;font-weight:800;color:var(--neon)}
+
+/* WHY US */
+.why-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.why-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.4)}
+.why-img img{width:100%;height:480px;object-fit:cover}
+.why-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,5,7,.5));pointer-events:none}
+.why-img-badge{position:absolute;top:20px;left:20px;background:rgba(168,85,247,.85);backdrop-filter:blur(10px);color:var(--white);font-family:'Outfit';font-weight:700;font-size:.78rem;padding:8px 18px;border-radius:10px;z-index:2;letter-spacing:.5px}
+.why-features{display:flex;flex-direction:column;gap:16px}
+.why-feat{display:flex;gap:16px;padding:20px;background:var(--dark);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+.why-feat:hover{border-color:var(--border-hover);background:rgba(168,85,247,.04)}
+.why-feat-icon{width:50px;height:50px;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(217,70,239,.08));border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem}
+.why-feat h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.why-feat p{font-size:.83rem;color:var(--gray)}
+
+/* STATS */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:60px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px 24px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.stat-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.stat-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:2px;background:linear-gradient(90deg,var(--purple),var(--neon))}
+.stat-num{font-family:'Outfit';font-size:2.4rem;font-weight:900;background:linear-gradient(135deg,var(--purple-light),var(--neon-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+.stat-label{font-size:.82rem;color:var(--gray)}
 
 /* REVIEWS */
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.review-card{background:var(--charcoal);border:1px solid var(--glass-border);border-radius:20px;padding:32px;transition:all .3s}
-.review-card:hover{border-color:rgba(245,158,11,.2)}
-.review-stars{color:var(--gold);font-size:1.1rem;margin-bottom:16px;letter-spacing:2px}
-.review-text{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;margin-bottom:20px;font-style:italic}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .35s;position:relative}
+.review-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.review-stars{color:var(--neon);font-size:1rem;margin-bottom:16px;letter-spacing:3px}
+.review-text{color:rgba(255,255,255,.72);font-size:.92rem;line-height:1.75;margin-bottom:24px;font-style:italic}
 .review-author{display:flex;align-items:center;gap:12px}
-.review-avatar{width:40px;height:40px;background:linear-gradient(135deg,var(--red),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
-.review-name{font-weight:600;font-size:.9rem}
-.review-src{color:var(--gray);font-size:.75rem}
+.review-avatar{width:42px;height:42px;background:linear-gradient(135deg,var(--purple),var(--neon));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.review-name{font-weight:600;font-size:.88rem}
+.review-src{color:var(--gray);font-size:.72rem;margin-top:2px}
+
+/* HOURS */
+.hours-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hours-card{background:var(--dark);border:1px solid var(--border);border-radius:20px;padding:36px;overflow:hidden;position:relative}
+.hours-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--neon),var(--purple))}
+.hours-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.hours-row:last-child{border-bottom:none}
+.hours-row .day{color:var(--gray-light);font-weight:500}
+.hours-row .time{color:var(--purple-light);font-weight:600;font-family:'Outfit'}
+.hours-right h3{font-size:1.6rem;font-weight:800;margin-bottom:16px}
+.hours-right p{color:var(--gray);margin-bottom:20px;font-size:.95rem}
+.delivery-info{display:flex;flex-direction:column;gap:12px}
+.delivery-info-item{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--gray-light)}
+.delivery-info-item .d-icon{width:36px;height:36px;background:rgba(168,85,247,.1);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
 
 /* CTA */
 .cta-section{text-align:center}
-.cta-box{background:linear-gradient(135deg,var(--red-dark),var(--red));border-radius:32px;padding:80px 48px;position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;top:-100px;right:-50px;width:300px;height:300px;background:radial-gradient(circle,rgba(245,158,11,.25),transparent 70%);border-radius:50%}
-.cta-box::after{content:'';position:absolute;bottom:-80px;left:-30px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);border-radius:50%}
-.cta-box h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;position:relative;z-index:2}
-.cta-box p{color:rgba(255,255,255,.8);font-size:1.1rem;max-width:500px;margin:0 auto 32px;position:relative;z-index:2}
-.cta-btns{position:relative;z-index:2;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.cta-hours{margin-top:28px;font-size:.9rem;color:rgba(255,255,255,.6);position:relative;z-index:2}
+.cta-box{background:linear-gradient(135deg,var(--purple-deep),#581c87);border-radius:28px;padding:80px 48px;position:relative;overflow:hidden;border:1px solid rgba(168,85,247,.2)}
+.cta-orb{position:absolute;border-radius:50%;filter:blur(60px)}
+.cta-orb-1{width:300px;height:300px;background:rgba(217,70,239,.2);top:-80px;right:-40px}
+.cta-orb-2{width:200px;height:200px;background:rgba(168,85,247,.15);bottom:-60px;left:-30px}
+.cta-box h2{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;margin-bottom:14px;position:relative;z-index:2}
+.cta-box p{color:rgba(255,255,255,.75);font-size:1.05rem;max-width:480px;margin:0 auto 32px;position:relative;z-index:2}
+.cta-btns{position:relative;z-index:2;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta-hours-text{margin-top:24px;font-size:.85rem;color:rgba(255,255,255,.5);position:relative;z-index:2}
 
 /* FOOTER */
-footer{background:var(--dark);padding:60px 24px 30px;text-align:center;border-top:1px solid var(--glass-border)}
-footer .brand{font-family:'Space Grotesk';font-size:1.3rem;font-weight:700;margin-bottom:8px}
-footer .addr{font-size:.85rem;color:var(--gray);margin-bottom:24px}
-footer .foot-links{display:flex;gap:24px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
-footer .foot-links a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .3s}
-footer .foot-links a:hover{color:var(--gold)}
-footer .copy{font-size:.75rem;color:rgba(255,255,255,.3)}
+footer{background:var(--dark);padding:60px 24px 28px;border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand{font-family:'Outfit';font-size:1.3rem;font-weight:800;margin-bottom:10px}
+.footer-brand span{background:linear-gradient(135deg,var(--purple),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-desc{font-size:.83rem;color:var(--gray);margin-bottom:16px;max-width:280px}
+.footer-col h4{font-family:'Outfit';font-size:.85rem;font-weight:700;color:var(--purple-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.footer-col a{display:block;font-size:.85rem;color:var(--gray);padding:4px 0;transition:color .25s}
+.footer-col a:hover,.footer-col a:focus-visible{color:var(--purple-light)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.3)}
+.footer-neo a{font-size:.72rem;color:rgba(255,255,255,.35);transition:color .25s}
+.footer-neo a:hover{color:var(--purple-light)}
 
-/* ANIMATIONS */
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+/* NEOCODE POPUP */
+.neo-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:all .4s;display:flex;align-items:center;justify-content:center}
+.neo-overlay.show{opacity:1;visibility:visible}
+.neo-popup{background:var(--surface);border:1px solid var(--border-hover);border-radius:24px;padding:48px 40px;max-width:520px;width:90%;text-align:center;transform:scale(.9) translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.neo-overlay.show .neo-popup{transform:scale(1) translateY(0)}
+.neo-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.06);border:1px solid var(--border);width:36px;height:36px;border-radius:10px;color:var(--gray);font-size:1.1rem;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center}
+.neo-close:hover{background:rgba(168,85,247,.15);color:var(--white);border-color:var(--border-hover)}
+.neo-popup .neo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);border-radius:100px;padding:5px 16px;font-size:.7rem;color:var(--purple-light);font-weight:600;margin-bottom:20px;letter-spacing:.5px}
+.neo-popup h3{font-family:'Outfit';font-size:1.5rem;font-weight:800;margin-bottom:10px}
+.neo-popup h3 em{font-style:normal;background:linear-gradient(135deg,var(--purple),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.neo-popup p{color:var(--gray);font-size:.9rem;margin-bottom:28px;line-height:1.7}
+.neo-popup .neo-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple-dark),var(--neon));color:var(--white);padding:14px 32px;border-radius:14px;font-family:'Outfit';font-size:.95rem;font-weight:600;transition:all .3s;box-shadow:0 8px 28px rgba(168,85,247,.3)}
+.neo-popup .neo-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(168,85,247,.45)}
+.neo-popup .neo-skip{display:block;margin-top:14px;font-size:.78rem;color:var(--gray);cursor:pointer;transition:color .25s;background:none;border:none;font-family:'Inter',sans-serif}
+.neo-popup .neo-skip:hover{color:var(--white)}
 
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.vis{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-right.vis{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s ease,transform .6s ease}
+.reveal-scale.vis{opacity:1;transform:scale(1)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-btns,.hero-chips{justify-content:center}
+  .hero-visual{order:-1;margin-bottom:20px}
+  .hero-card{max-width:320px;aspect-ratio:4/5}
+  .hero-float-badge.top{right:0}.hero-float-badge.bot{left:0}
+  .why-grid,.hours-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
 @media(max-width:768px){
-.specials-grid{grid-template-columns:1fr}
-.about-grid{grid-template-columns:repeat(2,1fr)}
-.nav-links{display:none}
-.mobile-toggle{display:block}
-.cta-box{padding:48px 24px}
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .stat-card{padding:24px 16px}.stat-num{font-size:1.8rem}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .deals-grid{grid-template-columns:1fr 1fr}
+  .cta-box{padding:48px 24px}
+  .footer-grid{grid-template-columns:1fr}
+  section{padding:72px 24px}
+}
+@media(max-width:480px){
+  .menu-grid,.deals-grid{grid-template-columns:1fr}
+  .hero-card{max-width:260px}
+  .hero-float-badge{display:none}
+  .marquee-item{padding:14px 24px;font-size:.82rem}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
 <div class="nav-inner">
-<a href="#" class="nav-brand">Pizza <span>Palace</span></a>
-<div class="nav-links">
-<a href="#menu">Menu</a>
-<a href="#specials">Specials</a>
-<a href="#reviews">Reviews</a>
-<a href="tel:01709888986" class="nav-order">Order Now</a>
-</div>
-<button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+  <a href="#" class="nav-brand">Pizza <span>Palace</span></a>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#deals">Deals</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#hours">Hours</a>
+    <a href="tel:01709888986" class="nav-cta">Order Now</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </div>
 </nav>
 
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <a href="#menu" class="mob-link">Menu</a>
+  <a href="#deals" class="mob-link">Deals</a>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#reviews" class="mob-link">Reviews</a>
+  <a href="#hours" class="mob-link">Hours</a>
+  <a href="tel:01709888986" class="mob-cta mob-link">Call to Order</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-<div class="hero-bg">
-<img src="https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pizza">
-</div>
-<div class="hero-glow"></div>
-<div class="hero-inner">
-<div class="hero-badge">&#128293; Goldthorpe's Favourite Since 2010</div>
-<h1>Freshly Made.<br><span class="highlight">Incredibly Tasty.</span></h1>
-<p class="hero-sub">30 handmade pizzas, signature kebabs with our famous homemade chilli sauce, southern fried chicken & burgers. Made fresh daily by our chef with 25 years experience.</p>
-<div class="hero-ctas">
-<a href="tel:01709888986" class="btn btn-red">
-<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-Order: 01709 888986
-</a>
-<a href="#menu" class="btn btn-dark">View Menu</a>
-</div>
-<div class="hero-info">
-<div class="hero-info-item"><div class="icon">&#128205;</div>23 Barnsley Road, S63 9LS</div>
-<div class="hero-info-item"><div class="icon">&#128338;</div>4PM - Midnight Daily</div>
-<div class="hero-info-item"><div class="icon">&#128666;</div>Fast Local Delivery</div>
-</div>
-</div>
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Fresh pizza" loading="eager">
+  </div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Open Daily from 4PM</div>
+      <h1>Goldthorpe's<br>Go-To <span class="grad">Takeaway.</span></h1>
+      <p class="hero-sub">30 handmade pizzas, signature kebabs, southern fried chicken and loaded burgers. Made fresh to order at 23 Barnsley Road since 2010.</p>
+      <div class="hero-btns">
+        <a href="tel:01709888986" class="btn btn-primary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          01709 888986
+        </a>
+        <a href="#menu" class="btn btn-ghost">Explore Menu</a>
+      </div>
+      <div class="hero-chips">
+        <div class="hero-chip"><div class="hero-chip-icon">&#128205;</div>23 Barnsley Road, S63 9LS</div>
+        <div class="hero-chip"><div class="hero-chip-icon">&#128666;</div>Delivery within 4 miles</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <img src="https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Handmade pizza" loading="eager">
+        <div class="hero-card-info">
+          <div class="hero-card-tag">Most Popular</div>
+          <h3>Meat Feast Pizza</h3>
+          <p>Loaded with pepperoni, ham, chicken &amp; beef</p>
+        </div>
+      </div>
+      <div class="hero-float-badge top">
+        <div class="badge-icon">&#9733;</div>
+        <div><strong>3.6 Stars</strong><br><span style="font-size:.72rem;color:var(--gray)">Google Reviews</span></div>
+      </div>
+      <div class="hero-float-badge bot">
+        <div class="badge-icon">&#127829;</div>
+        <div><strong>30+ Pizzas</strong><br><span style="font-size:.72rem;color:var(--gray)">Handmade Daily</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- MARQUEE -->
+<div class="marquee-section">
+<div class="marquee-track">
+  <div class="marquee-item"><span class="sep"></span>Margherita &pound;7</div>
+  <div class="marquee-item"><span class="sep"></span>Pepperoni &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>BBQ Chicken &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>Meat Feast &pound;10</div>
+  <div class="marquee-item"><span class="sep"></span>Chicken Shish &pound;12</div>
+  <div class="marquee-item"><span class="sep"></span>Doner Kebab &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>Palace Special Burger &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>SFC 3 Pieces &pound;6</div>
+  <div class="marquee-item"><span class="sep"></span>Hot Wings 10pc &pound;5</div>
+  <div class="marquee-item"><span class="sep"></span>Calzone &pound;10</div>
+  <div class="marquee-item"><span class="sep"></span>Lamb Chops &pound;14</div>
+  <div class="marquee-item"><span class="sep"></span>Pizza Burger &pound;8</div>
+  <!-- duplicate for seamless loop -->
+  <div class="marquee-item"><span class="sep"></span>Margherita &pound;7</div>
+  <div class="marquee-item"><span class="sep"></span>Pepperoni &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>BBQ Chicken &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>Meat Feast &pound;10</div>
+  <div class="marquee-item"><span class="sep"></span>Chicken Shish &pound;12</div>
+  <div class="marquee-item"><span class="sep"></span>Doner Kebab &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>Palace Special Burger &pound;8</div>
+  <div class="marquee-item"><span class="sep"></span>SFC 3 Pieces &pound;6</div>
+  <div class="marquee-item"><span class="sep"></span>Hot Wings 10pc &pound;5</div>
+  <div class="marquee-item"><span class="sep"></span>Calzone &pound;10</div>
+  <div class="marquee-item"><span class="sep"></span>Lamb Chops &pound;14</div>
+  <div class="marquee-item"><span class="sep"></span>Pizza Burger &pound;8</div>
+</div>
+</div>
+
+<!-- MENU -->
 <section id="menu">
 <div class="container">
-<div class="section-label fade-up">Our Menu</div>
-<h2 class="section-title fade-up">Made Fresh Every Single Day</h2>
-<p class="section-desc fade-up">From classic margheritas to our legendary Goldthorpe Special Burger, every dish is prepared with passion and premium ingredients.</p>
-<div class="menu-grid">
-<div class="menu-card fade-up">
-<img src="https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fresh Pizza" class="menu-img">
-<div class="menu-content">
-<div class="menu-tag">30 Varieties</div>
-<h3>Handmade Pizzas</h3>
-<p>Fresh dough, premium toppings, baked to golden perfection. From classic Margherita to loaded specials.</p>
-<div class="menu-price">From &pound;6.99</div>
-</div>
-</div>
-<div class="menu-card fade-up">
-<img src="https://images.pexels.com/photos/6210747/pexels-photo-6210747.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Kebab" class="menu-img">
-<div class="menu-content">
-<div class="menu-tag">Signature</div>
-<h3>Chef Special Kebabs</h3>
-<p>Generous portions served with rice, salad, and our famous handmade chilli sauce that keeps you coming back.</p>
-<div class="menu-price">From &pound;7.99</div>
-</div>
-</div>
-<div class="menu-card fade-up">
-<img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Burger" class="menu-img">
-<div class="menu-content">
-<div class="menu-tag">Fan Favourite</div>
-<h3>Burgers & Chicken</h3>
-<p>Southern fried chicken and our legendary Goldthorpe Special Burger. Crispy, juicy, and always satisfying.</p>
-<div class="menu-price">From &pound;5.99</div>
-</div>
-</div>
-<div class="menu-card fade-up">
-<img src="https://images.pexels.com/photos/2638026/pexels-photo-2638026.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Desserts" class="menu-img">
-<div class="menu-content">
-<div class="menu-tag">Sweet Treats</div>
-<h3>Desserts</h3>
-<p>Finish with chocolate gateau, cheesecake, or a creamy milkshake. The perfect end to a perfect meal.</p>
-<div class="menu-price">From &pound;3.99</div>
-</div>
-</div>
-</div>
+  <div class="section-eyebrow reveal">Our Menu</div>
+  <h2 class="section-title reveal">Fresh. Loaded. Made to Order.</h2>
+  <p class="section-desc reveal">From classic Margheritas to our legendary Palace Special Kebab for four. Every dish prepared with quality ingredients by our chef with 25 years experience.</p>
+
+  <div class="menu-tabs reveal" role="tablist">
+    <button class="menu-tab active" data-tab="pizzas" role="tab" aria-selected="true">Pizzas</button>
+    <button class="menu-tab" data-tab="kebabs" role="tab" aria-selected="false">Kebabs</button>
+    <button class="menu-tab" data-tab="burgers" role="tab" aria-selected="false">Burgers &amp; Chicken</button>
+    <button class="menu-tab" data-tab="sides" role="tab" aria-selected="false">Sides &amp; Wraps</button>
+  </div>
+
+  <!-- PIZZAS -->
+  <div class="menu-panel active" id="pizzas" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Margherita Pizza" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Classic</div>
+          <h3>Margherita</h3>
+          <p>Mozzarella, tomato sauce, fresh basil. The timeless favourite done right.</p>
+          <div class="menu-item-price">&pound;7.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Meat Feast Pizza" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Loaded</div>
+          <h3>Meat Feast</h3>
+          <p>Pepperoni, ham, chicken, and beef on a bed of mozzarella. Proper loaded.</p>
+          <div class="menu-item-price">&pound;10.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?auto=compress&cs=tinysrgb&w=500" alt="BBQ Chicken Pizza" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Popular</div>
+          <h3>BBQ Chicken</h3>
+          <p>Tender chicken pieces with smoky BBQ sauce, peppers, and red onion.</p>
+          <div class="menu-item-price">&pound;8.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/365459/pexels-photo-365459.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Chef's Special Pizza" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Chef's Pick</div>
+          <h3>Chef's Special</h3>
+          <p>Our chef's signature combination. A bit of everything on one pizza.</p>
+          <div class="menu-item-price">&pound;10.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Hot & Spicy Pizza" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Spicy</div>
+          <h3>Hot &amp; Spicy</h3>
+          <p>Pepperoni, jalapenos, chilli peppers and hot sauce. Not for the faint-hearted.</p>
+          <div class="menu-item-price">&pound;10.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Calzone" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Folded</div>
+          <h3>Calzones</h3>
+          <p>Meat Feast, Doner, Vegetarian or build your own. Folded and baked golden.</p>
+          <div class="menu-item-price">From &pound;10.00</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;color:var(--gray);font-size:.85rem" class="reveal">Plus Pepperoni, Hawaiian, Chicken Kiev, New Yorker, Seafood, Four Seasons, D.I.Y. and more. <strong style="color:var(--purple-light)">30 pizzas in total.</strong></p>
+  </div>
+
+  <!-- KEBABS -->
+  <div class="menu-panel" id="kebabs" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/6210747/pexels-photo-6210747.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Doner Kebab" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Classic</div>
+          <h3>Doner Kebab</h3>
+          <p>Served with rice, salad, and tortilla. Generous portion every time.</p>
+          <div class="menu-item-price">&pound;8.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Chicken Shish" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Grilled</div>
+          <h3>Chicken Shish</h3>
+          <p>Marinated chicken skewers grilled over charcoal. Rice, salad, tortilla.</p>
+          <div class="menu-item-price">&pound;12.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/8753000/pexels-photo-8753000.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Lamb Shish" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Premium</div>
+          <h3>Lamb Shish</h3>
+          <p>Succulent lamb pieces, chargrilled to perfection. With rice, salad and wrap.</p>
+          <div class="menu-item-price">&pound;12.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/5836725/pexels-photo-5836725.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Palace Special Kebab" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Showstopper</div>
+          <h3>Palace Special (Serves 2)</h3>
+          <p>The ultimate sharing platter. A huge spread of all our best kebab meats.</p>
+          <div class="menu-item-price">&pound;30.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/6542792/pexels-photo-6542792.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Lamb Chops" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Premium</div>
+          <h3>Lamb Chops</h3>
+          <p>Juicy lamb chops grilled and served with all the trimmings.</p>
+          <div class="menu-item-price">&pound;14.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=500" alt="8oz Sirloin Steak" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Steak</div>
+          <h3>8oz Sirloin Steak</h3>
+          <p>Properly cooked sirloin served with rice, salad and tortilla.</p>
+          <div class="menu-item-price">&pound;12.00</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;color:var(--gray);font-size:.85rem" class="reveal">Also available: Kofte &pound;12, Mixed Shish &pound;12, Lamb Spare Ribs &pound;13, Doner Cob &pound;5, <strong style="color:var(--purple-light)">Palace Special for 4 at &pound;40.</strong></p>
+  </div>
+
+  <!-- BURGERS & CHICKEN -->
+  <div class="menu-panel" id="burgers" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Palace Special Burger" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Signature</div>
+          <h3>Palace Special Burger</h3>
+          <p>The big one. Our legendary signature burger with all the extras.</p>
+          <div class="menu-item-price">&pound;8.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2282532/pexels-photo-2282532.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Whopper Burger" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">6oz</div>
+          <h3>Whopper Burgers</h3>
+          <p>6oz patty. Standard, Hawaiian, Mega, American or Bacon. Proper hefty.</p>
+          <div class="menu-item-price">From &pound;7.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Southern Fried Chicken" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">SFC</div>
+          <h3>Southern Fried Chicken</h3>
+          <p>Crispy, golden, seasoned chicken pieces. 1pc to 8pc or grab a hot wings box.</p>
+          <div class="menu-item-price">From &pound;2.50</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/6941010/pexels-photo-6941010.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Pizza Burger" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Unique</div>
+          <h3>Pizza Burgers</h3>
+          <p>Wrapped in fresh pizza dough with cheese and sauce, baked in the pizza oven.</p>
+          <div class="menu-item-price">From &pound;8.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Kids Meals" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Little Ones</div>
+          <h3>Kids Meals</h3>
+          <p>Cheese burger, nuggets, kebab, sausage or popcorn chicken. All &pound;6.</p>
+          <div class="menu-item-price">&pound;6.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2638026/pexels-photo-2638026.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Desserts" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Sweet</div>
+          <h3>Desserts</h3>
+          <p>Chocolate gateau or cheesecake. The perfect finish to your order.</p>
+          <div class="menu-item-price">&pound;3.00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDES & WRAPS -->
+  <div class="menu-panel" id="sides" role="tabpanel">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Garlic Bread" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Starter</div>
+          <h3>Garlic Bread</h3>
+          <p>Plain, Cheese, Cheese &amp; Mushroom, Cheese &amp; Tomato, or Doner Special.</p>
+          <div class="menu-item-price">From &pound;5.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Wraps" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Wraps</div>
+          <h3>Loaded Wraps</h3>
+          <p>Doner, Chicken Shish, Lamb Shish, Kofte, Popcorn or Mixed Shish.</p>
+          <div class="menu-item-price">From &pound;5.00</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/1586942/pexels-photo-1586942.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Chips & Sides" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Sides</div>
+          <h3>Chips &amp; Sides</h3>
+          <p>Regular chips, cheesy chips, curly fries, wedges, onion rings, mozzarella sticks.</p>
+          <div class="menu-item-price">From &pound;2.70</div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="https://images.pexels.com/photos/2338015/pexels-photo-2338015.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Salads" class="menu-item-img" loading="lazy">
+        <div class="menu-item-body">
+          <div class="menu-item-cat">Fresh</div>
+          <h3>Salads</h3>
+          <p>Greek Salad, Shepherd's Salad, or our Special Ezme. Light and fresh.</p>
+          <div class="menu-item-price">From &pound;5.00</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
-<section class="specials-section" id="specials">
+<!-- DEALS -->
+<section id="deals" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
 <div class="container">
-<div class="specials-grid">
-<div class="special-img-wrap fade-up">
-<img src="https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Pizza making">
-<div class="special-badge">EST. 15 YEARS</div>
-</div>
-<div>
-<div class="section-label fade-up">Why Choose Us</div>
-<h2 class="section-title fade-up">Not Just Another Takeaway</h2>
-<p class="section-desc fade-up">Located opposite Goldthorpe Library, we've been serving the community for 15 years with passion, quality, and care.</p>
-<div class="special-features">
-<div class="special-feat fade-up">
-<div class="feat-icon">&#128104;&#8205;&#127859;</div>
-<div class="feat-text"><h4>25 Years Chef Experience</h4><p>Our head chef brings a quarter century of culinary expertise to every dish.</p></div>
-</div>
-<div class="special-feat fade-up">
-<div class="feat-icon">&#10024;</div>
-<div class="feat-text"><h4>Everything Made Fresh</h4><p>Fresh dough daily, handmade sauces, premium ingredients. Never frozen, always fresh.</p></div>
-</div>
-<div class="special-feat fade-up">
-<div class="feat-icon">&#127873;</div>
-<div class="feat-text"><h4>Free Treats With Orders</h4><p>We love surprising our loyal customers with complimentary extras in their orders.</p></div>
-</div>
-<div class="special-feat fade-up">
-<div class="feat-icon">&#9889;</div>
-<div class="feat-text"><h4>Lightning Fast Delivery</h4><p>Quick delivery times across Goldthorpe, Bolton-upon-Dearne, and surrounding areas.</p></div>
-</div>
-</div>
-</div>
-</div>
+  <div class="section-eyebrow reveal">Meal Deals</div>
+  <h2 class="section-title reveal">More Food, Less Spending.</h2>
+  <p class="section-desc reveal">Feed yourself or the whole family with our value meal deals. Properly good portions at proper prices.</p>
+  <div class="deals-grid">
+    <div class="deal-card reveal">
+      <div class="deal-num">01</div>
+      <h3>Solo Deal</h3>
+      <p>2 pieces of chicken plus chips. Quick, easy, sorted.</p>
+      <div class="deal-price">&pound;5.50</div>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-num">02</div>
+      <h3>Hunger Buster</h3>
+      <p>3 pieces of chicken with chips. When 2 pieces just won't cut it.</p>
+      <div class="deal-price">&pound;6.50</div>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-num">03</div>
+      <h3>Kebab &amp; Chips</h3>
+      <p>Doner kebab with chips and sauce. A classic combo.</p>
+      <div class="deal-price">&pound;7.00</div>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-num">04</div>
+      <h3>Family Pack</h3>
+      <p>6 pieces of chicken, 6 hot wings, 2 chips, and coleslaw.</p>
+      <div class="deal-price">&pound;17.50</div>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-num">05</div>
+      <h3>Big Family Pack</h3>
+      <p>9pc chicken, 6 hot wings, 3 chips, coleslaw and garlic bread.</p>
+      <div class="deal-price">&pound;21.00</div>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-num">06</div>
+      <h3>Palace Special (4 People)</h3>
+      <p>The ultimate kebab feast for four. All our best meats, rice, salad, wraps.</p>
+      <div class="deal-price">&pound;40.00</div>
+    </div>
+  </div>
 </div>
 </section>
 
-<section>
+<!-- WHY US / ABOUT -->
+<section id="about" class="why-section">
 <div class="container">
-<div class="section-label fade-up">At A Glance</div>
-<h2 class="section-title fade-up" style="margin-bottom:40px">Numbers That Speak</h2>
-<div class="about-grid">
-<div class="about-card fade-up"><div class="about-num">15+</div><div class="about-label">Years Serving Goldthorpe</div></div>
-<div class="about-card fade-up"><div class="about-num">30</div><div class="about-label">Pizza Varieties</div></div>
-<div class="about-card fade-up"><div class="about-num">25</div><div class="about-label">Years Chef Experience</div></div>
-<div class="about-card fade-up"><div class="about-num">4.5&#9733;</div><div class="about-label">Average Rating</div></div>
-</div>
+  <div class="why-grid">
+    <div class="why-img reveal-left">
+      <img src="https://images.pexels.com/photos/3682837/pexels-photo-3682837.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Pizza Palace kitchen" loading="lazy">
+      <div class="why-img-badge">EST. 2010 IN GOLDTHORPE</div>
+    </div>
+    <div>
+      <div class="section-eyebrow reveal">Why Choose Us</div>
+      <h2 class="section-title reveal">Not Your Average Takeaway.</h2>
+      <p class="section-desc reveal">Right opposite Goldthorpe Library on Barnsley Road, we've been feeding the community for over 15 years. Here's why people keep coming back.</p>
+      <div class="why-features">
+        <div class="why-feat reveal">
+          <div class="why-feat-icon">&#128104;&#8205;&#127859;</div>
+          <div><h4>25 Years Chef Experience</h4><p>Our head chef brings a quarter century of skill to every single dish that leaves the kitchen.</p></div>
+        </div>
+        <div class="why-feat reveal">
+          <div class="why-feat-icon">&#10024;</div>
+          <div><h4>Everything Made Fresh</h4><p>Fresh dough daily, handmade sauces, quality ingredients. Nothing frozen, nothing reheated.</p></div>
+        </div>
+        <div class="why-feat reveal">
+          <div class="why-feat-icon">&#127873;</div>
+          <div><h4>Free Treats With Orders</h4><p>Our regulars know the drill. We love throwing in complimentary extras as a thank you.</p></div>
+        </div>
+        <div class="why-feat reveal">
+          <div class="why-feat-icon">&#9889;</div>
+          <div><h4>Fast Delivery</h4><p>Covering Goldthorpe, Bolton-upon-Dearne, Thurnscoe and surrounding areas. &pound;7 minimum order.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-card reveal">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years in Goldthorpe</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num">30</div>
+      <div class="stat-label">Pizza Varieties</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num">25</div>
+      <div class="stat-label">Years Chef Experience</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num">3.6&#9733;</div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+  </div>
 </div>
 </section>
 
-<section id="reviews" style="padding-top:0">
+<!-- REVIEWS -->
+<section id="reviews">
 <div class="container">
-<div class="section-label fade-up">Reviews</div>
-<h2 class="section-title fade-up">What Our Customers Say</h2>
-<p class="section-desc fade-up">Don't just take our word for it. Here's what the community thinks.</p>
-<div class="reviews-grid">
-<div class="review-card fade-up">
-<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="review-text">"The chicken and mushroom pizza is absolutely incredible. Fresh, generous portions, and always delivered hot. We order every Friday without fail!"</p>
-<div class="review-author">
-<div class="review-avatar">L</div>
-<div><div class="review-name">Laura B.</div><div class="review-src">Google Review</div></div>
-</div>
-</div>
-<div class="review-card fade-up">
-<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="review-text">"Best kebabs in the area, hands down. The chef special with their homemade chilli sauce is legendary. Plus they always throw in free extras. Love it!"</p>
-<div class="review-author">
-<div class="review-avatar">D</div>
-<div><div class="review-name">Dave M.</div><div class="review-src">Tripadvisor</div></div>
-</div>
-</div>
-<div class="review-card fade-up">
-<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="review-text">"Quick delivery, friendly staff, and the food is always spot on. The Goldthorpe Special Burger is massive! Best takeaway in S63 by a mile."</p>
-<div class="review-author">
-<div class="review-avatar">S</div>
-<div><div class="review-name">Sam R.</div><div class="review-src">Facebook</div></div>
-</div>
-</div>
-</div>
+  <div class="section-eyebrow reveal">Reviews</div>
+  <h2 class="section-title reveal">What Goldthorpe Says.</h2>
+  <p class="section-desc reveal">Real feedback from the locals. Don't take our word for it.</p>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"The chicken and mushroom pizza is absolutely incredible. Fresh, generous portions, and always delivered hot. We order every single Friday without fail."</p>
+      <div class="review-author">
+        <div class="review-avatar">L</div>
+        <div><div class="review-name">Laura B.</div><div class="review-src">Google Review</div></div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Best kebabs in the area, hands down. The chef special with their homemade chilli sauce is proper legendary. Plus they always throw in free extras. Love it!"</p>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div><div class="review-name">Dave M.</div><div class="review-src">Tripadvisor</div></div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Quick delivery, friendly staff, and the food is always spot on. The Palace Special Burger is massive! Best takeaway in S63 by a mile. Highly recommend."</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div><div class="review-name">Sam R.</div><div class="review-src">Facebook</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
+<!-- HOURS -->
+<section id="hours" class="hours-section">
+<div class="container">
+  <div class="section-eyebrow reveal">Opening Hours</div>
+  <h2 class="section-title reveal" style="margin-bottom:48px">When We're Open.</h2>
+  <div class="hours-grid">
+    <div class="hours-card reveal-left">
+      <div class="hours-row"><span class="day">Monday</span><span class="time">4:00 PM - 12:00 AM</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="time">4:00 PM - 12:00 AM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="time">4:00 PM - 12:00 AM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="time">4:00 PM - 12:00 AM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="time">4:00 PM - 1:00 AM</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="time">4:00 PM - 1:00 AM</span></div>
+      <div class="hours-row"><span class="day">Sunday</span><span class="time">4:00 PM - 12:00 AM</span></div>
+    </div>
+    <div class="hours-right reveal-right">
+      <h3>Collection &amp; Delivery</h3>
+      <p>Pop in to 23 Barnsley Road for collection, or we'll bring it to your door. Fast delivery across Goldthorpe and surrounding areas.</p>
+      <div class="delivery-info">
+        <div class="delivery-info-item"><div class="d-icon">&#128205;</div>23 Barnsley Road, Goldthorpe, S63 9LS</div>
+        <div class="delivery-info-item"><div class="d-icon">&#128222;</div>01709 888986 / 01709 897249</div>
+        <div class="delivery-info-item"><div class="d-icon">&#128666;</div>Delivery within 4 miles &middot; &pound;7 minimum order</div>
+        <div class="delivery-info-item"><div class="d-icon">&#128231;</div>Pizzapalacegoldthorpe@outlook.com</div>
+      </div>
+      <a href="tel:01709888986" class="btn btn-primary" style="margin-top:24px">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call to Order
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
 <section class="cta-section">
 <div class="container">
-<div class="cta-box fade-up">
-<h2>Hungry? Let's Sort That Out.</h2>
-<p>Call us now for collection or fast delivery across Goldthorpe, Bolton-upon-Dearne, and surrounding areas.</p>
-<div class="cta-btns">
-<a href="tel:01709888986" class="btn btn-red" style="font-size:1.1rem;padding:18px 40px;background:var(--white);color:var(--red)">
-<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-01709 888986
-</a>
-<a href="tel:01709897249" class="btn" style="border:1px solid rgba(255,255,255,.3);color:var(--white)">
-Second Line: 01709 897249
-</a>
-</div>
-<div class="cta-hours">Open Daily 4:00 PM - Midnight | Fridays until 1:00 AM</div>
-</div>
+  <div class="cta-box reveal-scale">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+    <h2>Hungry? We've Got You.</h2>
+    <p>Call us now for collection or fast delivery to your door across Goldthorpe, Bolton-upon-Dearne, Thurnscoe and beyond.</p>
+    <div class="cta-btns">
+      <a href="tel:01709888986" class="btn" style="background:var(--white);color:var(--purple-deep);font-size:1.05rem;padding:16px 36px;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.3)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        01709 888986
+      </a>
+      <a href="tel:01709897249" class="btn" style="border:1px solid rgba(255,255,255,.25);color:var(--white)">Second Line: 01709 897249</a>
+    </div>
+    <div class="cta-hours-text">Open Mon-Thu &amp; Sun: 4PM - Midnight | Fri-Sat: 4PM - 1AM</div>
+  </div>
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <div class="container">
-<div class="brand">Pizza Palace Goldthorpe</div>
-<div class="addr">23 Barnsley Road, Goldthorpe, Rotherham S63 9LS | 01709 888986</div>
-<div class="foot-links">
-<a href="#menu">Menu</a>
-<a href="#specials">About</a>
-<a href="#reviews">Reviews</a>
-<a href="https://www.facebook.com/p/Pizza-palace-goldthorpe-100076174390044/" target="_blank">Facebook</a>
-</div>
-<div class="copy">&copy; 2026 Pizza Palace Goldthorpe. All rights reserved.</div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Pizza <span>Palace</span></div>
+      <p class="footer-desc">Goldthorpe's favourite takeaway since 2010. Fresh handmade pizzas, kebabs, burgers and more. 23 Barnsley Road, S63 9LS.</p>
+      <a href="https://www.facebook.com/p/Pizza-palace-goldthorpe-100076174390044/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--purple-light);font-weight:500">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Follow us on Facebook
+      </a>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <a href="#menu">Pizzas</a>
+      <a href="#menu">Kebabs</a>
+      <a href="#menu">Burgers</a>
+      <a href="#menu">Sides &amp; Wraps</a>
+      <a href="#deals">Meal Deals</a>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <a href="#about">About Us</a>
+      <a href="#hours">Opening Hours</a>
+      <a href="#reviews">Reviews</a>
+      <a href="https://www.facebook.com/p/Pizza-palace-goldthorpe-100076174390044/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:01709888986">01709 888986</a>
+      <a href="tel:01709897249">01709 897249</a>
+      <a href="mailto:Pizzapalacegoldthorpe@outlook.com">Email Us</a>
+      <a href="https://maps.google.com/?q=23+Barnsley+Road+Goldthorpe+S63+9LS" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Pizza Palace Goldthorpe. All rights reserved.</div>
+    <div class="footer-neo"><a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">Site by NeoCode Studio</a></div>
+  </div>
 </div>
 </footer>
 
+<!-- NEOCODE POPUP -->
+<div class="neo-overlay" id="neoOverlay">
+<div class="neo-popup">
+  <button class="neo-close" id="neoClose" aria-label="Close popup">&times;</button>
+  <div class="neo-badge">&#128640; Demo Preview</div>
+  <h3>Like What You See, <em>Pizza Palace</em>?</h3>
+  <p>This is a free demo of what your new website could look like. Modern design, mobile-friendly, built to turn visitors into customers. We built this just for you.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="neo-btn">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    Get This Site - Free Quote
+  </a>
+  <button class="neo-skip" id="neoSkip">Just browsing the demo</button>
+</div>
+</div>
+
 <script>
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+// NAV SCROLL
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+// HAMBURGER
+const hamburger=document.getElementById('hamburger');
+const mobileNav=document.getElementById('mobileNav');
+hamburger.addEventListener('click',()=>{
+  const open=mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+document.querySelectorAll('.mob-link').forEach(a=>{
+  a.addEventListener('click',()=>{
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  });
+});
+
+// MENU TABS
+const tabs=document.querySelectorAll('.menu-tab');
+const panels=document.querySelectorAll('.menu-panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false')});
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+    // re-observe newly visible reveals
+    document.querySelectorAll('.menu-panel.active .reveal:not(.vis)').forEach(el=>obs.observe(el));
+  });
+});
+
+// SCROLL ANIMATIONS
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>obs.observe(el));
+
+// NEOCODE POPUP at 70% scroll
+let popupShown=false;
+const neoOverlay=document.getElementById('neoOverlay');
+function showPopup(){
+  if(popupShown)return;
+  popupShown=true;
+  neoOverlay.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function hidePopup(){
+  neoOverlay.classList.remove('show');
+  document.body.style.overflow='';
+}
+window.addEventListener('scroll',()=>{
+  const scrollPct=(window.scrollY+window.innerHeight)/document.documentElement.scrollHeight;
+  if(scrollPct>=.7)showPopup();
+},{passive:true});
+document.getElementById('neoClose').addEventListener('click',hidePopup);
+document.getElementById('neoSkip').addEventListener('click',hidePopup);
+neoOverlay.addEventListener('click',(e)=>{if(e.target===neoOverlay)hidePopup()});
 </script>
 </body>
 </html>
