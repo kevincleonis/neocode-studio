@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenny Hunter Roofing | Professional Roofing Services</title>
+    <meta name="description" content="Kenny Hunter Roofing - trusted roofing contractor offering flat roofs, pitched roofs, slate, tiling, chimney work, guttering and repairs. Quality craftsmanship you can count on.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700&family=Saira:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --graphite: #2f3640;
+            --graphite-light: #3d4655;
+            --graphite-dark: #222930;
+            --rust: #d35400;
+            --rust-light: #e67e22;
+            --rust-dark: #b94700;
+            --sandstone: #f5f0e8;
+            --sandstone-dark: #e8e0d2;
+            --white: #ffffff;
+            --text-dark: #1a1e24;
+            --text-muted: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Overpass', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--sandstone);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Saira', sans-serif;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--rust);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(47, 54, 64, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 3px solid var(--rust);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 72px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--rust);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .nav-logo-text {
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo-text span {
+            color: var(--rust-light);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rust);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--rust) !important;
+            color: var(--white) !important;
+            padding: 10px 24px !important;
+            border-radius: 6px;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, transform 0.2s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--rust-light) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(160deg, var(--graphite-dark) 0%, var(--graphite) 50%, var(--graphite-light) 100%);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/8961438/pexels-photo-8961438.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            opacity: 0.2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(47,54,64,0.92) 0%, rgba(47,54,64,0.7) 60%, rgba(211,84,0,0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 120px 0 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(211,84,0,0.15);
+            border: 1px solid rgba(211,84,0,0.4);
+            color: var(--rust-light);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--rust-light);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+            max-width: 560px;
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--rust);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--rust-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211,84,0,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .hero-stat h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--rust-light);
+        }
+
+        .hero-stat p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-dark {
+            background: var(--graphite);
+            color: var(--white);
+        }
+
+        .section-sandstone {
+            background: var(--sandstone);
+        }
+
+        .section-white {
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-family: 'Saira', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--rust);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--graphite);
+            margin-bottom: 16px;
+        }
+
+        .section-dark .section-title {
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .about-img-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--rust);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(211,84,0,0.4);
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--graphite);
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 span {
+            color: var(--rust);
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--graphite);
+        }
+
+        .about-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(211,84,0,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rust);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--rust);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--rust), var(--rust-light));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--graphite);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(47,54,64,0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .portfolio-overlay p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 28px;
+            border-radius: 16px;
+            background: var(--graphite-light);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--rust);
+        }
+
+        .why-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(211,84,0,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--rust-light);
+        }
+
+        .why-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .why-card p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+            color: var(--rust-light);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rust), var(--rust-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--graphite);
+        }
+
+        .testimonial-author-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .contact-info h2 span {
+            color: var(--rust-light);
+        }
+
+        .contact-info > p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(211,84,0,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rust-light);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 4px;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--rust-light);
+        }
+
+        .contact-form {
+            background: var(--graphite-light);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-form h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--graphite-dark);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'Overpass', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.35);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rust);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select option {
+            background: var(--graphite);
+            color: var(--white);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--graphite-dark);
+            border-top: 3px solid var(--rust);
+            padding: 48px 0 24px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--rust);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--rust-light);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--rust-light);
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--rust);
+        }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .neocode-popup-overlay.active {
+            opacity: 1;
+        }
+
+        .neocode-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            z-index: 9999;
+            background: var(--graphite);
+            border-radius: 20px;
+            padding: 48px 40px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid var(--rust);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .neocode-popup.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .neocode-popup-close:hover {
+            border-color: var(--rust);
+            color: var(--white);
+            background: rgba(211,84,0,0.2);
+        }
+
+        .neocode-popup-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(211,84,0,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+
+        .neocode-popup h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .neocode-popup p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .neocode-popup .btn-primary {
+            padding: 16px 36px;
+            font-size: 1rem;
+        }
+
+        .neocode-popup .neocode-credit {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .neocode-popup .neocode-credit a {
+            color: var(--rust-light);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--rust);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 500;
+            box-shadow: 0 4px 20px rgba(211,84,0,0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--rust-light);
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--graphite-dark);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 24px;
+                transition: right 0.4s ease;
+                box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .about-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-img img {
+                height: 350px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stats {
+                gap: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 70px 0;
+            }
+
+            .hero-content {
+                padding: 100px 0 60px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-form {
+                padding: 28px 20px;
+            }
+
+            .neocode-popup {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#hero" class="nav-logo">
+                <div class="nav-logo-icon">&#9960;</div>
+                <div class="nav-logo-text">Kenny Hunter <span>Roofing</span></div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">&#9733; Trusted Local Roofer</div>
+                <h1>Your Roof's in <span>Safe Hands</span></h1>
+                <p>We've been keeping homes dry and secure for years. From small repairs to full re-roofs, Kenny Hunter Roofing delivers quality workmanship you can rely on, every single time.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Get a Free Quote &#8594;</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3>500+</h3>
+                        <p>Roofs Completed</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>100%</h3>
+                        <p>Fully Insured</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>5&#9733;</h3>
+                        <p>Customer Rated</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section-white" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img reveal">
+                    <img src="https://images.pexels.com/photos/8961351/pexels-photo-8961351.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional roofer at work on a residential property">
+                    <div class="about-img-badge">&#9960; Experienced &amp; Insured</div>
+                </div>
+                <div class="about-content reveal">
+                    <span class="section-label">About Us</span>
+                    <h2>Meet <span>Kenny Hunter</span></h2>
+                    <p>Kenny's spent years perfecting his craft across all types of roofing work. Whether it's a leaky flat roof that won't stop dripping or a full slate re-roof on a period property, he's seen it all and fixed it all.</p>
+                    <p>Every job gets the same level of care and attention, no matter the size. We don't cut corners, we don't disappear mid-job, and we always leave the site spotless. That's just how we do things.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            <span>Fully Insured</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            <span>Free Estimates</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            <span>Quality Materials</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            <span>No Hidden Costs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-sandstone" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">Our Roofing Services</h2>
+                <p class="section-subtitle">From quick repairs to complete roof installations, we've got every angle covered.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9704;</div>
+                    <h3>Flat Roofing</h3>
+                    <p>Expert flat roof installations and repairs using high-quality felt, EPDM rubber, and fibreglass (GRP) systems. Built to last and fully watertight.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9650;</div>
+                    <h3>Pitched Roofing</h3>
+                    <p>Complete pitched roof installations, re-roofs, and structural repairs. We work with tiles, slates, and all traditional roofing materials.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9830;</div>
+                    <h3>Slate Roofing</h3>
+                    <p>Specialist slate work for both new installations and restoration projects. Natural and reclaimed slates fitted with precision.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9641;</div>
+                    <h3>Roof Tiling</h3>
+                    <p>Professional roof tiling using concrete, clay, and interlocking tiles. We'll match your existing tiles perfectly or fit a brand new roof.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9608;</div>
+                    <h3>Chimney Work</h3>
+                    <p>Chimney repointing, re-building, lead flashing, and cowl fitting. Don't let a dodgy chimney cause damp problems inside your home.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#8681;</div>
+                    <h3>Guttering</h3>
+                    <p>Gutter installation, replacement, and clearing. We'll make sure your rainwater drainage system is working properly to protect your property.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9888;</div>
+                    <h3>Roof Repairs</h3>
+                    <p>Fast, reliable emergency and planned repairs. Leaks, storm damage, missing tiles, ridge tiles, valleys, and more. We'll sort it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="section section-white" id="portfolio">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Work</span>
+                <h2 class="section-title">Recent Projects</h2>
+                <p class="section-subtitle">Take a look at some of the roofing work we've completed for happy customers.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal">
+                    <img src="https://images.pexels.com/photos/7031593/pexels-photo-7031593.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Complete roof replacement on a detached home">
+                    <div class="portfolio-overlay">
+                        <h4>Full Roof Replacement</h4>
+                        <p>Detached property, concrete tiles</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="https://images.pexels.com/photos/8961438/pexels-photo-8961438.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Flat roof installation on a garage extension">
+                    <div class="portfolio-overlay">
+                        <h4>Flat Roof Extension</h4>
+                        <p>EPDM rubber system</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="https://images.pexels.com/photos/8985454/pexels-photo-8985454.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chimney repair and repointing work">
+                    <div class="portfolio-overlay">
+                        <h4>Chimney Rebuild</h4>
+                        <p>Repointing and new flashing</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="https://images.pexels.com/photos/7937890/pexels-photo-7937890.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Slate roof restoration on a period property">
+                    <div class="portfolio-overlay">
+                        <h4>Slate Restoration</h4>
+                        <p>Victorian terrace, natural slates</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="https://images.pexels.com/photos/8961252/pexels-photo-8961252.jpeg?auto=compress&cs=tinysrgb&w=600" alt="New guttering installation">
+                    <div class="portfolio-overlay">
+                        <h4>Guttering Overhaul</h4>
+                        <p>Full replacement, uPVC system</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="https://images.pexels.com/photos/7031407/pexels-photo-7031407.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Emergency roof repair after storm damage">
+                    <div class="portfolio-overlay">
+                        <h4>Storm Damage Repair</h4>
+                        <p>Emergency call-out, same day fix</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="section section-dark" id="why">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">What Sets Us Apart</h2>
+                <p class="section-subtitle">Here's why homeowners trust Kenny Hunter Roofing with their most important investment.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128176;</div>
+                    <h3>Honest Pricing</h3>
+                    <p>You'll get a detailed, written quote before we start. No surprises, no hidden extras. The price we quote is the price you pay.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#9201;</div>
+                    <h3>Reliable &amp; On Time</h3>
+                    <p>We show up when we say we will, and we get the job done on schedule. We know there's nothing worse than a tradesman who doesn't turn up.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#127942;</div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>We use only the best materials and proven techniques. All our work comes with a guarantee, so you can have complete peace of mind.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128690;</div>
+                    <h3>Local &amp; Trusted</h3>
+                    <p>We're a local business that relies on our reputation. That's why we treat every job like it's our own home. Your neighbours probably already know us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-sandstone" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what real customers have to say about our work.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Kenny did a brilliant job on our flat roof. It had been leaking for months and two other roofers couldn't fix it. Kenny sorted it in a day. Couldn't recommend him more."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DM</div>
+                        <div class="testimonial-author-info">
+                            <h4>David McGregor</h4>
+                            <p>Flat Roof Repair</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Absolutely fantastic service from start to finish. Kenny was honest, professional, and the quality of work was top notch. Our new slate roof looks incredible."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SW</div>
+                        <div class="testimonial-author-info">
+                            <h4>Sarah Watson</h4>
+                            <p>Full Slate Re-roof</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"We'd been putting off getting the gutters done for ages. Kenny came round, gave us a fair price, and had it all done within a couple of hours. Really tidy work."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JP</div>
+                        <div class="testimonial-author-info">
+                            <h4>James Patterson</h4>
+                            <p>Guttering Replacement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info reveal">
+                    <span class="section-label">Get In Touch</span>
+                    <h2>Let's Talk About <span>Your Roof</span></h2>
+                    <p>Got a leak? Need a quote? Just want some advice? Drop us a message or give us a call. We're always happy to help and there's no pressure whatsoever.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">&#9993;</div>
+                            <div class="contact-item-text">
+                                <h4>Email</h4>
+                                <a href="mailto:kennyhunter61@icloud.com">kennyhunter61@icloud.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">&#9742;</div>
+                            <div class="contact-item-text">
+                                <h4>Phone</h4>
+                                <a href="tel:+440000000000">Call Us Today</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">&#9201;</div>
+                            <div class="contact-item-text">
+                                <h4>Hours</h4>
+                                <p>Mon - Sat: 7:00am - 6:00pm</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">&#9873;</div>
+                            <div class="contact-item-text">
+                                <h4>Service Area</h4>
+                                <p>Local and surrounding areas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <h3>Request a Free Quote</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="e.g. john@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="flat-roofing">Flat Roofing</option>
+                                <option value="pitched-roofing">Pitched Roofing</option>
+                                <option value="slate-roofing">Slate Roofing</option>
+                                <option value="roof-tiling">Roof Tiling</option>
+                                <option value="chimney-work">Chimney Work</option>
+                                <option value="guttering">Guttering</option>
+                                <option value="roof-repairs">Roof Repairs</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About the Job</label>
+                            <textarea id="message" name="message" placeholder="Describe the work you need done..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">Send My Request &#8594;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">&#9960;</div>
+                    <span class="footer-logo-text">Kenny Hunter Roofing</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kenny Hunter Roofing. All rights reserved.</p>
+                <p>Website designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neocode-popup-overlay" id="neoPopupOverlay"></div>
+    <div class="neocode-popup" id="neoPopup">
+        <button class="neocode-popup-close" id="neoPopupClose" aria-label="Close popup">&times;</button>
+        <div class="neocode-popup-icon">&#9889;</div>
+        <h3>Like What You See?</h3>
+        <p>This demo was built by NeoCode Studio. We create modern, high-converting websites for local businesses. Want something like this for your brand?</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Let's Chat &#8594;</a>
+        <p class="neocode-credit">Built by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // IntersectionObserver for reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // NeoCode popup at 70% scroll
+        const neoPopup = document.getElementById('neoPopup');
+        const neoOverlay = document.getElementById('neoPopupOverlay');
+        const neoClose = document.getElementById('neoPopupClose');
+        let popupShown = false;
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                popupShown = true;
+                neoPopup.style.display = 'block';
+                neoOverlay.style.display = 'block';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        neoPopup.classList.add('active');
+                        neoOverlay.classList.add('active');
+                    });
+                });
+            }
+        });
+
+        function closePopup() {
+            neoPopup.classList.remove('active');
+            neoOverlay.classList.remove('active');
+            setTimeout(() => {
+                neoPopup.style.display = 'none';
+                neoOverlay.style.display = 'none';
+            }, 400);
+        }
+
+        neoClose.addEventListener('click', closePopup);
+        neoOverlay.addEventListener('click', closePopup);
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('.btn-submit');
+            btn.textContent = 'Message Sent!';
+            btn.style.background = '#27ae60';
+            setTimeout(() => {
+                btn.innerHTML = 'Send My Request &#8594;';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 72;
+                    const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
