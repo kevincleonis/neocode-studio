@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savage Tattoo Emporium | Custom Tattoos & Piercings in Madeley, Telford</title>
+    <meta name="description" content="Female-owned LGBTQ+ tattoo studio in Madeley, Telford. Custom tattoos, piercings & vegan-friendly ink. Owned by Liv & Kris with 18+ years combined experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1a1a1a;
+            --deep-black: #0d0d0d;
+            --ink-black: #111111;
+            --neon-cyan: #00e5ff;
+            --cyan-dim: #00b8cc;
+            --cyan-glow: rgba(0, 229, 255, 0.15);
+            --cyan-glow-strong: rgba(0, 229, 255, 0.35);
+            --smoke: #b0b0b0;
+            --ash: #888888;
+            --white: #f0f0f0;
+            --pure-white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--deep-black);
+            color: var(--smoke);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        /* ── NeoCode Banner ── */
+        .neocode-banner {
+            background: var(--neon-cyan);
+            color: var(--deep-black);
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1001;
+        }
+        .neocode-banner a { color: var(--deep-black); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--deep-black); }
+        .neocode-banner a:hover { opacity: 0.7; }
+
+        /* ── Navbar ── */
+        .navbar {
+            position: fixed;
+            top: 33px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 40px;
+            box-shadow: 0 2px 40px rgba(0, 229, 255, 0.08);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            letter-spacing: 4px;
+        }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: var(--smoke);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--neon-cyan); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; border-radius: 2px; }
+
+        /* ── Hamburger ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1002;
+        }
+        .hamburger:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; border-radius: 2px; }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+            display: block;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ── Mobile Menu ── */
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(13, 13, 13, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        .mobile-menu a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 4px;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--neon-cyan); }
+        .mobile-menu a:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(13,13,13,0.7) 0%, rgba(13,13,13,0.5) 40%, rgba(13,13,13,0.85) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 6px 20px;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        .hero h1 {
+            font-size: clamp(52px, 10vw, 110px);
+            letter-spacing: 8px;
+            margin-bottom: 16px;
+            text-shadow: 0 0 60px rgba(0, 229, 255, 0.3);
+        }
+        .hero h1 span { color: var(--neon-cyan); }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--smoke);
+            margin-bottom: 36px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; }
+        .btn-primary {
+            background: var(--neon-cyan);
+            color: var(--deep-black);
+        }
+        .btn-primary:hover {
+            background: var(--pure-white);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+        .btn-outline:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* ── Sections ── */
+        section { padding: 100px 24px; }
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .section-title {
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 20px;
+        }
+        .section-desc {
+            max-width: 600px;
+            font-size: 16px;
+            color: var(--ash);
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* ── Styles Section ── */
+        #styles { background: var(--ink-black); }
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .style-card {
+            background: var(--charcoal);
+            padding: 40px 32px;
+            border: 1px solid transparent;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .style-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .style-card:hover { border-color: rgba(0, 229, 255, 0.2); transform: translateY(-4px); }
+        .style-card:hover::before { transform: scaleX(1); }
+        .style-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .style-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .style-card p { font-size: 14px; color: var(--ash); line-height: 1.7; }
+
+        /* ── Artists Section ── */
+        #artists { background: var(--deep-black); }
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+        .artist-card {
+            background: var(--charcoal);
+            overflow: hidden;
+            transition: transform 0.4s;
+        }
+        .artist-card:hover { transform: translateY(-6px); }
+        .artist-img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter 0.4s;
+        }
+        .artist-card:hover .artist-img { filter: grayscale(0%); }
+        .artist-info {
+            padding: 32px;
+        }
+        .artist-info h3 {
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+        .artist-role {
+            color: var(--neon-cyan);
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .artist-info p { font-size: 14px; color: var(--ash); }
+        .artist-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .artist-tag {
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            color: var(--neon-cyan);
+        }
+
+        /* ── Gallery ── */
+        #gallery { background: var(--ink-black); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s, filter 0.5s;
+            filter: grayscale(20%);
+        }
+        .gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 229, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span {
+            color: var(--neon-cyan);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 3px;
+            border: 1px solid var(--neon-cyan);
+            padding: 8px 20px;
+        }
+
+        /* ── Reviews ── */
+        #reviews { background: var(--deep-black); }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .review-card {
+            background: var(--charcoal);
+            padding: 36px 32px;
+            border-left: 3px solid var(--neon-cyan);
+            transition: transform 0.3s;
+        }
+        .review-card:hover { transform: translateY(-4px); }
+        .review-stars {
+            color: var(--neon-cyan);
+            font-size: 16px;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+        }
+        .review-card blockquote {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--smoke);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .review-author {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+        .review-source {
+            font-size: 11px;
+            color: var(--ash);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .review-rating-block {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            background: var(--ink-black);
+        }
+        .review-rating-block .big-rating {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            color: var(--neon-cyan);
+            line-height: 1;
+        }
+        .review-rating-block p { color: var(--ash); font-size: 14px; margin-top: 8px; }
+
+        /* ── Walk-ins ── */
+        #walkins { background: var(--ink-black); }
+        .walkins-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .walkins-text h2 {
+            font-size: clamp(36px, 4vw, 52px);
+            margin-bottom: 20px;
+        }
+        .walkins-text p {
+            font-size: 16px;
+            color: var(--ash);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .walkins-text .highlight {
+            color: var(--neon-cyan);
+            font-weight: 600;
+        }
+        .walkins-features {
+            list-style: none;
+            margin-top: 28px;
+            margin-bottom: 36px;
+        }
+        .walkins-features li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: var(--smoke);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .walkins-features li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--neon-cyan);
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .walkins-img {
+            position: relative;
+        }
+        .walkins-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+        .walkins-img::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--neon-cyan);
+            z-index: -1;
+        }
+
+        /* ── Contact ── */
+        #contact { background: var(--deep-black); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        .contact-detail {
+            margin-bottom: 24px;
+        }
+        .contact-detail .label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .contact-detail p, .contact-detail a {
+            font-size: 15px;
+            color: var(--smoke);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-detail a:hover { color: var(--neon-cyan); }
+        .contact-detail a:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 2px; }
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .hours-table td {
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hours-table td:first-child { color: var(--smoke); }
+        .hours-table td:last-child { color: var(--white); text-align: right; font-weight: 500; }
+        .hours-table .closed { color: var(--ash); }
+        .contact-map {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            filter: grayscale(80%) brightness(0.7) contrast(1.2);
+            border: 0;
+            transition: filter 0.4s;
+        }
+        .contact-map:hover { filter: grayscale(40%) brightness(0.8) contrast(1.1); }
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .social-link:hover {
+            background: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+        }
+        .social-link:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; }
+        .social-link svg { width: 18px; height: 18px; fill: var(--neon-cyan); transition: fill 0.3s; }
+        .social-link:hover svg { fill: var(--deep-black); }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--deep-black);
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        footer p { font-size: 13px; color: var(--ash); }
+        footer a { color: var(--neon-cyan); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        footer a:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 2px; }
+
+        /* ── Scroll Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Demo Popup ── */
+        .demo-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .demo-popup.show { display: flex; }
+        .popup-card {
+            background: var(--charcoal);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            max-width: 520px;
+            width: 100%;
+            padding: 52px 40px;
+            text-align: center;
+            position: relative;
+        }
+        .popup-icon {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--neon-cyan);
+        }
+        .popup-card h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .popup-card p {
+            font-size: 15px;
+            color: var(--smoke);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .popup-card p strong { color: var(--white); }
+        .popup-cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 40px;
+            background: var(--neon-cyan);
+            color: var(--deep-black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .popup-cta:hover { background: var(--pure-white); transform: translateY(-2px); }
+        .popup-dismiss {
+            display: block;
+            margin: 16px auto 0;
+            background: none;
+            border: none;
+            color: var(--ash);
+            font-size: 13px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: color 0.3s;
+        }
+        .popup-dismiss:hover { color: var(--white); }
+
+        /* ── Responsive ── */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .walkins-content { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .artists-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .navbar { padding: 14px 20px; }
+            .navbar.scrolled { padding: 10px 20px; }
+            section { padding: 70px 16px; }
+            .hero { min-height: 600px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .popup-card { padding: 40px 24px; }
+            .styles-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NeoCode Banner -->
+    <div class="neocode-banner">
+        This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; Premium websites that convert visitors into customers.
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">SAVAGE</a>
+        <ul class="nav-links">
+            <li><a href="#styles">Styles</a></li>
+            <li><a href="#artists">Artists</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#walkins">Walk-ins</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#styles">Styles</a>
+        <a href="#artists">Artists</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#walkins">Walk-ins</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Madeley, Telford &bull; Est. Custom Tattoo Studio</div>
+            <h1>SAVAGE <span>TATTOO</span></h1>
+            <p class="hero-sub">Female-owned. LGBTQ+ inclusive. Custom ink crafted with precision, vegan-friendly supplies, and 18+ years of combined experience.</p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+                <a href="#gallery" class="btn btn-outline">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Styles -->
+    <section id="styles">
+        <div class="container">
+            <p class="section-label reveal">What We Do</p>
+            <h2 class="section-title reveal">Tattoo Styles</h2>
+            <p class="section-desc reveal">Every piece is custom designed. We don't do cookie-cutter flash unless you want it. Tell us your vision and we'll bring it to life on skin.</p>
+            <div class="styles-grid">
+                <div class="style-card reveal">
+                    <span class="style-icon">&#9998;</span>
+                    <h3>Fine Line</h3>
+                    <p>Delicate, intricate linework that captures detail with surgical precision. Perfect for script, minimalist designs, and botanical pieces.</p>
+                </div>
+                <div class="style-card reveal">
+                    <span class="style-icon">&#9775;</span>
+                    <h3>Neo Traditional</h3>
+                    <p>Bold outlines meet vibrant colour palettes. A modern take on classic tattoo art with richer detail and dimensional shading.</p>
+                </div>
+                <div class="style-card reveal">
+                    <span class="style-icon">&#9830;</span>
+                    <h3>Blackwork</h3>
+                    <p>From geometric patterns to full black coverage, we specialise in bold, graphic pieces that make a statement.</p>
+                </div>
+                <div class="style-card reveal">
+                    <span class="style-icon">&#10047;</span>
+                    <h3>Realism</h3>
+                    <p>Portraits, nature, and photorealistic detail. We bring your references to life with depth, contrast, and tonal accuracy.</p>
+                </div>
+                <div class="style-card reveal">
+                    <span class="style-icon">&#10070;</span>
+                    <h3>Illustrative</h3>
+                    <p>Where tattoo meets illustration. Sketchy, painterly, or comic-inspired pieces with character and personality.</p>
+                </div>
+                <div class="style-card reveal">
+                    <span class="style-icon">&#10023;</span>
+                    <h3>Piercings</h3>
+                    <p>Professional body and ear piercings using top-quality jewellery. Nose, ears, nipple piercings and more, done safely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artists -->
+    <section id="artists">
+        <div class="container">
+            <p class="section-label reveal">Meet the Team</p>
+            <h2 class="section-title reveal">Our Artists</h2>
+            <p class="section-desc reveal">Savage Tattoo Emporium is built on the combined talent of two passionate artists who pour their creativity into every piece.</p>
+            <div class="artists-grid">
+                <div class="artist-card reveal">
+                    <img class="artist-img" src="https://images.pexels.com/photos/4125581/pexels-photo-4125581.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Liv - Tattoo Artist and Co-Owner">
+                    <div class="artist-info">
+                        <h3>Liv</h3>
+                        <span class="artist-role">Co-Owner &amp; Lead Artist</span>
+                        <p>With years of experience and a passion for bold, expressive art, Liv brings every custom design to life with meticulous attention to detail. From fine line florals to full-coverage blackwork, her versatility is unmatched.</p>
+                        <div class="artist-tags">
+                            <span class="artist-tag">Fine Line</span>
+                            <span class="artist-tag">Blackwork</span>
+                            <span class="artist-tag">Illustrative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="artist-card reveal">
+                    <img class="artist-img" src="https://images.pexels.com/photos/6419241/pexels-photo-6419241.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kris - Tattoo Artist and Co-Owner">
+                    <div class="artist-info">
+                        <h3>Kris</h3>
+                        <span class="artist-role">Co-Owner &amp; Artist</span>
+                        <p>Kris specialises in bold, striking designs that push boundaries. With a keen eye for composition and shading, she creates pieces that stand the test of time. Her collaborative approach means your ideas always come first.</p>
+                        <div class="artist-tags">
+                            <span class="artist-tag">Neo Traditional</span>
+                            <span class="artist-tag">Realism</span>
+                            <span class="artist-tag">Custom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <div class="container">
+            <p class="section-label reveal">Our Portfolio</p>
+            <h2 class="section-title reveal">Recent Work</h2>
+            <p class="section-desc reveal">Every tattoo tells a story. Here's a glimpse of the custom pieces we've crafted for our clients.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <img src="https://images.pexels.com/photos/1304473/pexels-photo-1304473.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo work - floral design">
+                    <div class="gallery-overlay"><span>Fine Line</span></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo work - blackwork piece">
+                    <div class="gallery-overlay"><span>Blackwork</span></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://images.pexels.com/photos/2183132/pexels-photo-2183132.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo work - neo traditional">
+                    <div class="gallery-overlay"><span>Neo Trad</span></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://images.pexels.com/photos/4123040/pexels-photo-4123040.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo work - illustrative">
+                    <div class="gallery-overlay"><span>Illustrative</span></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://images.pexels.com/photos/1304472/pexels-photo-1304472.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo work - realism portrait">
+                    <div class="gallery-overlay"><span>Realism</span></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://images.pexels.com/photos/2865901/pexels-photo-2865901.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo work - colour piece">
+                    <div class="gallery-overlay"><span>Custom</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews">
+        <div class="container">
+            <p class="section-label reveal">What Clients Say</p>
+            <h2 class="section-title reveal">Reviews</h2>
+            <p class="section-desc reveal">4.9 stars across platforms. Don't just take our word for it.</p>
+            <div class="reviews-grid">
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                    <blockquote>"Amazing artists, been going there for around 3 years now and would never go anywhere else. They always nail exactly what I'm after."</blockquote>
+                    <p class="review-author">Repeat Client</p>
+                    <p class="review-source">Facebook Review</p>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                    <blockquote>"They are an amazing talent. Its amazing and I can't recommend them enough. The studio is clean, welcoming, and the whole experience was brilliant."</blockquote>
+                    <p class="review-author">First-time Client</p>
+                    <p class="review-source">Google Review</p>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                    <blockquote>"Amazing, I wouldn't go anywhere else! Amazing work from both ladies. They really listen to what you want and deliver something even better than you imagined."</blockquote>
+                    <p class="review-author">Loyal Client</p>
+                    <p class="review-source">Google Review</p>
+                </div>
+            </div>
+            <div class="review-rating-block reveal">
+                <div class="big-rating">4.9</div>
+                <div class="review-stars" style="font-size: 24px; letter-spacing: 6px; margin-top: 8px;">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p>Average rating across Google, Facebook &amp; Yelp</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Walk-ins -->
+    <section id="walkins">
+        <div class="container">
+            <div class="walkins-content">
+                <div class="walkins-text reveal">
+                    <p class="section-label">Walk-ins Welcome</p>
+                    <h2>Got an Idea? <br>Just Pop In.</h2>
+                    <p>We love walk-ins. Whether you've got a full sleeve planned or just want a small piece on a whim, you're welcome to come by during studio hours. No pressure, no judgement, just good ink.</p>
+                    <p>For larger custom pieces, we recommend <span class="highlight">booking a free consultation</span> so we can dedicate the time your design deserves.</p>
+                    <ul class="walkins-features">
+                        <li>Walk-ins available during studio hours</li>
+                        <li>Free consultations for custom work</li>
+                        <li>100% vegan &amp; cruelty-free ink</li>
+                        <li>LGBTQ+ safe &amp; inclusive space</li>
+                        <li>Original artwork prints available</li>
+                        <li>Aftercare guidance provided</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+                <div class="walkins-img reveal">
+                    <img src="https://images.pexels.com/photos/4125571/pexels-photo-4125571.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Inside Savage Tattoo Emporium studio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <p class="section-label reveal">Find Us</p>
+            <h2 class="section-title reveal">Get in Touch</h2>
+            <p class="section-desc reveal">Ready to get inked? Drop us a message, give us a call, or just walk through the door.</p>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Studio Details</h3>
+                    <div class="contact-detail">
+                        <p class="label">Address</p>
+                        <p>Unit N, Madeley Shopping Malls<br>High Street, Madeley<br>Telford, TF7 5BQ</p>
+                    </div>
+                    <div class="contact-detail">
+                        <p class="label">Phone</p>
+                        <a href="tel:07392834115">07392 834 115</a>
+                    </div>
+                    <div class="contact-detail">
+                        <p class="label">Email</p>
+                        <a href="mailto:Savagetattoouk@gmail.com">Savagetattoouk@gmail.com</a>
+                    </div>
+                    <div class="contact-detail">
+                        <p class="label">Studio Hours</p>
+                        <table class="hours-table">
+                            <tr><td>Monday</td><td class="closed">Closed</td></tr>
+                            <tr><td>Tuesday</td><td>12:30 &ndash; 17:00</td></tr>
+                            <tr><td>Wednesday</td><td>12:30 &ndash; 17:00</td></tr>
+                            <tr><td>Thursday</td><td class="closed">Closed</td></tr>
+                            <tr><td>Friday</td><td>12:30 &ndash; 17:00</td></tr>
+                            <tr><td>Saturday</td><td>12:30 &ndash; 17:00</td></tr>
+                            <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+                        </table>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/SavageinkEmporium/" target="_blank" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/savagetattoo_emporium/" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <iframe class="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.5!2d-2.449!3d52.636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDM4JzA5LjYiTiAywrAyNic1Ni40Ilc!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy" title="Savage Tattoo Emporium location map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 8px;">&copy; 2026 Savage Tattoo Emporium. All rights reserved.</p>
+            <p>Original website: <a href="https://www.savagetattoostudio.co.uk/" target="_blank">savagetattoostudio.co.uk</a> &bull; Demo by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a></p>
+        </div>
+    </footer>
+
+    <!-- Demo Popup -->
+    <div class="demo-popup" id="demoPopup">
+        <div class="popup-card">
+            <div class="popup-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h2>This was built in under 20 minutes.</h2>
+            <p>This is a quick concept to show you what's possible. No templates. No shortcuts. Just a preview of what a premium website could look like for your business.</p>
+            <p>Imagine what we could build with <strong>a full week dedicated to your brand</strong>. A site that doesn't just look great, but actually <strong>turns visitors into paying customers</strong>.</p>
+            <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+            <button class="popup-dismiss" id="popupDismiss">Continue browsing the demo</button>
+        </div>
+    </div>
+
+    <script>
+        // ── Navbar scroll effect ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // ── Hamburger menu (3 lines → X) ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ── IntersectionObserver scroll animations ──
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const parent = entry.target.parentElement;
+                    const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal'));
+                    const idx = siblings.indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, idx * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -30px 0px'
+        });
+        revealEls.forEach(el => observer.observe(el));
+
+        // ── Smooth scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = navbar.offsetHeight + 12;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ── Demo popup (triggers at 70% scroll) ──
+        let popupShown = false;
+        const popup = document.getElementById('demoPopup');
+        const popupDismiss = document.getElementById('popupDismiss');
+
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+            if (!popupShown && scrollPercent > 0.7) {
+                popupShown = true;
+                popup.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }, { passive: true });
+
+        popupDismiss.addEventListener('click', () => {
+            popup.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>

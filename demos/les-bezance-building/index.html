@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Bezance Building Services | Professional Builders in Teesside</title>
+    <meta name="description" content="Professional builders, plasterers and bricklayers with over 20 years experience serving Middlesbrough, Stockton-on-Tees and the wider Teesside area.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate: #3d5a73;
+            --slate-dark: #2a4158;
+            --slate-deeper: #1e3347;
+            --sand: #e8dcc8;
+            --sand-light: #f3ece0;
+            --sand-pale: #faf7f2;
+            --cream: #fffdf9;
+            --warm: #c4956a;
+            --warm-dark: #a87a52;
+            --charcoal: #2c2c2c;
+            --text: #3a3a3a;
+            --text-light: #6b6b6b;
+            --white: #ffffff;
+            --shadow: 0 4px 24px rgba(61,90,115,0.10);
+            --shadow-lg: 0 12px 40px rgba(61,90,115,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.2; }
+
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        img { max-width: 100%; display: block; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── TOP BANNER ── */
+        .top-banner {
+            background: linear-gradient(135deg, var(--slate-deeper), var(--slate));
+            color: var(--sand-light);
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 0.82rem;
+            letter-spacing: 0.3px;
+        }
+        .top-banner a {
+            color: var(--warm);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .top-banner a:hover { color: var(--sand); }
+
+        /* ── HEADER ── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,253,249,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(61,90,115,0.08);
+            transition: box-shadow 0.3s;
+        }
+        .header.scrolled { box-shadow: 0 2px 20px rgba(61,90,115,0.1); }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--slate), var(--slate-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sand);
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+        }
+        .logo-text h2 {
+            font-size: 1.15rem;
+            color: var(--slate-dark);
+            letter-spacing: -0.3px;
+        }
+        .logo-text span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            color: var(--warm-dark);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text);
+            position: relative;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warm);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a:focus::after { width: 100%; }
+        .nav-links a:focus { outline: 2px solid var(--warm); outline-offset: 4px; border-radius: 2px; }
+
+        .nav-cta {
+            background: var(--slate);
+            color: var(--white) !important;
+            padding: 10px 22px !important;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            font-size: 0.88rem !important;
+            transition: all 0.3s !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--slate-dark); transform: translateY(-1px); }
+        .nav-cta:focus { outline: 2px solid var(--warm); outline-offset: 3px; }
+
+        /* ── HAMBURGER ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        .hamburger:focus { outline: 2px solid var(--warm); outline-offset: 4px; border-radius: 4px; }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--slate-dark);
+            border-radius: 3px;
+            transition: all 0.35s cubic-bezier(0.68,-0.55,0.27,1.55);
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(30,51,71,0.97);
+            backdrop-filter: blur(16px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .mobile-nav.open { display: flex; opacity: 1; }
+        .mobile-nav a {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--sand-light);
+            transition: color 0.3s;
+        }
+        .mobile-nav a:hover { color: var(--warm); }
+        .mobile-nav a:focus { outline: 2px solid var(--warm); outline-offset: 6px; border-radius: 4px; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(30,51,71,0.88) 0%, rgba(61,90,115,0.72) 50%, rgba(196,149,106,0.25) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+            padding: 80px 0;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--sand);
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+        }
+        .hero-badge svg { flex-shrink: 0; }
+        .hero h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--sand);
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.82);
+            max-width: 520px;
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn:focus { outline: 3px solid var(--warm); outline-offset: 3px; }
+        .btn-primary {
+            background: var(--warm);
+            color: var(--white);
+        }
+        .btn-primary:hover { background: var(--warm-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,149,106,0.35); }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.35);
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 56px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .hero-stat h3 {
+            font-size: 2rem;
+            color: var(--sand);
+        }
+        .hero-stat p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* ── SECTION COMMON ── */
+        .section { padding: 100px 0; }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--warm-dark);
+            margin-bottom: 14px;
+        }
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--warm);
+        }
+        .section-title {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--slate-dark);
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 560px;
+            line-height: 1.8;
+        }
+
+        /* ── SERVICES ── */
+        .services { background: var(--sand-pale); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px 28px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(61,90,115,0.06);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--slate), var(--warm));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--sand-light), var(--sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .service-icon svg { color: var(--slate-dark); }
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--slate-dark);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 48px;
+        }
+        .about-img {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .about-img img { width: 100%; height: 480px; object-fit: cover; }
+        .about-img-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(30,51,71,0.92);
+            backdrop-filter: blur(8px);
+            color: var(--sand);
+            padding: 14px 22px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-img-badge .num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--warm);
+        }
+        .about-img-badge .label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .about-text h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--slate-dark);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--slate-dark);
+        }
+        .about-feature svg { color: var(--warm); flex-shrink: 0; }
+
+        /* ── REVIEWS ── */
+        .reviews { background: linear-gradient(180deg, var(--slate-deeper) 0%, var(--slate-dark) 100%); color: var(--white); }
+        .reviews .section-label { color: var(--sand); }
+        .reviews .section-label::before { background: var(--sand); }
+        .reviews .section-title { color: var(--white); }
+        .reviews .section-subtitle { color: rgba(255,255,255,0.6); }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+        .review-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px 26px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s;
+        }
+        .review-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+        .review-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 18px;
+        }
+        .review-stars svg { color: var(--warm); }
+        .review-card blockquote {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--warm), var(--slate));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--white);
+        }
+        .review-author-info span { font-weight: 600; font-size: 0.92rem; display: block; }
+        .review-author-info small { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+        /* ── AREAS ── */
+        .areas { background: var(--sand-pale); }
+        .areas-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+            margin-top: 48px;
+        }
+        .areas-map {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .areas-map svg { max-width: 280px; margin: 0 auto; }
+        .areas-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .area-tag {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--slate-dark);
+            box-shadow: 0 2px 8px rgba(61,90,115,0.06);
+            transition: all 0.3s;
+        }
+        .area-tag:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+        .area-tag svg { color: var(--warm); flex-shrink: 0; }
+
+        /* ── CTA ── */
+        .cta {
+            background: linear-gradient(135deg, var(--slate-deeper) 0%, var(--slate) 60%, var(--warm-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+        .cta p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 540px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-white {
+            background: var(--white);
+            color: var(--slate-dark);
+        }
+        .btn-white:hover { background: var(--sand-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .cta-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+        .cta-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .cta-info-item svg { color: var(--sand); }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.6);
+            padding: 64px 0 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+        .footer h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        .footer p { font-size: 0.88rem; line-height: 1.8; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--warm); }
+        .footer-links a:focus { outline: 2px solid var(--warm); outline-offset: 3px; border-radius: 2px; }
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: 0.88rem;
+        }
+        .footer-contact-item svg { flex-shrink: 0; margin-top: 3px; color: var(--warm); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.82rem;
+        }
+        .footer-credit a { color: var(--warm); font-weight: 600; }
+        .footer-credit a:hover { text-decoration: underline; }
+
+        /* ── NEOCODE POPUP ── */
+        .neo-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .neo-popup-overlay.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
+        .neo-popup {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 48px 40px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 9999;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+            transform: translateY(20px);
+            transition: transform 0.4s;
+        }
+        .neo-popup-overlay.show .neo-popup { transform: translateY(0); }
+        .neo-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-light);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .neo-popup-close:hover { background: var(--sand-light); }
+        .neo-popup-close:focus { outline: 2px solid var(--warm); }
+        .neo-popup-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+        .neo-popup h3 {
+            font-size: 1.5rem;
+            color: var(--slate-dark);
+            margin-bottom: 12px;
+        }
+        .neo-popup p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        .neo-popup .btn {
+            width: 100%;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+            color: #00ff41;
+            font-weight: 700;
+        }
+        .neo-popup .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .services-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .hero { min-height: 85vh; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+            .about-grid, .areas-wrapper { grid-template-columns: 1fr; gap: 36px; }
+            .about-img { order: -1; }
+            .about-img img { height: 320px; }
+            .about-features { grid-template-columns: 1fr; }
+            .areas-list { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .section { padding: 72px 0; }
+            .cta-info { flex-direction: column; align-items: center; gap: 16px; }
+        }
+        @media (max-width: 480px) {
+            .hero-btns { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .cta-btns { flex-direction: column; align-items: center; }
+            .cta-btns .btn { width: 100%; max-width: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Banner -->
+<div class="top-banner">
+    Website redesign concept by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; Helping tradespeople win more work online
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="#" class="logo" aria-label="Les Bezance Building Services home">
+            <div class="logo-icon">LB</div>
+            <div class="logo-text">
+                <h2>Les Bezance</h2>
+                <span>Building Services</span>
+            </div>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#areas">Areas</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#reviews" class="mobile-nav-link">Reviews</a>
+    <a href="#areas" class="mobile-nav-link">Areas</a>
+    <a href="#contact" class="mobile-nav-link">Get a Free Quote</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Trusted Builders &bull; 20+ Years Experience
+            </div>
+            <h1>Quality Building Work Across <em>Teesside</em></h1>
+            <p>We're a professional team of builders, plasterers and bricklayers delivering reliable, high-quality workmanship for homes and businesses throughout the North East.</p>
+            <div class="hero-btns">
+                <a href="tel:07881622657" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    07881 622 657
+                </a>
+                <a href="#services" class="btn btn-outline">
+                    View Our Services
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <h3>20+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>500+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>100%</h3>
+                    <p>Recommendation Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services section" id="services">
+    <div class="container">
+        <div class="reveal">
+            <span class="section-label">What We Do</span>
+            <h2 class="section-title">Building Services You Can Trust</h2>
+            <p class="section-subtitle">From small repairs to full extensions, we've got the skills and experience to handle any project, big or small.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <h3>House Extensions</h3>
+                <p>Full house extensions designed and built to give you the extra space you need. We handle everything from foundations to the finishing touches.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg>
+                </div>
+                <h3>Kitchen Installations</h3>
+                <p>Complete kitchen fitting and installation. We'll transform your kitchen into a space that works for your family and looks fantastic.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/></svg>
+                </div>
+                <h3>Bricklaying</h3>
+                <p>Expert bricklaying for walls, patios, garden features and structural work. Clean, precise and built to last with quality materials.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>Plastering</h3>
+                <p>Smooth, flawless plastering for new builds and renovations. Our experienced plasterers deliver a perfect finish every single time.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="M5 12l7-8 7 8"/></svg>
+                </div>
+                <h3>Fencing</h3>
+                <p>Sturdy, well-built fencing for gardens and boundaries. Whether it's replacement panels or a complete new fence line, we've got you covered.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <h3>Building Repairs</h3>
+                <p>General building repairs for domestic and commercial properties. No job is too small. We'll sort the problem quickly and affordably.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img reveal">
+                <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional building work by Les Bezance Building Services" loading="lazy">
+                <div class="about-img-badge">
+                    <span class="num">20+</span>
+                    <span class="label">Years in<br>the Trade</span>
+                </div>
+            </div>
+            <div class="about-text reveal">
+                <span class="section-label">About Us</span>
+                <h2>A Small Company That Delivers Big Results</h2>
+                <p>Les Bezance Building Services is a small, professional building company providing reliable services for domestic and commercial clients across the Middlesbrough and Stockton-on-Tees areas.</p>
+                <p>With over 20 years in the industry, we've built our reputation on superior quality workmanship at affordable prices. The majority of our new work comes through existing customer recommendations, and that's something we're genuinely proud of.</p>
+                <p>We're not a faceless corporate outfit. When you hire us, you're working directly with experienced tradesmen who take real pride in every project.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        VAT Registered
+                    </div>
+                    <div class="about-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Fully Insured
+                    </div>
+                    <div class="about-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Free Quotations
+                    </div>
+                    <div class="about-feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Domestic & Commercial
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews section" id="reviews">
+    <div class="container">
+        <div class="reveal" style="text-align:center;">
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle" style="margin:0 auto;">Most of our work comes from recommendations. Here's why our customers keep coming back.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>"Two very hardworking, trustworthy uniformed men done some building work for me. Mr Les Bezance and his work was to perfection. I will always use Les Bezance Building Services and very highly recommend them."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">SC</div>
+                    <div class="review-author-info">
+                        <span>S. Collins</span>
+                        <small>Middlesbrough</small>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>"Had a full kitchen extension done by Les and his team. They were professional from start to finish, kept the site clean, and the quality of the brickwork was outstanding. Couldn't be happier with the result."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">MT</div>
+                    <div class="review-author-info">
+                        <span>M. Thompson</span>
+                        <small>Stockton-on-Tees</small>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>"Absolutely brilliant plastering work. The walls are smooth as glass. Les and his lad turned up on time every day and got the job done ahead of schedule. Already recommended them to my neighbours."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">DW</div>
+                    <div class="review-author-info">
+                        <span>D. Walker</span>
+                        <small>Billingham</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Areas -->
+<section class="areas section" id="areas">
+    <div class="container">
+        <div class="reveal">
+            <span class="section-label">Coverage</span>
+            <h2 class="section-title">Areas We Serve</h2>
+            <p class="section-subtitle">Based in Billingham, we cover Middlesbrough, Stockton-on-Tees and the wider Teesside and North East region.</p>
+        </div>
+        <div class="areas-wrapper">
+            <div class="areas-map reveal">
+                <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stylised Teesside map -->
+                    <path d="M40 140 Q80 60 150 50 Q220 40 260 100 Q280 150 240 200 Q200 250 150 240 Q80 230 50 200 Q30 180 40 140Z" fill="var(--sand-light)" stroke="var(--slate)" stroke-width="2"/>
+                    <!-- River Tees -->
+                    <path d="M60 150 Q100 130 150 140 Q200 150 250 130" stroke="var(--slate)" stroke-width="2.5" fill="none" stroke-dasharray="6 4" opacity="0.4"/>
+                    <!-- Location dots -->
+                    <circle cx="155" cy="125" r="8" fill="var(--warm)" opacity="0.9"/>
+                    <circle cx="155" cy="125" r="14" fill="var(--warm)" opacity="0.2"/>
+                    <text x="155" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="var(--slate-dark)" font-family="Inter">Middlesbrough</text>
+                    <circle cx="115" cy="155" r="6" fill="var(--slate)" opacity="0.8"/>
+                    <text x="115" y="172" text-anchor="middle" font-size="10" font-weight="600" fill="var(--slate-dark)" font-family="Inter">Stockton</text>
+                    <circle cx="135" cy="90" r="6" fill="var(--slate)" opacity="0.8"/>
+                    <text x="135" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="var(--slate-dark)" font-family="Inter">Billingham</text>
+                    <circle cx="200" cy="105" r="5" fill="var(--slate)" opacity="0.6"/>
+                    <text x="200" y="98" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Inter">Redcar</text>
+                    <circle cx="85" cy="130" r="5" fill="var(--slate)" opacity="0.6"/>
+                    <text x="85" y="123" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Inter">Darlington</text>
+                    <circle cx="195" cy="160" r="5" fill="var(--slate)" opacity="0.6"/>
+                    <text x="195" y="177" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Inter">Thornaby</text>
+                    <circle cx="230" cy="140" r="5" fill="var(--slate)" opacity="0.6"/>
+                    <text x="230" y="155" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Inter">Guisborough</text>
+                    <!-- HQ marker -->
+                    <rect x="125" y="76" width="20" height="6" rx="3" fill="var(--warm)"/>
+                    <text x="135" y="72" text-anchor="middle" font-size="7" font-weight="700" fill="var(--warm)" font-family="Inter">HQ</text>
+                </svg>
+            </div>
+            <div class="reveal">
+                <div class="areas-list">
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Middlesbrough
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Stockton-on-Tees
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Billingham
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Thornaby
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Redcar
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Guisborough
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Darlington
+                    </div>
+                    <div class="area-tag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Wider North East
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta section" id="contact">
+    <div class="container">
+        <div class="reveal">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Give us a ring or drop us an email for a free, no-obligation quote. We'll get back to you the same day.</p>
+            <div class="cta-btns">
+                <a href="tel:07881622657" class="btn btn-white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Call 07881 622 657
+                </a>
+                <a href="mailto:lesbezance@yahoo.co.uk" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email Us
+                </a>
+            </div>
+            <div class="cta-info">
+                <div class="cta-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    23 East Avenue, Billingham, TS23 1BY
+                </div>
+                <div class="cta-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    01642 806 323
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h4>Les Bezance Building Services</h4>
+                <p>Professional builders, plasterers and bricklayers serving Teesside and the North East for over 20 years. Quality workmanship at affordable prices.</p>
+                <p style="margin-top:12px;font-size:0.8rem;opacity:0.6;">VAT Reg: 122502662</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">House Extensions</a></li>
+                    <li><a href="#services">Kitchen Installations</a></li>
+                    <li><a href="#services">Bricklaying</a></li>
+                    <li><a href="#services">Plastering</a></li>
+                    <li><a href="#services">Fencing</a></li>
+                    <li><a href="#services">Building Repairs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Areas Covered</h4>
+                <ul class="footer-links">
+                    <li><a href="#areas">Middlesbrough</a></li>
+                    <li><a href="#areas">Stockton-on-Tees</a></li>
+                    <li><a href="#areas">Billingham</a></li>
+                    <li><a href="#areas">Thornaby</a></li>
+                    <li><a href="#areas">Redcar</a></li>
+                    <li><a href="#areas">North East</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>23 East Avenue<br>Billingham, TS23 1BY</span>
+                </div>
+                <div class="footer-contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    <span>07881 622 657<br>01642 806 323</span>
+                </div>
+                <div class="footer-contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>lesbezance@yahoo.co.uk</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Les Bezance Building Services. All rights reserved.</span>
+            <span class="footer-credit">Website concept by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+        </div>
+    </div>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="neo-popup-overlay" id="neoPopup">
+    <div class="neo-popup">
+        <button class="neo-popup-close" id="neoPopupClose" aria-label="Close popup">&times;</button>
+        <div class="neo-popup-icon">&#x1F4BB;</div>
+        <h3>Like What You See?</h3>
+        <p>This is a free redesign concept built by NeoCode Studio. We help tradespeople and local businesses get more customers with professional websites that actually convert.</p>
+        <a href="https://neocodestudio.co.uk" target="_blank" class="btn">Visit NeoCode Studio &rarr;</a>
+    </div>
+</div>
+
+<script>
+    // ── HAMBURGER MENU ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // ── STICKY HEADER SHADOW ──
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── SCROLL REVEAL ──
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ── NEOCODE POPUP (70% scroll) ──
+    let popupShown = false;
+    window.addEventListener('scroll', () => {
+        if (popupShown) return;
+        const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrollPercent >= 0.70) {
+            popupShown = true;
+            const popup = document.getElementById('neoPopup');
+            popup.classList.add('show');
+        }
+    });
+
+    document.getElementById('neoPopupClose').addEventListener('click', () => {
+        document.getElementById('neoPopup').classList.remove('show');
+    });
+
+    document.getElementById('neoPopup').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            e.currentTarget.classList.remove('show');
+        }
+    });
+
+    // ── SMOOTH SCROLL FOR ANCHOR LINKS ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

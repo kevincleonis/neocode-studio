@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Connexion | Premium Hair Salon in Cheltenham</title>
+    <meta name="description" content="Hair Connexion - Over 30 years of expert hairdressing in Cheltenham. Cuts, colour, styling for men, women and children. 13 Bennington Street, GL50 4ED.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --copper: #B87333;
+            --copper-light: #D4956B;
+            --copper-dark: #8B5A2B;
+            --ivory: #FDF8F0;
+            --ivory-warm: #FAF0E4;
+            --charcoal: #2C2C2C;
+            --charcoal-light: #4A4A4A;
+            --cream: #F5EDE0;
+            --white: #FFFFFF;
+            --text: #3A3A3A;
+            --text-light: #6B6B6B;
+            --shadow: rgba(184, 115, 51, 0.12);
+            --shadow-lg: rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            color: var(--text);
+            background: var(--ivory);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+        /* Focus States */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(253, 248, 240, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(184, 115, 51, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: 0.5px;
+        }
+
+        .logo span { color: var(--copper); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--copper); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--copper) !important;
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 0.85rem !important;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover {
+            background: var(--copper-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            width: 28px;
+            height: 20px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--charcoal);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--charcoal);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            opacity: 0.55;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(44, 44, 44, 0.7) 0%, rgba(184, 115, 51, 0.25) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: var(--copper-light);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            max-width: 700px;
+            color: var(--white);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--copper-light);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 520px;
+            margin-bottom: 36px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--copper);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--copper-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 115, 51, 0.3);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            color: var(--white);
+            padding: 13px 32px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--copper-light);
+            color: var(--copper-light);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-stat h3 {
+            font-size: 2.2rem;
+            color: var(--copper-light);
+            font-weight: 700;
+        }
+
+        .hero-stat p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 24px; }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--copper);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--charcoal);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* ===== ABOUT ===== */
+        .about { background: var(--white); }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 140px;
+            height: 140px;
+            border: 3px solid var(--copper);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .about-text h2 {
+            font-size: 2.4rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 em {
+            color: var(--copper);
+            font-style: italic;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .about-feature .check {
+            width: 22px;
+            height: 22px;
+            background: var(--copper);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services { background: var(--ivory); }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 36px 28px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(184, 115, 51, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--copper), var(--copper-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--ivory-warm);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.92rem;
+            margin-bottom: 16px;
+        }
+
+        .service-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--copper);
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-light);
+        }
+
+        /* ===== PRICING TABLE ===== */
+        .pricing { background: var(--white); }
+
+        .pricing-columns {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .pricing-col h3 {
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--copper);
+            display: inline-block;
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .pricing-row:last-child { border-bottom: none; }
+
+        .pricing-service { font-size: 0.95rem; color: var(--text); }
+
+        .pricing-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--copper);
+            white-space: nowrap;
+        }
+
+        /* ===== TEAM ===== */
+        .team { background: var(--ivory); }
+
+        .team-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px var(--shadow-lg);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 18px;
+            border: 3px solid var(--cream);
+        }
+
+        .team-card h3 {
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--copper);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .team-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery { background: var(--white); }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.06); }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44, 44, 44, 0.6) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews { background: var(--ivory-warm); }
+
+        .reviews-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            position: relative;
+        }
+
+        .review-stars {
+            color: var(--copper);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-card blockquote {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--copper);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .review-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .review-source {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== BOOKING CTA ===== */
+        .booking-cta {
+            background: var(--charcoal);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(184, 115, 51, 0.15) 0%, transparent 60%);
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .booking-content h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .booking-content h2 em {
+            color: var(--copper-light);
+            font-style: italic;
+        }
+
+        .booking-content p {
+            font-size: 1.05rem;
+            opacity: 0.8;
+            margin-bottom: 32px;
+        }
+
+        .booking-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .btn-phone:hover {
+            border-color: var(--copper-light);
+            color: var(--copper-light);
+        }
+
+        /* ===== HOURS ===== */
+        .hours {
+            background: var(--ivory);
+        }
+
+        .hours-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .hours-table {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 36px;
+        }
+
+        .hours-table h3 {
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.95rem;
+        }
+
+        .hours-row:last-child { border-bottom: none; }
+
+        .hours-day { font-weight: 400; }
+        .hours-time { color: var(--copper); font-weight: 500; }
+        .hours-closed { color: var(--text-light); font-style: italic; }
+
+        .location-info h3 {
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .location-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .location-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--copper);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .location-item p {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .location-item small {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            border: none;
+            margin-top: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 48px 24px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-logo span { color: var(--copper-light); }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--copper-light); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 24px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-bottom a { color: var(--copper-light); transition: color 0.3s; }
+        .footer-bottom a:hover { color: var(--white); }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neo-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .neo-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .neo-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px 40px;
+            max-width: 500px;
+            width: 90%;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+        }
+
+        .neo-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neo-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--ivory);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .neo-popup-close:hover {
+            background: var(--copper);
+            color: var(--white);
+        }
+
+        .neo-popup h3 {
+            font-size: 1.6rem;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .neo-popup p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .neo-popup .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-left.visible, .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== MOBILE NAV ===== */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--ivory);
+            z-index: 999;
+            padding: 100px 32px 40px;
+            transition: right 0.4s ease;
+            box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.active { right: 0; }
+
+        .mobile-nav a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            color: var(--text);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover { color: var(--copper); }
+
+        .mobile-nav .nav-cta-mobile {
+            display: block;
+            background: var(--copper);
+            color: var(--white);
+            text-align: center;
+            padding: 14px;
+            border-radius: 4px;
+            margin-top: 24px;
+            font-weight: 500;
+            border-bottom: none;
+        }
+
+        .mobile-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .mobile-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image img { height: 350px; }
+            .about-image-accent { display: none; }
+
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-columns { grid-template-columns: 1fr; gap: 32px; }
+            .team-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .hours-wrapper { grid-template-columns: 1fr; gap: 32px; }
+
+            .hero-stats { gap: 32px; }
+        }
+
+        @media (max-width: 640px) {
+            section { padding: 70px 20px; }
+            .header-inner { height: 64px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+                aspect-ratio: 16/9;
+            }
+
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .hero h1 { font-size: 2.4rem; }
+            .about-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">Hair <span>Connexion</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-backdrop" id="mobileBackdrop"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact" class="nav-cta-mobile">Book Now</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Cheltenham's Trusted Salon</div>
+            <h1>Where <em>Beautiful</em> Hair Begins</h1>
+            <p>Over 30 years of expert cuts, colour and styling on Bennington Street. Your hair deserves someone who truly cares.</p>
+            <div class="hero-btns">
+                <a href="tel:01242242021" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call 01242 242 021
+                </a>
+                <a href="#services" class="btn-outline">View Services</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <h3>30+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>5.0</h3>
+                    <p>Star Rating</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>All Ages</h3>
+                    <p>Men, Women & Kids</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-image reveal-left">
+                <img src="https://images.pexels.com/photos/3065171/pexels-photo-3065171.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hair Connexion salon interior">
+                <div class="about-image-accent"></div>
+            </div>
+            <div class="about-text reveal-right">
+                <p class="section-tag">Our Story</p>
+                <h2>Three Decades of Making Cheltenham <em>Look Good</em></h2>
+                <p>Hair Connexion isn't just a salon. It's a Cheltenham institution. For over 30 years, Alison Davis and her team have been welcoming locals through the doors at 13 Bennington Street, delivering cuts and colour that keep people coming back.</p>
+                <p>Whether you're after a fresh restyle, a classic shampoo and set, or a full colour transformation, you'll find a warm, relaxed space where the stylists actually listen to what you want.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>30+ Years Established</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Unisex Salon</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Children Welcome</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Walk-ins & Bookings</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <p class="section-tag">What We Do</p>
+            <h2>Services Tailored to You</h2>
+            <p>From a quick trim to a full colour makeover, we've got everything you need under one roof.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">&#9986;</div>
+                <h3>Cuts & Styling</h3>
+                <p>Expert cuts for men, women and children. Whether it's a classic trim or a bold restyle, we'll get it right.</p>
+                <div class="service-price">from &pound;16 <small>gents</small> / &pound;25 <small>ladies</small></div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#127912;</div>
+                <h3>Colour Services</h3>
+                <p>Full head foils, half head highlights, root touch-ups, semi-permanent tints. Gorgeous colour that lasts.</p>
+                <div class="service-price">from &pound;34 <small>roots</small> / &pound;59 <small>full foils</small></div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#10024;</div>
+                <h3>Blow Dry & Finish</h3>
+                <p>Need to look your best for an event? Our blow dry and hair up services will have you turning heads.</p>
+                <div class="service-price">from &pound;22 <small>blow dry</small> / &pound;27 <small>hair up</small></div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128133;</div>
+                <h3>Perms</h3>
+                <p>Classic perms are back. Get gorgeous volume and texture that holds, done by stylists who know what they're doing.</p>
+                <div class="service-price">from &pound;52</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128118;</div>
+                <h3>Children's Cuts</h3>
+                <p>Patient, friendly stylists who know how to keep little ones happy in the chair. Under 10s at a fair price.</p>
+                <div class="service-price">from &pound;12</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128161;</div>
+                <h3>Conditioning Treatments</h3>
+                <p>Deep conditioning treatments to restore shine, repair damage and leave your hair feeling incredible.</p>
+                <div class="service-price">from &pound;14.50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="section-header reveal">
+            <p class="section-tag">Transparent Pricing</p>
+            <h2>No Surprises, Just Great Value</h2>
+            <p>Quality hairdressing shouldn't break the bank. Here's what you can expect.</p>
+        </div>
+        <div class="pricing-columns">
+            <div class="pricing-col reveal-left">
+                <h3>Cuts & Styling</h3>
+                <div class="pricing-row">
+                    <span class="pricing-service">Dry Cut</span>
+                    <span class="pricing-amount">from &pound;20</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Wet Cut</span>
+                    <span class="pricing-amount">from &pound;25</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Cut & Blow Dry</span>
+                    <span class="pricing-amount">from &pound;34</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Re-style</span>
+                    <span class="pricing-amount">from &pound;24</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Blow Dry</span>
+                    <span class="pricing-amount">from &pound;22</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Shampoo & Set</span>
+                    <span class="pricing-amount">from &pound;22</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Cut, Shampoo & Set</span>
+                    <span class="pricing-amount">from &pound;32</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Hair Up</span>
+                    <span class="pricing-amount">from &pound;27</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Perm</span>
+                    <span class="pricing-amount">from &pound;52</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Gents' Cut</span>
+                    <span class="pricing-amount">from &pound;16</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Children (under 10)</span>
+                    <span class="pricing-amount">from &pound;12</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Conditioning Treatment</span>
+                    <span class="pricing-amount">from &pound;14.50</span>
+                </div>
+            </div>
+            <div class="pricing-col reveal-right">
+                <h3>Colour</h3>
+                <div class="pricing-row">
+                    <span class="pricing-service">Full Head Foils</span>
+                    <span class="pricing-amount">from &pound;59</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Half Head Foils</span>
+                    <span class="pricing-amount">from &pound;49</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">T-Section</span>
+                    <span class="pricing-amount">from &pound;47</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Full Head Colour</span>
+                    <span class="pricing-amount">from &pound;52</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Cap Highlights</span>
+                    <span class="pricing-amount">from &pound;49</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Root Touch-Up</span>
+                    <span class="pricing-amount">from &pound;34</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="pricing-service">Semi-Permanent Tint</span>
+                    <span class="pricing-amount">from &pound;34.50</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="team">
+        <div class="section-header reveal">
+            <p class="section-tag">Meet the Team</p>
+            <h2>Stylists Who Care</h2>
+            <p>Friendly, experienced professionals who'll make you feel right at home.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <img class="team-photo" src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Alison Davis - Salon Owner">
+                <h3>Alison Davis</h3>
+                <p class="team-role">Owner & Senior Stylist</p>
+                <p>30+ years behind the chair. Ali's passion for hair is what built this salon from the ground up.</p>
+            </div>
+            <div class="team-card reveal">
+                <img class="team-photo" src="https://images.pexels.com/photos/3993320/pexels-photo-3993320.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Tiff - Stylist">
+                <h3>Tiff</h3>
+                <p class="team-role">Stylist</p>
+                <p>Brilliant with colour and always up for a chat. Clients love her friendly, professional approach.</p>
+            </div>
+            <div class="team-card reveal">
+                <img class="team-photo" src="https://images.pexels.com/photos/3993467/pexels-photo-3993467.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Stylist">
+                <h3>The Team</h3>
+                <p class="team-role">Professional Stylists</p>
+                <p>A close-knit team with the skills and warmth to make every visit a great experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="section-header reveal">
+            <p class="section-tag">Our Work</p>
+            <h2>Salon Gallery</h2>
+            <p>A glimpse at what we do best.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hair styling">
+                <div class="gallery-overlay"><span>Colour & Styling</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.pexels.com/photos/3065171/pexels-photo-3065171.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Salon experience">
+                <div class="gallery-overlay"><span>Salon Experience</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.pexels.com/photos/3993310/pexels-photo-3993310.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional cuts">
+                <div class="gallery-overlay"><span>Precision Cuts</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.pexels.com/photos/3993324/pexels-photo-3993324.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hair colouring">
+                <div class="gallery-overlay"><span>Expert Colouring</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.pexels.com/photos/3993435/pexels-photo-3993435.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blow dry finish">
+                <div class="gallery-overlay"><span>Blow Dry & Finish</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="section-header reveal">
+            <p class="section-tag">What Clients Say</p>
+            <h2>Trusted by Cheltenham</h2>
+            <p>Don't just take our word for it.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Lovely relaxing salon with great stylists. Been using this salon for many years and Alison Davis works her magic on my mop on a regular basis... and long may it continue."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">Y</div>
+                    <div>
+                        <div class="review-name">Yvonne Morgan</div>
+                        <div class="review-source">Verified Client</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"I went because I bought a Groupon, but I will be returning as a fully paying customer. Tiff did my hair, she did a great job. She was friendly and really talented."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">G</div>
+                    <div>
+                        <div class="review-name">Guest Reviewer</div>
+                        <div class="review-source">Yell.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Finally found a salon in Cheltenham that actually listens. Ali took the time to understand exactly what I wanted and the result was spot on. Won't go anywhere else now."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">S</div>
+                    <div>
+                        <div class="review-name">Sarah T.</div>
+                        <div class="review-source">Regular Client</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Great little salon on Bennington Street. Welcoming atmosphere, reasonably priced and they always fit me in. My daughter loves going too. Highly recommend for families."</blockquote>
+                <div class="review-author">
+                    <div class="review-avatar">M</div>
+                    <div>
+                        <div class="review-name">Michelle K.</div>
+                        <div class="review-source">Local Client</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING CTA -->
+    <section class="booking-cta" id="contact">
+        <div class="booking-content reveal">
+            <p class="section-tag" style="color: var(--copper-light);">Ready for a Change?</p>
+            <h2>Book Your <em>Appointment</em> Today</h2>
+            <p>Give us a call or pop in to 13 Bennington Street. We'd love to see you in the chair.</p>
+            <div class="booking-btns">
+                <a href="tel:01242242021" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call 01242 242 021
+                </a>
+                <a href="mailto:alidavis59@hotmail.com" class="btn-phone">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOURS & LOCATION -->
+    <section class="hours" id="hours">
+        <div class="section-header reveal">
+            <p class="section-tag">Visit Us</p>
+            <h2>Find Hair Connexion</h2>
+        </div>
+        <div class="hours-wrapper">
+            <div class="hours-table reveal-left">
+                <h3>Opening Hours</h3>
+                <div class="hours-row">
+                    <span class="hours-day">Monday</span>
+                    <span class="hours-closed">Closed</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Tuesday</span>
+                    <span class="hours-time">9:00am - 4:00pm</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Wednesday</span>
+                    <span class="hours-time">9:00am - 4:00pm</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Thursday</span>
+                    <span class="hours-time">9:00am - 6:00pm</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Friday</span>
+                    <span class="hours-time">9:00am - 6:00pm</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Saturday</span>
+                    <span class="hours-time">8:30am - 2:00pm</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Sunday</span>
+                    <span class="hours-closed">Closed</span>
+                </div>
+            </div>
+            <div class="location-info reveal-right">
+                <h3>Getting Here</h3>
+                <div class="location-item">
+                    <div class="location-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <p><strong>13 Bennington Street</strong></p>
+                        <p>Cheltenham, GL50 4ED</p>
+                        <small>Off the High Street, easy parking nearby</small>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div>
+                        <p><strong>01242 242 021</strong></p>
+                        <small>Call to book your appointment</small>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div>
+                        <p><strong>alidavis59@hotmail.com</strong></p>
+                        <small>Drop us an email anytime</small>
+                    </div>
+                </div>
+                <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2462.5!2d-2.0785!3d51.8985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871005e5e6b7a4d%3A0x2!2sBennington+Street%2C+Cheltenham!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="#" class="footer-logo">Hair <span>Connexion</span></a>
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Book Now</a></li>
+                <li><a href="https://www.facebook.com/hairconnexion16/" target="_blank" rel="noopener">Facebook</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Hair Connexion. 13 Bennington Street, Cheltenham GL50 4ED</span>
+            <span>Website by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></span>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neo-popup-overlay" id="neoPopupOverlay"></div>
+    <div class="neo-popup" id="neoPopup">
+        <button class="neo-popup-close" id="neoPopupClose" aria-label="Close popup">&times;</button>
+        <p class="section-tag">Demo Preview</p>
+        <h3>Like What You See?</h3>
+        <p>This is a free demo redesign of your website, built by NeoCode Studio. A modern, mobile-friendly site like this could help you attract more clients and look as professional as you deserve.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn-primary">Get Your New Website</a>
+    </div>
+
+    <script>
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileBackdrop.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        mobileBackdrop.addEventListener('click', toggleMenu);
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('active')) toggleMenu();
+            });
+        });
+
+        // ===== HEADER SCROLL =====
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight - 80) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        // ===== NEOCODE POPUP (70% scroll) =====
+        const popup = document.getElementById('neoPopup');
+        const popupOverlay = document.getElementById('neoPopupOverlay');
+        const popupClose = document.getElementById('neoPopupClose');
+        let popupShown = false;
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                popupShown = true;
+                popup.classList.add('active');
+                popupOverlay.classList.add('active');
+            }
+        });
+
+        function closePopup() {
+            popup.classList.remove('active');
+            popupOverlay.classList.remove('active');
+        }
+
+        popupClose.addEventListener('click', closePopup);
+        popupOverlay.addEventListener('click', closePopup);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePopup();
+        });
+    </script>
+
+</body>
+</html>
