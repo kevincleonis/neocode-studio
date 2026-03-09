@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackness Garage | Family-Run MOT, Servicing & Repairs Since 1960 | Scarborough</title>
+<meta name="description" content="Hackness Garage - the Hopper family's trusted village garage since 1960. MOT testing, servicing, tyres, exhausts & repairs near Scarborough, North Yorkshire. Call 01723 882366.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --olive: #3d4a2c;
+    --olive-deep: #2a3320;
+    --olive-rich: #4a5a34;
+    --olive-light: #6b7f4e;
+    --sand: #f4eed8;
+    --sand-mid: #e8dfbe;
+    --sand-dark: #c9bf9e;
+    --cream: #faf8f0;
+    --warm-white: #fdfcf7;
+    --bark: #5c4a3a;
+    --bark-light: #7a6552;
+    --moss: #8a9a6c;
+    --moss-light: #a4b388;
+    --amber: #d4930a;
+    --amber-light: #eab035;
+    --rust: #b85c38;
+    --text-dark: #2c2c2c;
+    --text-mid: #5a5a5a;
+    --text-light: #8a8a7a;
+    --white: #ffffff;
+    --surface: rgba(61,74,44,0.04);
+    --surface-olive: rgba(61,74,44,0.08);
+    --border: rgba(61,74,44,0.12);
+    --border-strong: rgba(61,74,44,0.2);
+    --shadow-sm: 0 1px 3px rgba(42,51,32,0.06);
+    --shadow-md: 0 4px 16px rgba(42,51,32,0.08);
+    --shadow-lg: 0 12px 40px rgba(42,51,32,0.12);
+    --shadow-xl: 0 20px 60px rgba(42,51,32,0.15);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --radius-xs: 5px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.65;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+.serif { font-family: 'Instrument Serif', Georgia, serif; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ===== TOP RIBBON ===== */
+.ribbon {
+    background: var(--olive-deep);
+    padding: 9px 0;
+    font-size: 0.78rem;
+    color: rgba(244,238,216,0.7);
+    letter-spacing: 0.01em;
+}
+.ribbon .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.ribbon a { color: var(--sand); transition: color 0.2s; }
+.ribbon a:hover { color: var(--amber-light); }
+.ribbon-left { display: flex; align-items: center; gap: 18px; }
+.ribbon-icon { width: 14px; height: 14px; opacity: 0.6; flex-shrink: 0; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: box-shadow 0.3s var(--ease);
+}
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.nav-logo-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--olive);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sand);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.nav-logo-text h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.35rem;
+    color: var(--olive-deep);
+    line-height: 1.1;
+    font-weight: 400;
+}
+.nav-logo-text span {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+.nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    transition: color 0.2s;
+    position: relative;
+}
+.nav-links a:hover { color: var(--olive); }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--olive-light);
+    transition: width 0.3s var(--ease);
+    border-radius: 2px;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+    background: var(--olive);
+    color: var(--sand) !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s var(--ease);
+    letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--olive-rich); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.nav-cta::after { display: none !important; }
+
+/* Mobile menu */
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+.hamburger span { width: 22px; height: 2px; background: var(--olive); border-radius: 2px; transition: 0.3s; }
+
+/* ===== HERO ===== */
+.hero {
+    background: linear-gradient(165deg, var(--olive-deep) 0%, var(--olive) 45%, var(--olive-rich) 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(138,154,108,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(42,51,32,0.4) 0%, transparent 50%);
+    pointer-events: none;
+}
+/* Tyre tread pattern */
+.hero::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(8deg);
+    width: 220px;
+    height: 140%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.02) 18px,
+        rgba(255,255,255,0.02) 20px
+    );
+    pointer-events: none;
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding: 80px 0;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(244,238,216,0.1);
+    border: 1px solid rgba(244,238,216,0.15);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    color: var(--sand-mid);
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+}
+.hero-badge-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--moss-light);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+.hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: var(--sand);
+    line-height: 1.08;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+.hero h1 em {
+    font-style: italic;
+    color: var(--moss-light);
+}
+.hero-sub {
+    font-size: 1.05rem;
+    color: rgba(244,238,216,0.65);
+    max-width: 460px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+}
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.btn-primary {
+    background: var(--sand);
+    color: var(--olive-deep);
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: all 0.3s var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+.btn-outline {
+    border: 1.5px solid rgba(244,238,216,0.3);
+    color: var(--sand);
+    padding: 15px 28px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: all 0.3s var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-outline:hover { border-color: var(--sand); background: rgba(244,238,216,0.08); }
+
+/* Hero right - visual card */
+.hero-visual {
+    position: relative;
+}
+.hero-card {
+    background: rgba(244,238,216,0.06);
+    border: 1px solid rgba(244,238,216,0.1);
+    border-radius: 20px;
+    padding: 36px;
+    backdrop-filter: blur(16px);
+    position: relative;
+}
+.hero-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(244,238,216,0.08);
+}
+.hero-card-avatar {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--moss), var(--olive-light));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+.hero-card-info h3 {
+    color: var(--sand);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+.hero-card-info p {
+    color: rgba(244,238,216,0.5);
+    font-size: 0.8rem;
+}
+.hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.hero-stat {
+    background: rgba(244,238,216,0.05);
+    border: 1px solid rgba(244,238,216,0.06);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+}
+.hero-stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--moss-light);
+    line-height: 1.1;
+}
+.hero-stat-label {
+    font-size: 0.75rem;
+    color: rgba(244,238,216,0.45);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+/* Floating elements */
+.hero-float {
+    position: absolute;
+    background: rgba(244,238,216,0.08);
+    border: 1px solid rgba(244,238,216,0.1);
+    border-radius: 12px;
+    padding: 12px 18px;
+    backdrop-filter: blur(12px);
+    font-size: 0.82rem;
+    color: var(--sand);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: float-gentle 4s ease-in-out infinite;
+}
+.hero-float-1 { top: -20px; right: 30px; animation-delay: 0s; }
+.hero-float-2 { bottom: -16px; left: -20px; animation-delay: 1.5s; }
+@keyframes float-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+}
+.trust-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    font-weight: 500;
+}
+.trust-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--surface-olive);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+/* ===== SECTION COMMON ===== */
+section { padding: 100px 0; }
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--olive-light);
+    margin-bottom: 14px;
+}
+.section-label::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--olive-light);
+    border-radius: 2px;
+}
+.section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--olive-deep);
+    line-height: 1.12;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+.section-desc {
+    font-size: 1.02rem;
+    color: var(--text-mid);
+    max-width: 560px;
+    line-height: 1.7;
+}
+
+/* ===== ABOUT ===== */
+.about { background: var(--cream); }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+.about-image {
+    position: relative;
+}
+.about-img-main {
+    background: linear-gradient(145deg, var(--olive) 0%, var(--olive-rich) 100%);
+    border-radius: 20px;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.about-img-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-conic-gradient(var(--olive-deep) 0% 25%, transparent 0% 50%) 0 0 / 20px 20px;
+    opacity: 0.08;
+}
+.about-img-icon {
+    font-size: 5rem;
+    position: relative;
+    z-index: 1;
+    filter: grayscale(0.3);
+}
+.about-year-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--sand);
+    border: 3px solid var(--cream);
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+.about-year-badge .year {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--olive);
+    line-height: 1;
+}
+.about-year-badge .year-label {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.about-text { padding: 20px 0; }
+.about-text p {
+    color: var(--text-mid);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 28px;
+}
+.about-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--surface-olive);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--olive-light);
+}
+.about-highlight-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+.about-highlight-text {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    font-weight: 500;
+}
+
+/* ===== SERVICES ===== */
+.services { background: var(--warm-white); }
+.services-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.services-header .section-desc { margin: 0 auto; }
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.service-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 30px;
+    transition: all 0.35s var(--ease);
+    position: relative;
+    overflow: hidden;
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--olive), var(--moss));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+}
+.service-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--surface-olive);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 22px;
+    transition: all 0.3s var(--ease);
+}
+.service-card:hover .service-icon {
+    background: var(--olive);
+    transform: scale(1.05);
+}
+.service-card:hover .service-icon span { filter: brightness(2); }
+.service-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--olive-deep);
+    margin-bottom: 10px;
+}
+.service-card p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+}
+
+/* ===== WHY US ===== */
+.why-us {
+    background: linear-gradient(170deg, var(--olive-deep) 0%, var(--olive) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.why-us::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 30%, rgba(138,154,108,0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+.why-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+.why-header .section-label { color: var(--moss-light); }
+.why-header .section-label::before { background: var(--moss-light); }
+.why-header .section-title { color: var(--sand); }
+.why-header .section-desc { color: rgba(244,238,216,0.6); margin: 0 auto; }
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+.why-card {
+    background: rgba(244,238,216,0.05);
+    border: 1px solid rgba(244,238,216,0.08);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.35s var(--ease);
+    backdrop-filter: blur(8px);
+}
+.why-card:hover {
+    background: rgba(244,238,216,0.09);
+    border-color: rgba(244,238,216,0.15);
+    transform: translateY(-4px);
+}
+.why-card-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.6rem;
+    color: var(--moss-light);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.why-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--sand);
+    margin-bottom: 10px;
+}
+.why-card p {
+    font-size: 0.83rem;
+    color: rgba(244,238,216,0.5);
+    line-height: 1.65;
+}
+
+/* ===== REVIEWS ===== */
+.reviews { background: var(--cream); }
+.reviews-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.reviews-header .section-desc { margin: 0 auto; }
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.review-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all 0.3s var(--ease);
+}
+.review-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+    color: var(--amber);
+    font-size: 1rem;
+}
+.review-text {
+    font-size: 0.93rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+.review-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--olive-light), var(--moss));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sand);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+.review-name { font-size: 0.88rem; font-weight: 600; color: var(--olive-deep); }
+.review-source { font-size: 0.75rem; color: var(--text-light); }
+
+/* ===== PROCESS TIMELINE ===== */
+.process { background: var(--warm-white); }
+.process-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.process-header .section-desc { margin: 0 auto; }
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background: var(--border-strong);
+}
+.timeline-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 16px;
+}
+.timeline-num {
+    width: 64px;
+    height: 64px;
+    background: var(--olive);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    color: var(--sand);
+    position: relative;
+    z-index: 2;
+    border: 4px solid var(--warm-white);
+    box-shadow: var(--shadow-md);
+}
+.timeline-step h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--olive-deep);
+    margin-bottom: 8px;
+}
+.timeline-step p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+/* ===== OPENING HOURS ===== */
+.hours {
+    background: var(--cream);
+    overflow: hidden;
+}
+.hours-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+.hours-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+.hours-card-header {
+    background: var(--olive);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.hours-card-header h3 {
+    color: var(--sand);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.hours-card-header span { font-size: 1.3rem; }
+.hours-list { padding: 8px 0; }
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-row:hover { background: var(--surface-olive); }
+.hours-row.today {
+    background: var(--surface-olive);
+    border-left: 3px solid var(--olive);
+}
+.hours-day {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--olive-deep);
+}
+.hours-time {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    font-weight: 500;
+}
+.hours-closed {
+    color: var(--rust);
+    font-weight: 600;
+}
+.hours-right h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--olive-deep);
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+.hours-right p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+.hours-directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--olive);
+    color: var(--sand);
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s var(--ease);
+    margin-top: 12px;
+}
+.hours-directions:hover { background: var(--olive-deep); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* ===== MAP ===== */
+.map-section {
+    padding: 0;
+    background: var(--olive-deep);
+}
+.map-container {
+    position: relative;
+    height: 380px;
+    background: var(--olive);
+}
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: sepia(15%) saturate(85%) hue-rotate(20deg);
+}
+.map-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: var(--warm-white);
+    border-radius: var(--radius);
+    padding: 24px 30px;
+    box-shadow: var(--shadow-xl);
+    max-width: 340px;
+}
+.map-overlay h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.25rem;
+    color: var(--olive-deep);
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+.map-overlay p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+}
+.map-overlay a {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--olive);
+    transition: color 0.2s;
+}
+.map-overlay a:hover { color: var(--olive-light); }
+
+/* ===== CTA ===== */
+.cta {
+    background: linear-gradient(160deg, var(--olive-deep) 0%, var(--olive) 60%, var(--olive-rich) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+}
+.cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 50% 40%, rgba(164,179,136,0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+.cta .container { position: relative; z-index: 2; }
+.cta h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--sand);
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+.cta p {
+    font-size: 1.05rem;
+    color: rgba(244,238,216,0.6);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+}
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.cta-phone {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--sand);
+    display: block;
+    margin-top: 24px;
+    transition: color 0.2s;
+}
+.cta-phone:hover { color: var(--moss-light); }
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #1e2816;
+    padding: 60px 0 0;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(244,238,216,0.08);
+}
+.footer-brand h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    color: var(--sand);
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+.footer-brand p {
+    font-size: 0.88rem;
+    color: rgba(244,238,216,0.45);
+    line-height: 1.7;
+    max-width: 280px;
+}
+.footer-col h4 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--moss-light);
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+    font-size: 0.88rem;
+    color: rgba(244,238,216,0.5);
+    transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--sand); }
+.footer-bottom {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.footer-copy {
+    font-size: 0.78rem;
+    color: rgba(244,238,216,0.3);
+}
+.footer-credit {
+    font-size: 0.75rem;
+    color: rgba(244,238,216,0.25);
+}
+.footer-credit a { color: var(--moss-light); transition: color 0.2s; }
+.footer-credit a:hover { color: var(--sand); }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { max-width: 440px; margin: 0 auto; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .hours-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    section { padding: 70px 0; }
+    .ribbon { display: none; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--warm-white);
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        gap: 16px;
+    }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .timeline { flex-direction: column; gap: 32px; align-items: center; }
+    .timeline::before { display: none; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero-card { padding: 24px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .map-overlay { position: relative; bottom: auto; left: auto; border-radius: 0; max-width: 100%; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-float { display: none; }
+}
+@media (max-width: 480px) {
+    .hero-actions { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Ribbon -->
+<div class="ribbon">
+    <div class="container">
+        <div class="ribbon-left">
+            <span>
+                <svg class="ribbon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>Main Street, Hackness, Scarborough, YO13 0JW</span>
+        </div>
+        <a href="tel:01723882366">01723 882 366</a>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">HG</div>
+            <div class="nav-logo-text">
+                <h2>Hackness Garage</h2>
+                <span>Est. 1960</span>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#hours">Hours</a></li>
+            <li><a href="#contact" class="nav-cta">Book Now</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="hero-badge-dot"></span>
+                    Family-run since 1960
+                </div>
+                <h1 class="reveal delay-1">Your village garage,<br>built on <em>trust</em></h1>
+                <p class="hero-sub reveal delay-2">Three generations of the Hopper family have kept Hackness and Scarborough on the road. Honest work, fair prices, no shortcuts.</p>
+                <div class="hero-actions reveal delay-3">
+                    <a href="tel:01723882366" class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        Call Us Now
+                    </a>
+                    <a href="#services" class="btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                        Our Services
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual reveal delay-2">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-avatar">🔧</div>
+                        <div class="hero-card-info">
+                            <h3>Hackness Garage</h3>
+                            <p>The Hopper Family</p>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">65+</div>
+                            <div class="hero-stat-label">Years of Service</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">3</div>
+                            <div class="hero-stat-label">Generations</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">7.5t</div>
+                            <div class="hero-stat-label">MOT Capacity</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">YO13</div>
+                            <div class="hero-stat-label">Local Service</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-float hero-float-1">
+                    <span>✅</span> MOT Centre (Class 4)
+                </div>
+                <div class="hero-float hero-float-2">
+                    <span>🛞</span> Tyres in stock
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-items reveal">
+            <div class="trust-item">
+                <div class="trust-icon">🏛️</div>
+                <span>Est. 1960</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">👨‍👦‍👦</div>
+                <span>3rd Generation Family</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🔍</div>
+                <span>Class 4 MOT Centre</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🚗</div>
+                <span>Vintage & Modern</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">📍</div>
+                <span>Heart of Hackness Village</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <div class="about-img-main">
+                    <div class="about-img-icon">🏗️</div>
+                </div>
+                <div class="about-year-badge">
+                    <div class="year">1960</div>
+                    <div class="year-label">Established</div>
+                </div>
+            </div>
+            <div class="about-text">
+                <div class="section-label reveal">Our Story</div>
+                <h2 class="section-title reveal delay-1">Three generations,<br>one promise</h2>
+                <p class="reveal delay-2">Hackness Garage has been part of the village since 1960. What started as a small workshop has grown into a trusted name across Scarborough and the surrounding North Yorkshire countryside.</p>
+                <p class="reveal delay-3">Run by the Hopper family for over 65 years, we're not a faceless chain. When you bring your car to us, you're dealing with time-served mechanics who genuinely care about getting the job done right. We work on everything from vintage classics to the latest models.</p>
+                <div class="about-highlights reveal delay-4">
+                    <div class="about-highlight">
+                        <div class="about-highlight-icon">🛡️</div>
+                        <div class="about-highlight-text">Honest, upfront pricing with no hidden extras</div>
+                    </div>
+                    <div class="about-highlight">
+                        <div class="about-highlight-icon">🔧</div>
+                        <div class="about-highlight-text">Time-served mechanics with decades of hands-on experience</div>
+                    </div>
+                    <div class="about-highlight">
+                        <div class="about-highlight-icon">🌿</div>
+                        <div class="about-highlight-text">Village garage feel with professional-grade equipment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="services-header">
+            <div class="section-label reveal">What We Do</div>
+            <h2 class="section-title reveal delay-1">Everything your car needs,<br>under one roof</h2>
+            <p class="section-desc reveal delay-2">From your annual MOT to a full engine rebuild, we've got the skills, the tools, and the experience to sort it.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><span>📋</span></div>
+                <h3>MOT Testing</h3>
+                <p>Class 4 MOT testing for vehicles up to 7.5 tonnes. Quick turnaround, honest assessments, and we'll always talk you through the results.</p>
+            </div>
+            <div class="service-card reveal delay-1">
+                <div class="service-icon"><span>⚙️</span></div>
+                <h3>Full Servicing</h3>
+                <p>Interim and full services to manufacturer specs. We service both vintage and modern vehicles, keeping your car running smoothly year-round.</p>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="service-icon"><span>🔧</span></div>
+                <h3>Repairs</h3>
+                <p>From minor fixes to major mechanical work. Brakes, clutches, suspension, electrics, engine repairs. We'll diagnose the problem and give you a straight answer.</p>
+            </div>
+            <div class="service-card reveal delay-3">
+                <div class="service-icon"><span>🛞</span></div>
+                <h3>Tyres</h3>
+                <p>Competitive range of quality tyres in stock. We'll fit them, balance them, and check your alignment. All brands and sizes for cars and light commercials.</p>
+            </div>
+            <div class="service-card reveal delay-4">
+                <div class="service-icon"><span>💨</span></div>
+                <h3>Exhausts</h3>
+                <p>Full exhaust system repairs and replacements. If it's blowing, rattling, or hanging low, we'll sort it out quickly and at a fair price.</p>
+            </div>
+            <div class="service-card reveal delay-5">
+                <div class="service-icon"><span>❄️</span></div>
+                <h3>Seasonal Checks</h3>
+                <p>Summer and winter prep to make sure your car's ready for whatever North Yorkshire throws at it. Battery, coolant, tyres, wipers, the lot.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Us -->
+<section class="why-us">
+    <div class="container">
+        <div class="why-header">
+            <div class="section-label">Why Hackness Garage</div>
+            <h2 class="section-title">Built different from the big chains</h2>
+            <p class="section-desc">We're not interested in upselling you things you don't need. We're interested in keeping you safe on the road.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <div class="why-card-num">65+</div>
+                <h3>Years Running</h3>
+                <p>Since 1960, the Hopper family has been serving Hackness and the Scarborough area. That kind of history doesn't happen by accident.</p>
+            </div>
+            <div class="why-card reveal delay-1">
+                <div class="why-card-num">3rd</div>
+                <h3>Generation</h3>
+                <p>Stephen Hopper carries on the family tradition. Same values his grandad started with: do good work, charge fairly, look after people.</p>
+            </div>
+            <div class="why-card reveal delay-2">
+                <div class="why-card-num">7.5t</div>
+                <h3>MOT Capacity</h3>
+                <p>Our Class 4 MOT bay handles everything from small hatchbacks to light commercial vehicles up to 7.5 tonnes.</p>
+            </div>
+            <div class="why-card reveal delay-3">
+                <div class="why-card-num">All</div>
+                <h3>Makes & Models</h3>
+                <p>Vintage or brand new, petrol or diesel. We've got the knowledge and diagnostic tools to work on whatever you drive.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process -->
+<section class="process">
+    <div class="container">
+        <div class="process-header">
+            <div class="section-label reveal">How It Works</div>
+            <h2 class="section-title reveal delay-1">Simple. Straightforward. Sorted.</h2>
+            <p class="section-desc reveal delay-2">No online booking portals, no call centres. Just ring us up and we'll get you booked in.</p>
+        </div>
+        <div class="timeline reveal delay-3">
+            <div class="timeline-step">
+                <div class="timeline-num">1</div>
+                <h3>Give Us a Ring</h3>
+                <p>Call 01723 882366 and tell us what you need. We'll find a slot that works for you.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-num">2</div>
+                <h3>Drop It Off</h3>
+                <p>Bring your car down to us on Main Street, Hackness. Easy to find, plenty of space.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-num">3</div>
+                <h3>We'll Take a Look</h3>
+                <p>Our mechanics inspect your vehicle and call you with an honest assessment before any work starts.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-num">4</div>
+                <h3>Collect & Go</h3>
+                <p>We'll let you know when it's ready. No surprises on the bill, just good work done properly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews" id="reviews">
+    <div class="container">
+        <div class="reviews-header">
+            <div class="section-label reveal">What People Say</div>
+            <h2 class="section-title reveal delay-1">Trusted by the community</h2>
+            <p class="section-desc reveal delay-2">We've been looking after cars in this area for over six decades. Here's what our customers think.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Been going to Hackness Garage for years. They always give you a fair estimate upfront and stick to it. The work is reliable and they're genuinely nice people to deal with."</p>
+                <div class="review-author">
+                    <div class="review-avatar">SM</div>
+                    <div>
+                        <div class="review-name">S. Matthews</div>
+                        <div class="review-source">Local Regular</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal delay-1">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Brilliant little garage. Took my old Land Rover in for an MOT and they were thorough but fair. Explained everything they found and didn't try to upsell. Will definitely be back."</p>
+                <div class="review-author">
+                    <div class="review-avatar">JP</div>
+                    <div>
+                        <div class="review-name">J. Pearson</div>
+                        <div class="review-source">Scarborough</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal delay-2">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Family garage that actually feels like one. Stephen really knows his stuff. They sorted a tricky exhaust issue on my van that two other garages couldn't figure out."</p>
+                <div class="review-author">
+                    <div class="review-avatar">DW</div>
+                    <div>
+                        <div class="review-name">D. Wilson</div>
+                        <div class="review-source">North Yorkshire</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hours -->
+<section class="hours" id="hours">
+    <div class="container">
+        <div class="hours-grid">
+            <div class="reveal">
+                <div class="hours-card">
+                    <div class="hours-card-header">
+                        <span>🕐</span>
+                        <h3>Opening Hours</h3>
+                    </div>
+                    <div class="hours-list">
+                        <div class="hours-row" data-day="1">
+                            <span class="hours-day">Monday</span>
+                            <span class="hours-time">8:30 AM - 5:30 PM</span>
+                        </div>
+                        <div class="hours-row" data-day="2">
+                            <span class="hours-day">Tuesday</span>
+                            <span class="hours-time">8:30 AM - 5:30 PM</span>
+                        </div>
+                        <div class="hours-row" data-day="3">
+                            <span class="hours-day">Wednesday</span>
+                            <span class="hours-time">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-row" data-day="4">
+                            <span class="hours-day">Thursday</span>
+                            <span class="hours-time">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-row" data-day="5">
+                            <span class="hours-day">Friday</span>
+                            <span class="hours-time">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-row" data-day="6">
+                            <span class="hours-day">Saturday</span>
+                            <span class="hours-time hours-closed">Closed</span>
+                        </div>
+                        <div class="hours-row" data-day="0">
+                            <span class="hours-day">Sunday</span>
+                            <span class="hours-time hours-closed">Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hours-right reveal delay-1">
+                <h3>Find us in the heart of Hackness village</h3>
+                <p>We're on Main Street, right in the centre of Hackness. Just a few minutes' drive from Scarborough, nestled in the beautiful North York Moors. Easy to find, and there's always room to park.</p>
+                <p><strong>Address:</strong> Main Street, Hackness, Scarborough, North Yorkshire, YO13 0JW</p>
+                <a href="https://www.google.com/maps/search/Hackness+Garage+Main+Street+Hackness+Scarborough+YO13+0JW" target="_blank" class="hours-directions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Get Directions
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map -->
+<div class="map-section">
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2340.5!2d-0.5875!3d54.2875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sHackness%2C+Scarborough!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-overlay">
+            <h3>Hackness Garage</h3>
+            <p>Main Street, Hackness<br>Scarborough, YO13 0JW</p>
+            <a href="https://www.google.com/maps/search/Hackness+Garage+Scarborough+YO13+0JW" target="_blank">Open in Google Maps →</a>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+    <div class="container">
+        <h2 class="reveal">Ready to book your car in?</h2>
+        <p class="reveal delay-1">Whether it's an MOT, a service, or something doesn't sound quite right, give us a call. We're always happy to help.</p>
+        <div class="cta-actions reveal delay-2">
+            <a href="tel:01723882366" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Call 01723 882 366
+            </a>
+            <a href="mailto:Hacknessgarage@gmail.com" class="btn-outline" style="border-color: rgba(244,238,216,0.3); color: var(--sand);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                Email Us
+            </a>
+        </div>
+        <a href="tel:01723882366" class="cta-phone reveal delay-3">01723 882 366</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Hackness Garage</h3>
+                <p>Family-run since 1960. Three generations of the Hopper family keeping Scarborough and North Yorkshire on the road. Honest work, fair prices.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">MOT Testing</a></li>
+                    <li><a href="#services">Servicing</a></li>
+                    <li><a href="#services">Repairs</a></li>
+                    <li><a href="#services">Tyres</a></li>
+                    <li><a href="#services">Exhausts</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#hours">Opening Hours</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:01723882366">01723 882 366</a></li>
+                    <li><a href="mailto:Hacknessgarage@gmail.com">Hacknessgarage@gmail.com</a></li>
+                    <li><a>Main Street, Hackness</a></li>
+                    <li><a>Scarborough, YO13 0JW</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 Hackness Garage. All rights reserved.</div>
+            <div class="footer-credit">Website by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Navbar scroll shadow
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    const spans = hamburger.querySelectorAll('span');
+    if (navLinks.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+    }
+});
+
+// Close mobile menu on link click
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        const spans = hamburger.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+    });
+});
+
+// Highlight current day in hours
+const today = new Date().getDay();
+document.querySelectorAll('.hours-row').forEach(row => {
+    if (parseInt(row.dataset.day) === today) {
+        row.classList.add('today');
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offset = 80;
+            const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: pos, behavior: 'smooth' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

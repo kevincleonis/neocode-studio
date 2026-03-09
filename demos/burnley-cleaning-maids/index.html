@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burnley Cleaning Maids | Professional Cleaning Services in Burnley, Nelson & Rossendale</title>
+<meta name="description" content="Burnley Cleaning Maids - Premier domestic, commercial & end of tenancy cleaning across Burnley, Nelson, Colne, Fence & Rossendale. Open 7 days. Call 07393 364455.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sky:#4ba3c7;
+  --sky-deep:#2d8ab0;
+  --sky-dark:#1a6a8f;
+  --sky-light:#6ebfdd;
+  --sky-glow:rgba(75,163,199,0.12);
+  --cloud:#f8fbfd;
+  --cloud-warm:#f0f6fa;
+  --cloud-accent:#dceef5;
+  --white:#ffffff;
+  --coral:#e88c6a;
+  --coral-soft:#f2a989;
+  --text:#1c2e38;
+  --text-mid:#4a6573;
+  --text-light:#7a97a6;
+  --text-muted:#a0bbc8;
+  --border:rgba(75,163,199,0.1);
+  --shadow-sm:0 2px 8px rgba(75,163,199,0.07);
+  --shadow-md:0 8px 32px rgba(75,163,199,0.1);
+  --shadow-lg:0 20px 50px rgba(75,163,199,0.14);
+  --shadow-sky:0 8px 32px rgba(75,163,199,0.22);
+  --radius:14px;
+  --radius-lg:20px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}.reveal.d6{transition-delay:.48s}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.8);opacity:0}}
+@keyframes sparkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes bubble-rise{0%{transform:translateY(100%) scale(0);opacity:0}30%{opacity:.6}100%{transform:translateY(-100vh) scale(1);opacity:0}}
+
+/* NEOCODE BANNER */
+.neocode-bar{background:var(--sky-dark);color:rgba(255,255,255,.7);text-align:center;padding:10px 20px;font-size:12px;letter-spacing:.4px}
+.neocode-bar a{color:var(--sky-light);text-decoration:none;font-weight:600}
+.neocode-bar a:hover{text-decoration:underline}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 24px;transition:all .4s ease}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(75,163,199,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--sky-deep);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo svg{width:34px;height:34px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{color:var(--text);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.2px;position:relative;padding:4px 0;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--sky);transition:width .3s ease}
+.nav-links a:hover,.nav-links a:focus{color:var(--sky)}
+.nav-links a:hover::after,.nav-links a:focus::after{width:100%}
+.nav-cta{background:var(--sky);color:#fff!important;padding:10px 24px;border-radius:50px;font-weight:600;font-size:13px;letter-spacing:.3px;transition:all .3s ease}
+.nav-cta:hover{background:var(--sky-deep);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.nav-cta::after{display:none!important}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001}
+.hamburger span{display:block;width:24px;height:2px;background:var(--sky-deep);border-radius:2px;transition:all .3s ease}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* MOBILE NAV */
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:26px;color:var(--sky-deep);text-decoration:none;font-weight:600;letter-spacing:.3px}
+.mobile-menu a:hover{color:var(--coral)}
+.mobile-cta{background:var(--sky);color:#fff!important;padding:14px 36px;border-radius:50px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(165deg,#1a6a8f 0%,#2d8ab0 35%,#4ba3c7 70%,#6ebfdd 100%);overflow:hidden;padding:120px 24px 80px}
+.hero-bubbles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.hero-bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,.06);animation:bubble-rise linear infinite}
+.hero-bubble:nth-child(1){width:20px;height:20px;left:10%;animation-duration:12s;animation-delay:0s}
+.hero-bubble:nth-child(2){width:35px;height:35px;left:25%;animation-duration:16s;animation-delay:2s}
+.hero-bubble:nth-child(3){width:15px;height:15px;left:45%;animation-duration:10s;animation-delay:4s}
+.hero-bubble:nth-child(4){width:28px;height:28px;left:65%;animation-duration:14s;animation-delay:1s}
+.hero-bubble:nth-child(5){width:22px;height:22px;left:80%;animation-duration:18s;animation-delay:3s}
+.hero-bubble:nth-child(6){width:40px;height:40px;left:90%;animation-duration:20s;animation-delay:5s}
+.hero-bubble:nth-child(7){width:12px;height:12px;left:35%;animation-duration:9s;animation-delay:6s}
+.hero-bubble:nth-child(8){width:30px;height:30px;left:55%;animation-duration:15s;animation-delay:0.5s}
+.hero-pattern{position:absolute;top:0;right:0;width:50%;height:100%;opacity:.04;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.5) 30px,rgba(255,255,255,.5) 32px)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);padding:8px 18px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero-badge svg{width:14px;height:14px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,4.5vw,60px);color:#fff;line-height:1.12;font-weight:700;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--coral-soft);display:inline}
+.hero-sub{color:rgba(255,255,255,.8);font-size:17px;line-height:1.7;margin-bottom:36px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-coral{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--coral),#d4774f);color:#fff;padding:14px 32px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.3px;transition:all .3s ease;border:none;cursor:pointer}
+.btn-coral:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,140,106,.35)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:14px 32px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.3px;transition:all .3s ease;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{border-color:var(--coral-soft);color:var(--coral-soft)}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-card{background:rgba(255,255,255,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:40px 32px;max-width:380px;width:100%}
+.hero-card-row{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1)}
+.hero-card-row:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.hero-card-icon{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.hero-card-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.6);margin-bottom:4px}
+.hero-card-value{font-size:20px;font-weight:700;color:#fff;font-family:'Playfair Display',serif}
+.hero-card-value small{font-size:13px;font-weight:400;color:rgba(255,255,255,.6);font-family:'Inter',sans-serif;margin-left:6px}
+
+/* FLOATING TRUST */
+.floating-trust{position:absolute;bottom:-20px;left:-20px;background:var(--white);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;animation:float 4s ease-in-out infinite}
+.floating-trust-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--coral),#d4774f);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.floating-trust-stars{color:#f5a623;font-size:13px;margin-bottom:2px}
+.floating-trust-text{font-size:12px;color:var(--text-mid);font-weight:500}
+
+/* SECTION DEFAULTS */
+section{padding:100px 24px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky);margin-bottom:16px}
+.section-tag svg{width:16px;height:16px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,44px);line-height:1.2;color:var(--text);margin-bottom:16px;font-weight:700}
+.section-title em{font-style:italic;color:var(--sky)}
+.section-sub{font-size:16px;color:var(--text-mid);line-height:1.7;max-width:560px}
+.section-center{text-align:center}.section-center .section-sub{margin:0 auto}
+
+/* SERVICES */
+.services{background:var(--cloud)}
+.services-grid{max-width:1200px;margin:50px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:var(--radius-lg);padding:36px 28px;border:1px solid var(--border);transition:all .4s ease;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--sky-light));transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:transparent}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:16px;background:var(--sky-glow);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:26px;transition:all .3s ease}
+.service-card:hover .service-icon{background:var(--sky);color:#fff;transform:scale(1.05)}
+.service-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.service-card p{font-size:14px;line-height:1.7;color:var(--text-mid)}
+.service-tag{display:inline-block;margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--sky);background:var(--sky-glow);padding:5px 12px;border-radius:20px}
+
+/* WHY US */
+.why-us{background:var(--white)}
+.why-grid{max-width:1200px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why-features{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.why-feature{background:var(--cloud);border-radius:var(--radius);padding:28px 24px;border:1px solid var(--border);transition:all .3s ease}
+.why-feature:hover{border-color:var(--sky);box-shadow:var(--shadow-sm)}
+.why-feature-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--sky);margin-bottom:8px}
+.why-feature h4{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.why-feature p{font-size:13px;line-height:1.6;color:var(--text-light)}
+.why-image{position:relative;display:flex;justify-content:center}
+.why-img-card{background:linear-gradient(145deg,var(--sky),var(--sky-deep));border-radius:var(--radius-lg);padding:48px 36px;color:#fff;position:relative;overflow:hidden}
+.why-img-card::after{content:'';position:absolute;top:-50%;right:-50%;width:120%;height:120%;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%)}
+.why-img-card h3{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:16px;position:relative;z-index:1}
+.why-img-card p{font-size:15px;line-height:1.7;opacity:.85;position:relative;z-index:1;margin-bottom:24px}
+.why-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:1}
+.why-stat{background:rgba(255,255,255,.1);border-radius:12px;padding:18px;text-align:center;border:1px solid rgba(255,255,255,.1)}
+.why-stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:2px}
+.why-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;opacity:.7}
+
+/* PROCESS */
+.process{background:var(--cloud)}
+.process-track{max-width:900px;margin:50px auto 0;position:relative}
+.process-line{position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--sky),var(--sky-light),var(--coral-soft))}
+.process-step{display:flex;gap:32px;align-items:flex-start;margin-bottom:48px;position:relative}
+.process-step:last-child{margin-bottom:0}
+.process-dot{width:56px;height:56px;border-radius:50%;background:var(--white);border:2px solid var(--sky);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--sky);flex-shrink:0;z-index:2;transition:all .3s ease}
+.process-step:hover .process-dot{background:var(--sky);color:#fff;box-shadow:var(--shadow-sky)}
+.process-content h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.process-content p{font-size:14px;line-height:1.7;color:var(--text-mid);max-width:500px}
+
+/* AREAS */
+.areas{background:var(--white)}
+.areas-wrap{max-width:1200px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.areas-map{background:linear-gradient(135deg,var(--cloud),var(--cloud-warm));border-radius:var(--radius-lg);padding:48px;border:1px solid var(--border);position:relative}
+.area-pins{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.area-pin{display:flex;align-items:center;gap:12px;background:var(--white);padding:16px 20px;border-radius:12px;border:1px solid var(--border);transition:all .3s ease}
+.area-pin:hover{border-color:var(--sky);transform:translateX(4px);box-shadow:var(--shadow-sm)}
+.area-pin svg{width:18px;height:18px;color:var(--sky);flex-shrink:0}
+.area-pin span{font-size:15px;font-weight:600;color:var(--text)}
+.areas-content .checklist{list-style:none;margin-top:24px}
+.areas-content .checklist li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;font-size:15px;color:var(--text-mid);line-height:1.6}
+.areas-content .checklist svg{width:20px;height:20px;color:var(--sky);flex-shrink:0;margin-top:2px}
+
+/* TESTIMONIALS */
+.testimonials{background:linear-gradient(165deg,var(--sky-dark),var(--sky-deep),var(--sky));position:relative;overflow:hidden}
+.testimonials::before{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(232,140,106,.15),transparent);top:-100px;right:-100px;border-radius:50%}
+.testi-grid{max-width:1100px;margin:50px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testi-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:32px 28px;transition:all .3s ease}
+.testi-card:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.testi-stars{color:#f5c542;font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.testi-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.85);margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px}
+.testi-name{font-weight:600;color:#fff;font-size:14px}
+.testi-loc{font-size:12px;color:rgba(255,255,255,.5)}
+
+/* PRICING */
+.pricing{background:var(--cloud)}
+.pricing-grid{max-width:1100px;margin:50px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{background:var(--white);border-radius:var(--radius-lg);padding:36px 28px;border:1px solid var(--border);text-align:center;position:relative;transition:all .4s ease;overflow:hidden}
+.price-card.featured{border-color:var(--sky);box-shadow:var(--shadow-md)}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:18px;right:-32px;background:var(--coral);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 40px;transform:rotate(45deg)}
+.price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.price-icon{font-size:36px;margin-bottom:16px}
+.price-card h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.price-card .price-desc{font-size:13px;color:var(--text-light);margin-bottom:24px;line-height:1.6}
+.price-divider{height:1px;background:var(--border);margin:0 -28px 24px}
+.price-list{list-style:none;text-align:left;margin-bottom:28px}
+.price-list li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:var(--text-mid);line-height:1.5}
+.price-list svg{width:18px;height:18px;color:var(--sky);flex-shrink:0;margin-top:2px}
+.price-amount{font-family:'Playfair Display',serif;font-size:14px;color:var(--text-light);margin-bottom:20px}
+.price-amount span{font-size:36px;font-weight:700;color:var(--text)}
+.btn-sky{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:#fff;padding:14px 32px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:all .3s ease;border:none;cursor:pointer;width:100%;justify-content:center}
+.btn-sky:hover{background:var(--sky-deep);transform:translateY(-1px);box-shadow:var(--shadow-sky)}
+.btn-sky-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--sky);padding:14px 32px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:all .3s ease;border:2px solid var(--sky);cursor:pointer;width:100%;justify-content:center}
+.btn-sky-outline:hover{background:var(--sky);color:#fff}
+
+/* FAQ */
+.faq{background:var(--white)}
+.faq-list{max-width:760px;margin:50px auto 0}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;font-size:16px;font-weight:600;color:var(--text);transition:color .3s;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif}
+.faq-q:hover{color:var(--sky)}
+.faq-q svg{width:20px;height:20px;color:var(--text-light);transition:transform .3s ease;flex-shrink:0}
+.faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--sky)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+.faq-a p{font-size:14px;line-height:1.8;color:var(--text-mid)}
+
+/* CTA */
+.cta{background:linear-gradient(160deg,var(--sky-dark),var(--sky-deep));position:relative;overflow:hidden;text-align:center}
+.cta::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(232,140,106,.12),transparent);bottom:-200px;left:-200px;border-radius:50%}
+.cta-inner{max-width:640px;margin:0 auto;position:relative;z-index:1}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,42px);color:#fff;margin-bottom:16px;line-height:1.2}
+.cta h2 em{font-style:italic;color:var(--coral-soft)}
+.cta p{color:rgba(255,255,255,.8);font-size:17px;line-height:1.7;margin-bottom:36px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--sky-deep);padding:16px 36px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;transition:all .3s ease;border:none;cursor:pointer}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.15)}
+.cta-phone{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:18px;font-weight:600;text-decoration:none;margin-top:20px;transition:opacity .3s}
+.cta-phone:hover{opacity:.8}
+
+/* CONTACT */
+.contact{background:var(--cloud)}
+.contact-grid{max-width:1100px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-info-cards{display:flex;flex-direction:column;gap:16px}
+.contact-info-card{background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);display:flex;align-items:center;gap:16px;transition:all .3s ease}
+.contact-info-card:hover{border-color:var(--sky);box-shadow:var(--shadow-sm)}
+.contact-info-icon{width:48px;height:48px;border-radius:12px;background:var(--sky-glow);display:flex;align-items:center;justify-content:center;color:var(--sky);flex-shrink:0;font-size:20px}
+.contact-info-label{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-light);margin-bottom:2px}
+.contact-info-value{font-size:15px;font-weight:600;color:var(--text)}
+.contact-info-value a{color:var(--text);text-decoration:none;transition:color .3s}
+.contact-info-value a:hover{color:var(--sky)}
+.contact-form{background:var(--white);border-radius:var(--radius-lg);padding:40px;border:1px solid var(--border)}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:24px;color:var(--text)}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--cloud);transition:all .3s ease;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--sky);background:var(--white);box-shadow:0 0 0 3px var(--sky-glow)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+.footer{background:var(--text);color:rgba(255,255,255,.6);padding:60px 24px 30px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.footer-desc{font-size:13px;line-height:1.7;max-width:280px}
+.footer h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:16px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:8px}
+.footer ul a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;transition:color .3s}
+.footer ul a:hover{color:var(--sky-light)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.footer-bottom a{color:var(--sky-light);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.hero-inner{grid-template-columns:1fr;text-align:center}
+.hero-sub{margin:0 auto 36px}
+.hero-btns{justify-content:center}
+.hero-visual{margin-top:40px}
+.services-grid{grid-template-columns:1fr 1fr}
+.why-grid,.areas-wrap,.contact-grid{grid-template-columns:1fr}
+.testi-grid,.pricing-grid{grid-template-columns:1fr 1fr}
+.footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.mobile-menu{display:flex}
+.services-grid,.testi-grid,.pricing-grid{grid-template-columns:1fr}
+.why-features{grid-template-columns:1fr}
+.area-pins{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr}
+.footer-bottom{flex-direction:column;gap:10px;text-align:center}
+.floating-trust{left:10px;bottom:-10px}
+section{padding:70px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NEOCODE BAR -->
+<div class="neocode-bar">
+  This is a free demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; Want a site like this? Get in touch.
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#4ba3c7" stroke-width="2"/><path d="M10 22C12 15 15 12 17 12s5 3 7 10" stroke="#4ba3c7" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="10" r="2.5" fill="#e88c6a"/><path d="M12 18h10" stroke="#4ba3c7" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
+      Burnley Cleaning Maids
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#why-us" onclick="closeMenu()">Why Us</a>
+  <a href="#process" onclick="closeMenu()">Process</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMenu()">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bubbles">
+    <div class="hero-bubble"></div><div class="hero-bubble"></div><div class="hero-bubble"></div>
+    <div class="hero-bubble"></div><div class="hero-bubble"></div><div class="hero-bubble"></div>
+    <div class="hero-bubble"></div><div class="hero-bubble"></div>
+  </div>
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge reveal">
+        <svg viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l1.8 5.2L14 7l-5.2 1.8L7 14l-1.8-5.2L0 7l5.2-1.8z"/></svg>
+        Open 7 Days a Week
+      </div>
+      <h1 class="reveal d1">Burnley's Premier<br><em>Cleaning Service</em></h1>
+      <p class="hero-sub reveal d2">Bespoke domestic and commercial cleaning you can actually trust. Vetted staff, flexible scheduling, and a spotless finish every single time.</p>
+      <div class="hero-btns reveal d3">
+        <a href="#contact" class="btn-coral">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="tel:07393364455" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          07393 364455
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual reveal d4">
+      <div class="hero-card">
+        <div class="hero-card-row">
+          <div class="hero-card-icon">&#128171;</div>
+          <div>
+            <div class="hero-card-label">Serving</div>
+            <div class="hero-card-value">5 Areas<small>across East Lancashire</small></div>
+          </div>
+        </div>
+        <div class="hero-card-row">
+          <div class="hero-card-icon">&#128197;</div>
+          <div>
+            <div class="hero-card-label">Availability</div>
+            <div class="hero-card-value">7 Days<small>Mon - Sun, 8am - 6pm</small></div>
+          </div>
+        </div>
+        <div class="hero-card-row">
+          <div class="hero-card-icon">&#9989;</div>
+          <div>
+            <div class="hero-card-label">Our Staff</div>
+            <div class="hero-card-value">Fully Vetted<small>background checked</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-trust">
+        <div class="floating-trust-icon">&#9733;</div>
+        <div>
+          <div class="floating-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="floating-trust-text">Trusted local cleaners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-center">
+    <div class="section-tag reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> Our Services</div>
+    <h2 class="section-title reveal d1">Everything You Need,<br><em>Sparkling Clean</em></h2>
+    <p class="section-sub reveal d2">From regular house cleans to deep commercial jobs, we've got the experience and the eye for detail to make every space shine.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">&#127968;</div>
+      <h3>Domestic Cleaning</h3>
+      <p>Regular weekly or fortnightly home cleaning tailored to your routine. We handle everything from vacuuming and mopping to dusting, polishing, and bathroom scrubs.</p>
+      <span class="service-tag">Weekly / Fortnightly</span>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-icon">&#128142;</div>
+      <h3>Deep Cleaning</h3>
+      <p>A thorough top-to-bottom clean for homes that need extra attention. Perfect for spring cleans, post-renovation tidying, or when you just want that brand-new feeling.</p>
+      <span class="service-tag">One-Off / Seasonal</span>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-icon">&#127970;</div>
+      <h3>Commercial Cleaning</h3>
+      <p>Professional cleaning for offices, small hotels, holiday lets, and factories. Flexible daily, weekly, or monthly schedules that won't disrupt your business.</p>
+      <span class="service-tag">Daily / Weekly / Monthly</span>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="service-icon">&#128273;</div>
+      <h3>End of Tenancy</h3>
+      <p>Comprehensive move-out cleans that cover every room, appliance, and fixture. We'll make sure you get that deposit back or your property is tenant-ready.</p>
+      <span class="service-tag">Landlords & Tenants</span>
+    </div>
+    <div class="service-card reveal d4">
+      <div class="service-icon">&#128084;</div>
+      <h3>Ironing Services</h3>
+      <p>Don't have time for the ironing pile? We'll collect, press, and return your clothes looking crisp. Available for both domestic and commercial clients.</p>
+      <span class="service-tag">Home & Business</span>
+    </div>
+    <div class="service-card reveal d5">
+      <div class="service-icon">&#127786;</div>
+      <h3>Oven & Appliance Cleaning</h3>
+      <p>Specialist deep clean for ovens, fridges, microwaves, and extractors. We remove built-up grease and grime so your kitchen appliances look and work like new.</p>
+      <span class="service-tag">Add-On Service</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="why-grid">
+    <div>
+      <div class="section-tag reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> Why Choose Us</div>
+      <h2 class="section-title reveal d1">Built on Trust,<br><em>Driven by Standards</em></h2>
+      <p class="section-sub reveal d2">We're not a faceless franchise. We're a local team that genuinely cares about your home or business being properly looked after.</p>
+      <div class="why-features" style="margin-top:32px">
+        <div class="why-feature reveal d1">
+          <div class="why-feature-num">01</div>
+          <h4>Vetted Staff</h4>
+          <p>Every cleaner is background checked and fully trained before they step foot in your property.</p>
+        </div>
+        <div class="why-feature reveal d2">
+          <div class="why-feature-num">02</div>
+          <h4>Flexible Booking</h4>
+          <p>One-off cleans, weekly visits, or anything in between. We work around your schedule, not the other way round.</p>
+        </div>
+        <div class="why-feature reveal d3">
+          <div class="why-feature-num">03</div>
+          <h4>No Contracts</h4>
+          <p>You're never locked in. Stay because you're happy, not because of paperwork.</p>
+        </div>
+        <div class="why-feature reveal d4">
+          <div class="why-feature-num">04</div>
+          <h4>7 Days a Week</h4>
+          <p>We're available every day from 8am to 6pm. Weekends and bank holidays included.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-image reveal d3">
+      <div class="why-img-card">
+        <h3>Your Satisfaction Is Our Reputation</h3>
+        <p>We want you to tell people how good we are. That's not just a slogan. Word of mouth is how we've grown, and it's what keeps us delivering every single time.</p>
+        <div class="why-stats">
+          <div class="why-stat">
+            <div class="why-stat-num">5+</div>
+            <div class="why-stat-label">Areas Covered</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-num">7</div>
+            <div class="why-stat-label">Days a Week</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-num">100%</div>
+            <div class="why-stat-label">Vetted Team</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-num">10+</div>
+            <div class="why-stat-label">Years on Yell</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-center">
+    <div class="section-tag reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> How It Works</div>
+    <h2 class="section-title reveal d1">From Enquiry to <em>Spotless</em><br>in 4 Simple Steps</h2>
+  </div>
+  <div class="process-track">
+    <div class="process-line"></div>
+    <div class="process-step reveal">
+      <div class="process-dot">1</div>
+      <div class="process-content">
+        <h3>Get in Touch</h3>
+        <p>Give us a call, email, or fill in the form below. Tell us what you need and we'll take it from there. No pressure, no hard sell.</p>
+      </div>
+    </div>
+    <div class="process-step reveal d1">
+      <div class="process-dot">2</div>
+      <div class="process-content">
+        <h3>Custom Quote</h3>
+        <p>Every property is different, so we'll put together a tailored quote based on the size, condition, and type of clean you're after.</p>
+      </div>
+    </div>
+    <div class="process-step reveal d2">
+      <div class="process-dot">3</div>
+      <div class="process-content">
+        <h3>Book Your Clean</h3>
+        <p>Pick a date and time that works for you. Morning, afternoon, weekday, weekend. We're flexible and we'll confirm everything in advance.</p>
+      </div>
+    </div>
+    <div class="process-step reveal d3">
+      <div class="process-dot">4</div>
+      <div class="process-content">
+        <h3>Sit Back & Relax</h3>
+        <p>Our vetted team arrives on time, gets to work, and leaves your space absolutely spotless. That's it. Simple as that.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="areas-wrap">
+    <div class="areas-map reveal">
+      <div class="section-tag"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> Areas We Cover</div>
+      <h2 class="section-title" style="margin-bottom:28px">Across <em>East Lancashire</em></h2>
+      <div class="area-pins">
+        <div class="area-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Burnley</span>
+        </div>
+        <div class="area-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Nelson</span>
+        </div>
+        <div class="area-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Colne</span>
+        </div>
+        <div class="area-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Fence</span>
+        </div>
+        <div class="area-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Rossendale</span>
+        </div>
+        <div class="area-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Surrounding Areas</span>
+        </div>
+      </div>
+    </div>
+    <div class="areas-content reveal d1">
+      <h2 class="section-title">Local Cleaners Who <em>Know Your Area</em></h2>
+      <p class="section-sub">Based right here at Straight Mile Court in Burnley, we're never far away. Our local knowledge means efficient scheduling and no wasted travel time.</p>
+      <ul class="checklist">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Same-week availability for most areas
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          No extra charge for weekend bookings
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Reliable, on-time arrivals guaranteed
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          All equipment and products supplied
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-center">
+    <div class="section-tag reveal" style="color:var(--coral-soft)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> Reviews</div>
+    <h2 class="section-title reveal d1" style="color:#fff">What Our <em style="color:var(--coral-soft)">Clients Say</em></h2>
+    <p class="section-sub reveal d2" style="color:rgba(255,255,255,.7)">We don't just clean. We build trust. Here's what people in Burnley and beyond have to say about working with us.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testi-text">"Absolutely brilliant service. They turned up on time, were incredibly thorough, and my house hasn't looked this good in years. Wouldn't use anyone else now."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div><div class="testi-name">Sarah M.</div><div class="testi-loc">Burnley</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal d1">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testi-text">"Used them for an end of tenancy clean and got my full deposit back. They cleaned places I didn't even know existed. Fantastic attention to detail."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <div><div class="testi-name">David K.</div><div class="testi-loc">Nelson</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal d2">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testi-text">"We've had them cleaning our office weekly for months. Always professional, always reliable. It's one less thing we have to worry about. Highly recommend."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <div><div class="testi-name">James T.</div><div class="testi-loc">Rossendale</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-center">
+    <div class="section-tag reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> Pricing Guide</div>
+    <h2 class="section-title reveal d1">Transparent Pricing,<br><em>No Hidden Fees</em></h2>
+    <p class="section-sub reveal d2">Every quote is tailored to your property, but here's a rough idea of what to expect. All prices include equipment and cleaning products.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-icon">&#127968;</div>
+      <h3>Regular Domestic</h3>
+      <p class="price-desc">Weekly or fortnightly home cleaning to keep things fresh and tidy all year round.</p>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Full kitchen and bathroom clean</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Vacuuming and mopping throughout</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Dusting and surface polishing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> All products and equipment included</li>
+      </ul>
+      <div class="price-amount">from <span>&pound;15</span>/hr</div>
+      <a href="#contact" class="btn-sky-outline">Get a Quote</a>
+    </div>
+    <div class="price-card featured reveal d1">
+      <div class="price-icon">&#128142;</div>
+      <h3>Deep Clean</h3>
+      <p class="price-desc">Intensive one-off clean that covers every corner, crevice, and appliance in your home.</p>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Inside oven, fridge, and microwave</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Skirting boards, doors, and switches</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Windows, sills, and light fittings</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Full bathroom and kitchen deep scrub</li>
+      </ul>
+      <div class="price-amount">from <span>&pound;120</span></div>
+      <a href="#contact" class="btn-sky">Book a Deep Clean</a>
+    </div>
+    <div class="price-card reveal d2">
+      <div class="price-icon">&#128273;</div>
+      <h3>End of Tenancy</h3>
+      <p class="price-desc">Move-out ready clean that covers the whole property to professional standards.</p>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Every room cleaned top to bottom</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> All appliances inside and out</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Cupboard interiors and fixtures</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Deposit-back guarantee standard</li>
+      </ul>
+      <div class="price-amount">from <span>&pound;150</span></div>
+      <a href="#contact" class="btn-sky-outline">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-center">
+    <div class="section-tag reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> FAQ</div>
+    <h2 class="section-title reveal d1">Got <em>Questions?</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q">Do I need to provide cleaning products or equipment? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="faq-a"><p>Nope. We bring everything we need, including all cleaning products and equipment. If you have specific products you'd prefer us to use (for example, eco-friendly options), just let us know and we'll happily accommodate.</p></div>
+    </div>
+    <div class="faq-item reveal d1">
+      <button class="faq-q">Are your cleaners insured and vetted? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="faq-a"><p>Absolutely. Every member of our team goes through thorough background checks and vetting before they're assigned to any property. We take your trust seriously, and we only hire people we'd be comfortable having in our own homes.</p></div>
+    </div>
+    <div class="faq-item reveal d2">
+      <button class="faq-q">How much does a clean cost? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="faq-a"><p>It depends on the size of your property and the type of clean. Regular domestic cleans start from around &pound;15/hr, while one-off deep cleans and end of tenancy jobs are quoted individually. Get in touch and we'll give you a free, no-obligation quote.</p></div>
+    </div>
+    <div class="faq-item reveal d3">
+      <button class="faq-q">Do you work weekends? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="faq-a"><p>Yes. We're open 7 days a week, Monday to Sunday, from 8am to 6pm. Weekend bookings are available at no extra charge.</p></div>
+    </div>
+    <div class="faq-item reveal d4">
+      <button class="faq-q">What areas do you cover? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="faq-a"><p>We cover Burnley, Nelson, Colne, Fence, Rossendale, and surrounding areas across East Lancashire. If you're not sure whether we cover your area, just give us a ring and we'll let you know.</p></div>
+    </div>
+    <div class="faq-item reveal d5">
+      <button class="faq-q">Do I have to sign a contract? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="faq-a"><p>No contracts at all. You can book one-off cleans or set up a regular schedule. If you want to change, pause, or cancel, just let us know. We keep things simple.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2 class="reveal">Ready for a <em>Spotless</em> Home?</h2>
+    <p class="reveal d1">Whether it's a weekly tidy-up or a one-off deep clean, we'll have your place looking its absolute best. Get your free quote today.</p>
+    <div class="cta-btns reveal d2">
+      <a href="#contact" class="btn-white">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <a href="tel:07393364455" class="cta-phone reveal d3">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      07393 364455
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-center">
+    <div class="section-tag reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2.1 5.9L16 8l-5.9 2.1L8 16l-2.1-5.9L0 8l5.9-2.1z"/></svg> Contact Us</div>
+    <h2 class="section-title reveal d1">Get Your <em>Free Quote</em></h2>
+    <p class="section-sub reveal d2">Fill in the form or get in touch directly. We'll get back to you within a few hours, usually much sooner.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info-cards reveal">
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-value"><a href="tel:07393364455">07393 364455</a></div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value"><a href="mailto:info@burnleycleaningmaids.co.uk">info@burnleycleaningmaids.co.uk</a></div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Address</div>
+          <div class="contact-info-value">Straight Mile Court, Burnley</div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Hours</div>
+          <div class="contact-info-value">Mon - Sun, 8am - 6pm</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal d1">
+      <h3>Request a Free Quote</h3>
+      <form action="https://formsubmit.co/info@burnleycleaningmaids.co.uk" method="POST">
+        <input type="hidden" name="_subject" value="New Quote Request - Website">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="Domestic Cleaning">Domestic Cleaning</option>
+              <option value="Deep Cleaning">Deep Cleaning</option>
+              <option value="End of Tenancy">End of Tenancy</option>
+              <option value="Commercial Cleaning">Commercial Cleaning</option>
+              <option value="Ironing Service">Ironing Service</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="area">Your Area</label>
+            <select id="area" name="area">
+              <option value="" disabled selected>Select your area</option>
+              <option value="Burnley">Burnley</option>
+              <option value="Nelson">Nelson</option>
+              <option value="Colne">Colne</option>
+              <option value="Fence">Fence</option>
+              <option value="Rossendale">Rossendale</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Clean</label>
+          <textarea id="message" name="message" placeholder="Property size, type of clean, any specific requirements..."></textarea>
+        </div>
+        <button type="submit" class="btn-coral" style="width:100%;justify-content:center;font-size:15px;padding:16px 32px">Send Quote Request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Burnley Cleaning Maids</div>
+      <p class="footer-desc">Premier domestic and commercial cleaning across Burnley, Nelson, Colne, Fence, and Rossendale. Open 7 days a week, fully vetted staff, no contracts.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Domestic Cleaning</a></li>
+        <li><a href="#services">Deep Cleaning</a></li>
+        <li><a href="#services">Commercial Cleaning</a></li>
+        <li><a href="#services">End of Tenancy</a></li>
+        <li><a href="#services">Ironing Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Areas</h4>
+      <ul>
+        <li><a href="#areas">Burnley</a></li>
+        <li><a href="#areas">Nelson</a></li>
+        <li><a href="#areas">Colne</a></li>
+        <li><a href="#areas">Fence</a></li>
+        <li><a href="#areas">Rossendale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:07393364455">07393 364455</a></li>
+        <li><a href="mailto:info@burnleycleaningmaids.co.uk">info@burnleycleaningmaids.co.uk</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Burnley Cleaning Maids. All rights reserved.</span>
+    <span>Demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+  </div>
+</footer>
+
+<script>
+// NAV SCROLL
+const nav=document.getElementById('nav');
+let lastScroll=0;
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// HAMBURGER
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+function closeMenu(){
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// REVEAL ON SCROLL
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>observer.observe(el));
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen)item.classList.add('open');
+  });
+});
+
+// SMOOTH SCROLL FOR ANCHOR LINKS
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
