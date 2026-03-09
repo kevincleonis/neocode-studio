@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shirtcraft Dry Cleaners | Premium Garment Care</title>
+    <meta name="description" content="Shirtcraft Dry Cleaners - Professional dry cleaning, shirt service, wedding dress care, alterations and corporate solutions. Quality garment care you can trust.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0d1b2a;
+            --white: #ffffff;
+            --pale-blue: #d6e4f0;
+            --navy-light: #1b2d45;
+            --navy-mid: #142236;
+            --accent: #4a90c4;
+            --accent-hover: #3a7ab0;
+            --text-muted: #8899aa;
+            --border: rgba(214, 228, 240, 0.12);
+            --shadow: 0 4px 24px rgba(0,0,0,0.15);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.25);
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        body {
+            font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--pale-blue); }
+        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ========== REVEAL ANIMATIONS ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ========== HEADER / NAV ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.03em;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--pale-blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a:focus-visible::after { width: 100%; }
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .hamburger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            transition: transform 0.3s, opacity 0.3s;
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        @media (max-width: 900px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--navy);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 24px;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                border-left: 1px solid var(--border);
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1.1rem; }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.25);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13,27,42,0.85) 0%, rgba(13,27,42,0.5) 50%, rgba(13,27,42,0.8) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(74, 144, 196, 0.15);
+            border: 1px solid rgba(74, 144, 196, 0.3);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--pale-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--pale-blue);
+            margin-bottom: 40px;
+            max-width: 560px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(74,144,196,0.3); color: var(--white); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(214, 228, 240, 0.3);
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        .hero-stat h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .hero-stat p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 600px) {
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+
+        /* ========== SECTION STYLES ========== */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .section-center { text-align: center; }
+        .section-center .section-subtitle { margin-left: auto; margin-right: auto; }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            margin-bottom: 60px;
+        }
+        .section-center .divider { margin-left: auto; margin-right: auto; }
+
+        /* Alternating bg */
+        .section-alt { background: var(--navy-mid); }
+
+        /* ========== ABOUT ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .about-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid rgba(214,228,240,0.1);
+            pointer-events: none;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-text p {
+            color: var(--pale-blue);
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--pale-blue);
+            font-size: 0.95rem;
+        }
+        .about-feature .icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(74, 144, 196, 0.12);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 800px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image img { height: 320px; }
+            .about-features { grid-template-columns: 1fr; }
+        }
+
+        /* ========== SERVICES ========== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--pale-blue));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(74, 144, 196, 0.3);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card:hover::before { opacity: 1; }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(74, 144, 196, 0.12);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+        /* ========== PRICING ========== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .pricing-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(180deg, rgba(74,144,196,0.08) 0%, var(--navy-light) 100%);
+        }
+        .pricing-featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 4px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .pricing-card .pricing-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .pricing-items {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        .pricing-items li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--pale-blue);
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pricing-items li:last-child { border-bottom: none; }
+        .pricing-items .price {
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+        }
+
+        .pricing-cta {
+            display: inline-flex;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+        }
+        .pricing-cta:hover { background: var(--accent); color: var(--white); }
+        .pricing-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        .pricing-card.featured .pricing-cta {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .pricing-card.featured .pricing-cta:hover { background: var(--accent-hover); }
+
+        @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } }
+
+        /* ========== WHY CHOOSE US ========== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .why-card:hover { transform: translateY(-4px); border-color: rgba(74,144,196,0.3); }
+
+        .why-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(74, 144, 196, 0.12);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 20px;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px 32px;
+            transition: all 0.3s;
+        }
+        .testimonial-card:hover { transform: translateY(-4px); border-color: rgba(74,144,196,0.2); }
+
+        .testimonial-stars {
+            color: #f0b429;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card blockquote {
+            color: var(--pale-blue);
+            font-size: 1rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(74,144,196,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+        .testimonial-role {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+        /* ========== CONTACT ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-card {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            align-items: flex-start;
+        }
+        .contact-item:last-child { margin-bottom: 0; }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(74, 144, 196, 0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .contact-item p, .contact-item a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-hours {
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+        .contact-hours h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .hours-day { color: var(--pale-blue); }
+        .hours-time { color: var(--text-muted); }
+
+        .contact-form {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .contact-form h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .contact-form > p {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            color: var(--pale-blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(214, 228, 240, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: 'Geist', system-ui, sans-serif;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(74,144,196,0.1);
+        }
+        .form-group input:focus-visible,
+        .form-group select:focus-visible,
+        .form-group textarea:focus-visible {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-group select option { background: var(--navy); }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .form-submit:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .form-submit:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+        @media (max-width: 800px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo { margin-bottom: 16px; display: inline-block; }
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--pale-blue);
+            margin-bottom: 20px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .footer-col ul a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer-bottom a { color: var(--accent); }
+
+        @media (max-width: 700px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        /* ========== NEOCODE POPUP ========== */
+        .neocode-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 380px;
+            max-width: calc(100vw - 48px);
+            background: var(--navy-light);
+            border: 1px solid rgba(74, 144, 196, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            z-index: 9999;
+            transform: translateY(120%) scale(0.95);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+        .neocode-popup.visible {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(214, 228, 240, 0.08);
+            border: none;
+            color: var(--text-muted);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        .neocode-popup-close:hover { background: rgba(214, 228, 240, 0.15); color: var(--white); }
+        .neocode-popup-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        .neocode-popup .popup-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .neocode-popup h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .neocode-popup p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .neocode-popup .popup-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            transition: all 0.3s;
+        }
+        .neocode-popup .popup-cta:hover { background: var(--accent-hover); transform: translateY(-1px); color: var(--white); }
+
+        /* ========== SCROLL-TO-TOP ========== */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 900;
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .scroll-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <nav>
+            <a href="#hero" class="logo">Shirt<span>craft</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Professional garment care" loading="eager">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge reveal">Premium Garment Care</div>
+                <h1 class="reveal reveal-delay-1">Your clothes deserve <span class="highlight">better care.</span></h1>
+                <p class="reveal reveal-delay-2">From crisp shirts to wedding dresses, Shirtcraft delivers professional cleaning that keeps your wardrobe looking its absolute best. It's what we do.</p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="#contact" class="btn btn-primary">Book a Collection &#8594;</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+                <div class="hero-stats reveal reveal-delay-4">
+                    <div class="hero-stat">
+                        <h3>15+</h3>
+                        <p>Years of expertise</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>10K+</h3>
+                        <p>Happy customers</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>48hr</h3>
+                        <p>Turnaround time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section-alt" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Professional dry cleaner at work">
+                    <div class="about-badge">Family-run since day one</div>
+                </div>
+                <div class="about-text">
+                    <div class="section-label reveal">About Rob</div>
+                    <h2 class="section-title reveal reveal-delay-1">Garment care that's personal, not corporate.</h2>
+                    <p class="reveal reveal-delay-2">Rob started Shirtcraft because he believed something simple: your clothes should come back looking better than when you dropped them off. Not just clean. Better.</p>
+                    <p class="reveal reveal-delay-3">That's still the standard today. Every garment gets individual attention, proper care for its fabric type, and the kind of finishing you won't get from the big chains. Whether it's a business shirt you wear every Monday or a wedding dress you'll keep for a lifetime, we treat it like it matters. Because it does.</p>
+                    <div class="about-features reveal reveal-delay-4">
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Eco-friendly solvents</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Hand-finished pressing</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Collection &amp; delivery</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Same-week turnaround</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-center">
+                <div class="section-label reveal">What We Do</div>
+                <h2 class="section-title reveal reveal-delay-1">Services built around your wardrobe.</h2>
+                <p class="section-subtitle reveal reveal-delay-2">We don't cut corners. Every item is inspected, treated for stains, cleaned with the right method, and finished by hand.</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128085;</div>
+                    <h3>Dry Cleaning</h3>
+                    <p>Professional solvent-based cleaning for suits, dresses, coats, and delicate fabrics. We'll get out stains you didn't think were possible.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">&#128084;</div>
+                    <h3>Shirt Service</h3>
+                    <p>Our signature service. Laundered, pressed, and finished on hangers or folded. Crisp collars and perfect creases, every single time.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">&#128141;</div>
+                    <h3>Wedding Dresses</h3>
+                    <p>Specialist bridal gown cleaning and preservation. We'll handle your dress with the care and attention it deserves, pre or post-wedding.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">&#127968;</div>
+                    <h3>Curtains &amp; Drapes</h3>
+                    <p>Take-down, clean, re-hang. We handle curtains, drapes, and soft furnishings without the hassle. They'll look brand new again.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-4">
+                    <div class="service-icon">&#9986;</div>
+                    <h3>Alterations</h3>
+                    <p>Hems, waist adjustments, zip replacements, and tailoring tweaks. If it doesn't fit right, we'll sort it out for you.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-icon">&#127970;</div>
+                    <h3>Corporate Accounts</h3>
+                    <p>Regular collection and delivery for businesses. Staff uniforms, hotel linen, restaurant table wear. Volume pricing and reliable scheduling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="section-alt" id="pricing">
+        <div class="container">
+            <div class="section-center">
+                <div class="section-label reveal">Pricing Guide</div>
+                <h2 class="section-title reveal reveal-delay-1">Transparent pricing. No surprises.</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Here's what you can expect. For anything bespoke or bulk, just get in touch and we'll sort a quote.</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3>Shirts &amp; Basics</h3>
+                    <p class="pricing-desc">Everyday essentials, done right.</p>
+                    <ul class="pricing-items">
+                        <li><span>Shirt (laundered)</span><span class="price">from &pound;3.50</span></li>
+                        <li><span>Trousers</span><span class="price">from &pound;6.50</span></li>
+                        <li><span>Blouse</span><span class="price">from &pound;7.00</span></li>
+                        <li><span>Skirt</span><span class="price">from &pound;7.00</span></li>
+                        <li><span>Tie / Scarf</span><span class="price">from &pound;4.50</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured reveal reveal-delay-1">
+                    <div class="pricing-featured-badge">Most Popular</div>
+                    <h3>Suits &amp; Outerwear</h3>
+                    <p class="pricing-desc">Premium cleaning for premium garments.</p>
+                    <ul class="pricing-items">
+                        <li><span>2-piece suit</span><span class="price">from &pound;13.00</span></li>
+                        <li><span>3-piece suit</span><span class="price">from &pound;17.50</span></li>
+                        <li><span>Jacket / Blazer</span><span class="price">from &pound;8.50</span></li>
+                        <li><span>Overcoat</span><span class="price">from &pound;12.00</span></li>
+                        <li><span>Dress (standard)</span><span class="price">from &pound;10.00</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+
+                <div class="pricing-card reveal reveal-delay-2">
+                    <h3>Specialist Items</h3>
+                    <p class="pricing-desc">The items that need extra care.</p>
+                    <ul class="pricing-items">
+                        <li><span>Wedding dress</span><span class="price">from &pound;95.00</span></li>
+                        <li><span>Curtains (per drop)</span><span class="price">from &pound;15.00</span></li>
+                        <li><span>Duvet (single)</span><span class="price">from &pound;14.00</span></li>
+                        <li><span>Duvet (double)</span><span class="price">from &pound;18.00</span></li>
+                        <li><span>Alterations</span><span class="price">from &pound;8.00</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section id="why">
+        <div class="container">
+            <div class="section-center">
+                <div class="section-label reveal">Why Shirtcraft</div>
+                <h2 class="section-title reveal reveal-delay-1">Why customers stick with us.</h2>
+                <p class="section-subtitle reveal reveal-delay-2">It's not rocket science. We just care about getting it right, every time.</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon">&#9733;</div>
+                    <h3>Quality First</h3>
+                    <p>We don't rush. Every garment is inspected, treated, and finished to the highest standard before it goes back to you.</p>
+                </div>
+                <div class="why-card reveal reveal-delay-1">
+                    <div class="why-icon">&#128337;</div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Most items are ready within 48 hours. Need it sooner? We offer same-day and next-day express options too.</p>
+                </div>
+                <div class="why-card reveal reveal-delay-2">
+                    <div class="why-icon">&#128666;</div>
+                    <h3>Collection &amp; Delivery</h3>
+                    <p>Can't make it in? We'll come to you. Free collection and delivery on orders over a certain amount.</p>
+                </div>
+                <div class="why-card reveal reveal-delay-3">
+                    <div class="why-icon">&#127807;</div>
+                    <h3>Eco-Friendly</h3>
+                    <p>We use environmentally responsible solvents and processes. Better for your clothes, better for the planet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section-alt" id="testimonials">
+        <div class="container">
+            <div class="section-center">
+                <div class="section-label reveal">Testimonials</div>
+                <h2 class="section-title reveal reveal-delay-1">Don't just take our word for it.</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Here's what our customers have to say about Shirtcraft.</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"I've been using Shirtcraft for years now. My work shirts always come back perfect. Crisp, clean, and ready to wear. Wouldn't go anywhere else."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JW</div>
+                        <div>
+                            <div class="testimonial-name">James W.</div>
+                            <div class="testimonial-role">Regular customer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Rob cleaned my wedding dress after the big day and it came back absolutely stunning. He even got out a red wine stain I thought was permanent. Can't recommend him enough."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SH</div>
+                        <div>
+                            <div class="testimonial-name">Sarah H.</div>
+                            <div class="testimonial-role">Wedding dress client</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"We switched our hotel's linen service to Shirtcraft last year. The quality is consistently excellent and they're always on time. It's made our lives so much easier."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DM</div>
+                        <div>
+                            <div class="testimonial-name">David M.</div>
+                            <div class="testimonial-role">Hotel manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-center">
+                <div class="section-label reveal">Contact Us</div>
+                <h2 class="section-title reveal reveal-delay-1">Let's get your clothes sorted.</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Drop us a message or pop in. We're always happy to help.</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-card reveal">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#9993;</div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:rob@shirtcraft.co.uk">rob@shirtcraft.co.uk</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128205;</div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>Shirtcraft Dry Cleaners</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128241;</div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>Give us a ring for quotes and bookings</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h4>Opening Hours</h4>
+                        <div class="hours-row"><span class="hours-day">Monday - Friday</span><span class="hours-time">8:00am - 6:00pm</span></div>
+                        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00am - 4:00pm</span></div>
+                        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">Closed</span></div>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal reveal-delay-1">
+                    <h3>Send a Message</h3>
+                    <p>We'll get back to you within a few hours.</p>
+                    <form action="https://formsubmit.co/rob@shirtcraft.co.uk" method="POST">
+                        <input type="hidden" name="_subject" value="New enquiry from your website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required placeholder="e.g. John Smith">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="" disabled selected>Select a service...</option>
+                                <option value="Dry Cleaning">Dry Cleaning</option>
+                                <option value="Shirt Service">Shirt Service</option>
+                                <option value="Wedding Dress">Wedding Dress</option>
+                                <option value="Curtains & Drapes">Curtains &amp; Drapes</option>
+                                <option value="Alterations">Alterations</option>
+                                <option value="Corporate Account">Corporate Account</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell us what you need..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message &#8594;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">Shirt<span>craft</span></a>
+                    <p>Professional dry cleaning and garment care you can trust. We've been keeping wardrobes looking their best for over 15 years.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Rob</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Dry Cleaning</a></li>
+                        <li><a href="#services">Shirt Service</a></li>
+                        <li><a href="#services">Wedding Dresses</a></li>
+                        <li><a href="#services">Curtains</a></li>
+                        <li><a href="#services">Alterations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shirtcraft Dry Cleaners. All rights reserved.</p>
+                <p>Website by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== NEOCODE POPUP ===== -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+        <div class="popup-label">Built by NeoCode Studio</div>
+        <h4>Want a site like this for your business?</h4>
+        <p>We build premium websites that actually convert visitors into customers. No templates, no fluff.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="popup-cta">Get a Free Quote &#8594;</a>
+    </div>
+
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // IntersectionObserver for reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // NeoCode popup at 70% scroll
+        const popup = document.getElementById('neocodePopup');
+        const popupClose = document.getElementById('popupClose');
+        let popupShown = false;
+        let popupDismissed = false;
+
+        window.addEventListener('scroll', () => {
+            if (popupDismissed || popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                popup.classList.add('visible');
+                popupShown = true;
+            }
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('visible');
+            popupDismissed = true;
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for anchor links (fallback)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

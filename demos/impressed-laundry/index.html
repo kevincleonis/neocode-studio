@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressed Laundry | Professional Laundry & Dry Cleaning Services</title>
+    <meta name="description" content="Impressed Laundry - Professional laundry, dry cleaning, ironing, alterations and collection/delivery services. Fresh, clean results every time.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Red+Hat+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #1a73e8;
+            --blue-dark: #1557b0;
+            --blue-light: #e8f0fe;
+            --blue-mid: #4a90e2;
+            --white: #ffffff;
+            --gray-50: #f8f9fa;
+            --gray-100: #f1f3f5;
+            --gray-200: #e9ecef;
+            --gray-400: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --shadow-sm: 0 2px 8px rgba(26, 115, 232, 0.06);
+            --shadow: 0 4px 24px rgba(26, 115, 232, 0.1);
+            --shadow-lg: 0 12px 48px rgba(26, 115, 232, 0.14);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Red Hat Text', sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Red Hat Display', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Utility ── */
+        .section-label {
+            display: inline-block;
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: var(--blue-light);
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .text-center { text-align: center; }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .btn:focus-visible {
+            outline: 3px solid var(--blue-mid);
+            outline-offset: 3px;
+        }
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(26, 115, 232, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(26, 115, 232, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+        }
+        .btn-outline:hover {
+            background: var(--blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--blue);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+        }
+
+        /* ── Reveal Animation ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── NeoCode Top Banner ── */
+        .nc-banner {
+            background: linear-gradient(135deg, var(--gray-900), #1a1a2e);
+            color: var(--white);
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .nc-banner a {
+            color: #7eb8ff;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .nc-banner a:hover { color: var(--white); }
+
+        /* ── Navigation ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--gray-900); }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--blue); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 4px; }
+
+        /* ── Hamburger ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
+            z-index: 1002;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--gray-800);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 4px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ── Mobile Menu ── */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-overlay.open { display: block; opacity: 1; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            padding: 80px 32px 32px;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: -8px 0 32px rgba(0,0,0,0.1);
+        }
+        .mobile-menu.open { right: 0; }
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--gray-800);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .mobile-menu a:hover { color: var(--blue); padding-left: 8px; }
+        .mobile-menu a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(160deg, var(--white) 0%, var(--blue-light) 50%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 115, 232, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--blue-light);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: #34c759;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        .hero h1 .highlight {
+            color: var(--blue);
+            position: relative;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-image img {
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            width: 200px;
+            height: 200px;
+            background: var(--blue-light);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gray-200);
+        }
+        .hero-stat-number {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* ── About ── */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image img {
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+        .about-content .section-label { margin-bottom: 12px; }
+        .about-content h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            margin-bottom: 20px;
+            color: var(--gray-900);
+        }
+        .about-content p {
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+        }
+        .about-feature .icon {
+            width: 36px;
+            height: 36px;
+            background: var(--blue-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Services ── */
+        .services {
+            padding: 100px 0;
+            background: var(--gray-50);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--blue);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--blue-light);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--gray-900);
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ── Pricing ── */
+        .pricing {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            border: 2px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+        }
+        .pricing-card.featured {
+            border-color: var(--blue);
+            background: linear-gradient(180deg, var(--blue-light) 0%, var(--white) 40%);
+        }
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blue);
+            color: var(--white);
+            padding: 4px 20px;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--gray-900);
+        }
+        .pricing-card .pricing-desc {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+        }
+        .pricing-list {
+            margin-bottom: 28px;
+        }
+        .pricing-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .pricing-list li:last-child { border-bottom: none; }
+        .pricing-list .check {
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .pricing-card .price {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin-bottom: 4px;
+        }
+        .pricing-card .price span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-600);
+        }
+
+        /* ── Why Choose Us ── */
+        .why-us {
+            padding: 100px 0;
+            background: linear-gradient(160deg, var(--gray-900) 0%, #1a1a3e 100%);
+            color: var(--white);
+        }
+        .why-us .section-label {
+            background: rgba(26, 115, 232, 0.2);
+            color: #7eb8ff;
+        }
+        .why-us .section-title { color: var(--white); }
+        .why-us .section-subtitle { color: rgba(255,255,255,0.6); }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .why-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .why-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(26, 115, 232, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 16px;
+        }
+        .why-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .why-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        /* ── Testimonials ── */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--blue-light);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        .testimonial-stars {
+            color: #f5a623;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            background: var(--blue-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Red Hat Display', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--blue);
+        }
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--gray-900);
+        }
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        /* ── Contact ── */
+        .contact {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .contact-info h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+        .contact-info > p {
+            color: var(--gray-600);
+            margin-bottom: 32px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .contact-detail-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--blue-light);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-detail-text h4 {
+            font-size: 0.9rem;
+            color: var(--gray-900);
+            margin-bottom: 2px;
+        }
+        .contact-detail-text p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .contact-form {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-family: 'Red Hat Text', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            transition: var(--transition);
+            background: var(--white);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-banner h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            margin-bottom: 16px;
+        }
+        .cta-banner p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            margin-bottom: 32px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-brand .nav-logo {
+            margin-bottom: 16px;
+            display: block;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .footer h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer ul li { margin-bottom: 10px; }
+        .footer ul li a {
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .footer ul li a:hover { color: var(--blue-mid); padding-left: 4px; }
+        .footer ul li a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+        .footer-bottom {
+            text-align: center;
+            padding: 24px 0;
+            font-size: 0.8rem;
+        }
+        .footer-bottom a { color: var(--blue-mid); }
+        .footer-bottom a:hover { color: var(--white); }
+
+        /* ── NeoCode Popup ── */
+        .nc-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .nc-popup-overlay.active { display: flex; }
+        .nc-popup {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            max-width: 460px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: popIn 0.4s ease;
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .nc-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .nc-popup-close:hover { background: var(--blue-light); color: var(--blue); }
+        .nc-popup-close:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+        .nc-popup-badge {
+            display: inline-block;
+            background: var(--blue);
+            color: var(--white);
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .nc-popup h3 {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+        .nc-popup p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .nc-popup .btn { width: 100%; justify-content: center; }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .hero { padding: 120px 0 60px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-image { order: -1; }
+            .hero-image img { height: 300px; }
+            .hero-image::after { display: none; }
+            .hero-stats { gap: 24px; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .about-features { grid-template-columns: 1fr; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .why-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-form { padding: 28px 24px; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+
+            .section-subtitle { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-btns { flex-direction: column; }
+            .hero-btns .btn { width: 100%; justify-content: center; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .nc-popup { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="nc-banner">
+    This is a free demo redesign by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a> for Impressed Laundry
+</div>
+
+<!-- Navigation -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo">Impressed <span>Laundry</span></a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">Get in Touch</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Get in Touch</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Collection & Delivery Available
+                </div>
+                <h1>Freshly Cleaned, <span class="highlight">Perfectly Pressed</span></h1>
+                <p>We're a professional laundry and dry cleaning service that takes the hassle out of your week. You'll get spotless results with a fast turnaround, every single time.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Book a Collection &rarr;</a>
+                    <a href="#services" class="btn btn-outline">View Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="hero-stat-number stat-number">5000+</div>
+                        <div class="hero-stat-label">Happy Customers</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-number stat-number">24hr</div>
+                        <div class="hero-stat-label">Turnaround</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-number stat-number">100%</div>
+                        <div class="hero-stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image reveal">
+                <img src="https://images.pexels.com/photos/5591581/pexels-photo-5591581.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fresh clean laundry neatly folded" loading="eager">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <img src="https://images.pexels.com/photos/4439444/pexels-photo-4439444.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional laundry service workspace" loading="lazy">
+            </div>
+            <div class="about-content reveal">
+                <span class="section-label">About Us</span>
+                <h2>Your Local Laundry Experts You Can Trust</h2>
+                <p>Impressed Laundry isn't just another laundry service. We're a team of garment care specialists who genuinely love what we do. Whether it's your everyday wash or a delicate dry clean, we treat every item like it's our own.</p>
+                <p>We've built our reputation on reliability, attention to detail and that fresh, clean feeling you won't find anywhere else. It's why customers keep coming back.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="icon">&#10003;</div>
+                        <span>Eco-Friendly Products</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="icon">&#10003;</div>
+                        <span>Same-Day Service</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="icon">&#10003;</div>
+                        <span>Free Collection</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="icon">&#10003;</div>
+                        <span>Expert Stain Removal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-label">Our Services</span>
+            <h2 class="section-title">Everything Your Wardrobe Needs</h2>
+            <p class="section-subtitle">From everyday laundry to specialist garment care, we've got you covered with a full range of professional services.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">&#128090;</div>
+                <h3>Laundry Service</h3>
+                <p>Drop off your everyday clothes and we'll wash, dry and fold them perfectly. You won't have to lift a finger.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#9734;</div>
+                <h3>Dry Cleaning</h3>
+                <p>Suits, dresses, coats and delicate fabrics get the specialist treatment they deserve. We'll keep them looking brand new.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#9883;</div>
+                <h3>Professional Ironing</h3>
+                <p>Crisp shirts, smooth trousers and wrinkle-free everything. Our ironing service saves you hours every week.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#9986;</div>
+                <h3>Alterations & Repairs</h3>
+                <p>Hems, zips, buttons or a full restyle. Our skilled tailors can fix, adjust or transform any garment.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#127970;</div>
+                <h3>Commercial Laundry</h3>
+                <p>Hotels, restaurants, salons and offices. We handle bulk laundry for businesses of all sizes with reliable scheduling.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128666;</div>
+                <h3>Collection & Delivery</h3>
+                <p>Can't make it to us? No worries. We'll pick up your laundry and bring it back fresh, clean and ready to wear.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-label">Pricing</span>
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">No hidden fees, no surprises. Just honest pricing for quality garment care.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <h3>Everyday Wash</h3>
+                <p class="pricing-desc">Perfect for your weekly laundry load</p>
+                <ul class="pricing-list">
+                    <li><span class="check">&#10003;</span> Wash, dry & fold</li>
+                    <li><span class="check">&#10003;</span> Up to 8kg per bag</li>
+                    <li><span class="check">&#10003;</span> 24-hour turnaround</li>
+                    <li><span class="check">&#10003;</span> Eco-friendly detergent</li>
+                </ul>
+                <div class="price">&pound;12 <span>/ bag</span></div>
+            </div>
+            <div class="pricing-card featured reveal">
+                <h3>Full Service</h3>
+                <p class="pricing-desc">Laundry, ironing and dry cleaning combined</p>
+                <ul class="pricing-list">
+                    <li><span class="check">&#10003;</span> Everything in Everyday</li>
+                    <li><span class="check">&#10003;</span> Professional ironing</li>
+                    <li><span class="check">&#10003;</span> Dry cleaning included</li>
+                    <li><span class="check">&#10003;</span> Free collection & delivery</li>
+                    <li><span class="check">&#10003;</span> Priority turnaround</li>
+                </ul>
+                <div class="price">&pound;25 <span>/ bag</span></div>
+            </div>
+            <div class="pricing-card reveal">
+                <h3>Commercial</h3>
+                <p class="pricing-desc">Tailored plans for businesses</p>
+                <ul class="pricing-list">
+                    <li><span class="check">&#10003;</span> Bulk wash & press</li>
+                    <li><span class="check">&#10003;</span> Scheduled pickups</li>
+                    <li><span class="check">&#10003;</span> Dedicated account manager</li>
+                    <li><span class="check">&#10003;</span> Volume discounts</li>
+                    <li><span class="check">&#10003;</span> Invoice billing</li>
+                </ul>
+                <div class="price">Custom <span>quote</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-us" id="why-us">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-label">Why Choose Us</span>
+            <h2 class="section-title">What Makes Us Different</h2>
+            <p class="section-subtitle">We don't cut corners. Here's why thousands of customers trust us with their clothes.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <div class="why-icon">&#9201;</div>
+                <h4>Fast Turnaround</h4>
+                <p>Most orders are ready within 24 hours. Need it sooner? We offer same-day service too.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">&#127807;</div>
+                <h4>Eco-Friendly</h4>
+                <p>We use biodegradable, non-toxic cleaning products that are gentle on fabrics and the planet.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">&#128170;</div>
+                <h4>Expert Care</h4>
+                <p>Our team's trained to handle everything from silk blouses to heavy-duty workwear.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">&#128588;</div>
+                <h4>Hassle-Free</h4>
+                <p>With free collection and delivery, you don't even have to leave your house.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle">Don't just take our word for it. Here's what real customers think about our service.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">"I've been using Impressed Laundry for months now and they've never let me down. My shirts come back looking better than when I bought them. Can't recommend them enough."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JH</div>
+                    <div>
+                        <div class="testimonial-name">James H.</div>
+                        <div class="testimonial-role">Regular Customer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">"The collection and delivery service is a lifesaver. I'm a busy mum and don't have time for laundry. They pick up Monday morning and it's back by Tuesday. Absolute game changer."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SP</div>
+                    <div>
+                        <div class="testimonial-name">Sarah P.</div>
+                        <div class="testimonial-role">Working Parent</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">"We switched our hotel's laundry contract to Impressed and it's been brilliant. Consistent quality, always on time, and their commercial rates are really competitive."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MR</div>
+                    <div>
+                        <div class="testimonial-name">Mark R.</div>
+                        <div class="testimonial-role">Hotel Manager</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+    <div class="container reveal">
+        <h2>Ready to Ditch the Laundry Pile?</h2>
+        <p>Let us take care of it. Book your first collection today and see the difference a professional service makes.</p>
+        <a href="#contact" class="btn btn-white">Book Your Collection &rarr;</a>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <span class="section-label">Contact Us</span>
+                <h2>Let's Get Your Clothes Sorted</h2>
+                <p>Drop us a message or give us a call. We're always happy to help with any questions about our services.</p>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#9993;</div>
+                    <div class="contact-detail-text">
+                        <h4>Email Us</h4>
+                        <p>info@impressedlaundry.co.uk</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128205;</div>
+                    <div class="contact-detail-text">
+                        <h4>Visit Us</h4>
+                        <p>Open Mon-Sat, 8am - 6pm</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128666;</div>
+                    <div class="contact-detail-text">
+                        <h4>Free Collection</h4>
+                        <p>We'll come to you, just book online</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service">
+                            <option value="">Select a service</option>
+                            <option value="laundry">Laundry Service</option>
+                            <option value="dry-cleaning">Dry Cleaning</option>
+                            <option value="ironing">Professional Ironing</option>
+                            <option value="alterations">Alterations & Repairs</option>
+                            <option value="commercial">Commercial Laundry</option>
+                            <option value="collection">Collection & Delivery</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" placeholder="Tell us what you need..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message &rarr;</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#hero" class="nav-logo">Impressed <span>Laundry</span></a>
+                <p>Professional laundry and dry cleaning services you can count on. Fresh results, fast turnaround, friendly service.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Laundry</a></li>
+                    <li><a href="#services">Dry Cleaning</a></li>
+                    <li><a href="#services">Ironing</a></li>
+                    <li><a href="#services">Alterations</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@impressedlaundry.co.uk">info@impressedlaundry.co.uk</a></li>
+                    <li><a href="#contact">Book Online</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Impressed Laundry. All rights reserved. | Demo designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="nc-popup-overlay" id="ncPopup">
+    <div class="nc-popup">
+        <button class="nc-popup-close" id="ncPopupClose" aria-label="Close popup">&times;</button>
+        <div class="nc-popup-badge">Free Demo</div>
+        <h3>Like What You See?</h3>
+        <p>This is a free redesign concept for Impressed Laundry, built by NeoCode Studio. We help local businesses get a modern, professional website that actually brings in new customers.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn btn-primary" rel="noopener">Get Your Own Site &rarr;</a>
+    </div>
+</div>
+
+<script>
+    // ── Navigation scroll effect ──
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Hamburger menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    function toggleMenu() {
+        const isOpen = mobileMenu.classList.contains('open');
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        mobileOverlay.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', !isOpen);
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    mobileOverlay.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('open')) toggleMenu();
+        });
+    });
+
+    // ── Scroll reveal animations ──
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ── Smooth scroll for anchor links ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ── NeoCode Popup at 70% scroll ──
+    const ncPopup = document.getElementById('ncPopup');
+    const ncPopupClose = document.getElementById('ncPopupClose');
+    let popupShown = false;
+
+    window.addEventListener('scroll', () => {
+        if (popupShown) return;
+        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        if (scrollPercent >= 70) {
+            ncPopup.classList.add('active');
+            popupShown = true;
+        }
+    });
+
+    ncPopupClose.addEventListener('click', () => {
+        ncPopup.classList.remove('active');
+    });
+
+    ncPopup.addEventListener('click', (e) => {
+        if (e.target === ncPopup) ncPopup.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && ncPopup.classList.contains('active')) {
+            ncPopup.classList.remove('active');
+        }
+    });
+
+    // ── Counter animation for stats ──
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const text = el.textContent;
+                const match = text.match(/(\d+\.?\d*)/);
+                if (match) {
+                    const target = parseFloat(match[1]);
+                    const suffix = text.replace(match[1], '');
+                    const isDecimal = text.includes('.');
+                    const duration = 1500;
+                    const start = performance.now();
+
+                    function animate(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = isDecimal
+                            ? (target * eased).toFixed(1)
+                            : Math.floor(target * eased);
+                        el.textContent = current + suffix;
+                        if (progress < 1) requestAnimationFrame(animate);
+                    }
+                    requestAnimationFrame(animate);
+                }
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(el => counterObserver.observe(el));
+</script>
+
+</body>
+</html>

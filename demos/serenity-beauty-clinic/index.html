@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity the Beauty Clinic | Premium Beauty Treatments</title>
+    <meta name="description" content="Serenity the Beauty Clinic - Luxury facials, hair removal, lashes, brows, nails, body treatments and massage. Book your appointment today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --mauve: #9b7ea6;
+            --mauve-dark: #7a5f87;
+            --mauve-deep: #5c3d6e;
+            --mauve-pale: #d4c4db;
+            --gold: #c5a55a;
+            --gold-light: #dbc88a;
+            --gold-dark: #a8893e;
+            --pearl: #faf8fc;
+            --pearl-warm: #f3eff6;
+            --charcoal: #2d2633;
+            --charcoal-light: #4e4358;
+            --white: #ffffff;
+            --shadow: 0 4px 30px rgba(155, 126, 166, 0.1);
+            --shadow-lg: 0 12px 50px rgba(155, 126, 166, 0.15);
+            --shadow-card: 0 8px 35px rgba(155, 126, 166, 0.12);
+            --radius: 14px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--charcoal);
+            background: var(--pearl);
+            line-height: 1.75;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Gilda Display', serif;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* ── Focus States ── */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+            outline: 3px solid var(--mauve);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ── Reveal Animation ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── NeoCode Top Banner ── */
+        .nc-banner {
+            background: linear-gradient(135deg, var(--mauve-deep), var(--mauve-dark));
+            color: var(--white);
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        .nc-banner a {
+            color: var(--gold-light);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        .nc-banner a:hover { color: var(--white); }
+
+        /* ── Navigation ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .nav.scrolled {
+            background: rgba(250, 248, 252, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(155, 126, 166, 0.12);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Gilda Display', serif;
+            font-size: 1.5rem;
+            color: var(--mauve-deep);
+            letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--charcoal-light);
+            transition: color var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+        .nav-links a:hover { color: var(--mauve-deep); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-book-btn {
+            background: var(--gold);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            letter-spacing: 1px;
+            transition: all var(--transition) !important;
+        }
+        .nav-book-btn::after { display: none !important; }
+        .nav-book-btn:hover {
+            background: var(--gold-dark) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 165, 90, 0.35);
+        }
+
+        /* ── Hamburger ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--mauve-deep);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--pearl) 0%, var(--pearl-warm) 50%, #ede4f2 100%);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(250, 248, 252, 0.85) 0%, rgba(155, 126, 166, 0.15) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 30px;
+        }
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+            padding: 8px 22px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+        .hero-content h1 {
+            font-size: 3.8rem;
+            color: var(--mauve-deep);
+            margin-bottom: 10px;
+            line-height: 1.15;
+        }
+        .hero-content h1 span {
+            display: block;
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-top: 8px;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--charcoal-light);
+            margin: 20px auto 36px;
+            max-width: 560px;
+            line-height: 1.85;
+            font-weight: 300;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(197, 165, 90, 0.35);
+        }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--mauve-deep);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all var(--transition);
+            border: 2px solid var(--mauve);
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--mauve-deep);
+            color: var(--white);
+            border-color: var(--mauve-deep);
+            transform: translateY(-3px);
+        }
+
+        /* ── Scroll Indicator ── */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: scrollBounce 2s infinite;
+        }
+        .scroll-indicator svg { width: 28px; height: 28px; stroke: var(--mauve); }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ── Section Styling ── */
+        .section {
+            padding: 100px 30px;
+        }
+        .section-alt {
+            background: var(--pearl-warm);
+        }
+        .section-mauve {
+            background: linear-gradient(160deg, var(--mauve-deep), var(--mauve-dark));
+            color: var(--white);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header .label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .section-header h2 {
+            font-size: 2.6rem;
+            color: var(--mauve-deep);
+            margin-bottom: 16px;
+        }
+        .section-mauve .section-header h2 { color: var(--white); }
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--charcoal-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .section-mauve .section-header p { color: var(--mauve-pale); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ── Gold Divider ── */
+        .gold-divider {
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            margin: 16px auto 0;
+        }
+
+        /* ── About ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .about-img img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .about-img:hover img { transform: scale(1.03); }
+        .about-accent {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--gold);
+            border-radius: var(--radius);
+            z-index: -1;
+        }
+        .about-text h2 {
+            font-size: 2.4rem;
+            color: var(--mauve-deep);
+            margin-bottom: 20px;
+        }
+        .about-text .label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .about-text p {
+            color: var(--charcoal-light);
+            margin-bottom: 16px;
+            line-height: 1.85;
+            font-weight: 300;
+        }
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--mauve-pale);
+        }
+        .about-stat h3 {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        .about-stat p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--charcoal);
+            margin-bottom: 0;
+        }
+
+        /* ── Services ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--mauve), var(--gold));
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pearl-warm), var(--mauve-pale));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            font-size: 1.8rem;
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--mauve-deep);
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--charcoal-light);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* ── Treatment Menu ── */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .menu-tab {
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: var(--white);
+            color: var(--charcoal-light);
+            border: 1.5px solid var(--mauve-pale);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .menu-tab:hover, .menu-tab.active {
+            background: var(--mauve-deep);
+            color: var(--white);
+            border-color: var(--mauve-deep);
+        }
+        .menu-category { display: none; }
+        .menu-category.active { display: block; }
+        .menu-list {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(155, 126, 166, 0.15);
+        }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item-name {
+            font-weight: 700;
+            color: var(--charcoal);
+            font-size: 1rem;
+        }
+        .menu-item-desc {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            font-weight: 300;
+            margin-top: 3px;
+        }
+        .menu-item-dots {
+            flex: 1;
+            border-bottom: 2px dotted var(--mauve-pale);
+            margin: 0 15px;
+            min-width: 40px;
+        }
+        .menu-item-price {
+            font-family: 'Gilda Display', serif;
+            font-size: 1.15rem;
+            color: var(--gold-dark);
+            white-space: nowrap;
+        }
+        .menu-category-title {
+            font-size: 1.6rem;
+            color: var(--mauve-deep);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .menu-category-subtitle {
+            text-align: center;
+            color: var(--charcoal-light);
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* ── Gallery ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(92, 61, 110, 0.4), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+        /* ── Testimonials ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            position: relative;
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 18px;
+            letter-spacing: 3px;
+        }
+        .testimonial-card p {
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gold-light);
+        }
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-family: 'Gilda Display', serif;
+            font-size: 4rem;
+            color: rgba(197, 165, 90, 0.2);
+            line-height: 1;
+        }
+
+        /* ── Why Choose / Benefits ── */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .benefit-card {
+            text-align: center;
+            padding: 35px 20px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .benefit-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 1.5rem;
+        }
+        .benefit-card h4 {
+            font-size: 1.1rem;
+            color: var(--mauve-deep);
+            margin-bottom: 8px;
+        }
+        .benefit-card p {
+            font-size: 0.88rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ── Contact / Book ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-size: 1.6rem;
+            color: var(--mauve-deep);
+            margin-bottom: 22px;
+        }
+        .contact-detail {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+        .contact-detail-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--mauve-pale), var(--pearl-warm));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-detail h4 {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            margin-bottom: 3px;
+        }
+        .contact-detail p {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            font-weight: 300;
+        }
+        .contact-hours {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+        .contact-hours h4 {
+            font-size: 1.1rem;
+            color: var(--mauve-deep);
+            margin-bottom: 14px;
+        }
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(155, 126, 166, 0.1);
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .hours-row span:first-child { font-weight: 700; color: var(--charcoal); }
+        .hours-row span:last-child { color: var(--charcoal-light); font-weight: 300; }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+        .contact-form h3 {
+            font-size: 1.6rem;
+            color: var(--mauve-deep);
+            margin-bottom: 8px;
+        }
+        .contact-form > p {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid var(--mauve-pale);
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            background: var(--pearl);
+            transition: all var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--mauve);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(155, 126, 166, 0.1);
+        }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .form-submit:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 165, 90, 0.35);
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            text-align: center;
+            padding: 80px 30px;
+            background: linear-gradient(160deg, var(--mauve-deep), var(--mauve-dark));
+            color: var(--white);
+        }
+        .cta-banner h2 {
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+        }
+        .cta-banner p {
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+            color: var(--mauve-pale);
+            line-height: 1.8;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 60px 30px 30px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h3 {
+            font-size: 1.4rem;
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+        .footer-brand h3 span { color: var(--gold); }
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+        .footer h4 {
+            font-size: 0.95rem;
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        .footer ul li a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.55);
+            transition: color var(--transition);
+            font-weight: 300;
+        }
+        .footer ul li a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-bottom p {
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+        .footer-bottom a { color: var(--gold); }
+        .footer-bottom a:hover { text-decoration: underline; }
+
+        /* ── NeoCode Popup ── */
+        .nc-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 38, 51, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .nc-popup-overlay.show { opacity: 1; }
+        .nc-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px 45px;
+            max-width: 480px;
+            width: 90%;
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(92, 61, 110, 0.3);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .nc-popup.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .nc-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--charcoal-light);
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            transition: color var(--transition);
+        }
+        .nc-popup-close:hover { color: var(--mauve-deep); }
+        .nc-popup-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--mauve-deep), var(--mauve));
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        .nc-popup h3 {
+            font-size: 1.6rem;
+            color: var(--mauve-deep);
+            margin-bottom: 12px;
+        }
+        .nc-popup p {
+            font-size: 0.95rem;
+            color: var(--charcoal-light);
+            line-height: 1.75;
+            margin-bottom: 26px;
+            font-weight: 300;
+        }
+        .nc-popup .btn-primary {
+            display: block;
+            text-align: center;
+        }
+
+        /* ── Mobile Responsive ── */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: var(--pearl);
+                flex-direction: column;
+                justify-content: center;
+                gap: 28px;
+                padding: 40px;
+                box-shadow: -8px 0 40px rgba(92, 61, 110, 0.15);
+                transition: right 0.4s ease;
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1rem; }
+
+            .hero-content h1 { font-size: 2.6rem; }
+            .hero-content h1 span { font-size: 1.6rem; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img img { height: 320px; }
+            .about-stats { gap: 25px; }
+
+            .services-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .benefits-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .section { padding: 70px 20px; }
+            .section-header h2 { font-size: 2rem; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content h1 span { font-size: 1.3rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .about-stats { flex-direction: column; gap: 15px; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .menu-tabs { gap: 8px; }
+            .menu-tab { padding: 8px 16px; font-size: 0.75rem; }
+            .contact-form { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="nc-banner">
+    This is a demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; See what your website could look like.
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo">Serenity <span>Beauty</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#menu">Treatments</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact" class="nav-book-btn">Book Now</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+    <div class="hero-bg">
+        <img src="https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Luxury beauty treatment room" loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Premium Beauty Clinic</div>
+        <h1>
+            Serenity the Beauty Clinic
+            <span>Where Beauty Meets Tranquility</span>
+        </h1>
+        <p>You deserve a moment of calm. From rejuvenating facials to expert lash work, we'll help you look and feel your absolute best.</p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Book Your Treatment</a>
+            <a href="#services" class="btn-outline">Explore Services</a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid reveal">
+            <div class="about-img">
+                <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Serenity Beauty Clinic interior" loading="lazy">
+                <div class="about-accent"></div>
+            </div>
+            <div class="about-text">
+                <span class="label">Our Story</span>
+                <h2>Your Sanctuary for Self-Care</h2>
+                <p>At Serenity the Beauty Clinic, we believe everyone deserves a space to unwind, recharge, and feel truly pampered. Our team of skilled therapists brings years of experience and genuine passion to every treatment.</p>
+                <p>We don't just offer beauty services. We create experiences. From the moment you walk through our doors, you'll feel the stress of the outside world melt away. That's the Serenity promise.</p>
+                <div class="about-stats">
+                    <div class="about-stat">
+                        <h3>500+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="about-stat">
+                        <h3>30+</h3>
+                        <p>Treatments</p>
+                    </div>
+                    <div class="about-stat">
+                        <h3>5&#9733;</h3>
+                        <p>Rated Salon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="section section-alt" id="services">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="label">What We Offer</span>
+            <h2>Our Signature Services</h2>
+            <p>We've carefully curated a range of treatments to help you look radiant and feel completely relaxed.</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">&#10024;</div>
+                <h3>Facials</h3>
+                <p>Customised facials tailored to your skin type. From deep cleansing to anti-ageing, we'll give your complexion the glow it deserves.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#9889;</div>
+                <h3>Hair Removal</h3>
+                <p>Smooth, silky results every time. We offer waxing and advanced hair removal techniques for all areas, done with care and precision.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128065;</div>
+                <h3>Lashes &amp; Brows</h3>
+                <p>Frame your face beautifully. Choose from lash lifts, extensions, brow lamination, tinting, and shaping to enhance your natural features.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#127800;</div>
+                <h3>Body Treatments</h3>
+                <p>Indulge in luxurious body wraps, scrubs, and contouring treatments designed to nourish your skin and leave you feeling renewed.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128133;</div>
+                <h3>Nails</h3>
+                <p>Perfectly polished every time. From classic manicures and pedicures to gel extensions, your nails will look salon-perfect for weeks.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">&#128588;</div>
+                <h3>Massage</h3>
+                <p>Release tension and restore balance. Our therapeutic and relaxation massages are designed to ease your body and calm your mind.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Treatment Menu -->
+<section class="section" id="menu">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="label">Treatment Menu</span>
+            <h2>Our Prices</h2>
+            <p>Transparent pricing, no hidden costs. Just beautiful results at honest prices.</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="reveal">
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="facials">Facials</button>
+                <button class="menu-tab" data-tab="hair-removal">Hair Removal</button>
+                <button class="menu-tab" data-tab="lashes-brows">Lashes &amp; Brows</button>
+                <button class="menu-tab" data-tab="body">Body</button>
+                <button class="menu-tab" data-tab="nails">Nails</button>
+                <button class="menu-tab" data-tab="massage">Massage</button>
+            </div>
+
+            <!-- Facials -->
+            <div class="menu-category active" id="tab-facials">
+                <h3 class="menu-category-title">Facial Treatments</h3>
+                <p class="menu-category-subtitle">Tailored to your skin's unique needs</p>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Express Glow Facial</div><div class="menu-item-desc">30 mins - Quick refresh for busy days</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Deep Cleansing Facial</div><div class="menu-item-desc">60 mins - Extraction, mask &amp; hydration</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;55</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Anti-Ageing Rejuvenation</div><div class="menu-item-desc">75 mins - Collagen-boosting luxury facial</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;75</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Serenity Signature Facial</div><div class="menu-item-desc">90 mins - Our ultimate pampering experience</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;95</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hair Removal -->
+            <div class="menu-category" id="tab-hair-removal">
+                <h3 class="menu-category-title">Hair Removal</h3>
+                <p class="menu-category-subtitle">Smooth, long-lasting results</p>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Upper Lip or Chin</div><div class="menu-item-desc">10 mins</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;8</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Underarm Wax</div><div class="menu-item-desc">15 mins</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;12</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Half Leg Wax</div><div class="menu-item-desc">25 mins</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;20</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Full Leg Wax</div><div class="menu-item-desc">40 mins</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;30</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Hollywood / Brazilian</div><div class="menu-item-desc">30 mins</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Full Body Wax</div><div class="menu-item-desc">75 mins - Everything taken care of</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;85</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lashes & Brows -->
+            <div class="menu-category" id="tab-lashes-brows">
+                <h3 class="menu-category-title">Lashes &amp; Brows</h3>
+                <p class="menu-category-subtitle">Frame your features perfectly</p>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Brow Shape &amp; Tint</div><div class="menu-item-desc">20 mins</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;18</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Brow Lamination</div><div class="menu-item-desc">45 mins - Includes tint &amp; shape</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Lash Lift &amp; Tint</div><div class="menu-item-desc">50 mins - Beautiful natural curl</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Classic Lash Extensions</div><div class="menu-item-desc">90 mins - Full set</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;55</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Hybrid Lash Extensions</div><div class="menu-item-desc">105 mins - Full set</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;65</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Lash Infill</div><div class="menu-item-desc">45 mins - Classic or hybrid</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;30</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="menu-category" id="tab-body">
+                <h3 class="menu-category-title">Body Treatments</h3>
+                <p class="menu-category-subtitle">Nourish, detox, and revitalise</p>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Body Exfoliation Scrub</div><div class="menu-item-desc">30 mins - Full body polish</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Detox Body Wrap</div><div class="menu-item-desc">60 mins - Purify &amp; tone</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;60</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Hydrating Body Treatment</div><div class="menu-item-desc">60 mins - Deep moisture restoration</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;65</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Serenity Body Ritual</div><div class="menu-item-desc">90 mins - Scrub, wrap &amp; massage combo</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;95</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nails -->
+            <div class="menu-category" id="tab-nails">
+                <h3 class="menu-category-title">Nail Treatments</h3>
+                <p class="menu-category-subtitle">Perfectly polished every time</p>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Classic Manicure</div><div class="menu-item-desc">30 mins - File, shape &amp; polish</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;20</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Gel Manicure</div><div class="menu-item-desc">45 mins - Long-lasting shine</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;30</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Classic Pedicure</div><div class="menu-item-desc">40 mins - Soak, file &amp; polish</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;25</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Gel Pedicure</div><div class="menu-item-desc">50 mins - Luxury foot treatment</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">BIAB / Builder Gel</div><div class="menu-item-desc">60 mins - Strength &amp; length</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Nail Art (add-on)</div><div class="menu-item-desc">Per nail</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Massage -->
+            <div class="menu-category" id="tab-massage">
+                <h3 class="menu-category-title">Massage Therapy</h3>
+                <p class="menu-category-subtitle">Release, restore, and rebalance</p>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Back, Neck &amp; Shoulders</div><div class="menu-item-desc">30 mins - Targeted tension relief</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;30</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Swedish Relaxation Massage</div><div class="menu-item-desc">60 mins - Full body</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;50</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Deep Tissue Massage</div><div class="menu-item-desc">60 mins - Intense muscle work</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;55</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Hot Stone Massage</div><div class="menu-item-desc">75 mins - Heated basalt stones</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;65</span>
+                    </div>
+                    <div class="menu-item">
+                        <div><div class="menu-item-name">Serenity Signature Massage</div><div class="menu-item-desc">90 mins - Our ultimate full body experience</div></div>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">&pound;80</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section section-alt" id="why">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="label">Why Choose Us</span>
+            <h2>The Serenity Difference</h2>
+            <p>There are plenty of beauty salons out there. Here's why our clients keep coming back.</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">&#128150;</div>
+                <h4>Expert Therapists</h4>
+                <p>Fully qualified and regularly trained in the latest techniques and products.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">&#127807;</div>
+                <h4>Premium Products</h4>
+                <p>We only use professional-grade, cruelty-free products that deliver real results.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">&#9203;</div>
+                <h4>Easy Booking</h4>
+                <p>Book online anytime, or just give us a call. We'll find a time that works for you.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">&#127775;</div>
+                <h4>5-Star Experience</h4>
+                <p>From the warm welcome to the finishing touches, every detail is taken care of.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section class="section" id="gallery">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="label">Our Space</span>
+            <h2>Step Inside Serenity</h2>
+            <p>Take a peek at our relaxing clinic and some of the beautiful results we create every day.</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3997381/pexels-photo-3997381.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Facial treatment in progress" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3738349/pexels-photo-3738349.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury nail treatment" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3760262/pexels-photo-3760262.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Relaxing spa environment" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/5069432/pexels-photo-5069432.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lash extensions close-up" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Beauty products display" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3738355/pexels-photo-3738355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Massage therapy session" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Skincare treatment" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section section-mauve" id="testimonials">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="label">Client Love</span>
+            <h2>What Our Clients Say</h2>
+            <p>Don't just take our word for it. Here's what the people who visit us have to say.</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-quote">&ldquo;</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>I've been coming to Serenity for over a year now and I wouldn't go anywhere else. The facials are incredible and the girls always make me feel so welcome. It's my happy place!</p>
+                <div class="testimonial-author">Sophie M.</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-quote">&ldquo;</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Had my lashes done here for my wedding and they were absolutely stunning. Everyone asked where I got them done. Can't recommend Serenity enough. You won't be disappointed.</p>
+                <div class="testimonial-author">Rachel T.</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-quote">&ldquo;</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>The massage was exactly what I needed after a stressful week. The whole vibe of the clinic is so calming and the therapist really knew what she was doing. I'll definitely be back.</p>
+                <div class="testimonial-author">Emma L.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+    <div class="container reveal">
+        <h2>Ready for Your Moment of Serenity?</h2>
+        <p>Life's too busy to skip the self-care. Treat yourself to something special and let us take care of the rest.</p>
+        <a href="#contact" class="btn-primary">Book Your Treatment</a>
+    </div>
+</section>
+
+<!-- Contact / Book -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="label">Get in Touch</span>
+            <h2>Book Your Appointment</h2>
+            <p>Ready to feel amazing? Fill out the form or reach out directly. We'll get back to you as soon as we can.</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Visit Us</h3>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128205;</div>
+                    <div>
+                        <h4>Our Location</h4>
+                        <p>Serenity the Beauty Clinic<br>Get in touch for our address</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128231;</div>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:serenity_clinic@hotmail.co.uk" style="color: var(--mauve-deep); font-weight: 700;">serenity_clinic@hotmail.co.uk</a></p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128241;</div>
+                    <div>
+                        <h4>Follow Us</h4>
+                        <p>Find us on social media for the latest offers and inspiration.</p>
+                    </div>
+                </div>
+
+                <div class="contact-hours">
+                    <h4>Opening Hours</h4>
+                    <div class="hours-row"><span>Monday</span><span>9:00 AM - 6:00 PM</span></div>
+                    <div class="hours-row"><span>Tuesday</span><span>9:00 AM - 6:00 PM</span></div>
+                    <div class="hours-row"><span>Wednesday</span><span>9:00 AM - 7:00 PM</span></div>
+                    <div class="hours-row"><span>Thursday</span><span>9:00 AM - 7:00 PM</span></div>
+                    <div class="hours-row"><span>Friday</span><span>9:00 AM - 6:00 PM</span></div>
+                    <div class="hours-row"><span>Saturday</span><span>9:00 AM - 5:00 PM</span></div>
+                    <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal">
+                <h3>Send Us a Message</h3>
+                <p>We'll get back to you within 24 hours to confirm your booking.</p>
+                <form action="#" onsubmit="event.preventDefault(); alert('This is a demo. In the live version, your booking request would be sent directly to Serenity the Beauty Clinic.'); return false;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Jane Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="07xxx xxx xxx">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="jane@email.com" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service">Treatment</label>
+                            <select id="service">
+                                <option value="">Select a treatment...</option>
+                                <option>Facial</option>
+                                <option>Hair Removal</option>
+                                <option>Lashes &amp; Brows</option>
+                                <option>Body Treatment</option>
+                                <option>Nails</option>
+                                <option>Massage</option>
+                                <option>Other / Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Anything else we should know?</label>
+                        <textarea id="message" placeholder="Tell us about any preferences, skin concerns, or questions you have..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Request Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Serenity <span>Beauty</span></h3>
+            <p>Your sanctuary for self-care and beauty. We're here to help you look and feel your absolute best, one treatment at a time.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#menu">Treatment Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Book Now</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Treatments</h4>
+            <ul>
+                <li><a href="#menu">Facials</a></li>
+                <li><a href="#menu">Hair Removal</a></li>
+                <li><a href="#menu">Lashes &amp; Brows</a></li>
+                <li><a href="#menu">Nails</a></li>
+                <li><a href="#menu">Massage</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="mailto:serenity_clinic@hotmail.co.uk">serenity_clinic@hotmail.co.uk</a></li>
+                <li><a href="#contact">Book Appointment</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Serenity the Beauty Clinic. All rights reserved.</p>
+        <p>Demo designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+    </div>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="nc-popup-overlay" id="ncOverlay"></div>
+<div class="nc-popup" id="ncPopup">
+    <button class="nc-popup-close" id="ncClose" aria-label="Close popup">&times;</button>
+    <div class="nc-popup-badge">Free Consultation</div>
+    <h3>Love This Design?</h3>
+    <p>This is what your website could look like. We build premium, high-converting sites for beauty businesses just like yours. Let's chat about bringing your online presence to life.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn-primary">Get Your Free Quote</a>
+</div>
+
+<script>
+    // ── Hamburger Menu ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // ── Nav Scroll Effect ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ── IntersectionObserver Reveal ──
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Treatment Menu Tabs ──
+    const tabs = document.querySelectorAll('.menu-tab');
+    const categories = document.querySelectorAll('.menu-category');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            categories.forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // ── NeoCode Popup at 70% Scroll ──
+    let popupShown = false;
+    const popup = document.getElementById('ncPopup');
+    const overlay = document.getElementById('ncOverlay');
+    const closeBtn = document.getElementById('ncClose');
+
+    function showPopup() {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                popup.classList.add('show');
+                overlay.classList.add('show');
+            });
+        });
+    }
+
+    function closePopup() {
+        popup.classList.remove('show');
+        overlay.classList.remove('show');
+        setTimeout(() => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }, 400);
+    }
+
+    window.addEventListener('scroll', () => {
+        if (popupShown) return;
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        if (scrollPercent >= 70) {
+            popupShown = true;
+            showPopup();
+        }
+    });
+
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', closePopup);
+
+    // ── Smooth Scroll for Anchor Links ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
