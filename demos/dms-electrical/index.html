@@ -1005,7 +1005,8 @@
     /* Demo popup on scroll */
     var popupShown = false;
     window.addEventListener('scroll', function() {
-      if (!popupShown && window.scrollY > window.innerHeight * 0.6) {
+      var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      if (!popupShown && scrollPercent > 0.7) {
         popupShown = true;
         document.getElementById('demoPopup').classList.add('show');
       }

@@ -1665,7 +1665,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Popup on scroll
 let popupFired = false;
 window.addEventListener('scroll', () => {
-    if (!popupFired && window.scrollY > window.innerHeight * 0.55) {
+    var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (!popupFired && scrollPercent > 0.7) {
         popupFired = true;
         document.getElementById('demoPopup').classList.add('show');
         document.body.style.overflow = 'hidden';

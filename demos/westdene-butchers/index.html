@@ -508,7 +508,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 
 // Popup
 var popupShown=false;
-window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p)p.style.display="flex"}});
+window.addEventListener("scroll",function(){var scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);if(!popupShown&&scrollPercent>0.7){popupShown=true;var p=document.getElementById("demo-popup");if(p)p.style.display="flex"}});
 
 // Scroll reveal animations
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});

@@ -136,6 +136,17 @@ footer .credit{opacity:.4;font-size:.7rem;margin-top:.8rem}
 .about-pair{grid-template-columns:1fr}
 .float-call{bottom:1.2rem;right:1.2rem;width:52px;height:52px}
 }
+.demo-popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.demo-popup-overlay.show{display:flex}
+.demo-popup{background:#fff;border-radius:16px;padding:40px;max-width:480px;width:90%;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.3)}
+.demo-popup-icon{width:60px;height:60px;background:#f0f0f0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.demo-popup h2{font-size:1.5rem;font-weight:700;margin-bottom:16px}
+.demo-popup p{font-size:0.95rem;color:#555;line-height:1.8;margin-bottom:12px}
+.demo-popup strong{color:#111}
+.demo-popup .popup-cta{display:inline-block;padding:14px 32px;background:#c9a14e;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;margin-top:8px;transition:transform 0.3s}
+.demo-popup .popup-cta:hover{transform:translateY(-2px)}
+.demo-popup .popup-dismiss{display:block;margin:16px auto 0;background:none;border:none;color:#888;cursor:pointer;font-size:0.9rem}
+.demo-popup .popup-dismiss:hover{color:#111}
 </style>
 </head>
 <body>
@@ -281,6 +292,17 @@ footer .credit{opacity:.4;font-size:.7rem;margin-top:.8rem}
   <p class="credit">Demo redesign by NeoCode Studio</p>
 </footer>
 
+<div class="demo-popup-overlay" id="demoPopup">
+  <div class="demo-popup">
+    <div class="demo-popup-icon"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <h2>Like what you see?</h2>
+    <p>This is a free demo built by <strong>NeoCode Studio</strong> to show you what your website could look like. No obligations, no cost for this preview.</p>
+    <p>If you'd like to make it yours, we'd love to chat.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+    <button class="popup-dismiss" onclick="document.getElementById('demoPopup').classList.remove('show')">Continue browsing</button>
+  </div>
+</div>
+
 <script>
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -295,6 +317,13 @@ function toggleMenu(){const open=mobileNav.classList.toggle('open');overlay.clas
 burger.addEventListener('click',toggleMenu);
 overlay.addEventListener('click',toggleMenu);
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(mobileNav.classList.contains('open'))toggleMenu()}));
+var popupShown=false;
+window.addEventListener('scroll',function(){
+  if(!popupShown){
+    var scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    if(scrollPercent>0.7){popupShown=true;document.getElementById('demoPopup').classList.add('show')}
+  }
+});
 </script>
 
 </body>

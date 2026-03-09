@@ -1549,7 +1549,8 @@
         (function() {
             var shown = false;
             window.addEventListener('scroll', function() {
-                if (!shown && window.scrollY > window.innerHeight * 0.6) {
+                var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                if (!shown && scrollPercent > 0.7) {
                     shown = true;
                     document.getElementById('demoPopup').classList.add('show');
                 }

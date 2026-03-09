@@ -1244,7 +1244,8 @@
         const popupDismiss = document.getElementById('popupDismiss');
 
         window.addEventListener('scroll', () => {
-            if (!popupShown && window.scrollY > window.innerHeight * 0.6) {
+            var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+            if (!popupShown && scrollPercent > 0.7) {
                 popupShown = true;
                 popup.classList.add('show');
                 document.body.style.overflow = 'hidden';
