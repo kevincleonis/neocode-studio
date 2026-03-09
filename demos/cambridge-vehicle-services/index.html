@@ -1,236 +1,750 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cambridge Vehicle Services | Expert Car Repairs & MOT | Cambridge</title>
-<meta name="description" content="Cambridge's trusted garage for MOT testing, car servicing, repairs and diagnostics. Expert mechanics, fair prices, and honest advice since day one.">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--steel:#1e3a5f;--blue:#2563eb;--lightblue:#3b82f6;--sky:#eff6ff;--dark:#0c1929;--text:#334155;--white:#fff;--amber:#f59e0b;--red:#ef4444}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--white)}
-a{text-decoration:none;color:inherit}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge Vehicle Services | MOT, Servicing & Repairs in Cambridge</title>
+    <meta name="description" content="Cambridge Vehicle Services - your trusted local garage for MOT testing, servicing, repairs, diagnostics, tyres and brakes in Cambridge.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Floating Call */
-.float-call{position:fixed;bottom:2rem;right:2rem;z-index:99;background:var(--blue);color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all .3s;animation:bob 3s ease-in-out infinite}
-.float-call:hover{transform:scale(1.1);background:var(--steel)}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        :root {
+            --racing-green: #1a3c34;
+            --racing-green-light: #245045;
+            --racing-green-dark: #112822;
+            --silver: #c0c0c0;
+            --silver-light: #d4d4d4;
+            --pale-grey: #f2f2f2;
+            --white: #ffffff;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --text-light: #666666;
+            --accent: #e8b931;
+        }
 
-/* Nav */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:70px}
-nav .logo{font-weight:800;font-size:1.3rem;color:var(--steel)}
-nav .logo span{color:var(--blue)}
-nav ul{list-style:none;display:flex;gap:2rem}
-nav ul a{font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
-nav ul a:hover{color:var(--blue)}
-.nav-call{background:var(--blue);color:#fff;padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .3s}
-.nav-call:hover{background:var(--steel)}
+        html { scroll-behavior: smooth; }
 
-/* Hero */
-.hero{min-height:92vh;background:linear-gradient(145deg,var(--dark) 0%,var(--steel) 50%,#1e40af 100%);display:flex;align-items:center;padding:5rem 2rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border:60px solid rgba(37,99,235,0.08);border-radius:50%}
-.hero::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);border-radius:50%}
-.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;width:100%;position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:var(--red);padding:.4rem 1rem;border-radius:6px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
-.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--white);line-height:1.15;font-weight:800;margin-bottom:1rem}
-.hero h1 span{background:linear-gradient(135deg,var(--lightblue),#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:rgba(255,255,255,0.6);font-size:1.05rem;line-height:1.8;margin-bottom:2rem}
-.hero-pills{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
-.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);padding:.5rem 1rem;border-radius:25px;font-size:.8rem;font-weight:500;backdrop-filter:blur(4px)}
-.btn-cta{display:inline-block;background:var(--blue);color:#fff;padding:1rem 2.5rem;border-radius:10px;font-weight:700;font-size:1rem;transition:all .3s;box-shadow:0 4px 15px rgba(37,99,235,0.3)}
-.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,0.4)}
-.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.hero-stat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:1.8rem;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
-.hero-stat:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
-.hero-stat .num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#93c5fd,var(--lightblue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-stat .lbl{color:rgba(255,255,255,0.45);font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem}
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
 
-/* Services */
-.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
-.tag{color:var(--blue);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
-.services h2{font-size:2.5rem;font-weight:800;margin-bottom:.5rem}
-.services>p{color:var(--text);margin-bottom:3rem}
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.srv-card{border:1px solid #e2e8f0;border-radius:14px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;background:var(--white)}
-.srv-card:hover{border-color:var(--blue);box-shadow:0 8px 30px rgba(37,99,235,0.08);transform:translateY(-3px)}
-.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--lightblue));transform:scaleX(0);transition:transform .3s}
-.srv-card:hover::after{transform:scaleX(1)}
-.srv-emoji{font-size:2rem;margin-bottom:1rem}
-.srv-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-.srv-card p{color:#64748b;font-size:.85rem;line-height:1.7}
-.srv-card .price{margin-top:1rem;font-weight:700;color:var(--blue);font-size:.9rem}
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lexend', sans-serif;
+            line-height: 1.2;
+        }
 
-/* Promise */
-.promise{padding:5rem 2rem;background:var(--sky)}
-.promise-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.promise-item .icon{font-size:2rem;margin-bottom:.8rem}
-.promise-item h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.promise-item p{font-size:.8rem;color:#64748b;line-height:1.5}
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
 
-/* Reviews */
-.reviews{padding:6rem 2rem;background:var(--white)}
-.rev-inner{max-width:1100px;margin:0 auto;text-align:center}
-.rev-inner h2{font-size:2.5rem;font-weight:800;margin-bottom:3rem}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:left}
-.rev-card{background:var(--sky);border-radius:14px;padding:2rem}
-.rev-stars{color:var(--amber);margin-bottom:.8rem;font-size:1.1rem}
-.rev-card blockquote{font-size:.92rem;line-height:1.7;color:#475569;margin-bottom:1rem}
-.rev-name{font-weight:700;font-size:.85rem}
-.rev-via{font-size:.7rem;color:#94a3b8}
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* CTA */
-.cta{padding:5rem 2rem;background:linear-gradient(135deg,var(--steel),var(--blue));text-align:center;color:#fff}
-.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
-.cta p{opacity:.85;font-size:1.1rem;margin-bottom:2rem}
-.btn-white{display:inline-block;background:#fff;color:var(--blue);padding:1rem 2.5rem;border-radius:10px;font-weight:700;font-size:1rem;transition:all .3s}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
-.cta-phone{display:block;margin-top:1.5rem;font-size:1.8rem;font-weight:800}
+        /* HEADER */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--racing-green);
+            transition: box-shadow 0.3s ease;
+        }
+        .header.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
 
-/* Footer */
-footer{background:var(--dark);color:rgba(255,255,255,0.4);padding:2.5rem 2rem;text-align:center;font-size:.8rem}
-footer .logo{color:#fff;font-size:1.1rem;font-weight:800;margin-bottom:.8rem}
-footer .logo span{color:var(--blue)}
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px; height: 72px; max-width: 1200px; margin: 0 auto;
+        }
 
-@media(max-width:768px){
-nav ul{display:none}
-.hero-grid{grid-template-columns:1fr}
-.hero-right{grid-template-columns:1fr 1fr}
-.srv-grid{grid-template-columns:1fr}
-.promise-inner{grid-template-columns:1fr 1fr}
-.rev-grid{grid-template-columns:1fr}
-.float-call{bottom:1.5rem;right:1.5rem;width:50px;height:50px;font-size:1.2rem}
-}
-</style>
+        .logo {
+            font-family: 'Lexend', sans-serif; font-weight: 800;
+            font-size: 1.3rem; color: var(--white); letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex; align-items: center; gap: 32px; list-style: none;
+        }
+        .nav-links a {
+            color: var(--silver-light); font-size: 0.95rem; font-weight: 500;
+            transition: color 0.3s ease; position: relative;
+        }
+        .nav-links a:hover, .nav-links a:focus { color: var(--white); outline: none; }
+        .nav-links a:focus-visible {
+            outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--accent); color: var(--racing-green-dark) !important;
+            padding: 10px 24px; border-radius: 6px; font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(232,185,49,0.4); }
+        .nav-cta::after { display: none !important; }
+
+        .built-by { font-size: 0.75rem; color: var(--silver); opacity: 0.6; transition: opacity 0.3s ease; }
+        .built-by:hover { opacity: 1; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; z-index: 1001;
+        }
+        .hamburger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+        .hamburger .bar {
+            display: block; width: 24px; height: 2px; background: var(--white);
+            transition: all 0.3s ease; margin: 3px 0; border-radius: 2px;
+        }
+        .hamburger.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active .bar:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+        .hamburger.active .bar:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+        /* HERO */
+        .hero {
+            position: relative; min-height: 100vh; display: flex; align-items: center;
+            background: linear-gradient(165deg, var(--racing-green-dark) 0%, var(--racing-green) 50%, var(--racing-green-light) 100%);
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            opacity: 0.2;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(165deg, rgba(26,60,52,0.92) 0%, rgba(26,60,52,0.75) 100%);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 120px 0 80px; }
+        .hero-badge {
+            display: inline-block; background: rgba(232,185,49,0.15); border: 1px solid rgba(232,185,49,0.3);
+            color: var(--accent); font-size: 0.85rem; font-weight: 600; padding: 6px 16px;
+            border-radius: 50px; margin-bottom: 24px; font-family: 'Lexend', sans-serif; letter-spacing: 0.5px;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 800; color: var(--white);
+            margin-bottom: 20px; letter-spacing: -1px;
+        }
+        .hero h1 .highlight { color: var(--accent); }
+        .hero p { font-size: 1.15rem; color: var(--silver-light); margin-bottom: 36px; max-width: 550px; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+            border-radius: 8px; font-family: 'Lexend', sans-serif; font-weight: 600;
+            font-size: 1rem; cursor: pointer; border: none; transition: all 0.3s ease;
+        }
+        .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+        .btn-primary { background: var(--accent); color: var(--racing-green-dark); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,185,49,0.35); }
+        .btn-secondary { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+        .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+
+        .hero-stats {
+            display: flex; gap: 48px; margin-top: 56px; padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-stat h3 { font-size: 2rem; font-weight: 700; color: var(--accent); }
+        .hero-stat p { font-size: 0.85rem; color: var(--silver); margin-bottom: 0; }
+
+        /* ABOUT */
+        .about { padding: 100px 0; background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .about-image {
+            position: relative; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.1);
+        }
+        .about-image img { width: 100%; height: 420px; object-fit: cover; }
+        .about-image-badge {
+            position: absolute; bottom: 20px; left: 20px; background: var(--racing-green);
+            color: var(--white); padding: 12px 20px; border-radius: 8px;
+            font-family: 'Lexend', sans-serif; font-weight: 600; font-size: 0.9rem;
+        }
+        .section-label {
+            font-family: 'Lexend', sans-serif; font-size: 0.85rem; font-weight: 600;
+            color: var(--racing-green); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700;
+            color: var(--dark); margin-bottom: 20px; letter-spacing: -0.5px;
+        }
+        .about-text p { color: var(--text-light); margin-bottom: 16px; font-size: 1.05rem; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+        .about-feature { display: flex; align-items: center; gap: 10px; font-weight: 500; color: var(--text); }
+        .about-feature .icon {
+            width: 36px; height: 36px; background: rgba(26,60,52,0.08); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; color: var(--racing-green);
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+
+        /* SERVICES */
+        .services { padding: 100px 0; background: var(--pale-grey); }
+        .services .section-header { text-align: center; margin-bottom: 56px; }
+        .services .section-header p { color: var(--text-light); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .service-card {
+            background: var(--white); border-radius: 16px; padding: 36px 28px;
+            transition: all 0.4s ease; border: 1px solid rgba(0,0,0,0.05);
+            position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--racing-green); transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 56px; height: 56px; background: rgba(26,60,52,0.08); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+            margin-bottom: 20px; color: var(--racing-green);
+        }
+        .service-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+        .service-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; }
+
+        /* WHY CHOOSE US */
+        .why-us {
+            padding: 100px 0; background: var(--racing-green); color: var(--white);
+            position: relative; overflow: hidden;
+        }
+        .why-us::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(232,185,49,0.06) 0%, transparent 70%); border-radius: 50%;
+        }
+        .why-us .section-label { color: var(--accent); }
+        .why-us .section-title { color: var(--white); }
+        .why-us-header { text-align: center; margin-bottom: 56px; }
+        .why-us-header p { color: var(--silver); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+        .why-us-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; position: relative; z-index: 1; }
+        .why-card {
+            text-align: center; padding: 36px 20px; background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: all 0.3s ease;
+        }
+        .why-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+        .why-card-icon {
+            width: 64px; height: 64px; background: rgba(232,185,49,0.1); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.6rem;
+        }
+        .why-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+        .why-card p { color: var(--silver); font-size: 0.9rem; line-height: 1.7; }
+
+        /* TESTIMONIALS */
+        .testimonials { padding: 100px 0; background: var(--white); }
+        .testimonials .section-header { text-align: center; margin-bottom: 56px; }
+        .testimonials .section-header p { color: var(--text-light); max-width: 500px; margin: 0 auto; font-size: 1.05rem; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .testimonial-card {
+            background: var(--pale-grey); border-radius: 16px; padding: 32px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+        .testimonial-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+        .testimonial-card blockquote {
+            font-size: 1rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic;
+        }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar {
+            width: 44px; height: 44px; background: var(--racing-green); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--white);
+            font-family: 'Lexend', sans-serif; font-weight: 700; font-size: 1rem;
+        }
+        .testimonial-author-info h4 { font-size: 0.95rem; font-weight: 600; color: var(--dark); }
+        .testimonial-author-info p { font-size: 0.8rem; color: var(--text-light); }
+
+        /* CONTACT */
+        .contact { padding: 100px 0; background: var(--pale-grey); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+        .contact-info { padding-right: 20px; }
+        .contact-info .section-title { margin-bottom: 16px; }
+        .contact-info > p { color: var(--text-light); font-size: 1.05rem; margin-bottom: 36px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+        .contact-item-icon {
+            width: 48px; height: 48px; background: var(--racing-green); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; color: var(--white);
+            font-size: 1.2rem; flex-shrink: 0;
+        }
+        .contact-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+        .contact-item p, .contact-item a { color: var(--text-light); font-size: 0.95rem; }
+        .contact-item a:hover { color: var(--racing-green); }
+        .contact-item a:focus-visible { outline: 2px solid var(--racing-green); outline-offset: 2px; border-radius: 2px; }
+        .contact-map {
+            border-radius: 16px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            min-height: 400px; background: var(--silver);
+        }
+        .contact-map img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; }
+        .contact-hours { margin-top: 32px; background: var(--white); border-radius: 12px; padding: 24px; }
+        .contact-hours h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
+        .hours-row {
+            display: flex; justify-content: space-between; padding: 6px 0;
+            font-size: 0.9rem; color: var(--text-light);
+        }
+        .hours-row:not(:last-child) { border-bottom: 1px solid var(--pale-grey); }
+        .hours-row span:last-child { font-weight: 500; color: var(--text); }
+
+        /* FOOTER */
+        .footer { background: var(--racing-green-dark); color: var(--silver); padding: 48px 0 24px; }
+        .footer-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 20px;
+        }
+        .footer-left p { font-size: 0.85rem; margin-top: 4px; opacity: 0.6; }
+        .footer-logo { font-family: 'Lexend', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); }
+        .footer-right { text-align: right; }
+        .footer-right a {
+            color: var(--accent); font-size: 0.85rem; font-weight: 500; transition: opacity 0.3s ease;
+        }
+        .footer-right a:hover { opacity: 0.8; }
+        .footer-right a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+        .footer-right p { font-size: 0.8rem; opacity: 0.5; margin-top: 4px; }
+
+        /* NEOCODE POPUP */
+        .nc-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            z-index: 9998; opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .nc-overlay.active { opacity: 1; visibility: visible; }
+        .nc-popup {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+            z-index: 9999; background: var(--white); border-radius: 20px; padding: 48px 40px;
+            max-width: 480px; width: 90%; text-align: center;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .nc-popup.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+        .nc-popup-close {
+            position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+            background: var(--pale-grey); border: none; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            color: var(--text-light); transition: all 0.2s ease;
+        }
+        .nc-popup-close:hover { background: var(--silver); color: var(--dark); }
+        .nc-popup-close:focus-visible { outline: 2px solid var(--racing-green); outline-offset: 2px; }
+        .nc-popup-icon {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, var(--racing-green), var(--racing-green-light));
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px; font-size: 1.8rem;
+        }
+        .nc-popup h3 { font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+        .nc-popup p { color: var(--text-light); font-size: 1rem; line-height: 1.6; margin-bottom: 28px; }
+        .nc-popup .btn { width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 32px; }
+
+        /* REVEAL ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .why-us-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: var(--racing-green-dark); flex-direction: column; align-items: flex-start;
+                padding: 100px 32px 32px; gap: 0; transition: right 0.4s ease;
+                box-shadow: -8px 0 24px rgba(0,0,0,0.2);
+            }
+            .nav-links.open { right: 0; }
+            .nav-links li { width: 100%; }
+            .nav-links a {
+                display: block; padding: 14px 0; font-size: 1.05rem;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            .nav-links a::after { display: none; }
+            .nav-cta { margin-top: 16px; text-align: center; }
+            .built-by { margin-top: 24px; display: block; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image { order: -1; }
+            .services-grid { grid-template-columns: 1fr; }
+            .why-us-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 28px; }
+            .hero-stat h3 { font-size: 1.6rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-right { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .about-features { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-<a href="tel:01223566475" class="float-call" title="Call Now">&#128222;</a>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#hero" class="logo">Cambridge<span>VS</span></a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+                    <li><a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="built-by">Built by NeoCode Studio</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
 
-<nav>
-  <div class="logo">Cambridge <span>Vehicle</span> Services</div>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="tel:01223566475" class="nav-call">&#128222; 01223 566 475</a>
-</nav>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">Cambridge's Trusted Garage</span>
+                <h1>Expert Vehicle Care You Can <span class="highlight">Count On</span></h1>
+                <p>We're the local team Cambridge drivers trust for MOTs, servicing and repairs. Honest pricing, reliable work and a garage that's always here when you need us.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        Book Now
+                    </a>
+                    <a href="#services" class="btn btn-secondary">View Our Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3>20+</h3>
+                        <p>Years of Experience</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>5,000+</h3>
+                        <p>Vehicles Serviced</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>4.8</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="hero-badge">&#128295; MOT &amp; Service Centre</div>
-      <h1>Cambridge's Trusted <span>Vehicle Experts</span></h1>
-      <p>From MOTs and full servicing to complex diagnostics and repairs. Honest advice, transparent pricing, and expert mechanics you can rely on.</p>
-      <div class="hero-pills">
-        <span class="pill">&#10003; MOT Testing</span>
-        <span class="pill">&#10003; Full Servicing</span>
-        <span class="pill">&#10003; Diagnostics</span>
-        <span class="pill">&#10003; All Makes &amp; Models</span>
-      </div>
-      <a href="tel:01223566475" class="btn-cta">&#128222; Book Your MOT Today</a>
-    </div>
-    <div class="hero-right">
-      <div class="hero-stat"><div class="num">1000+</div><div class="lbl">Cars Serviced</div></div>
-      <div class="hero-stat"><div class="num">5&#9733;</div><div class="lbl">Google Rated</div></div>
-      <div class="hero-stat"><div class="num">All</div><div class="lbl">Makes &amp; Models</div></div>
-      <div class="hero-stat"><div class="num">&pound;0</div><div class="lbl">Free Quotes</div></div>
-    </div>
-  </div>
-</section>
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mechanic working on a car engine at Cambridge Vehicle Services" loading="lazy">
+                    <div class="about-image-badge">Trusted Since Day One</div>
+                </div>
+                <div class="about-text reveal reveal-delay-1">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title">Your Local Garage That Actually Cares</h2>
+                    <p>Cambridge Vehicle Services isn't just another garage. We're your neighbours, and we treat every car like it's our own. Whether you need a quick MOT or a full engine rebuild, you'll get straight-talking advice and work that's done properly the first time.</p>
+                    <p>We've built our reputation on honesty and reliability. There's no upselling here, no unnecessary repairs. Just skilled mechanics who take pride in keeping Cambridge on the road safely.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>MOT Testing Station</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>All Makes &amp; Models</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>Transparent Pricing</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>Experienced Team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="services" id="services">
-  <div class="tag">Our Services</div>
-  <h2>Complete Vehicle Care</h2>
-  <p>Everything your car needs under one roof, from routine maintenance to complex repairs.</p>
-  <div class="srv-grid">
-    <div class="srv-card">
-      <div class="srv-emoji">&#128203;</div>
-      <h3>MOT Testing</h3>
-      <p>Official MOT testing station. Quick turnaround with honest assessments. We'll never sell you work you don't need.</p>
-      <div class="price">From &pound;35</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#128295;</div>
-      <h3>Full Servicing</h3>
-      <p>Interim and full service packages using OEM-quality parts. Keeps your warranty intact and your car running smoothly.</p>
-      <div class="price">From &pound;99</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#128187;</div>
-      <h3>Diagnostics</h3>
-      <p>Advanced computer diagnostics for engine management, ABS, airbag, and electrical fault finding on all vehicle makes.</p>
-      <div class="price">From &pound;45</div>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#9881;</div>
-      <h3>Brakes &amp; Suspension</h3>
-      <p>Brake pad and disc replacement, suspension repairs, shock absorbers, and wheel alignment for a safer ride.</p>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#127777;</div>
-      <h3>Exhaust &amp; Emissions</h3>
-      <p>Full exhaust system repairs, catalytic converter work, and emissions testing to keep you road legal.</p>
-    </div>
-    <div class="srv-card">
-      <div class="srv-emoji">&#128663;</div>
-      <h3>Clutch &amp; Gearbox</h3>
-      <p>Clutch replacement, gearbox repairs, and drivetrain servicing for both manual and automatic vehicles.</p>
-    </div>
-  </div>
-</section>
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">Services You Can Rely On</h2>
+                <p>From routine check-ups to complex repairs, we've got the tools and the know-how to keep your vehicle running at its best.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <h3>MOT Testing</h3>
+                    <p>Don't let your MOT catch you off guard. We'll run a thorough inspection, walk you through any issues, and get your vehicle road-legal fast. No surprises, just clear results.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                    <h3>Full Servicing</h3>
+                    <p>Regular servicing keeps your car healthy and your warranty intact. We offer interim and full service packages tailored to your vehicle's needs and mileage.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+                    <h3>Repairs</h3>
+                    <p>Something not right with your car? We'll diagnose the problem, explain your options and fix it properly. We don't do bodge jobs, only lasting solutions.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <h3>Diagnostics</h3>
+                    <p>Warning light on? Our diagnostic equipment reads fault codes from all major vehicle systems. We'll pinpoint the issue quickly so you're not paying for guesswork.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                    <h3>Tyres</h3>
+                    <p>We supply and fit tyres from leading brands at competitive prices. Whether you need a single replacement or a full set, we'll get you sorted same day.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+                    <h3>Brakes</h3>
+                    <p>Your brakes aren't something to gamble on. We inspect, repair and replace brake pads, discs, callipers and fluid to keep you stopping safely every time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="promise">
-  <div class="promise-inner">
-    <div class="promise-item"><div class="icon">&#128176;</div><h4>Transparent Pricing</h4><p>No hidden charges. We quote before we start and stick to it.</p></div>
-    <div class="promise-item"><div class="icon">&#128274;</div><h4>Warranty Protected</h4><p>Service your car without voiding your manufacturer's warranty.</p></div>
-    <div class="promise-item"><div class="icon">&#9201;</div><h4>Quick Turnaround</h4><p>Most services completed same-day. We value your time.</p></div>
-    <div class="promise-item"><div class="icon">&#127942;</div><h4>Qualified Mechanics</h4><p>Fully trained, experienced technicians on every job.</p></div>
-  </div>
-</div>
+    <!-- WHY CHOOSE US -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="why-us-header reveal">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">We Don't Just Fix Cars. We Build Trust.</h2>
+                <p>There's a reason Cambridge drivers keep coming back. Here's what sets us apart from every other garage down the road.</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-card reveal reveal-delay-1">
+                    <div class="why-card-icon"><svg width="28" height="28" fill="none" stroke="#e8b931" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Honest &amp; Transparent</h3>
+                    <p>We'll never recommend work you don't need. You'll always know exactly what we're doing and why before we start.</p>
+                </div>
+                <div class="why-card reveal reveal-delay-2">
+                    <div class="why-card-icon"><svg width="28" height="28" fill="none" stroke="#e8b931" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <h3>Fast Turnaround</h3>
+                    <p>We know you need your car. Most services and repairs are completed same day so you're not left waiting around.</p>
+                </div>
+                <div class="why-card reveal reveal-delay-3">
+                    <div class="why-card-icon"><svg width="28" height="28" fill="none" stroke="#e8b931" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                    <h3>Experienced Team</h3>
+                    <p>Our mechanics have decades of hands-on experience working with every make and model on the road today.</p>
+                </div>
+                <div class="why-card reveal reveal-delay-4">
+                    <div class="why-card-icon"><svg width="28" height="28" fill="none" stroke="#e8b931" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <h3>5-Star Reviews</h3>
+                    <p>Don't take our word for it. Our customers consistently rate us 5 stars for quality work and friendly service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="reviews" id="reviews">
-  <div class="rev-inner">
-    <div class="tag">Reviews</div>
-    <h2>What Cambridge Drivers Say</h2>
-    <div class="rev-grid">
-      <div class="rev-card">
-        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Brilliant service from start to finish. Honest about what needed doing and what could wait. Fair prices too. Won't go anywhere else now."</blockquote>
-        <div class="rev-name">Mark S.</div>
-        <div class="rev-via">Google Review</div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Had my MOT done here and they were fantastic. Found a couple of issues, explained everything clearly, and fixed it all the same day. Highly recommend."</blockquote>
-        <div class="rev-name">Lisa P.</div>
-        <div class="rev-via">Google Review</div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Been bringing my cars here for years. Always reliable, always honest. The kind of garage you can actually trust. Great team."</blockquote>
-        <div class="rev-name">James W.</div>
-        <div class="rev-via">Google Review</div>
-      </div>
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p>Real feedback from real Cambridge drivers who trust us with their vehicles.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Took my car in for an MOT and they found a couple of small issues. They explained everything clearly, fixed it all the same day and the price was very fair. Won't go anywhere else now."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JM</div>
+                        <div class="testimonial-author-info">
+                            <h4>James M.</h4>
+                            <p>Cambridge</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"I've been bringing my cars here for years. They're always honest about what needs doing and what can wait. That's rare to find in a garage these days. Highly recommended."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SP</div>
+                        <div class="testimonial-author-info">
+                            <h4>Sarah P.</h4>
+                            <p>Ely</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Had a brake warning light come on and they got me in the same morning. Diagnosed the problem, ordered the parts and had everything sorted by the afternoon. Brilliant service."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DK</div>
+                        <div class="testimonial-author-info">
+                            <h4>David K.</h4>
+                            <p>Huntingdon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <span class="section-label">Get in Touch</span>
+                    <h2 class="section-title">Ready to Book In?</h2>
+                    <p>Whether you need an MOT, a service or just some honest advice, we're here to help. Give us a ring or drop by the garage.</p>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:+441234567890">Call us to book</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:cvs.cambs@gmail.com">cvs.cambs@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Cambridge, UK</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h4>Opening Hours</h4>
+                        <div class="hours-row"><span>Monday - Friday</span><span>8:00 AM - 6:00 PM</span></div>
+                        <div class="hours-row"><span>Saturday</span><span>8:00 AM - 1:00 PM</span></div>
+                        <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                    </div>
+                </div>
+
+                <div class="contact-map reveal reveal-delay-1">
+                    <img src="https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Auto garage exterior in Cambridge" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <div class="footer-logo">Cambridge Vehicle Services</div>
+                    <p>&copy; 2026 Cambridge Vehicle Services. All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">Website by NeoCode Studio</a>
+                    <p>Premium web design for local businesses</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="nc-overlay" id="ncOverlay"></div>
+    <div class="nc-popup" id="ncPopup">
+        <button class="nc-popup-close" id="ncClose" aria-label="Close popup">&times;</button>
+        <div class="nc-popup-icon"><svg width="32" height="32" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h3>Like what you see?</h3>
+        <p>This is a free preview built by NeoCode Studio. Let's make it yours.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Get Your Website</a>
     </div>
-  </div>
-</section>
 
-<section class="cta" id="contact">
-  <h2>Need Your Car Looked At?</h2>
-  <p>Free quotes. Transparent pricing. Expert mechanics in Cambridge.</p>
-  <a href="tel:01223566475" class="btn-white">Book Now</a>
-  <span class="cta-phone">&#128222; 01223 566 475</span>
-</section>
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-<footer>
-  <div class="logo">Cambridge <span>Vehicle</span> Services</div>
-  <p>Cambridge, Cambridgeshire</p>
-  <p style="margin-top:.5rem">cvs.cambs@gmail.com</p>
-  <p style="margin-top:1rem">&copy; 2025 Cambridge Vehicle Services. All rights reserved.</p>
-  <p style="margin-top:.5rem;opacity:.5;font-size:.7rem">Demo redesign by NeoCode Studio</p>
-</footer>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // IntersectionObserver scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // NeoCode popup at 70% scroll
+        let popupShown = false;
+        const ncOverlay = document.getElementById('ncOverlay');
+        const ncPopup = document.getElementById('ncPopup');
+        const ncClose = document.getElementById('ncClose');
+
+        function showPopup() {
+            ncOverlay.classList.add('active');
+            ncPopup.classList.add('active');
+        }
+
+        function hidePopup() {
+            ncOverlay.classList.remove('active');
+            ncPopup.classList.remove('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                popupShown = true;
+                showPopup();
+            }
+        });
+
+        ncClose.addEventListener('click', hidePopup);
+        ncOverlay.addEventListener('click', hidePopup);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hidePopup();
+        });
+    </script>
 
 </body>
 </html>

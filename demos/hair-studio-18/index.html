@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Studio 18 | Premium Hair Salon & Beauty</title>
+    <meta name="description" content="Hair Studio 18 - Your go-to hair salon for cuts, colour, styling, treatments and bridal packages. Book your appointment today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush: #e8c4c8;
+            --plum: #4a1942;
+            --cream: #fef9f4;
+            --plum-light: #6b2d63;
+            --plum-dark: #341230;
+            --blush-light: #f2dce0;
+            --blush-dark: #d4a8ad;
+            --text: #3a2a3a;
+            --text-light: #6e5c6e;
+            --white: #ffffff;
+            --shadow: rgba(74, 25, 66, 0.12);
+            --shadow-lg: rgba(74, 25, 66, 0.18);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== FOCUS STATES ========== */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 3px solid var(--plum);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ========== HEADER / NAV ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(254, 249, 244, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(232, 196, 200, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--plum);
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--blush-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--plum);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--plum);
+            color: var(--white) !important;
+            padding: 10px 24px !important;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            letter-spacing: 1px !important;
+            transition: background 0.3s ease, transform 0.3s ease !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-cta:hover {
+            background: var(--plum-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--plum);
+            transition: transform 0.35s ease, opacity 0.25s ease;
+            margin: 3.5px 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Built by badge */
+        .built-by {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 1002;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--plum);
+            background: rgba(254, 249, 244, 0.9);
+            padding: 6px 12px;
+            border-radius: 50px;
+            border: 1px solid var(--blush);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(6px);
+            transition: background 0.3s ease;
+        }
+
+        .built-by:hover {
+            background: var(--blush-light);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--plum-dark) 0%, var(--plum) 50%, var(--plum-light) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(74, 25, 66, 0.5) 0%, rgba(52, 18, 48, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 120px 24px 80px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--blush);
+            border: 1px solid rgba(232, 196, 200, 0.4);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            color: var(--white);
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--blush);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--blush);
+            color: var(--plum);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-plum {
+            background: var(--plum);
+            color: var(--white);
+        }
+
+        .btn-plum:hover {
+            background: var(--plum-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow-lg);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .hero-scroll .arrow {
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 8px auto 0;
+            border-right: 2px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: rotate(45deg) translate(0, 0); }
+            40% { transform: rotate(45deg) translate(5px, 5px); }
+            60% { transform: rotate(45deg) translate(3px, 3px); }
+        }
+
+        /* ========== SECTION STYLES ========== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--plum-light);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--plum);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 2px;
+            background: var(--blush);
+            margin: 0 auto 20px;
+        }
+
+        .section-desc {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--blush);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .about-text h2 {
+            font-size: 2.4rem;
+            color: var(--plum);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px 12px;
+            background: var(--cream);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: var(--plum);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 6px;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--plum), var(--blush));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--blush-light), var(--blush));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--plum);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .service-card .service-starting {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--plum);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: var(--cream);
+            padding: 6px 16px;
+            border-radius: 50px;
+        }
+
+        /* ========== PRICING ========== */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .pricing-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px var(--shadow-lg);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--plum-dark), var(--plum));
+            color: var(--white);
+            border-color: var(--blush);
+        }
+
+        .pricing-card.featured .section-tag,
+        .pricing-card.featured h3,
+        .pricing-card.featured .pricing-amount {
+            color: var(--blush);
+        }
+
+        .pricing-card.featured .pricing-desc,
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: var(--blush);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blush);
+            color: var(--plum);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 50px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.6rem;
+            color: var(--plum);
+            margin-bottom: 8px;
+        }
+
+        .pricing-desc {
+            color: var(--text-light);
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 28px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            font-weight: 700;
+            color: var(--plum);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--plum);
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .pricing-amount span {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .pricing-note {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card.featured .pricing-note {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(74, 25, 66, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--plum-dark) 0%, var(--plum) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 196, 200, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials .section-tag { color: var(--blush); }
+        .testimonials .section-title { color: var(--white); }
+        .testimonials .section-line { background: var(--blush); }
+        .testimonials .section-desc { color: rgba(255, 255, 255, 0.7); }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 36px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .testimonial-stars {
+            color: var(--blush);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--blush);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--plum);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-info {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--plum);
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--blush-light);
+        }
+
+        .contact-detail-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-text strong {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--plum);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .contact-detail-text span {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-detail-text a {
+            color: var(--plum);
+            font-weight: 500;
+        }
+
+        .contact-detail-text a:hover {
+            color: var(--plum-light);
+        }
+
+        .contact-form {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 1.6rem;
+            color: var(--plum);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--plum);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--blush-light);
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--white);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--plum);
+            box-shadow: 0 0 0 4px rgba(74, 25, 66, 0.08);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--plum);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--plum-light);
+            transform: translateY(-2px);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--plum-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 340px;
+        }
+
+        .footer h4 {
+            color: var(--blush);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--blush);
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom a {
+            color: var(--blush);
+            font-weight: 500;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* ========== NEOCODE POPUP ========== */
+        .neocode-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(74, 25, 66, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .neocode-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .neocode-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            z-index: 9999;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .neocode-popup.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--cream);
+            color: var(--plum);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .neocode-popup-close:hover {
+            background: var(--blush-light);
+        }
+
+        .neocode-popup-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--plum);
+            margin-bottom: 8px;
+        }
+
+        .neocode-popup-logo span {
+            color: var(--blush-dark);
+        }
+
+        .neocode-popup h3 {
+            font-size: 1.8rem;
+            color: var(--plum);
+            margin-bottom: 12px;
+        }
+
+        .neocode-popup p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .neocode-popup .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image img {
+                height: 400px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 360px;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                gap: 28px;
+                padding: 40px;
+                box-shadow: -10px 0 40px var(--shadow-lg);
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .hero-content {
+                padding: 140px 20px 80px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .built-by {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Built by badge -->
+    <a href="https://neocodestudio.co.uk" target="_blank" class="built-by">Built by NeoCode Studio</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#hero" class="nav-logo">Hair Studio <span>18</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" onclick="closeMenu()">About</a>
+                <a href="#services" onclick="closeMenu()">Services</a>
+                <a href="#pricing" onclick="closeMenu()">Pricing</a>
+                <a href="#gallery" onclick="closeMenu()">Gallery</a>
+                <a href="#reviews" onclick="closeMenu()">Reviews</a>
+                <a href="#contact" onclick="closeMenu()" class="nav-cta">Book Now</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Hair Studio interior" loading="eager">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Welcome to Hair Studio 18</span>
+            <h1>Where <em>Beautiful</em> Hair Begins</h1>
+            <p class="hero-sub">We're passionate about making you look and feel your absolute best. From precision cuts to stunning colour, we've got you covered.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Book Your Visit</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <span class="arrow"></span>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal-left">
+                    <div class="about-image-accent"></div>
+                    <img src="https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Hair Studio 18 stylist at work" loading="lazy">
+                </div>
+                <div class="about-text reveal-right">
+                    <span class="section-tag">Our Story</span>
+                    <h2>More Than Just a Salon</h2>
+                    <p>Hair Studio 18 isn't just about haircuts. It's about creating a space where you can relax, unwind and leave feeling like the best version of yourself. Every client who walks through our door is treated like family.</p>
+                    <p>Our talented team stays ahead of the latest trends and techniques, so whether you're after a classic style or something totally new, you're in the right hands. We take the time to listen, consult and deliver results you'll love.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">18+</div>
+                            <div class="stat-label">Years Open</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5K+</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">Star Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">What We Do</span>
+                <h2 class="section-title">Our Services</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">From a quick trim to a total transformation, our expert stylists are here to help you find your perfect look.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">✂️</div>
+                    <h3>Cuts &amp; Styling</h3>
+                    <p>Precision cuts tailored to your face shape, lifestyle and personal style. Whether you want something bold or beautifully understated, we'll make it happen.</p>
+                    <span class="service-starting">From £25</span>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🎨</div>
+                    <h3>Colour</h3>
+                    <p>Full head, highlights, balayage, root touch-ups and creative colour. We use premium products to deliver vibrant, long-lasting results that won't damage your hair.</p>
+                    <span class="service-starting">From £45</span>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">💆</div>
+                    <h3>Treatments</h3>
+                    <p>Deep conditioning, keratin smoothing, scalp treatments and more. Give your hair the TLC it deserves with our restorative treatment menu.</p>
+                    <span class="service-starting">From £30</span>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">💍</div>
+                    <h3>Bridal</h3>
+                    <p>Your big day deserves flawless hair. We offer bridal consultations, trial runs and day-of styling for the bride and the whole wedding party.</p>
+                    <span class="service-starting">From £75</span>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">💫</div>
+                    <h3>Blow Dry &amp; Finish</h3>
+                    <p>Need to look your best in a hurry? Our blow dry bar gives you a gorgeous, salon-fresh finish in under an hour. Perfect for events, nights out or just because.</p>
+                    <span class="service-starting">From £20</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Our Pricing</span>
+                <h2 class="section-title">Transparent, Fair Pricing</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">No hidden fees, no surprises. Just straightforward pricing for exceptional results.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal-scale">
+                    <h3>Essential</h3>
+                    <p class="pricing-desc">Perfect for a quick refresh</p>
+                    <ul class="pricing-features">
+                        <li>Women's cut &amp; blow dry</li>
+                        <li>Men's cut &amp; style</li>
+                        <li>Children's cut</li>
+                        <li>Fringe trim</li>
+                        <li>Complimentary consultation</li>
+                    </ul>
+                    <div class="pricing-amount">£25 <span>/ from</span></div>
+                    <p class="pricing-note">Prices vary by stylist level</p>
+                </div>
+                <div class="pricing-card featured reveal-scale">
+                    <span class="pricing-badge">Most Popular</span>
+                    <h3>Colour &amp; Style</h3>
+                    <p class="pricing-desc">Our most-loved package</p>
+                    <ul class="pricing-features">
+                        <li>Full head colour or highlights</li>
+                        <li>Balayage / ombre</li>
+                        <li>Toner &amp; gloss</li>
+                        <li>Cut &amp; blow dry included</li>
+                        <li>Olaplex treatment add-on</li>
+                    </ul>
+                    <div class="pricing-amount">£65 <span>/ from</span></div>
+                    <p class="pricing-note">Free consultation before booking</p>
+                    <a href="#contact" class="btn btn-primary" style="margin-top: 8px;">Book Now</a>
+                </div>
+                <div class="pricing-card reveal-scale">
+                    <h3>Bridal</h3>
+                    <p class="pricing-desc">Your dream day, perfected</p>
+                    <ul class="pricing-features">
+                        <li>Bridal consultation</li>
+                        <li>Trial session</li>
+                        <li>Day-of styling</li>
+                        <li>Bridesmaid packages</li>
+                        <li>Travel to venue available</li>
+                    </ul>
+                    <div class="pricing-amount">£150 <span>/ from</span></div>
+                    <p class="pricing-note">Tailored to your wedding party</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Our Work</span>
+                <h2 class="section-title">Style Gallery</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">A glimpse of the transformations we create every day in the salon.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3993320/pexels-photo-3993320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Balayage hair colour result" loading="lazy">
+                </div>
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3993310/pexels-photo-3993310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Precision haircut styling" loading="lazy">
+                </div>
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3992870/pexels-photo-3992870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Blow dry and finish" loading="lazy">
+                </div>
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3993467/pexels-photo-3993467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Colour treatment in progress" loading="lazy">
+                </div>
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3993435/pexels-photo-3993435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Bridal hair styling" loading="lazy">
+                </div>
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3993324/pexels-photo-3993324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Hair treatment results" loading="lazy">
+                </div>
+                <div class="gallery-item reveal-scale">
+                    <img src="https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Creative hair colour" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Client Love</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Don't just take our word for it. Here's what our amazing clients have to say.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I've been coming to Hair Studio 18 for years and I wouldn't trust anyone else with my hair. The team is so talented and they always know exactly what I need. Absolutely love it here!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div>
+                            <div class="testimonial-name">Sophie M.</div>
+                            <div class="testimonial-info">Regular client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Had my wedding hair done here and it was perfect. They did a trial a few weeks before and on the day everything was exactly how I wanted. Can't recommend them enough for bridal hair!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">E</div>
+                        <div>
+                            <div class="testimonial-name">Emma T.</div>
+                            <div class="testimonial-info">Bridal client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Best balayage I've ever had, hands down. The colour is so natural and blended beautifully. I get compliments on it all the time. Already booked in for my next appointment!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">J</div>
+                        <div>
+                            <div class="testimonial-name">Jessica R.</div>
+                            <div class="testimonial-info">Colour client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Get in Touch</span>
+                <h2 class="section-title">Book Your Appointment</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Ready for a fresh look? Drop us a message or give us a call. We'd love to hear from you.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <h3>Let's Make It Happen</h3>
+                    <p>Whether you've got a specific style in mind or you're not quite sure yet, that's totally fine. We'll chat it through during your consultation and find the perfect look for you.</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📧</div>
+                        <div class="contact-detail-text">
+                            <strong>Email Us</strong>
+                            <a href="mailto:studio18hairandbeauty@outlook.com">studio18hairandbeauty@outlook.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">🌐</div>
+                        <div class="contact-detail-text">
+                            <strong>Website</strong>
+                            <a href="https://hairstudio18.co.uk/" target="_blank">hairstudio18.co.uk</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">🕐</div>
+                        <div class="contact-detail-text">
+                            <strong>Opening Hours</strong>
+                            <span>Tue - Sat: 9am - 6pm | Sun - Mon: Closed</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📍</div>
+                        <div class="contact-detail-text">
+                            <strong>Visit Us</strong>
+                            <span>Hair Studio 18, UK</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal-right">
+                    <h3>Send a Message</h3>
+                    <form action="#" method="POST" onsubmit="return handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07123 456 789">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="cut">Cut &amp; Styling</option>
+                                <option value="colour">Colour</option>
+                                <option value="treatment">Treatment</option>
+                                <option value="bridal">Bridal</option>
+                                <option value="blowdry">Blow Dry &amp; Finish</option>
+                                <option value="other">Something Else</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us what you're looking for..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Hair Studio 18</h3>
+                    <p>Your go-to salon for stunning cuts, colour and styling. We're dedicated to helping you look and feel incredible, one appointment at a time.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#services">Services</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#reviews">Reviews</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="#services">Cuts &amp; Styling</a>
+                        <a href="#services">Colour</a>
+                        <a href="#services">Treatments</a>
+                        <a href="#services">Bridal Hair</a>
+                        <a href="#services">Blow Dry Bar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Hair Studio 18. All rights reserved.</span>
+                <span>Website designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neocode-overlay" id="neocodeOverlay"></div>
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+        <div class="neocode-popup-logo">Neo<span>Code</span> Studio</div>
+        <h3>Like What You See?</h3>
+        <p>This is a free preview built by NeoCode Studio. Let's make it yours.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn btn-plum">Get Your Website</a>
+    </div>
+
+    <script>
+        // ========== HAMBURGER MENU ==========
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+        }
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // ========== HEADER SCROLL ==========
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ========== INTERSECTION OBSERVER ==========
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger animations within same parent
+                    const siblings = entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+                    let delay = 0;
+                    siblings.forEach((sib, i) => {
+                        if (sib === entry.target) delay = i * 100;
+                    });
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // ========== NEOCODE POPUP AT 70% SCROLL ==========
+        let popupShown = false;
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                popupShown = true;
+                document.getElementById('neocodeOverlay').classList.add('visible');
+                document.getElementById('neocodePopup').classList.add('visible');
+            }
+        });
+
+        // Close popup
+        document.getElementById('neocodeClose').addEventListener('click', closePopup);
+        document.getElementById('neocodeOverlay').addEventListener('click', closePopup);
+
+        function closePopup() {
+            document.getElementById('neocodeOverlay').classList.remove('visible');
+            document.getElementById('neocodePopup').classList.remove('visible');
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePopup();
+        });
+
+        // ========== FORM HANDLER ==========
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.form-submit');
+            btn.textContent = 'Message Sent!';
+            btn.style.background = '#2d8a4e';
+            setTimeout(() => {
+                btn.textContent = 'Send Message';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+            return false;
+        }
+
+        // ========== SMOOTH SCROLL FOR SAFARI ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
