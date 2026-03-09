@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmetology Dundee | Advanced Skin, Laser & Beauty Treatments</title>
+    <meta name="description" content="Cosmetology Dundee - Expert skin treatments, laser hair removal, anti-ageing, lashes, brows, body contouring and nails. Book your consultation today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --aubergine: #3c1053;
+            --aubergine-light: #5a2d73;
+            --aubergine-pale: #6e3f87;
+            --rose-gold: #d4917b;
+            --rose-gold-light: #e2b0a0;
+            --rose-gold-dark: #b8755f;
+            --ivory: #fdf8f4;
+            --ivory-warm: #f9f0e8;
+            --charcoal: #2a2028;
+            --charcoal-light: #4a3f4e;
+            --white: #ffffff;
+            --shadow: 0 4px 30px rgba(60, 16, 83, 0.08);
+            --shadow-lg: 0 12px 50px rgba(60, 16, 83, 0.12);
+            --shadow-card: 0 8px 35px rgba(60, 16, 83, 0.1);
+            --radius: 14px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Urbanist', sans-serif;
+            color: var(--charcoal);
+            background: var(--ivory);
+            line-height: 1.75;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* Focus States */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+            outline: 3px solid var(--rose-gold);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NeoCode Top Banner */
+        .nc-banner {
+            background: linear-gradient(135deg, var(--aubergine), var(--aubergine-light));
+            color: var(--white);
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        .nc-banner a {
+            color: var(--rose-gold-light);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        .nc-banner a:hover { color: var(--white); }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(253, 248, 244, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(60, 16, 83, 0.08);
+            transition: var(--transition);
+        }
+        .nav.scrolled {
+            box-shadow: var(--shadow);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--aubergine);
+            letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--rose-gold); }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--charcoal-light);
+            transition: color var(--transition);
+            letter-spacing: 0.3px;
+        }
+        .nav-links a:hover { color: var(--aubergine); }
+        .nav-cta {
+            background: var(--aubergine);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all var(--transition) !important;
+        }
+        .nav-cta:hover {
+            background: var(--aubergine-light) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--aubergine);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Section */
+        .section {
+            padding: 100px 0;
+        }
+        .section-label {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--aubergine);
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--charcoal-light);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+        .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 72px;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/3985338/pexels-photo-3985338.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            z-index: 0;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(60, 16, 83, 0.82) 0%, rgba(90, 45, 115, 0.6) 50%, rgba(212, 145, 123, 0.3) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            color: var(--white);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: var(--rose-gold-light);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            line-height: 1.15;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+        .hero h1 span { color: var(--rose-gold-light); }
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 36px;
+            opacity: 0.92;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition);
+            letter-spacing: 0.3px;
+        }
+        .btn-primary {
+            background: var(--rose-gold);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--rose-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 145, 123, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .hero-stat h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: 'Urbanist', sans-serif;
+            color: var(--rose-gold-light);
+        }
+        .hero-stat p {
+            font-size: 0.82rem;
+            opacity: 0.75;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .about-img img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+        .about-img-badge {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            background: var(--aubergine);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .about-img-badge h4 {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--rose-gold-light);
+        }
+        .about-img-badge p {
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+        .about-text p {
+            color: var(--charcoal-light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--aubergine);
+        }
+        .about-feature .icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* Services */
+        .bg-warm { background: var(--ivory-warm); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 48px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            border: 1px solid rgba(60, 16, 83, 0.04);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--aubergine), var(--aubergine-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.6rem;
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
+            color: var(--aubergine);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+        }
+
+        /* Treatment Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .menu-category {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(60, 16, 83, 0.04);
+        }
+        .menu-category-title {
+            font-size: 1.2rem;
+            color: var(--aubergine);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--rose-gold-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(60, 16, 83, 0.06);
+        }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item-name {
+            font-weight: 500;
+            font-size: 0.92rem;
+            color: var(--charcoal);
+        }
+        .menu-item-desc {
+            font-size: 0.78rem;
+            color: var(--charcoal-light);
+            margin-top: 2px;
+        }
+        .menu-item-price {
+            font-weight: 700;
+            color: var(--aubergine);
+            font-size: 0.95rem;
+            white-space: nowrap;
+            margin-left: 16px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 48px;
+        }
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60, 16, 83, 0.6), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 48px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(60, 16, 83, 0.04);
+            position: relative;
+        }
+        .testimonial-stars {
+            color: var(--rose-gold);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: var(--charcoal-light);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--aubergine), var(--rose-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--aubergine);
+        }
+        .testimonial-treatment {
+            font-size: 0.78rem;
+            color: var(--charcoal-light);
+        }
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 3rem;
+            color: var(--rose-gold-light);
+            opacity: 0.3;
+            font-family: 'Cinzel', serif;
+            line-height: 1;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 48px;
+        }
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--aubergine), var(--aubergine-light));
+            border-radius: var(--radius);
+            padding: 44px;
+            color: var(--white);
+        }
+        .contact-info-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        .contact-info-card > p {
+            opacity: 0.8;
+            font-size: 0.92rem;
+            margin-bottom: 32px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .contact-detail-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-detail h4 {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 2px;
+        }
+        .contact-detail p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        .contact-detail a {
+            color: var(--rose-gold-light);
+            transition: color var(--transition);
+        }
+        .contact-detail a:hover { color: var(--white); }
+        .contact-hours {
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .contact-hours h4 {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        .contact-hours p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.9;
+        }
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow-lg);
+        }
+        .contact-form h3 {
+            font-size: 1.4rem;
+            color: var(--aubergine);
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid rgba(60, 16, 83, 0.12);
+            border-radius: 10px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.92rem;
+            background: var(--ivory);
+            color: var(--charcoal);
+            transition: border-color var(--transition);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--rose-gold);
+            outline: none;
+        }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn-submit {
+            width: 100%;
+            background: var(--aubergine);
+            color: var(--white);
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 8px;
+        }
+        .btn-submit:hover {
+            background: var(--aubergine-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(60, 16, 83, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--aubergine);
+            color: var(--white);
+            padding: 60px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .footer-brand h3 span { color: var(--rose-gold-light); }
+        .footer-brand p {
+            font-size: 0.88rem;
+            opacity: 0.7;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+        .footer-col h4 {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 16px;
+            color: var(--rose-gold-light);
+            letter-spacing: 0.5px;
+        }
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            transition: opacity var(--transition);
+        }
+        .footer-col a:hover { opacity: 1; }
+        .footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            opacity: 0.6;
+        }
+        .footer-bottom a { color: var(--rose-gold-light); opacity: 1; }
+
+        /* NeoCode Popup */
+        .nc-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 16px 60px rgba(60, 16, 83, 0.2);
+            padding: 28px 32px;
+            max-width: 360px;
+            z-index: 9999;
+            transform: translateY(120%);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(60, 16, 83, 0.08);
+        }
+        .nc-popup.show { transform: translateY(0); }
+        .nc-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--charcoal-light);
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+            transition: color var(--transition);
+        }
+        .nc-popup-close:hover { color: var(--aubergine); }
+        .nc-popup-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--aubergine), var(--aubergine-light));
+            color: var(--white);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+        }
+        .nc-popup h4 {
+            font-size: 1.1rem;
+            color: var(--aubergine);
+            margin-bottom: 8px;
+        }
+        .nc-popup p {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .nc-popup .btn-primary {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            font-size: 0.88rem;
+            padding: 12px 24px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--ivory);
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+                z-index: 999;
+            }
+            .nav-links.active a {
+                font-size: 1.2rem;
+            }
+            .hero { min-height: 90vh; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .about-grid { grid-template-columns: 1fr; gap: 36px; }
+            .about-img img { height: 320px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .section { padding: 64px 0; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .nc-popup { left: 16px; right: 16px; max-width: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NeoCode Banner -->
+    <div class="nc-banner">
+        This is a demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; see what your site could look like.
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">Cosmetology <span>Dundee</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#treatments">Treatments</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="nav-cta">Book Now</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Advanced Aesthetics &amp; Beauty</div>
+            <h1>Where Science Meets <span>Beautiful Skin</span></h1>
+            <p>Dundee's trusted destination for clinical-grade treatments. From laser hair removal to advanced skin rejuvenation, we'll help you look and feel your absolute best.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+                <a href="#services" class="btn btn-outline">Explore Treatments</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <h3>15+</h3>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>5,000+</h3>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>50+</h3>
+                    <p>Treatments Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img reveal">
+                    <img src="https://images.pexels.com/photos/3738355/pexels-photo-3738355.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cosmetology Dundee clinic interior" loading="lazy">
+                    <div class="about-img-badge">
+                        <h4>15+</h4>
+                        <p>Years in Dundee</p>
+                    </div>
+                </div>
+                <div class="about-text reveal">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">Your Skin Deserves Clinical Precision</h2>
+                    <p>We're not your average beauty salon. At Cosmetology Dundee, we combine clinical-grade technology with a warm, welcoming atmosphere. Every treatment is tailored to you, because cookie-cutter skincare doesn't work.</p>
+                    <p>Our team of qualified aestheticians stay on top of the latest advances in skin science, laser technology, and anti-ageing treatments. We don't chase trends; we follow the evidence.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Qualified Aestheticians</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Medical-Grade Devices</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Free Consultations</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">&#10003;</div>
+                            <span>Tailored Programmes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section bg-warm" id="services">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Treatments That Actually Deliver</h2>
+                <p class="section-subtitle mx-auto">From advanced facials to full body contouring, we've got the expertise and the kit to get you real, visible results.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128300;</div>
+                    <h3>Skin Treatments</h3>
+                    <p>Chemical peels, microneedling, dermaplaning and advanced facials that go way beyond the basics. We'll transform your skin from the inside out.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#10024;</div>
+                    <h3>Laser Hair Removal</h3>
+                    <p>Clinical-grade laser technology for smooth, lasting results. Safe for all skin types, and far more comfortable than you'd expect.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128142;</div>
+                    <h3>Anti-Ageing</h3>
+                    <p>LED therapy, microcurrent facials, and collagen-boosting treatments that turn back the clock without going under the knife.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128065;</div>
+                    <h3>Lashes &amp; Brows</h3>
+                    <p>Lash lifts, extensions, HD brows, tinting and lamination. We'll frame your face and give you that effortless, polished look.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#127947;</div>
+                    <h3>Body Contouring</h3>
+                    <p>Non-invasive body sculpting and inch-loss treatments using the latest technology. Target stubborn areas without downtime.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128133;</div>
+                    <h3>Nails</h3>
+                    <p>Gel, acrylics, BIAB, manicures and pedicures. Whether you want classic elegance or bold nail art, we've got you covered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Menu -->
+    <section class="section" id="treatments">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Treatment Menu</div>
+                <h2 class="section-title">Our Prices</h2>
+                <p class="section-subtitle mx-auto">Transparent pricing, no hidden fees. All treatments include a thorough consultation so we can recommend exactly what's right for you.</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-category reveal">
+                    <h3 class="menu-category-title">&#128300; Skin Treatments</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Express Facial</div>
+                            <div class="menu-item-desc">30 min deep cleanse &amp; hydration</div>
+                        </div>
+                        <div class="menu-item-price">&pound;35</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Advanced Clinical Facial</div>
+                            <div class="menu-item-desc">60 min with extraction &amp; LED</div>
+                        </div>
+                        <div class="menu-item-price">&pound;65</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Chemical Peel</div>
+                            <div class="menu-item-desc">Glycolic, salicylic or TCA peel</div>
+                        </div>
+                        <div class="menu-item-price">&pound;75</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Microneedling</div>
+                            <div class="menu-item-desc">Collagen induction therapy</div>
+                        </div>
+                        <div class="menu-item-price">&pound;120</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Dermaplaning</div>
+                            <div class="menu-item-desc">Exfoliation &amp; peach fuzz removal</div>
+                        </div>
+                        <div class="menu-item-price">&pound;45</div>
+                    </div>
+                </div>
+                <div class="menu-category reveal">
+                    <h3 class="menu-category-title">&#10024; Laser &amp; Anti-Ageing</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Laser Hair Removal (Small)</div>
+                            <div class="menu-item-desc">Upper lip, chin, underarms</div>
+                        </div>
+                        <div class="menu-item-price">&pound;40</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Laser Hair Removal (Medium)</div>
+                            <div class="menu-item-desc">Bikini, lower arms, lower legs</div>
+                        </div>
+                        <div class="menu-item-price">&pound;75</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Laser Hair Removal (Large)</div>
+                            <div class="menu-item-desc">Full legs, back, chest</div>
+                        </div>
+                        <div class="menu-item-price">&pound;120</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">LED Light Therapy</div>
+                            <div class="menu-item-desc">Rejuvenation &amp; acne treatment</div>
+                        </div>
+                        <div class="menu-item-price">&pound;40</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Microcurrent Facial</div>
+                            <div class="menu-item-desc">Non-surgical facelift</div>
+                        </div>
+                        <div class="menu-item-price">&pound;85</div>
+                    </div>
+                </div>
+                <div class="menu-category reveal">
+                    <h3 class="menu-category-title">&#128065; Lashes &amp; Brows</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Lash Lift &amp; Tint</div>
+                            <div class="menu-item-desc">Natural curl enhancement</div>
+                        </div>
+                        <div class="menu-item-price">&pound;40</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Classic Lash Extensions</div>
+                            <div class="menu-item-desc">Full set, natural look</div>
+                        </div>
+                        <div class="menu-item-price">&pound;55</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Volume/Russian Lashes</div>
+                            <div class="menu-item-desc">Full, dramatic set</div>
+                        </div>
+                        <div class="menu-item-price">&pound;70</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">HD Brows</div>
+                            <div class="menu-item-desc">Shape, tint &amp; wax</div>
+                        </div>
+                        <div class="menu-item-price">&pound;30</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Brow Lamination</div>
+                            <div class="menu-item-desc">Fluffy, sculpted brows</div>
+                        </div>
+                        <div class="menu-item-price">&pound;35</div>
+                    </div>
+                </div>
+                <div class="menu-category reveal">
+                    <h3 class="menu-category-title">&#128133; Body &amp; Nails</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Body Contouring Session</div>
+                            <div class="menu-item-desc">Non-invasive fat reduction</div>
+                        </div>
+                        <div class="menu-item-price">&pound;95</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Inch Loss Wrap</div>
+                            <div class="menu-item-desc">Detox &amp; firm treatment</div>
+                        </div>
+                        <div class="menu-item-price">&pound;60</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Gel Manicure</div>
+                            <div class="menu-item-desc">Long-lasting gel polish</div>
+                        </div>
+                        <div class="menu-item-price">&pound;28</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">BIAB / Builder Gel</div>
+                            <div class="menu-item-desc">Strengthening overlay</div>
+                        </div>
+                        <div class="menu-item-price">&pound;35</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name">Luxury Pedicure</div>
+                            <div class="menu-item-desc">Soak, scrub, massage &amp; gel</div>
+                        </div>
+                        <div class="menu-item-price">&pound;40</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section bg-warm" id="gallery">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Our Work</div>
+                <h2 class="section-title">See the Results</h2>
+                <p class="section-subtitle mx-auto">Real treatments, real clients, real results. Here's a glimpse inside the clinic.</p>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3997381/pexels-photo-3997381.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Facial treatment at Cosmetology Dundee" loading="lazy">
+                    <div class="gallery-overlay"><span>Advanced Facial</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Skincare consultation" loading="lazy">
+                    <div class="gallery-overlay"><span>Skin Consultation</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/5069432/pexels-photo-5069432.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lash extensions" loading="lazy">
+                    <div class="gallery-overlay"><span>Lash Extensions</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3992870/pexels-photo-3992870.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Laser treatment room" loading="lazy">
+                    <div class="gallery-overlay"><span>Treatment Room</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3738349/pexels-photo-3738349.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Nail treatment" loading="lazy">
+                    <div class="gallery-overlay"><span>Luxury Nails</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Beauty products" loading="lazy">
+                    <div class="gallery-overlay"><span>Clinical Products</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Client Reviews</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle mx-auto">Don't just take our word for it. Here's what people are saying about their experience with us.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">&ldquo;</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>I've been coming here for over a year now and my skin's never looked better. The team really know their stuff, and they won't recommend something you don't actually need.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LE</div>
+                        <div>
+                            <div class="testimonial-name">Lauren E.</div>
+                            <div class="testimonial-treatment">Advanced Facial Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">&ldquo;</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Had laser hair removal on my legs and I can't believe I waited so long. It's so much easier than shaving and the results are incredible. The clinic is spotless too.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sarah M.</div>
+                            <div class="testimonial-treatment">Laser Hair Removal</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">&ldquo;</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Best lash lift I've ever had. They took time to understand what I wanted and the results lasted weeks. I'll definitely be back for the brow lamination too!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">KD</div>
+                        <div>
+                            <div class="testimonial-name">Karen D.</div>
+                            <div class="testimonial-treatment">Lash Lift &amp; Tint</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section bg-warm" id="contact">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Book Your Appointment</h2>
+                <p class="section-subtitle mx-auto">Ready to start your skin journey? Drop us a message or give us a call. We'll get back to you within a few hours.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-card reveal">
+                    <h3>Let's Get You Booked In</h3>
+                    <p>We'd love to chat about what you're looking for. Every new client gets a free consultation so we can build the perfect treatment plan.</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128205;</div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>Dundee, Scotland</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128231;</div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:info@cosmetologydundee.co.uk">info@cosmetologydundee.co.uk</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128241;</div>
+                        <div>
+                            <h4>Follow Us</h4>
+                            <p><a href="#">@cosmetologydundee</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-hours">
+                        <h4>Opening Hours</h4>
+                        <p>
+                            Monday - Friday: 9:00am - 7:00pm<br>
+                            Saturday: 9:00am - 5:00pm<br>
+                            Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="e.g. Sarah McGregor" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="e.g. 01382 000 000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="e.g. sarah@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="treatment">Treatment You're Interested In</label>
+                            <select id="treatment">
+                                <option value="">Select a treatment...</option>
+                                <option value="skin">Skin Treatments</option>
+                                <option value="laser">Laser Hair Removal</option>
+                                <option value="antiageing">Anti-Ageing</option>
+                                <option value="lashes">Lashes &amp; Brows</option>
+                                <option value="body">Body Contouring</option>
+                                <option value="nails">Nails</option>
+                                <option value="other">Not Sure / Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Tell us a bit about what you're looking for..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Cosmetology <span>Dundee</span></h3>
+                    <p>Advanced skin treatments, laser hair removal, and beauty services in the heart of Dundee. Where clinical expertise meets a luxurious experience.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Treatments</h4>
+                    <a href="#services">Skin Treatments</a>
+                    <a href="#services">Laser Hair Removal</a>
+                    <a href="#services">Anti-Ageing</a>
+                    <a href="#services">Lashes &amp; Brows</a>
+                    <a href="#services">Body Contouring</a>
+                    <a href="#services">Nails</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#treatments">Price List</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@cosmetologydundee.co.uk">info@cosmetologydundee.co.uk</a>
+                    <a href="#">Dundee, Scotland</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cosmetology Dundee. All rights reserved.</p>
+                <p>Demo designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="nc-popup" id="ncPopup">
+        <button class="nc-popup-close" id="ncClose" aria-label="Close">&times;</button>
+        <div class="nc-popup-badge">NeoCode Studio</div>
+        <h4>Like What You See?</h4>
+        <p>This is a free demo redesign of your website. We'd love to help you bring it to life with better conversions, mobile responsiveness, and built-in booking.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn btn-primary">Let's Talk</a>
+    </div>
+
+    <script>
+        /* Hamburger Menu */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        /* Scroll Nav Shadow */
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* IntersectionObserver Reveal */
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => observer.observe(el));
+
+        /* NeoCode Popup at 70% scroll */
+        let popupShown = false;
+        const ncPopup = document.getElementById('ncPopup');
+        const ncClose = document.getElementById('ncClose');
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                ncPopup.classList.add('show');
+                popupShown = true;
+            }
+        });
+
+        ncClose.addEventListener('click', () => {
+            ncPopup.classList.remove('show');
+        });
+    </script>
+</body>
+</html>

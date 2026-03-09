@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Carpet Cleaner Man | Professional Carpet &amp; Upholstery Cleaning</title>
+<meta name="description" content="Professional carpet cleaning, upholstery cleaning, rug cleaning, stain removal, Karndean and hard floor care. Trusted local service with outstanding results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brown:#5d4037;
+  --brown-light:#795548;
+  --brown-dark:#3e2723;
+  --teal:#009688;
+  --teal-dark:#00796b;
+  --teal-light:#4db6ac;
+  --beige:#f5f0eb;
+  --beige-dark:#e8ddd4;
+  --white:#ffffff;
+  --text:#2c2c2c;
+  --text-light:#5a5a5a;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.12);
+  --radius:12px;
+  --radius-lg:20px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;color:var(--text);line-height:1.7;background:var(--white);overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Anek Latin',sans-serif;line-height:1.2;font-weight:700}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:color .3s}
+ul{list-style:none}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,0.06);transition:all .3s}
+.header .container{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1200px;margin:0 auto}
+.logo{font-family:'Anek Latin',sans-serif;font-size:1.4rem;font-weight:800;color:var(--brown)}
+.logo span{color:var(--teal)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-weight:500;font-size:.95rem;color:var(--text);position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--teal);transition:width .3s}
+.nav-links a:hover::after,.nav-links a:focus::after{width:100%}
+.nav-links a:focus{outline:2px solid var(--teal);outline-offset:4px;border-radius:4px}
+.nav-cta{background:var(--teal);color:var(--white)!important;padding:10px 24px;border-radius:50px;font-weight:600;transition:background .3s,transform .3s}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.nav-cta:focus{outline:2px solid var(--brown);outline-offset:3px}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001}
+.hamburger:focus{outline:2px solid var(--teal);outline-offset:4px;border-radius:4px}
+.hamburger span{width:26px;height:3px;background:var(--brown);border-radius:3px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+/* SECTIONS */
+.section{padding:100px 24px}
+.section-alt{background:var(--beige)}
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-family:'Outfit',sans-serif;font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:3px;color:var(--teal);margin-bottom:12px}
+.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--brown);margin-bottom:20px}
+.section-subtitle{font-size:1.1rem;color:var(--text-light);max-width:640px;margin-bottom:48px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--brown-dark)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/6899428/pexels-photo-6899428.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;opacity:.35}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(62,39,35,0.85) 0%,rgba(93,64,55,0.7) 50%,rgba(0,150,136,0.3) 100%)}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:120px 24px 80px;margin:0 auto}
+.hero-badge{display:inline-block;background:rgba(0,150,136,0.2);border:1px solid rgba(0,150,136,0.4);color:var(--teal-light);padding:8px 20px;border-radius:50px;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);color:var(--white);margin-bottom:20px;font-weight:800}
+.hero h1 span{color:var(--teal-light)}
+.hero p{font-size:1.2rem;color:rgba(255,255,255,0.85);margin-bottom:36px;max-width:560px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:all .3s;font-family:'Outfit',sans-serif}
+.btn:focus{outline:2px solid var(--white);outline-offset:4px;border-radius:50px}
+.btn-primary{background:var(--teal);color:var(--white)}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,150,136,0.35)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.4)}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.1)}
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.15)}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'Anek Latin',sans-serif;font-size:2rem;font-weight:800;color:var(--teal-light)}
+.hero-stat .label{font-size:.85rem;color:rgba(255,255,255,0.65);margin-top:4px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover}
+.about-img-badge{position:absolute;bottom:20px;left:20px;background:var(--teal);color:var(--white);padding:12px 24px;border-radius:var(--radius);font-weight:700;font-size:1.1rem;box-shadow:var(--shadow)}
+.about-text p{color:var(--text-light);margin-bottom:16px;font-size:1.05rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--brown)}
+.about-feature .icon{width:36px;height:36px;background:rgba(0,150,136,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:1.1rem;flex-shrink:0}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;position:relative}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card-img{height:200px;overflow:hidden}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.service-card:hover .service-card-img img{transform:scale(1.05)}
+.service-card-body{padding:28px}
+.service-card-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;margin-bottom:16px;margin-top:-44px;position:relative;z-index:2;box-shadow:0 4px 12px rgba(0,150,136,0.3)}
+.service-card h3{font-size:1.2rem;color:var(--brown);margin-bottom:10px}
+.service-card p{font-size:.95rem;color:var(--text-light);line-height:1.6}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
+.steps::before{content:'';position:absolute;top:40px;left:12%;right:12%;height:3px;background:linear-gradient(90deg,var(--teal),var(--beige-dark),var(--teal));border-radius:2px;z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:80px;height:80px;border-radius:50%;background:var(--white);border:3px solid var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Anek Latin',sans-serif;font-size:1.6rem;font-weight:800;color:var(--teal);box-shadow:var(--shadow);transition:all .3s}
+.step:hover .step-num{background:var(--teal);color:var(--white);transform:scale(1.08)}
+.step h3{font-size:1.1rem;color:var(--brown);margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--text-light)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pricing-card{background:var(--white);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow);transition:transform .3s;position:relative;overflow:hidden}
+.pricing-card:hover{transform:translateY(-4px)}
+.pricing-card.featured{border:2px solid var(--teal)}
+.pricing-card.featured::before{content:'MOST POPULAR';position:absolute;top:16px;right:-32px;background:var(--teal);color:var(--white);padding:4px 40px;font-size:.75rem;font-weight:700;letter-spacing:1px;transform:rotate(45deg)}
+.pricing-card h3{font-size:1.3rem;color:var(--brown);margin-bottom:8px}
+.pricing-card .desc{color:var(--text-light);font-size:.95rem;margin-bottom:20px}
+.pricing-list{margin-bottom:28px}
+.pricing-list li{padding:10px 0;border-bottom:1px solid var(--beige);display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--text)}
+.pricing-list li .check{color:var(--teal);font-weight:700;font-size:1.1rem}
+.pricing-card .price{font-family:'Anek Latin',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)}
+.pricing-card .price span{font-size:1rem;font-weight:400;color:var(--text-light)}
+
+/* WHY CHOOSE US */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.why-card{background:var(--white);border-radius:var(--radius-lg);padding:36px;display:flex;gap:20px;box-shadow:var(--shadow);transition:transform .3s}
+.why-card:hover{transform:translateY(-4px)}
+.why-card .icon{width:56px;height:56px;background:linear-gradient(135deg,rgba(0,150,136,0.1),rgba(0,150,136,0.05));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--teal);flex-shrink:0}
+.why-card h3{font-size:1.15rem;color:var(--brown);margin-bottom:8px}
+.why-card p{font-size:.95rem;color:var(--text-light)}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial{background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow);position:relative}
+.testimonial::before{content:'\201C';position:absolute;top:16px;right:24px;font-size:4rem;color:var(--beige-dark);font-family:Georgia,serif;line-height:1}
+.testimonial .stars{color:#f9a825;font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.testimonial p{font-size:.95rem;color:var(--text-light);margin-bottom:16px;font-style:italic;position:relative;z-index:1}
+.testimonial .author{display:flex;align-items:center;gap:12px}
+.testimonial .author-avatar{width:44px;height:44px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:1.1rem}
+.testimonial .author-name{font-weight:600;color:var(--brown);font-size:.95rem}
+.testimonial .author-loc{font-size:.8rem;color:var(--text-light)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact-info{display:flex;flex-direction:column;gap:28px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-item .icon{width:52px;height:52px;background:rgba(0,150,136,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--teal);flex-shrink:0}
+.contact-item h4{font-size:1.05rem;color:var(--brown);margin-bottom:4px}
+.contact-item p,.contact-item a{font-size:.95rem;color:var(--text-light)}
+.contact-item a:hover{color:var(--teal)}
+.contact-item a:focus{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+.contact-form{background:var(--white);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-lg)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-weight:600;font-size:.9rem;color:var(--brown);margin-bottom:8px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:2px solid var(--beige-dark);border-radius:var(--radius);font-family:'Outfit',sans-serif;font-size:1rem;color:var(--text);transition:border-color .3s;background:var(--beige)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,150,136,0.15)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{width:100%}
+
+/* FOOTER */
+.footer{background:var(--brown-dark);color:rgba(255,255,255,0.75);padding:60px 24px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto}
+.footer-brand .logo{font-size:1.3rem;margin-bottom:16px;display:inline-block}
+.footer-brand .logo,.footer-brand .logo span{color:rgba(255,255,255,0.9)}
+.footer-brand .logo span{color:var(--teal-light)}
+.footer-brand p{font-size:.9rem;line-height:1.7;margin-bottom:20px}
+.footer h4{color:var(--white);font-size:1rem;margin-bottom:16px;font-family:'Anek Latin',sans-serif}
+.footer ul li{margin-bottom:10px}
+.footer ul li a{font-size:.9rem;transition:color .3s}
+.footer ul li a:hover{color:var(--teal-light)}
+.footer ul li a:focus{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);margin-top:40px;padding-top:20px;text-align:center;font-size:.85rem;max-width:1200px;margin-left:auto;margin-right:auto}
+.footer-bottom a{color:var(--teal-light);font-weight:500}
+.footer-bottom a:hover{color:var(--white)}
+.footer-bottom a:focus{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+
+/* NEOCODE POPUP */
+.neocode-popup{position:fixed;bottom:24px;right:24px;background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:9999;max-width:340px;transform:translateY(120%);opacity:0;transition:transform .5s cubic-bezier(0.34,1.56,0.64,1),opacity .4s;border:1px solid var(--beige-dark)}
+.neocode-popup.show{transform:translateY(0);opacity:1}
+.neocode-popup-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:var(--beige);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--text-light);transition:all .3s}
+.neocode-popup-close:hover{background:var(--brown);color:var(--white)}
+.neocode-popup-close:focus{outline:2px solid var(--teal);outline-offset:2px}
+.neocode-popup h4{font-size:1.1rem;color:var(--brown);margin-bottom:8px}
+.neocode-popup p{font-size:.9rem;color:var(--text-light);margin-bottom:16px;line-height:1.6}
+.neocode-popup .btn{width:100%;justify-content:center;font-size:.9rem;padding:12px 20px}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+  .nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--white);flex-direction:column;padding:80px 32px 32px;gap:20px;box-shadow:var(--shadow-lg);transition:right .3s}
+  .nav-links.open{right:0}
+  .hamburger{display:flex}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .services-grid,.pricing-grid,.testimonials-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .why-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+}
+@media(max-width:640px){
+  .services-grid,.pricing-grid,.testimonials-grid,.steps{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;align-items:flex-start;gap:16px}
+  .hero h1{font-size:2rem}
+  .about-features{grid-template-columns:1fr}
+  .section{padding:70px 20px}
+  .hero-btns{flex-direction:column}
+  .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="#hero" class="logo">The Carpet <span>Cleaner Man</span></a>
+    <nav class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Professional Carpet &amp; Floor Cleaning</div>
+    <h1>Carpets That Look <span>Brand New</span> Again</h1>
+    <p>We don't just clean your carpets, we bring them back to life. Deep cleaning, stain removal and floor care you can trust. Honest prices, outstanding results.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Get Your Free Quote</a>
+      <a href="#services" class="btn btn-outline">View Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">1,000+</div>
+        <div class="label">Homes Cleaned</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">5.0</div>
+        <div class="label">Google Rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">100%</div>
+        <div class="label">Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.pexels.com/photos/4107120/pexels-photo-4107120.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional carpet cleaning in action" loading="lazy">
+        <div class="about-img-badge">10+ Years Experience</div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Your Local Carpet Cleaning Expert</h2>
+        <p>We're The Carpet Cleaner Man, and we've spent over a decade helping homeowners and businesses get their carpets, upholstery and hard floors looking spotless. We use professional-grade equipment and eco-friendly products that are safe for kids, pets and the environment.</p>
+        <p>Whether it's a stubborn wine stain, high-traffic hallway or a full end-of-tenancy deep clean, we've got you covered. Every job gets the same level of care and attention because we know your home deserves it.</p>
+        <div class="about-features">
+          <div class="about-feature"><div class="icon">&#10003;</div> Fully Insured</div>
+          <div class="about-feature"><div class="icon">&#10003;</div> Eco-Friendly Products</div>
+          <div class="about-feature"><div class="icon">&#10003;</div> No Hidden Fees</div>
+          <div class="about-feature"><div class="icon">&#10003;</div> Same-Week Booking</div>
+          <div class="about-feature"><div class="icon">&#10003;</div> Pet &amp; Child Safe</div>
+          <div class="about-feature"><div class="icon">&#10003;</div> Free Quotes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-alt" id="services">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto">Our Professional Services</h2>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">From deep carpet cleaning to specialist hard floor care, we've got every surface covered.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/4107112/pexels-photo-4107112.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Carpet cleaning service" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">&#128167;</div>
+          <h3>Carpet Cleaning</h3>
+          <p>Hot water extraction deep cleaning that removes dirt, allergens and bacteria from deep within your carpet fibres. Your carpets will look and smell like new.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/4098366/pexels-photo-4098366.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Upholstery cleaning service" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">&#128715;</div>
+          <h3>Upholstery Cleaning</h3>
+          <p>Professional sofa and furniture cleaning that lifts stains, eliminates odours and restores your upholstery's original colour and softness.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/6492397/pexels-photo-6492397.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rug cleaning service" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">&#9632;</div>
+          <h3>Rug Cleaning</h3>
+          <p>Gentle yet thorough cleaning for all rug types, including Persian, wool and synthetic. We'll treat your rug with the specialist care it deserves.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Stain removal service" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">&#10024;</div>
+          <h3>Stain Removal</h3>
+          <p>Red wine, coffee, pet accidents, ink, food staining... you name it, we've tackled it. Our specialist treatments break down even the toughest stains.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/5824520/pexels-photo-5824520.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Karndean and hard floor cleaning" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">&#9638;</div>
+          <h3>Karndean &amp; Hard Floor</h3>
+          <p>Expert cleaning and sealing for Karndean, laminate, tile and vinyl flooring. We'll strip away built-up grime and restore the original shine.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img src="https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg?auto=compress&cs=tinysrgb&w=600" alt="End of tenancy cleaning" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon">&#127968;</div>
+          <h3>End of Tenancy</h3>
+          <p>Moving out? We'll get your carpets and floors back to landlord-approved condition so you can get your deposit back without the stress.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">Simple Process</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto">How It Works</h2>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Getting your carpets professionally cleaned couldn't be easier. Here's what to expect.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Get in Touch</h3>
+        <p>Fill in the form, give us a call or drop us an email. Tell us what you need and we'll get back to you quickly.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Free Quote</h3>
+        <p>We'll give you a clear, honest quote with no hidden charges. What we say is what you'll pay.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>We Clean</h3>
+        <p>Our team arrives on time with all the equipment. We'll protect your furniture and deliver a thorough deep clean.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3>Enjoy the Results</h3>
+        <p>Walk on fresh, spotless carpets. We won't leave until you're completely happy with the result.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto">Pricing Guide</h2>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Straightforward pricing with no surprises. Every job includes a free pre-inspection and stain treatment.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <h3>Single Room</h3>
+        <p class="desc">Perfect for a quick refresh of one room or hallway.</p>
+        <ul class="pricing-list">
+          <li><span class="check">&#10003;</span> Deep hot water extraction</li>
+          <li><span class="check">&#10003;</span> Pre-spray treatment</li>
+          <li><span class="check">&#10003;</span> Stain spot treatment</li>
+          <li><span class="check">&#10003;</span> Deodorising included</li>
+        </ul>
+        <div class="price">From &pound;35 <span>/ room</span></div>
+      </div>
+      <div class="pricing-card featured reveal">
+        <h3>Whole House</h3>
+        <p class="desc">Our most popular option. Full home deep clean for amazing results.</p>
+        <ul class="pricing-list">
+          <li><span class="check">&#10003;</span> All rooms included</li>
+          <li><span class="check">&#10003;</span> Stairs &amp; landing</li>
+          <li><span class="check">&#10003;</span> Pre-spray &amp; stain treatment</li>
+          <li><span class="check">&#10003;</span> Furniture moved &amp; protected</li>
+          <li><span class="check">&#10003;</span> Anti-bacterial treatment</li>
+        </ul>
+        <div class="price">From &pound;120 <span>/ house</span></div>
+      </div>
+      <div class="pricing-card reveal">
+        <h3>Upholstery</h3>
+        <p class="desc">Give your sofa and chairs the deep clean they need.</p>
+        <ul class="pricing-list">
+          <li><span class="check">&#10003;</span> Sofas (2 or 3 seater)</li>
+          <li><span class="check">&#10003;</span> Armchairs</li>
+          <li><span class="check">&#10003;</span> Stain &amp; odour removal</li>
+          <li><span class="check">&#10003;</span> Fabric protection option</li>
+        </ul>
+        <div class="price">From &pound;45 <span>/ item</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section" id="why-us">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">The Difference</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto">Why Choose Us</h2>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">We're not just another cleaning company. Here's what sets us apart.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="icon">&#128170;</div>
+        <div>
+          <h3>Professional-Grade Equipment</h3>
+          <p>We use truck-mounted and portable extraction machines that deliver far better results than any rental or domestic machine ever could.</p>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">&#127793;</div>
+        <div>
+          <h3>Eco-Friendly Solutions</h3>
+          <p>All our cleaning products are non-toxic and biodegradable. They're safe for your family, your pets and the planet.</p>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">&#128176;</div>
+        <div>
+          <h3>Honest, Fair Pricing</h3>
+          <p>No hidden extras, no pressure upsells. We'll quote you a fair price and that's exactly what you'll pay. It's that simple.</p>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">&#128337;</div>
+        <div>
+          <h3>Fast Drying Times</h3>
+          <p>Thanks to our powerful extraction equipment, your carpets will typically be dry within 2 to 4 hours. No waiting around for days.</p>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">&#11088;</div>
+        <div>
+          <h3>5-Star Reviews</h3>
+          <p>We've built our reputation on delivering results that speak for themselves. Don't just take our word for it, check our reviews.</p>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">&#128274;</div>
+        <div>
+          <h3>Fully Insured</h3>
+          <p>We carry full public liability insurance for your complete peace of mind. You're in safe hands from start to finish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-alt" id="testimonials">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto">What Our Customers Say</h2>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Real feedback from real customers. We let our results do the talking.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Absolutely brilliant job. I'd tried everything on a red wine stain that had been there for months. He got it out completely. Carpets look brand new. Can't recommend him enough!"</p>
+        <div class="author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Sarah M.</div>
+            <div class="author-loc">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Had the whole house done before we moved in. Every single room came up amazing. He was on time, friendly, and the price was exactly what he quoted. No messing about."</p>
+        <div class="author">
+          <div class="author-avatar">D</div>
+          <div>
+            <div class="author-name">Dave T.</div>
+            <div class="author-loc">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We've got two dogs and a toddler so you can imagine the state of our carpets. He worked his magic and they look incredible. The house smells so fresh now. Booking him again!"</p>
+        <div class="author">
+          <div class="author-avatar">J</div>
+          <div>
+            <div class="author-name">Jenny R.</div>
+            <div class="author-loc">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto">Ready for Spotless Carpets?</h2>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Fill in the form below and we'll get back to you with a free, no-obligation quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="icon">&#9993;</div>
+          <div>
+            <h4>Email Us</h4>
+            <a href="mailto:info@thecarpetcleanerman.com">info@thecarpetcleanerman.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">&#128222;</div>
+          <div>
+            <h4>Call Us</h4>
+            <p>Give us a ring for a quick chat about your needs.</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">&#128197;</div>
+          <div>
+            <h4>Availability</h4>
+            <p>Monday to Saturday, 8am to 6pm. Evening slots available on request.</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">&#9889;</div>
+          <div>
+            <h4>Quick Response</h4>
+            <p>We typically respond within a few hours. Most quotes are sent the same day.</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000">
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option>Carpet Cleaning</option>
+            <option>Upholstery Cleaning</option>
+            <option>Rug Cleaning</option>
+            <option>Stain Removal</option>
+            <option>Karndean &amp; Hard Floor</option>
+            <option>End of Tenancy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Job</label>
+          <textarea id="message" name="message" placeholder="e.g. 3-bed house, heavy staining in the lounge, two pets..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Send My Quote Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">The Carpet <span>Cleaner Man</span></div>
+      <p>Professional carpet, upholstery and hard floor cleaning. Honest prices, outstanding results, and a service you can trust.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Carpet Cleaning</a></li>
+        <li><a href="#services">Upholstery Cleaning</a></li>
+        <li><a href="#services">Rug Cleaning</a></li>
+        <li><a href="#services">Stain Removal</a></li>
+        <li><a href="#services">Karndean &amp; Hard Floor</a></li>
+        <li><a href="#services">End of Tenancy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 The Carpet Cleaner Man. All rights reserved. | Website designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+  </div>
+</footer>
+
+<!-- NEOCODE POPUP -->
+<div class="neocode-popup" id="neocodePopup">
+  <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+  <h4>Want a website like this?</h4>
+  <p>This demo was built by NeoCode Studio. We design high-converting websites for local businesses. Let's chat about yours.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Get in Touch</a>
+</div>
+
+<script>
+// HAMBURGER MENU
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// INTERSECTION OBSERVER REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+
+// NEOCODE POPUP AT 70% SCROLL
+let popupShown = false;
+let popupClosed = false;
+window.addEventListener('scroll', () => {
+  if (popupClosed || popupShown) return;
+  const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  if (scrollPercent >= 70) {
+    document.getElementById('neocodePopup').classList.add('show');
+    popupShown = true;
+  }
+});
+document.getElementById('neocodeClose').addEventListener('click', () => {
+  document.getElementById('neocodePopup').classList.remove('show');
+  popupClosed = true;
+});
+
+// FORM HANDLER
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Message Sent!';
+  btn.style.background = '#2e7d32';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send My Quote Request';
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3000);
+}
+
+// HEADER SHADOW ON SCROLL
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.header');
+  if (window.scrollY > 50) {
+    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+  } else {
+    header.style.boxShadow = '0 1px 12px rgba(0,0,0,0.06)';
+  }
+});
+</script>
+</body>
+</html>
