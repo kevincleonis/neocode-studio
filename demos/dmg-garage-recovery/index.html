@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMG Garage & Recovery | 24/7 Breakdown Recovery, MOT & Servicing</title>
+    <meta name="description" content="DMG Garage & Recovery - Your trusted local garage for MOT testing, servicing, repairs, diagnostics, bodywork and 24/7 breakdown recovery. Call us anytime.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1a2332;
+            --navy-light: #243044;
+            --navy-dark: #121a27;
+            --orange: #ff6b35;
+            --orange-hover: #e85a28;
+            --orange-glow: rgba(255, 107, 53, 0.15);
+            --grey: #f0f2f5;
+            --white: #ffffff;
+            --text-dark: #1a2332;
+            --text-body: #4a5568;
+            --text-light: #718096;
+            --text-on-dark: #c8d1dc;
+            --border: #dde1e7;
+            --shadow: 0 4px 24px rgba(26, 35, 50, 0.08);
+            --shadow-lg: 0 12px 48px rgba(26, 35, 50, 0.14);
+            --shadow-orange: 0 8px 30px rgba(255, 107, 53, 0.3);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            background: var(--grey);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Exo 2', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Focus States */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--orange);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 35, 50, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--white);
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .logo-text {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-on-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--orange);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--orange) !important;
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--orange-hover) !important;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-orange);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(165deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            opacity: 0.15;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, var(--grey), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 120px 0 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 28px;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 107, 53, 0); }
+        }
+
+        .hero-badge-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--orange);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.08;
+        }
+
+        .hero h1 .accent {
+            color: var(--orange);
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-on-dark);
+            margin-bottom: 36px;
+            line-height: 1.8;
+            max-width: 560px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-orange);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 56px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--orange);
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-on-dark);
+            margin-top: 4px;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-dark {
+            background: var(--navy);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title-light {
+            color: var(--white);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .section-desc-light {
+            color: var(--text-on-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-desc {
+            margin: 0 auto;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .about-img-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-orange);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .about-feature-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--orange-glow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 107, 53, 0.2);
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-top: 60px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 24px;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .why-number {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--orange);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .why-card h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: var(--text-on-dark);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .testimonial-stars {
+            color: var(--orange);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+            font-weight: 700;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info-card {
+            background: var(--navy);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 107, 53, 0.08), transparent 60%);
+        }
+
+        .contact-info-card h3 {
+            color: var(--white);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .contact-info-card > p {
+            color: var(--text-on-dark);
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 107, 53, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            color: var(--text-on-dark);
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item-text a:hover { color: var(--orange); }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .contact-form h3 {
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Public Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background: var(--grey);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--orange);
+            outline: none;
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-orange);
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: var(--orange);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), transparent, rgba(0,0,0,0.05));
+        }
+
+        .cta-banner h2 {
+            color: var(--white);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-banner p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--orange);
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy-dark);
+            padding: 60px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-on-dark);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer h4 {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--text-on-dark);
+            font-size: 0.95rem;
+            padding: 6px 0;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--text-on-dark);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--orange);
+            transition: opacity 0.3s;
+        }
+
+        .footer-bottom a:hover { opacity: 0.8; }
+
+        .neocode-credit {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 107, 53, 0.1);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-on-dark);
+        }
+
+        .neocode-credit a {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--navy);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            z-index: 9999;
+            max-width: 360px;
+            transform: translateY(120%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .neocode-popup.show {
+            transform: translateY(0);
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: none;
+            border: none;
+            color: var(--text-on-dark);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .neocode-popup-close:hover { color: var(--orange); }
+
+        .neocode-popup h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            padding-right: 24px;
+        }
+
+        .neocode-popup p {
+            color: var(--text-on-dark);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .neocode-popup .btn-primary {
+            width: 100%;
+            justify-content: center;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+        }
+
+        /* ===== MOBILE NAV OVERLAY ===== */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 35, 50, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-nav a {
+            color: var(--white);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover { color: var(--orange); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .hero-content { padding: 100px 0 60px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .stat-item h3 { font-size: 1.6rem; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .about-img img { height: 280px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; gap: 16px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-form { padding: 32px 24px; }
+            .contact-info-card { padding: 36px 28px; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .section { padding: 64px 0; }
+
+            .neocode-popup {
+                left: 16px;
+                right: 16px;
+                max-width: none;
+                bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#hero" class="logo">
+                <div class="logo-icon">D</div>
+                <div class="logo-text">DMG <span>Garage</span></div>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#why">Why Us</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact" class="nav-cta">Get a Quote</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#about" onclick="closeMobileNav()">About</a>
+        <a href="#services" onclick="closeMobileNav()">Services</a>
+        <a href="#why" onclick="closeMobileNav()">Why Us</a>
+        <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+        <a href="#contact" onclick="closeMobileNav()">Get a Quote</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="hero-badge-dot"></div>
+                    24/7 Breakdown Recovery
+                </div>
+                <h1>Your Trusted <span class="accent">Garage &amp; Recovery</span> Experts</h1>
+                <p class="hero-sub">Whether it's a routine service, MOT, or a 3am breakdown, DMG Garage & Recovery has got you covered. We're here when you need us most.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Book Now &#8594;</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Recovery Service</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1000+</h3>
+                        <p>Vehicles Serviced</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Customer First</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img reveal">
+                    <img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=800" alt="DMG Garage workshop with mechanic working on a vehicle" loading="lazy">
+                    <div class="about-img-badge">Trusted Local Garage</div>
+                </div>
+                <div class="about-text reveal">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title">We Don't Just Fix Cars. We Keep You Moving.</h2>
+                    <p>DMG Garage & Recovery isn't your average garage. We've built our reputation on honest work, fair prices, and being there when it matters. Whether you're stuck on the motorway at midnight or just need your brakes checked, we treat every job like it's our own car.</p>
+                    <p>Our team of experienced mechanics handles everything from MOTs and routine servicing to full engine diagnostics and bodywork repairs. And with our 24/7 recovery service, help is always just one call away.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#9989;</div>
+                            <span>MOT Testing Centre</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#9989;</div>
+                            <span>24/7 Recovery</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#9989;</div>
+                            <span>All Makes & Models</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#9989;</div>
+                            <span>Transparent Pricing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-dark" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title section-title-light">Everything Your Car Needs, Under One Roof</h2>
+                <p class="section-desc section-desc-light">From your annual MOT to emergency roadside recovery, we've got the skills and the gear to keep you on the road.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128736;</div>
+                    <h3>MOT Testing</h3>
+                    <p>Official MOT testing for all vehicle classes. We'll walk you through any advisories and won't push work you don't need.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9881;</div>
+                    <h3>Full Servicing</h3>
+                    <p>Interim and full services using quality parts. We follow manufacturer guidelines to keep your warranty intact.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128295;</div>
+                    <h3>Repairs</h3>
+                    <p>Brakes, clutches, exhausts, suspension, you name it. We'll diagnose the problem and give you an honest quote before we start.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128663;</div>
+                    <h3>24/7 Recovery</h3>
+                    <p>Broken down? Don't worry. Our recovery team is on call around the clock. We'll get you and your vehicle home safely.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128187;</div>
+                    <h3>Diagnostics</h3>
+                    <p>Dashboard warning light on? We use the latest diagnostic equipment to pinpoint issues quickly and accurately.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#127912;</div>
+                    <h3>Bodywork</h3>
+                    <p>Dents, scratches, and collision damage. We'll restore your vehicle's appearance with professional bodywork and paint repair.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="section section-dark" id="why" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title section-title-light">Good Reasons to Trust DMG</h2>
+                <p class="section-desc section-desc-light">We're not the biggest garage in town, but we might just be the most reliable one.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-number">01</div>
+                    <h3>No Hidden Costs</h3>
+                    <p>You'll always know the price before we start. No surprises, no sneaky extras. Just straightforward, honest pricing.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-number">02</div>
+                    <h3>24/7 Availability</h3>
+                    <p>Breakdowns don't wait for business hours and neither do we. Call us any time, day or night.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-number">03</div>
+                    <h3>Qualified Mechanics</h3>
+                    <p>Our team is fully trained and experienced. We work on all makes and models, old and new.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-number">04</div>
+                    <h3>Built on Trust</h3>
+                    <p>We've earned our reputation through years of quality work and happy customers who keep coming back.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-desc">Don't just take our word for it. Here's what real customers think about DMG Garage & Recovery.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Broke down on the M6 at 11pm and DMG were there within 40 minutes. Couldn't believe how fast they were. Proper lifesavers."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JC</div>
+                        <div>
+                            <div class="testimonial-name">James Cooper</div>
+                            <div class="testimonial-role">Recovery Customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Been bringing my car here for years. They're always upfront about costs and they don't try to upsell you on things you don't need. Rare to find that."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SP</div>
+                        <div>
+                            <div class="testimonial-name">Sarah Phillips</div>
+                            <div class="testimonial-role">Regular Customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Had a warning light come on and was panicking. DMG ran the diagnostics, sorted the issue same day, and it cost way less than I expected. Top lads."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MT</div>
+                        <div>
+                            <div class="testimonial-name">Mark Thompson</div>
+                            <div class="testimonial-role">Diagnostics Customer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Stuck on the Roadside? We're On Our Way.</h2>
+            <p>24/7 recovery, fast response times, and a team that genuinely cares. Give us a call.</p>
+            <a href="#contact" class="btn-white">Get in Touch &#8594;</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Contact Us</span>
+                <h2 class="section-title">Let's Get Your Car Sorted</h2>
+                <p class="section-desc">Drop us a message or give us a ring. We'll get back to you as quick as we can.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-card reveal">
+                    <h3>DMG Garage & Recovery</h3>
+                    <p>Always here when you need us.</p>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128231;</div>
+                        <div class="contact-item-text">
+                            <h4>Email</h4>
+                            <a href="mailto:davidmcgarry@live.co.uk">davidmcgarry@live.co.uk</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128222;</div>
+                        <div class="contact-item-text">
+                            <h4>Phone</h4>
+                            <a href="tel:+447000000000">Call Us Anytime</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#9200;</div>
+                        <div class="contact-item-text">
+                            <h4>Hours</h4>
+                            <p>Mon-Sat: 8am - 6pm | Recovery: 24/7</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form reveal" action="#" onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch shortly.');">
+                    <h3>Send Us a Message</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g. John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="e.g. 07700 900000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="e.g. john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service">
+                            <option value="">Select a service...</option>
+                            <option value="mot">MOT Testing</option>
+                            <option value="servicing">Full Servicing</option>
+                            <option value="repairs">Repairs</option>
+                            <option value="recovery">24/7 Recovery</option>
+                            <option value="diagnostics">Diagnostics</option>
+                            <option value="bodywork">Bodywork</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Tell us what you need help with..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message &#8594;</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">
+                        <div class="logo-icon">D</div>
+                        <div class="logo-text">DMG <span>Garage</span></div>
+                    </a>
+                    <p>Your local garage and 24/7 recovery service. Honest work, fair prices, and a team you can count on.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#services">Services</a>
+                        <a href="#testimonials">Reviews</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="#services">MOT Testing</a>
+                        <a href="#services">Servicing</a>
+                        <a href="#services">Repairs</a>
+                        <a href="#services">24/7 Recovery</a>
+                        <a href="#services">Diagnostics</a>
+                        <a href="#services">Bodywork</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Get in Touch</h4>
+                    <div class="footer-links">
+                        <a href="mailto:davidmcgarry@live.co.uk">davidmcgarry@live.co.uk</a>
+                        <a href="#contact">Send a Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DMG Garage & Recovery. All rights reserved.</p>
+                <div class="neocode-credit">
+                    Built by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+        <h4>Want a site like this?</h4>
+        <p>This demo was built by NeoCode Studio. We design modern, high-converting websites for local businesses. Let's chat about yours.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Get Your Free Quote &#8594;</a>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // IntersectionObserver reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // NeoCode popup at 70% scroll
+        let popupShown = false;
+        let popupDismissed = false;
+        const popup = document.getElementById('neocodePopup');
+
+        window.addEventListener('scroll', () => {
+            if (popupDismissed || popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                popup.classList.add('show');
+                popupShown = true;
+            }
+        });
+
+        document.getElementById('popupClose').addEventListener('click', () => {
+            popup.classList.remove('show');
+            popupDismissed = true;
+        });
+    </script>
+</body>
+</html>
