@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Edinburgh Driving School | Professional Driving Lessons in Edinburgh</title>
+    <meta name="description" content="The Edinburgh Driving School - Professional, patient driving instruction across Edinburgh. Beginner to advanced lessons with high pass rates. Book your first lesson today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --steel: #4a5568;
+            --steel-dark: #2d3748;
+            --steel-light: #718096;
+            --green: #38a169;
+            --green-dark: #2f855a;
+            --green-light: #48bb78;
+            --green-pale: #f0fff4;
+            --off-white: #f7fafc;
+            --white: #ffffff;
+            --dark: #1a202c;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --text-muted: #a0aec0;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --shadow-green: 0 4px 20px rgba(56,161,105,0.25);
+            --radius: 10px;
+            --radius-lg: 16px;
+            --transition: 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Focus States */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 3px solid var(--green);
+            outline-offset: 2px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--steel);
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green);
+            transition: width var(--transition);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav a:hover {
+            color: var(--green);
+        }
+
+        .nav .btn-nav {
+            background: var(--green);
+            color: white;
+            padding: 10px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+
+        .nav .btn-nav::after {
+            display: none;
+        }
+
+        .nav .btn-nav:hover {
+            background: var(--green-dark);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-green);
+        }
+
+        .built-by {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: color var(--transition);
+        }
+
+        .built-by:hover {
+            color: var(--green);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--steel-dark);
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .hamburger span:nth-child(1) { transform: translateY(-7px); }
+        .hamburger span:nth-child(2) { transform: translateY(0); }
+        .hamburger span:nth-child(3) { transform: translateY(7px); }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 0 100px;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 50%, var(--green-pale) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56,161,105,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-pale);
+            border: 1px solid rgba(56,161,105,0.2);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-green);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--steel-dark);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .hero-stat-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-stat-badge .stat-num {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--green);
+            line-height: 1;
+        }
+
+        .hero-stat-badge .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .about-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            color: var(--text-light);
+        }
+
+        .about-features li .check {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            background: var(--green-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* ===== LESSONS ===== */
+        .lessons {
+            padding: 100px 0;
+            background: var(--off-white);
+        }
+
+        .lessons-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .lessons-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .lesson-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--green);
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .lesson-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .lesson-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--green-pale);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .lesson-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .lesson-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .pricing-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            text-align: center;
+            transition: all var(--transition);
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--green);
+            box-shadow: var(--shadow-green);
+        }
+
+        .pricing-card.popular .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .pricing-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .pricing-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 28px;
+        }
+
+        .pricing-list li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-list li .tick {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .pricing-card .price {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .pricing-card .price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 80px 0;
+            background: var(--steel-dark);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--green-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-item .stat-text {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--off-white);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .testimonials-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-stars {
+            color: #f6ad55;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--green-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            color: var(--green);
+            font-size: 1rem;
+        }
+
+        .testimonial-name {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== AREAS ===== */
+        .areas {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .areas-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .areas-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .area-tag {
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--steel);
+            transition: all var(--transition);
+        }
+
+        .area-tag:hover {
+            background: var(--green-pale);
+            border-color: var(--green);
+            color: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 100px 0;
+            background: var(--off-white);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .contact-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: var(--green-pale);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 1.2rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .contact-item a:hover {
+            color: var(--green);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--white);
+            transition: border-color var(--transition);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(56,161,105,0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--green-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--green-light);
+            transition: color var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--green);
+        }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26,32,44,0.6);
+            backdrop-filter: blur(6px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .neocode-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .neocode-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .neocode-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neocode-popup .popup-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--green-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.6rem;
+        }
+
+        .neocode-popup h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .neocode-popup p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .neocode-popup .popup-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .neocode-popup .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .neocode-popup .popup-close {
+            background: none;
+            border: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            padding: 8px;
+            transition: color var(--transition);
+        }
+
+        .neocode-popup .popup-close:hover {
+            color: var(--text);
+        }
+
+        .popup-x {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all var(--transition);
+        }
+
+        .popup-x:hover {
+            background: var(--off-white);
+            color: var(--text);
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.6rem; }
+            .section-title { font-size: 2rem; }
+            .lessons-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .areas-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                gap: 24px;
+                padding: 40px;
+                box-shadow: -8px 0 30px rgba(0,0,0,0.1);
+                transition: right 0.35s ease;
+            }
+
+            .nav.open {
+                right: 0;
+            }
+
+            .nav a {
+                font-size: 1.1rem;
+            }
+
+            .built-by {
+                display: none;
+            }
+
+            .hero { padding: 120px 0 60px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-image img { height: 280px; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .about-image img { height: 260px; }
+
+            .lessons-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+            .areas-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .section-title { font-size: 1.8rem; }
+            .about, .lessons, .pricing, .testimonials, .areas, .contact { padding: 70px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-btns { flex-direction: column; }
+            .hero-btns .btn { width: 100%; justify-content: center; }
+            .areas-grid { grid-template-columns: 1fr 1fr; }
+            .stats .stat-number { font-size: 2.2rem; }
+            .neocode-popup { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#hero" class="logo">
+                <div class="logo-icon">TE</div>
+                The Edinburgh Driving School
+            </a>
+            <a href="https://neocodestudio.co.uk" target="_blank" class="built-by">Built by NeoCode Studio</a>
+            <nav class="nav" id="nav">
+                <a href="#about">About</a>
+                <a href="#lessons">Lessons</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#areas">Areas</a>
+                <a href="#contact" class="btn-nav">Book Now</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="reveal">
+                    <div class="hero-badge">&#9733; Trusted across Edinburgh</div>
+                    <h1>Learn to Drive with <span>Confidence</span> in Edinburgh</h1>
+                    <p>Whether you're a complete beginner or looking to sharpen your skills, we'll get you road-ready with patient, professional instruction that's tailored to you.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Book Your First Lesson &#8594;</a>
+                        <a href="#lessons" class="btn btn-outline">View Lesson Types</a>
+                    </div>
+                </div>
+                <div class="hero-image reveal">
+                    <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Driving lesson in Edinburgh">
+                    <div class="hero-stat-badge">
+                        <div class="stat-num">92%</div>
+                        <div class="stat-label">First-time<br>pass rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-label reveal">&#9679; About Us</div>
+            <h2 class="section-title reveal">Your Instructor, Your Pace</h2>
+            <p class="section-subtitle reveal">We don't believe in one-size-fits-all lessons. Every learner's different, and your instruction should be too.</p>
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/7433822/pexels-photo-7433822.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Professional driving instructor">
+                </div>
+                <div class="about-content reveal">
+                    <h3>Patient, Professional, and Fully Qualified</h3>
+                    <p>At The Edinburgh Driving School, we're passionate about helping learners feel comfortable behind the wheel. Our DVSA-approved instructor brings years of experience and a calm, encouraging teaching style that builds real confidence.</p>
+                    <p>We don't rush you. Whether it's your first time turning the ignition or you're prepping for test day, you'll always feel supported and in control.</p>
+                    <ul class="about-features">
+                        <li><span class="check">&#10003;</span> DVSA-approved and fully qualified instructor</li>
+                        <li><span class="check">&#10003;</span> Dual-control, well-maintained modern car</li>
+                        <li><span class="check">&#10003;</span> Flexible scheduling including evenings and weekends</li>
+                        <li><span class="check">&#10003;</span> Lessons tailored to your learning speed</li>
+                        <li><span class="check">&#10003;</span> Pick-up and drop-off from your door</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LESSONS -->
+    <section class="lessons" id="lessons">
+        <div class="container">
+            <div class="lessons-header">
+                <div class="section-label reveal">&#9679; Lesson Types</div>
+                <h2 class="section-title reveal">Find the Right Lesson for You</h2>
+                <p class="section-subtitle reveal">From total beginners to experienced drivers looking to brush up, we've got a lesson type that'll suit you perfectly.</p>
+            </div>
+            <div class="lessons-grid">
+                <div class="lesson-card reveal">
+                    <div class="lesson-icon">&#128663;</div>
+                    <h3>Beginner Lessons</h3>
+                    <p>Starting from scratch? No worries. We'll take you from zero experience to test-ready with a structured, step-by-step approach that covers everything from clutch control to roundabouts.</p>
+                </div>
+                <div class="lesson-card reveal">
+                    <div class="lesson-icon">&#9889;</div>
+                    <h3>Intensive Courses</h3>
+                    <p>Need to pass quickly? Our intensive courses pack everything into a condensed time frame. Perfect if you've got a deadline or just want to get on the road fast.</p>
+                </div>
+                <div class="lesson-card reveal">
+                    <div class="lesson-icon">&#128260;</div>
+                    <h3>Refresher Lessons</h3>
+                    <p>Already passed but haven't driven in a while? We'll help you shake off the rust and rebuild your confidence behind the wheel. No judgement, just support.</p>
+                </div>
+                <div class="lesson-card reveal">
+                    <div class="lesson-icon">&#128739;</div>
+                    <h3>Motorway Lessons</h3>
+                    <p>Motorways can feel intimidating. We'll teach you how to merge, lane change, and handle high-speed driving safely. You'll wonder why you were ever nervous.</p>
+                </div>
+                <div class="lesson-card reveal">
+                    <div class="lesson-icon">&#127942;</div>
+                    <h3>Pass Plus</h3>
+                    <p>Just passed your test? Pass Plus gives you extra skills and experience across different road types and conditions. Plus, it can lower your insurance premiums.</p>
+                </div>
+                <div class="lesson-card reveal">
+                    <div class="lesson-icon">&#128203;</div>
+                    <h3>Test Preparation</h3>
+                    <p>Test day approaching? We'll run through mock tests, cover common routes around Edinburgh test centres, and make sure you're feeling calm and ready.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <div class="section-label reveal">&#9679; Pricing</div>
+                <h2 class="section-title reveal">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle reveal">No hidden fees, no surprises. Just honest pricing for quality driving instruction.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3>Single Lesson</h3>
+                    <p class="pricing-desc">Perfect for getting started or fitting lessons around a busy schedule.</p>
+                    <ul class="pricing-list">
+                        <li><span class="tick">&#10003;</span> 1-hour lesson</li>
+                        <li><span class="tick">&#10003;</span> Door-to-door pick-up</li>
+                        <li><span class="tick">&#10003;</span> Fully insured dual-control car</li>
+                        <li><span class="tick">&#10003;</span> Flexible scheduling</li>
+                    </ul>
+                    <div class="price">&pound;35</div>
+                    <div class="price-note">per hour</div>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+                <div class="pricing-card popular reveal">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>10-Hour Block</h3>
+                    <p class="pricing-desc">Our best value option. Save money and build consistency with regular lessons.</p>
+                    <ul class="pricing-list">
+                        <li><span class="tick">&#10003;</span> 10 hours of tuition</li>
+                        <li><span class="tick">&#10003;</span> Save &pound;30 vs single lessons</li>
+                        <li><span class="tick">&#10003;</span> Progress tracking</li>
+                        <li><span class="tick">&#10003;</span> Priority booking</li>
+                    </ul>
+                    <div class="price">&pound;320</div>
+                    <div class="price-note">10 hours (&pound;32/hr)</div>
+                    <a href="#contact" class="btn btn-primary">Book Now</a>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3>Intensive Course</h3>
+                    <p class="pricing-desc">Get test-ready fast with an intensive block of lessons over one to two weeks.</p>
+                    <ul class="pricing-list">
+                        <li><span class="tick">&#10003;</span> 20+ hours of tuition</li>
+                        <li><span class="tick">&#10003;</span> Structured course plan</li>
+                        <li><span class="tick">&#10003;</span> Mock tests included</li>
+                        <li><span class="tick">&#10003;</span> Test day support</li>
+                    </ul>
+                    <div class="price">&pound;600</div>
+                    <div class="price-note">20 hours (&pound;30/hr)</div>
+                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="92">0%</div>
+                    <div class="stat-text">First-time pass rate</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="500">0+</div>
+                    <div class="stat-text">Learners passed</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="10">0+</div>
+                    <div class="stat-text">Years of experience</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="5">0.0</div>
+                    <div class="stat-text">Star Google rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <div class="section-label reveal">&#9679; Testimonials</div>
+                <h2 class="section-title reveal">What Our Learners Say</h2>
+                <p class="section-subtitle reveal">Don't just take our word for it. Here's what our students have to say about their experience.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"I was really nervous about learning to drive, but they made me feel so relaxed from the very first lesson. Passed first time and I honestly couldn't have done it without them!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sophie M.</div>
+                            <div class="testimonial-detail">Passed first time</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"I'd been putting off learning for years. Wish I'd started sooner. The instruction was clear, patient, and actually fun. Best decision I've made this year."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JK</div>
+                        <div>
+                            <div class="testimonial-name">James K.</div>
+                            <div class="testimonial-detail">Intensive course</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Came back for refresher lessons after not driving for 5 years. Within a few sessions I felt completely confident again. Really professional and friendly instructor."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LR</div>
+                        <div>
+                            <div class="testimonial-name">Laura R.</div>
+                            <div class="testimonial-detail">Refresher lessons</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AREAS -->
+    <section class="areas" id="areas">
+        <div class="container">
+            <div class="areas-header">
+                <div class="section-label reveal">&#9679; Areas We Cover</div>
+                <h2 class="section-title reveal">Lessons Across Edinburgh</h2>
+                <p class="section-subtitle reveal">We cover Edinburgh and the surrounding areas. Pick-up and drop-off right from your door.</p>
+            </div>
+            <div class="areas-grid reveal">
+                <div class="area-tag">City Centre</div>
+                <div class="area-tag">Leith</div>
+                <div class="area-tag">Morningside</div>
+                <div class="area-tag">Stockbridge</div>
+                <div class="area-tag">Corstorphine</div>
+                <div class="area-tag">Portobello</div>
+                <div class="area-tag">Gorgie</div>
+                <div class="area-tag">Dalry</div>
+                <div class="area-tag">Newington</div>
+                <div class="area-tag">Bruntsfield</div>
+                <div class="area-tag">Marchmont</div>
+                <div class="area-tag">Craigmillar</div>
+                <div class="area-tag">Murrayfield</div>
+                <div class="area-tag">Currie</div>
+                <div class="area-tag">Musselburgh</div>
+                <div class="area-tag">South Queensferry</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-header">
+                <div class="section-label reveal">&#9679; Get in Touch</div>
+                <h2 class="section-title reveal">Ready to Start Driving?</h2>
+                <p class="section-subtitle reveal">Drop us a message and we'll get back to you within 24 hours. Let's get you on the road.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-icon">&#9993;</div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <a href="mailto:theedinburghdrivingschool@gmail.com">theedinburghdrivingschool@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128205;</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Covering all of Edinburgh and surrounding areas</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128337;</div>
+                        <div>
+                            <h4>Availability</h4>
+                            <p>Monday to Saturday, 8am to 7pm<br>Evening and weekend slots available</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128664;</div>
+                        <div>
+                            <h4>Pick-Up Service</h4>
+                            <p>We'll come to you. Home, work, or university.</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form reveal" action="https://formsubmit.co/theedinburghdrivingschool@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New booking enquiry from your website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <select name="lesson_type" required>
+                            <option value="" disabled selected>Select Lesson Type</option>
+                            <option value="Beginner Lessons">Beginner Lessons</option>
+                            <option value="Intensive Course">Intensive Course</option>
+                            <option value="Refresher Lessons">Refresher Lessons</option>
+                            <option value="Motorway Lessons">Motorway Lessons</option>
+                            <option value="Pass Plus">Pass Plus</option>
+                            <option value="Test Preparation">Test Preparation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Anything else you'd like us to know?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Enquiry &#8594;</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">
+                        <div class="logo-icon">TE</div>
+                        The Edinburgh Driving School
+                    </a>
+                    <p>Professional driving instruction across Edinburgh. We're here to help you pass your test and become a confident, safe driver for life.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#lessons">Lessons</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Lessons</h4>
+                    <ul class="footer-links">
+                        <li><a href="#lessons">Beginner</a></li>
+                        <li><a href="#lessons">Intensive</a></li>
+                        <li><a href="#lessons">Refresher</a></li>
+                        <li><a href="#lessons">Motorway</a></li>
+                        <li><a href="#lessons">Pass Plus</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 The Edinburgh Driving School. All rights reserved.</span>
+                <span>Website by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neocode-overlay" id="neocodeOverlay"></div>
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="popup-x" id="popupX" aria-label="Close popup">&times;</button>
+        <div class="popup-icon">&#128640;</div>
+        <h3>Like what you see?</h3>
+        <p>This is a free preview built by NeoCode Studio. Let's make it yours.</p>
+        <div class="popup-btns">
+            <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn btn-primary">Get Your Own Site &#8594;</a>
+            <button class="popup-close" id="popupClose">Maybe later</button>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('open');
+        });
+
+        // Close nav on link click
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('open');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // IntersectionObserver for reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Counter animation for stats
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.textContent.replace(/[0-9.]/g, '');
+                    let current = 0;
+                    const step = target / 50;
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        if (target === 5) {
+                            el.textContent = current.toFixed(1) + suffix;
+                        } else {
+                            el.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
+
+        // NeoCode popup at 70% scroll
+        let popupShown = false;
+        const neocodeOverlay = document.getElementById('neocodeOverlay');
+        const neocodePopup = document.getElementById('neocodePopup');
+
+        function showPopup() {
+            neocodeOverlay.classList.add('active');
+            neocodePopup.classList.add('active');
+        }
+
+        function hidePopup() {
+            neocodeOverlay.classList.remove('active');
+            neocodePopup.classList.remove('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                popupShown = true;
+                showPopup();
+            }
+        });
+
+        document.getElementById('popupClose').addEventListener('click', hidePopup);
+        document.getElementById('popupX').addEventListener('click', hidePopup);
+        neocodeOverlay.addEventListener('click', hidePopup);
+    </script>
+
+</body>
+</html>
