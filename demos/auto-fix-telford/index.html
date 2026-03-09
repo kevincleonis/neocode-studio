@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-Fix Telford | Expert Car Repairs, Servicing & MOT in Telford</title>
+<meta name="description" content="Auto-Fix Telford - your trusted local garage for car repairs, servicing, MOT testing, diagnostics and tyres. Honest work, fair prices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--charcoal:#2d2d2d;--red:#e63946;--off-white:#faf9f6;--red-dark:#c5303c;--charcoal-light:#3a3a3a;--shadow:0 4px 24px rgba(0,0,0,.12)}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Lato',sans-serif;color:var(--charcoal);background:var(--off-white);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Oswald',sans-serif;font-weight:600;line-height:1.2;text-transform:uppercase;letter-spacing:.5px}
+a{text-decoration:none;color:inherit;transition:color .3s}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Header */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--charcoal);padding:0 24px;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:'Oswald',sans-serif;font-size:1.6rem;font-weight:700;color:var(--off-white);letter-spacing:1px;text-transform:uppercase}
+.logo span{color:var(--red)}
+nav{display:flex;align-items:center;gap:32px}
+nav a{color:var(--off-white);font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:500;text-transform:uppercase;letter-spacing:1px;position:relative;padding:4px 0}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--red);transition:width .3s}
+nav a:hover::after,nav a:focus::after{width:100%}
+nav a:focus{outline:2px solid var(--red);outline-offset:4px;border-radius:2px}
+.built-by{font-size:.7rem;color:rgba(255,255,255,.4);font-family:'Lato',sans-serif;text-transform:none;letter-spacing:0}
+.built-by:hover{color:var(--red)}
+.built-by::after{display:none}
+.nav-cta{background:var(--red);color:#fff!important;padding:10px 24px;border-radius:4px;font-weight:600;transition:background .3s,transform .2s}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--red-dark);transform:translateY(-1px)}
+.nav-cta:focus{outline:2px solid var(--off-white);outline-offset:2px}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:0;z-index:1001}
+.hamburger:focus{outline:2px solid var(--red);outline-offset:2px;border-radius:4px}
+.hamburger span{display:block;width:26px;height:3px;background:var(--off-white);border-radius:2px;transition:transform .3s,opacity .3s}
+.hamburger span:nth-child(1){transform:translateY(-7px)}
+.hamburger span:nth-child(3){transform:translateY(7px)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(0)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(0)}
+
+/* Mobile Nav */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  nav{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--charcoal);flex-direction:column;justify-content:center;gap:0;padding:40px;transition:right .4s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 30px rgba(0,0,0,.4)}
+  nav.open{right:0}
+  nav a{font-size:1.2rem;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-cta{text-align:center;margin-top:16px}
+  .built-by{margin-top:auto;padding-top:24px;border-bottom:none}
+}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(45,45,45,.92),rgba(45,45,45,.78)),url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat;color:var(--off-white);text-align:center;padding:120px 24px 80px}
+.hero-content{max-width:800px}
+.hero-badge{display:inline-block;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:500;padding:6px 20px;border-radius:30px;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:20px;line-height:1.1}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:1.15rem;color:rgba(250,249,246,.8);max-width:600px;margin:0 auto 36px;line-height:1.8}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:16px 36px;border-radius:4px;border:none;cursor:pointer;transition:all .3s}
+.btn:focus{outline:2px solid var(--red);outline-offset:4px;border-radius:4px}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(230,57,70,.35)}
+.btn-outline{background:transparent;color:var(--off-white);border:2px solid var(--off-white)}
+.btn-outline:hover{background:var(--off-white);color:var(--charcoal);transform:translateY(-2px)}
+
+/* Scroll indicator */
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(250,249,246,.5);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;font-family:'Oswald',sans-serif;animation:bounce 2s infinite}
+.scroll-indicator div{width:24px;height:40px;border:2px solid rgba(250,249,246,.4);border-radius:12px;position:relative}
+.scroll-indicator div::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:var(--red);border-radius:2px;animation:scrollDot 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes scrollDot{0%{opacity:1;top:6px}100%{opacity:0;top:22px}}
+
+/* Section Styles */
+.section{padding:100px 0}
+.section-dark{background:var(--charcoal);color:var(--off-white)}
+.section-alt{background:#f0efeb}
+.section-header{text-align:center;margin-bottom:64px}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px;position:relative;display:inline-block}
+.section-header h2::after{content:'';display:block;width:60px;height:4px;background:var(--red);margin:16px auto 0;border-radius:2px}
+.section-dark .section-header h2::after{background:var(--red)}
+.section-header p{font-size:1.05rem;color:#666;max-width:600px;margin:16px auto 0;line-height:1.8}
+.section-dark .section-header p{color:rgba(250,249,246,.6)}
+
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
+.reveal-delay-4{transition-delay:.6s}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:8px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:8px}
+.about-img::after{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;background:var(--red);border-radius:8px 0 8px 0;display:flex;align-items:center;justify-content:center}
+.about-badge{position:absolute;bottom:0;right:0;width:120px;height:120px;background:var(--red);border-radius:8px 0 8px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:2}
+.about-badge .number{font-family:'Oswald',sans-serif;font-size:2.4rem;font-weight:700;line-height:1}
+.about-badge .label{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.about-text h2{font-size:2rem;margin-bottom:20px}
+.about-text h2 span{color:var(--red)}
+.about-text p{color:#555;margin-bottom:16px;line-height:1.8}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+.about-feature .icon{width:36px;height:36px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-features{grid-template-columns:1fr}
+}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:var(--off-white);border-radius:8px;padding:40px 28px;text-align:center;transition:transform .3s,box-shadow .3s;border:1px solid rgba(0,0,0,.06);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--red);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.service-icon{width:64px;height:64px;background:rgba(230,57,70,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;transition:background .3s}
+.service-card:hover .service-icon{background:var(--red);color:#fff!important}
+.service-card h3{font-size:1.2rem;margin-bottom:12px}
+.service-card p{font-size:.92rem;color:#666;line-height:1.7}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.services-grid{grid-template-columns:1fr}}
+
+/* Gallery Before/After */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.gallery-item{position:relative;border-radius:8px;overflow:hidden;cursor:pointer;aspect-ratio:4/3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(45,45,45,.85) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity .4s}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay span{color:#fff;font-family:'Oswald',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:768px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}}
+
+/* Stats */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:60px 0}
+.stat-item{text-align:center}
+.stat-number{font-family:'Oswald',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--red);line-height:1}
+.stat-label{font-size:.9rem;color:rgba(250,249,246,.6);margin-top:8px;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:600px){.stats-bar{grid-template-columns:repeat(2,1fr);gap:32px}}
+
+/* Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:#fff;border-radius:8px;padding:36px 28px;box-shadow:0 2px 16px rgba(0,0,0,.06);position:relative;border:1px solid rgba(0,0,0,.04)}
+.testimonial-card::before{content:'\201C';font-family:'Oswald',sans-serif;font-size:4rem;color:var(--red);opacity:.2;position:absolute;top:12px;left:20px;line-height:1}
+.testimonial-card p{font-style:italic;color:#555;line-height:1.8;margin-bottom:20px;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:1.1rem}
+.testimonial-name{font-weight:700;font-size:.95rem}
+.testimonial-stars{color:var(--red);font-size:.85rem;margin-top:2px}
+@media(max-width:768px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h3{font-size:1.6rem;margin-bottom:20px}
+.contact-info p{color:#555;line-height:1.8;margin-bottom:28px}
+.contact-detail{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.contact-detail .icon{width:44px;height:44px;background:rgba(230,57,70,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+.contact-detail .text strong{display:block;font-family:'Oswald',sans-serif;font-size:.95rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.contact-detail .text span{color:#666;font-size:.95rem}
+.contact-detail .text a{color:var(--red);font-weight:600}
+.contact-detail .text a:hover{text-decoration:underline}
+.contact-detail .text a:focus{outline:2px solid var(--red);outline-offset:2px;border-radius:2px}
+.contact-hours{background:var(--charcoal);color:var(--off-white);border-radius:8px;padding:24px;margin-top:8px}
+.contact-hours h4{font-size:1rem;margin-bottom:12px;color:var(--red)}
+.contact-hours table{width:100%;font-size:.9rem}
+.contact-hours td{padding:4px 0;color:rgba(250,249,246,.7)}
+.contact-hours td:last-child{text-align:right;font-weight:700;color:var(--off-white)}
+.contact-form{background:#fff;border-radius:8px;padding:40px;box-shadow:var(--shadow)}
+.contact-form h3{font-size:1.4rem;margin-bottom:24px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;font-family:'Oswald',sans-serif}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 16px;border:2px solid #e0e0e0;border-radius:4px;font-family:'Lato',sans-serif;font-size:.95rem;transition:border-color .3s;background:var(--off-white)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(230,57,70,.15)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+
+/* Footer */
+footer{background:var(--charcoal);color:rgba(250,249,246,.5);padding:48px 0 24px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand .logo{margin-bottom:12px;display:inline-block}
+.footer-brand p{font-size:.9rem;line-height:1.7;max-width:320px}
+.footer-links h4,.footer-hours h4{font-family:'Oswald',sans-serif;font-size:1rem;color:var(--off-white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-links ul{list-style:none}
+.footer-links li{margin-bottom:8px}
+.footer-links a{font-size:.9rem;transition:color .3s}
+.footer-links a:hover{color:var(--red)}
+.footer-links a:focus{outline:2px solid var(--red);outline-offset:2px;border-radius:2px}
+.footer-hours p{font-size:.9rem;line-height:1.8}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:.8rem;flex-wrap:wrap;gap:12px}
+.footer-bottom a{color:var(--red);transition:color .3s}
+.footer-bottom a:hover{color:var(--off-white)}
+.footer-bottom a:focus{outline:2px solid var(--red);outline-offset:2px;border-radius:2px}
+@media(max-width:768px){
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+
+/* Popup */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.popup-overlay.show{opacity:1;pointer-events:auto}
+.popup-card{background:#fff;border-radius:12px;padding:48px 40px;max-width:480px;width:90%;text-align:center;transform:scale(.9) translateY(20px);transition:transform .4s cubic-bezier(.4,0,.2,1);position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.popup-overlay.show .popup-card{transform:scale(1) translateY(0)}
+.popup-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border:none;background:rgba(0,0,0,.06);border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .3s;color:var(--charcoal)}
+.popup-close:hover{background:var(--red);color:#fff}
+.popup-close:focus{outline:2px solid var(--red);outline-offset:2px}
+.popup-card h3{font-family:'Oswald',sans-serif;font-size:1.6rem;margin-bottom:12px;text-transform:uppercase}
+.popup-card h3 span{color:var(--red)}
+.popup-card p{color:#666;line-height:1.7;margin-bottom:28px;font-size:1rem}
+.popup-cta{display:inline-block;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:16px 36px;border-radius:4px;transition:background .3s,transform .2s}
+.popup-cta:hover{background:var(--red-dark);transform:translateY(-2px)}
+.popup-cta:focus{outline:2px solid var(--charcoal);outline-offset:4px}
+.popup-tag{font-size:.75rem;color:var(--red);margin-top:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#hero" class="logo">Auto-Fix <span>Telford</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="built-by">Built by NeoCode Studio</a>
+      <a href="tel:+441onal" class="nav-cta">Call Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Telford's Trusted Garage</div>
+    <h1>Expert Car <span>Repairs</span> You Can Count On</h1>
+    <p>We don't just fix cars, we keep them running at their best. From full servicing and MOT testing to diagnostics and tyre fitting, Auto-Fix Telford has got you covered.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Book a Service</a>
+      <a href="#services" class="btn btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div></div>
+    Scroll
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Auto-Fix Telford garage workshop with mechanic servicing a vehicle" loading="lazy">
+        <div class="about-badge">
+          <span class="number">15+</span>
+          <span class="label">Years Exp.</span>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <h2>Telford's Most <span>Reliable</span> Garage</h2>
+        <p>Auto-Fix Telford isn't your average garage. We're a team of experienced mechanics who genuinely care about getting the job done right the first time. We've been serving Telford and the surrounding areas for years, building a reputation on honest work and fair pricing.</p>
+        <p>Whether it's a routine service, an MOT, or a tricky diagnostic issue, we'll always give you a straight answer and a fair quote. No hidden fees, no unnecessary upsells. That's a promise.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="icon">&#10003;</div>
+            <span>Certified Mechanics</span>
+          </div>
+          <div class="about-feature">
+            <div class="icon">&#10003;</div>
+            <span>Honest Pricing</span>
+          </div>
+          <div class="about-feature">
+            <div class="icon">&#10003;</div>
+            <span>All Makes & Models</span>
+          </div>
+          <div class="about-feature">
+            <div class="icon">&#10003;</div>
+            <span>Fast Turnaround</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section section-dark" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>What We Do</h2>
+      <p>From routine maintenance to complex repairs, we've got the skills and equipment to handle it all.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon" style="color:var(--red)">&#128295;</div>
+        <h3>Car Repairs</h3>
+        <p>Brakes, clutches, exhausts, suspension and more. We'll diagnose the issue and get your car back on the road quickly and safely.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon" style="color:var(--red)">&#9881;</div>
+        <h3>Full Servicing</h3>
+        <p>Interim and full services to keep your car running smoothly. We follow manufacturer guidelines and use quality parts every time.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon" style="color:var(--red)">&#128203;</div>
+        <h3>MOT Testing</h3>
+        <p>Quick, hassle-free MOT testing with competitive pricing. If your car needs work to pass, we'll give you an honest assessment first.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon" style="color:var(--red)">&#128187;</div>
+        <h3>Diagnostics</h3>
+        <p>Advanced diagnostic equipment to pinpoint faults fast. Engine warning light on? We'll find out exactly what's going on under the bonnet.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-icon" style="color:var(--red)">&#9898;</div>
+        <h3>Tyres</h3>
+        <p>New tyres fitted, balanced and tracked. We stock a wide range of brands and sizes to suit every budget. Puncture repairs available too.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-icon" style="color:var(--red)">&#128663;</div>
+        <h3>Pre-Purchase Checks</h3>
+        <p>Thinking of buying a used car? We'll give it a thorough inspection so you know exactly what you're getting before you commit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section section-dark" style="padding-top:0">
+  <div class="container">
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5,000+</div>
+        <div class="stat-label">Cars Serviced</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.8</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Satisfaction Focus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section section-alt" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Our Workshop</h2>
+      <p>Take a look at our fully equipped garage where your car gets the care it deserves.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/3642618/pexels-photo-3642618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Mechanic inspecting engine bay" loading="lazy">
+        <div class="gallery-overlay"><span>Engine Diagnostics</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://images.pexels.com/photos/4489732/pexels-photo-4489732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Brake disc replacement in progress" loading="lazy">
+        <div class="gallery-overlay"><span>Brake Repairs</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Professional tyre fitting" loading="lazy">
+        <div class="gallery-overlay"><span>Tyre Fitting</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://images.pexels.com/photos/4116193/pexels-photo-4116193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Vehicle on hydraulic lift" loading="lazy">
+        <div class="gallery-overlay"><span>Full Servicing</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://images.pexels.com/photos/4489731/pexels-photo-4489731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Mechanic working under vehicle" loading="lazy">
+        <div class="gallery-overlay"><span>Suspension Work</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="https://images.pexels.com/photos/3807811/pexels-photo-3807811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Clean professional workshop" loading="lazy">
+        <div class="gallery-overlay"><span>Our Workshop</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>What Our Customers Say</h2>
+      <p>Don't just take our word for it. Here's what real customers have to say about Auto-Fix Telford.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p>"Brilliant garage. They found the issue with my car's electrics within an hour when another garage couldn't figure it out in two days. Fair price too. Won't go anywhere else now."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Mark Thompson</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p>"Had my MOT and service done here. They called me before doing any extra work and explained everything clearly. No pressure at all. Really appreciated the honesty."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sarah Mitchell</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <p>"Needed new brakes and tyres urgently. They squeezed me in the same day and the price was very reasonable. Friendly team, spotless workshop. Highly recommend."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div>
+            <div class="testimonial-name">Dave Richardson</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Get In Touch</h2>
+      <p>Need a quote, want to book a service, or just have a question? We're here to help.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Drop Us a Line</h3>
+        <p>Give us a call or send a message and we'll get back to you as quickly as we can. Walk-ins are also welcome during opening hours.</p>
+        <div class="contact-detail">
+          <div class="icon">&#128205;</div>
+          <div class="text">
+            <strong>Find Us</strong>
+            <span>Telford, Shropshire</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#9993;</div>
+          <div class="text">
+            <strong>Email Us</strong>
+            <a href="mailto:hello@autofixtelford.co.uk">hello@autofixtelford.co.uk</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#128241;</div>
+          <div class="text">
+            <strong>Call Us</strong>
+            <a href="tel:+44XXXXXXXXXX">Get in touch for our number</a>
+          </div>
+        </div>
+        <div class="contact-hours">
+          <h4>Opening Hours</h4>
+          <table>
+            <tr><td>Monday - Friday</td><td>8:00 AM - 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:30 AM - 1:00 PM</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-1">
+        <h3>Send a Message</h3>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="repairs">Car Repairs</option>
+              <option value="servicing">Full Servicing</option>
+              <option value="mot">MOT Testing</option>
+              <option value="diagnostics">Diagnostics</option>
+              <option value="tyres">Tyres</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your car and what you need..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;text-align:center">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="logo">Auto-Fix <span>Telford</span></a>
+        <p>Your trusted local garage in Telford. Honest repairs, quality servicing and MOT testing. We treat every car like it's our own.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 8:30 AM - 1:00 PM<br>Sun: Closed</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Auto-Fix Telford. All rights reserved.</span>
+      <span>Website by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="popup-overlay" id="demoPopup">
+  <div class="popup-card">
+    <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+    <h3>Like What <span>You See?</span></h3>
+    <p>This is a free preview built by NeoCode Studio. We created this to show you what your online presence could look like. Let's make it yours.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="popup-cta">Let's Talk</a>
+    <div class="popup-tag">NeoCode Studio</div>
+  </div>
+</div>
+
+<script>
+// Header scroll effect
+var header=document.getElementById('header');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>50){header.classList.add('scrolled')}
+  else{header.classList.remove('scrolled')}
+});
+
+// Hamburger menu
+var hamburger=document.getElementById('hamburger');
+var nav=document.getElementById('nav');
+hamburger.addEventListener('click',function(){
+  hamburger.classList.toggle('active');
+  nav.classList.toggle('open');
+  var expanded=hamburger.getAttribute('aria-expanded')==='true';
+  hamburger.setAttribute('aria-expanded',!expanded);
+});
+// Close nav on link click (mobile)
+var navLinks=nav.querySelectorAll('a');
+navLinks.forEach(function(link){
+  link.addEventListener('click',function(){
+    hamburger.classList.remove('active');
+    nav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+  });
+});
+
+// IntersectionObserver for scroll animations
+var reveals=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+}else{
+  reveals.forEach(function(el){el.classList.add('visible')});
+}
+
+// NeoCode popup at 70% scroll
+var popupShown=false;
+window.addEventListener('scroll',function(){
+  if(!popupShown){
+    var scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    if(scrollPercent>0.7){popupShown=true;document.getElementById('demoPopup').classList.add('show')}
+  }
+});
+// Close popup
+document.getElementById('popupClose').addEventListener('click',function(){
+  document.getElementById('demoPopup').classList.remove('show');
+});
+document.getElementById('demoPopup').addEventListener('click',function(e){
+  if(e.target===this){this.classList.remove('show')}
+});
+
+// Form submit (demo - just show alert)
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  alert('Thanks for your message! This is a demo site. The real site would send your enquiry directly to Auto-Fix Telford.');
+  this.reset();
+});
+</script>
+</body>
+</html>

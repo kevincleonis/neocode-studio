@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newnham Street Garage | MOT, Servicing & Repairs</title>
+<meta name="description" content="Newnham Street Garage - your trusted local garage for MOT testing, servicing, repairs and diagnostics. Honest, affordable, and reliable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2744;
+  --navy-light:#243556;
+  --amber:#d4a843;
+  --amber-dark:#b8922e;
+  --light:#f0f0f0;
+  --white:#ffffff;
+  --dark:#111111;
+  --text:#333333;
+  --text-light:#666666;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Source Sans Pro',sans-serif;color:var(--text);background:var(--light);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Bebas Neue',sans-serif;letter-spacing:1px;line-height:1.2}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:4px}
+
+/* Focus States */
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:2px}
+
+/* Header */
+.header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(26,39,68,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:box-shadow 0.3s ease}
+.header.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.3)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;flex-direction:column}
+.logo-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);letter-spacing:2px;text-decoration:none;line-height:1}
+.logo-tagline{font-size:0.7rem;color:var(--amber);letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.95rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:color 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--amber);transition:width 0.3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--amber);color:var(--navy)!important;padding:10px 24px;border-radius:6px;font-weight:700;transition:background 0.3s,transform 0.2s}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--amber-dark);transform:translateY(-1px)}
+.built-by{font-size:0.65rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.3s}
+.built-by:hover{color:var(--amber)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;cursor:pointer;width:30px;height:24px;justify-content:space-between;background:none;border:none;padding:0;z-index:1001}
+.hamburger span{display:block;width:100%;height:3px;background:var(--white);border-radius:2px;transition:all 0.3s ease}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(7px,7px)}
+.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-10px)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
+
+/* Mobile Nav */
+.mobile-nav{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(26,39,68,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--white);text-decoration:none;letter-spacing:3px;transition:color 0.3s}
+.mobile-nav a:hover{color:var(--amber)}
+.mobile-nav .mob-cta{background:var(--amber);color:var(--navy);padding:14px 40px;border-radius:8px;font-size:1.5rem;margin-top:12px}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(26,39,68,0.92) 0%,rgba(26,39,68,0.78) 100%),url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat;padding:120px 24px 80px}
+.hero-content{max-width:800px;text-align:center}
+.hero-badge{display:inline-block;background:rgba(212,168,67,0.15);border:1px solid rgba(212,168,67,0.4);color:var(--amber);padding:8px 20px;border-radius:50px;font-size:0.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);color:var(--white);margin-bottom:20px;line-height:1.05}
+.hero h1 span{color:var(--amber)}
+.hero p{font-size:1.2rem;color:rgba(255,255,255,0.8);max-width:600px;margin:0 auto 36px;line-height:1.7}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:var(--navy);padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem;transition:all 0.3s;border:2px solid var(--amber)}
+.btn-primary:hover{background:var(--amber-dark);border-color:var(--amber-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,168,67,0.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem;transition:all 0.3s;border:2px solid rgba(255,255,255,0.3)}
+.btn-secondary:hover{border-color:var(--white);background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--amber);line-height:1}
+.hero-stat .label{font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* Scroll indicator */
+.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;animation:bobble 2s ease-in-out infinite}
+.scroll-indicator .arrow{width:20px;height:20px;border-right:2px solid rgba(255,255,255,0.4);border-bottom:2px solid rgba(255,255,255,0.4);transform:rotate(45deg)}
+@keyframes bobble{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* Section Common */
+.section{padding:100px 24px}
+.section-header{text-align:center;max-width:650px;margin:0 auto 64px}
+.section-label{display:inline-block;font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin-bottom:16px}
+.section-subtitle{font-size:1.1rem;color:var(--text-light);line-height:1.7}
+.container{max-width:1200px;margin:0 auto}
+
+/* About */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-image{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3}
+.about-image img{width:100%;height:100%;object-fit:cover;display:block}
+.about-image-badge{position:absolute;bottom:20px;right:20px;background:var(--amber);color:var(--navy);padding:16px 24px;border-radius:12px;text-align:center}
+.about-image-badge .big{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;line-height:1}
+.about-image-badge .small{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.about-text h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);margin-bottom:20px}
+.about-text h2 span{color:var(--amber)}
+.about-text p{color:var(--text-light);margin-bottom:16px;line-height:1.8}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--navy)}
+.about-feature .check{width:24px;height:24px;background:rgba(212,168,67,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--amber);font-size:0.85rem;flex-shrink:0}
+
+/* Services */
+.services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:40px 28px;text-align:center;transition:all 0.4s;border:1px solid transparent;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--amber);transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,39,68,0.12);border-color:rgba(212,168,67,0.2)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:70px;height:70px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:1.8rem;transition:transform 0.3s}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(-5deg)}
+.service-card h3{font-size:1.5rem;color:var(--navy);margin-bottom:12px;letter-spacing:1px}
+.service-card p{font-size:0.95rem;color:var(--text-light);line-height:1.7}
+
+/* Why Choose Us */
+.why{background:var(--navy);color:var(--white)}
+.why .section-title{color:var(--white)}
+.why .section-subtitle{color:rgba(255,255,255,0.6)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.why-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:36px 28px;text-align:center;transition:all 0.3s}
+.why-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,168,67,0.3);transform:translateY(-4px)}
+.why-icon{font-size:2.4rem;margin-bottom:16px}
+.why-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;margin-bottom:10px;letter-spacing:1px}
+.why-card p{font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.7}
+
+/* Testimonials */
+.testimonials{background:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:var(--light);border-radius:16px;padding:36px;position:relative;transition:all 0.3s}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(26,39,68,0.08)}
+.testimonial-stars{color:var(--amber);font-size:1.1rem;margin-bottom:16px;letter-spacing:2px}
+.testimonial-card p{font-size:1rem;color:var(--text);line-height:1.8;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:1.2rem}
+.testimonial-info .name{font-weight:700;color:var(--navy);font-size:0.95rem}
+.testimonial-info .vehicle{font-size:0.8rem;color:var(--text-light)}
+.testimonial-quote{position:absolute;top:20px;right:24px;font-size:3rem;color:rgba(212,168,67,0.15);font-family:Georgia,serif;line-height:1}
+
+/* CTA Banner */
+.cta-banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);padding:80px 24px;text-align:center}
+.cta-banner h2{font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:16px}
+.cta-banner p{color:rgba(255,255,255,0.7);font-size:1.1rem;max-width:550px;margin:0 auto 32px;line-height:1.7}
+
+/* Contact */
+.contact{background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{background:var(--navy);border-radius:20px;padding:48px;color:var(--white)}
+.contact-info h3{font-size:2rem;margin-bottom:8px}
+.contact-info>p{color:rgba(255,255,255,0.6);margin-bottom:32px;line-height:1.7}
+.contact-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.contact-item-icon{width:48px;height:48px;background:rgba(212,168,67,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.contact-item-text .label{font-size:0.8rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.contact-item-text .value{font-weight:600;font-size:1rem}
+.contact-item-text a{color:var(--white);text-decoration:none;transition:color 0.3s}
+.contact-item-text a:hover{color:var(--amber)}
+.contact-hours{margin-top:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)}
+.contact-hours h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;margin-bottom:16px;letter-spacing:1px}
+.hours-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.95rem}
+.hours-row .day{color:rgba(255,255,255,0.6)}
+.hours-row .time{font-weight:600}
+.contact-map{border-radius:20px;overflow:hidden;height:100%;min-height:500px;background:var(--white);display:flex;flex-direction:column}
+.contact-map iframe{width:100%;flex:1;min-height:350px;border:none}
+.map-overlay{padding:24px;background:var(--white)}
+.map-overlay p{font-size:0.95rem;color:var(--text-light);line-height:1.6}
+.map-overlay strong{color:var(--navy)}
+
+/* Footer */
+.footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:48px 24px;text-align:center}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer p{font-size:0.9rem;margin-bottom:8px}
+.footer a{color:var(--amber);text-decoration:none;transition:color 0.3s}
+.footer a:hover{color:var(--amber-dark)}
+.footer .divider{width:60px;height:2px;background:rgba(255,255,255,0.1);margin:16px auto}
+
+/* Reveal Animations */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* Demo Popup */
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.popup-overlay.show{opacity:1;pointer-events:all}
+.popup-card{background:var(--white);border-radius:20px;padding:48px;max-width:480px;width:90%;text-align:center;transform:scale(0.9) translateY(20px);transition:transform 0.4s;position:relative}
+.popup-overlay.show .popup-card{transform:scale(1) translateY(0)}
+.popup-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:var(--light);cursor:pointer;font-size:1.2rem;color:var(--text-light);transition:all 0.3s;display:flex;align-items:center;justify-content:center}
+.popup-close:hover{background:var(--navy);color:var(--white)}
+.popup-icon{font-size:3rem;margin-bottom:16px}
+.popup-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--navy);margin-bottom:12px;letter-spacing:1px}
+.popup-card p{color:var(--text-light);margin-bottom:28px;line-height:1.7;font-size:1rem}
+.popup-cta{display:inline-block;background:var(--amber);color:var(--navy);padding:14px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s;border:none;cursor:pointer}
+.popup-cta:hover{background:var(--amber-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,168,67,0.35)}
+.popup-note{display:block;margin-top:12px;font-size:0.8rem;color:var(--text-light)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid .why-card:last-child{grid-column:span 2;max-width:400px;margin:0 auto}
+}
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .mobile-nav{display:flex}
+  .nav-links{display:none}
+  .built-by{display:none}
+  .hero-stats{flex-direction:column;gap:20px}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .why-grid .why-card:last-child{grid-column:span 1;max-width:none}
+  .testimonials-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.6rem}
+  .section{padding:64px 20px}
+  .about-features{grid-template-columns:1fr}
+  .contact-info{padding:32px}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="#hero" class="logo-name">Newnham Street Garage</a>
+      <span class="logo-tagline">MOT &bull; Servicing &bull; Repairs</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+      </ul>
+    </nav>
+    <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="built-by">Built by NeoCode Studio</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" class="mob-link">About</a>
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#why" class="mob-link">Why Us</a>
+  <a href="#testimonials" class="mob-link">Reviews</a>
+  <a href="#contact" class="mob-cta mob-link">Get In Touch</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge reveal">Trusted Local Garage</div>
+    <h1 class="reveal">Your Car Deserves <span>Better Care</span></h1>
+    <p class="reveal">We're Newnham Street Garage, and we've been keeping cars on the road for years. Honest work, fair prices, and no nasty surprises. That's how it should be.</p>
+    <div class="hero-btns reveal">
+      <a href="#contact" class="btn-primary">&#9742; Book Your MOT</a>
+      <a href="#services" class="btn-secondary">Our Services &#8595;</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat">
+        <div class="num">1000+</div>
+        <div class="label">MOTs Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">5&#9733;</div>
+        <div class="label">Customer Rated</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">All</div>
+        <div class="label">Makes &amp; Models</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Mechanic working on a car engine" loading="lazy">
+        <div class="about-image-badge">
+          <div class="big">Years</div>
+          <div class="small">of Experience</div>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="section-label">About Us</span>
+        <h2>We Don't Just Fix Cars. <span>We Build Trust.</span></h2>
+        <p>At Newnham Street Garage, we believe you shouldn't have to worry about being overcharged or getting work done that isn't needed. We'll always give you an honest assessment, explain what's going on, and let you decide.</p>
+        <p>Whether it's your annual MOT, a routine service, or something that's been making a funny noise for weeks, we've got the skills and the tools to sort it out. We work on all makes and models, and we won't rest until the job's done right.</p>
+        <div class="about-features">
+          <div class="about-feature"><span class="check">&#10003;</span> MOT Testing Station</div>
+          <div class="about-feature"><span class="check">&#10003;</span> All Makes &amp; Models</div>
+          <div class="about-feature"><span class="check">&#10003;</span> Honest Pricing</div>
+          <div class="about-feature"><span class="check">&#10003;</span> Experienced Mechanics</div>
+          <div class="about-feature"><span class="check">&#10003;</span> Modern Diagnostics</div>
+          <div class="about-feature"><span class="check">&#10003;</span> No Hidden Fees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Services You Can Count On</h2>
+      <p class="section-subtitle">From quick MOTs to full engine repairs, we've got every angle covered. Here's what we can do for you.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#d4a843" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#d4a843" stroke-width="2"/></svg>
+        </div>
+        <h3>MOT Testing</h3>
+        <p>We're an authorised MOT testing centre. We'll check everything thoroughly and give you a clear report. If something needs sorting, we'll talk you through your options first.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="#d4a843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Servicing</h3>
+        <p>Regular servicing keeps your car running smoothly and holds its value. We offer interim and full services tailored to your vehicle's needs and mileage.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" stroke="#d4a843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="22" x2="4" y2="15" stroke="#d4a843" stroke-width="2"/></svg>
+        </div>
+        <h3>Repairs</h3>
+        <p>Brakes, clutches, exhausts, suspension... you name it, we can fix it. We use quality parts and we'll always give you a quote before we start any work.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#d4a843" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="#d4a843" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="21" stroke="#d4a843" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="10" r="2" stroke="#d4a843" stroke-width="2"/></svg>
+        </div>
+        <h3>Diagnostics</h3>
+        <p>Got a warning light on your dashboard? Our diagnostic equipment can read fault codes and pinpoint the problem, so we can get it fixed quickly and accurately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section why" id="why">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Why Us</span>
+      <h2 class="section-title">What Makes Us Different</h2>
+      <p class="section-subtitle">We know you've got options. Here's why our customers keep coming back.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">&#128176;</div>
+        <h3>No Surprise Bills</h3>
+        <p>We'll always quote you before we start and won't do any extra work without asking. You'll know exactly what you're paying for.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#128172;</div>
+        <h3>Honest Advice</h3>
+        <p>If something doesn't need fixing, we'll tell you. We'd rather earn your trust than make a quick quid on unnecessary repairs.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#9201;</div>
+        <h3>Quick Turnaround</h3>
+        <p>We respect your time. Most services and MOTs are done the same day, and we'll keep you updated on any repairs so you're not left waiting.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#128295;</div>
+        <h3>Skilled Mechanics</h3>
+        <p>Our team has years of hands-on experience with every kind of vehicle. There's not much we haven't seen under a bonnet.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#127919;</div>
+        <h3>Quality Parts</h3>
+        <p>We only use quality replacement parts from trusted suppliers. That means your car gets the best, and repairs last longer.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#128522;</div>
+        <h3>Friendly Service</h3>
+        <p>We're a local garage that actually cares about the community. We'll treat you like a person, not a number.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">Don't just take our word for it. Here's what the people who trust us with their cars have to say.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Brilliant garage. Took my car in for an MOT and they found a couple of things that needed doing. They explained everything clearly and the price was very fair. Won't go anywhere else now.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JT</div>
+          <div class="testimonial-info">
+            <div class="name">James T.</div>
+            <div class="vehicle">Ford Focus 2018</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>I've been bringing my cars here for years. They're always honest, always professional, and they never try to upsell you on stuff you don't need. Highly recommend to anyone looking for a decent local garage.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div class="testimonial-info">
+            <div class="name">Sarah K.</div>
+            <div class="vehicle">Volkswagen Golf 2020</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Had a warning light that another garage couldn't figure out. These guys diagnosed it straight away and fixed it the same day. Great communication throughout. Really impressed.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MP</div>
+          <div class="testimonial-info">
+            <div class="name">Mike P.</div>
+            <div class="vehicle">BMW 3 Series 2019</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="reveal">Ready to Book Your Car In?</h2>
+    <p class="reveal">Whether it's an MOT, a service, or something that needs fixing, we're here to help. Give us a ring or drop by.</p>
+    <a href="#contact" class="btn-primary reveal">&#9742; Contact Us Today</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">We'd Love to Hear From You</h2>
+      <p class="section-subtitle">Pop in, give us a call, or send us an email. We're always happy to chat about what your car needs.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3>Newnham Street Garage</h3>
+        <p>Your go-to local garage for honest, reliable car care.</p>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#9993;</div>
+          <div class="contact-item-text">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:newnhamstgarage@aol.com">newnhamstgarage@aol.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#128205;</div>
+          <div class="contact-item-text">
+            <div class="label">Location</div>
+            <div class="value">Newnham Street Garage</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#127760;</div>
+          <div class="contact-item-text">
+            <div class="label">Current Website</div>
+            <div class="value"><a href="https://www.newnhamstreetgarage.co.uk/" target="_blank" rel="noopener">newnhamstreetgarage.co.uk</a></div>
+          </div>
+        </div>
+        <div class="contact-hours">
+          <h4>Opening Hours</h4>
+          <div class="hours-row"><span class="day">Monday - Friday</span><span class="time">8:00 AM - 5:30 PM</span></div>
+          <div class="hours-row"><span class="day">Saturday</span><span class="time">8:00 AM - 12:30 PM</span></div>
+          <div class="hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
+        </div>
+      </div>
+      <div class="contact-map reveal-right">
+        <iframe src="https://www.google.com/maps?q=Newnham+Street+Garage&output=embed" allowfullscreen loading="lazy" title="Newnham Street Garage location"></iframe>
+        <div class="map-overlay">
+          <p><strong>Newnham Street Garage</strong> is easy to find and there's parking available nearby. Just pop in during opening hours or give us a ring to book ahead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 Newnham Street Garage. All rights reserved.</p>
+    <div class="divider"></div>
+    <p>Demo site designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+  </div>
+</footer>
+
+<!-- Demo Popup -->
+<div class="popup-overlay" id="demoPopup">
+  <div class="popup-card">
+    <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+    <div class="popup-icon">&#128640;</div>
+    <h3>Like What You See?</h3>
+    <p>This is a free preview built by NeoCode Studio. Let's make it yours.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="popup-cta">Let's Talk</a>
+    <span class="popup-note">No obligation. No pressure. Just a quick chat.</span>
+  </div>
+</div>
+
+<script>
+/* Header scroll effect */
+var header=document.getElementById('header');
+window.addEventListener('scroll',function(){
+  header.classList.toggle('scrolled',window.scrollY>50);
+});
+
+/* Hamburger menu */
+var hamburger=document.getElementById('hamburger');
+var mobileNav=document.getElementById('mobileNav');
+hamburger.addEventListener('click',function(){
+  hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':'';
+});
+var mobLinks=document.querySelectorAll('.mob-link');
+mobLinks.forEach(function(link){
+  link.addEventListener('click',function(){
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow='';
+  });
+});
+
+/* IntersectionObserver for scroll animations */
+var revealElements=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+revealElements.forEach(function(el){observer.observe(el)});
+
+/* NeoCode Popup at 70% scroll */
+var popupShown=false;
+window.addEventListener('scroll',function(){
+  if(!popupShown){
+    var scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    if(scrollPercent>0.7){popupShown=true;document.getElementById('demoPopup').classList.add('show')}
+  }
+});
+document.getElementById('popupClose').addEventListener('click',function(){
+  document.getElementById('demoPopup').classList.remove('show');
+});
+document.getElementById('demoPopup').addEventListener('click',function(e){
+  if(e.target===this)this.classList.remove('show');
+});
+</script>
+</body>
+</html>

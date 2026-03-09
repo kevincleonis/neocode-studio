@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cecil Street Auto Repairs | MOT, Servicing & Repairs</title>
+<meta name="description" content="Cecil Street Auto Repairs - Your trusted local garage for MOT testing, servicing, repairs, diagnostics, air conditioning and tyres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--midnight:#1b2838;
+--teal:#2ec4b6;
+--light:#f4f4f4;
+--white:#ffffff;
+--dark-text:#222222;
+--grey-text:#555555;
+--teal-dark:#239e92;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',sans-serif;color:var(--dark-text);background:var(--white);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Barlow Condensed',sans-serif;font-weight:700;line-height:1.2}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--midnight);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.35)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:70px}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:.5px}
+.nav-logo span{color:var(--teal)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.95rem;font-weight:500;transition:color .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--teal);transition:width .3s}
+.nav-links a:hover,.nav-links a:focus{color:var(--teal);outline:none}
+.nav-links a:hover::after,.nav-links a:focus::after{width:100%}
+.nav-links a:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:2px}
+.nav-built{font-size:.75rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .25s}
+.nav-built:hover,.nav-built:focus{color:var(--teal)}
+.nav-built:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:2px}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1001}
+.hamburger:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:2px}
+.hamburger span{display:block;width:26px;height:2.5px;background:var(--white);border-radius:2px;transition:transform .3s,opacity .3s}
+.hamburger.active span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100vh;background:var(--midnight);flex-direction:column;justify-content:center;align-items:center;gap:32px;transition:right .35s ease}
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1.2rem}
+  .nav-built{display:none}
+}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(27,40,56,.82),rgba(27,40,56,.72)),url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;padding:120px 24px 80px}
+.hero-content{max-width:780px;text-align:center;color:var(--white)}
+.hero-badge{display:inline-block;background:var(--teal);color:var(--midnight);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:30px;margin-bottom:24px}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);margin-bottom:18px;letter-spacing:-1px}
+.hero h1 span{color:var(--teal)}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 36px;line-height:1.8}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 34px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none;letter-spacing:.5px}
+.btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.btn-primary{background:var(--teal);color:var(--midnight)}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,196,182,.35)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.4)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* ─── SECTIONS ─── */
+section{padding:90px 24px}
+.section-header{text-align:center;max-width:640px;margin:0 auto 56px}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--midnight);margin-bottom:14px}
+.section-header .accent-line{width:50px;height:3px;background:var(--teal);margin:0 auto 18px;border-radius:2px}
+.section-header p{color:var(--grey-text);font-size:1.05rem}
+
+/* About */
+.about{background:var(--white)}
+.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{border-radius:12px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:350px}
+.about-img .overlay-badge{position:absolute;bottom:20px;left:20px;background:var(--teal);color:var(--midnight);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;padding:10px 22px;border-radius:8px}
+.about-text h3{font-size:1.6rem;color:var(--midnight);margin-bottom:16px}
+.about-text p{color:var(--grey-text);margin-bottom:16px;font-size:1rem}
+.about-stats{display:flex;gap:32px;margin-top:28px}
+.stat{text-align:center}
+.stat-number{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:var(--teal)}
+.stat-label{font-size:.85rem;color:var(--grey-text);margin-top:2px}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:32px}
+}
+
+/* Services */
+.services{background:var(--light)}
+.services-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:var(--white);border-radius:12px;padding:36px 28px;text-align:center;transition:transform .3s,box-shadow .3s;border:1px solid rgba(0,0,0,.06)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,.1)}
+.service-icon{width:64px;height:64px;background:rgba(46,196,182,.12);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem}
+.service-card h3{font-size:1.25rem;color:var(--midnight);margin-bottom:10px}
+.service-card p{color:var(--grey-text);font-size:.95rem;line-height:1.7}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr}}
+
+/* Why Choose Us */
+.why{background:var(--midnight);color:var(--white)}
+.why .section-header h2{color:var(--white)}
+.why .section-header p{color:rgba(255,255,255,.65)}
+.why-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:36px}
+.why-item{display:flex;gap:18px;align-items:flex-start}
+.why-icon{flex-shrink:0;width:50px;height:50px;background:rgba(46,196,182,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.why-item h4{font-size:1.15rem;margin-bottom:6px;color:var(--teal)}
+.why-item p{color:rgba(255,255,255,.7);font-size:.95rem}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr}}
+
+/* Testimonials */
+.testimonials{background:var(--light)}
+.testimonials-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:var(--white);border-radius:12px;padding:32px 28px;border:1px solid rgba(0,0,0,.06);position:relative}
+.testimonial-card .stars{color:#f4b942;font-size:1.1rem;margin-bottom:14px;letter-spacing:2px}
+.testimonial-card p{color:var(--grey-text);font-size:.95rem;font-style:italic;line-height:1.8;margin-bottom:18px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:42px;height:42px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--midnight);font-size:1rem}
+.testimonial-name{font-weight:600;font-size:.95rem}
+.testimonial-role{font-size:.8rem;color:var(--grey-text)}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{background:var(--white)}
+.contact-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h3{font-size:1.5rem;color:var(--midnight);margin-bottom:18px}
+.contact-info p{color:var(--grey-text);margin-bottom:24px}
+.contact-detail{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.contact-detail-icon{width:44px;height:44px;background:rgba(46,196,182,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.contact-detail-text{font-size:.95rem;color:var(--dark-text)}
+.contact-detail-text a{color:var(--teal);text-decoration:none}
+.contact-detail-text a:hover{text-decoration:underline}
+.contact-detail-text a:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:2px}
+.contact-map{border-radius:12px;overflow:hidden;min-height:380px}
+.contact-map iframe{width:100%;height:100%;min-height:380px;border:0}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--midnight);color:rgba(255,255,255,.6);padding:36px 24px;text-align:center;font-size:.9rem}
+.footer a{color:var(--teal);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.footer a:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:2px}
+.footer-divider{width:60px;height:1px;background:rgba(255,255,255,.15);margin:14px auto}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── POPUP ─── */
+.popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(27,40,56,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:9998;opacity:0;pointer-events:none;transition:opacity .4s}
+.popup-overlay.show{opacity:1;pointer-events:auto}
+.popup-card{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);background:var(--white);border-radius:16px;padding:48px 40px;max-width:460px;width:90%;z-index:9999;text-align:center;opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.popup-card.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.popup-card h3{font-size:1.6rem;color:var(--midnight);margin-bottom:12px}
+.popup-card p{color:var(--grey-text);font-size:1rem;margin-bottom:28px;line-height:1.7}
+.popup-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;color:var(--grey-text);cursor:pointer;padding:4px;line-height:1;transition:color .2s}
+.popup-close:hover{color:var(--midnight)}
+.popup-close:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:2px}
+.popup-badge{display:inline-block;background:rgba(46,196,182,.12);color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Cecil Street <span>Auto Repairs</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="nav-built">Built by NeoCode Studio</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Your Local Trusted Garage</div>
+    <h1>Expert Car Care You <span>Can Count On</span></h1>
+    <p>From MOTs and servicing to full diagnostics and repairs, Cecil Street Auto Repairs keeps your vehicle running at its best. We've been looking after cars (and their owners) for years.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Book Now</a>
+      <a href="#services" class="btn btn-outline">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="section-header reveal">
+    <h2>About Cecil Street Auto Repairs</h2>
+    <div class="accent-line"></div>
+    <p>We're a family-run garage that's been helping drivers stay safe on the road for years. Honest work, fair prices, no fuss.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mechanic working on a car engine" loading="lazy">
+      <div class="overlay-badge">Trusted &amp; Reliable</div>
+    </div>
+    <div class="about-text reveal">
+      <h3>Real Mechanics, Real Results</h3>
+      <p>At Cecil Street Auto Repairs, we don't cut corners. Every vehicle that comes through our doors gets the same care and attention, whether it's a quick service or a major repair. Our team of experienced mechanics uses the latest diagnostic tools alongside years of hands-on know-how.</p>
+      <p>We believe in being upfront with our customers. You'll always know what's going on with your car, what it'll cost, and how long it'll take. That's the way it should be.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">MOTs Completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <h2>What We Do</h2>
+    <div class="accent-line"></div>
+    <p>From routine check-ups to the tricky stuff, we've got you covered. Here's what we can help with.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">&#128736;</div>
+      <h3>MOT Testing</h3>
+      <p>We're a fully authorised MOT testing centre. Book your annual test with us and we'll get you sorted quickly, with clear advice on any advisories.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#9881;</div>
+      <h3>Servicing</h3>
+      <p>Interim and full services to keep your car in top shape. We follow manufacturer schedules and use quality parts to protect your warranty.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#128295;</div>
+      <h3>Repairs</h3>
+      <p>Brakes, clutches, exhausts, suspension... if it's broken, we'll fix it. We handle everything from minor repairs to major engine work.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#128187;</div>
+      <h3>Diagnostics</h3>
+      <p>Warning light on? Our advanced diagnostic equipment will pinpoint the issue fast, saving you time and money on unnecessary parts.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#10052;</div>
+      <h3>Air Conditioning</h3>
+      <p>Full air con regas and leak testing. Don't sweat it this summer. We'll get your system blowing cold again in no time.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#9898;</div>
+      <h3>Tyres</h3>
+      <p>We supply and fit tyres from all the major brands at competitive prices. Balancing, alignment and puncture repairs all available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why" id="why">
+  <div class="section-header reveal">
+    <h2>Why Choose Us</h2>
+    <div class="accent-line"></div>
+    <p>We're not the flashiest garage in town, but we're the one people come back to. Here's why.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="why-icon">&#9989;</div>
+      <div>
+        <h4>No Hidden Costs</h4>
+        <p>We'll always give you a clear quote before we start any work. No surprises, no add-ons you didn't agree to.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">&#128338;</div>
+      <div>
+        <h4>Quick Turnaround</h4>
+        <p>We know you need your car. Most jobs are completed same-day so you're not left waiting around.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">&#128170;</div>
+      <div>
+        <h4>Experienced Team</h4>
+        <p>Our mechanics have decades of combined experience across all makes and models. Your car's in safe hands.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">&#128227;</div>
+      <div>
+        <h4>Honest Advice</h4>
+        <p>We'll tell you what actually needs doing and what can wait. No upselling, no scare tactics. Just straight talk.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">&#127775;</div>
+      <div>
+        <h4>5-Star Reviews</h4>
+        <p>Our customers rate us highly because we deliver every time. Check our reviews and see for yourself.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">&#128663;</div>
+      <div>
+        <h4>All Makes &amp; Models</h4>
+        <p>Whether you drive a Ford Fiesta or a BMW 5 Series, we've got the skills and the gear to look after it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal">
+    <h2>What Our Customers Say</h2>
+    <div class="accent-line"></div>
+    <p>Don't just take our word for it. Here's what real customers think about our service.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Took my car in for an MOT and they found a couple of issues. They explained everything clearly, gave me a fair price, and had it all done the same day. Can't ask for more than that."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">JH</div>
+        <div>
+          <div class="testimonial-name">James H.</div>
+          <div class="testimonial-role">Local Customer</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"I've been coming here for years and they've never let me down. Honest, reliable and always reasonably priced. I wouldn't trust my car with anyone else."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SM</div>
+        <div>
+          <div class="testimonial-name">Sarah M.</div>
+          <div class="testimonial-role">Returning Customer</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"My air con stopped working mid-summer and they squeezed me in the next morning. Regassed and working perfectly within the hour. Brilliant service."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">DK</div>
+        <div>
+          <div class="testimonial-name">David K.</div>
+          <div class="testimonial-role">Local Customer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="section-header reveal">
+    <h2>Get In Touch</h2>
+    <div class="accent-line"></div>
+    <p>Ready to book in? Got a question? Drop us a line or swing by the garage. We're always happy to help.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Contact Details</h3>
+      <p>We're easy to find and always up for a chat about your car. Get in touch however works best for you.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">&#128231;</div>
+        <div class="contact-detail-text">
+          <strong>Email</strong><br>
+          <a href="mailto:info@csauto.co.uk">info@csauto.co.uk</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">&#127760;</div>
+        <div class="contact-detail-text">
+          <strong>Website</strong><br>
+          <a href="https://www.csauto.co.uk/" target="_blank" rel="noopener">www.csauto.co.uk</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">&#128205;</div>
+        <div class="contact-detail-text">
+          <strong>Location</strong><br>
+          Cecil Street Auto Repairs
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">&#128336;</div>
+        <div class="contact-detail-text">
+          <strong>Opening Hours</strong><br>
+          Mon - Fri: 8:30am - 5:30pm<br>
+          Sat: 9:00am - 1:00pm
+        </div>
+      </div>
+    </div>
+    <div class="contact-map reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.5!2d-2.24!3d53.48!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDI4JzQ4LjAiTiAywrAxNCcyNC4wIlc!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Cecil Street Auto Repairs location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2026 Cecil Street Auto Repairs. All rights reserved.</p>
+  <div class="footer-divider"></div>
+  <p>Website designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="popup-overlay" id="demoPopup" role="dialog" aria-modal="true" aria-label="NeoCode Studio promotion"></div>
+<div class="popup-card" id="demoPopupCard">
+  <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+  <div class="popup-badge">Free Preview</div>
+  <h3>Like what you see?</h3>
+  <p>This is a free preview built by NeoCode Studio. Let's make it yours.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn btn-primary">Get Your New Website</a>
+</div>
+
+<script>
+// Nav scroll effect
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Hamburger menu
+var hamburger=document.getElementById('hamburger');
+var navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',function(){
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded',navLinks.classList.contains('open'));
+});
+navLinks.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click',function(){
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+  });
+});
+
+// IntersectionObserver scroll animations
+var reveals=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+}else{
+  reveals.forEach(function(el){el.classList.add('visible')});
+}
+
+// NeoCode popup at 70% scroll
+var popupShown=false;
+window.addEventListener('scroll',function(){
+  if(!popupShown){
+    var scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    if(scrollPercent>0.7){popupShown=true;document.getElementById('demoPopup').classList.add('show');document.getElementById('demoPopupCard').classList.add('show')}
+  }
+});
+document.getElementById('popupClose').addEventListener('click',function(){
+  document.getElementById('demoPopup').classList.remove('show');
+  document.getElementById('demoPopupCard').classList.remove('show');
+});
+document.getElementById('demoPopup').addEventListener('click',function(){
+  document.getElementById('demoPopup').classList.remove('show');
+  document.getElementById('demoPopupCard').classList.remove('show');
+});
+</script>
+
+</body>
+</html>
