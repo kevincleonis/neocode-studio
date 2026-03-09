@@ -1,575 +1,1400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barnsley Takeaway & Cafe | Fresh Food, Friendly Service</title>
-<meta name="description" content="Barnsley's friendly local cafe and takeaway. Fresh food, honest prices, and a warm welcome. Fish & chips, burgers, sandwiches, hot meals, and freshly ground coffee.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --orange:#FF6B2C;--orange-dark:#E85A20;--orange-glow:rgba(255,107,44,.12);
-  --yellow:#FFB830;--yellow-soft:rgba(255,184,48,.1);
-  --navy:#1B2A4A;--navy-light:#263B5E;--navy-deep:#12203a;
-  --sky:#E8F4FD;--light:#F8FBFF;--white:#fff;
-  --text:#3A3A4F;--warm-bg:#FFF5EC;
-  --glass:rgba(255,255,255,.7);--glass-border:rgba(255,255,255,.3);
-  --glass-dark:rgba(255,255,255,.06);--glass-dark-border:rgba(255,255,255,.1);
-}
-html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden;background:#fff}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barnsley Takeaway & Cafe | Fresh Fish & Chips, Burgers & Coffee | Barnsley NSW</title>
+    <meta name="description" content="Family-owned takeaway and cafe in Barnsley NSW. Fresh fish & chips, burgers, milkshakes and more. Shop 3, 96 Northville Drive. Call (02) 4953 3441.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #1B3A2D;
+            --forest-deep: #122820;
+            --forest-light: #2A5C46;
+            --honey: #D4A843;
+            --honey-light: #E8C76A;
+            --honey-glow: rgba(212, 168, 67, 0.15);
+            --cream: #FDF6EC;
+            --cream-dark: #F0E6D4;
+            --espresso: #2C1B0E;
+            --warm-white: #FEFCF8;
+            --text-dark: #1A1A18;
+            --text-muted: #6B6459;
+            --overlay: rgba(18, 40, 32, 0.75);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+        }
 
-/* REVEAL ANIMATIONS */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-45px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(45px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(.88);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-.reveal-scale.visible{opacity:1;transform:scale(1)}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-/* TOP BAR */
-.top-bar{background:linear-gradient(135deg,var(--navy),var(--navy-deep));color:#fff;padding:10px 0;text-align:center;font-size:.78rem;letter-spacing:.5px}
-.top-bar span{opacity:.7}
-.top-bar strong{color:var(--yellow)}
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* NAV */
-.navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);box-shadow:0 2px 25px rgba(0,0,0,.05);padding:12px 0}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
-.nav-logo{font-family:'Satisfy',cursive;font-size:1.8rem;color:var(--orange);text-decoration:none}
-.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s;position:relative}
-.nav-links a:hover{color:var(--orange)}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .3s}
-.nav-links a:hover::after{width:100%}
-.nav-phone{background:linear-gradient(135deg,var(--orange),var(--orange-dark))!important;color:#fff!important;padding:10px 24px;border-radius:50px;font-weight:600;transition:all .3s!important;box-shadow:0 4px 15px rgba(255,107,44,.25)}
-.nav-phone::after{display:none!important}
-.nav-phone:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,44,.35)}
-.mob-menu{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
-.mob-menu span{width:24px;height:2px;background:var(--navy);transition:.3s}
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-/* HERO */
-.hero{padding:80px 0 100px;background:linear-gradient(135deg,var(--warm-bg) 0%,#fff 40%,var(--sky) 100%);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:450px;height:450px;border-radius:50%;background:var(--orange-glow)}
-.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--yellow-soft)}
-.hero-grid{max-width:1200px;margin:0 auto;padding:0 30px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
-.hero-text{animation:fadeRight .8s ease}
-@keyframes fadeRight{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:#fff;padding:8px 20px;border-radius:50px;font-size:.75rem;font-weight:600;margin-bottom:20px;box-shadow:0 4px 15px rgba(255,107,44,.2)}
-.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;line-height:1.15;color:var(--navy);margin-bottom:18px}
-.hero h1 span{color:var(--orange);position:relative}
-.hero h1 span::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:8px;background:var(--yellow-soft);z-index:-1;border-radius:4px}
-.hero p{font-size:1.05rem;line-height:1.7;color:#666;margin-bottom:30px;max-width:480px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-orange{padding:15px 35px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:#fff;border-radius:50px;font-weight:600;text-decoration:none;transition:all .3s;box-shadow:0 8px 25px rgba(255,107,44,.3);font-size:.9rem}
-.btn-orange:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,107,44,.4)}
-.btn-navy{padding:15px 35px;background:var(--navy);color:#fff;border-radius:50px;font-weight:500;text-decoration:none;transition:all .3s;font-size:.9rem}
-.btn-navy:hover{background:var(--navy-light);transform:translateY(-3px)}
-.hero-img{position:relative;animation:fadeRight .8s ease .2s both}
-.hero-img img{width:100%;border-radius:24px;box-shadow:0 25px 60px rgba(0,0,0,.12)}
-.hero-badge{position:absolute;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:18px;padding:14px 20px;box-shadow:0 10px 30px rgba(0,0,0,.08);display:flex;align-items:center;gap:10px}
-.hero-badge.top-r{top:20px;right:-15px}
-.hero-badge.bot-l{bottom:20px;left:-15px}
-.badge-icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-.badge-icon.org{background:var(--orange-glow);color:var(--orange)}
-.badge-icon.grn{background:rgba(40,167,69,.1);color:#28a745}
-.badge-label{font-size:.68rem;color:#999;text-transform:uppercase;letter-spacing:1px}
-.badge-value{font-weight:700;font-size:.9rem;color:var(--navy)}
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--forest); border-radius: 4px; }
 
-/* SECTIONS COMMON */
-.cat-section{padding:80px 0;background:var(--light)}
-.container{max-width:1200px;margin:0 auto;padding:0 30px}
-.sec-head{text-align:center;margin-bottom:50px}
-.sec-tag{color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.72rem;margin-bottom:8px}
-.sec-title{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--navy);margin-bottom:12px;font-weight:700}
-.sec-desc{color:#888;max-width:520px;margin:0 auto;line-height:1.7;font-size:.92rem}
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+        }
+        .nav.scrolled {
+            background: rgba(27, 58, 45, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 12px 32px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--honey);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--cream); font-weight: 400; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--honey);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a:focus::after { width: 100%; }
+        .nav-links a:hover,
+        .nav-links a:focus { color: var(--honey); outline: none; }
 
-/* CATEGORIES */
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.cat-card{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:22px;overflow:hidden;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,.04);transition:all .5s;cursor:pointer}
-.cat-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,.1);border-color:rgba(255,107,44,.2)}
-.cat-img{height:160px;background-size:cover;background-position:center;transition:transform .6s}
-.cat-card:hover .cat-img{transform:scale(1.05)}
-.cat-card h3{padding:18px 15px;font-size:.95rem;color:var(--navy);font-weight:600}
+        .nav-cta {
+            background: var(--honey);
+            color: var(--forest-deep);
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-cta:hover, .nav-cta:focus {
+            background: var(--honey-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 168, 67, 0.3);
+            outline: none;
+        }
 
-/* MENU HIGHLIGHTS */
-.menu-section{padding:80px 0;position:relative;overflow:hidden}
-.menu-section::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,var(--orange-glow),transparent 70%);border-radius:50%}
-.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.menu-item{display:flex;gap:18px;padding:22px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:18px;transition:all .4s;align-items:center}
-.menu-item:hover{background:rgba(255,245,236,.9);transform:translateX(8px);border-color:rgba(255,107,44,.15);box-shadow:0 10px 30px rgba(0,0,0,.06)}
-.menu-item img{width:90px;height:90px;border-radius:16px;object-fit:cover;flex-shrink:0;transition:transform .4s}
-.menu-item:hover img{transform:scale(1.05)}
-.menu-info h4{font-size:1rem;color:var(--navy);margin-bottom:5px;font-weight:600}
-.menu-info p{font-size:.82rem;color:#999;line-height:1.5;margin-bottom:6px}
-.menu-info .price{color:var(--orange);font-weight:700;font-size:1.05rem}
+        /* ── HAMBURGER ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px; height: 2.5px;
+            background: var(--cream);
+            border-radius: 2px;
+            transition: all 0.35s ease;
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
 
-/* ABOUT */
-.about-section{background:var(--warm-bg);padding:80px 0;overflow:hidden;position:relative}
-.about-section::before{content:'';position:absolute;bottom:-100px;left:-50px;width:350px;height:350px;background:radial-gradient(circle,var(--yellow-soft),transparent 70%);border-radius:50%}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
-.about-img img{width:100%;height:420px;object-fit:cover;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.1)}
-.about-text h3{font-size:2rem;color:var(--navy);margin-bottom:18px;font-weight:700}
-.about-text p{color:#666;line-height:1.8;margin-bottom:16px}
-.about-perks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
-.perk{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:14px;box-shadow:0 3px 12px rgba(0,0,0,.03);transition:all .3s}
-.perk:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.06);border-color:rgba(255,107,44,.15)}
-.perk-icon{font-size:1.3rem}
-.perk span{font-weight:500;font-size:.85rem;color:var(--navy)}
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--forest-deep);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: var(--cream);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover, .mobile-menu a:focus {
+            color: var(--honey);
+            outline: none;
+        }
 
-/* REVIEWS */
-.review-section{padding:80px 0;background:linear-gradient(160deg,var(--navy),var(--navy-deep),#0e1a30);color:#fff;position:relative;overflow:hidden}
-.review-section::before{content:'';position:absolute;top:-100px;right:-50px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,107,44,.06),transparent 60%);border-radius:50%}
-.review-section::after{content:'';position:absolute;bottom:-100px;left:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(255,184,48,.04),transparent 60%);border-radius:50%}
-.review-section .sec-title{color:#fff}
-.review-section .sec-desc{color:rgba(255,255,255,.6)}
-.review-section .sec-tag{color:var(--yellow)}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:2}
-.rev{background:var(--glass-dark);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid var(--glass-dark-border);border-radius:22px;padding:32px;transition:all .5s;position:relative;overflow:hidden}
-.rev::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--yellow));transform:scaleX(0);transition:transform .5s;transform-origin:left}
-.rev:hover::before{transform:scaleX(1)}
-.rev:hover{background:rgba(255,255,255,.1);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.2)}
-.rev-stars{color:var(--yellow);margin-bottom:12px;letter-spacing:2px;font-size:.95rem}
-.rev blockquote{color:rgba(255,255,255,.8);line-height:1.7;font-style:italic;margin-bottom:18px;font-size:.9rem}
-.rev-who{display:flex;align-items:center;gap:10px}
-.rev-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--yellow));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;box-shadow:0 4px 12px rgba(255,107,44,.25)}
-.rev-nm{font-weight:600;font-size:.9rem}
-.rev-loc{font-size:.72rem;color:rgba(255,255,255,.45)}
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(18,40,32,0.85) 0%, rgba(27,58,45,0.7) 50%, rgba(18,40,32,0.9) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--honey-glow);
+            border: 1px solid var(--honey);
+            color: var(--honey);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            color: var(--warm-white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--honey);
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--cream-dark);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--honey);
+            color: var(--forest-deep);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background: var(--honey-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.35);
+            outline: none;
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--cream);
+            padding: 16px 36px;
+            border-radius: 50px;
+            border: 2px solid rgba(253, 246, 236, 0.3);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover, .btn-outline:focus {
+            border-color: var(--honey);
+            color: var(--honey);
+            outline: none;
+        }
 
-/* CTA BANNER */
-.cta-banner{background:linear-gradient(135deg,var(--orange),var(--orange-dark),#d04e18);padding:70px 0;text-align:center;color:#fff;position:relative;overflow:hidden}
-.cta-banner::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:rgba(255,255,255,.06);border-radius:50%}
-.cta-banner h2{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;margin-bottom:12px;position:relative}
-.cta-banner p{opacity:.85;margin-bottom:28px;font-size:1rem;position:relative}
-.cta-banner .btn-white{background:#fff;color:var(--orange);padding:15px 35px;border-radius:50px;font-weight:600;text-decoration:none;font-size:.95rem;display:inline-block;transition:all .3s;position:relative;box-shadow:0 8px 25px rgba(0,0,0,.15)}
-.cta-banner .btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,0,0,.2)}
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: float 2s ease-in-out infinite;
+        }
+        .hero-scroll svg { width: 28px; height: 28px; stroke: var(--honey); opacity: 0.6; }
 
-/* CONTACT */
-.contact-section{padding:80px 0;background:var(--light)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
-.cf{background:var(--glass);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid var(--glass-border);border-radius:24px;padding:38px;box-shadow:0 10px 35px rgba(0,0,0,.04)}
-.fg{margin-bottom:16px}
-.fg label{display:block;font-weight:600;margin-bottom:5px;color:var(--navy);font-size:.82rem}
-.fg input,.fg textarea,.fg select{width:100%;padding:14px 18px;border:2px solid rgba(0,0,0,.05);border-radius:14px;font-family:inherit;font-size:.88rem;transition:all .3s;background:rgba(255,255,255,.8)}
-.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 15px rgba(255,107,44,.08);background:#fff}
-.fg textarea{height:100px;resize:vertical}
-.cf-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:#fff;border:none;border-radius:14px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .3s;font-family:inherit;box-shadow:0 6px 20px rgba(255,107,44,.25)}
-.cf-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,107,44,.35)}
-.ci{display:flex;flex-direction:column;gap:16px}
-.ci-card{display:flex;gap:14px;padding:22px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:18px;box-shadow:0 3px 15px rgba(0,0,0,.03);transition:all .4s}
-.ci-card:hover{transform:translateX(6px);border-color:rgba(255,107,44,.15);background:rgba(255,245,236,.8)}
-.ci-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--orange),var(--yellow));color:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;box-shadow:0 4px 12px rgba(255,107,44,.2)}
-.ci-card h4{font-weight:600;color:var(--navy);margin-bottom:3px;font-size:.9rem}
-.ci-card p{color:#888;font-size:.82rem;line-height:1.5}
-.ci-card a{color:var(--orange);text-decoration:none;font-weight:600;transition:opacity .3s}
-.ci-card a:hover{opacity:.7}
-.ci-map{margin-top:16px;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.05);border:1px solid var(--glass-border)}
-.ci-map iframe{width:100%;height:200px;border:none}
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
 
-/* FOOTER */
-footer{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#fff;padding:50px 0 22px}
-.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px;margin-bottom:30px}
-.ft-brand{font-family:'Satisfy',cursive;font-size:1.5rem;color:var(--orange);margin-bottom:10px}
-.ft-p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.7}
-.ft-soc{display:flex;gap:10px;margin-top:14px}
-.ft-soc a{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:all .3s;font-size:.8rem}
-.ft-soc a:hover{background:var(--orange);border-color:var(--orange)}
-.ft-col h4{font-size:.85rem;font-weight:600;margin-bottom:15px;color:var(--yellow);text-transform:uppercase;letter-spacing:1px}
-.ft-col ul{list-style:none}
-.ft-col li{margin-bottom:7px}
-.ft-col a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.82rem;transition:color .3s}
-.ft-col a:hover{color:var(--orange)}
-.ft-btm{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;display:flex;justify-content:space-between;color:rgba(255,255,255,.2);font-size:.78rem;flex-wrap:wrap;gap:10px}
-.ft-btm a{color:var(--orange);text-decoration:none}
+        /* ── SECTIONS ── */
+        section { padding: 100px 24px; }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-/* RESPONSIVE */
-@media(max-width:1024px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){
-.top-bar{display:none}
-.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px 30px;gap:12px;box-shadow:0 10px 20px rgba(0,0,0,.05)}
-.nav-links.active{display:flex}
-.nav-links a::after{display:none}
-.mob-menu{display:flex}
-.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-.hero-img{display:none}
-.cat-grid{grid-template-columns:1fr 1fr}
-.menu-grid,.rev-grid{grid-template-columns:1fr}
-.about-perks{grid-template-columns:1fr}
-.ft-grid{grid-template-columns:1fr}
-section,.cat-section,.about-section,.review-section,.contact-section{padding:50px 0}
-.hero{padding:50px 0 60px}
-}
-</style>
+        .section-label {
+            display: inline-block;
+            color: var(--forest);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .section-title em { color: var(--forest); font-style: italic; }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+        .section-header { margin-bottom: 56px; }
+
+        /* ── FEATURES STRIP ── */
+        .features {
+            background: var(--forest);
+            padding: 48px 24px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .feature-item { color: var(--cream); }
+        .feature-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        .feature-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--honey);
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: rgba(253, 246, 236, 0.7);
+            line-height: 1.5;
+        }
+
+        /* ── MENU ── */
+        .menu { background: var(--warm-white); }
+        .menu-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .menu-tab {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 2px solid var(--forest-light);
+            background: transparent;
+            color: var(--forest);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .menu-tab:hover, .menu-tab:focus,
+        .menu-tab.active {
+            background: var(--forest);
+            color: var(--cream);
+            border-color: var(--forest);
+            outline: none;
+        }
+        .menu-panel { display: none; }
+        .menu-panel.active { display: block; }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .menu-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--cream);
+            padding: 20px;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .menu-card:hover {
+            border-color: var(--honey);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .menu-card-img {
+            width: 72px; height: 72px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .menu-card-info { flex: 1; }
+        .menu-card-info h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .menu-card-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .menu-card-price {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--forest);
+            white-space: nowrap;
+        }
+
+        /* ── ABOUT ── */
+        .about { background: var(--cream); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-images {
+            position: relative;
+        }
+        .about-img-main {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+        .about-img-float {
+            position: absolute;
+            bottom: -32px;
+            right: -24px;
+            width: 200px;
+            height: 200px;
+            border-radius: var(--radius);
+            object-fit: cover;
+            border: 5px solid var(--cream);
+            box-shadow: var(--shadow-lg);
+        }
+        .about-text .section-subtitle { margin-bottom: 24px; }
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 32px;
+        }
+        .about-stat h3 {
+            font-size: 2.2rem;
+            color: var(--forest);
+        }
+        .about-stat p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ── REVIEWS ── */
+        .reviews { background: var(--forest-deep); }
+        .reviews .section-label { color: var(--honey); }
+        .reviews .section-title { color: var(--cream); }
+        .reviews .section-subtitle { color: rgba(253, 246, 236, 0.6); }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .review-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .review-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+        .review-stars {
+            color: var(--honey);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .review-text {
+            color: var(--cream-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--forest-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--honey);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .review-author-name {
+            color: var(--cream);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .review-author-note {
+            color: rgba(253, 246, 236, 0.5);
+            font-size: 0.8rem;
+        }
+
+        /* ── HOURS ── */
+        .hours { background: var(--warm-white); }
+        .hours-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .hours-table tr {
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        .hours-table td {
+            padding: 16px 0;
+            font-size: 1rem;
+        }
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .hours-table td:last-child {
+            text-align: right;
+            color: var(--text-muted);
+        }
+        .hours-table tr.today td {
+            color: var(--forest);
+            font-weight: 700;
+        }
+        .hours-table tr.today td:last-child {
+            color: var(--forest);
+        }
+        .hours-table tr.closed td:last-child {
+            color: #B85C4A;
+            font-weight: 600;
+        }
+        .hours-map {
+            width: 100%;
+            height: 380px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .hours-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .hours-address {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--cream);
+            border-radius: var(--radius-sm);
+        }
+        .hours-address h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--forest);
+        }
+        .hours-address p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .hours-address a {
+            color: var(--forest);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .hours-address a:hover { color: var(--honey); }
+
+        /* ── ORDER CTA ── */
+        .cta-section {
+            background: var(--forest);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(212,168,67,0.08) 0%, transparent 60%);
+        }
+        .cta-section .container { position: relative; z-index: 1; }
+        .cta-section .section-title { color: var(--cream); }
+        .cta-section .section-title em { color: var(--honey); }
+        .cta-section p {
+            color: rgba(253, 246, 236, 0.7);
+            font-size: 1.15rem;
+            max-width: 500px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+        .cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-cta-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 2px solid var(--honey);
+            color: var(--honey);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-cta-phone:hover, .btn-cta-phone:focus {
+            background: var(--honey);
+            color: var(--forest-deep);
+            outline: none;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--espresso);
+            padding: 60px 24px 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            color: var(--honey);
+            margin-bottom: 12px;
+        }
+        .footer-brand p {
+            color: rgba(253, 246, 236, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+        footer h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            color: var(--cream);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: rgba(253, 246, 236, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--honey); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-bottom p {
+            color: rgba(253, 246, 236, 0.3);
+            font-size: 0.8rem;
+        }
+
+        /* ── NEOCODE POPUP ── */
+        .neocode-popup {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            background: var(--forest-deep);
+            border: 1px solid var(--honey);
+            border-radius: var(--radius);
+            padding: 28px;
+            max-width: 360px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease;
+        }
+        .neocode-popup.show { display: block; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px; right: 12px;
+            background: none; border: none;
+            color: rgba(253,246,236,0.5);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s;
+        }
+        .neocode-popup-close:hover { color: var(--cream); }
+        .neocode-popup h4 {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--honey);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .neocode-popup p {
+            color: var(--cream-dark);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .neocode-popup a {
+            display: inline-block;
+            background: var(--honey);
+            color: var(--forest-deep);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .neocode-popup a:hover {
+            background: var(--honey-light);
+            transform: translateY(-2px);
+        }
+
+        /* ── ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img-float { bottom: -20px; right: 16px; width: 150px; height: 150px; }
+            .hours-wrapper { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .hero h1 { font-size: 2.4rem; }
+            section { padding: 72px 20px; }
+        }
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .about-stats { flex-direction: column; gap: 20px; }
+            .hero-btns { flex-direction: column; align-items: center; }
+        }
+    </style>
 </head>
 <body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">Barnsley <span>Takeaway & Cafe</span></a>
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#hours">Hours</a></li>
+        </ul>
+        <a href="tel:0249533441" class="nav-cta">Call to Order</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-<span>&#128205; Market Street, Barnsley &nbsp;|&nbsp; <strong>Open Mon&ndash;Sat</strong> &nbsp;|&nbsp; Pickup &amp; Dine-In Available</span>
-</div>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#hours">Hours</a>
+        <a href="tel:0249533441" style="color: var(--honey);">Call to Order</a>
+    </div>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-<div class="nav-inner">
-<a href="#" class="nav-logo">Barnsley T&C</a>
-<ul class="nav-links" id="navLinks">
-<li><a href="#menu">Menu</a></li>
-<li><a href="#highlights">Highlights</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="#contact" class="nav-phone">Order Now</a></li>
-</ul>
-<button class="mob-menu" onclick="document.getElementById('navLinks').classList.toggle('active')">
-<span></span><span></span><span></span>
-</button>
-</div>
-</nav>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Family-Owned Since Day One</div>
+            <h1>Good Food,<br><em>No Fuss.</em></h1>
+            <p>Fresh fish & chips, hand-pressed burgers, proper coffee and friendly service. That's what we do at Barnsley Takeaway & Cafe, and we've been doing it right for years.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="21" r="1"/><circle cx="17" cy="21" r="1"/></svg>
+                    View Our Menu
+                </a>
+                <a href="tel:0249533441" class="btn-outline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    (02) 4953 3441
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+    </section>
 
-<!-- HERO -->
-<section class="hero">
-<div class="hero-grid">
-<div class="hero-text">
-<div class="hero-chip">&#127860; Fresh &amp; Homemade Daily</div>
-<h1>Great Food, Made With <span>Love</span> in Barnsley</h1>
-<p>From hearty hot meals and fresh sandwiches to golden fish &amp; chips and cafe favourites &mdash; your local spot for proper food at honest prices.</p>
-<div class="hero-btns">
-<a href="#menu" class="btn-orange">View Our Menu</a>
-<a href="#contact" class="btn-navy">Find Us</a>
-</div>
-</div>
-<div class="hero-img">
-<img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Fresh food">
-<div class="hero-badge top-r">
-<div class="badge-icon org">&#11088;</div>
-<div>
-<div class="badge-label">Locals Love</div>
-<div class="badge-value">Top Rated</div>
-</div>
-</div>
-<div class="hero-badge bot-l">
-<div class="badge-icon grn">&#128337;</div>
-<div>
-<div class="badge-label">Open From</div>
-<div class="badge-value">9am Daily</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- FEATURES STRIP -->
+    <div class="features">
+        <div class="features-grid">
+            <div class="feature-item reveal">
+                <div class="feature-icon">&#127835;</div>
+                <h4>Fresh Daily</h4>
+                <p>Fish delivered fresh, battered and fried to order every single time</p>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-icon">&#9749;</div>
+                <h4>Real Coffee</h4>
+                <p>Proper barista-style coffees, frappes and milkshakes all day</p>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-icon">&#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102;</div>
+                <h4>Family Run</h4>
+                <p>Locally owned and operated by real people who care</p>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-icon">&#9889;</div>
+                <h4>Fast Service</h4>
+                <p>Dine in, grab and go, or order ahead for quick pickup</p>
+            </div>
+        </div>
+    </div>
 
-<!-- CATEGORIES -->
-<section class="cat-section" id="menu">
-<div class="container">
-<div class="sec-head reveal">
-<div class="sec-tag">What We Serve</div>
-<h2 class="sec-title">Something for Everyone</h2>
-<p class="sec-desc">Whether you're popping in for a quick bite or ordering a family feast, we've got you covered.</p>
-</div>
-<div class="cat-grid">
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/2673353/pexels-photo-2673353.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Seafood &amp; Fish Packs</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Burgers &amp; Steaks</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Sandwiches &amp; Wraps</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/2092507/pexels-photo-2092507.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Hot Meals &amp; Pies</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/2280551/pexels-photo-2280551.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Kids Meals</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Coffee &amp; Drinks</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Combo Deals</h3>
-</div>
-<div class="cat-card reveal-scale">
-<div class="cat-img" style="background-image:url('https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=400')"></div>
-<h3>Cafe Favourites</h3>
-</div>
-</div>
-</div>
-</section>
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What's Cooking</span>
+                <h2 class="section-title">Our <em>Menu</em></h2>
+                <p class="section-subtitle">From crispy fish & chips to loaded burgers, hearty brekkies and fresh coffee. Something for everyone, every time.</p>
+            </div>
 
-<!-- MENU HIGHLIGHTS -->
-<section class="menu-section" id="highlights">
-<div class="container">
-<div class="sec-head reveal">
-<div class="sec-tag">Popular Picks</div>
-<h2 class="sec-title">Customer Favourites</h2>
-</div>
-<div class="menu-grid">
-<div class="menu-item reveal">
-<img src="https://images.pexels.com/photos/2673353/pexels-photo-2673353.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Fish and chips" loading="lazy">
-<div class="menu-info">
-<h4>Classic Fish &amp; Chips</h4>
-<p>Crispy battered cod with golden chips, mushy peas &amp; tartar sauce</p>
-<span class="price">From &pound;5.99</span>
-</div>
-</div>
-<div class="menu-item reveal">
-<img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Burger" loading="lazy">
-<div class="menu-info">
-<h4>Quarter Pounder Burger</h4>
-<p>Freshly made beef patty with cheese, salad &amp; relish in a toasted bun</p>
-<span class="price">From &pound;4.49</span>
-</div>
-</div>
-<div class="menu-item reveal">
-<img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Sandwich" loading="lazy">
-<div class="menu-info">
-<h4>Steak Roll</h4>
-<p>Tender steak in a fresh bread roll with onions &amp; sauce of your choice</p>
-<span class="price">From &pound;4.99</span>
-</div>
-</div>
-<div class="menu-item reveal">
-<img src="https://images.pexels.com/photos/2092507/pexels-photo-2092507.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Pie" loading="lazy">
-<div class="menu-info">
-<h4>Homemade Pie &amp; Chips</h4>
-<p>Freshly baked pie with chunky chips, gravy &amp; a side of your choice</p>
-<span class="price">From &pound;5.49</span>
-</div>
-</div>
-<div class="menu-item reveal">
-<img src="https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Combo deal" loading="lazy">
-<div class="menu-info">
-<h4>Family Combo Deal</h4>
-<p>2 mains, 2 kids meals, 4 drinks &amp; a sharing side &mdash; great value</p>
-<span class="price">From &pound;16.99</span>
-</div>
-</div>
-<div class="menu-item reveal">
-<img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coffee" loading="lazy">
-<div class="menu-info">
-<h4>Freshly Ground Coffee</h4>
-<p>Latte, cappuccino, americano &amp; more. Made fresh, just how you like it</p>
-<span class="price">From &pound;2.50</span>
-</div>
-</div>
-</div>
-</div>
-</section>
+            <div class="menu-tabs reveal">
+                <button class="menu-tab active" data-tab="seafood">Seafood & Chips</button>
+                <button class="menu-tab" data-tab="burgers">Burgers & Rolls</button>
+                <button class="menu-tab" data-tab="breakfast">Brekkie & Cafe</button>
+                <button class="menu-tab" data-tab="drinks">Drinks & Shakes</button>
+                <button class="menu-tab" data-tab="combos">Combo Deals</button>
+            </div>
 
-<!-- ABOUT -->
-<section class="about-section" id="about">
-<div class="container">
-<div class="about-grid">
-<div class="about-img reveal-left">
-<img src="https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cafe interior">
-</div>
-<div class="about-text reveal-right">
-<div class="sec-tag">About Us</div>
-<h3>Barnsley's Friendly Local Cafe &amp; Takeaway</h3>
-<p>Barnsley Takeaway &amp; Cafe is your neighbourhood go-to for proper food done right. Whether you're grabbing a quick coffee and a sandwich on the way to work, or sitting down for a hearty hot meal, we serve everything fresh with a smile.</p>
-<p>Located on Market Street in the heart of Barnsley, we're proud to offer generous portions, honest prices, and the kind of friendly service that keeps our regulars coming back day after day.</p>
-<div class="about-perks">
-<div class="perk"><span class="perk-icon">&#127860;</span><span>Freshly Made Daily</span></div>
-<div class="perk"><span class="perk-icon">&#128176;</span><span>Honest Prices</span></div>
-<div class="perk"><span class="perk-icon">&#128522;</span><span>Friendly Service</span></div>
-<div class="perk"><span class="perk-icon">&#127968;</span><span>Dine-In or Takeaway</span></div>
-<div class="perk"><span class="perk-icon">&#128118;</span><span>Kids Menu</span></div>
-<div class="perk"><span class="perk-icon">&#9749;</span><span>Real Coffee</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
+            <!-- SEAFOOD -->
+            <div class="menu-panel active" id="tab-seafood">
+                <div class="menu-grid">
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Fish and Chips" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Classic Fish & Chips</h4>
+                            <p>Beer-battered fish fillet with golden chips and lemon</p>
+                        </div>
+                        <div class="menu-card-price">$12.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/6210747/pexels-photo-6210747.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Grilled Fish" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Grilled Fish & Salad</h4>
+                            <p>Grilled fish fillet with garden salad and tartare sauce</p>
+                        </div>
+                        <div class="menu-card-price">$13.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/4553111/pexels-photo-4553111.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Calamari" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Crumbed Calamari</h4>
+                            <p>Crispy calamari rings with chips and aioli dip</p>
+                        </div>
+                        <div class="menu-card-price">$11.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/8697538/pexels-photo-8697538.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Seafood Pack" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Seafood Pack</h4>
+                            <p>Fish, prawns, calamari, scallops and a pile of chips</p>
+                        </div>
+                        <div class="menu-card-price">$22.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/4518655/pexels-photo-4518655.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Chips" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Chips (Regular)</h4>
+                            <p>Golden hot chips with chicken salt. Large available.</p>
+                        </div>
+                        <div class="menu-card-price">$5.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/4553025/pexels-photo-4553025.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Potato Scallops" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Potato Scallops (6pc)</h4>
+                            <p>Classic Aussie scallops, battered and fried crispy</p>
+                        </div>
+                        <div class="menu-card-price">$6.90</div>
+                    </div>
+                </div>
+            </div>
 
-<!-- REVIEWS -->
-<section class="review-section" id="reviews">
-<div class="container">
-<div class="sec-head reveal">
-<div class="sec-tag">Reviews</div>
-<h2 class="sec-title">What Our Customers Say</h2>
-<p class="sec-desc">The people of Barnsley love us &mdash; and the feeling is mutual.</p>
-</div>
-<div class="rev-grid">
-<div class="rev reveal">
-<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<blockquote>"Best fish and chips in Barnsley, honestly. Massive portions, always piping hot, and the staff are lovely. Our Friday night regular."</blockquote>
-<div class="rev-who">
-<div class="rev-av">KD</div>
-<div>
-<div class="rev-nm">Karen D.</div>
-<div class="rev-loc">Barnsley Town Centre</div>
-</div>
-</div>
-</div>
-<div class="rev reveal">
-<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<blockquote>"Pop in for a coffee and a bacon roll most mornings. Friendly faces, quick service, and it's proper food &mdash; none of that fancy nonsense. Just what you need."</blockquote>
-<div class="rev-who">
-<div class="rev-av">TB</div>
-<div>
-<div class="rev-nm">Tom B.</div>
-<div class="rev-loc">Worsborough</div>
-</div>
-</div>
-</div>
-<div class="rev reveal">
-<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<blockquote>"Great value combo deals for the family. The kids love it and my wallet appreciates it too! Clean, welcoming, and the staff always remember our order."</blockquote>
-<div class="rev-who">
-<div class="rev-av">LM</div>
-<div>
-<div class="rev-nm">Lisa M.</div>
-<div class="rev-loc">Dodworth</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+            <!-- BURGERS -->
+            <div class="menu-panel" id="tab-burgers">
+                <div class="menu-grid">
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Classic Burger" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Classic Beef Burger</h4>
+                            <p>Hand-pressed patty, lettuce, tomato, onion, BBQ sauce</p>
+                        </div>
+                        <div class="menu-card-price">$10.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2282532/pexels-photo-2282532.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Chicken Burger" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Crispy Chicken Burger</h4>
+                            <p>Crumbed chicken breast, slaw, mayo on a toasted bun</p>
+                        </div>
+                        <div class="menu-card-price">$11.00</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/3616956/pexels-photo-3616956.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="The Lot Burger" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>The Lot Burger</h4>
+                            <p>Beef, bacon, egg, cheese, beetroot, pineapple, the works</p>
+                        </div>
+                        <div class="menu-card-price">$14.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1600727/pexels-photo-1600727.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Steak Sandwich" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Steak Sandwich</h4>
+                            <p>Grilled minute steak, caramelised onion, cheese on Turkish</p>
+                        </div>
+                        <div class="menu-card-price">$13.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Fish Burger" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Fish Burger</h4>
+                            <p>Battered fish fillet, lettuce, tartare sauce, toasted bun</p>
+                        </div>
+                        <div class="menu-card-price">$12.00</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1556698/pexels-photo-1556698.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Chicken Caesar Wrap" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Chicken Caesar Wrap</h4>
+                            <p>Grilled chicken, cos lettuce, parmesan, caesar dressing</p>
+                        </div>
+                        <div class="menu-card-price">$11.50</div>
+                    </div>
+                </div>
+            </div>
 
-<!-- CTA BANNER -->
-<section class="cta-banner">
-<div class="container reveal">
-<h2>Hungry? Come Visit Us Today!</h2>
-<p>Fresh food, friendly faces, and honest prices &mdash; right in the heart of Barnsley.</p>
-<a href="#contact" class="btn-white">Find Us on Market Street</a>
-</div>
-</section>
+            <!-- BREAKFAST -->
+            <div class="menu-panel" id="tab-breakfast">
+                <div class="menu-grid">
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/103124/pexels-photo-103124.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Big Breakfast" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Big Brekkie</h4>
+                            <p>Eggs, bacon, sausage, toast, tomato, hash brown</p>
+                        </div>
+                        <div class="menu-card-price">$16.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2662875/pexels-photo-2662875.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Bacon Egg Roll" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Bacon & Egg Roll</h4>
+                            <p>Crispy bacon, fried egg, BBQ sauce on a soft roll</p>
+                        </div>
+                        <div class="menu-card-price">$8.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1824353/pexels-photo-1824353.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Toast" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Toast & Spreads</h4>
+                            <p>Thick-cut sourdough with butter, jam or vegemite</p>
+                        </div>
+                        <div class="menu-card-price">$5.00</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/6287525/pexels-photo-6287525.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Meat Pie" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Meat Pie</h4>
+                            <p>Chunky beef pie with flaky pastry, served with sauce</p>
+                        </div>
+                        <div class="menu-card-price">$6.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/3616949/pexels-photo-3616949.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Sausage Roll" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Sausage Roll</h4>
+                            <p>Homestyle sausage roll, golden and crispy</p>
+                        </div>
+                        <div class="menu-card-price">$5.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1351238/pexels-photo-1351238.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Sandwiches" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Sandwiches & Wraps</h4>
+                            <p>Made fresh daily. Ask about today's fillings.</p>
+                        </div>
+                        <div class="menu-card-price">from $8</div>
+                    </div>
+                </div>
+            </div>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-<div class="container">
-<div class="sec-head reveal">
-<div class="sec-tag">Find Us</div>
-<h2 class="sec-title">Visit or Order Today</h2>
-</div>
-<div class="contact-grid">
-<div class="cf reveal-left">
-<form onsubmit="event.preventDefault();alert('Thank you for your message! We\'ll be in touch soon.')">
-<div class="fg">
-<label>Your Name</label>
-<input type="text" placeholder="Full name" required>
-</div>
-<div class="fg">
-<label>Phone Number</label>
-<input type="tel" placeholder="Your phone number" required>
-</div>
-<div class="fg">
-<label>Enquiry Type</label>
-<select>
-<option>General Enquiry</option>
-<option>Catering / Large Order</option>
-<option>Feedback</option>
-<option>Other</option>
-</select>
-</div>
-<div class="fg">
-<label>Your Message</label>
-<textarea placeholder="How can we help?"></textarea>
-</div>
-<button type="submit" class="cf-btn">Send Message</button>
-</form>
-</div>
-<div class="ci reveal-right">
-<div class="ci-card">
-<div class="ci-icon">&#128205;</div>
-<div>
-<h4>Our Location</h4>
-<p>Market Street<br>Barnsley, South Yorkshire</p>
-</div>
-</div>
-<div class="ci-card">
-<div class="ci-icon">&#128337;</div>
-<div>
-<h4>Opening Hours</h4>
-<p>Mon&ndash;Fri: 9:00am &ndash; 5:00pm<br>Saturday: 9:00am &ndash; 5:00pm<br>Sunday: Closed</p>
-</div>
-</div>
-<div class="ci-card">
-<div class="ci-icon">&#127860;</div>
-<div>
-<h4>Dine-In &amp; Takeaway</h4>
-<p>Eat in our cosy cafe or grab your order to go. Both always welcome!</p>
-</div>
-</div>
-<div class="ci-card">
-<div class="ci-icon">&#128176;</div>
-<div>
-<h4>Payment</h4>
-<p>Cash &amp; card accepted. Contactless available.</p>
-</div>
-</div>
-<div class="ci-map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9500!2d-1.479!3d53.553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790555de66e12f%3A0x6c3c3573cf0b6563!2sBarnsley!5e0!3m2!1sen!2suk!4v1" loading="lazy"></iframe>
-</div>
-</div>
-</div>
-</div>
-</section>
+            <!-- DRINKS -->
+            <div class="menu-panel" id="tab-drinks">
+                <div class="menu-grid">
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Coffee" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Coffee (Regular)</h4>
+                            <p>Flat white, latte, cappuccino, long black</p>
+                        </div>
+                        <div class="menu-card-price">$4.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Iced Coffee" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Iced Coffee</h4>
+                            <p>Cold brew with milk, cream and ice. Proper iced coffee.</p>
+                        </div>
+                        <div class="menu-card-price">$6.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/3727250/pexels-photo-3727250.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Milkshake" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Milkshakes</h4>
+                            <p>Chocolate, vanilla, strawberry, caramel, banana</p>
+                        </div>
+                        <div class="menu-card-price">$7.00</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2531184/pexels-photo-2531184.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Frappe" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Frappes</h4>
+                            <p>Blended ice frappes in mocha, caramel or vanilla</p>
+                        </div>
+                        <div class="menu-card-price">$7.50</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2983100/pexels-photo-2983100.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Soft Drinks" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Soft Drinks</h4>
+                            <p>Coke, Sprite, Fanta, Schweppes, Red Bull</p>
+                        </div>
+                        <div class="menu-card-price">from $3</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Water and Juice" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Water & Juice</h4>
+                            <p>Still water, sparkling water, fresh OJ</p>
+                        </div>
+                        <div class="menu-card-price">from $2.50</div>
+                    </div>
+                </div>
+            </div>
 
-<!-- FOOTER -->
-<footer>
-<div class="container">
-<div class="ft-grid">
-<div>
-<div class="ft-brand">Barnsley T&C</div>
-<p class="ft-p">Your friendly local cafe and takeaway on Market Street, Barnsley. Fresh food, honest prices, and a warm welcome every time.</p>
-<div class="ft-soc">
-<a href="#">f</a>
-<a href="#">in</a>
-</div>
-</div>
-<div class="ft-col">
-<h4>Menu</h4>
-<ul>
-<li><a href="#menu">Seafood &amp; Fish</a></li>
-<li><a href="#menu">Burgers &amp; Steaks</a></li>
-<li><a href="#menu">Sandwiches</a></li>
-<li><a href="#menu">Hot Meals</a></li>
-<li><a href="#menu">Kids Meals</a></li>
-</ul>
-</div>
-<div class="ft-col">
-<h4>Info</h4>
-<ul>
-<li><a href="#about">About Us</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="#">Allergen Info</a></li>
-</ul>
-</div>
-</div>
-<div class="ft-btm">
-<p>&copy; 2026 Barnsley Takeaway &amp; Cafe. All rights reserved.</p>
-<p>Website by <a href="#">NeoCode Studio</a></p>
-</div>
-</div>
-</footer>
+            <!-- COMBOS -->
+            <div class="menu-panel" id="tab-combos">
+                <div class="menu-grid">
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Fish Combo" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Fish & Chips Combo</h4>
+                            <p>Fish, chips and a can of drink</p>
+                        </div>
+                        <div class="menu-card-price">$14.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Burger Combo" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Burger Combo</h4>
+                            <p>Any burger, chips and a can of drink</p>
+                        </div>
+                        <div class="menu-card-price">$15.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Family Pack" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Family Pack</h4>
+                            <p>4 fish, 4 chips, 2 potato scallops, 4 cans</p>
+                        </div>
+                        <div class="menu-card-price">$49.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/3727250/pexels-photo-3727250.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Kids Meal" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Kids Meal</h4>
+                            <p>Nuggets or mini fish, chips, sauce and a juice box</p>
+                        </div>
+                        <div class="menu-card-price">$8.90</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/103124/pexels-photo-103124.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Brekkie Combo" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Brekkie Combo</h4>
+                            <p>Bacon & egg roll with a regular coffee</p>
+                        </div>
+                        <div class="menu-card-price">$12.00</div>
+                    </div>
+                    <div class="menu-card reveal">
+                        <img src="https://images.pexels.com/photos/8697538/pexels-photo-8697538.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="Seafood Feast" class="menu-card-img">
+                        <div class="menu-card-info">
+                            <h4>Seafood Feast (Feeds 2)</h4>
+                            <p>Seafood pack, 2 chips, 2 scallops, 2 drinks</p>
+                        </div>
+                        <div class="menu-card-price">$38.90</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('active')})});
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images reveal">
+                    <img src="https://images.pexels.com/photos/2159065/pexels-photo-2159065.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&fit=crop" alt="Cafe interior" class="about-img-main">
+                    <img src="https://images.pexels.com/photos/2092906/pexels-photo-2092906.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Coffee making" class="about-img-float">
+                </div>
+                <div class="about-text">
+                    <span class="section-label reveal">Our Story</span>
+                    <h2 class="section-title reveal">A Local Favourite<br>in <em>Barnsley</em></h2>
+                    <p class="section-subtitle reveal">We're a family-owned takeaway and cafe right in the heart of Barnsley, NSW. What started as a simple fish and chip shop has grown into the go-to spot for locals who want honest, well-cooked food without the wait or the price tag.</p>
+                    <p class="section-subtitle reveal">We're not trying to be fancy. We're just trying to make sure every fish is crispy, every burger is loaded, and every coffee hits the spot. That's the standard we hold ourselves to, day in, day out.</p>
+                    <div class="about-stats reveal">
+                        <div class="about-stat">
+                            <h3>4.2&#9733;</h3>
+                            <p>Average Rating</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>100+</h3>
+                            <p>Happy Reviews</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>7am</h3>
+                            <p>Open From</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// IntersectionObserver reveal with stagger
-const revealObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){setTimeout(()=>{e.target.classList.add('visible')},e.target.dataset.delay||0);revealObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What People Say</span>
+                <h2 class="section-title">Real Reviews From<br><em style="color:var(--honey);">Real Locals</em></h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what the community has to say.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Fast friendly service, food hot and well cooked. Would definitely recommend you give it a try. Best fish and chips in the area hands down."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">M</div>
+                        <div>
+                            <div class="review-author-name">Michelle T.</div>
+                            <div class="review-author-note">Local regular</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"The burgers here are seriously good. Hand-pressed and you can tell. The milkshakes are thick and proper too. Kids love the combo meals."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">D</div>
+                        <div>
+                            <div class="review-author-name">David K.</div>
+                            <div class="review-author-note">Verified review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <p class="review-text">"Great little cafe for a quick brekkie or lunch. The bacon and egg rolls are spot on and the coffee is actually decent. Nice friendly staff too."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">S</div>
+                        <div>
+                            <div class="review-author-name">Sarah P.</div>
+                            <div class="review-author-note">Breakfast regular</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach((el,i)=>{
-  const parent=el.parentElement;
-  const siblings=[...parent.children].filter(c=>c.classList.contains('reveal')||c.classList.contains('reveal-left')||c.classList.contains('reveal-right')||c.classList.contains('reveal-scale'));
-  const idx=siblings.indexOf(el);
-  el.dataset.delay=idx*80;
-  revealObs.observe(el);
-});
-</script>
+    <!-- HOURS -->
+    <section class="hours" id="hours">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Visit Us</span>
+                <h2 class="section-title">Hours & <em>Location</em></h2>
+            </div>
+            <div class="hours-wrapper">
+                <div class="reveal">
+                    <table class="hours-table">
+                        <tr><td>Monday</td><td>7:00 AM - 7:00 PM</td></tr>
+                        <tr><td>Tuesday</td><td>7:00 AM - 7:00 PM</td></tr>
+                        <tr><td>Wednesday</td><td>7:00 AM - 7:00 PM</td></tr>
+                        <tr><td>Thursday</td><td>7:00 AM - 7:00 PM</td></tr>
+                        <tr><td>Friday</td><td>7:00 AM - 7:30 PM</td></tr>
+                        <tr><td>Saturday</td><td>7:00 AM - 7:30 PM</td></tr>
+                        <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+                    </table>
+                </div>
+                <div class="reveal">
+                    <div class="hours-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.5!2d151.591!3d-32.925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b73153a1a19e8a1%3A0xfbf4bbf2e0c1c3e5!2s96%20Northville%20Dr%2C%20Barnsley%20NSW%202278!5e0!3m2!1sen!2sau!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="hours-address">
+                        <h4>Find Us</h4>
+                        <p>Shop 3, 96 Northville Drive<br>Barnsley NSW 2278, Australia</p>
+                        <p style="margin-top: 8px;"><a href="tel:0249533441">(02) 4953 3441</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <h2 class="section-title">Ready to <em>Order?</em></h2>
+            <p>Give us a ring or pop in. We'll have your food ready before you know it.</p>
+            <div class="cta-btns">
+                <a href="tel:0249533441" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call (02) 4953 3441
+                </a>
+                <a href="#menu" class="btn-cta-phone">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Barnsley Takeaway & Cafe</h3>
+                <p>Family-owned takeaway and cafe in Barnsley, NSW. Serving fresh fish & chips, burgers, coffee and more since we first opened the doors. Come hungry, leave happy.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#menu">Our Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#hours">Hours & Location</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:0249533441">(02) 4953 3441</a></li>
+                    <li><a href="#">Shop 3, 96 Northville Dr</a></li>
+                    <li><a href="#">Barnsley NSW 2278</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Barnsley Takeaway & Cafe. All rights reserved. Demo site by <a href="https://neocodestudio.co.uk" style="color:var(--honey);text-decoration:none;">NeoCode Studio</a></p>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+        <h4>Like what you see?</h4>
+        <p>This is a free demo built by NeoCode Studio to show what your online presence could look like. Modern, mobile-friendly, and built to bring in more customers.</p>
+        <a href="https://neocodestudio.co.uk/contact.html">Let's Talk &rarr;</a>
+    </div>
+
+    <script>
+        // ── NAV SCROLL ──
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ── HAMBURGER ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ── MENU TABS ──
+        const tabs = document.querySelectorAll('.menu-tab');
+        const panels = document.querySelectorAll('.menu-panel');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ── SCROLL REVEAL ──
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // ── HOURS HIGHLIGHT TODAY ──
+        const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        const today = days[new Date().getDay()];
+        document.querySelectorAll('.hours-table tr').forEach(row => {
+            if (row.querySelector('td') && row.querySelector('td').textContent.trim() === today) {
+                row.classList.add('today');
+            }
+        });
+
+        // ── NEOCODE POPUP AT 70% SCROLL ──
+        let popupShown = false;
+        const popup = document.getElementById('neocodePopup');
+        const popupClose = document.getElementById('neocodeClose');
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                popup.classList.add('show');
+                popupShown = true;
+            }
+        });
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('show');
+        });
+    </script>
 </body>
 </html>
