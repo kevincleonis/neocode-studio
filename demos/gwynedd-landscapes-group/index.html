@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gwynedd Landscapes Group | Landscaping, Fencing & Garden Design | North Wales</title>
+<meta name="description" content="Premier landscaping and fencing in Gwynedd, Anglesey & North Wales. 20+ years experience. Garden design, paving, decking, fencing. Free quotes.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--moss:#4a6741;--deepmoss:#2d3e28;--earth:#1a1a0e;--stone:#8b8672;--slate:#5a6351;--warmstone:#c4b896;--cream:#f7f4ed;--white:#fff;--text:#333028;--copper:#b87333;--sky:#87a68f}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.fade-in{opacity:0;transform:translateY(25px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:99;background:var(--moss);color:var(--white);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 6px 25px rgba(74,103,65,.4);animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.topbar{background:var(--earth);color:var(--warmstone);text-align:center;padding:.55rem;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.04);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:68px}
+nav .logo{font-weight:900;font-size:1.15rem;color:var(--earth)}
+nav .logo span{color:var(--moss)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
+nav ul a:hover{color:var(--moss)}
+.nav-cta{background:var(--moss);color:var(--white);padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .3s}
+.nav-cta:hover{background:var(--deepmoss)}
+
+.hero{min-height:94vh;background:linear-gradient(160deg,var(--earth) 0%,#2a3520 40%,var(--deepmoss) 100%);display:flex;align-items:center;padding:5rem 2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a6741' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;bottom:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(184,115,51,.08),transparent 60%);border-radius:50%}
+.hero-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(196,184,150,.12);border:1px solid rgba(196,184,150,.25);color:var(--warmstone);padding:.5rem 1.2rem;border-radius:6px;font-size:.78rem;font-weight:700;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.1rem,4.5vw,3.2rem);color:var(--white);line-height:1.12;font-weight:900;margin-bottom:1.2rem}
+.hero h1 span{color:var(--warmstone)}
+.hero p{color:rgba(255,255,255,.5);font-size:1.05rem;line-height:1.8;margin-bottom:2rem}
+.hero-stats{display:flex;gap:2.5rem;margin-bottom:2.5rem}
+.hstat{text-align:center}
+.hstat .num{font-size:2.2rem;font-weight:900;color:var(--warmstone)}
+.hstat .lbl{color:rgba(255,255,255,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:1px}
+.btn-primary{display:inline-block;background:var(--moss);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-weight:800;font-size:1rem;transition:all .3s;box-shadow:0 4px 20px rgba(74,103,65,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(74,103,65,.4);background:var(--deepmoss)}
+.btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:.95rem 2.2rem;border-radius:10px;font-weight:700;font-size:.95rem;transition:all .3s;margin-left:1rem}
+.btn-outline:hover{border-color:var(--warmstone);color:var(--warmstone)}
+
+.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.h-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:1.6rem;text-align:center;backdrop-filter:blur(6px);transition:all .4s}
+.h-card:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+.h-card .icon{font-size:2rem;margin-bottom:.5rem}
+.h-card h4{color:var(--white);font-size:.82rem;font-weight:700}
+.h-card p{color:rgba(255,255,255,.3);font-size:.7rem;margin-top:.2rem}
+
+section.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.tag{color:var(--copper);font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+.services h2{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;color:var(--earth)}
+.services>p{color:var(--text);margin-bottom:3rem;max-width:600px}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv{border:1px solid #ddd6c1;border-radius:16px;padding:2rem;transition:all .4s;background:var(--cream);position:relative;overflow:hidden}
+.srv:hover{border-color:var(--moss);box-shadow:0 12px 40px rgba(74,103,65,.06);transform:translateY(-4px)}
+.srv::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--copper));transform:scaleX(0);transition:transform .4s}
+.srv:hover::after{transform:scaleX(1)}
+.srv .emoji{font-size:2rem;margin-bottom:1rem}
+.srv h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--earth)}
+.srv p{color:#6b7280;font-size:.85rem;line-height:1.7}
+
+.showcase{padding:5rem 2rem;background:var(--earth);color:var(--white)}
+.showcase-inner{max-width:1200px;margin:0 auto;text-align:center}
+.showcase-inner h2{font-size:2.4rem;font-weight:800;margin-bottom:1rem}
+.showcase-inner>p{color:rgba(255,255,255,.45);margin-bottom:3rem}
+.show-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.show-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;aspect-ratio:1.1;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .4s}
+.show-item:hover{background:rgba(74,103,65,.15);border-color:rgba(74,103,65,.3);transform:scale(1.03)}
+.show-item .big-icon{font-size:2.5rem;margin-bottom:.5rem}
+.show-item span{color:rgba(255,255,255,.5);font-size:.78rem;font-weight:500}
+
+.why-us{padding:5rem 2rem;background:var(--cream)}
+.why-inner{max-width:1100px;margin:0 auto}
+.why-inner h2{font-size:2.4rem;font-weight:800;color:var(--earth);margin-bottom:3rem;text-align:center}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.why-item{text-align:center;padding:1.5rem}
+.why-item .icon{width:60px;height:60px;background:linear-gradient(135deg,var(--moss),var(--deepmoss));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1rem;box-shadow:0 4px 15px rgba(74,103,65,.15)}
+.why-item h4{font-size:.9rem;font-weight:700;color:var(--earth);margin-bottom:.3rem}
+.why-item p{font-size:.8rem;color:#6b7280;line-height:1.6}
+
+.areas{padding:5rem 2rem;background:var(--white)}
+.areas-inner{max-width:1100px;margin:0 auto;text-align:center}
+.areas-inner h2{font-size:2rem;font-weight:800;color:var(--earth);margin-bottom:1rem}
+.areas-inner>p{color:var(--text);margin-bottom:2rem}
+.area-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.area-tag{background:var(--cream);border:1px solid #ddd6c1;padding:.5rem 1.2rem;border-radius:25px;font-size:.82rem;font-weight:500;color:var(--deepmoss);transition:all .3s}
+.area-tag:hover{background:var(--moss);color:var(--white);border-color:var(--moss)}
+
+.reviews{padding:6rem 2rem;background:var(--cream)}
+.rev-inner{max-width:1100px;margin:0 auto;text-align:center}
+.rev-inner h2{font-size:2.4rem;font-weight:800;color:var(--earth);margin-bottom:3rem}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rev{background:var(--white);border:1px solid #ddd6c1;border-radius:16px;padding:2rem;text-align:left;transition:all .3s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.04)}
+.rev .stars{color:var(--copper);font-size:1rem;margin-bottom:.8rem}
+.rev p{font-size:.88rem;color:#4b5563;line-height:1.7;margin-bottom:1rem;font-style:italic}
+.rev .author{font-weight:700;font-size:.82rem;color:var(--earth)}
+
+.cta-section{padding:5rem 2rem;background:linear-gradient(135deg,var(--earth),var(--deepmoss));text-align:center;color:var(--white)}
+.cta-section h2{font-size:2.4rem;font-weight:800;margin-bottom:1rem}
+.cta-section p{color:rgba(255,255,255,.5);margin-bottom:2rem;max-width:550px;margin-left:auto;margin-right:auto}
+
+footer{background:#0d0d08;color:rgba(255,255,255,.35);padding:2rem;text-align:center;font-size:.78rem}
+footer a{color:var(--moss)}
+
+@media(max-width:768px){
+.hero-wrap{grid-template-columns:1fr}
+.hero-right{display:none}
+.srv-grid,.rev-grid{grid-template-columns:1fr}
+.why-grid,.show-grid{grid-template-columns:1fr 1fr}
+.hero-stats{flex-wrap:wrap;gap:1.5rem}
+nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<a href="tel:+44" class="float-btn" aria-label="Call us">&#9742;</a>
+
+<div class="topbar">Gwynedd &amp; North Wales Premier Landscaping &#8226; 20+ Years Experience &#8226; Free Quotes</div>
+
+<nav>
+<div class="logo">Gwynedd <span>Landscapes</span></div>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#showcase">Portfolio</a></li>
+<li><a href="#areas">Areas</a></li>
+<li><a href="#reviews">Reviews</a></li>
+</ul>
+<a href="#contact" class="nav-cta">Free Quote</a>
+</nav>
+
+<section class="hero">
+<div class="hero-wrap">
+<div>
+<div class="hero-badge">&#127807; North Wales' Premier Garden &amp; Landscape Specialists</div>
+<h1>Transform Your Outdoor Space With <span>Expert Landscaping</span></h1>
+<p>From garden design to fencing, paving to decking - everything you need under one roof. Over 20 years of experience creating beautiful outdoor spaces across Gwynedd, Anglesey and North Wales.</p>
+<div class="hero-stats">
+<div class="hstat"><div class="num">20+</div><div class="lbl">Years Experience</div></div>
+<div class="hstat"><div class="num">1</div><div class="lbl">Company, All Services</div></div>
+<div class="hstat"><div class="num">Free</div><div class="lbl">Quotations</div></div>
+</div>
+<a href="#contact" class="btn-primary">Get Free Quote</a>
+<a href="#services" class="btn-outline">View Services</a>
+</div>
+<div class="hero-right">
+<div class="h-card"><div class="icon">&#127793;</div><h4>Garden Design</h4><p>Complete makeovers</p></div>
+<div class="h-card"><div class="icon">&#129717;</div><h4>Fencing</h4><p>Custom & panel</p></div>
+<div class="h-card"><div class="icon">&#127969;</div><h4>Paving</h4><p>Patios & driveways</p></div>
+<div class="h-card"><div class="icon">&#127795;</div><h4>Decking</h4><p>Built to last</p></div>
+</div>
+</div>
+</section>
+
+<section class="services fade-in" id="services">
+<div class="tag">Our Expertise</div>
+<h2>Complete Landscaping Services</h2>
+<p>Everything you need for your garden and outdoor space, delivered by one experienced team for consistent quality.</p>
+<div class="srv-grid">
+<div class="srv"><div class="emoji">&#127793;</div><h3>Garden Design &amp; Landscaping</h3><p>Full garden makeovers from concept to completion. Creative designs that maximise your outdoor space and suit your lifestyle.</p></div>
+<div class="srv"><div class="emoji">&#129717;</div><h3>Fencing &amp; Gates</h3><p>Standard panels to custom on-site built fencing. Featheredge, closeboard, picket, trellis, metal and chain link. Gates and garden structures.</p></div>
+<div class="srv"><div class="emoji">&#127969;</div><h3>Paving &amp; Patios</h3><p>Natural stone, block paving and slab patios. Driveways and garden paths built to last with proper foundations and drainage.</p></div>
+<div class="srv"><div class="emoji">&#127795;</div><h3>Decking</h3><p>Softwood and composite decking solutions. Raised, ground level and multi-tiered designs to extend your living space outdoors.</p></div>
+<div class="srv"><div class="emoji">&#129521;</div><h3>Stone Walling</h3><p>Retaining walls, boundary walls and decorative stone features. Using local and imported stone for a timeless finish.</p></div>
+<div class="srv"><div class="emoji">&#127806;</div><h3>Turf &amp; Lawn Care</h3><p>New lawn installation, turfing, seeding and ongoing maintenance. Get a lush, green lawn you can be proud of.</p></div>
+<div class="srv"><div class="emoji">&#128736;</div><h3>Ground Clearance</h3><p>Site clearance, drainage solutions and ground preparation. Tackling overgrown gardens and difficult terrain.</p></div>
+<div class="srv"><div class="emoji">&#127970;</div><h3>Garden Buildings</h3><p>Gazebos, pergolas, garden offices and summer houses. Extending your outdoor enjoyment year-round.</p></div>
+<div class="srv"><div class="emoji">&#9749;</div><h3>Garden Maintenance</h3><p>Regular maintenance packages to keep your garden looking its best. Hedge cutting, mowing, planting and seasonal care.</p></div>
+</div>
+</section>
+
+<section class="showcase fade-in" id="showcase">
+<div class="showcase-inner">
+<h2>Recent Projects</h2>
+<p>A selection of our work across Gwynedd, Anglesey and North Wales</p>
+<div class="show-grid">
+<div class="show-item"><div class="big-icon">&#127793;</div><span>Garden Makeover</span></div>
+<div class="show-item"><div class="big-icon">&#129717;</div><span>Bespoke Fencing</span></div>
+<div class="show-item"><div class="big-icon">&#127969;</div><span>Block Paving</span></div>
+<div class="show-item"><div class="big-icon">&#127795;</div><span>Composite Deck</span></div>
+<div class="show-item"><div class="big-icon">&#129521;</div><span>Stone Walling</span></div>
+<div class="show-item"><div class="big-icon">&#127806;</div><span>New Lawn</span></div>
+<div class="show-item"><div class="big-icon">&#127970;</div><span>Garden Pergola</span></div>
+<div class="show-item"><div class="big-icon">&#128736;</div><span>Site Clearance</span></div>
+</div>
+</div>
+</section>
+
+<section class="why-us fade-in">
+<div class="why-inner">
+<h2>Why Choose Gwynedd Landscapes?</h2>
+<div class="why-grid">
+<div class="why-item"><div class="icon">&#128170;</div><h4>20+ Years</h4><p>Two decades of landscaping and horticulture experience across North Wales.</p></div>
+<div class="why-item"><div class="icon">&#128171;</div><h4>All-In-One</h4><p>Every service under one company means consistent quality, service and pricing.</p></div>
+<div class="why-item"><div class="icon">&#128203;</div><h4>Free Quotes</h4><p>No-obligation quotations with honest, transparent pricing. No hidden extras.</p></div>
+<div class="why-item"><div class="icon">&#11088;</div><h4>Premier Quality</h4><p>North Wales' premier landscaping service provider with a reputation for excellence.</p></div>
+</div>
+</div>
+</section>
+
+<section class="areas fade-in" id="areas">
+<div class="areas-inner">
+<h2>Areas We Cover</h2>
+<p>Serving Gwynedd, Anglesey, Conwy and surrounding areas of North Wales &amp; Cheshire</p>
+<div class="area-tags">
+<span class="area-tag">Bangor</span>
+<span class="area-tag">Caernarfon</span>
+<span class="area-tag">Pwllheli</span>
+<span class="area-tag">Abersoch</span>
+<span class="area-tag">Porthmadog</span>
+<span class="area-tag">Cricieth</span>
+<span class="area-tag">Anglesey</span>
+<span class="area-tag">Llandudno</span>
+<span class="area-tag">Colwyn Bay</span>
+<span class="area-tag">Deganwy</span>
+<span class="area-tag">Rhyl</span>
+<span class="area-tag">Mold</span>
+<span class="area-tag">Holywell</span>
+<span class="area-tag">Wrexham</span>
+<span class="area-tag">Chester</span>
+</div>
+</div>
+</section>
+
+<section class="reviews fade-in" id="reviews">
+<div class="rev-inner">
+<h2>Customer Reviews</h2>
+<div class="rev-grid">
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Transformed our tired garden into something stunning. The paving work is exceptional and the attention to detail was brilliant."</p><div class="author">Gareth &amp; Sian H.</div></div>
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Beautiful custom fencing and a new deck. The team were hardworking, tidy and the end result exceeded our expectations."</p><div class="author">Jenny P.</div></div>
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Third project we've had done with Gwynedd Landscapes. Always reliable, excellent quality and very fair prices."</p><div class="author">Tom &amp; Karen M.</div></div>
+</div>
+</div>
+</section>
+
+<section class="cta-section fade-in" id="contact">
+<h2>Get Your Free Quotation</h2>
+<p>Tell us about your project and we'll provide a free, no-obligation quote. From small fencing jobs to complete garden transformations.</p>
+<a href="#contact" class="btn-primary" style="margin-top:1rem">Request Free Quote</a>
+</section>
+
+<footer>
+<p>&copy; 2026 Gwynedd Landscapes Group. Serving Gwynedd, Anglesey, Conwy &amp; North Wales. | Demo by <a href="https://kevincleonis.github.io/neocode-studio/">NeoCode Studio</a></p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

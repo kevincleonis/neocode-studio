@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DK Painter & Decorator | Professional Painting Services Wolverhampton</title>
+<meta name="description" content="Professional painting and decorating services in Wolverhampton. Interior & exterior specialists. Quality craftsmanship, free quotes. Transform your space today.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--coral:#e76f51;--warmcoral:#f4845f;--cream:#fefae0;--forest:#264653;--deepforest:#1a323d;--teal:#2a9d8f;--sand:#e9c46a;--white:#fff;--text:#3d405b;--lightbg:#faf8f5}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:99;background:var(--coral);color:var(--white);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 6px 25px rgba(231,111,81,.4);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 6px 25px rgba(231,111,81,.4)}50%{box-shadow:0 6px 35px rgba(231,111,81,.6)}}
+
+.topbar{background:var(--forest);color:var(--sand);text-align:center;padding:.55rem;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.topbar span{color:var(--teal);margin-left:.8rem}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.04);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:68px}
+nav .logo{font-weight:900;font-size:1.25rem;color:var(--forest)}
+nav .logo span{color:var(--coral)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
+nav ul a:hover{color:var(--coral)}
+.nav-cta{background:var(--coral);color:var(--white);padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .3s}
+.nav-cta:hover{background:var(--warmcoral);transform:translateY(-1px)}
+
+.hero{min-height:94vh;background:linear-gradient(160deg,var(--deepforest) 0%,var(--forest) 50%,#2a6b5e 100%);display:flex;align-items:center;padding:5rem 2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(231,111,81,.12),transparent 65%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(42,157,143,.1),transparent 65%);border-radius:50%}
+.hero-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(231,111,81,.15);border:1px solid rgba(231,111,81,.3);color:var(--warmcoral);padding:.45rem 1.1rem;border-radius:6px;font-size:.78rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:1px}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.3rem);color:var(--white);line-height:1.12;font-weight:900;margin-bottom:1.2rem}
+.hero h1 span{background:linear-gradient(135deg,var(--coral),var(--sand));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:rgba(255,255,255,.55);font-size:1.05rem;line-height:1.8;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--coral);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-weight:800;font-size:1rem;transition:all .3s;box-shadow:0 4px 20px rgba(231,111,81,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(231,111,81,.4)}
+.btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);padding:.95rem 2.2rem;border-radius:10px;font-weight:700;font-size:.95rem;transition:all .3s}
+.btn-outline:hover{border-color:var(--sand);color:var(--sand)}
+
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.v-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;text-align:center;backdrop-filter:blur(8px);transition:all .4s}
+.v-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.v-card .icon{font-size:2.2rem;margin-bottom:.6rem}
+.v-card h4{color:var(--white);font-size:.9rem;font-weight:700;margin-bottom:.3rem}
+.v-card p{color:rgba(255,255,255,.4);font-size:.75rem}
+.v-card.featured{background:rgba(231,111,81,.12);border-color:rgba(231,111,81,.25)}
+
+section.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.tag{color:var(--coral);font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+.services h2{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;color:var(--forest)}
+.services>p{color:var(--text);margin-bottom:3rem;max-width:550px}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv{border:1px solid #e8e4df;border-radius:16px;padding:2rem;transition:all .4s;background:var(--lightbg);position:relative;overflow:hidden}
+.srv:hover{border-color:var(--coral);box-shadow:0 12px 40px rgba(231,111,81,.08);transform:translateY(-4px)}
+.srv::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--sand));transform:scaleX(0);transition:transform .4s}
+.srv:hover::after{transform:scaleX(1)}
+.srv .emoji{font-size:2rem;margin-bottom:1rem}
+.srv h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--forest)}
+.srv p{color:#6b7280;font-size:.85rem;line-height:1.7}
+
+.gallery{padding:5rem 2rem;background:var(--forest);color:var(--white);overflow:hidden}
+.gallery-inner{max-width:1200px;margin:0 auto;text-align:center}
+.gallery-inner h2{font-size:2.4rem;font-weight:800;margin-bottom:1rem}
+.gallery-inner>p{color:rgba(255,255,255,.5);margin-bottom:3rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .4s;cursor:pointer}
+.gallery-item:hover{background:rgba(231,111,81,.12);border-color:rgba(231,111,81,.3);transform:scale(1.03)}
+.gallery-item .big-icon{font-size:2.5rem;margin-bottom:.5rem}
+.gallery-item span{color:rgba(255,255,255,.6);font-size:.8rem;font-weight:500}
+
+.process{padding:6rem 2rem;background:var(--lightbg)}
+.process-inner{max-width:1100px;margin:0 auto;text-align:center}
+.process-inner h2{font-size:2.4rem;font-weight:800;color:var(--forest);margin-bottom:3rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.step{position:relative;padding:2rem 1.5rem}
+.step::before{content:attr(data-num);position:absolute;top:0;right:1rem;font-size:4rem;font-weight:900;color:rgba(231,111,81,.08)}
+.step .s-icon{width:60px;height:60px;background:linear-gradient(135deg,var(--coral),var(--warmcoral));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1rem;box-shadow:0 6px 20px rgba(231,111,81,.2)}
+.step h4{font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:.4rem}
+.step p{font-size:.82rem;color:#6b7280;line-height:1.6}
+
+.reviews{padding:6rem 2rem;max-width:1100px;margin:0 auto;text-align:center}
+.reviews h2{font-size:2.4rem;font-weight:800;color:var(--forest);margin-bottom:3rem}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rev{background:var(--lightbg);border:1px solid #e8e4df;border-radius:16px;padding:2rem;text-align:left;transition:all .3s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.04)}
+.rev .stars{color:var(--sand);font-size:1rem;margin-bottom:.8rem}
+.rev p{font-size:.88rem;color:#4b5563;line-height:1.7;margin-bottom:1rem;font-style:italic}
+.rev .author{font-weight:700;font-size:.82rem;color:var(--forest)}
+.rev .loc{font-size:.75rem;color:#9ca3af}
+
+.cta-section{padding:5rem 2rem;background:linear-gradient(135deg,var(--forest),var(--deepforest));text-align:center;color:var(--white)}
+.cta-section h2{font-size:2.4rem;font-weight:800;margin-bottom:1rem}
+.cta-section p{color:rgba(255,255,255,.5);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-phone{font-size:1.8rem;font-weight:900;color:var(--coral);display:block;margin-bottom:1.5rem}
+
+footer{background:var(--deepforest);color:rgba(255,255,255,.4);padding:2rem;text-align:center;font-size:.78rem}
+footer a{color:var(--coral)}
+
+@media(max-width:768px){
+.hero-wrap{grid-template-columns:1fr}
+.hero-visual{grid-template-columns:1fr 1fr}
+.srv-grid,.rev-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr 1fr}
+nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<a href="tel:+44" class="float-btn" aria-label="Call us">&#9742;</a>
+
+<div class="topbar">Professional Painters &amp; Decorators &#8226; Wolverhampton &amp; West Midlands <span>&#10003; Free Quotes</span></div>
+
+<nav>
+<div class="logo">DK <span>Painter</span></div>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#gallery">Portfolio</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#reviews">Reviews</a></li>
+</ul>
+<a href="#contact" class="nav-cta">Get Free Quote</a>
+</nav>
+
+<section class="hero">
+<div class="hero-wrap">
+<div class="hero-text">
+<div class="hero-badge">&#9733; Wolverhampton's Trusted Decorators</div>
+<h1>Transform Your Space With <span>Expert Painting &amp; Decorating</span></h1>
+<p>Quality craftsmanship with meticulous attention to detail. From feature walls to full property renovations, we deliver flawless finishes that elevate your home or business.</p>
+<div class="hero-btns">
+<a href="tel:+44" class="btn-primary">Get Free Quote</a>
+<a href="#services" class="btn-outline">View Services</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="v-card"><div class="icon">&#127912;</div><h4>Interior</h4><p>Rooms, hallways, ceilings</p></div>
+<div class="v-card featured"><div class="icon">&#127969;</div><h4>Exterior</h4><p>Facades, fences, decks</p></div>
+<div class="v-card featured"><div class="icon">&#11088;</div><h4>15+ Years</h4><p>Of trusted experience</p></div>
+<div class="v-card"><div class="icon">&#128077;</div><h4>5-Star</h4><p>Customer rated</p></div>
+</div>
+</div>
+</section>
+
+<section class="services fade-in" id="services">
+<div class="tag">What We Do</div>
+<h2>Our Services</h2>
+<p>Comprehensive painting and decorating for homes and businesses across Wolverhampton and the West Midlands.</p>
+<div class="srv-grid">
+<div class="srv"><div class="emoji">&#127912;</div><h3>Interior Painting</h3><p>Walls, ceilings, woodwork and trim. Perfectly prepared surfaces with premium paints for a lasting, professional finish in every room.</p></div>
+<div class="srv"><div class="emoji">&#127969;</div><h3>Exterior Painting</h3><p>Weather-resistant coatings for facades, soffits, fascias and garden structures. Protection and kerb appeal in one.</p></div>
+<div class="srv"><div class="emoji">&#128220;</div><h3>Wallpapering</h3><p>Expert wallpaper hanging including feature walls, pattern matching, and specialist materials. Precise, bubble-free results.</p></div>
+<div class="srv"><div class="emoji">&#128301;</div><h3>Commercial Decorating</h3><p>Offices, shops, restaurants and commercial premises. Minimal disruption, weekend and evening work available.</p></div>
+<div class="srv"><div class="emoji">&#129521;</div><h3>Plastering &amp; Prep</h3><p>Surface preparation, crack filling, plastering and making good. The foundation for a flawless finish every time.</p></div>
+<div class="srv"><div class="emoji">&#127775;</div><h3>Specialist Finishes</h3><p>Feature walls, colour consultations, Farrow &amp; Ball specialists. Create a space that reflects your personality.</p></div>
+</div>
+</section>
+
+<section class="gallery fade-in" id="gallery">
+<div class="gallery-inner">
+<h2>Our Work Speaks for Itself</h2>
+<p>A glimpse at recent projects across Wolverhampton and the West Midlands</p>
+<div class="gallery-grid">
+<div class="gallery-item"><div class="big-icon">&#128715;</div><span>Living Room Refresh</span></div>
+<div class="gallery-item"><div class="big-icon">&#128716;</div><span>Master Bedroom</span></div>
+<div class="gallery-item"><div class="big-icon">&#127869;</div><span>Kitchen Makeover</span></div>
+<div class="gallery-item"><div class="big-icon">&#128738;</div><span>Bathroom Suite</span></div>
+<div class="gallery-item"><div class="big-icon">&#127970;</div><span>Office Repaint</span></div>
+<div class="gallery-item"><div class="big-icon">&#127978;</div><span>Shop Front</span></div>
+<div class="gallery-item"><div class="big-icon">&#127968;</div><span>Full Exterior</span></div>
+<div class="gallery-item"><div class="big-icon">&#128214;</div><span>Wallpaper Feature</span></div>
+</div>
+</div>
+</section>
+
+<section class="process fade-in" id="process">
+<div class="process-inner">
+<h2>How We Work</h2>
+<div class="steps">
+<div class="step" data-num="01"><div class="s-icon">&#128222;</div><h4>Free Consultation</h4><p>Call or email for a no-obligation chat about your project and requirements.</p></div>
+<div class="step" data-num="02"><div class="s-icon">&#128203;</div><h4>Detailed Quote</h4><p>We visit your property, assess the work and provide a clear, written quote with no hidden costs.</p></div>
+<div class="step" data-num="03"><div class="s-icon">&#127912;</div><h4>Expert Execution</h4><p>Our skilled team transforms your space with precision, protecting furnishings and keeping things tidy.</p></div>
+<div class="step" data-num="04"><div class="s-icon">&#9989;</div><h4>Final Inspection</h4><p>We walk through the finished work together. We won't leave until you're 100% satisfied.</p></div>
+</div>
+</div>
+</section>
+
+<section class="reviews fade-in" id="reviews">
+<h2>What Clients Say</h2>
+<div class="rev-grid">
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Absolutely brilliant job on our hallway and stairs. Neat, tidy workers who took real pride in their work. Would recommend to anyone."</p><div class="author">Sarah M.</div><div class="loc">Wolverhampton, WV3</div></div>
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Used DK for our shop front repaint. Professional from start to finish, worked around our opening hours and the finish is superb."</p><div class="author">James T.</div><div class="loc">Bilston, WV14</div></div>
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Third time using DK Painter. They did our lounge, bedrooms and now the exterior. Consistently excellent quality and fair pricing."</p><div class="author">Rachel &amp; Dave P.</div><div class="loc">Tettenhall, WV6</div></div>
+</div>
+</section>
+
+<section class="cta-section fade-in" id="contact">
+<h2>Ready to Transform Your Space?</h2>
+<p>Get a free, no-obligation quote for your painting and decorating project today.</p>
+<a href="tel:+44" class="cta-phone">Call Us Today</a>
+<a href="#services" class="btn-primary">View Our Services</a>
+</section>
+
+<footer>
+<p>&copy; 2026 DK Painter &amp; Decorator. Wolverhampton &amp; West Midlands. | Demo by <a href="https://kevincleonis.github.io/neocode-studio/">NeoCode Studio</a></p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

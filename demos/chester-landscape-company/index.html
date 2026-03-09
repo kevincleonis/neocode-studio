@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chester Landscape Company | Tree Surgery, Fencing & Landscaping | Chester & Cheshire</title>
+<meta name="description" content="Expert tree surgery, fencing and stump grinding in Chester & Cheshire. 15+ years experience. Fully qualified & insured. Free quotes.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--leaf:#588157;--darkleaf:#3a5a40;--deepgreen:#1b2e1b;--bark:#8b6914;--lightbark:#c9a84c;--cream:#f5f0e8;--white:#fff;--text:#2d3436;--sand:#ddd6c1;--sky:#e8f0e4}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.fade-in{opacity:0;transform:translateY(25px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:99;background:var(--leaf);color:var(--white);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 6px 25px rgba(88,129,87,.4);animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.topbar{background:var(--deepgreen);color:var(--lightbark);text-align:center;padding:.55rem;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.04);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:68px}
+nav .logo{font-weight:900;font-size:1.2rem;color:var(--deepgreen)}
+nav .logo span{color:var(--leaf)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{font-size:.85rem;font-weight:500;color:var(--text);transition:color .3s}
+nav ul a:hover{color:var(--leaf)}
+.nav-cta{background:var(--leaf);color:var(--white);padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .3s}
+.nav-cta:hover{background:var(--darkleaf)}
+
+.hero{min-height:94vh;background:linear-gradient(160deg,var(--deepgreen) 0%,#2d4a2d 45%,var(--darkleaf) 100%);display:flex;align-items:center;padding:5rem 2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23588157' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;top:-150px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(88,129,87,.15),transparent 60%);border-radius:50%}
+.hero-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(88,129,87,.18);border:1px solid rgba(88,129,87,.35);color:#8fbf8a;padding:.5rem 1.2rem;border-radius:6px;font-size:.78rem;font-weight:700;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.1rem,4.5vw,3.2rem);color:var(--white);line-height:1.12;font-weight:900;margin-bottom:1.2rem}
+.hero h1 span{color:var(--lightbark)}
+.hero p{color:rgba(255,255,255,.5);font-size:1.05rem;line-height:1.8;margin-bottom:2rem}
+.hero-stats{display:flex;gap:2rem;margin-bottom:2.5rem}
+.hstat{text-align:center}
+.hstat .num{font-size:2.2rem;font-weight:900;color:var(--lightbark)}
+.hstat .lbl{color:rgba(255,255,255,.4);font-size:.72rem;text-transform:uppercase;letter-spacing:1px}
+.btn-primary{display:inline-block;background:var(--leaf);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-weight:800;font-size:1rem;transition:all .3s;box-shadow:0 4px 20px rgba(88,129,87,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(88,129,87,.4);background:var(--darkleaf)}
+
+.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.h-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.8rem;text-align:center;backdrop-filter:blur(6px);transition:all .4s}
+.h-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.h-card .icon{font-size:2.2rem;margin-bottom:.5rem}
+.h-card h4{color:var(--white);font-size:.85rem;font-weight:700}
+.h-card p{color:rgba(255,255,255,.35);font-size:.72rem;margin-top:.2rem}
+
+section.services{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.tag{color:var(--leaf);font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+.services h2{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;color:var(--deepgreen)}
+.services>p{color:var(--text);margin-bottom:3rem;max-width:550px}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv{border:1px solid #ddd6c1;border-radius:16px;padding:2rem;transition:all .4s;background:var(--cream);position:relative;overflow:hidden}
+.srv:hover{border-color:var(--leaf);box-shadow:0 12px 40px rgba(88,129,87,.08);transform:translateY(-4px)}
+.srv::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--leaf),var(--lightbark));transform:scaleX(0);transition:transform .4s}
+.srv:hover::after{transform:scaleX(1)}
+.srv .emoji{font-size:2rem;margin-bottom:1rem}
+.srv h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--deepgreen)}
+.srv p{color:#6b7280;font-size:.85rem;line-height:1.7}
+
+.why-us{padding:5rem 2rem;background:var(--deepgreen);color:var(--white)}
+.why-inner{max-width:1100px;margin:0 auto;text-align:center}
+.why-inner h2{font-size:2.4rem;font-weight:800;margin-bottom:3rem}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.why-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem;transition:all .3s}
+.why-item:hover{background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.why-item .icon{font-size:2rem;margin-bottom:.8rem}
+.why-item h4{font-size:.9rem;font-weight:700;color:var(--lightbark);margin-bottom:.3rem}
+.why-item p{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.6}
+
+.areas{padding:5rem 2rem;background:var(--sky)}
+.areas-inner{max-width:1100px;margin:0 auto;text-align:center}
+.areas-inner h2{font-size:2rem;font-weight:800;color:var(--deepgreen);margin-bottom:1rem}
+.areas-inner>p{color:var(--text);margin-bottom:2rem}
+.area-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.area-tag{background:var(--white);border:1px solid var(--sand);padding:.5rem 1.2rem;border-radius:25px;font-size:.82rem;font-weight:500;color:var(--darkleaf);transition:all .3s}
+.area-tag:hover{background:var(--leaf);color:var(--white);border-color:var(--leaf)}
+
+.reviews{padding:6rem 2rem;max-width:1100px;margin:0 auto;text-align:center}
+.reviews h2{font-size:2.4rem;font-weight:800;color:var(--deepgreen);margin-bottom:3rem}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rev{background:var(--cream);border:1px solid var(--sand);border-radius:16px;padding:2rem;text-align:left;transition:all .3s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.04)}
+.rev .stars{color:var(--bark);font-size:1rem;margin-bottom:.8rem}
+.rev p{font-size:.88rem;color:#4b5563;line-height:1.7;margin-bottom:1rem;font-style:italic}
+.rev .author{font-weight:700;font-size:.82rem;color:var(--deepgreen)}
+
+.cta-section{padding:5rem 2rem;background:linear-gradient(135deg,var(--deepgreen),#2d4a2d);text-align:center;color:var(--white)}
+.cta-section h2{font-size:2.4rem;font-weight:800;margin-bottom:1rem}
+.cta-section p{color:rgba(255,255,255,.5);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+
+footer{background:#111;color:rgba(255,255,255,.4);padding:2rem;text-align:center;font-size:.78rem}
+footer a{color:var(--leaf)}
+
+@media(max-width:768px){
+.hero-wrap{grid-template-columns:1fr}
+.hero-right{display:none}
+.srv-grid,.rev-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:1fr 1fr}
+.hero-stats{flex-wrap:wrap}
+nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<a href="tel:+44" class="float-btn" aria-label="Call us">&#9742;</a>
+
+<div class="topbar">Tree Surgery &#8226; Fencing &#8226; Stump Grinding &#8226; Chester &amp; Cheshire &#8226; Free Quotes</div>
+
+<nav>
+<div class="logo">Chester <span>Landscape</span></div>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#why">Why Us</a></li>
+<li><a href="#areas">Areas</a></li>
+<li><a href="#reviews">Reviews</a></li>
+</ul>
+<a href="#contact" class="nav-cta">Free Quote</a>
+</nav>
+
+<section class="hero">
+<div class="hero-wrap">
+<div>
+<div class="hero-badge">&#127795; 15+ Years Serving Chester &amp; Cheshire</div>
+<h1>Expert Tree Surgery &amp; <span>Landscaping</span> You Can Trust</h1>
+<p>From precision tree surgery to bespoke fencing, we transform outdoor spaces across Chester, Cheshire and North Wales. Fully qualified, fully insured, and always honest.</p>
+<div class="hero-stats">
+<div class="hstat"><div class="num">15+</div><div class="lbl">Years Experience</div></div>
+<div class="hstat"><div class="num">10mi</div><div class="lbl">Service Radius</div></div>
+<div class="hstat"><div class="num">100%</div><div class="lbl">Fully Insured</div></div>
+</div>
+<a href="tel:+44" class="btn-primary">Get Free Quote</a>
+</div>
+<div class="hero-right">
+<div class="h-card"><div class="icon">&#127794;</div><h4>Tree Surgery</h4><p>Expert care & removal</p></div>
+<div class="h-card"><div class="icon">&#129717;</div><h4>Fencing</h4><p>Custom & panel fencing</p></div>
+<div class="h-card"><div class="icon">&#128736;</div><h4>Stump Grinding</h4><p>Complete removal</p></div>
+<div class="h-card"><div class="icon">&#127793;</div><h4>Landscaping</h4><p>Garden transformations</p></div>
+</div>
+</div>
+</section>
+
+<section class="services fade-in" id="services">
+<div class="tag">Our Expertise</div>
+<h2>Services</h2>
+<p>Professional tree care, fencing and landscaping tailored to your property's needs.</p>
+<div class="srv-grid">
+<div class="srv"><div class="emoji">&#127794;</div><h3>Tree Surgery</h3><p>Crown reduction, crown thinning, pollarding, deadwood removal and complete tree felling. Safe, efficient work by qualified arborists.</p></div>
+<div class="srv"><div class="emoji">&#128736;</div><h3>Stump Grinding</h3><p>Complete stump removal using specialist machinery. Reclaim your garden space with no trace left behind.</p></div>
+<div class="srv"><div class="emoji">&#129717;</div><h3>Panel Fencing</h3><p>Supply and fit standard fence panels, concrete posts and gravel boards. Durable, neat boundaries for any garden.</p></div>
+<div class="srv"><div class="emoji">&#9999;&#65039;</div><h3>Custom Fencing</h3><p>Bespoke on-site built fencing solutions. Featheredge, closeboard, picket, trellis and more to suit your style.</p></div>
+<div class="srv"><div class="emoji">&#127793;</div><h3>Garden Landscaping</h3><p>Paving, turfing, decking, retaining walls and complete garden makeovers to transform your outdoor space.</p></div>
+<div class="srv"><div class="emoji">&#127806;</div><h3>Hedge Trimming</h3><p>Regular maintenance and one-off hedge cutting to keep your boundaries smart, healthy and well-shaped.</p></div>
+</div>
+</section>
+
+<section class="why-us fade-in" id="why">
+<div class="why-inner">
+<h2>Why Choose Chester Landscape?</h2>
+<div class="why-grid">
+<div class="why-item"><div class="icon">&#128170;</div><h4>15+ Years</h4><p>Over a decade and a half of hands-on experience across Chester and Cheshire.</p></div>
+<div class="why-item"><div class="icon">&#128220;</div><h4>Fully Qualified</h4><p>Professional qualifications in arboriculture and landscaping.</p></div>
+<div class="why-item"><div class="icon">&#128737;</div><h4>Fully Insured</h4><p>Comprehensive public liability insurance for your complete peace of mind.</p></div>
+<div class="why-item"><div class="icon">&#128172;</div><h4>Honest & Fair</h4><p>Free advice and no-obligation quotes. Straightforward pricing, no hidden extras.</p></div>
+</div>
+</div>
+</section>
+
+<section class="areas fade-in" id="areas">
+<div class="areas-inner">
+<h2>Areas We Cover</h2>
+<p>Professional tree and landscaping services within 10 miles of Chester</p>
+<div class="area-tags">
+<span class="area-tag">Chester</span>
+<span class="area-tag">Blacon</span>
+<span class="area-tag">Handbridge</span>
+<span class="area-tag">Hoole</span>
+<span class="area-tag">Upton</span>
+<span class="area-tag">Boughton</span>
+<span class="area-tag">Saltney</span>
+<span class="area-tag">Broughton</span>
+<span class="area-tag">Hawarden</span>
+<span class="area-tag">Ellesmere Port</span>
+<span class="area-tag">Neston</span>
+<span class="area-tag">Malpas</span>
+<span class="area-tag">Tarporley</span>
+<span class="area-tag">Tattenhall</span>
+</div>
+</div>
+</section>
+
+<section class="reviews fade-in" id="reviews">
+<h2>Customer Reviews</h2>
+<div class="rev-grid">
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Had three large trees removed and a new fence installed. Delighted with the quality of work and the value. Would highly recommend."</p><div class="author">Mark D.</div></div>
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Honest, hard-working and professional. The quality of the fencing and decking was impressive. Great team to deal with."</p><div class="author">Louise W.</div></div>
+<div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Brilliant stump grinding service. They were prompt, tidy and the price was very fair. Garden looks so much better now."</p><div class="author">Pete C.</div></div>
+</div>
+</section>
+
+<section class="cta-section fade-in" id="contact">
+<h2>Free Advice &amp; No-Obligation Quote</h2>
+<p>Tell us about your project and we'll provide honest advice and a clear, competitive quote.</p>
+<a href="tel:+44" class="btn-primary" style="margin-top:1rem">Call for Free Quote</a>
+</section>
+
+<footer>
+<p>&copy; 2026 Chester Landscape Company. 27 Southway, Blacon, Chester CH1 5NW. | Demo by <a href="https://kevincleonis.github.io/neocode-studio/">NeoCode Studio</a></p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
