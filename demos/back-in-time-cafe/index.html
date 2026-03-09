@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back in Time Caf&eacute; | Artisan Coffee & Homemade Cakes in Doncaster</title>
+    <meta name="description" content="Back in Time Caf&eacute; - Artisan coffee, homemade cakes and simple healthy food at sensible prices. 78 St Sepulchre Gate, Doncaster DN1 1SD.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mustard: #D4A843;
+            --mustard-light: #E8C76A;
+            --dark-brown: #2C1810;
+            --medium-brown: #5C3D2E;
+            --cream: #FDF6E3;
+            --warm-white: #FFFDF7;
+            --espresso: #1A0E08;
+            --latte: #C4A882;
+            --sage: #8B9A6B;
+            --sage-light: #A8B68A;
+            --text-dark: #2C1810;
+            --text-muted: #6B5544;
+            --shadow-sm: 0 2px 8px rgba(44,24,16,0.08);
+            --shadow-md: 0 8px 24px rgba(44,24,16,0.12);
+            --shadow-lg: 0 16px 48px rgba(44,24,16,0.16);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--warm-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== NEOCODE TOP BANNER ===== */
+        .neo-banner {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #00ff88;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+            z-index: 1001;
+        }
+        .neo-banner a {
+            color: #00ff88;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .neo-banner a:hover { color: #fff; }
+
+        /* ===== HEADER / NAV ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(253, 246, 227, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header.scrolled .neo-banner {
+            transform: translateY(-100%);
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--mustard);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--mustard);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--mustard);
+            outline: none;
+        }
+
+        .nav-cta {
+            background: var(--dark-brown) !important;
+            color: var(--cream) !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--mustard) !important;
+            color: var(--dark-brown) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 8px;
+            z-index: 1002;
+            background: none;
+            border: none;
+        }
+
+        .hamburger:focus {
+            outline: 2px solid var(--mustard);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--dark-brown);
+            border-radius: 3px;
+            transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--cream);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(44, 24, 16, 0.7) 0%,
+                rgba(26, 14, 8, 0.5) 50%,
+                rgba(44, 24, 16, 0.65) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 24px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: var(--cream);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 168, 67, 0.2);
+            border: 1px solid rgba(212, 168, 67, 0.4);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--mustard-light);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .accent {
+            color: var(--mustard-light);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(253, 246, 227, 0.8);
+            margin-bottom: 36px;
+            max-width: 480px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn:focus {
+            outline: 3px solid var(--mustard);
+            outline-offset: 3px;
+        }
+
+        .btn-primary {
+            background: var(--mustard);
+            color: var(--dark-brown);
+        }
+
+        .btn-primary:hover {
+            background: var(--mustard-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cream);
+            border: 2px solid rgba(253, 246, 227, 0.4);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--cream);
+            background: rgba(253, 246, 227, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            color: var(--cream);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--mustard-light);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(253, 246, 227, 0.7);
+            margin-top: 4px;
+        }
+
+        /* ===== SECTION BASICS ===== */
+        section {
+            padding: 100px 24px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--mustard);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--mustard);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--dark-brown);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--mustard);
+            color: var(--dark-brown);
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark-brown);
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .about-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(212, 168, 67, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== MENU ===== */
+        .menu {
+            background: var(--warm-white);
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .menu-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .menu-cat-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 2px solid var(--latte);
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .menu-cat-btn:focus {
+            outline: 3px solid var(--mustard);
+            outline-offset: 2px;
+        }
+
+        .menu-cat-btn.active,
+        .menu-cat-btn:hover {
+            background: var(--dark-brown);
+            border-color: var(--dark-brown);
+            color: var(--cream);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .menu-card {
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(196, 168, 130, 0.2);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-card-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .menu-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .menu-card-image img {
+            transform: scale(1.08);
+        }
+
+        .menu-card-body {
+            padding: 24px;
+        }
+
+        .menu-card-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--mustard);
+            margin-bottom: 8px;
+        }
+
+        .menu-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 8px;
+        }
+
+        .menu-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-card-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+
+        .menu-card-badge {
+            background: rgba(139, 154, 107, 0.15);
+            color: var(--sage);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews {
+            background: var(--dark-brown);
+            color: var(--cream);
+        }
+
+        .reviews .section-label {
+            color: var(--mustard-light);
+        }
+
+        .reviews .section-title {
+            color: var(--cream);
+        }
+
+        .reviews .section-subtitle {
+            color: rgba(253, 246, 227, 0.6);
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .reviews-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .reviews-rating-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .reviews-score {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--mustard-light);
+        }
+
+        .reviews-stars {
+            font-size: 1.3rem;
+            color: var(--mustard);
+            letter-spacing: 3px;
+        }
+
+        .reviews-count {
+            font-size: 0.9rem;
+            color: rgba(253, 246, 227, 0.5);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .review-stars {
+            color: var(--mustard);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(253, 246, 227, 0.85);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--mustard);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--dark-brown);
+            font-size: 1rem;
+        }
+
+        .review-author-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .review-author-source {
+            font-size: 0.8rem;
+            color: rgba(253, 246, 227, 0.4);
+        }
+
+        /* ===== HOURS & VISIT ===== */
+        .visit {
+            background: var(--cream);
+        }
+
+        .visit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 48px;
+        }
+
+        .hours-card {
+            background: var(--warm-white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid rgba(196, 168, 130, 0.2);
+        }
+
+        .hours-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 28px;
+            color: var(--dark-brown);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(196, 168, 130, 0.15);
+            font-size: 0.95rem;
+        }
+
+        .hours-row:last-child { border-bottom: none; }
+
+        .hours-day { font-weight: 500; }
+
+        .hours-time { color: var(--text-muted); }
+
+        .hours-closed { color: #c0392b; font-weight: 500; }
+
+        .hours-note {
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(212, 168, 67, 0.1);
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .visit-map {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .visit-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            min-height: 400px;
+        }
+
+        .visit-address-card {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .visit-address-card h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 6px;
+        }
+
+        .visit-address-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACT CTA ===== */
+        .contact-cta {
+            background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-brown) 50%, var(--medium-brown) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(212, 168, 67, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(212, 168, 67, 0.08) 0%, transparent 40%);
+        }
+
+        .contact-cta .section-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-cta .section-title {
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .contact-cta .section-subtitle {
+            color: rgba(253, 246, 227, 0.7);
+            margin: 0 auto 36px;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 24px 32px;
+            color: var(--cream);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 240px;
+        }
+
+        .contact-method:hover {
+            background: rgba(212, 168, 67, 0.15);
+            border-color: var(--mustard);
+            transform: translateY(-3px);
+        }
+
+        .contact-method:focus {
+            outline: 3px solid var(--mustard);
+            outline-offset: 3px;
+        }
+
+        .contact-method-icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-method-label {
+            font-size: 0.8rem;
+            color: rgba(253, 246, 227, 0.5);
+            display: block;
+        }
+
+        .contact-method-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--espresso);
+            color: rgba(253, 246, 227, 0.5);
+            padding: 48px 24px 24px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(253, 246, 227, 0.08);
+        }
+
+        .footer-brand .logo {
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(253, 246, 227, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover,
+        .footer-col a:focus {
+            color: var(--mustard-light);
+            outline: none;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+        }
+
+        .footer-neocode {
+            font-size: 0.8rem;
+        }
+
+        .footer-neocode a {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-neocode a:hover { color: #fff; }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neo-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .neo-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .neo-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            max-width: 520px;
+            width: 90%;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .neo-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neo-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .neo-popup-close:hover { color: #fff; }
+        .neo-popup-close:focus { outline: 2px solid #00ff88; outline-offset: 4px; border-radius: 4px; }
+
+        .neo-popup-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        .neo-popup h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .neo-popup p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .neo-popup .btn {
+            background: #00ff88;
+            color: #0a0a0a;
+            font-weight: 700;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .neo-popup .btn:hover {
+            background: #00cc6e;
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 160px;
+            }
+
+            .hero-subtitle { margin: 0 auto 36px; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { display: none; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .visit-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 32px; }
+
+            .reviews-grid { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 360px;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+                z-index: 1001;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            section { padding: 60px 20px; }
+
+            .about-features { grid-template-columns: 1fr; }
+
+            .hero-title { font-size: 2.4rem; }
+
+            .contact-methods { flex-direction: column; align-items: center; }
+            .contact-method { width: 100%; max-width: 360px; }
+
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        /* ===== PARALLAX GRAIN TEXTURE ===== */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9990;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: var(--mustard);
+            color: var(--dark-brown);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-brown);
+            color: var(--mustard);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top:focus {
+            outline: 3px solid var(--mustard);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="neo-banner">
+            Demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; See what your cafe could look like
+        </div>
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="Back in Time Caf&eacute; Home">
+                <span class="logo-icon">&#9749;</span>
+                Back in Time
+            </a>
+            <nav>
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="#about" role="menuitem">Our Story</a></li>
+                    <li role="none"><a href="#menu" role="menuitem">Menu</a></li>
+                    <li role="none"><a href="#reviews" role="menuitem">Reviews</a></li>
+                    <li role="none"><a href="#visit" role="menuitem">Visit Us</a></li>
+                    <li role="none"><a href="#contact" role="menuitem" class="nav-cta">Get in Touch</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Warm artisan cafe interior" loading="eager">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">&#128205; 78 St Sepulchre Gate, Doncaster</div>
+                <h1 class="hero-title">
+                    Take a Step<br>
+                    <span class="accent">Back in Time</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Artisan coffee roasted locally, homemade cakes baked daily, and simple healthy food at sensible prices. Your cosy escape in the heart of Doncaster since 2018.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary">Explore Our Menu &#8594;</a>
+                    <a href="#visit" class="btn btn-outline">Find Us</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Google Rating</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">660+</span>
+                            <span class="stat-label">Happy Reviews</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">Years Running</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">#5</span>
+                            <span class="stat-label">Top Cafe in Doncaster</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="reveal">
+                <span class="section-label">Our Story</span>
+                <h2 class="section-title">Born from a Leap of Faith</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image reveal reveal-delay-1">
+                    <img src="https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop" alt="Coffee being poured in a cosy cafe">
+                    <div class="about-image-badge">Est. July 2018</div>
+                </div>
+                <div class="about-text reveal reveal-delay-2">
+                    <h3>Two Friends. One Dream. A Whole Lot of Coffee.</h3>
+                    <p>
+                        When Petra and Mishelle left their council education jobs due to budget cuts, they didn't see an ending. They saw a beginning. After months of planning and plenty of sleepless nights, Back in Time Cafe opened its doors on St Sepulchre Gate in July 2018.
+                    </p>
+                    <p>
+                        The idea was simple: create a space where people could slow down, enjoy really good coffee from a local UK roaster, and eat honest homemade food without paying through the nose. No gimmicks, no pretension, just proper hospitality.
+                    </p>
+                    <p>
+                        They survived COVID lockdowns, came back stronger, grew their team, and even started serving cocktails on Friday and Saturday evenings. Seven years later, the cafe is still going strong with a loyal community of regulars who feel more like family.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <span class="about-feature-icon">&#9749;</span>
+                            Locally roasted coffee
+                        </div>
+                        <div class="about-feature">
+                            <span class="about-feature-icon">&#127856;</span>
+                            Homemade daily
+                        </div>
+                        <div class="about-feature">
+                            <span class="about-feature-icon">&#128062;</span>
+                            Dog friendly
+                        </div>
+                        <div class="about-feature">
+                            <span class="about-feature-icon">&#127863;</span>
+                            Evening cocktails
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <div class="section-container">
+            <div class="menu-header reveal">
+                <span class="section-label">What We Serve</span>
+                <h2 class="section-title">Menu Highlights</h2>
+                <p class="section-subtitle">
+                    Simple, healthy food made fresh every day. Everything from our cakes to our bagels is prepared right here in our kitchen.
+                </p>
+            </div>
+
+            <div class="menu-categories reveal">
+                <button class="menu-cat-btn active" data-cat="all">All</button>
+                <button class="menu-cat-btn" data-cat="food">Food</button>
+                <button class="menu-cat-btn" data-cat="drinks">Drinks</button>
+                <button class="menu-cat-btn" data-cat="cakes">Cakes</button>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-card reveal reveal-delay-1" data-cat="food">
+                    <div class="menu-card-image">
+                        <img src="https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg?auto=compress&cs=tinysrgb&w=700&h=460&fit=crop" alt="Smoked salmon and cream cheese bagel" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <span class="menu-card-tag">Signature</span>
+                        <h3 class="menu-card-title">Smoked Salmon Bagel</h3>
+                        <p class="menu-card-desc">Cream cheese, smoked salmon, and a fresh side salad on a toasted bagel. A customer favourite since day one.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">&pound;6.50</span>
+                            <span class="menu-card-badge">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal reveal-delay-2" data-cat="food">
+                    <div class="menu-card-image">
+                        <img src="https://images.pexels.com/photos/5490933/pexels-photo-5490933.jpeg?auto=compress&cs=tinysrgb&w=700&h=460&fit=crop" alt="Istanbul style bagel with toppings" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <span class="menu-card-tag">Chef's Pick</span>
+                        <h3 class="menu-card-title">Istanbul Bagel</h3>
+                        <p class="menu-card-desc">Our Turkish-inspired bagel with a unique blend of spiced fillings. Something you won't find anywhere else in Doncaster.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">&pound;6.95</span>
+                            <span class="menu-card-badge">Unique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal reveal-delay-3" data-cat="food">
+                    <div class="menu-card-image">
+                        <img src="https://images.pexels.com/photos/5638527/pexels-photo-5638527.jpeg?auto=compress&cs=tinysrgb&w=700&h=460&fit=crop" alt="Open sandwich with goats cheese and blueberries" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <span class="menu-card-tag">Light Bites</span>
+                        <h3 class="menu-card-title">Goat's Cheese Open Sandwich</h3>
+                        <p class="menu-card-desc">Artisan bread topped with creamy goat's cheese, fresh blueberries, and a drizzle of honey. Sweet meets savoury.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">&pound;5.95</span>
+                            <span class="menu-card-badge">Veggie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal reveal-delay-1" data-cat="drinks">
+                    <div class="menu-card-image">
+                        <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=700&h=460&fit=crop" alt="Artisan latte with latte art" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <span class="menu-card-tag">Our Coffee</span>
+                        <h3 class="menu-card-title">Artisan Latte</h3>
+                        <p class="menu-card-desc">Made with locally roasted UK beans. Rich, smooth, and served with care. The coffee that keeps our regulars coming back.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">&pound;3.20</span>
+                            <span class="menu-card-badge">Best Seller</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal reveal-delay-2" data-cat="drinks">
+                    <div class="menu-card-image">
+                        <img src="https://images.pexels.com/photos/1346347/pexels-photo-1346347.jpeg?auto=compress&cs=tinysrgb&w=700&h=460&fit=crop" alt="Colourful healthy smoothie" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <span class="menu-card-tag">Fresh</span>
+                        <h3 class="menu-card-title">Healthy Smoothies</h3>
+                        <p class="menu-card-desc">A changing selection of fruit smoothies blended fresh to order. The perfect pick-me-up any time of day.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">&pound;4.50</span>
+                            <span class="menu-card-badge">Fresh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal reveal-delay-3" data-cat="cakes">
+                    <div class="menu-card-image">
+                        <img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=700&h=460&fit=crop" alt="Selection of homemade cakes" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <span class="menu-card-tag">Homemade</span>
+                        <h3 class="menu-card-title">Daily Baked Cakes</h3>
+                        <p class="menu-card-desc">From Victoria sponge to carrot cake, everything is baked in-house every morning. Get in early, they don't last long.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">&pound;3.50</span>
+                            <span class="menu-card-badge">Homemade</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="section-container">
+            <div class="reviews-header reveal">
+                <span class="section-label">What People Say</span>
+                <h2 class="section-title">Loved by Doncaster</h2>
+                <p class="section-subtitle">
+                    Over 660 reviews across Google, Facebook, and TripAdvisor. Here's what our visitors have to say.
+                </p>
+                <div class="reviews-rating-bar">
+                    <span class="reviews-score">4.8</span>
+                    <div>
+                        <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <span class="reviews-count">660+ reviews across platforms</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card reveal reveal-delay-1">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Best little cafe in Doncaster, hands down. The coffee is incredible, the cakes are always fresh, and the staff make you feel like you've known them for years."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">S</div>
+                        <div>
+                            <div class="review-author-name">Sarah M.</div>
+                            <div class="review-author-source">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card reveal reveal-delay-2">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"A proper hidden gem. The decor feels like you've truly gone back to a simpler time. Gentle bossa nova playing, comfy chairs, and the smoked salmon bagel is unreal."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">J</div>
+                        <div>
+                            <div class="review-author-name">James K.</div>
+                            <div class="review-author-source">TripAdvisor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card reveal reveal-delay-3">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"We bring the dog in every Saturday. The staff always make a fuss of him and the food is different to your typical cafe. Affordable prices too, which is a bonus."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">L</div>
+                        <div>
+                            <div class="review-author-name">Laura P.</div>
+                            <div class="review-author-source">Facebook</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIT / HOURS -->
+    <section class="visit" id="visit">
+        <div class="section-container">
+            <div class="reveal">
+                <span class="section-label">Visit Us</span>
+                <h2 class="section-title">Come Say Hello</h2>
+                <p class="section-subtitle">We're right in the heart of Doncaster town centre. Pop in for a coffee, stay for the cakes.</p>
+            </div>
+            <div class="visit-grid">
+                <div class="hours-card reveal reveal-delay-1">
+                    <h3>Opening Hours</h3>
+                    <div class="hours-row">
+                        <span class="hours-day">Monday</span>
+                        <span class="hours-time">9:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Tuesday</span>
+                        <span class="hours-time">9:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Wednesday</span>
+                        <span class="hours-time">9:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Thursday</span>
+                        <span class="hours-time">9:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Friday</span>
+                        <span class="hours-time">9:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Saturday</span>
+                        <span class="hours-time">9:00 AM - 5:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Sunday</span>
+                        <span class="hours-closed">Closed</span>
+                    </div>
+                    <div class="hours-note">
+                        &#127864; Cocktails, beers and wines available on Friday and Saturday evenings. Check our Facebook for special events and seasonal hours.
+                    </div>
+                </div>
+                <div class="visit-map reveal reveal-delay-2">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2371.5!2d-1.1289!3d53.5228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879590d3e8aeb67%3A0x5b7ef61c22c1d40e!2sBack%20in%20Time%20Caf%C3%A9!5e0!3m2!1sen!2suk!4v1709913600000!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Back in Time Cafe location on Google Maps"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="contact-cta" id="contact">
+        <div class="section-container">
+            <div class="reveal">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Got a Question? We'd Love to Hear From You</h2>
+                <p class="section-subtitle">
+                    Whether you want to book a table, ask about our menu, or plan a private event, drop us a line.
+                </p>
+            </div>
+            <div class="contact-methods reveal reveal-delay-1">
+                <a href="mailto:backintime.doncaster@gmail.com" class="contact-method">
+                    <span class="contact-method-icon">&#9993;</span>
+                    <div>
+                        <span class="contact-method-label">Email us</span>
+                        <span class="contact-method-value">backintime.doncaster@gmail.com</span>
+                    </div>
+                </a>
+                <a href="https://www.facebook.com/backintimedoncaster/" target="_blank" rel="noopener" class="contact-method">
+                    <span class="contact-method-icon">&#128172;</span>
+                    <div>
+                        <span class="contact-method-label">Message us</span>
+                        <span class="contact-method-value">Facebook Page</span>
+                    </div>
+                </a>
+                <a href="https://www.google.com/maps/place/Back+in+Time+Caf%C3%A9/@53.5228,-1.1289,17z/" target="_blank" rel="noopener" class="contact-method">
+                    <span class="contact-method-icon">&#128205;</span>
+                    <div>
+                        <span class="contact-method-label">Find us</span>
+                        <span class="contact-method-value">78 St Sepulchre Gate, DN1 1SD</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-icon">&#9749;</span>
+                    Back in Time
+                </a>
+                <p>Artisan coffee, homemade cakes, and simple healthy food at sensible prices. A cosy escape in the heart of Doncaster since 2018.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#visit">Visit Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/backintimedoncaster/" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://www.tripadvisor.co.uk/Restaurant_Review-g187067-d14989996-Reviews-Back_in_Time_Cafe-Doncaster_South_Yorkshire_England.html" target="_blank" rel="noopener">TripAdvisor</a></li>
+                    <li><a href="https://www.google.com/maps/place/Back+in+Time+Caf%C3%A9/" target="_blank" rel="noopener">Google Maps</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Back in Time Caf&eacute;. All rights reserved.</p>
+            <p class="footer-neocode">Website redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neo-popup-overlay" id="neoPopupOverlay"></div>
+    <div class="neo-popup" id="neoPopup" role="dialog" aria-modal="true" aria-labelledby="neoPopupTitle">
+        <button class="neo-popup-close" id="neoPopupClose" aria-label="Close popup">&times;</button>
+        <div class="neo-popup-badge">Free Consultation</div>
+        <h3 id="neoPopupTitle">Like What You See?</h3>
+        <p>This is a free demo redesign of Back in Time Cafe's website, built by NeoCode Studio. We help local businesses get a modern, fast website that actually brings in customers. Interested?</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn">Let's Talk &rarr;</a>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+    <script>
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            const isOpen = navLinks.classList.contains('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ===== HEADER SCROLL =====
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== MENU CATEGORY FILTER =====
+        const catBtns = document.querySelectorAll('.menu-cat-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.dataset.cat;
+
+                menuCards.forEach(card => {
+                    if (cat === 'all' || card.dataset.cat === cat) {
+                        card.style.display = '';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => { card.style.display = 'none'; }, 300);
+                    }
+                });
+            });
+        });
+
+        // ===== NEOCODE POPUP (70% scroll) =====
+        let popupShown = false;
+        const neoPopup = document.getElementById('neoPopup');
+        const neoOverlay = document.getElementById('neoPopupOverlay');
+        const neoClose = document.getElementById('neoPopupClose');
+
+        function showPopup() {
+            neoPopup.classList.add('active');
+            neoOverlay.classList.add('active');
+        }
+
+        function hidePopup() {
+            neoPopup.classList.remove('active');
+            neoOverlay.classList.remove('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+            if (scrollPercent >= 0.7) {
+                popupShown = true;
+                showPopup();
+            }
+        });
+
+        neoClose.addEventListener('click', hidePopup);
+        neoOverlay.addEventListener('click', hidePopup);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hidePopup();
+        });
+
+        // ===== BACK TO TOP =====
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== SMOOTH ANCHOR SCROLL (fallback) =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
