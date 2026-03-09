@@ -2,359 +2,1285 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>High Bridge Tattoo | Professional Tattoo Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Bridge Tattoo | Premium Tattoo Studio</title>
+<meta name="description" content="High Bridge Tattoo - Bold ink, clean lines, unforgettable art. Book your consultation today.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--black:#0D0D0D;--gold:#D4AF37;--gold-dark:#b8961f;--white:#fff;--gray:#888;--card-bg:#1a1a1a}
-body{font-family:'Space Grotesk',sans-serif;color:var(--white);background:var(--black);line-height:1.7}
-h1{font-family:'Permanent Marker',cursive}
-h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(13,13,13,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,175,55,.15)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:70px}
-.logo{font-family:'Permanent Marker',cursive;font-size:22px;color:var(--gold);letter-spacing:1px}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:transparent;border:2px solid var(--gold);color:var(--gold);padding:10px 24px;border-radius:0;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s}
-.nav-cta:hover{background:var(--gold);color:var(--black)}
-.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
-.menu-toggle span{width:24px;height:2px;background:var(--gold)}
-
-/* HERO */
-.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.85) 0%,rgba(13,13,13,.6) 40%,rgba(13,13,13,.9) 100%)}
-.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px;text-align:center;width:100%}
-.hero-line{width:60px;height:3px;background:var(--gold);margin:0 auto 28px}
-.hero h1{font-size:clamp(42px,7vw,90px);margin-bottom:24px;text-transform:uppercase;line-height:1.1}
-.hero h1 span{color:var(--gold)}
-.hero p{font-size:18px;max-width:540px;margin:0 auto 40px;color:rgba(255,255,255,.6);font-weight:300}
-.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:16px 40px;font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s}
-.btn-gold{background:var(--gold);color:var(--black)}
-.btn-gold:hover{background:var(--gold-dark)}
-.btn-ghost{border:2px solid rgba(255,255,255,.3);color:var(--white)}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-
-/* SECTION */
-section{padding:100px 24px}
-.section-inner{max-width:1200px;margin:0 auto}
-.section-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;font-weight:600}
-.section-title{font-size:clamp(32px,4vw,50px);margin-bottom:16px;letter-spacing:-1px}
-.section-sub{font-size:17px;color:var(--gray);max-width:560px;margin-bottom:56px;font-weight:300}
-.section-center{text-align:center}
-.section-center .section-sub{margin-left:auto;margin-right:auto}
-
-/* ARTISTS */
-.artists{background:var(--black)}
-.artists-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.artist-card{position:relative;overflow:hidden;border-radius:4px;group:true}
-.artist-img{height:400px;overflow:hidden}
-.artist-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:grayscale(30%)}
-.artist-card:hover .artist-img img{transform:scale(1.08);filter:grayscale(0)}
-.artist-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(13,13,13,.95));padding:24px;transition:all .3s}
-.artist-info h3{font-size:20px;margin-bottom:4px}
-.artist-info .specialty{font-size:13px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:500}
-
-/* STYLES */
-.styles{background:var(--card-bg)}
-.styles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.style-card{padding:40px;border:1px solid rgba(212,175,55,.15);transition:all .3s;text-align:center;position:relative;overflow:hidden}
-.style-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
-.style-card:hover::before{transform:scaleX(1)}
-.style-card:hover{border-color:var(--gold);background:rgba(212,175,55,.05)}
-.style-icon{font-size:36px;margin-bottom:16px;display:block}
-.style-card h3{font-size:20px;margin-bottom:10px;letter-spacing:1px}
-.style-card p{font-size:14px;color:var(--gray);line-height:1.7}
-
-/* GALLERY */
-.gallery{background:var(--black)}
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.gallery-grid img{width:100%;height:280px;object-fit:cover;filter:grayscale(20%);transition:all .4s;cursor:pointer}
-.gallery-grid img:hover{filter:grayscale(0);transform:scale(1.02)}
-
-/* BOOKING */
-.booking{background:var(--card-bg)}
-.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.booking-content .section-tag,.booking-content .section-title{text-align:left}
-.booking-content p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:24px}
-.booking-list{list-style:none;margin-bottom:32px}
-.booking-list li{padding:12px 0;font-size:15px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.7)}
-.booking-list li::before{content:"\25C6";color:var(--gold);font-size:10px}
-.aftercare{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);padding:32px;border-radius:4px}
-.aftercare h3{font-size:22px;color:var(--gold);margin-bottom:12px}
-.aftercare p{font-size:14px;color:var(--gray);line-height:1.8}
-
-/* CONTACT */
-.contact{background:var(--black);text-align:center;padding:80px 24px}
-.contact h2{font-size:clamp(32px,4vw,52px);margin-bottom:16px}
-.contact p{font-size:17px;color:var(--gray);margin-bottom:32px;font-weight:300}
-.contact-methods{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.contact-method{padding:24px 32px;border:1px solid rgba(212,175,55,.2);min-width:200px}
-.contact-method .label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
-.contact-method a{font-size:16px;color:var(--white);transition:color .3s}
-.contact-method a:hover{color:var(--gold)}
-.instagram-cta{display:inline-flex;align-items:center;gap:10px;border:2px solid var(--gold);color:var(--gold);padding:16px 40px;font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;margin-top:16px}
-.instagram-cta:hover{background:var(--gold);color:var(--black)}
-
-/* FOOTER */
-footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:32px 24px;text-align:center}
-footer p{font-size:13px;color:rgba(255,255,255,.3)}
-footer a{color:var(--gold);transition:color .3s}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .artists-grid{grid-template-columns:1fr 1fr}
-  .styles-grid{grid-template-columns:1fr 1fr}
-  .gallery-grid{grid-template-columns:1fr 1fr}
-  .booking-grid{grid-template-columns:1fr}
+:root {
+  --jet: #0d0d0d;
+  --smoke: #1a1a1a;
+  --crimson: #dc143c;
+  --crimson-dark: #b01030;
+  --white: #ffffff;
+  --grey-light: #cccccc;
+  --grey-mid: #888888;
+  --grey-dim: #333333;
 }
-@media(max-width:768px){
-  .nav-links{display:none}
-  .nav-cta{display:none}
-  .menu-toggle{display:flex}
-  .hero{height:auto;min-height:auto;padding-top:100px;padding-bottom:60px}
-  .hero h1{font-size:32px}
-  .hero p{font-size:15px}
-  .hero-btns{flex-direction:column;align-items:center}
-  .btn{width:100%;text-align:center;min-height:48px;padding:14px 32px}
-  section{padding:60px 16px}
-  .section-title{font-size:28px}
-  .section-sub{font-size:15px}
-  .artists-grid{grid-template-columns:1fr}
-  .artist-img{height:280px}
-  .styles-grid{grid-template-columns:1fr}
-  .style-card{padding:28px}
-  .gallery-grid{grid-template-columns:1fr 1fr;gap:6px}
-  .gallery-grid img{height:180px}
-  .booking-grid{grid-template-columns:1fr;gap:32px}
-  .booking-list li{font-size:14px}
-  .aftercare{padding:24px}
-  .aftercare h3{font-size:18px}
-  .contact{padding:60px 16px}
-  .contact h2{font-size:28px}
-  .contact p{font-size:15px}
-  .contact-methods{flex-direction:column;align-items:center}
-  .contact-method{width:100%;min-height:48px}
-  .instagram-cta{width:100%;text-align:center;justify-content:center;min-height:48px;padding:14px 24px}
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--jet);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
-@media(max-width:650px){
-  .artists-grid,.styles-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr 1fr}
-  .artist-img{height:280px}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.1;
 }
+
+a { color: var(--crimson); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--white); }
+a:focus-visible { outline: 2px solid var(--crimson); outline-offset: 3px; border-radius: 2px; }
+
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* ====== HEADER / NAV ====== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--grey-dim);
+  transition: background 0.3s;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.logo span { color: var(--crimson); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--grey-light);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--crimson);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+
+.neocode-link {
+  font-size: 0.65rem !important;
+  color: var(--grey-mid) !important;
+  letter-spacing: 1px !important;
+  border-left: 1px solid var(--grey-dim);
+  padding-left: 20px;
+  margin-left: 10px;
+}
+.neocode-link:hover { color: var(--crimson) !important; }
+.neocode-link::after { display: none !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 5px;
+  z-index: 1001;
+}
+.hamburger .bar {
+  width: 28px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.active .bar:nth-child(2) { opacity: 0; }
+.hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100vh;
+    background: var(--jet);
+    flex-direction: column;
+    padding: 100px 40px 40px;
+    gap: 25px;
+    transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+    border-left: 1px solid var(--grey-dim);
+    align-items: flex-start;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 1rem; }
+  .neocode-link { border-left: none; padding-left: 0; margin-left: 0; margin-top: 20px; border-top: 1px solid var(--grey-dim); padding-top: 20px; }
+}
+
+/* ====== HERO ====== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+  filter: brightness(0.25);
+  transform: scale(1.05);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,13,13,0.4) 0%, rgba(13,13,13,0.9) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+.hero-content h1 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  margin-bottom: 10px;
+  line-height: 0.95;
+}
+.hero-content h1 .accent { color: var(--crimson); }
+.hero-tagline {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--grey-light);
+  font-weight: 300;
+  margin-bottom: 40px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.hero-cta {
+  display: inline-block;
+  background: var(--crimson);
+  color: var(--white);
+  padding: 16px 50px;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 2px solid var(--crimson);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.hero-cta:hover { background: transparent; color: var(--crimson); }
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+.scroll-indicator span {
+  display: block;
+  width: 24px; height: 24px;
+  border-right: 2px solid var(--crimson);
+  border-bottom: 2px solid var(--crimson);
+  transform: rotate(45deg);
+  margin: -10px;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-15px); }
+  60% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* ====== SECTIONS ====== */
+section { padding: 100px 0; }
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 15px;
+}
+.section-header .accent { color: var(--crimson); }
+.section-header p {
+  color: var(--grey-light);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--crimson);
+  margin: 20px auto;
+}
+
+/* ====== ABOUT ====== */
+#about { background: var(--smoke); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-img {
+  position: relative;
+  overflow: hidden;
+}
+.about-img img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: grayscale(30%);
+  transition: filter 0.5s;
+}
+.about-img:hover img { filter: grayscale(0%); }
+.about-img::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: -10px;
+  width: 100px; height: 100px;
+  border-top: 3px solid var(--crimson);
+  border-left: 3px solid var(--crimson);
+  z-index: 1;
+}
+.about-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+.about-text p {
+  color: var(--grey-light);
+  margin-bottom: 18px;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.about-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 30px;
+}
+.stat { text-align: center; }
+.stat-number {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.5rem;
+  color: var(--crimson);
+  display: block;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--grey-mid);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 30px; }
+  .about-img img { height: 350px; }
+  .about-stats { gap: 25px; }
+}
+
+/* ====== ARTISTS ====== */
+#artists { background: var(--jet); }
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.artist-card {
+  background: var(--smoke);
+  overflow: hidden;
+  border: 1px solid var(--grey-dim);
+  transition: transform 0.4s, border-color 0.4s;
+}
+.artist-card:hover { transform: translateY(-5px); border-color: var(--crimson); }
+.artist-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  filter: grayscale(40%);
+  transition: filter 0.5s;
+}
+.artist-card:hover img { filter: grayscale(0%); }
+.artist-info { padding: 25px; }
+.artist-info h3 { font-size: 1.3rem; margin-bottom: 5px; }
+.artist-info .specialty {
+  color: var(--crimson);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  display: block;
+}
+.artist-info p {
+  color: var(--grey-light);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+/* ====== STYLES ====== */
+#styles { background: var(--smoke); }
+.styles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+}
+.style-card {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.style-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4) grayscale(30%);
+  transition: all 0.5s;
+}
+.style-card:hover img { filter: brightness(0.6) grayscale(0%); transform: scale(1.05); }
+.style-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  background: linear-gradient(180deg, transparent 30%, rgba(13,13,13,0.85) 100%);
+}
+.style-overlay h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+.style-card:hover .style-overlay h3 { color: var(--crimson); }
+.style-overlay p {
+  font-size: 0.85rem;
+  color: var(--grey-light);
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .styles-grid { grid-template-columns: 1fr; }
+}
+
+/* ====== GALLERY ====== */
+#gallery { background: var(--jet); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: all 0.5s;
+}
+.gallery-item:hover img { filter: grayscale(0%); transform: scale(1.08); }
+.gallery-item::after {
+  content: 'VIEW';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220,20,60,0.3);
+  font-family: 'Anton', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover::after { opacity: 1; }
+
+/* ====== AFTERCARE ====== */
+#aftercare { background: var(--smoke); }
+.aftercare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.aftercare-card {
+  background: var(--jet);
+  padding: 35px;
+  border: 1px solid var(--grey-dim);
+  border-top: 3px solid var(--crimson);
+  transition: transform 0.3s;
+}
+.aftercare-card:hover { transform: translateY(-3px); }
+.aftercare-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.aftercare-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.aftercare-card ul {
+  list-style: none;
+}
+.aftercare-card li {
+  color: var(--grey-light);
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-left: 18px;
+  position: relative;
+}
+.aftercare-card li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 6px; height: 6px;
+  background: var(--crimson);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* ====== TESTIMONIALS ====== */
+#testimonials { background: var(--jet); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+.testimonial-card {
+  background: var(--smoke);
+  padding: 35px;
+  border: 1px solid var(--grey-dim);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  font-family: 'Anton', sans-serif;
+  font-size: 5rem;
+  color: var(--crimson);
+  opacity: 0.3;
+  position: absolute;
+  top: 10px; left: 20px;
+  line-height: 1;
+}
+.testimonial-card p {
+  color: var(--grey-light);
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonial-author .avatar {
+  width: 45px; height: 45px;
+  background: var(--crimson);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.1rem;
+}
+.testimonial-author .name {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.testimonial-author .stars {
+  color: var(--crimson);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+/* ====== CONTACT ====== */
+#contact { background: var(--smoke); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.contact-info p {
+  color: var(--grey-light);
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.contact-detail .icon {
+  width: 40px; height: 40px;
+  background: var(--crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.contact-detail .text span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--grey-mid);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.contact-detail .text a,
+.contact-detail .text p {
+  color: var(--white);
+  font-weight: 400;
+  margin: 0;
+}
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--grey-mid);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: var(--jet);
+  border: 1px solid var(--grey-dim);
+  color: var(--white);
+  padding: 14px 16px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--crimson);
+  outline: none;
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group select option { background: var(--jet); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.submit-btn {
+  background: var(--crimson);
+  color: var(--white);
+  border: 2px solid var(--crimson);
+  padding: 16px;
+  font-family: 'Anton', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.submit-btn:hover { background: transparent; color: var(--crimson); }
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background: var(--jet);
+  border-top: 1px solid var(--grey-dim);
+  padding: 50px 0 30px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-brand .logo { margin-bottom: 15px; display: inline-block; }
+.footer-brand p {
+  color: var(--grey-mid);
+  font-size: 0.9rem;
+  font-weight: 300;
+  max-width: 300px;
+}
+.footer-links h4 {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a {
+  color: var(--grey-mid);
+  font-size: 0.85rem;
+  font-weight: 300;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--crimson); }
+.footer-bottom {
+  border-top: 1px solid var(--grey-dim);
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-bottom p {
+  color: var(--grey-mid);
+  font-size: 0.8rem;
+}
+.footer-bottom a { color: var(--crimson); font-size: 0.8rem; }
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* ====== NEOCODE POPUP ====== */
+.neo-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.neo-popup-overlay.active { opacity: 1; pointer-events: all; }
+.neo-popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  z-index: 9999;
+  background: var(--smoke);
+  border: 1px solid var(--crimson);
+  padding: 50px 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.neo-popup.active { opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1); }
+.neo-popup h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+.neo-popup h3 .accent { color: var(--crimson); }
+.neo-popup p {
+  color: var(--grey-light);
+  font-weight: 300;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.neo-popup .popup-cta {
+  display: inline-block;
+  background: var(--crimson);
+  color: var(--white);
+  padding: 14px 40px;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 2px solid var(--crimson);
+  transition: all 0.3s;
+  margin-bottom: 15px;
+}
+.neo-popup .popup-cta:hover { background: transparent; color: var(--crimson); }
+.neo-popup .popup-close {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--grey-mid);
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 5px;
+  transition: color 0.3s;
+  font-family: 'Roboto', sans-serif;
+}
+.neo-popup .popup-close:hover { color: var(--white); }
+.neo-popup .popup-x {
+  position: absolute;
+  top: 15px; right: 20px;
+  background: none;
+  border: none;
+  color: var(--grey-mid);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s;
+}
+.neo-popup .popup-x:hover { color: var(--crimson); }
+
+/* ====== SCROLL REVEAL ====== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left { transform: translateX(-40px); }
+.reveal-left.visible { transform: translateX(0); }
+.reveal-right { transform: translateX(40px); }
+.reveal-right.visible { transform: translateX(0); }
+
+/* ====== MISC ====== */
+::selection { background: var(--crimson); color: var(--white); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--jet); }
+::-webkit-scrollbar-thumb { background: var(--grey-dim); }
+::-webkit-scrollbar-thumb:hover { background: var(--crimson); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-<div class="nav-inner">
-  <a href="#" class="logo">High Bridge Tattoo</a>
-  <ul class="nav-links">
-    <li><a href="#artists">Artists</a></li>
-    <li><a href="#styles">Styles</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#booking">Booking</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#booking" class="nav-cta">Book Now</a>
-  <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-</div>
-</nav>
+<!-- ====== HEADER ====== -->
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">High Bridge <span>Tattoo</span></a>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#styles">Styles</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#aftercare">Aftercare</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Book Now</a></li>
+      <li><a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="neocode-link">Built by NeoCode Studio</a></li>
+    </ul>
+  </div>
+</header>
 
-<!-- HERO -->
-<section class="hero">
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-line"></div>
-    <h1>Art That Lives<br>On Your <span>Skin</span></h1>
-    <p>Professional tattoo artists specialising in custom designs. Walk-ins welcome. Sterile studio. Unforgettable ink.</p>
-    <div class="hero-btns">
-      <a href="#booking" class="btn btn-gold">Book a Session</a>
-      <a href="#gallery" class="btn btn-ghost">View Our Work</a>
-    </div>
+    <h1>High Bridge <span class="accent">Tattoo</span></h1>
+    <p class="hero-tagline">Bold ink. Clean lines. Unforgettable art.</p>
+    <a href="#contact" class="hero-cta">Book Your Session</a>
   </div>
+  <div class="scroll-indicator"><span></span></div>
 </section>
 
-<!-- ARTISTS -->
-<section class="artists" id="artists">
-<div class="section-inner">
-  <div class="section-center">
-    <span class="section-tag">Meet The Team</span>
-    <h2 class="section-title">Our Artists</h2>
-    <p class="section-sub">Every artist brings their own style and vision. Find the right match for your next piece.</p>
-  </div>
-  <div class="artists-grid">
-    <div class="artist-card">
-      <div class="artist-img"><img src="https://images.pexels.com/photos/2183131/pexels-photo-2183131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo artist"></div>
-      <div class="artist-info">
-        <h3>Jake Morrison</h3>
-        <span class="specialty">Traditional & Neo-Traditional</span>
+<!-- ====== ABOUT ====== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal reveal-left">
+        <img src="https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg?auto=compress&cs=tinysrgb&w=800" alt="High Bridge Tattoo studio interior" loading="lazy">
       </div>
-    </div>
-    <div class="artist-card">
-      <div class="artist-img"><img src="https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo artist"></div>
-      <div class="artist-info">
-        <h3>Maya Chen</h3>
-        <span class="specialty">Realism & Portraits</span>
-      </div>
-    </div>
-    <div class="artist-card">
-      <div class="artist-img"><img src="https://images.pexels.com/photos/1861543/pexels-photo-1861543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo artist"></div>
-      <div class="artist-info">
-        <h3>Ryu Tanaka</h3>
-        <span class="specialty">Japanese & Blackwork</span>
-      </div>
-    </div>
-    <div class="artist-card">
-      <div class="artist-img"><img src="https://images.pexels.com/photos/3771830/pexels-photo-3771830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo artist"></div>
-      <div class="artist-info">
-        <h3>Sophie Blackwell</h3>
-        <span class="specialty">Fine Line & Geometric</span>
+      <div class="about-text reveal reveal-right">
+        <h3>We Don't Just Tattoo. <br>We Create <span style="color:var(--crimson)">Art That Lives.</span></h3>
+        <p>High Bridge Tattoo isn't your average street shop. We're a collective of artists who genuinely care about what goes on your skin. Every piece is custom-designed, every session is treated like a collaboration between you and your artist.</p>
+        <p>Walk-ins are welcome, but we'd love to sit down with you first. Let's talk about your idea, sketch it out, and make sure it's exactly what you've been picturing. Your body's a canvas, and we don't take that lightly.</p>
+        <p>Our studio is clean, comfortable, and built for creativity. We've invested in top-tier equipment and follow strict hygiene protocols because that's non-negotiable.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Years Open</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">5K+</span>
+            <span class="stat-label">Tattoos Done</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Custom Work</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
-<!-- STYLES -->
-<section class="styles" id="styles">
-<div class="section-inner">
-  <div class="section-center">
-    <span class="section-tag">What We Do</span>
-    <h2 class="section-title">Tattoo Styles</h2>
-    <p class="section-sub">From bold traditional work to delicate fine line &mdash; we cover every style with precision and artistry.</p>
-  </div>
-  <div class="styles-grid">
-    <div class="style-card">
-      <span class="style-icon">&#9876;</span>
-      <h3>Traditional</h3>
-      <p>Bold lines, vivid colours, and timeless designs. Classic Americana and sailor-style work that stands the test of time.</p>
+<!-- ====== ARTISTS ====== -->
+<section id="artists">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Meet The <span class="accent">Artists</span></h2>
+      <div class="divider"></div>
+      <p>Every artist in our crew brings something different to the table. Find the one who matches your vision.</p>
     </div>
-    <div class="style-card">
-      <span class="style-icon">&#128065;</span>
-      <h3>Realism</h3>
-      <p>Photo-realistic portraits, animals, and scenes rendered with extraordinary detail and depth. True-to-life artistry.</p>
-    </div>
-    <div class="style-card">
-      <span class="style-icon">&#127884;</span>
-      <h3>Japanese</h3>
-      <p>Traditional Irezumi inspired work. Dragons, koi, cherry blossoms, and waves in flowing, full compositions.</p>
-    </div>
-    <div class="style-card">
-      <span class="style-icon">&#9632;</span>
-      <h3>Blackwork</h3>
-      <p>Bold black ink designs from ornamental patterns to heavy coverage. Striking contrast and graphic impact.</p>
-    </div>
-    <div class="style-card">
-      <span class="style-icon">&#10023;</span>
-      <h3>Fine Line</h3>
-      <p>Delicate, precise single-needle work. Minimalist designs, script, and intricate detail work with a light touch.</p>
-    </div>
-    <div class="style-card">
-      <span class="style-icon">&#9651;</span>
-      <h3>Geometric</h3>
-      <p>Sacred geometry, mandalas, and mathematically precise patterns. Clean lines meeting abstract beauty.</p>
+    <div class="artists-grid">
+      <div class="artist-card reveal">
+        <img src="https://images.pexels.com/photos/2187304/pexels-photo-2187304.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artist at work" loading="lazy">
+        <div class="artist-info">
+          <h3>Jake Rivers</h3>
+          <span class="specialty">Realism &amp; Portraits</span>
+          <p>12 years of experience turning photos into living, breathing ink. If you want it to look real, Jake's your guy.</p>
+        </div>
+      </div>
+      <div class="artist-card reveal">
+        <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artist designing" loading="lazy">
+        <div class="artist-info">
+          <h3>Mia Chen</h3>
+          <span class="specialty">Japanese &amp; Neo-Traditional</span>
+          <p>Bold lines, vibrant colour, and storytelling that wraps beautifully around the body. Mia's work speaks for itself.</p>
+        </div>
+      </div>
+      <div class="artist-card reveal">
+        <img src="https://images.pexels.com/photos/1482803/pexels-photo-1482803.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artist with machine" loading="lazy">
+        <div class="artist-info">
+          <h3>Dom Blackwell</h3>
+          <span class="specialty">Geometric &amp; Blackwork</span>
+          <p>Precision is everything. Dom creates patterns and sacred geometry that look like they've been printed by a machine.</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-<div class="section-inner">
-  <div class="section-center">
-    <span class="section-tag">Our Work</span>
-    <h2 class="section-title">Studio Gallery</h2>
-    <p class="section-sub">A selection of recent work from our artists. Follow us on Instagram for daily updates.</p>
+<!-- ====== STYLES ====== -->
+<section id="styles">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Tattoo <span class="accent">Styles</span></h2>
+      <div class="divider"></div>
+      <p>We've got artists who specialise across every major style. Whatever you're after, we can make it happen.</p>
+    </div>
+    <div class="styles-grid">
+      <div class="style-card reveal">
+        <img src="https://images.pexels.com/photos/1604870/pexels-photo-1604870.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Traditional tattoo style" loading="lazy">
+        <div class="style-overlay">
+          <h3>Traditional</h3>
+          <p>Bold outlines, solid colour, and timeless designs that've looked good for over a century.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <img src="https://images.pexels.com/photos/1367099/pexels-photo-1367099.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Realism tattoo style" loading="lazy">
+        <div class="style-overlay">
+          <h3>Realism</h3>
+          <p>Photorealistic portraits and scenes that'll make people do a double-take. It's art at its finest.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Geometric tattoo style" loading="lazy">
+        <div class="style-overlay">
+          <h3>Geometric</h3>
+          <p>Clean lines, perfect symmetry, and mathematical beauty. Sacred geometry that's anything but boring.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <img src="https://images.pexels.com/photos/2183132/pexels-photo-2183132.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Blackwork tattoo style" loading="lazy">
+        <div class="style-overlay">
+          <h3>Blackwork</h3>
+          <p>Heavy black ink, dotwork, and ornamental pieces. Dark, dramatic, and impossible to ignore.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <img src="https://images.pexels.com/photos/1568463/pexels-photo-1568463.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Colour tattoo style" loading="lazy">
+        <div class="style-overlay">
+          <h3>Colour</h3>
+          <p>Vibrant, saturated, and eye-catching. We use premium inks that stay bright for years to come.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <img src="https://images.pexels.com/photos/3644082/pexels-photo-3644082.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Japanese tattoo style" loading="lazy">
+        <div class="style-overlay">
+          <h3>Japanese</h3>
+          <p>Irezumi-inspired work with dragons, koi, and cherry blossoms. Flowing compositions that honour the tradition.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="gallery-grid">
-    <img src="https://images.pexels.com/photos/1304473/pexels-photo-1304473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo work">
-    <img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo work">
-    <img src="https://images.pexels.com/photos/2865901/pexels-photo-2865901.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo studio">
-    <img src="https://images.pexels.com/photos/4123050/pexels-photo-4123050.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo art">
-    <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo process">
-    <img src="https://images.pexels.com/photos/1461519/pexels-photo-1461519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo detail">
-    <img src="https://images.pexels.com/photos/2878019/pexels-photo-2878019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Tattoo closeup">
-    <img src="https://images.pexels.com/photos/3661193/pexels-photo-3661193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Studio interior">
-  </div>
-</div>
 </section>
 
-<!-- BOOKING -->
-<section class="booking" id="booking">
-<div class="section-inner">
-  <div class="booking-grid">
-    <div class="booking-content">
-      <span class="section-tag">How It Works</span>
-      <h2 class="section-title">Book Your Session</h2>
-      <p>Whether you've got a fully designed concept or just the seed of an idea, we're here to bring it to life. Here's how to get started:</p>
-      <ul class="booking-list">
-        <li>Walk-ins welcome for smaller pieces (subject to availability)</li>
-        <li>For custom work, send us your idea via email or Instagram DM</li>
-        <li>We'll sketch concepts and refine until you're 100% happy</li>
-        <li>A &pound;50 deposit secures your appointment</li>
-        <li>Minimum age 18 &mdash; valid ID required</li>
-        <li>All equipment single-use and fully sterilised</li>
-      </ul>
-      <a href="#contact" class="btn btn-gold">Get In Touch</a>
+<!-- ====== GALLERY ====== -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Our <span class="accent">Work</span></h2>
+      <div class="divider"></div>
+      <p>Don't just take our word for it. Here's a taste of what comes out of our studio every single day.</p>
     </div>
-    <div class="aftercare">
-      <h3>Aftercare Guide</h3>
-      <p>Your new tattoo is an open wound and needs proper care to heal beautifully. We provide full written aftercare instructions at your appointment, but here are the basics:</p>
-      <ul class="booking-list">
-        <li>Keep the wrap on for 2&ndash;4 hours after your session</li>
-        <li>Wash gently with lukewarm water and fragrance-free soap</li>
-        <li>Apply a thin layer of recommended aftercare cream</li>
-        <li>Avoid direct sunlight, swimming, and soaking for 2 weeks</li>
-        <li>Don't pick or scratch &mdash; let it peel naturally</li>
-        <li>Contact us if you have any concerns during healing</li>
-      </ul>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/1604871/pexels-photo-1604871.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork sample 1" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/2183131/pexels-photo-2183131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork sample 2" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/1567335/pexels-photo-1567335.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork sample 3" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/2865917/pexels-photo-2865917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork sample 4" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/1604872/pexels-photo-1604872.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork sample 5" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.pexels.com/photos/4123739/pexels-photo-4123739.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork sample 6" loading="lazy">
+      </div>
     </div>
   </div>
-</div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <span class="section-tag">Get In Touch</span>
-  <h2>Ready for New Ink?</h2>
-  <p>Drop us a message, give us a call, or just walk in. We'd love to hear your ideas.</p>
-  <div class="contact-methods">
-    <div class="contact-method">
-      <span class="label">Phone</span>
-      <a href="tel:01234567890">0123 456 7890</a>
+<!-- ====== AFTERCARE ====== -->
+<section id="aftercare">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Tattoo <span class="accent">Aftercare</span></h2>
+      <div class="divider"></div>
+      <p>Your tattoo's only as good as how you look after it. Follow these steps and it'll heal perfectly.</p>
     </div>
-    <div class="contact-method">
-      <span class="label">Email</span>
-      <a href="mailto:info@highbridgetattoo.co.uk">info@highbridgetattoo.co.uk</a>
-    </div>
-    <div class="contact-method">
-      <span class="label">Walk-ins</span>
-      <span>Tue&ndash;Sat, 11am&ndash;7pm</span>
+    <div class="aftercare-grid">
+      <div class="aftercare-card reveal">
+        <div class="aftercare-icon">&#9879;</div>
+        <h3>First 24 Hours</h3>
+        <ul>
+          <li>Keep the wrap on for 2-4 hours</li>
+          <li>Wash gently with lukewarm water and fragrance-free soap</li>
+          <li>Pat dry with a clean paper towel</li>
+          <li>Apply a thin layer of aftercare balm</li>
+          <li>Don't re-wrap unless your artist says to</li>
+        </ul>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-icon">&#9731;</div>
+        <h3>Week 1-2</h3>
+        <ul>
+          <li>Wash 2-3 times daily with clean hands</li>
+          <li>Apply aftercare cream sparingly</li>
+          <li>Don't pick, scratch, or peel the flaking skin</li>
+          <li>Avoid submerging in water (baths, pools, sea)</li>
+          <li>Wear loose, breathable clothing over the area</li>
+        </ul>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-icon">&#9728;</div>
+        <h3>Long Term Care</h3>
+        <ul>
+          <li>Always apply SPF 30+ over healed tattoos</li>
+          <li>Keep your skin moisturised daily</li>
+          <li>Avoid tanning beds and prolonged sun exposure</li>
+          <li>Touch-ups are free within the first year</li>
+          <li>Contact us if you notice anything unusual during healing</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <a href="https://instagram.com" class="instagram-cta" target="_blank">&#9733; Follow Us on Instagram</a>
 </section>
 
-<!-- FOOTER -->
+<!-- ====== TESTIMONIALS ====== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>What People <span class="accent">Say</span></h2>
+      <div class="divider"></div>
+      <p>Real reviews from real clients. We let our work (and their words) do the talking.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p>"Honestly blown away. I'd been putting off getting my sleeve finished for years because I couldn't find the right artist. Jake nailed it in two sessions. It's beyond what I imagined."</p>
+        <div class="testimonial-author">
+          <div class="avatar">M</div>
+          <div>
+            <div class="name">Marcus T.</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p>"Got my first tattoo here and they made the whole experience so easy. Mia talked me through everything, the studio was spotless, and the result? Perfect. I've already booked my second."</p>
+        <div class="testimonial-author">
+          <div class="avatar">S</div>
+          <div>
+            <div class="name">Sophie R.</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p>"Dom did a geometric mandala on my forearm and the precision is insane. People genuinely think it's printed on. Best tattoo studio I've been to, and I've been to a lot."</p>
+        <div class="testimonial-author">
+          <div class="avatar">L</div>
+          <div>
+            <div class="name">Liam K.</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Book A <span class="accent">Consultation</span></h2>
+      <div class="divider"></div>
+      <p>Ready to get started? Drop us a message and we'll get back to you within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal reveal-left">
+        <h3>Let's Talk <span style="color:var(--crimson)">Ink</span></h3>
+        <p>Whether you've got a full design ready or just a rough idea in your head, we'd love to hear from you. No pressure, no hard sell. Just a conversation about your next piece.</p>
+        <div class="contact-detail">
+          <div class="icon">&#9993;</div>
+          <div class="text">
+            <span>Email</span>
+            <a href="mailto:info@highbridgetattoo.co.uk">info@highbridgetattoo.co.uk</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#9742;</div>
+          <div class="text">
+            <span>Phone</span>
+            <p>Call or text during business hours</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#9200;</div>
+          <div class="text">
+            <span>Hours</span>
+            <p>Mon-Sat: 10am - 7pm<br>Sun: By appointment only</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#9873;</div>
+          <div class="text">
+            <span>Walk-Ins</span>
+            <p>Welcome! Subject to artist availability</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal reveal-right" onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:60px 0;\'><h3 style=\'font-family:Anton,sans-serif;font-size:1.5rem;margin-bottom:10px;\'>Message Sent!</h3><p style=\'color:#ccc;font-weight:300;\'>We\'ll be in touch within 24 hours.</p></div>';">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="07XXX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label for="style">Preferred Style</label>
+            <select id="style" name="style">
+              <option value="">Select a style</option>
+              <option value="traditional">Traditional</option>
+              <option value="realism">Realism</option>
+              <option value="geometric">Geometric</option>
+              <option value="blackwork">Blackwork</option>
+              <option value="colour">Colour</option>
+              <option value="japanese">Japanese</option>
+              <option value="other">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="placement">Placement &amp; Size</label>
+          <input type="text" id="placement" name="placement" placeholder="e.g. Inner forearm, roughly 15cm">
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Idea</label>
+          <textarea id="message" name="message" placeholder="Describe what you're after. Reference images are always helpful too." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
 <footer>
-  <p>&copy; 2026 High Bridge Tattoo. All rights reserved. | Professional tattoo studio.</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">High Bridge <span>Tattoo</span></a>
+        <p>Bold ink, clean lines, and art that tells your story. Custom tattoos by passionate artists who genuinely care about their craft.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#artists">Our Artists</a></li>
+          <li><a href="#styles">Styles</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#aftercare">Aftercare</a></li>
+          <li><a href="#contact">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 High Bridge Tattoo. All rights reserved.</p>
+      <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">Website by NeoCode Studio</a>
+    </div>
+  </div>
 </footer>
 
-<!-- POPUP -->
-<div id="demo-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;justify-content:center;align-items:center"><div style="background:#fff;padding:40px;border-radius:12px;max-width:480px;width:90%;text-align:center;position:relative"><span onclick="document.getElementById('demo-popup').style.display='none'" style="position:absolute;top:12px;right:18px;font-size:28px;cursor:pointer">&times;</span><h2 style="margin:0 0 12px">Like what you see?</h2><p style="margin:0 0 20px;color:#666">This is a free concept designed for your business by <strong>Neocode Studio</strong>.</p><a href="https://neocodestudio.co.uk" style="display:inline-block;padding:14px 32px;background:#111;color:#fff;text-decoration:none;border-radius:8px;font-weight:600">Get in touch</a></div></div>
+<!-- ====== NEOCODE POPUP ====== -->
+<div class="neo-popup-overlay" id="popupOverlay"></div>
+<div class="neo-popup" id="neoPopup">
+  <button class="popup-x" id="popupX" aria-label="Close popup">&times;</button>
+  <h3>Like What You <span class="accent">See?</span></h3>
+  <p>This is a free preview built by NeoCode Studio. Let's make it yours.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="popup-cta">Get Your Own Site</a>
+  <button class="popup-close" id="popupClose">No thanks, just browsing</button>
+</div>
 
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+<script>
+// ====== HAMBURGER MENU ======
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const navItems = document.querySelectorAll('.nav-links a');
 
+hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// ====== INTERSECTION OBSERVER (SCROLL REVEAL) ======
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// ====== NEOCODE POPUP AT 70% SCROLL ======
+let popupShown = false;
+const popup = document.getElementById('neoPopup');
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose = document.getElementById('popupClose');
+const popupX = document.getElementById('popupX');
+
+function showPopup() {
+  popup.classList.add('active');
+  popupOverlay.classList.add('active');
+}
+
+function hidePopup() {
+  popup.classList.remove('active');
+  popupOverlay.classList.remove('active');
+}
+
+window.addEventListener('scroll', () => {
+  if (popupShown) return;
+  const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+  if (scrollPercent >= 0.7) {
+    popupShown = true;
+    showPopup();
+  }
+});
+
+popupClose.addEventListener('click', hidePopup);
+popupX.addEventListener('click', hidePopup);
+popupOverlay.addEventListener('click', hidePopup);
+
+// ====== HEADER SCROLL EFFECT ======
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    header.style.background = 'rgba(13,13,13,0.98)';
+  } else {
+    header.style.background = 'rgba(13,13,13,0.95)';
+  }
+});
+</script>
 </body>
 </html>
