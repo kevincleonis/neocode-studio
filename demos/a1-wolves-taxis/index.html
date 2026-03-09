@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 Wolves Taxis | Reliable Taxi & Private Hire in Wolverhampton</title>
+    <meta name="description" content="Wolverhampton's trusted taxi service. Airport transfers, local rides, long distance, corporate travel & more. Available 24/7. Book your ride today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           A1 WOLVES TAXIS - PREMIUM DEMO
+           Palette: Wolves Gold #FDB913, Black #1A1A1A,
+           Dark Grey #2D2D2D, Muted Gold #D49A10,
+           Light Text #E8E8E8
+           Fonts: Urbanist + Rubik
+           ============================================ */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FDB913;
+            --gold-dark: #D49A10;
+            --gold-glow: rgba(253, 185, 19, 0.15);
+            --black: #1A1A1A;
+            --dark-grey: #2D2D2D;
+            --darker: #111111;
+            --mid-grey: #3A3A3A;
+            --light-text: #E8E8E8;
+            --muted-text: #999999;
+            --font-heading: 'Urbanist', sans-serif;
+            --font-body: 'Rubik', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--black);
+            color: var(--light-text);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============ NEOCODE BANNER ============ */
+        .neocode-banner {
+            background: linear-gradient(90deg, #0d0d0d, var(--dark-grey), #0d0d0d);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .neocode-banner a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .neocode-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============ HEADER / NAV ============ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(17, 17, 17, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(253, 185, 19, 0.12);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--black);
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black) !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-dark) !important;
+            color: var(--black) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--gold);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/2526128/pexels-photo-2526128.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            filter: brightness(0.25);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.5) 50%, rgba(253,185,19,0.08) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding-top: 72px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(253, 185, 19, 0.1);
+            border: 1px solid rgba(253, 185, 19, 0.25);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.08;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 36px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(253, 185, 19, 0.25);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--light-text);
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 56px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-stat h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .hero-stat p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* ============ SECTION SHARED ============ */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-dark {
+            background: var(--darker);
+        }
+
+        .section-grey {
+            background: var(--dark-grey);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        .section-desc {
+            color: var(--muted-text);
+            max-width: 600px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        /* ============ REVEAL ANIMATION ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ ABOUT ============ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--muted-text);
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+
+        .about-feature-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gold-glow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* ============ SERVICES ============ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--dark-grey);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 36px 28px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(253, 185, 19, 0.2);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gold-glow);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--muted-text);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ============ FLEET ============ */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .fleet-card {
+            background: var(--dark-grey);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s ease;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        }
+
+        .fleet-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .fleet-card-body {
+            padding: 24px;
+        }
+
+        .fleet-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .fleet-card p {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .fleet-tag {
+            display: inline-block;
+            background: var(--gold-glow);
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ PRICING ============ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: var(--dark-grey);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(253, 185, 19, 0.1);
+        }
+
+        .pricing-card.featured::after {
+            content: 'Most Popular';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--black);
+            font-family: var(--font-heading);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 0 0 8px 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .pricing-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .pricing-desc {
+            color: var(--muted-text);
+            font-size: 0.88rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .pricing-list {
+            list-style: none;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .pricing-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            color: var(--light-text);
+        }
+
+        .pricing-list li::before {
+            content: '\2713';
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-price {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .pricing-note {
+            font-size: 0.78rem;
+            color: var(--muted-text);
+        }
+
+        /* ============ COVERAGE ============ */
+        .coverage-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .coverage-areas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .coverage-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            background: var(--dark-grey);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: border-color 0.3s ease;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .coverage-item:hover {
+            border-color: rgba(253,185,19,0.3);
+        }
+
+        .coverage-item::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .coverage-right p {
+            color: var(--muted-text);
+            margin-bottom: 20px;
+            line-height: 1.75;
+        }
+
+        .coverage-cta-box {
+            background: linear-gradient(135deg, rgba(253,185,19,0.08) 0%, rgba(253,185,19,0.02) 100%);
+            border: 1px solid rgba(253,185,19,0.15);
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 24px;
+        }
+
+        .coverage-cta-box h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .coverage-cta-box p {
+            margin-bottom: 16px !important;
+            font-size: 0.9rem;
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--dark-grey);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(253,185,19,0.2);
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 42px;
+            height: 42px;
+            background: var(--gold-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #fff;
+        }
+
+        .testimonial-role {
+            font-size: 0.78rem;
+            color: var(--muted-text);
+        }
+
+        /* ============ CONTACT ============ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info-card {
+            background: var(--dark-grey);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            border-color: rgba(253,185,19,0.2);
+        }
+
+        .contact-info-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gold-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .contact-info-card p, .contact-info-card a {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .contact-info-card a:hover {
+            color: var(--gold);
+        }
+
+        .contact-form {
+            background: var(--dark-grey);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 36px;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--light-text);
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--black);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--light-text);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23999'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            cursor: pointer;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul a {
+            color: var(--muted-text);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--muted-text);
+            font-size: 0.82rem;
+        }
+
+        .footer-bottom a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============ NEOCODE POPUP ============ */
+        .neo-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .neo-popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .neo-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            z-index: 9999;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid rgba(253,185,19,0.2);
+            border-radius: 20px;
+            padding: 44px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .neo-popup.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neo-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .neo-popup-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .neo-popup h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .neo-popup h3 span {
+            color: var(--gold);
+        }
+
+        .neo-popup p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .neo-popup .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .services-grid, .fleet-grid, .pricing-grid, .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 360px;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 0;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                border-left: 1px solid rgba(253,185,19,0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-cta {
+                margin-top: 16px;
+                text-align: center;
+                display: block;
+                padding: 14px 24px;
+            }
+
+            .about-grid, .contact-grid, .coverage-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid, .fleet-grid, .pricing-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                justify-content: center;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .coverage-areas {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .contact-form {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NeoCode Banner -->
+    <div class="neocode-banner">
+        Demo site designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a> &mdash; Premium web design for ambitious businesses
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#hero" class="logo">
+                <div class="logo-icon">A1</div>
+                Wolves Taxis
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#fleet">Fleet</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#areas">Areas</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact" class="nav-cta">Book Now</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg" role="img" aria-label="Professional taxi at night"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Available 24/7</div>
+                <h1 class="reveal">Wolverhampton's Most <span>Trusted Taxi Service</span></h1>
+                <p class="hero-sub reveal">We've been getting Wolverhampton where it needs to go for years. Reliable, affordable, and always on time. Whether it's the airport, a night out, or a business trip, we've got you covered.</p>
+                <div class="hero-buttons reveal">
+                    <a href="#contact" class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        Book Your Ride
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17m-2 0a2 2 0 104 0 2 2 0 10-4 0M17 17m-2 0a2 2 0 104 0 2 2 0 10-4 0M5 17H3v-6l2-5h9l4 5h1a2 2 0 012 2v4h-2M5 17h10"/></svg>
+                        Our Services
+                    </a>
+                </div>
+                <div class="hero-stats reveal">
+                    <div class="hero-stat">
+                        <h3>15+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>50K+</h3>
+                        <p>Rides Completed</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>4.8</h3>
+                        <p>Star Rating</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>24/7</h3>
+                        <p>Availability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-dark" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional taxi driver" loading="lazy">
+                    <div class="about-image-badge">Wolverhampton's Finest</div>
+                </div>
+                <div class="about-text reveal">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title">Your Reliable Partner on the Road</h2>
+                    <p>A1 Wolves Taxis isn't just another taxi company. We're a team of professional, DBS-checked drivers who genuinely care about getting you to your destination safely, comfortably, and on time.</p>
+                    <p>Based in the heart of Wolverhampton, we've built our reputation on trust and consistency. From early morning airport runs to late-night pickups, our drivers know every shortcut, every road, and every way to make your journey smooth.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            DBS-Checked Drivers
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            Licensed & Insured
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            Fixed-Price Quotes
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            Flight Monitoring
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            Clean, Modern Cars
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#10003;</div>
+                            24/7 Availability
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">What We Offer</span>
+                <h2 class="section-title">Services Tailored to You</h2>
+                <p class="section-desc">From quick local rides to long-distance journeys, we've got a service for every occasion. All at competitive prices with no hidden fees.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9992;</div>
+                    <h3>Airport Transfers</h3>
+                    <p>Stress-free pickups and drop-offs at Birmingham, Manchester, Heathrow, Gatwick, and more. We'll track your flight so we're always there when you land.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#127961;</div>
+                    <h3>Local Rides</h3>
+                    <p>Getting around Wolverhampton and the surrounding areas? We'll be there in minutes. Quick, reliable, and always at a fair price.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128739;</div>
+                    <h3>Long Distance</h3>
+                    <p>Need to travel further afield? We offer comfortable long-distance journeys across the UK with fixed pricing so you'll know exactly what you're paying.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128188;</div>
+                    <h3>Corporate Travel</h3>
+                    <p>Professional chauffeur service for business clients. Account facilities, regular bookings, and executive vehicles available for that extra impression.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#127878;</div>
+                    <h3>Events & Nights Out</h3>
+                    <p>Weddings, parties, concerts, and nights out. We'll get your group there and back safely. Pre-book to guarantee your ride home.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128230;</div>
+                    <h3>Parcel Delivery</h3>
+                    <p>Need something delivered fast? Our same-day parcel delivery service covers Wolverhampton and beyond. Safe, tracked, and on time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet -->
+    <section class="section section-dark" id="fleet">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Our Fleet</span>
+                <h2 class="section-title">Clean, Comfortable & Well-Maintained</h2>
+                <p class="section-desc">Every car in our fleet is regularly serviced, valeted inside and out, and equipped with everything you need for a comfortable journey.</p>
+            </div>
+            <div class="fleet-grid">
+                <div class="fleet-card reveal">
+                    <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Standard saloon car" loading="lazy">
+                    <div class="fleet-card-body">
+                        <h3>Saloon Cars</h3>
+                        <p>Perfect for everyday journeys. Comfortable seating for up to 4 passengers with plenty of boot space for luggage.</p>
+                        <span class="fleet-tag">Up to 4 passengers</span>
+                    </div>
+                </div>
+                <div class="fleet-card reveal">
+                    <img src="https://images.pexels.com/photos/1638459/pexels-photo-1638459.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Estate car" loading="lazy">
+                    <div class="fleet-card-body">
+                        <h3>Estate Cars</h3>
+                        <p>Extra boot space for airport runs and family trips. Ideal when you've got more luggage than a standard saloon can handle.</p>
+                        <span class="fleet-tag">Up to 4 passengers + luggage</span>
+                    </div>
+                </div>
+                <div class="fleet-card reveal">
+                    <img src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Executive MPV" loading="lazy">
+                    <div class="fleet-card-body">
+                        <h3>MPVs & Minibuses</h3>
+                        <p>Travelling as a group? Our spacious MPVs and minibuses seat up to 8 passengers. Great for events, airport groups, and family outings.</p>
+                        <span class="fleet-tag">Up to 8 passengers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Pricing Guide</span>
+                <h2 class="section-title">Transparent, Fair Pricing</h2>
+                <p class="section-desc">No surprises, no hidden charges. Here's a quick guide to our most popular routes. All prices are fixed and agreed before you travel.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3>Local Journeys</h3>
+                    <p class="pricing-desc">Around Wolverhampton city centre and nearby suburbs</p>
+                    <ul class="pricing-list">
+                        <li>City centre trips</li>
+                        <li>Supermarket runs</li>
+                        <li>School & college runs</li>
+                        <li>GP & hospital visits</li>
+                        <li>Train station transfers</li>
+                    </ul>
+                    <div class="pricing-price">From &pound;4.50</div>
+                    <p class="pricing-note">Metered or fixed price available</p>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <h3>Airport Transfers</h3>
+                    <p class="pricing-desc">Fixed prices to all major UK airports</p>
+                    <ul class="pricing-list">
+                        <li>Birmingham Airport: &pound;30</li>
+                        <li>East Midlands: &pound;55</li>
+                        <li>Manchester Airport: &pound;75</li>
+                        <li>Heathrow Airport: &pound;140</li>
+                        <li>Gatwick Airport: &pound;160</li>
+                    </ul>
+                    <div class="pricing-price">From &pound;30</div>
+                    <p class="pricing-note">Free flight monitoring included</p>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3>Long Distance</h3>
+                    <p class="pricing-desc">Fixed quotes for any UK destination</p>
+                    <ul class="pricing-list">
+                        <li>Birmingham: &pound;25</li>
+                        <li>Coventry: &pound;40</li>
+                        <li>London: &pound;150</li>
+                        <li>Liverpool: &pound;80</li>
+                        <li>Custom quotes available</li>
+                    </ul>
+                    <div class="pricing-price">From &pound;25</div>
+                    <p class="pricing-note">Get a free quote before you book</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage -->
+    <section class="section section-dark" id="areas">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Coverage Areas</span>
+                <h2 class="section-title">Wolverhampton & Beyond</h2>
+                <p class="section-desc">We cover Wolverhampton and all surrounding areas. If you don't see your area listed, just give us a call. Chances are, we can get you there.</p>
+            </div>
+            <div class="coverage-content">
+                <div class="coverage-areas reveal">
+                    <div class="coverage-item">Wolverhampton</div>
+                    <div class="coverage-item">Bilston</div>
+                    <div class="coverage-item">Willenhall</div>
+                    <div class="coverage-item">Wednesfield</div>
+                    <div class="coverage-item">Tettenhall</div>
+                    <div class="coverage-item">Penn</div>
+                    <div class="coverage-item">Codsall</div>
+                    <div class="coverage-item">Bushbury</div>
+                    <div class="coverage-item">Fordhouses</div>
+                    <div class="coverage-item">Blakenhall</div>
+                    <div class="coverage-item">Dudley</div>
+                    <div class="coverage-item">Walsall</div>
+                    <div class="coverage-item">West Bromwich</div>
+                    <div class="coverage-item">Cannock</div>
+                    <div class="coverage-item">Stafford</div>
+                    <div class="coverage-item">Telford</div>
+                </div>
+                <div class="coverage-right reveal">
+                    <p>Our drivers know the West Midlands like the back of their hand. We don't just cover Wolverhampton city centre. We're out in every suburb, every village, and every neighbouring town.</p>
+                    <p>Need to go further? No problem. We handle long-distance journeys across the UK, with fixed pricing agreed upfront so there aren't any surprises.</p>
+                    <div class="coverage-cta-box">
+                        <h4>Not Sure If We Cover Your Area?</h4>
+                        <p>Drop us a message or give us a ring. We'll sort out a quote in minutes.</p>
+                        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our Passengers Say</h2>
+                <p class="section-desc">Don't just take our word for it. Here's what some of our regular passengers have to say about riding with A1 Wolves Taxis.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Absolutely brilliant service. I've used A1 for my airport runs for years and they've never let me down. Driver's always there early, car's always spotless. Can't recommend them enough."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DW</div>
+                        <div>
+                            <div class="testimonial-name">David Williams</div>
+                            <div class="testimonial-role">Regular Airport Passenger</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"We use A1 Wolves Taxis for all our corporate travel. They're professional, punctual, and our clients always comment on how smooth the experience is. Top-notch."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SP</div>
+                        <div>
+                            <div class="testimonial-name">Sarah Patel</div>
+                            <div class="testimonial-role">Operations Manager, Midlands Tech</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Booked them for my daughter's wedding and they were fantastic. Beautiful car, lovely driver, and they went above and beyond. Made the day even more special. Thank you!"</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JH</div>
+                        <div>
+                            <div class="testimonial-name">Janet Hughes</div>
+                            <div class="testimonial-role">Wedding Client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Book -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Book Your Ride Today</h2>
+                <p class="section-desc">Ready to go? Fill in the form below or contact us directly. We'll get back to you within minutes.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="reveal">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">&#9742;</div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <a href="tel:01234567890">01234 567 890</a>
+                            <p>Available 24 hours a day, 7 days a week</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">&#9993;</div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <a href="mailto:info@a1wolvestaxis.co.uk">info@a1wolvestaxis.co.uk</a>
+                            <p>We'll respond within 30 minutes</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">&#128205;</div>
+                        <div>
+                            <h4>Based In</h4>
+                            <p>Wolverhampton, West Midlands</p>
+                            <p>Covering all surrounding areas</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">&#128337;</div>
+                        <div>
+                            <h4>Operating Hours</h4>
+                            <p>24 hours a day, 365 days a year</p>
+                            <p>Pre-bookings and on-demand</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <h3>Request a Booking</h3>
+                    <form id="bookingForm" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickup">Pickup Location</label>
+                                <input type="text" id="pickup" name="pickup" placeholder="e.g. 12 High Street, WV1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dropoff">Drop-off Location</label>
+                                <input type="text" id="dropoff" name="dropoff" placeholder="e.g. Birmingham Airport" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Type</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="local">Local Ride</option>
+                                <option value="airport">Airport Transfer</option>
+                                <option value="long-distance">Long Distance</option>
+                                <option value="corporate">Corporate Travel</option>
+                                <option value="event">Event / Night Out</option>
+                                <option value="parcel">Parcel Delivery</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" name="notes" placeholder="Number of passengers, luggage, child seats needed, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;font-size:1.05rem;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            Send Booking Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">
+                        <div class="logo-icon">A1</div>
+                        Wolves Taxis
+                    </a>
+                    <p>Wolverhampton's trusted taxi and private hire service. Reliable, affordable, and available around the clock. Getting you where you need to be, on time, every time.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#fleet">Our Fleet</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Book Now</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Airport Transfers</a></li>
+                        <li><a href="#services">Local Rides</a></li>
+                        <li><a href="#services">Long Distance</a></li>
+                        <li><a href="#services">Corporate</a></li>
+                        <li><a href="#services">Parcel Delivery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Areas Covered</h4>
+                    <ul>
+                        <li><a href="#areas">Wolverhampton</a></li>
+                        <li><a href="#areas">Bilston</a></li>
+                        <li><a href="#areas">Willenhall</a></li>
+                        <li><a href="#areas">Dudley</a></li>
+                        <li><a href="#areas">Walsall</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 A1 Wolves Taxis. All rights reserved.</p>
+                <p>Demo designed by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neo-popup-overlay" id="popupOverlay"></div>
+    <div class="neo-popup" id="demoPopup">
+        <button class="neo-popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+        <h3>Want a Website <span>Like This?</span></h3>
+        <p>This is a free demo built by NeoCode Studio to show what your business could look like online. We build premium, high-converting websites that actually bring in customers. Let's chat about yours.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn-primary">
+            Get Your Free Consultation
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Hamburger menu
+        (function() {
+            var hamburger = document.getElementById('hamburger');
+            var navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+
+            // Close menu on link click
+            var links = navLinks.querySelectorAll('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            }
+        })();
+
+        // Header scroll effect
+        (function() {
+            var header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        })();
+
+        // IntersectionObserver reveal
+        (function() {
+            var reveals = document.querySelectorAll('.reveal');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            reveals.forEach(function(el) {
+                observer.observe(el);
+            });
+        })();
+
+        // NeoCode popup at 70% scroll
+        (function() {
+            var popupShown = false;
+            window.addEventListener('scroll', function() {
+                var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                if (!popupShown && scrollPercent > 0.7) {
+                    popupShown = true;
+                    document.getElementById('demoPopup').classList.add('show');
+                    document.getElementById('popupOverlay').classList.add('show');
+                }
+            });
+
+            document.getElementById('popupClose').addEventListener('click', function() {
+                document.getElementById('demoPopup').classList.remove('show');
+                document.getElementById('popupOverlay').classList.remove('show');
+            });
+
+            document.getElementById('popupOverlay').addEventListener('click', function() {
+                document.getElementById('demoPopup').classList.remove('show');
+                document.getElementById('popupOverlay').classList.remove('show');
+            });
+        })();
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            var btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '&#10003; Booking Request Sent!';
+            btn.style.background = '#22c55e';
+            btn.disabled = true;
+            setTimeout(function() {
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Send Booking Request';
+                btn.style.background = '';
+                btn.disabled = false;
+                e.target.reset();
+            }, 3000);
+        }
+
+        // Set min date to today
+        (function() {
+            var dateInput = document.getElementById('date');
+            if (dateInput) {
+                var today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        })();
+    </script>
+
+</body>
+</html>

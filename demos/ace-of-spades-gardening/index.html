@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ace of Spades | Professional Gardening & Landscaping Services</title>
+  <meta name="description" content="The Ace of Spades delivers expert gardening, landscaping, garden design, and tree surgery services. Transform your outdoor space today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --olive: #556b2f;
+      --olive-light: #6d8b3c;
+      --olive-dark: #3e5021;
+      --sunset: #e07c3e;
+      --sunset-deep: #c4652e;
+      --sunset-glow: #f4a261;
+      --cream: #faf8f2;
+      --cream-dark: #f0ece0;
+      --bark: #3b2f2f;
+      --bark-light: #5a4a4a;
+      --earth: #8b7355;
+      --moss: #a3b18a;
+      --white: #ffffff;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 24px rgba(59,47,47,0.08);
+      --shadow-lg: 0 12px 48px rgba(59,47,47,0.14);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--bark);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Crimson Pro', serif; line-height: 1.2; color: var(--olive-dark); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    :focus { outline: 3px solid var(--sunset); outline-offset: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
+    :focus-visible { outline: 3px solid var(--sunset); outline-offset: 2px; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(85,107,47,0.1); color: var(--olive);
+      padding: 8px 18px; border-radius: 100px; font-size: 0.85rem;
+      font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--olive); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 700;
+      margin: 16px 0 20px; color: var(--olive-dark);
+    }
+    .section-subtitle {
+      font-size: 1.1rem; color: var(--bark-light); max-width: 600px; line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--sunset); color: var(--white);
+      padding: 16px 34px; border-radius: var(--radius);
+      font-weight: 700; font-size: 1rem;
+      transition: all 0.3s var(--ease);
+      border: 2px solid transparent;
+    }
+    .btn-primary:hover { background: var(--sunset-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,124,62,0.35); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 2px solid var(--olive); color: var(--olive);
+      padding: 14px 30px; border-radius: var(--radius);
+      font-weight: 700; font-size: 1rem; transition: all 0.3s var(--ease);
+    }
+    .btn-outline:hover { background: var(--olive); color: var(--white); }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ===== NEOCODE BANNER ===== */
+    .neocode-banner {
+      background: var(--bark); color: rgba(255,255,255,0.7);
+      text-align: center; padding: 10px 20px;
+      font-size: 0.82rem; letter-spacing: 0.02em;
+    }
+    .neocode-banner a { color: var(--sunset-glow); font-weight: 700; }
+    .neocode-banner a:hover { color: var(--sunset); }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(250,248,242,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(85,107,47,0.08);
+      transition: all 0.3s var(--ease);
+    }
+    .header.scrolled { box-shadow: 0 2px 20px rgba(59,47,47,0.08); }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+
+    .logo { display: flex; align-items: center; gap: 12px; font-family: 'Crimson Pro', serif; font-weight: 800; font-size: 1.4rem; color: var(--olive-dark); }
+    .logo-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--olive), var(--olive-light));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.3rem;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.92rem; font-weight: 600; color: var(--bark-light);
+      transition: color 0.3s var(--ease); position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+      height: 2px; background: var(--sunset); transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--olive); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--sunset); color: var(--white);
+      padding: 10px 22px; border-radius: var(--radius);
+      font-weight: 700; font-size: 0.9rem; transition: all 0.3s var(--ease);
+    }
+    .nav-cta:hover { background: var(--sunset-deep); transform: translateY(-1px); }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; z-index: 1001; }
+    .hamburger span {
+      width: 26px; height: 2.5px; background: var(--bark);
+      border-radius: 4px; transition: all 0.3s var(--ease);
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+        background: var(--cream); flex-direction: column; padding: 100px 40px 40px;
+        gap: 24px; box-shadow: -8px 0 40px rgba(59,47,47,0.15);
+        transition: right 0.4s var(--ease);
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 1.1rem; }
+      .nav-cta-li { margin-top: 16px; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(165deg, var(--cream) 0%, var(--cream-dark) 50%, rgba(163,177,138,0.2) 100%);
+      overflow: hidden; padding-top: 72px;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -10%; right: -10%; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(85,107,47,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -5%; left: -5%; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(224,124,62,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+
+    .hero-content { max-width: 560px; }
+    .hero-badge { margin-bottom: 24px; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800;
+      margin-bottom: 24px; color: var(--olive-dark);
+    }
+    .hero h1 span { color: var(--sunset); }
+    .hero-text { font-size: 1.15rem; color: var(--bark-light); margin-bottom: 36px; line-height: 1.8; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-visual { position: relative; }
+    .hero-img-wrapper {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-lg); aspect-ratio: 4/5;
+    }
+    .hero-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-floater {
+      position: absolute; background: var(--white); border-radius: var(--radius);
+      padding: 16px 20px; box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-floater-1 { bottom: 60px; left: -30px; }
+    .hero-floater-2 { top: 40px; right: -20px; }
+    .hero-floater .icon-circle {
+      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .hero-floater .text .big { font-size: 1.3rem; font-weight: 800; display: block; font-family: 'Crimson Pro', serif; color: var(--olive-dark); }
+    .hero-floater .text .small { font-size: 0.78rem; color: var(--bark-light); }
+
+    @media (max-width: 900px) {
+      .hero .container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content { max-width: 100%; }
+      .hero-btns { justify-content: center; }
+      .hero-visual { max-width: 480px; margin: 0 auto; }
+      .hero-floater-1 { left: 10px; bottom: 30px; }
+      .hero-floater-2 { right: 10px; top: 20px; }
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--white); }
+    .about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-img-wrap {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      aspect-ratio: 5/4;
+    }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      border: 3px solid rgba(85,107,47,0.15); border-radius: var(--radius-lg);
+    }
+    .about-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px;
+    }
+    .about-stat {
+      text-align: center; padding: 20px 12px; background: var(--cream);
+      border-radius: var(--radius); border: 1px solid rgba(85,107,47,0.08);
+    }
+    .about-stat .num { font-family: 'Crimson Pro', serif; font-size: 1.8rem; font-weight: 800; color: var(--sunset); display: block; }
+    .about-stat .label { font-size: 0.8rem; color: var(--bark-light); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .about .container { grid-template-columns: 1fr; }
+      .about-img-wrap { max-width: 500px; margin: 0 auto; }
+    }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--cream); position: relative; }
+    .services::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--moss), transparent);
+    }
+    .services-header { text-align: center; margin-bottom: 60px; }
+    .services-header .section-subtitle { margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: var(--white); border-radius: var(--radius-lg); padding: 36px 28px;
+      transition: all 0.4s var(--ease); border: 1px solid rgba(85,107,47,0.06);
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--olive), var(--sunset));
+      transform: scaleX(0); transition: transform 0.4s var(--ease);
+      transform-origin: left;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(85,107,47,0.1), rgba(85,107,47,0.04));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.5rem;
+    }
+    .service-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { font-size: 0.92rem; color: var(--bark-light); line-height: 1.8; }
+
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio { background: var(--white); }
+    .portfolio-header { text-align: center; margin-bottom: 60px; }
+    .portfolio-header .section-subtitle { margin: 0 auto; }
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .portfolio-item {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      aspect-ratio: 4/3; cursor: pointer;
+    }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+    .portfolio-item:hover img { transform: scale(1.08); }
+    .portfolio-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(62,80,33,0.85), transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 24px; opacity: 0; transition: opacity 0.4s var(--ease);
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay h4 { color: var(--white); font-size: 1.1rem; font-weight: 700; }
+    .portfolio-overlay p { color: rgba(255,255,255,0.8); font-size: 0.85rem; }
+
+    @media (max-width: 900px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+    /* ===== SEASONAL TIPS ===== */
+    .seasonal {
+      background: linear-gradient(160deg, var(--olive-dark) 0%, var(--olive) 100%);
+      color: var(--white); position: relative; overflow: hidden;
+    }
+    .seasonal::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: rgba(224,124,62,0.08);
+    }
+    .seasonal-header { text-align: center; margin-bottom: 60px; }
+    .seasonal-header .section-title { color: var(--white); }
+    .seasonal-header .section-subtitle { color: rgba(255,255,255,0.7); margin: 0 auto; }
+    .seasonal-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+      position: relative; z-index: 1;
+    }
+    .season-card {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg); padding: 32px 24px; text-align: center;
+      transition: all 0.4s var(--ease); backdrop-filter: blur(4px);
+    }
+    .season-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-4px); }
+    .season-icon { font-size: 2.4rem; margin-bottom: 16px; display: block; }
+    .season-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--sunset-glow); }
+    .season-card p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+    @media (max-width: 900px) { .seasonal-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .seasonal-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--cream); }
+    .testimonials-header { text-align: center; margin-bottom: 60px; }
+    .testimonials-header .section-subtitle { margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white); border-radius: var(--radius-lg); padding: 36px 28px;
+      box-shadow: var(--shadow); border: 1px solid rgba(85,107,47,0.05);
+      transition: all 0.3s var(--ease); position: relative;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .testimonial-stars { color: var(--sunset); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-card blockquote { font-size: 0.95rem; color: var(--bark-light); line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--olive), var(--moss));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 700; font-size: 1rem;
+    }
+    .testimonial-name { font-weight: 700; font-size: 0.92rem; }
+    .testimonial-role { font-size: 0.8rem; color: var(--bark-light); }
+
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; max-width: 550px; margin: 0 auto; } }
+
+    /* ===== CTA BAND ===== */
+    .cta-band {
+      background: var(--sunset); color: var(--white); text-align: center;
+      padding: 80px 24px; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    }
+    .cta-band h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--white); margin-bottom: 16px; position: relative; z-index: 1; }
+    .cta-band p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; position: relative; z-index: 1; }
+    .cta-band .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white); color: var(--sunset-deep);
+      padding: 16px 36px; border-radius: var(--radius);
+      font-weight: 700; font-size: 1rem; transition: all 0.3s var(--ease);
+      position: relative; z-index: 1;
+    }
+    .cta-band .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--white); }
+    .contact .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info h2 { margin-bottom: 20px; }
+    .contact-info > p { color: var(--bark-light); line-height: 1.8; margin-bottom: 32px; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-item-icon {
+      width: 48px; height: 48px; min-width: 48px; border-radius: 12px;
+      background: rgba(85,107,47,0.08); display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem;
+    }
+    .contact-item h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 2px; }
+    .contact-item p { font-size: 0.88rem; color: var(--bark-light); }
+
+    .contact-form-wrap {
+      background: var(--cream); border-radius: var(--radius-lg);
+      padding: 40px 36px; border: 1px solid rgba(85,107,47,0.06);
+    }
+    .contact-form-wrap h3 { font-size: 1.4rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; color: var(--bark); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 14px 16px; border: 1.5px solid rgba(85,107,47,0.15);
+      border-radius: var(--radius); font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem; background: var(--white); color: var(--bark);
+      transition: border-color 0.3s var(--ease);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--olive); outline: none; box-shadow: 0 0 0 3px rgba(85,107,47,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-submit {
+      width: 100%; background: var(--sunset); color: var(--white);
+      padding: 16px; border-radius: var(--radius); font-weight: 700;
+      font-size: 1rem; border: none; cursor: pointer; transition: all 0.3s var(--ease);
+    }
+    .form-submit:hover { background: var(--sunset-deep); transform: translateY(-1px); }
+
+    @media (max-width: 900px) {
+      .contact .container { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--bark); color: rgba(255,255,255,0.7); padding: 60px 0 0; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo { color: var(--white); margin-bottom: 16px; }
+    .footer-brand .logo .logo-icon { background: linear-gradient(135deg, var(--olive-light), var(--sunset)); }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.8; max-width: 300px; }
+    .footer h4 { color: var(--white); font-size: 1rem; margin-bottom: 16px; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 10px; }
+    .footer ul a { font-size: 0.88rem; transition: color 0.3s var(--ease); }
+    .footer ul a:hover { color: var(--sunset-glow); }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 0; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-bottom a { color: var(--sunset-glow); font-weight: 600; }
+
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed; bottom: 30px; right: 30px; z-index: 900;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--olive); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none;
+      transition: all 0.3s var(--ease);
+    }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px); background: var(--olive-dark); }
+    .scroll-top svg { width: 22px; height: 22px; }
+
+    /* ===== POPUP ===== */
+    .demo-popup-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(59,47,47,0.6); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .demo-popup-overlay.show { display: flex; }
+    .demo-popup {
+      background: var(--white); border-radius: var(--radius-lg);
+      max-width: 520px; width: 100%; padding: 48px 36px;
+      text-align: center; position: relative;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+      animation: popIn 0.4s var(--ease);
+    }
+    @keyframes popIn { from { opacity:0; transform: scale(0.9) translateY(20px); } to { opacity:1; transform: scale(1) translateY(0); } }
+    .demo-popup-icon {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--olive), var(--sunset));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .demo-popup-icon svg { width: 32px; height: 32px; color: var(--white); }
+    .demo-popup h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+    .demo-popup p { font-size: 0.95rem; color: var(--bark-light); line-height: 1.8; margin-bottom: 12px; }
+    .demo-popup strong { color: var(--bark); }
+    .demo-popup .popup-cta {
+      display: inline-block; background: var(--sunset); color: var(--white);
+      padding: 14px 32px; border-radius: var(--radius); font-weight: 700;
+      font-size: 0.95rem; margin-top: 16px; transition: all 0.3s var(--ease);
+    }
+    .demo-popup .popup-cta:hover { background: var(--sunset-deep); transform: translateY(-2px); }
+    .demo-popup .popup-dismiss {
+      display: block; margin: 12px auto 0; color: var(--earth);
+      font-size: 0.85rem; cursor: pointer; background: none; border: none;
+      font-family: inherit; transition: color 0.3s var(--ease);
+    }
+    .demo-popup .popup-dismiss:hover { color: var(--bark); }
+
+    /* ===== LEAF DECORATION ===== */
+    .leaf-divider {
+      text-align: center; padding: 8px 0; font-size: 1.4rem; opacity: 0.25;
+      letter-spacing: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NEOCODE BANNER -->
+  <div class="neocode-banner">
+    This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &bull; Premium websites that turn visitors into customers.
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">&#9824;</div>
+        The Ace of Spades
+      </a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#tips">Tips</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li class="nav-cta-li"><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge badge reveal"><span class="dot"></span> Professional Gardening & Landscaping</div>
+        <h1 class="reveal">Your Garden <span>Deserves</span> Better.</h1>
+        <p class="hero-text reveal">We're The Ace of Spades, and we don't just cut grass. We transform tired outdoor spaces into places you'll actually want to spend time in. From simple lawn care to full landscape redesigns, we've got you covered.</p>
+        <div class="hero-btns reveal">
+          <a href="#contact" class="btn-primary">Get a Free Quote <span>&rarr;</span></a>
+          <a href="#services" class="btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal-right">
+        <div class="hero-img-wrapper">
+          <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beautiful landscaped garden with lush greenery" loading="eager">
+        </div>
+        <div class="hero-floater hero-floater-1">
+          <div class="icon-circle" style="background: rgba(85,107,47,0.1);">&#127793;</div>
+          <div class="text">
+            <span class="big">15+</span>
+            <span class="small">Years Experience</span>
+          </div>
+        </div>
+        <div class="hero-floater hero-floater-2">
+          <div class="icon-circle" style="background: rgba(224,124,62,0.1);">&#11088;</div>
+          <div class="text">
+            <span class="big">5.0</span>
+            <span class="small">Customer Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section-pad" id="about">
+    <div class="container">
+      <div class="reveal-left">
+        <div class="about-img-wrap">
+          <img src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Gardener working in a well-maintained garden" loading="lazy">
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="badge"><span class="dot"></span> Who We Are</div>
+        <h2 class="section-title">We're Passionate About What Grows.</h2>
+        <p class="section-subtitle" style="max-width:100%">The Ace of Spades isn't your average gardening company. We started because we genuinely love getting our hands dirty and watching something beautiful come to life. Whether it's a small terraced garden or a sprawling estate, we treat every project like it's our own back garden.</p>
+        <p class="section-subtitle" style="max-width:100%; margin-top: 16px;">We're fully insured, our team's properly trained, and we won't leave your garden looking half-finished. That's a promise.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="num">500+</span>
+            <span class="label">Projects Done</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">15+</span>
+            <span class="label">Years in Business</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">100%</span>
+            <span class="label">Satisfaction Rate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="leaf-divider">&#127807; &#127807; &#127807;</div>
+
+  <!-- SERVICES -->
+  <section class="services section-pad" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="badge"><span class="dot"></span> What We Do</div>
+        <h2 class="section-title">Services That Cover Everything Outdoors</h2>
+        <p class="section-subtitle">From weekly maintenance to one-off transformations, here's what we bring to the table.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#127811;</div>
+          <h3>Lawn Care</h3>
+          <p>Regular mowing, edging, feeding, scarifying, and aeration. We'll keep your lawn looking lush and healthy all year round. You won't find a greener lawn on the street.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127796;</div>
+          <h3>Landscaping</h3>
+          <p>Complete landscape overhauls, from retaining walls and pathways to water features and planting schemes. We'll work with the space you've got and make it something special.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127803;</div>
+          <h3>Garden Design</h3>
+          <p>Not sure where to start? We'll design your perfect outdoor space from scratch. Whether you're after a cottage garden feel or something more contemporary, we'll bring your vision to life.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#9986;</div>
+          <h3>Hedge Trimming</h3>
+          <p>Overgrown hedges? We'll shape them up properly. Regular trimming keeps things neat and encourages healthy, dense growth. We handle hedges of all sizes and species.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127794;</div>
+          <h3>Tree Surgery</h3>
+          <p>Professional tree felling, crown reduction, pruning, and stump removal. We're qualified, insured, and we'll make sure the job's done safely. No tree is too big or too awkward.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127970;</div>
+          <h3>Patio & Decking</h3>
+          <p>Transform your outdoor living area with a new patio or decking. We'll handle the design, prep, and installation so you've got the perfect space for summer evenings and barbecues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio section-pad" id="portfolio">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div class="badge"><span class="dot"></span> Our Work</div>
+        <h2 class="section-title">Gardens We've Brought Back to Life</h2>
+        <p class="section-subtitle">Every garden tells a story. Here are some of our favourites.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal">
+          <img src="https://images.pexels.com/photos/1482101/pexels-photo-1482101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Modern landscaped garden with stone path" loading="lazy">
+          <div class="portfolio-overlay">
+            <h4>Modern Garden Redesign</h4>
+            <p>Complete landscape transformation</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://images.pexels.com/photos/1599452/pexels-photo-1599452.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Colourful flower garden" loading="lazy">
+          <div class="portfolio-overlay">
+            <h4>Cottage Garden Planting</h4>
+            <p>Herbaceous border installation</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wooden decking area in garden" loading="lazy">
+          <div class="portfolio-overlay">
+            <h4>Decking & Patio Area</h4>
+            <p>Outdoor entertaining space</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://images.pexels.com/photos/589841/pexels-photo-589841.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Neatly trimmed hedge" loading="lazy">
+          <div class="portfolio-overlay">
+            <h4>Formal Hedge Shaping</h4>
+            <p>Precision topiary work</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://images.pexels.com/photos/1105019/pexels-photo-1105019.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lush green lawn" loading="lazy">
+          <div class="portfolio-overlay">
+            <h4>Lawn Restoration</h4>
+            <p>From patchy to pristine</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://images.pexels.com/photos/1030345/pexels-photo-1030345.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Garden water feature" loading="lazy">
+          <div class="portfolio-overlay">
+            <h4>Water Feature Install</h4>
+            <p>Bespoke stone water feature</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONAL TIPS -->
+  <section class="seasonal section-pad" id="tips">
+    <div class="container">
+      <div class="seasonal-header reveal">
+        <div class="badge" style="background: rgba(255,255,255,0.1); color: var(--sunset-glow);"><span class="dot" style="background: var(--sunset-glow);"></span> Expert Advice</div>
+        <h2 class="section-title">Seasonal Garden Tips</h2>
+        <p class="section-subtitle">Keep your garden thriving all year with these quick tips from our team.</p>
+      </div>
+      <div class="seasonal-grid">
+        <div class="season-card reveal">
+          <span class="season-icon">&#127800;</span>
+          <h3>Spring</h3>
+          <p>It's time to prep your beds, sow seeds, and get ahead of the weeds. Feed your lawn early and you'll thank yourself come June.</p>
+        </div>
+        <div class="season-card reveal">
+          <span class="season-icon">&#9728;&#65039;</span>
+          <h3>Summer</h3>
+          <p>Water deeply in the mornings, not evenings. Deadhead flowers regularly to keep them blooming, and don't cut your grass too short during dry spells.</p>
+        </div>
+        <div class="season-card reveal">
+          <span class="season-icon">&#127810;</span>
+          <h3>Autumn</h3>
+          <p>Clear fallen leaves, plant spring bulbs, and give your lawn its last feed. It's also the perfect time to plant trees and shrubs while the soil's still warm.</p>
+        </div>
+        <div class="season-card reveal">
+          <span class="season-icon">&#10052;&#65039;</span>
+          <h3>Winter</h3>
+          <p>Protect tender plants from frost, service your tools, and plan next year's garden. Winter's the best time to prune deciduous trees and reshape hedges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section-pad" id="reviews">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="badge"><span class="dot"></span> Reviews</div>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Don't just take our word for it. Here's what people think after we've worked on their gardens.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"They completely transformed our back garden. It was an overgrown mess and now it's like something out of a magazine. The team was friendly, tidy, and finished ahead of schedule. Can't recommend them enough."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SH</div>
+            <div>
+              <div class="testimonial-name">Sarah H.</div>
+              <div class="testimonial-role">Homeowner, Manchester</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"We've been using The Ace of Spades for monthly maintenance for over two years now. They're reliable, they know what they're doing, and our garden's never looked better. Worth every penny."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">DW</div>
+            <div>
+              <div class="testimonial-name">David W.</div>
+              <div class="testimonial-role">Regular Client</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Had a massive oak that needed taking down. They sorted the whole thing in a day, cleaned up perfectly, and even ground the stump out. Professional from start to finish."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MP</div>
+            <div>
+              <div class="testimonial-name">Mark P.</div>
+              <div class="testimonial-role">Homeowner, Stockport</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container reveal">
+      <h2>Ready to Love Your Garden Again?</h2>
+      <p>Get in touch today for a free, no-obligation quote. We'll pop round, have a chat, and put together a plan that works for you.</p>
+      <a href="#contact" class="btn-cta">Get Your Free Quote <span>&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section-pad" id="contact">
+    <div class="container">
+      <div class="contact-info reveal-left">
+        <div class="badge"><span class="dot"></span> Get In Touch</div>
+        <h2 class="section-title">Let's Talk About Your Garden</h2>
+        <p>Got a project in mind? Or maybe you just need someone to keep things tidy? Drop us a message and we'll get back to you within 24 hours. No pressure, no hard sell.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128231;</div>
+            <div>
+              <h4>Email Us</h4>
+              <p>justinbetts@hotmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128205;</div>
+            <div>
+              <h4>Service Area</h4>
+              <p>Greater Manchester & Surrounding Areas</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128337;</div>
+            <div>
+              <h4>Working Hours</h4>
+              <p>Mon - Sat: 7:30am - 6:00pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal-right">
+        <h3>Request a Free Quote</h3>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="07XXX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label for="service">Service You're Interested In</label>
+            <select id="service">
+              <option value="">Choose a service...</option>
+              <option>Lawn Care</option>
+              <option>Landscaping</option>
+              <option>Garden Design</option>
+              <option>Hedge Trimming</option>
+              <option>Tree Surgery</option>
+              <option>Patio & Decking</option>
+              <option>General Maintenance</option>
+              <option>Not Sure - Need Advice</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Project</label>
+            <textarea id="message" placeholder="Describe what you're looking for and we'll put together a tailored quote..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Your Message &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">&#9824;</div>
+            The Ace of Spades
+          </a>
+          <p>Professional gardening and landscaping services. We're here to make your outdoor space something you're proud of.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Lawn Care</a></li>
+            <li><a href="#services">Landscaping</a></li>
+            <li><a href="#services">Garden Design</a></li>
+            <li><a href="#services">Tree Surgery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#portfolio">Our Work</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#tips">Seasonal Tips</a></li>
+            <li><a href="#contact">Free Quote</a></li>
+            <li><a href="#hero">Back to Top</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Ace of Spades. All rights reserved.</p>
+        <p>Website by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- NEOCODE POPUP -->
+  <div class="demo-popup-overlay" id="demoPopup">
+    <div class="demo-popup">
+      <div class="demo-popup-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v9m0 0l-3-3m3 3l3-3M3 17l3.36-6.72A1 1 0 017.26 9.5h9.48a1 1 0 01.9.78L21 17"/><path d="M3 17h18v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2z"/></svg>
+      </div>
+      <h2>This was built in under 20 minutes.</h2>
+      <p>This is just a quick concept to show you what's possible for The Ace of Spades. No templates. No shortcuts. Just a taste of what a proper, premium website could look like for your business.</p>
+      <p>Imagine what we could do with <strong>a full week dedicated to your brand</strong>. A site that doesn't just look great, but actually <strong>brings in more customers</strong>.</p>
+      <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+      <button class="popup-dismiss" onclick="document.getElementById('demoPopup').classList.remove('show')">Continue browsing the demo</button>
+    </div>
+  </div>
+
+  <script>
+    // Hamburger menu
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hamburger.click(); }
+    });
+    // Close nav on link click
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll to top button
+    var scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', function() {
+      scrollBtn.classList.toggle('show', window.scrollY > 600);
+    });
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // IntersectionObserver for reveal animations
+    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el) { observer.observe(el); });
+
+    // NeoCode popup at 70% scroll
+    var popupShown = false;
+    window.addEventListener('scroll', function() {
+      if (popupShown) return;
+      var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      if (scrollPercent > 0.7) {
+        popupShown = true;
+        document.getElementById('demoPopup').classList.add('show');
+      }
+    });
+
+    // Form submission (demo only)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = this.querySelector('.form-submit');
+      btn.textContent = 'Message Sent!';
+      btn.style.background = 'var(--olive)';
+      setTimeout(function() {
+        btn.innerHTML = 'Send Your Message &rarr;';
+        btn.style.background = '';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
