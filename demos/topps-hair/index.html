@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topps Hair Fashion | Hairdressing in Blackpool</title>
+    <meta name="description" content="Topps Hair Fashion - Blackpool's favourite hair salon. Expert cuts, colour, highlights, perms and bridal styling at 37 Warley Road, Blackpool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===================== RESET & BASE ===================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush: #F9A8D4;
+            --plum: #581C87;
+            --ivory: #FFFFF0;
+            --copper: #C27A4E;
+            --plum-light: #7C3AED;
+            --blush-light: #FDDDE6;
+            --plum-dark: #3B0764;
+            --shadow: rgba(88, 28, 135, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: #333;
+            background: var(--ivory);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--plum);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===================== REVEAL ANIMATION ===================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 240, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            transition: background 0.3s ease;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--plum);
+        }
+
+        .nav-logo span {
+            color: var(--copper);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--plum);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--copper);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--plum);
+            border-radius: 3px;
+            transition: all 0.35s ease;
+            position: absolute;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 6px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 14px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 22px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 14px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 14px;
+            transform: rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--ivory);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 35px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px var(--shadow);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--plum-dark) 0%, var(--plum) 35%, var(--plum-light) 65%, var(--blush) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(249, 168, 212, 0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 30%, rgba(194, 122, 78, 0.1) 0%, transparent 50%);
+            animation: heroShimmer 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroShimmer {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(2%, 1%) rotate(2deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-tagline {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--blush);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--ivory);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 240, 0.85);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--copper);
+            color: var(--ivory);
+            box-shadow: 0 4px 20px rgba(194, 122, 78, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #D4905E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(194, 122, 78, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--plum);
+            border: 2px solid var(--plum);
+        }
+
+        .btn-outline:hover {
+            background: var(--plum);
+            color: var(--ivory);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn-outline {
+            border-color: var(--ivory);
+            color: var(--ivory);
+        }
+
+        .hero-buttons .btn-outline:hover {
+            background: var(--ivory);
+            color: var(--plum);
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* ===================== SECTION SHARED ===================== */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header .divider {
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--copper);
+            margin: 15px auto 20px;
+            border-radius: 3px;
+        }
+
+        .section-header p {
+            color: #666;
+            max-width: 550px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* ===================== ABOUT ===================== */
+        .about {
+            background: #fff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 420px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--blush-light), var(--blush));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-icon {
+            font-size: 6rem;
+            opacity: 0.5;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: var(--copper);
+            border-radius: 20px 0 20px 0;
+            opacity: 0.3;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+            color: #555;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--plum);
+            font-size: 0.92rem;
+        }
+
+        .about-feature .check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: var(--blush-light);
+            border-radius: 50%;
+            color: var(--plum);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                height: 280px;
+            }
+        }
+
+        /* ===================== SERVICES ===================== */
+        .services {
+            background: var(--ivory);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 35px 28px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 35px rgba(88, 28, 135, 0.18);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blush-light), var(--blush));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #777;
+            font-size: 0.93rem;
+        }
+
+        /* ===================== PRICING ===================== */
+        .pricing {
+            background: #fff;
+        }
+
+        .pricing-table {
+            max-width: 720px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 25px var(--shadow);
+        }
+
+        .pricing-table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            background: var(--plum);
+            color: var(--ivory);
+            padding: 18px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            padding: 16px 30px;
+            border-bottom: 1px solid #f0e8f5;
+            transition: background 0.2s ease;
+            align-items: center;
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-row:hover {
+            background: var(--blush-light);
+        }
+
+        .pricing-row .service-name {
+            font-weight: 600;
+            color: var(--plum-dark);
+        }
+
+        .pricing-row .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--copper);
+            text-align: right;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 25px;
+            color: #888;
+            font-size: 0.88rem;
+            font-style: italic;
+        }
+
+        /* ===================== TEAM ===================== */
+        .team {
+            background: var(--ivory);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .team-card {
+            text-align: center;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--blush-light), var(--blush));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(transparent, #fff);
+        }
+
+        .team-info {
+            padding: 22px 25px 30px;
+        }
+
+        .team-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .team-info .role {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--copper);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .team-info p {
+            color: #777;
+            font-size: 0.92rem;
+        }
+
+        /* ===================== TESTIMONIALS ===================== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--plum-dark), var(--plum));
+            color: var(--ivory);
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--ivory);
+        }
+
+        .testimonials .section-header .divider {
+            background: var(--blush);
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255, 255, 240, 0.7);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 240, 0.08);
+            border: 1px solid rgba(255, 255, 240, 0.12);
+            border-radius: 16px;
+            padding: 35px 28px;
+            position: relative;
+        }
+
+        .testimonial-card .quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--blush);
+            opacity: 0.5;
+            line-height: 1;
+            position: absolute;
+            top: 15px;
+            left: 25px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 240, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--blush);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--plum);
+            font-size: 1rem;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--blush);
+        }
+
+        .stars {
+            color: var(--copper);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* ===================== BOOKING FORM ===================== */
+        .booking {
+            background: #fff;
+        }
+
+        .booking-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .booking-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+        }
+
+        .booking-info p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .booking-details {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .booking-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .booking-detail-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--blush-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .booking-detail-text strong {
+            display: block;
+            color: var(--plum);
+            margin-bottom: 2px;
+            font-size: 0.92rem;
+        }
+
+        .booking-detail-text span {
+            font-size: 0.88rem;
+            color: #777;
+        }
+
+        .booking-detail-text a {
+            color: var(--copper);
+            font-weight: 600;
+        }
+
+        .booking-detail-text a:hover {
+            text-decoration: underline;
+        }
+
+        .booking-form {
+            background: var(--ivory);
+            border-radius: 16px;
+            padding: 40px 35px;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--plum);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8ddf0;
+            border-radius: 10px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #333;
+            background: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--blush);
+            box-shadow: 0 0 0 4px rgba(249, 168, 212, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .booking-form .btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .booking-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--plum-dark);
+            color: rgba(255, 255, 240, 0.7);
+            padding: 50px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer h4 {
+            font-size: 1.2rem;
+            color: var(--ivory);
+            margin-bottom: 18px;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-links a {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 240, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--blush);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 240, 0.1);
+            padding-top: 22px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 240, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ivory);
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--copper);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* ===================== NEOCODE POPUP ===================== */
+        .neocode-popup {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px 28px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            max-width: 320px;
+            transform: translateY(120%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .neocode-popup.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .neocode-popup .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s ease;
+        }
+
+        .neocode-popup .popup-close:hover {
+            color: #333;
+        }
+
+        .neocode-popup p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .neocode-popup p strong {
+            color: var(--plum);
+        }
+
+        .neocode-popup a.popup-link {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--copper);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .neocode-popup a.popup-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===================== BACK TO TOP ===================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--plum);
+            color: var(--ivory);
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 3px 15px var(--shadow);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: var(--copper);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Topps <span>Hair</span></a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#team">Team</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#booking" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.8rem;">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">Est. Blackpool</div>
+            <h1>Blackpool's Favourite Hair Salon</h1>
+            <p>Beautiful hair starts here. From classic cuts to stunning colour, our talented team will have you looking and feeling your best every time you walk through our doors.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary">Book Your Appointment</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-icon">&#9986;</div>
+                </div>
+                <div class="about-text reveal">
+                    <h2>Welcome to Topps Hair Fashion</h2>
+                    <p>Located in the heart of Blackpool on Warley Road, Topps Hair Fashion has been helping locals look and feel amazing for years. We're not just a salon, we're part of the community.</p>
+                    <p>Whether you're popping in for a quick trim, a full colour transformation, or getting ready for your big day, our friendly team is here to make sure you leave with a smile (and incredible hair, obviously).</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <span class="check">&#10003;</span>
+                            Expert Colourists
+                        </div>
+                        <div class="about-feature">
+                            <span class="check">&#10003;</span>
+                            Bridal Specialists
+                        </div>
+                        <div class="about-feature">
+                            <span class="check">&#10003;</span>
+                            Walk-ins Welcome
+                        </div>
+                        <div class="about-feature">
+                            <span class="check">&#10003;</span>
+                            All Hair Types
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What We Do</h2>
+                <span class="divider"></span>
+                <p>From classic cuts to bold colour, we've got every look covered. Here's what you can book in for.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9986;</div>
+                    <h3>Ladies Cut &amp; Style</h3>
+                    <p>Precision cuts tailored to your face shape, hair type, and personal style. Includes a wash and blow dry.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9988;</div>
+                    <h3>Gents Cut</h3>
+                    <p>Sharp, clean cuts for the guys. Whether it's a classic look or something modern, we've got you sorted.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#127912;</div>
+                    <h3>Full Colour</h3>
+                    <p>A complete colour change or root touch-up using professional products that keep your hair healthy and vibrant.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#10024;</div>
+                    <h3>Highlights &amp; Lowlights</h3>
+                    <p>Add dimension and depth with foils or balayage. Our colourists will create the perfect blend for you.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128171;</div>
+                    <h3>Perms</h3>
+                    <p>Bouncy curls or soft waves that last. We use gentle formulas to get beautiful texture without damage.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128144;</div>
+                    <h3>Bridal Styling</h3>
+                    <p>Your big day deserves perfect hair. We offer trials and on-the-day styling to make sure you look stunning.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128168;</div>
+                    <h3>Blow Dry</h3>
+                    <p>A gorgeous, salon-fresh blow dry for when you want to look great without the full cut. Perfect for events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Prices</h2>
+                <span class="divider"></span>
+                <p>Straightforward pricing with no hidden extras. What you see is what you pay.</p>
+            </div>
+            <div class="pricing-table reveal">
+                <div class="pricing-table-header">
+                    <span>Service</span>
+                    <span style="text-align: right;">From</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Ladies Cut &amp; Blow Dry</span>
+                    <span class="price">&pound;28</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Gents Cut</span>
+                    <span class="price">&pound;14</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Children's Cut (Under 12)</span>
+                    <span class="price">&pound;10</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Blow Dry Only</span>
+                    <span class="price">&pound;18</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Full Head Colour</span>
+                    <span class="price">&pound;48</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Half Head Highlights</span>
+                    <span class="price">&pound;42</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Full Head Highlights</span>
+                    <span class="price">&pound;58</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Perm</span>
+                    <span class="price">&pound;45</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="service-name">Bridal Hair (inc. trial)</span>
+                    <span class="price">&pound;85</span>
+                </div>
+            </div>
+            <p class="pricing-note reveal">Prices may vary depending on hair length and thickness. Ask us for a quote during your consultation.</p>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Meet the Team</h2>
+                <span class="divider"></span>
+                <p>Our talented stylists bring years of experience, passion, and a whole lot of personality to every appointment.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-photo">&#128135;&#8205;&#9792;&#65039;</div>
+                    <div class="team-info">
+                        <h3>Diane</h3>
+                        <div class="role">Salon Owner &amp; Senior Stylist</div>
+                        <p>With over 20 years behind the chair, Diane's built Topps into the go-to salon on Warley Road. She's a colour specialist who loves a good transformation.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-photo">&#128135;&#8205;&#9792;&#65039;</div>
+                    <div class="team-info">
+                        <h3>Lauren</h3>
+                        <div class="role">Senior Stylist</div>
+                        <p>Lauren's got a real knack for highlights and balayage. She keeps up with every trend so your hair is always fresh and on-point.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-photo">&#128135;&#8205;&#9792;&#65039;</div>
+                    <div class="team-info">
+                        <h3>Sophie</h3>
+                        <div class="role">Junior Stylist &amp; Bridal Expert</div>
+                        <p>Sophie specialises in bridal and occasion hair. She's the one you want when there's a wedding, prom, or special night out on the cards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What Our Clients Say</h2>
+                <span class="divider"></span>
+                <p>Don't just take our word for it. Here's what some of our regulars have to say about their visits.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="quote-mark">"</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>I've been coming to Topps for years and I wouldn't go anywhere else. Diane always knows exactly what I want, even when I don't! My colour always turns out perfect.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JW</div>
+                        <div>
+                            <div class="testimonial-name">Janet W.</div>
+                            <div class="testimonial-detail">Regular client - 8 years</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="quote-mark">"</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Lauren did my highlights last week and honestly, they're the best I've ever had. The whole salon is so welcoming, you feel like you're catching up with mates. Love it.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sarah M.</div>
+                            <div class="testimonial-detail">Regular client - 3 years</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="quote-mark">"</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Sophie did my hair for my wedding and I cried happy tears when I saw it. She nailed exactly what I wanted. The trial put my mind at ease and the day was absolutely perfect.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">KR</div>
+                        <div>
+                            <div class="testimonial-name">Kelly R.</div>
+                            <div class="testimonial-detail">Bridal client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Book an Appointment</h2>
+                <span class="divider"></span>
+                <p>Ready for your next visit? Fill in the form below and we'll get back to you to confirm your slot.</p>
+            </div>
+            <div class="booking-wrapper">
+                <div class="booking-info reveal">
+                    <h3>Get in Touch</h3>
+                    <p>You can also give us a ring or pop in to book. We're always happy to help you find a time that works.</p>
+                    <div class="booking-details">
+                        <div class="booking-detail">
+                            <div class="booking-detail-icon">&#128205;</div>
+                            <div class="booking-detail-text">
+                                <strong>Visit Us</strong>
+                                <span>37 Warley Road, Blackpool, FY1 2LJ</span>
+                            </div>
+                        </div>
+                        <div class="booking-detail">
+                            <div class="booking-detail-icon">&#128222;</div>
+                            <div class="booking-detail-text">
+                                <strong>Call Us</strong>
+                                <span><a href="tel:01253625858">01253 625 858</a></span>
+                            </div>
+                        </div>
+                        <div class="booking-detail">
+                            <div class="booking-detail-icon">&#128231;</div>
+                            <div class="booking-detail-text">
+                                <strong>Email Us</strong>
+                                <span><a href="mailto:dianesheriff@blueyonder.co.uk">dianesheriff@blueyonder.co.uk</a></span>
+                            </div>
+                        </div>
+                        <div class="booking-detail">
+                            <div class="booking-detail-icon">&#128336;</div>
+                            <div class="booking-detail-text">
+                                <strong>Opening Hours</strong>
+                                <span>Mon-Sat: 9:00am - 5:30pm<br>Sunday: Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="booking-form reveal" id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="07xxx xxx xxx">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service...</option>
+                            <option value="Ladies Cut & Blow Dry">Ladies Cut &amp; Blow Dry</option>
+                            <option value="Gents Cut">Gents Cut</option>
+                            <option value="Children's Cut">Children's Cut</option>
+                            <option value="Blow Dry">Blow Dry</option>
+                            <option value="Full Colour">Full Colour</option>
+                            <option value="Highlights">Highlights</option>
+                            <option value="Perm">Perm</option>
+                            <option value="Bridal Hair">Bridal Hair</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredDate">Preferred Date</label>
+                        <input type="date" id="preferredDate" name="preferredDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Anything else we should know?</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your hair goals, any allergies, or preferences..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Request Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Topps Hair Fashion</h4>
+                    <p>Your neighbourhood hair salon on Warley Road, Blackpool. We've been helping locals look their best for years, and we're not planning to stop anytime soon.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Instagram">in</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#services">Services</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#team">Our Team</a>
+                        <a href="#testimonials">Reviews</a>
+                        <a href="#booking">Book Now</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Find Us</h4>
+                    <p>37 Warley Road<br>Blackpool<br>FY1 2LJ</p>
+                    <p style="margin-top: 14px;"><a href="tel:01253625858" style="color: var(--blush);">01253 625 858</a></p>
+                    <p style="margin-top: 6px;"><a href="mailto:dianesheriff@blueyonder.co.uk" style="color: var(--blush);">dianesheriff@blueyonder.co.uk</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Topps Hair Fashion. All rights reserved. | 37 Warley Road, Blackpool, FY1 2LJ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+        <p><strong>Love this website design?</strong><br>This demo was built by NeoCode Studio. We create modern, mobile-friendly websites for local businesses.</p>
+        <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="popup-link">Visit NeoCode Studio &rarr;</a>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+    <script>
+        /* ===================== HAMBURGER MENU ===================== */
+        (function() {
+            var hamburger = document.getElementById('hamburger');
+            var navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+
+            var links = navLinks.querySelectorAll('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            }
+        })();
+
+        /* ===================== INTERSECTION OBSERVER - REVEAL ===================== */
+        (function() {
+            var revealElements = document.querySelectorAll('.reveal');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        /* ===================== NEOCODE POPUP AT 70% SCROLL ===================== */
+        (function() {
+            var popup = document.getElementById('neocodePopup');
+            var closeBtn = document.getElementById('popupClose');
+            var shown = false;
+            var dismissed = false;
+
+            function getScrollPercent() {
+                var h = document.documentElement;
+                var b = document.body;
+                var st = h.scrollTop || b.scrollTop;
+                var sh = h.scrollHeight || b.scrollHeight;
+                var ch = h.clientHeight;
+                return (st / (sh - ch)) * 100;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (dismissed) return;
+
+                var percent = getScrollPercent();
+                if (percent >= 70 && !shown) {
+                    shown = true;
+                    popup.classList.add('show');
+                }
+            });
+
+            closeBtn.addEventListener('click', function() {
+                popup.classList.remove('show');
+                dismissed = true;
+            });
+        })();
+
+        /* ===================== BACK TO TOP ===================== */
+        (function() {
+            var btn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 600) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+
+            btn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+
+        /* ===================== FORM SUBMISSION ===================== */
+        (function() {
+            var form = document.getElementById('bookingForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var firstName = document.getElementById('firstName').value.trim();
+                var service = document.getElementById('service').value;
+
+                if (!firstName || !service) {
+                    alert('Please fill in your name and select a service.');
+                    return;
+                }
+
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                setTimeout(function() {
+                    submitBtn.textContent = 'Request Sent!';
+                    submitBtn.style.background = '#22c55e';
+
+                    setTimeout(function() {
+                        form.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 2500);
+                }, 1200);
+            });
+        })();
+
+        /* ===================== SMOOTH SCROLL POLYFILL ===================== */
+        (function() {
+            var anchors = document.querySelectorAll('a[href^="#"]');
+            anchors.forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        var offset = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                        window.scrollTo({ top: offset, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+
+        /* ===================== NAVBAR SCROLL EFFECT ===================== */
+        (function() {
+            var navbar = document.querySelector('.navbar');
+            var lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.scrollY;
+
+                if (currentScroll > 80) {
+                    navbar.style.boxShadow = '0 4px 30px rgba(88, 28, 135, 0.18)';
+                } else {
+                    navbar.style.boxShadow = '0 2px 20px rgba(88, 28, 135, 0.12)';
+                }
+
+                lastScroll = currentScroll;
+            });
+        })();
+
+        /* ===================== STAGGERED REVEAL FOR CARDS ===================== */
+        (function() {
+            var cards = document.querySelectorAll('.service-card.reveal, .team-card.reveal, .testimonial-card.reveal');
+
+            if ('IntersectionObserver' in window) {
+                var staggerObserver = new IntersectionObserver(function(entries) {
+                    var visibleEntries = [];
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            visibleEntries.push(entry.target);
+                            staggerObserver.unobserve(entry.target);
+                        }
+                    });
+
+                    visibleEntries.forEach(function(el, index) {
+                        setTimeout(function() {
+                            el.classList.add('visible');
+                        }, index * 120);
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -30px 0px'
+                });
+
+                cards.forEach(function(card) {
+                    staggerObserver.observe(card);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

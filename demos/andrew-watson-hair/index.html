@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Watson Hairdressing | Belfast's Premier Hair Salon</title>
+    <meta name="description" content="Andrew Watson Hairdressing - Belfast's premier hair salon on Lisburn Road. Expert cuts, colour, styling, bridal hair and men's grooming.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --charcoal: #2C2C2C;
+            --rose-gold: #B76E79;
+            --cream: #FFF5EE;
+            --soft-gold: #D4A574;
+            --rose-gold-light: #c9868f;
+            --charcoal-light: #3a3a3a;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ========== REVEAL ANIMATION ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(44, 44, 44, 0.97);
+            padding: 0.6rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--cream);
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--rose-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rose-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--rose-gold);
+        }
+
+        /* ========== HAMBURGER MENU ========== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 24px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--cream);
+            transition: all 0.35s ease;
+            position: absolute;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 2px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 11px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 20px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 11px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 11px;
+            transform: rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--charcoal);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--charcoal) 30%, #3d2f32 60%, #2C2C2C 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(183, 110, 121, 0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 30%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--cream), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 1.5rem;
+        }
+
+        .hero-tagline {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--soft-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--cream);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 em {
+            color: var(--rose-gold);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: var(--rose-gold-light);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.95rem 2.5rem;
+            border-radius: 3px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--rose-gold);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--rose-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cream);
+            border: 1.5px solid var(--soft-gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--soft-gold);
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        /* ========== SECTION STYLES ========== */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--charcoal);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .section-header p {
+            color: #777;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--rose-gold);
+            margin: 1rem auto;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(145deg, var(--charcoal), #3d2f32);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .about-image-placeholder::after {
+            content: 'AW';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--rose-gold);
+            opacity: 0.3;
+        }
+
+        .about-accent {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--rose-gold);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .about-text h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--charcoal);
+        }
+
+        .about-text h3 span {
+            color: var(--rose-gold);
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+        }
+
+        .about-feature .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--rose-gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image-placeholder {
+                height: 300px;
+            }
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(183, 110, 121, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-gold), var(--soft-gold));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(44, 44, 44, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--rose-gold), var(--soft-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--charcoal);
+        }
+
+        .service-card p {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--cream);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(44, 44, 44, 0.08);
+        }
+
+        .pricing-category {
+            border-bottom: 1px solid rgba(183, 110, 121, 0.15);
+        }
+
+        .pricing-category:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-category-header {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 1rem 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.06);
+            transition: background 0.3s ease;
+        }
+
+        .pricing-item:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-item:hover {
+            background: rgba(183, 110, 121, 0.05);
+        }
+
+        .pricing-item-name {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .pricing-item-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--rose-gold);
+            font-weight: 600;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #999;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* ========== TEAM SECTION ========== */
+        .team {
+            background: var(--cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .team-card {
+            text-align: center;
+            background: var(--white);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(44, 44, 44, 0.1);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(160deg, var(--charcoal), #4a3a3d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-photo-initial {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--rose-gold);
+            opacity: 0.5;
+        }
+
+        .team-info {
+            padding: 1.8rem 1.5rem;
+        }
+
+        .team-info h3 {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-info .role {
+            color: var(--rose-gold);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .team-info p {
+            color: #777;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+                margin: 0 auto;
+            }
+
+            .team-photo {
+                height: 260px;
+            }
+        }
+
+        /* ========== TESTIMONIALS SECTION ========== */
+        .testimonials {
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--cream);
+        }
+
+        .testimonials .section-header p {
+            color: #aaa;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--charcoal-light);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            border: 1px solid rgba(183, 110, 121, 0.15);
+            transition: transform 0.4s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .testimonial-quote {
+            font-size: 2.5rem;
+            color: var(--rose-gold);
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-text {
+            color: #ccc;
+            font-size: 0.92rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--rose-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-stars {
+            color: var(--soft-gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ========== BOOKING SECTION ========== */
+        .booking {
+            background: var(--cream);
+        }
+
+        .booking-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .booking-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .booking-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .booking-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .booking-detail-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--rose-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .booking-detail-text strong {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            margin-bottom: 0.15rem;
+        }
+
+        .booking-detail-text span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .booking-detail-text a {
+            color: var(--rose-gold);
+        }
+
+        .booking-detail-text a:hover {
+            color: var(--rose-gold-light);
+        }
+
+        .booking-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 5px 30px rgba(44, 44, 44, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            background: var(--cream);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rose-gold);
+            box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.1);
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .booking-form .btn {
+            width: 100%;
+            padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .booking-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 4rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-brand h3 span {
+            color: var(--rose-gold);
+        }
+
+        .footer-brand p {
+            color: #999;
+            font-size: 0.9rem;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--soft-gold);
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            font-size: 0.9rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--rose-gold);
+            padding-left: 5px;
+        }
+
+        .footer-hours li {
+            color: #aaa;
+            font-size: 0.88rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-hours li span {
+            color: var(--cream);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(183, 110, 121, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rose-gold);
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            background: var(--rose-gold);
+            color: var(--white);
+            border-color: var(--rose-gold);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ========== NEOCODE POPUP ========== */
+        .neocode-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .neocode-popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .neocode-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 3rem 2.5rem;
+            border-radius: 10px;
+            z-index: 9999;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(183, 110, 121, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .neocode-popup.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .neocode-popup h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .neocode-popup h3 span {
+            color: var(--rose-gold);
+        }
+
+        .neocode-popup p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+        }
+
+        .neocode-popup .btn {
+            margin-bottom: 0.5rem;
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .neocode-popup-close:hover {
+            color: var(--cream);
+        }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--rose-gold-light);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#hero" class="nav-logo">Andrew <span>Watson</span></a>
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#team">Team</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#booking" class="btn btn-primary" style="padding: 0.6rem 1.5rem;">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">Lisburn Road, Belfast</p>
+            <h1>Belfast's Premier <em>Hair Salon</em></h1>
+            <p class="hero-subtitle">Andrew Watson Hairdressing</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary">Book Your Appointment</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-image">
+                    <div class="about-image-placeholder"></div>
+                    <div class="about-accent"></div>
+                </div>
+                <div class="about-text">
+                    <h3>Welcome to <span>Andrew Watson</span> Hairdressing</h3>
+                    <p>Located on Belfast's iconic Lisburn Road, Andrew Watson Hairdressing has been helping clients look and feel their best for years. We're not just a salon - we're a destination for anyone who takes their hair seriously.</p>
+                    <p>Our team of skilled stylists combines classic technique with modern trends, delivering results that turn heads. Whether you're after a fresh cut, a bold new colour, or the perfect bridal look, we've got you covered.</p>
+                    <p>We believe great hair starts with a genuine consultation. Every client gets our full attention, because your style should be as individual as you are.</p>
+                    <div class="about-features">
+                        <div class="about-feature"><div class="dot"></div>Expert Colourists</div>
+                        <div class="about-feature"><div class="dot"></div>Bridal Specialists</div>
+                        <div class="about-feature"><div class="dot"></div>Premium Products</div>
+                        <div class="about-feature"><div class="dot"></div>Relaxed Atmosphere</div>
+                        <div class="about-feature"><div class="dot"></div>Men's Grooming</div>
+                        <div class="about-feature"><div class="dot"></div>Free Consultations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Services</h2>
+                <div class="section-divider"></div>
+                <p>From precision cuts to transformative colour, we offer a full range of services to keep you looking your absolute best.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9986;</div>
+                    <h3>Cuts &amp; Styling</h3>
+                    <p>Precision cuts tailored to your face shape, hair type and lifestyle. From classic bobs to contemporary textured styles, we'll find the perfect look for you.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9672;</div>
+                    <h3>Colour Services</h3>
+                    <p>Full colour, highlights, balayage, ombre and colour correction. Our colourists use top-tier products to deliver vibrant, long-lasting results every time.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#10047;</div>
+                    <h3>Blow Dry &amp; Finish</h3>
+                    <p>Whether it's a smooth, sleek blow dry or bouncy curls for a night out, our stylists will have you leaving the salon feeling like a million pounds.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#10053;</div>
+                    <h3>Bridal Hair</h3>
+                    <p>Your wedding day deserves perfect hair. We offer full bridal packages including trials, on-the-day styling, and bridesmaids' hair. Let's make it unforgettable.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9733;</div>
+                    <h3>Hair Treatments</h3>
+                    <p>Deep conditioning, keratin smoothing, Olaplex repair and scalp treatments. Give your hair the TLC it deserves with our restorative treatment menu.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9894;</div>
+                    <h3>Men's Grooming</h3>
+                    <p>Sharp cuts, fades, beard trims and classic gentleman's styling. Our team knows how to deliver a look that's clean, confident and effortlessly sharp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Pricing</h2>
+                <div class="section-divider"></div>
+                <p>Transparent pricing with no hidden extras. Every service includes a consultation to make sure we get it right.</p>
+            </div>
+            <div class="pricing-table reveal">
+                <div class="pricing-category">
+                    <div class="pricing-category-header">Cuts &amp; Styling</div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Ladies' Cut &amp; Blow Dry</span>
+                        <span class="pricing-item-price">from &pound;45</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Restyle / Transformation</span>
+                        <span class="pricing-item-price">from &pound;55</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Blow Dry &amp; Finish</span>
+                        <span class="pricing-item-price">from &pound;30</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Occasion / Event Styling</span>
+                        <span class="pricing-item-price">from &pound;40</span>
+                    </div>
+                </div>
+                <div class="pricing-category">
+                    <div class="pricing-category-header">Colour Services</div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Full Head Colour</span>
+                        <span class="pricing-item-price">from &pound;65</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Half Head Highlights</span>
+                        <span class="pricing-item-price">from &pound;70</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Full Head Highlights</span>
+                        <span class="pricing-item-price">from &pound;90</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Balayage / Ombre</span>
+                        <span class="pricing-item-price">from &pound;95</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Toner / Gloss</span>
+                        <span class="pricing-item-price">from &pound;25</span>
+                    </div>
+                </div>
+                <div class="pricing-category">
+                    <div class="pricing-category-header">Treatments</div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Olaplex Treatment</span>
+                        <span class="pricing-item-price">from &pound;30</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Keratin Smoothing</span>
+                        <span class="pricing-item-price">from &pound;120</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Deep Conditioning Mask</span>
+                        <span class="pricing-item-price">from &pound;20</span>
+                    </div>
+                </div>
+                <div class="pricing-category">
+                    <div class="pricing-category-header">Men's Grooming</div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Men's Cut</span>
+                        <span class="pricing-item-price">from &pound;25</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Cut &amp; Beard Trim</span>
+                        <span class="pricing-item-price">from &pound;32</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Skin Fade</span>
+                        <span class="pricing-item-price">from &pound;28</span>
+                    </div>
+                </div>
+                <div class="pricing-category">
+                    <div class="pricing-category-header">Bridal</div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Bridal Hair Trial</span>
+                        <span class="pricing-item-price">from &pound;50</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Wedding Day Styling</span>
+                        <span class="pricing-item-price">from &pound;75</span>
+                    </div>
+                    <div class="pricing-item">
+                        <span class="pricing-item-name">Bridesmaid Styling</span>
+                        <span class="pricing-item-price">from &pound;45</span>
+                    </div>
+                </div>
+            </div>
+            <p class="pricing-note reveal">Prices may vary depending on hair length and density. A consultation is always included.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Meet the Team</h2>
+                <div class="section-divider"></div>
+                <p>Our talented stylists bring years of experience and a genuine passion for making you look incredible.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-photo">
+                        <span class="team-photo-initial">SC</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>Sarah Collins</h3>
+                        <p class="role">Senior Stylist &amp; Colourist</p>
+                        <p>With over 12 years in the industry, Sarah specialises in balayage and transformative colour work. She's the one you want for a total hair refresh.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-photo">
+                        <span class="team-photo-initial">JM</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>James Murray</h3>
+                        <p class="role">Creative Director</p>
+                        <p>James has trained in London and Milan, bringing international flair to everything he does. His precision cuts and editorial styling are second to none.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-photo">
+                        <span class="team-photo-initial">EO</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>Emma O'Neill</h3>
+                        <p class="role">Bridal &amp; Occasion Specialist</p>
+                        <p>Emma is our go-to for bridal hair and special occasion styling. She's styled over 200 brides and brings calm energy to even the busiest wedding mornings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What Our Clients Say</h2>
+                <div class="section-divider"></div>
+                <p>Don't just take our word for it. Here's what our clients think about their experience with us.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">I've been coming to Andrew Watson's for years and I wouldn't go anywhere else. Sarah did my balayage last month and it's the best my hair has ever looked. The whole team makes you feel so welcome.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LM</div>
+                        <div>
+                            <div class="testimonial-name">Laura McBride</div>
+                            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Found this place when I moved to Belfast and I'm so glad I did. James gave me the best cut I've had in years. Great atmosphere, friendly staff, and they actually listen to what you want.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RK</div>
+                        <div>
+                            <div class="testimonial-name">Rachel Kelly</div>
+                            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Emma did my wedding hair and all four bridesmaids. Every single one of us felt amazing. She was calm, professional and so talented. Couldn't recommend this salon more highly.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CH</div>
+                        <div>
+                            <div class="testimonial-name">Claire Hamilton</div>
+                            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Book an Appointment</h2>
+                <div class="section-divider"></div>
+                <p>Ready for your next visit? Get in touch and we'll find the perfect time for you.</p>
+            </div>
+            <div class="booking-wrapper reveal">
+                <div class="booking-info">
+                    <h3>Get in Touch</h3>
+                    <p>Give us a call or fill in the form and we'll get back to you as soon as we can. Walk-ins are welcome when availability allows, but we'd always recommend booking ahead.</p>
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">&#9742;</div>
+                        <div class="booking-detail-text">
+                            <strong>Phone</strong>
+                            <span><a href="tel:+442890663539">+44 (0)28 9066 3539</a></span>
+                        </div>
+                    </div>
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">&#9993;</div>
+                        <div class="booking-detail-text">
+                            <strong>Email</strong>
+                            <span><a href="mailto:info@andrewwatsonhair.com">info@andrewwatsonhair.com</a></span>
+                        </div>
+                    </div>
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">&#9872;</div>
+                        <div class="booking-detail-text">
+                            <strong>Location</strong>
+                            <span>Lisburn Road, Belfast</span>
+                        </div>
+                    </div>
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">&#9201;</div>
+                        <div class="booking-detail-text">
+                            <strong>Opening Hours</strong>
+                            <span>Mon-Sat: 9am - 6pm | Thu: 9am - 8pm</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="booking-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="cut-blowdry">Ladies' Cut & Blow Dry</option>
+                            <option value="restyle">Restyle / Transformation</option>
+                            <option value="blowdry">Blow Dry & Finish</option>
+                            <option value="full-colour">Full Head Colour</option>
+                            <option value="highlights">Highlights</option>
+                            <option value="balayage">Balayage / Ombre</option>
+                            <option value="treatment">Hair Treatment</option>
+                            <option value="bridal">Bridal Hair</option>
+                            <option value="mens-cut">Men's Cut</option>
+                            <option value="mens-beard">Cut & Beard Trim</option>
+                            <option value="other">Other / Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Additional Notes</label>
+                        <textarea id="message" name="message" placeholder="Let us know if you have any preferences or questions..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Request Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Andrew <span>Watson</span></h3>
+                    <p>Belfast's premier hairdressing salon, proudly based on the Lisburn Road. Dedicated to making every client look and feel extraordinary.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul class="footer-hours">
+                        <li>Monday <span>9am - 6pm</span></li>
+                        <li>Tuesday <span>9am - 6pm</span></li>
+                        <li>Wednesday <span>9am - 6pm</span></li>
+                        <li>Thursday <span>9am - 8pm</span></li>
+                        <li>Friday <span>9am - 6pm</span></li>
+                        <li>Saturday <span>9am - 5pm</span></li>
+                        <li>Sunday <span>Closed</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Andrew Watson Hairdressing. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook">Fb</a>
+                    <a href="#" aria-label="Instagram">Ig</a>
+                    <a href="#" aria-label="TikTok">Tk</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neocode-popup-overlay" id="neocodeOverlay"></div>
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+        <h3>Like What <span>You See?</span></h3>
+        <p>This demo was built by NeoCode Studio. We design high-converting, modern websites for local businesses across the UK. Want something like this for your brand?</p>
+        <a href="https://neocodestudio.co.uk" target="_blank" class="btn btn-primary">Visit NeoCode Studio</a>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+    <script>
+        /* ========== HAMBURGER MENU ========== */
+        (function() {
+            var hamburger = document.getElementById('hamburger');
+            var navLinks = document.getElementById('navLinks');
+            var links = navLinks.querySelectorAll('a');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            }
+        })();
+
+        /* ========== NAVBAR SCROLL EFFECT ========== */
+        (function() {
+            var navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 80) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        })();
+
+        /* ========== INTERSECTION OBSERVER - REVEAL ANIMATIONS ========== */
+        (function() {
+            var revealElements = document.querySelectorAll('.reveal');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                revealElements.forEach(function(el) {
+                    el.classList.add('active');
+                });
+            }
+        })();
+
+        /* ========== NEOCODE POPUP AT 70% SCROLL ========== */
+        (function() {
+            var popupShown = false;
+            var popup = document.getElementById('neocodePopup');
+            var overlay = document.getElementById('neocodeOverlay');
+            var closeBtn = document.getElementById('neocodeClose');
+
+            function getScrollPercent() {
+                var h = document.documentElement;
+                var b = document.body;
+                var scrollTop = h.scrollTop || b.scrollTop;
+                var scrollHeight = h.scrollHeight || b.scrollHeight;
+                var clientHeight = h.clientHeight;
+                return (scrollTop / (scrollHeight - clientHeight)) * 100;
+            }
+
+            function showPopup() {
+                popup.classList.add('show');
+                overlay.classList.add('show');
+            }
+
+            function hidePopup() {
+                popup.classList.remove('show');
+                overlay.classList.remove('show');
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!popupShown && getScrollPercent() >= 70) {
+                    popupShown = true;
+                    showPopup();
+                }
+            });
+
+            closeBtn.addEventListener('click', hidePopup);
+            overlay.addEventListener('click', hidePopup);
+        })();
+
+        /* ========== BACK TO TOP BUTTON ========== */
+        (function() {
+            var btn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 600) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+
+            btn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+
+        /* ========== FORM HANDLER ========== */
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            var form = e.target;
+            var btn = form.querySelector('button[type="submit"]');
+            var originalText = btn.textContent;
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            // Simulate form submission (demo purposes)
+            setTimeout(function() {
+                btn.textContent = 'Request Sent!';
+                btn.style.background = '#4a9e6d';
+                btn.style.opacity = '1';
+                form.reset();
+
+                setTimeout(function() {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        }
+
+        /* ========== SMOOTH SCROLL POLYFILL (basic) ========== */
+        (function() {
+            var anchors = document.querySelectorAll('a[href^="#"]');
+
+            anchors.forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

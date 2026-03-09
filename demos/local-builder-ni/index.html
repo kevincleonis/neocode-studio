@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Builder NI | Northern Ireland's Trusted Building Experts</title>
+  <meta name="description" content="Professional building contractor in Belfast, Northern Ireland. Extensions, renovations, kitchens, bathrooms, roofing and more. Free quotes available.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --steel-blue: #475569;
+      --orange: #EA580C;
+      --orange-hover: #C2410C;
+      --off-white: #F8FAFC;
+      --dark-graphite: #1E293B;
+      --light-gray: #E2E8F0;
+      --mid-gray: #94A3B8;
+      --white: #FFFFFF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      color: var(--dark-graphite);
+      background: var(--off-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Lexend', sans-serif;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--dark-graphite);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--steel-blue);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-family: 'Lexend', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--dark-graphite);
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0 20px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--light-gray);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 1001;
+    }
+
+    .hamburger .bar {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 3px;
+      transition: all 0.35s ease;
+    }
+
+    .hamburger .bar:nth-child(1) {
+      margin-bottom: 5px;
+    }
+
+    .hamburger .bar:nth-child(3) {
+      margin-top: 5px;
+    }
+
+    .hamburger.open .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--dark-graphite);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        transition: right 0.4s ease;
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.15rem;
+      }
+
+      .nav-cta {
+        display: inline-block;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(145deg, var(--dark-graphite) 0%, #0F172A 60%, #0C1222 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(71, 85, 105, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(234, 88, 12, 0.15);
+      color: var(--orange);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      border: 1px solid rgba(234, 88, 12, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--mid-gray);
+      margin-bottom: 36px;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-stat h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .hero-stat p {
+      font-size: 0.85rem;
+      color: var(--mid-gray);
+      margin-bottom: 0;
+    }
+
+    .hero-accent {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45%;
+      height: 70%;
+      background: linear-gradient(135deg, rgba(234, 88, 12, 0.06) 0%, transparent 100%);
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .hero-stat h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      background: linear-gradient(135deg, var(--steel-blue) 0%, var(--dark-graphite) 100%);
+      border-radius: 12px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image-text {
+      color: var(--white);
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--orange);
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .about-text p {
+      color: var(--steel-blue);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .about-feature .check {
+      width: 24px;
+      height: 24px;
+      background: rgba(234, 88, 12, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-image {
+        height: 260px;
+      }
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--off-white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid var(--light-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(234, 88, 12, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--steel-blue);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      background: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      height: 260px;
+    }
+
+    .gallery-item .placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lexend', sans-serif;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 1rem;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover .placeholder {
+      transform: scale(1.05);
+    }
+
+    .gallery-item:nth-child(1) .placeholder { background: linear-gradient(135deg, #475569, #334155); }
+    .gallery-item:nth-child(2) .placeholder { background: linear-gradient(135deg, #EA580C, #C2410C); }
+    .gallery-item:nth-child(3) .placeholder { background: linear-gradient(135deg, #1E293B, #0F172A); }
+    .gallery-item:nth-child(4) .placeholder { background: linear-gradient(135deg, #C2410C, #9A3412); }
+    .gallery-item:nth-child(5) .placeholder { background: linear-gradient(135deg, #334155, #1E293B); }
+    .gallery-item:nth-child(6) .placeholder { background: linear-gradient(135deg, #475569, #64748B); }
+
+    .gallery-item .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .why-us {
+      background: var(--dark-graphite);
+      color: var(--white);
+    }
+
+    .why-us .section-title {
+      color: var(--white);
+    }
+
+    .why-us .section-subtitle {
+      color: var(--mid-gray);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .why-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .why-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(234, 88, 12, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.6rem;
+    }
+
+    .why-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: var(--mid-gray);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: var(--off-white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 32px;
+      border: 1px solid var(--light-gray);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Lexend', sans-serif;
+      font-size: 4rem;
+      color: var(--orange);
+      opacity: 0.2;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .testimonial-stars {
+      color: var(--orange);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--steel-blue);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--steel-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .testimonial-location {
+      font-size: 0.8rem;
+      color: var(--mid-gray);
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== COVERAGE ===== */
+    .coverage {
+      background: var(--white);
+    }
+
+    .coverage-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .coverage-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .coverage-text p {
+      color: var(--steel-blue);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .coverage-areas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .area-tag {
+      background: var(--off-white);
+      border: 1px solid var(--light-gray);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--dark-graphite);
+      transition: all 0.3s ease;
+    }
+
+    .area-tag:hover {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+
+    .coverage-map {
+      background: linear-gradient(135deg, var(--steel-blue), var(--dark-graphite));
+      border-radius: 12px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: 'Lexend', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .coverage-content {
+        grid-template-columns: 1fr;
+      }
+
+      .coverage-map {
+        height: 240px;
+      }
+    }
+
+    /* ===== QUOTE FORM ===== */
+    .quote {
+      background: linear-gradient(145deg, var(--dark-graphite) 0%, #0F172A 100%);
+      color: var(--white);
+    }
+
+    .quote .section-title {
+      color: var(--white);
+    }
+
+    .quote .section-subtitle {
+      color: var(--mid-gray);
+    }
+
+    .quote-form {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--light-gray);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--mid-gray);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+
+    .form-group select option {
+      background: var(--dark-graphite);
+      color: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .form-submit .btn {
+      width: 100%;
+      max-width: 300px;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+    }
+
+    @media (max-width: 480px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: var(--orange);
+      color: var(--white);
+      text-align: center;
+      padding: 56px 20px;
+    }
+
+    .cta-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      opacity: 0.9;
+    }
+
+    .cta-banner .btn {
+      background: var(--white);
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .cta-banner .btn:hover {
+      background: var(--dark-graphite);
+      color: var(--white);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--dark-graphite);
+      color: var(--light-gray);
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .nav-logo {
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--mid-gray);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer h4 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--mid-gray);
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    .footer-contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      color: var(--mid-gray);
+    }
+
+    .footer-contact .icon {
+      color: var(--orange);
+      font-weight: 700;
+      flex-shrink: 0;
+      width: 20px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--mid-gray);
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== NEOCODE POPUP ===== */
+    .neocode-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+      padding: 24px;
+      max-width: 320px;
+      z-index: 999;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .neocode-popup.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .neocode-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--mid-gray);
+      transition: color 0.3s ease;
+    }
+
+    .neocode-popup-close:hover {
+      color: var(--dark-graphite);
+    }
+
+    .neocode-popup h4 {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem;
+      color: var(--dark-graphite);
+      margin-bottom: 8px;
+    }
+
+    .neocode-popup p {
+      font-size: 0.85rem;
+      color: var(--steel-blue);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .neocode-popup a {
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .neocode-popup a:hover {
+      color: var(--orange-hover);
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--orange-hover);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Local Builder <span>NI</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Projects</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#coverage">Areas</a>
+        <a href="#quote" class="nav-cta btn btn-primary">Free Quote</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-accent"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Serving Belfast &amp; All of Northern Ireland</div>
+        <h1>Northern Ireland's Trusted <span>Building Experts</span></h1>
+        <p>From home extensions and full renovations to kitchens, bathrooms and commercial fit-outs, we deliver quality craftsmanship you can rely on. Fully insured, competitively priced, and built to last.</p>
+        <div class="hero-buttons">
+          <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+          <a href="tel:07711133475" class="btn btn-outline">Call 07711 133 475</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3>15+</h3>
+            <p>Years Experience</p>
+          </div>
+          <div class="hero-stat">
+            <h3>500+</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="hero-stat">
+            <h3>100%</h3>
+            <p>Fully Insured</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section-padding" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="about-image-text">Project Photo</div>
+        </div>
+        <div class="about-text reveal">
+          <h2>Building Better Homes Across Northern Ireland</h2>
+          <p>Local Builder NI is a family-run building contractor based in the Belfast area, with over 15 years of hands-on experience in residential and commercial construction throughout Northern Ireland.</p>
+          <p>We take pride in delivering honest, high-quality work at fair prices. Whether it's a single-room renovation or a full house build, every project gets the same attention to detail and professional finish our customers have come to expect.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <span class="check">&#10003;</span>
+              <span>Fully Insured</span>
+            </div>
+            <div class="about-feature">
+              <span class="check">&#10003;</span>
+              <span>Free Quotations</span>
+            </div>
+            <div class="about-feature">
+              <span class="check">&#10003;</span>
+              <span>Local & Reliable</span>
+            </div>
+            <div class="about-feature">
+              <span class="check">&#10003;</span>
+              <span>Clean & Tidy Sites</span>
+            </div>
+            <div class="about-feature">
+              <span class="check">&#10003;</span>
+              <span>Fair, Honest Pricing</span>
+            </div>
+            <div class="about-feature">
+              <span class="check">&#10003;</span>
+              <span>Quality Guaranteed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services section-padding" id="services">
+    <div class="container">
+      <h2 class="section-title reveal">What We Do</h2>
+      <p class="section-subtitle reveal">Comprehensive building services for homes and businesses across Northern Ireland</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#127970;</div>
+          <h3>Extensions</h3>
+          <p>Single and double storey extensions to give your home the extra space it needs. Designed and built to your exact specifications.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#128296;</div>
+          <h3>Renovations</h3>
+          <p>Full house renovations and refurbishments. We'll transform tired properties into beautiful, modern living spaces.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127859;</div>
+          <h3>Kitchens</h3>
+          <p>Complete kitchen installations from design to finish, including plumbing, electrics, tiling and fitted units.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#128705;</div>
+          <h3>Bathrooms</h3>
+          <p>Full bathroom refits and wet room installations. Quality fixtures and fittings with expert plumbing throughout.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127968;</div>
+          <h3>Roofing</h3>
+          <p>Roof repairs, replacements and new roof installations. Slate, tile and flat roofing work carried out to the highest standard.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#129521;</div>
+          <h3>Plastering</h3>
+          <p>Internal and external plastering, skimming, rendering and K-rend finishes for a flawless result every time.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#128739;</div>
+          <h3>Driveways</h3>
+          <p>Block paving, tarmac, gravel and concrete driveways. We also handle patios, paths and all groundwork.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127963;</div>
+          <h3>Commercial</h3>
+          <p>Shop fit-outs, office refurbishments and commercial builds. Reliable service with minimal disruption to your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery section-padding" id="gallery">
+    <div class="container">
+      <h2 class="section-title reveal">Our Recent Projects</h2>
+      <p class="section-subtitle reveal">A selection of completed work from across Belfast and Northern Ireland</p>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <div class="placeholder">Kitchen Renovation</div>
+          <div class="overlay">Modern Kitchen - Belfast</div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="placeholder">Rear Extension</div>
+          <div class="overlay">Two Storey Extension - Lisburn</div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="placeholder">Bathroom Refit</div>
+          <div class="overlay">Luxury Bathroom - Bangor</div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="placeholder">Driveway Paving</div>
+          <div class="overlay">Block Paving - Newtownards</div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="placeholder">Commercial Fit-Out</div>
+          <div class="overlay">Retail Unit - Belfast City Centre</div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="placeholder">Full Renovation</div>
+          <div class="overlay">Period Property - Holywood</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE US ===== -->
+  <section class="why-us section-padding" id="why-us">
+    <div class="container">
+      <h2 class="section-title reveal">Why Choose Local Builder NI?</h2>
+      <p class="section-subtitle reveal">Here's what sets us apart from the rest</p>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">&#128737;</div>
+          <h3>Fully Insured</h3>
+          <p>Complete public liability insurance for your total peace of mind on every job we undertake.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">&#11088;</div>
+          <h3>Experienced Team</h3>
+          <p>Over 15 years of building experience across residential and commercial projects in Northern Ireland.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">&#128205;</div>
+          <h3>Locally Based</h3>
+          <p>A Belfast-area contractor who knows the local market, suppliers and regulations inside out.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">&#10024;</div>
+          <h3>Clean &amp; Tidy</h3>
+          <p>We respect your property. Every site is left clean and tidy at the end of each working day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials section-padding" id="testimonials">
+    <div class="container">
+      <h2 class="section-title reveal">What Our Customers Say</h2>
+      <p class="section-subtitle reveal">Don't just take our word for it</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Brilliant job on our kitchen extension. The lads were professional from day one, kept the site tidy and finished on time. Couldn't recommend them enough."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SM</div>
+            <div>
+              <div class="testimonial-name">Sean M.</div>
+              <div class="testimonial-location">Belfast, BT9</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"We had our entire downstairs renovated and it's like a new house. Fair price, no hidden costs, and the quality of work is top class. Would use again in a heartbeat."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">CM</div>
+            <div>
+              <div class="testimonial-name">Claire M.</div>
+              <div class="testimonial-location">Lisburn, BT27</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Needed urgent roof repairs after the storms and these lads came out the next day. Problem sorted quickly and professionally. Really grateful for the fast response."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">PD</div>
+            <div>
+              <div class="testimonial-name">Patrick D.</div>
+              <div class="testimonial-location">Bangor, BT20</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COVERAGE AREAS ===== -->
+  <section class="coverage section-padding" id="coverage">
+    <div class="container">
+      <h2 class="section-title reveal">Areas We Cover</h2>
+      <p class="section-subtitle reveal">Proudly serving communities across Northern Ireland</p>
+      <div class="coverage-content">
+        <div class="coverage-text reveal">
+          <h3>Based in Belfast, Working Across NI</h3>
+          <p>We're a local building contractor covering Belfast and the surrounding areas. No job is too far if the project is right. Get in touch to find out if we cover your area.</p>
+          <div class="coverage-areas">
+            <span class="area-tag">Belfast</span>
+            <span class="area-tag">Lisburn</span>
+            <span class="area-tag">Bangor</span>
+            <span class="area-tag">Newtownards</span>
+            <span class="area-tag">Holywood</span>
+            <span class="area-tag">Carrickfergus</span>
+            <span class="area-tag">Newtownabbey</span>
+            <span class="area-tag">Dundonald</span>
+            <span class="area-tag">Comber</span>
+            <span class="area-tag">Hillsborough</span>
+            <span class="area-tag">Dromore</span>
+            <span class="area-tag">Antrim</span>
+            <span class="area-tag">Ballymena</span>
+            <span class="area-tag">Downpatrick</span>
+          </div>
+        </div>
+        <div class="coverage-map reveal">
+          Northern Ireland Map
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <h2>Ready to Start Your Project?</h2>
+      <p>Get in touch today for a free, no-obligation quote on your next build.</p>
+      <a href="#quote" class="btn">Get Your Free Quote</a>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE FORM ===== -->
+  <section class="quote section-padding" id="quote">
+    <div class="container">
+      <h2 class="section-title reveal">Get a Free Quote</h2>
+      <p class="section-subtitle reveal">Tell us about your project and we'll get back to you within 24 hours</p>
+      <form class="quote-form reveal" id="quoteForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="location">Your Location</label>
+            <input type="text" id="location" name="location" placeholder="e.g. Belfast, Lisburn">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Required</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option value="extension">Extension</option>
+            <option value="renovation">Renovation</option>
+            <option value="kitchen">Kitchen</option>
+            <option value="bathroom">Bathroom</option>
+            <option value="roofing">Roofing</option>
+            <option value="plastering">Plastering</option>
+            <option value="driveway">Driveway / Paving</option>
+            <option value="commercial">Commercial</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Tell us a bit about what you need done..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary">Send My Quote Request</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">Local Builder <span>NI</span></a>
+          <p>A trusted, family-run building contractor based in the Belfast area. Delivering quality construction work across Northern Ireland for over 15 years.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Extensions</a></li>
+            <li><a href="#services">Renovations</a></li>
+            <li><a href="#services">Kitchens</a></li>
+            <li><a href="#services">Bathrooms</a></li>
+            <li><a href="#services">Roofing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#gallery">Our Work</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#coverage">Areas</a></li>
+            <li><a href="#quote">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <span class="icon">&#9742;</span>
+              <a href="tel:07711133475">07711 133 475</a>
+            </li>
+            <li>
+              <span class="icon">&#9993;</span>
+              <a href="mailto:ohara439@btinternet.com">ohara439@btinternet.com</a>
+            </li>
+            <li>
+              <span class="icon">&#9873;</span>
+              <span>Belfast Area, Northern Ireland</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Local Builder NI. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== NEOCODE POPUP ===== -->
+  <div class="neocode-popup" id="neocodePopup">
+    <button class="neocode-popup-close" id="neocodeClose">&times;</button>
+    <h4>Like this website design?</h4>
+    <p>This demo was built by NeoCode Studio. We create high-converting websites for local businesses across the UK.</p>
+    <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">Visit NeoCode Studio &rarr;</a>
+  </div>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
+
+  <script>
+    /* ===== MOBILE NAV ===== */
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var links = navLinks.querySelectorAll('a');
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+      });
+
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          navLinks.classList.remove('open');
+        });
+      });
+    })();
+
+    /* ===== NAVBAR SCROLL ===== */
+    (function() {
+      var navbar = document.getElementById('navbar');
+      var scrollTop = document.getElementById('scrollTop');
+
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY || window.pageYOffset;
+
+        if (scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+
+        if (scrollY > 600) {
+          scrollTop.classList.add('visible');
+        } else {
+          scrollTop.classList.remove('visible');
+        }
+      });
+
+      scrollTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    /* ===== INTERSECTION OBSERVER REVEAL ===== */
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        reveals.forEach(function(el) {
+          el.classList.add('active');
+        });
+      }
+    })();
+
+    /* ===== NEOCODE POPUP AT 70% SCROLL ===== */
+    (function() {
+      var popup = document.getElementById('neocodePopup');
+      var closeBtn = document.getElementById('neocodeClose');
+      var shown = false;
+      var dismissed = false;
+
+      window.addEventListener('scroll', function() {
+        if (dismissed || shown) return;
+
+        var scrollY = window.scrollY || window.pageYOffset;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var scrollPercent = (scrollY / docHeight) * 100;
+
+        if (scrollPercent >= 70) {
+          popup.classList.add('visible');
+          shown = true;
+        }
+      });
+
+      closeBtn.addEventListener('click', function() {
+        popup.classList.remove('visible');
+        dismissed = true;
+      });
+    })();
+
+    /* ===== FORM HANDLING ===== */
+    (function() {
+      var form = document.getElementById('quoteForm');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var name = document.getElementById('name').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var email = document.getElementById('email').value.trim();
+
+        if (!name || !phone || !email) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        setTimeout(function() {
+          btn.textContent = 'Quote Request Sent!';
+          btn.style.background = '#16A34A';
+          form.reset();
+
+          setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        }, 1200);
+      });
+    })();
+
+    /* ===== SMOOTH SCROLL POLYFILL FOR OLDER BROWSERS ===== */
+    (function() {
+      var anchors = document.querySelectorAll('a[href^="#"]');
+
+      anchors.forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          var target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            var offset = target.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
