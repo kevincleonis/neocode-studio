@@ -1,1552 +1,1486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mototech Garage Portsmouth - Trusted MOT testing, full servicing, brakes, diagnostics and repairs. Unit 8 Warren Avenue Industrial Estate, PO4 8PY. Call 02392 874784.">
-  <title>Mototech Garage Portsmouth | MOT Testing & Auto Repairs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --gunmetal: #2B3A42;
-      --blue: #0096FF;
-      --white: #FFFFFF;
-      --amber: #FBBF24;
-      --gunmetal-light: #3a4f5a;
-      --gunmetal-dark: #1e2a31;
-      --blue-dark: #0077cc;
-      --grey-light: #f4f6f7;
-      --grey-mid: #e0e4e6;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      color: var(--gunmetal);
-      background: var(--white);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Barlow', sans-serif;
-      line-height: 1.2;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* ========== HEADER / NAV ========== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: var(--gunmetal);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-      transition: background 0.3s ease;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 0;
-    }
-
-    .logo {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      color: var(--white);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: var(--blue);
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--white);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--blue);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--blue);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      background: var(--blue);
-      color: var(--white) !important;
-      padding: 0.6rem 1.4rem;
-      border-radius: 4px;
-      font-weight: 700;
-      font-family: 'Barlow', sans-serif;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--blue-dark);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta::after {
-      display: none !important;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-      z-index: 1001;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--gunmetal-dark);
-        flex-direction: column;
-        padding: 5rem 2rem 2rem;
-        gap: 1.5rem;
-        transition: right 0.3s ease;
-        box-shadow: -4px 0 20px rgba(0,0,0,0.4);
-      }
-
-      .nav-links.open {
-        right: 0;
-      }
-
-      .nav-links a {
-        font-size: 1.1rem;
-      }
-    }
-
-    /* ========== HERO ========== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background: linear-gradient(135deg, var(--gunmetal-dark) 0%, var(--gunmetal) 50%, #1a2e38 100%);
-      overflow: hidden;
-      padding: 6rem 0 4rem;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0,150,255,0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(0,150,255,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(0,150,255,0.15);
-      border: 1px solid rgba(0,150,255,0.3);
-      color: var(--blue);
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      color: var(--white);
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
-
-    .hero h1 .highlight {
-      color: var(--blue);
-    }
-
-    .hero p {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: rgba(255,255,255,0.7);
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      font-weight: 300;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--blue);
-      color: var(--white);
-      padding: 1rem 2.5rem;
-      border-radius: 4px;
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,150,255,0.3);
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      background: transparent;
-      color: var(--white);
-      padding: 1rem 2.5rem;
-      border-radius: 4px;
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: 2px solid rgba(255,255,255,0.3);
-      transition: border-color 0.3s, color 0.3s, transform 0.2s;
-      cursor: pointer;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      transform: translateY(-2px);
-    }
-
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-
-    .scroll-indicator span {
-      display: block;
-      width: 24px;
-      height: 24px;
-      border-right: 2px solid rgba(255,255,255,0.4);
-      border-bottom: 2px solid rgba(255,255,255,0.4);
-      transform: rotate(45deg);
-      animation: scrollBounce 2s infinite;
-    }
-
-    @keyframes scrollBounce {
-      0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.4; }
-      50% { transform: rotate(45deg) translate(6px, 6px); opacity: 1; }
-    }
-
-    /* ========== SECTION SHARED ========== */
-    section {
-      padding: 5rem 0;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      color: var(--gunmetal);
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-      font-weight: 800;
-    }
-
-    .section-header .underline {
-      width: 60px;
-      height: 4px;
-      background: var(--blue);
-      margin: 0 auto 1rem;
-      border-radius: 2px;
-    }
-
-    .section-header p {
-      color: #6b7c85;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Reveal animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ========== ABOUT ========== */
-    .about {
-      background: var(--white);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-image {
-      background: linear-gradient(135deg, var(--gunmetal) 0%, var(--gunmetal-light) 100%);
-      border-radius: 8px;
-      height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-image .wrench-icon {
-      font-size: 6rem;
-      opacity: 0.15;
-      position: absolute;
-    }
-
-    .about-image .stat-box {
-      background: rgba(0,150,255,0.9);
-      color: var(--white);
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .about-image .stat-box .number {
-      font-family: 'Barlow', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .about-image .stat-box .label {
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 0.25rem;
-    }
-
-    .about-text h2 {
-      font-size: 2rem;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-
-    .about-text h2 span {
-      color: var(--blue);
-    }
-
-    .about-text p {
-      color: #5a6b75;
-      margin-bottom: 1rem;
-      font-size: 1.02rem;
-    }
-
-    .about-text ul {
-      list-style: none;
-      margin-top: 1.5rem;
-    }
-
-    .about-text ul li {
-      padding: 0.4rem 0;
-      padding-left: 1.8rem;
-      position: relative;
-      color: #5a6b75;
-    }
-
-    .about-text ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px;
-      height: 10px;
-      background: var(--blue);
-      border-radius: 50%;
-    }
-
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .about-image {
-        height: 250px;
-      }
-    }
-
-    /* ========== SERVICES ========== */
-    .services {
-      background: var(--grey-light);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid var(--grey-mid);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--blue);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.1);
-    }
-
-    .service-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(0,150,255,0.1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.2rem;
-      font-size: 1.6rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.6rem;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .service-card p {
-      font-size: 0.92rem;
-      color: #6b7c85;
-      line-height: 1.5;
-    }
-
-    /* ========== WHY CHOOSE US ========== */
-    .why-us {
-      background: var(--gunmetal);
-      color: var(--white);
-    }
-
-    .why-us .section-header h2 {
-      color: var(--white);
-    }
-
-    .why-us .section-header p {
-      color: rgba(255,255,255,0.6);
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-    }
-
-    .why-card {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: background 0.3s;
-    }
-
-    .why-card:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .why-icon {
-      width: 70px;
-      height: 70px;
-      background: rgba(0,150,255,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.2rem;
-      font-size: 1.8rem;
-      border: 2px solid rgba(0,150,255,0.3);
-    }
-
-    .why-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.6rem;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .why-card p {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.5;
-    }
-
-    /* ========== TESTIMONIALS ========== */
-    .testimonials {
-      background: var(--white);
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .testimonial-card {
-      background: var(--grey-light);
-      border-radius: 8px;
-      padding: 2rem;
-      position: relative;
-      border: 1px solid var(--grey-mid);
-      transition: box-shadow 0.3s;
-    }
-
-    .testimonial-card:hover {
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-
-    .testimonial-card .quote-mark {
-      font-size: 3rem;
-      color: var(--blue);
-      opacity: 0.3;
-      font-family: Georgia, serif;
-      line-height: 1;
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-    }
-
-    .testimonial-card .stars {
-      color: var(--amber);
-      font-size: 1.1rem;
-      margin-bottom: 0.8rem;
-      letter-spacing: 2px;
-    }
-
-    .testimonial-card .review-text {
-      font-size: 0.95rem;
-      color: #5a6b75;
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-      font-style: italic;
-    }
-
-    .testimonial-card .reviewer {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .reviewer-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .reviewer-info .name {
-      font-weight: 700;
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.95rem;
-    }
-
-    .reviewer-info .source {
-      font-size: 0.8rem;
-      color: #8a9ba5;
-    }
-
-    /* ========== LOCATION ========== */
-    .location {
-      background: var(--grey-light);
-    }
-
-    .location-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .location-info h3 {
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
-    .location-detail {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .location-detail .icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      background: rgba(0,150,255,0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-
-    .location-detail .text strong {
-      display: block;
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .location-detail .text span,
-    .location-detail .text a {
-      font-size: 0.92rem;
-      color: #5a6b75;
-    }
-
-    .location-detail .text a:hover {
-      color: var(--blue);
-    }
-
-    .location-map {
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .location-map iframe {
-      width: 100%;
-      height: 350px;
-      border: 0;
-    }
-
-    @media (max-width: 768px) {
-      .location-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ========== BOOKING FORM ========== */
-    .booking {
-      background: var(--white);
-    }
-
-    .booking-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      background: var(--gunmetal);
-      border-radius: 12px;
-      padding: 3rem;
-      color: var(--white);
-    }
-
-    .booking-wrapper h3 {
-      text-align: center;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .booking-wrapper .form-subtitle {
-      text-align: center;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
-
-    .form-group label {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.4rem;
-      color: rgba(255,255,255,0.8);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: 0.85rem 1rem;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 4px;
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
-      font-family: 'Roboto', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color 0.3s;
-      outline: none;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.35);
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--blue);
-    }
-
-    .form-group select option {
-      background: var(--gunmetal);
-      color: var(--white);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .form-submit {
-      text-align: center;
-      margin-top: 1.5rem;
-    }
-
-    .form-submit .btn-primary {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1.05rem;
-    }
-
-    @media (max-width: 600px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .booking-wrapper {
-        padding: 2rem 1.5rem;
-      }
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      background: var(--gunmetal-dark);
-      color: rgba(255,255,255,0.6);
-      padding: 3rem 0 1.5rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-brand .logo {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-
-    .footer-col h4 {
-      color: var(--white);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col ul li a {
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .footer-col ul li a:hover {
-      color: var(--blue);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    @media (max-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-    }
-
-    /* ========== NEOCODE POPUP ========== */
-    .neocode-popup {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      padding: 1.5rem;
-      max-width: 320px;
-      z-index: 9999;
-      transform: translateY(150%);
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      border: 1px solid var(--grey-mid);
-    }
-
-    .neocode-popup.show {
-      transform: translateY(0);
-    }
-
-    .neocode-popup .popup-close {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.75rem;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: #999;
-      line-height: 1;
-    }
-
-    .neocode-popup .popup-close:hover {
-      color: var(--gunmetal);
-    }
-
-    .neocode-popup h4 {
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-      color: var(--gunmetal);
-    }
-
-    .neocode-popup p {
-      font-size: 0.85rem;
-      color: #6b7c85;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
-    .neocode-popup a.popup-link {
-      display: inline-block;
-      background: var(--blue);
-      color: var(--white);
-      padding: 0.5rem 1.2rem;
-      border-radius: 4px;
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: background 0.3s;
-    }
-
-    .neocode-popup a.popup-link:hover {
-      background: var(--blue-dark);
-    }
-
-    /* ========== UTILITY ========== */
-    .text-blue { color: var(--blue); }
-    .text-amber { color: var(--amber); }
-    .bg-dark { background: var(--gunmetal); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mototech Garage Portsmouth | MOT, Servicing & Repairs</title>
+<meta name="description" content="Mototech Garage Portsmouth - Expert MOT testing, servicing and repairs for all makes and models. Unit 8 Warren Avenue Industrial Estate, PO4 8PY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gunmetal:#2B3A42;
+--gunmetal-dark:#1a272e;
+--gunmetal-light:#3d5260;
+--blue:#0096FF;
+--blue-glow:rgba(0,150,255,.35);
+--blue-soft:rgba(0,150,255,.1);
+--amber:#FBBF24;
+--amber-dark:#d4a017;
+--white:#FFFFFF;
+--off-white:#F0F4F8;
+--gray:#94A3B8;
+--dark:#0f1a20;
+--radius:12px;
+--shadow:0 4px 24px rgba(0,0,0,.12);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Roboto',sans-serif;color:var(--gunmetal);background:var(--white);overflow-x:hidden;line-height:1.7}
+h1,h2,h3,h4,h5,h6{font-family:'Barlow',sans-serif;font-weight:800;line-height:1.15}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Blueprint Pattern */
+.blueprint-bg{
+position:relative;
+background-color:var(--gunmetal-dark);
+}
+.blueprint-bg::before{
+content:'';
+position:absolute;inset:0;
+background-image:
+  linear-gradient(rgba(0,150,255,.07) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0,150,255,.07) 1px, transparent 1px),
+  linear-gradient(rgba(0,150,255,.04) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0,150,255,.04) 1px, transparent 1px);
+background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+pointer-events:none;
+z-index:0;
+}
+.blueprint-bg>*{position:relative;z-index:1}
+
+/* Warning Stripe */
+.warning-stripe{
+background:repeating-linear-gradient(
+  -45deg,
+  var(--amber),var(--amber) 12px,
+  var(--gunmetal-dark) 12px,var(--gunmetal-dark) 24px
+);
+height:6px;
+width:100%;
+}
+
+/* ===== NAVIGATION ===== */
+.nav{
+position:fixed;top:0;left:0;width:100%;z-index:1000;
+background:rgba(15,26,32,.92);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(0,150,255,.15);
+transition:all .3s ease;
+}
+.nav.scrolled{background:rgba(15,26,32,.98);box-shadow:0 2px 32px rgba(0,0,0,.3)}
+.nav-inner{
+display:flex;align-items:center;justify-content:space-between;
+max-width:1200px;margin:0 auto;padding:16px 24px;
+}
+.nav-logo{
+font-family:'Barlow',sans-serif;font-weight:900;font-size:1.5rem;color:var(--white);
+display:flex;align-items:center;gap:10px;
+}
+.nav-logo .logo-icon{
+width:38px;height:38px;border-radius:8px;
+background:linear-gradient(135deg,var(--blue),var(--blue-glow));
+display:flex;align-items:center;justify-content:center;
+font-size:1.1rem;font-weight:900;color:var(--white);
+}
+.nav-logo span.accent{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{
+color:var(--gray);font-family:'Barlow',sans-serif;font-weight:600;font-size:.95rem;
+transition:color .25s;letter-spacing:.3px;
+}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{
+background:var(--blue);color:var(--white)!important;
+padding:10px 24px;border-radius:50px;font-weight:700;
+transition:all .25s;font-size:.9rem;
+}
+.nav-cta:hover{background:var(--amber);color:var(--gunmetal-dark)!important;transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:1001}
+.hamburger span{width:26px;height:3px;background:var(--white);border-radius:3px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+.mobile-menu{
+display:none;position:fixed;top:0;left:0;width:100%;height:100vh;
+background:rgba(15,26,32,.98);z-index:999;
+flex-direction:column;align-items:center;justify-content:center;gap:28px;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+color:var(--white);font-family:'Barlow',sans-serif;font-weight:700;font-size:1.4rem;
+transition:color .25s;
+}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* ===== HERO ===== */
+.hero{
+position:relative;min-height:100vh;display:flex;align-items:center;
+overflow:hidden;
+}
+.hero-bg{
+position:absolute;inset:0;z-index:0;
+}
+.hero-bg img{
+width:100%;height:100%;object-fit:cover;
+transform:perspective(800px) rotateY(-2deg) scale(1.08);
+transform-origin:center center;
+}
+.hero-overlay{
+position:absolute;inset:0;z-index:1;
+background:linear-gradient(135deg,rgba(15,26,32,.92) 0%,rgba(43,58,66,.75) 50%,rgba(15,26,32,.88) 100%);
+}
+.hero-grid{
+position:absolute;inset:0;z-index:2;
+background-image:
+  linear-gradient(rgba(0,150,255,.06) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0,150,255,.06) 1px, transparent 1px);
+background-size:60px 60px;
+animation:gridPulse 4s ease-in-out infinite alternate;
+}
+@keyframes gridPulse{
+0%{opacity:.5}100%{opacity:1}
+}
+.hero-content{
+position:relative;z-index:3;max-width:1200px;margin:0 auto;
+padding:140px 24px 80px;
+}
+.hero-badge{
+display:inline-flex;align-items:center;gap:8px;
+background:rgba(0,150,255,.15);border:1px solid rgba(0,150,255,.3);
+padding:8px 20px;border-radius:50px;
+color:var(--blue);font-family:'Barlow',sans-serif;font-weight:700;font-size:.85rem;
+letter-spacing:1px;text-transform:uppercase;
+margin-bottom:24px;
+animation:floatBadge 3s ease-in-out infinite;
+}
+@keyframes floatBadge{
+0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}
+}
+.hero-badge .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+font-size:clamp(2.5rem,6vw,4.5rem);color:var(--white);margin-bottom:20px;
+letter-spacing:-1px;
+}
+.hero h1 .highlight{
+color:var(--blue);
+position:relative;
+}
+.hero h1 .highlight::after{
+content:'';position:absolute;bottom:-4px;left:0;width:100%;height:4px;
+background:var(--amber);border-radius:2px;
+}
+.hero-sub{
+font-size:1.2rem;color:var(--gray);max-width:560px;margin-bottom:36px;
+line-height:1.8;font-weight:300;
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+.btn{
+display:inline-flex;align-items:center;gap:8px;
+padding:16px 36px;border-radius:50px;font-family:'Barlow',sans-serif;
+font-weight:700;font-size:1rem;transition:all .3s;cursor:pointer;border:none;
+}
+.btn-primary{
+background:var(--blue);color:var(--white);
+box-shadow:0 4px 24px rgba(0,150,255,.3);
+}
+.btn-primary:hover{background:#007ad9;transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,150,255,.4)}
+.btn-outline{
+background:transparent;color:var(--white);
+border:2px solid rgba(255,255,255,.25);
+}
+.btn-outline:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-3px)}
+.hero-trust{
+display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.hero-trust-item{
+display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);
+font-size:.9rem;font-weight:500;
+}
+.hero-trust-item svg{width:20px;height:20px;fill:var(--amber)}
+.mot-float-badge{
+position:absolute;right:8%;top:35%;z-index:4;
+background:var(--amber);color:var(--gunmetal-dark);
+padding:20px 28px;border-radius:16px;
+font-family:'Barlow',sans-serif;font-weight:900;font-size:1.1rem;
+text-align:center;
+box-shadow:0 8px 32px rgba(251,191,36,.3);
+animation:floatBadge 3.5s ease-in-out infinite;
+transform:rotate(3deg);
+}
+.mot-float-badge .mot-big{font-size:2.2rem;display:block;line-height:1}
+.mot-float-badge .mot-sub{font-size:.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ===== SECTION STYLING ===== */
+.section{padding:100px 0}
+.section-light{background:var(--off-white)}
+.section-dark{background:var(--gunmetal-dark);color:var(--white)}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header .tag{
+display:inline-block;
+background:var(--blue-soft);color:var(--blue);
+padding:6px 18px;border-radius:50px;
+font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;
+letter-spacing:1.5px;text-transform:uppercase;
+margin-bottom:16px;
+}
+.section-dark .tag{background:rgba(0,150,255,.2)}
+.section-header h2{
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:16px;
+}
+.section-header h2 .accent{color:var(--blue)}
+.section-dark .section-header h2{color:var(--white)}
+.section-header p{
+color:var(--gray);max-width:600px;margin:0 auto;font-size:1.05rem;
+}
+
+/* ===== ABOUT ===== */
+.about-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.about-img{
+position:relative;border-radius:var(--radius);overflow:hidden;
+box-shadow:var(--shadow);
+}
+.about-img img{width:100%;height:auto;display:block}
+.about-img::after{
+content:'';position:absolute;inset:0;
+border:3px solid var(--blue);border-radius:var(--radius);
+opacity:.3;
+}
+.about-exp-badge{
+position:absolute;bottom:20px;right:20px;
+background:var(--blue);color:var(--white);
+padding:16px 24px;border-radius:var(--radius);
+font-family:'Barlow',sans-serif;text-align:center;
+box-shadow:0 4px 20px rgba(0,150,255,.4);
+}
+.about-exp-badge .num{font-size:2rem;font-weight:900;display:block;line-height:1}
+.about-exp-badge .label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;opacity:.85}
+.about-text h2{font-size:2.2rem;margin-bottom:20px}
+.about-text h2 .accent{color:var(--blue)}
+.about-text p{color:#5a6d7a;margin-bottom:16px;font-size:1.02rem}
+.about-features{
+display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;
+}
+.about-feature{
+display:flex;align-items:center;gap:10px;
+font-family:'Barlow',sans-serif;font-weight:600;font-size:.95rem;color:var(--gunmetal);
+}
+.about-feature .check{
+width:28px;height:28px;border-radius:50%;
+background:var(--blue-soft);color:var(--blue);
+display:flex;align-items:center;justify-content:center;
+font-size:.8rem;flex-shrink:0;
+}
+
+/* ===== SERVICES ===== */
+.services-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+}
+.service-tile{
+background:var(--white);border-radius:var(--radius);padding:36px 28px;
+text-align:center;
+border:2px solid transparent;
+transition:all .4s;
+position:relative;
+overflow:hidden;
+box-shadow:0 2px 16px rgba(0,0,0,.05);
+}
+.service-tile::before{
+content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+width:0;height:3px;background:var(--blue);
+transition:width .4s;
+}
+.service-tile:hover{
+border-color:rgba(0,150,255,.25);
+box-shadow:0 0 30px var(--blue-glow),0 4px 24px rgba(0,0,0,.08);
+transform:translateY(-6px);
+}
+.service-tile:hover::before{width:100%}
+.service-icon{
+width:64px;height:64px;border-radius:16px;
+background:var(--blue-soft);color:var(--blue);
+display:flex;align-items:center;justify-content:center;
+margin:0 auto 20px;font-size:1.6rem;
+transition:all .3s;
+}
+.service-tile:hover .service-icon{
+background:var(--blue);color:var(--white);
+box-shadow:0 4px 16px rgba(0,150,255,.3);
+}
+.service-tile h3{
+font-size:1.15rem;margin-bottom:10px;color:var(--gunmetal);
+}
+.service-tile p{
+color:var(--gray);font-size:.9rem;line-height:1.6;
+}
+
+/* ===== MOT CENTRE ===== */
+.mot-section{
+padding:100px 0;
+position:relative;
+overflow:hidden;
+}
+.mot-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.mot-info h2{font-size:2.4rem;color:var(--white);margin-bottom:20px}
+.mot-info h2 .accent{color:var(--amber)}
+.mot-info p{color:var(--gray);margin-bottom:24px;font-size:1.02rem}
+.mot-checklist{margin-bottom:32px}
+.mot-check-item{
+display:flex;align-items:center;gap:12px;
+padding:10px 0;color:rgba(255,255,255,.85);
+font-size:.95rem;
+border-bottom:1px solid rgba(255,255,255,.06);
+}
+.mot-check-item svg{width:18px;height:18px;fill:var(--amber);flex-shrink:0}
+.mot-reminder-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(0,150,255,.2);
+border-radius:var(--radius);padding:32px;
+}
+.mot-reminder-card h3{
+font-family:'Barlow',sans-serif;font-weight:800;font-size:1.3rem;
+color:var(--white);margin-bottom:8px;
+}
+.mot-reminder-card .subtitle{color:var(--gray);font-size:.9rem;margin-bottom:20px}
+.mot-date-picker{
+display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;
+}
+.mot-date-field{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.12);
+border-radius:8px;padding:12px 16px;
+color:var(--white);font-family:'Roboto',sans-serif;font-size:.9rem;
+}
+.mot-date-field span{display:block;font-size:.7rem;color:var(--gray);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.mot-date-field strong{font-weight:500}
+.mot-reminder-btn{
+width:100%;padding:14px;border:none;border-radius:8px;
+background:var(--amber);color:var(--gunmetal-dark);
+font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;
+cursor:pointer;transition:all .3s;
+}
+.mot-reminder-btn:hover{background:#e5ab1c;transform:translateY(-2px)}
+
+/* ===== GALLERY ===== */
+.gallery-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.gallery-item{
+position:relative;border-radius:var(--radius);overflow:hidden;
+aspect-ratio:4/3;cursor:pointer;
+}
+.gallery-item img{
+width:100%;height:100%;object-fit:cover;
+transition:transform .5s;
+}
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-item::after{
+content:'';position:absolute;inset:0;
+background:linear-gradient(135deg,rgba(251,191,36,.0),rgba(251,191,36,.0));
+transition:background .4s;
+}
+.gallery-item:hover::after{
+background:linear-gradient(135deg,rgba(251,191,36,.3),rgba(0,150,255,.2));
+}
+.gallery-item .gallery-zoom{
+position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);
+z-index:2;width:48px;height:48px;border-radius:50%;
+background:rgba(255,255,255,.95);color:var(--gunmetal);
+display:flex;align-items:center;justify-content:center;
+font-size:1.2rem;transition:transform .3s;
+}
+.gallery-item:hover .gallery-zoom{transform:translate(-50%,-50%) scale(1)}
+
+/* Lightbox */
+.lightbox{
+display:none;position:fixed;inset:0;z-index:9999;
+background:rgba(10,18,22,.95);
+align-items:center;justify-content:center;
+}
+.lightbox.active{display:flex}
+.lightbox img{
+max-width:90vw;max-height:85vh;border-radius:8px;
+box-shadow:0 8px 48px rgba(0,0,0,.5);
+}
+.lightbox-close{
+position:absolute;top:24px;right:32px;
+color:var(--white);font-size:2rem;cursor:pointer;
+background:none;border:none;
+font-family:'Barlow',sans-serif;
+transition:color .3s;
+}
+.lightbox-close:hover{color:var(--amber)}
+.lightbox-nav{
+position:absolute;top:50%;transform:translateY(-50%);
+color:var(--white);font-size:2.5rem;cursor:pointer;
+background:rgba(255,255,255,.08);border:none;
+width:52px;height:52px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+transition:all .3s;
+}
+.lightbox-nav:hover{background:rgba(0,150,255,.3)}
+.lightbox-prev{left:24px}
+.lightbox-next{right:24px}
+
+/* ===== WHY CHOOSE US ===== */
+.why-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+.why-card{
+text-align:center;padding:36px 20px;
+border-radius:var(--radius);
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+transition:all .4s;
+}
+.why-card:hover{
+background:rgba(0,150,255,.08);
+border-color:rgba(0,150,255,.2);
+transform:translateY(-6px);
+}
+.why-icon{
+width:56px;height:56px;border-radius:50%;
+background:rgba(0,150,255,.15);color:var(--blue);
+display:flex;align-items:center;justify-content:center;
+margin:0 auto 16px;font-size:1.4rem;
+}
+.why-card h3{font-size:1rem;color:var(--white);margin-bottom:8px}
+.why-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* ===== STATS / SPEEDOMETER ===== */
+.stats-section{padding:80px 0}
+.stats-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+}
+.stat-item{text-align:center}
+.speedometer{
+width:140px;height:70px;margin:0 auto 16px;
+position:relative;overflow:hidden;
+}
+.speedo-track{
+width:140px;height:140px;border-radius:50%;
+border:10px solid rgba(0,150,255,.15);
+border-bottom-color:transparent;
+border-left-color:transparent;
+transform:rotate(225deg);
+position:absolute;top:0;left:0;
+}
+.speedo-fill{
+width:140px;height:140px;border-radius:50%;
+border:10px solid transparent;
+border-top-color:var(--blue);
+border-right-color:var(--blue);
+transform:rotate(225deg);
+position:absolute;top:0;left:0;
+transition:all 1.5s ease-out;
+clip-path:inset(0 0 50% 0);
+}
+.speedo-fill.amber{border-top-color:var(--amber);border-right-color:var(--amber)}
+.stat-number{
+font-family:'Barlow',sans-serif;font-weight:900;
+font-size:2.4rem;color:var(--blue);
+line-height:1;margin-bottom:4px;
+}
+.stat-number.amber-text{color:var(--amber)}
+.stat-label{
+font-size:.85rem;color:var(--gray);font-weight:500;
+text-transform:uppercase;letter-spacing:1px;
+font-family:'Barlow',sans-serif;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+}
+.testimonial-card{
+background:var(--white);border-radius:var(--radius);
+padding:32px;box-shadow:var(--shadow);
+position:relative;
+transition:transform .3s;
+}
+.testimonial-card:hover{transform:translateY(-4px)}
+.testimonial-card::before{
+content:'';position:absolute;top:0;left:0;right:0;height:4px;
+background:linear-gradient(90deg,var(--blue),var(--amber));
+border-radius:var(--radius) var(--radius) 0 0;
+}
+.review-header{
+display:flex;align-items:center;gap:6px;margin-bottom:4px;
+}
+.google-icon{font-size:.9rem;font-weight:700;color:#4285f4}
+.review-source{font-size:.75rem;color:var(--gray);font-weight:500}
+.stars{color:var(--amber);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.testimonial-card p{
+color:#5a6d7a;font-size:.95rem;line-height:1.7;
+margin-bottom:16px;font-style:italic;
+}
+.review-author{
+display:flex;align-items:center;gap:12px;
+}
+.review-avatar{
+width:44px;height:44px;border-radius:50%;object-fit:cover;
+border:2px solid var(--blue-soft);
+}
+.review-info{font-size:.85rem}
+.review-name{font-weight:700;color:var(--gunmetal)}
+.review-date{color:var(--gray);font-size:.78rem}
+
+/* ===== LOCATION ===== */
+.location-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
+}
+.location-map{
+border-radius:var(--radius);overflow:hidden;
+box-shadow:var(--shadow);
+aspect-ratio:16/10;
+}
+.location-map iframe{width:100%;height:100%;border:0}
+.location-info h3{
+font-size:1.6rem;margin-bottom:24px;color:var(--gunmetal);
+}
+.location-detail{
+display:flex;align-items:flex-start;gap:14px;
+padding:14px 0;
+border-bottom:1px solid #edf1f5;
+}
+.location-detail:last-child{border:none}
+.loc-icon{
+width:40px;height:40px;border-radius:10px;
+background:var(--blue-soft);color:var(--blue);
+display:flex;align-items:center;justify-content:center;
+font-size:1rem;flex-shrink:0;
+}
+.loc-text{font-size:.95rem;color:#5a6d7a}
+.loc-text strong{color:var(--gunmetal);display:block;margin-bottom:2px;font-family:'Barlow',sans-serif}
+.hours-table{width:100%;margin-top:8px;font-size:.88rem}
+.hours-table tr td{padding:4px 0}
+.hours-table tr td:first-child{font-weight:600;color:var(--gunmetal);width:130px}
+.hours-table tr td:last-child{color:#5a6d7a}
+
+/* ===== CTA WARNING STRIPE ===== */
+.cta-section{
+padding:80px 0;text-align:center;position:relative;
+overflow:hidden;
+}
+.cta-stripe-top,.cta-stripe-bottom{
+position:absolute;left:0;width:100%;height:8px;
+background:repeating-linear-gradient(
+  -45deg,
+  var(--amber),var(--amber) 10px,
+  var(--gunmetal-dark) 10px,var(--gunmetal-dark) 20px
+);
+}
+.cta-stripe-top{top:0}
+.cta-stripe-bottom{bottom:0}
+.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);margin-bottom:16px}
+.cta-section h2 .accent{color:var(--amber)}
+.cta-section p{color:var(--gray);margin-bottom:32px;font-size:1.05rem}
+
+/* ===== BOOKING FORM ===== */
+.booking-form-wrap{
+max-width:640px;margin:0 auto;
+background:var(--white);border-radius:var(--radius);
+padding:48px 40px;box-shadow:0 8px 48px rgba(0,0,0,.08);
+}
+.booking-form-wrap h3{
+font-size:1.5rem;text-align:center;margin-bottom:8px;color:var(--gunmetal);
+}
+.booking-form-wrap .form-sub{
+text-align:center;color:var(--gray);margin-bottom:32px;font-size:.92rem;
+}
+.form-row{
+display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;
+}
+.form-group{margin-bottom:16px}
+.form-group label{
+display:block;font-family:'Barlow',sans-serif;font-weight:600;
+font-size:.85rem;color:var(--gunmetal);margin-bottom:6px;
+}
+.form-group input,.form-group select,.form-group textarea{
+width:100%;padding:13px 16px;
+border:2px solid #e2e8f0;border-radius:8px;
+font-family:'Roboto',sans-serif;font-size:.95rem;
+transition:border-color .3s;
+background:var(--white);color:var(--gunmetal);
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+outline:none;border-color:var(--blue);
+box-shadow:0 0 0 4px var(--blue-soft);
+}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-submit{
+width:100%;padding:16px;border:none;border-radius:8px;
+background:var(--blue);color:var(--white);
+font-family:'Barlow',sans-serif;font-weight:700;font-size:1.05rem;
+cursor:pointer;transition:all .3s;
+}
+.form-submit:hover{background:#007ad9;transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,150,255,.3)}
+
+/* ===== FOOTER ===== */
+.footer{
+background:var(--dark);padding:60px 0 0;color:var(--gray);
+}
+.footer-grid{
+display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;
+padding-bottom:40px;
+border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-brand .footer-logo{
+font-family:'Barlow',sans-serif;font-weight:900;font-size:1.4rem;
+color:var(--white);margin-bottom:12px;
+}
+.footer-brand .footer-logo .accent{color:var(--blue)}
+.footer-brand p{font-size:.9rem;line-height:1.7;margin-bottom:16px}
+.footer h4{
+font-size:.9rem;color:var(--white);margin-bottom:16px;
+text-transform:uppercase;letter-spacing:1px;
+}
+.footer-links a{
+display:block;color:var(--gray);font-size:.9rem;
+padding:5px 0;transition:color .25s;
+}
+.footer-links a:hover{color:var(--blue)}
+.footer-contact-item{
+display:flex;align-items:center;gap:10px;
+font-size:.9rem;padding:5px 0;
+}
+.footer-contact-item svg{width:16px;height:16px;fill:var(--blue);flex-shrink:0}
+.footer-bottom{
+text-align:center;padding:24px 0;
+font-size:.8rem;color:rgba(255,255,255,.35);
+}
+
+/* ===== NEOCODE POPUP ===== */
+.neocode-popup{
+display:none;position:fixed;bottom:24px;right:24px;z-index:9990;
+background:var(--white);border-radius:16px;
+box-shadow:0 12px 48px rgba(0,0,0,.18);
+max-width:380px;width:calc(100% - 48px);
+overflow:hidden;
+animation:slideUp .4s ease-out;
+}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.neocode-popup.show{display:block}
+.neocode-popup-header{
+background:linear-gradient(135deg,var(--gunmetal-dark),var(--gunmetal));
+padding:20px 24px;color:var(--white);
+display:flex;align-items:center;justify-content:space-between;
+}
+.neocode-popup-header h4{font-size:1rem;margin:0}
+.neocode-popup-close{
+background:none;border:none;color:rgba(255,255,255,.6);
+font-size:1.3rem;cursor:pointer;transition:color .3s;
+}
+.neocode-popup-close:hover{color:var(--white)}
+.neocode-popup-body{padding:24px}
+.neocode-popup-body p{font-size:.9rem;color:#5a6d7a;margin-bottom:16px;line-height:1.6}
+.neocode-popup-body .neocode-link{
+display:inline-flex;align-items:center;gap:6px;
+color:var(--blue);font-weight:700;font-family:'Barlow',sans-serif;
+font-size:.9rem;
+transition:color .3s;
+}
+.neocode-popup-body .neocode-link:hover{color:var(--amber)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+.stats-grid{grid-template-columns:repeat(2,1fr);gap:40px}
+.testimonials-grid{grid-template-columns:1fr 1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.mot-float-badge{display:none}
+}
+@media(max-width:768px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.hero h1{font-size:2.2rem}
+.hero-sub{font-size:1rem}
+.about-grid{grid-template-columns:1fr;gap:32px}
+.mot-grid{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.why-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:1fr 1fr}
+.testimonials-grid{grid-template-columns:1fr}
+.location-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr;gap:32px}
+.form-row{grid-template-columns:1fr}
+.about-features{grid-template-columns:1fr}
+.mot-date-picker{grid-template-columns:1fr}
+.booking-form-wrap{padding:32px 24px}
+.hero-trust{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="container nav-inner">
-      <a href="#" class="logo">Moto<span>tech</span></a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#location">Find Us</a></li>
-        <li><a href="#booking" class="nav-cta">Book MOT</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="container hero-content">
-      <div class="hero-badge">DVSA Approved MOT Centre</div>
-      <h1>Portsmouth's Trusted<br><span class="highlight">MOT &amp; Repair</span> Centre</h1>
-      <p>Honest work, fair prices, and no jargon. Keeping Portsmouth on the road since day one.</p>
-      <div class="hero-btns">
-        <a href="#booking" class="btn-primary">Book Your MOT</a>
-        <a href="tel:02392874784" class="btn-secondary">Call 02392 874784</a>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <span></span>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image reveal">
-          <div class="wrench-icon">&#9881;</div>
-          <div class="stat-box">
-            <div class="number">1000+</div>
-            <div class="label">MOTs Completed</div>
-          </div>
-        </div>
-        <div class="about-text reveal">
-          <h2>Your Local <span>Garage</span>, Done Right</h2>
-          <p>Mototech Garage is a family-run repair centre based in the heart of Portsmouth. We've built our reputation on straight talk, quality workmanship, and prices that won't make your eyes water.</p>
-          <p>Whether it's your annual MOT, a full service, or something that doesn't sound quite right under the bonnet, we've got you covered.</p>
-          <ul>
-            <li>DVSA approved MOT testing station</li>
-            <li>Experienced, qualified technicians</li>
-            <li>Transparent pricing with no hidden fees</li>
-            <li>All makes and models welcome</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>Our Services</h2>
-        <div class="underline"></div>
-        <p>From routine MOTs to complex diagnostics, we handle it all under one roof.</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="service-icon">&#128203;</div>
-          <h3>MOT Testing</h3>
-          <p>Quick, thorough MOT testing by certified testers. We'll walk you through any advisories and never push unnecessary work.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">&#128295;</div>
-          <h3>Full Service</h3>
-          <p>Comprehensive interim and full services to keep your car running smooth. Oil, filters, fluids, and a full health check.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">&#9899;</div>
-          <h3>Brakes</h3>
-          <p>Pads, discs, calipers, and fluid. We'll sort your brakes quickly so you can stop safely, every time.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">&#128187;</div>
-          <h3>Diagnostics</h3>
-          <p>Engine warning light on? Our diagnostic equipment reads fault codes across all makes so we find the real issue fast.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">&#128168;</div>
-          <h3>Exhaust</h3>
-          <p>From catalytic converters to back boxes, we supply and fit exhausts for all vehicles. Louder than usual? Bring it in.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">&#11044;</div>
-          <h3>Tyres</h3>
-          <p>New tyres supplied and fitted at competitive prices. We also do puncture repairs, balancing, and alignment checks.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">&#10052;</div>
-          <h3>Air Conditioning</h3>
-          <p>Full A/C regas and leak testing. Don't sweat through another summer with a dodgy air con system.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WHY CHOOSE US ===== -->
-  <section class="why-us" id="why-us">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>Why Choose Mototech</h2>
-        <div class="underline"></div>
-        <p>We're not the cheapest. We're not the most expensive. We're the ones who'll do it properly.</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card reveal">
-          <div class="why-icon">&#128176;</div>
-          <h3>Transparent Pricing</h3>
-          <p>We quote before we touch. No surprise bills, no hidden labour charges. What we say is what you pay.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-icon">&#128274;</div>
-          <h3>Honest Advice</h3>
-          <p>If it doesn't need fixing, we won't fix it. We'll tell you what's urgent and what can wait, plain and simple.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-icon">&#9201;</div>
-          <h3>Quick Turnaround</h3>
-          <p>Most MOTs and services done same day. We know you need your car back, and we work hard to make that happen.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-icon">&#127942;</div>
-          <h3>All Makes Welcome</h3>
-          <p>Ford, BMW, Vauxhall, Toyota, you name it. Our team works on all makes and models, old or new.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section class="testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>What Our Customers Say</h2>
-        <div class="underline"></div>
-        <p>Real reviews from real people in Portsmouth.</p>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="quote-mark">"</div>
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Took my car in for an MOT and they found a couple of issues. They explained everything clearly, didn't push any extras, and had it sorted by the afternoon. Really solid garage.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">DJ</div>
-            <div class="reviewer-info">
-              <div class="name">Dave J.</div>
-              <div class="source">Google Review</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="quote-mark">"</div>
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">I've been going to Mototech for over two years now. They're always fair on price and they never mess you about. Proper honest mechanics, which is hard to find these days.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">SR</div>
-            <div class="reviewer-info">
-              <div class="name">Sarah R.</div>
-              <div class="source">Google Review</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="quote-mark">"</div>
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">My engine warning light came on and they got me in the same day. Diagnosed the fault quickly and had the part ordered and fitted within 48 hours. Couldn't ask for more.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">MP</div>
-            <div class="reviewer-info">
-              <div class="name">Mark P.</div>
-              <div class="source">Facebook Review</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LOCATION ===== -->
-  <section class="location" id="location">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>Find Us</h2>
-        <div class="underline"></div>
-        <p>We're easy to find on the Warren Avenue Industrial Estate in Baffins.</p>
-      </div>
-      <div class="location-grid">
-        <div class="location-info reveal">
-          <h3>Get In Touch</h3>
-          <div class="location-detail">
-            <div class="icon">&#128205;</div>
-            <div class="text">
-              <strong>Address</strong>
-              <span>Unit 8, Warren Avenue Industrial Estate, Portsmouth, PO4 8PY</span>
-            </div>
-          </div>
-          <div class="location-detail">
-            <div class="icon">&#128222;</div>
-            <div class="text">
-              <strong>Phone</strong>
-              <span><a href="tel:02392874784">02392 874784</a> / <a href="tel:07944056515">07944 056515</a></span>
-            </div>
-          </div>
-          <div class="location-detail">
-            <div class="icon">&#9993;</div>
-            <div class="text">
-              <strong>Email</strong>
-              <span><a href="mailto:mototech@live.co.uk">mototech@live.co.uk</a></span>
-            </div>
-          </div>
-          <div class="location-detail">
-            <div class="icon">&#128338;</div>
-            <div class="text">
-              <strong>Opening Hours</strong>
-              <span>Mon - Fri: 8:00am - 5:30pm<br>Sat: 8:00am - 1:00pm<br>Sun: Closed</span>
-            </div>
-          </div>
-        </div>
-        <div class="location-map reveal">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.8!2d-1.055!3d50.795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sWarren+Avenue+Industrial+Estate+Portsmouth!5e0!3m2!1sen!2suk" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mototech Garage location map"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BOOKING FORM ===== -->
-  <section class="booking" id="booking">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>Book Your Service</h2>
-        <div class="underline"></div>
-        <p>Fill in the form below and we'll get back to you to confirm your slot.</p>
-      </div>
-      <div class="booking-wrapper reveal">
-        <h3>Request a Booking</h3>
-        <p class="form-subtitle">We aim to respond within a few hours during business days.</p>
-        <form id="bookingForm" onsubmit="handleFormSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="John Smith" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="07123 456789" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com">
-            </div>
-            <div class="form-group">
-              <label for="reg">Vehicle Reg</label>
-              <input type="text" id="reg" name="reg" placeholder="AB12 CDE" style="text-transform: uppercase;">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="service">Service Required</label>
-              <select id="service" name="service" required>
-                <option value="" disabled selected>Select a service</option>
-                <option value="MOT">MOT Test</option>
-                <option value="Full Service">Full Service</option>
-                <option value="Interim Service">Interim Service</option>
-                <option value="Brakes">Brakes</option>
-                <option value="Diagnostics">Diagnostics</option>
-                <option value="Exhaust">Exhaust</option>
-                <option value="Tyres">Tyres</option>
-                <option value="Air Conditioning">Air Conditioning</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="date">Preferred Date</label>
-              <input type="date" id="date" name="date">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group full">
-              <label for="message">Additional Info</label>
-              <textarea id="message" name="message" placeholder="Describe any issues or let us know anything else..."></textarea>
-            </div>
-          </div>
-          <div class="form-submit">
-            <button type="submit" class="btn-primary">Submit Booking Request</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">Moto<span>tech</span></div>
-          <p>Independent garage serving Portsmouth and the surrounding areas. MOT testing, servicing, repairs, and diagnostics for all makes and models.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#testimonials">Reviews</a></li>
-            <li><a href="#location">Find Us</a></li>
-            <li><a href="#booking">Book Online</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#services">MOT Testing</a></li>
-            <li><a href="#services">Full Service</a></li>
-            <li><a href="#services">Brakes</a></li>
-            <li><a href="#services">Diagnostics</a></li>
-            <li><a href="#services">Tyres</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Mototech Garage Portsmouth. All rights reserved.</span>
-        <span>Unit 8, Warren Avenue Ind Estate, Portsmouth, PO4 8PY</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== NEOCODE POPUP ===== -->
-  <div class="neocode-popup" id="neocodePopup">
-    <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
-    <h4>Like what you see?</h4>
-    <p>This demo was built by NeoCode Studio. We design high-converting websites for local businesses across the UK.</p>
-    <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener" class="popup-link">Visit NeoCode Studio</a>
+<!-- Navigation -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">MG</div>
+    Moto<span class="accent">tech</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#mot">MOT Centre</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#booking" class="nav-cta">Book Now</a>
   </div>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#mot" onclick="closeMenu()">MOT Centre</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#reviews" onclick="closeMenu()">Reviews</a>
+  <a href="#booking" onclick="closeMenu()" class="btn btn-primary">Book Now</a>
+</div>
 
-  <script>
-    /* ===== HAMBURGER MENU ===== */
-    (function() {
-      var hamburger = document.getElementById('hamburger');
-      var navLinks = document.getElementById('navLinks');
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/4489731/pexels-photo-4489731.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Mototech Garage Workshop" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Approved MOT Testing Station
+    </div>
+    <h1>Portsmouth's <span class="highlight">Trusted</span><br>Garage Since Day One</h1>
+    <p class="hero-sub">Expert MOT testing, servicing and repairs for all makes and models. Honest diagnostics, fair prices, and work you can actually rely on.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn btn-primary">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Book a Service
+      </a>
+      <a href="tel:02392874784" class="btn btn-outline">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        023 9287 4784
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        5-Star Google Reviews
+      </div>
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        DVSA Approved MOT Station
+      </div>
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Same-Day Service Available
+      </div>
+    </div>
+  </div>
+  <div class="mot-float-badge">
+    <span class="mot-big">MOT</span>
+    Testing<br>Station
+    <span class="mot-sub">DVSA Approved</span>
+  </div>
+</section>
 
-      hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('open');
-      });
+<div class="warning-stripe"></div>
 
-      // Close menu when a link is clicked
-      var links = navLinks.querySelectorAll('a');
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function() {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('open');
-        });
-      }
-    })();
+<!-- About -->
+<section class="section" id="about">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-img reveal-left">
+      <img src="https://images.pexels.com/photos/4489709/pexels-photo-4489709.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mototech Garage Mechanic at Work">
+      <div class="about-exp-badge">
+        <span class="num">15+</span>
+        <span class="label">Years Exp.</span>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <h2>Your Car's in <span class="accent">Good Hands</span></h2>
+      <p>Mototech Garage has been keeping Portsmouth on the road for over 15 years. We're a family-run workshop that treats every vehicle like it's our own, whether it's a quick oil change or a full engine rebuild.</p>
+      <p>We don't do hidden charges or unnecessary upsells. You'll always get a clear explanation of what's wrong, what it'll cost, and how long it'll take. That's the Mototech way.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <span class="check"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          All Makes & Models
+        </div>
+        <div class="about-feature">
+          <span class="check"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          DVSA Approved MOT
+        </div>
+        <div class="about-feature">
+          <span class="check"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          Transparent Pricing
+        </div>
+        <div class="about-feature">
+          <span class="check"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          Free Estimates
+        </div>
+        <div class="about-feature">
+          <span class="check"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          Diagnostic Equipment
+        </div>
+        <div class="about-feature">
+          <span class="check"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          Parts Warranty
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-    /* ===== INTERSECTION OBSERVER - REVEAL ANIMATIONS ===== */
-    (function() {
-      var revealElements = document.querySelectorAll('.reveal');
+<!-- Services -->
+<section class="section section-light" id="services">
+<div class="container">
+  <div class="section-header reveal">
+    <span class="tag">What We Do</span>
+    <h2>Expert <span class="accent">Services</span> for Every Vehicle</h2>
+    <p>From routine maintenance to complex repairs, we've got the tools and the know-how to get you back on the road fast.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-tile reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <h3>MOT Testing</h3>
+      <p>DVSA-approved MOT testing station. Class 4 and 7 tests with free retests within 10 working days. We'll walk you through any advisories.</p>
+    </div>
+    <div class="service-tile reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3>Full Servicing</h3>
+      <p>Interim and full service options following manufacturer guidelines. Oil, filters, fluids, brakes, and a comprehensive multi-point inspection.</p>
+    </div>
+    <div class="service-tile reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h3>Diagnostics</h3>
+      <p>State-of-the-art diagnostic equipment to identify faults quickly and accurately. Engine management, ABS, airbag, and emissions diagnostics.</p>
+    </div>
+    <div class="service-tile reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+      </div>
+      <h3>Engine Repairs</h3>
+      <p>From timing belts to head gaskets, we handle all engine work. Petrol and diesel specialists with decades of hands-on experience.</p>
+    </div>
+    <div class="service-tile reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>Brakes & Clutch</h3>
+      <p>Brake pad and disc replacement, clutch repairs and full hydraulic system work. We don't cut corners when it comes to your safety.</p>
+    </div>
+    <div class="service-tile reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+      </div>
+      <h3>Air Con & Electrical</h3>
+      <p>Air conditioning regas and repair, plus full electrical diagnostics. Alternators, starters, wiring faults, and battery testing.</p>
+    </div>
+  </div>
+</div>
+</section>
 
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.15,
-          rootMargin: '0px 0px -50px 0px'
-        });
+<!-- MOT Centre -->
+<section class="mot-section blueprint-bg section-dark" id="mot">
+<div class="container">
+  <div class="mot-grid">
+    <div class="mot-info reveal-left">
+      <span class="tag" style="margin-bottom:16px;display:inline-block">MOT Testing Centre</span>
+      <h2>DVSA-Approved <span class="accent">MOT Station</span></h2>
+      <p>We're a fully approved MOT testing facility for Class 4 and Class 7 vehicles. Our testers are trained, certified, and up to date with the latest DVSA standards.</p>
+      <div class="mot-checklist">
+        <div class="mot-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Class 4 MOT (cars and light vans up to 3,000kg)
+        </div>
+        <div class="mot-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Class 7 MOT (vans and goods vehicles 3,000-3,500kg)
+        </div>
+        <div class="mot-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Free retest within 10 working days if booked with us
+        </div>
+        <div class="mot-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          While-you-wait appointments available
+        </div>
+        <div class="mot-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Pre-MOT checks to avoid nasty surprises
+        </div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="mot-reminder-card">
+        <h3>MOT Reminder Service</h3>
+        <p class="subtitle">Never miss your MOT date again. We'll send you a reminder so you're always covered.</p>
+        <div class="mot-date-picker">
+          <div class="mot-date-field">
+            <span>Day</span>
+            <strong>15</strong>
+          </div>
+          <div class="mot-date-field">
+            <span>Month</span>
+            <strong>March</strong>
+          </div>
+          <div class="mot-date-field">
+            <span>Year</span>
+            <strong>2026</strong>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:16px">
+          <input type="text" placeholder="Your registration (e.g. AB12 CDE)" style="width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(255,255,255,.08);color:var(--white);font-family:'Roboto',sans-serif;font-size:.9rem;">
+        </div>
+        <button class="mot-reminder-btn" onclick="alert('This is a demo - MOT reminder feature coming soon!')">Set My MOT Reminder</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-        revealElements.forEach(function(el) {
-          observer.observe(el);
-        });
-      } else {
-        // Fallback for old browsers
-        revealElements.forEach(function(el) {
-          el.classList.add('visible');
-        });
-      }
-    })();
+<div class="warning-stripe"></div>
 
-    /* ===== HEADER SCROLL EFFECT ===== */
-    (function() {
-      var header = document.querySelector('header');
-      var lastScroll = 0;
+<!-- Gallery -->
+<section class="section" id="gallery">
+<div class="container">
+  <div class="section-header reveal">
+    <span class="tag">Our Workshop</span>
+    <h2>Inside <span class="accent">Mototech</span> Garage</h2>
+    <p>A look at our fully equipped workshop where we handle everything from routine services to full rebuilds.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal" onclick="openLightbox(0)">
+      <img src="https://images.pexels.com/photos/4489728/pexels-photo-4489728.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Engine work at Mototech Garage" loading="lazy">
+      <div class="gallery-zoom">+</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(1)">
+      <img src="https://images.pexels.com/photos/3807329/pexels-photo-3807329.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car on lift at Mototech" loading="lazy">
+      <div class="gallery-zoom">+</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(2)">
+      <img src="https://images.pexels.com/photos/4489710/pexels-photo-4489710.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Diagnostic equipment" loading="lazy">
+      <div class="gallery-zoom">+</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(3)">
+      <img src="https://images.pexels.com/photos/3807811/pexels-photo-3807811.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Under-car repair work" loading="lazy">
+      <div class="gallery-zoom">+</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(4)">
+      <img src="https://images.pexels.com/photos/4489714/pexels-photo-4489714.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional tools and equipment" loading="lazy">
+      <div class="gallery-zoom">+</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(5)">
+      <img src="https://images.pexels.com/photos/4489731/pexels-photo-4489731.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mototech Garage interior" loading="lazy">
+      <div class="gallery-zoom">+</div>
+    </div>
+  </div>
+</div>
+</section>
 
-      window.addEventListener('scroll', function() {
-        var currentScroll = window.pageYOffset;
-        if (currentScroll > 80) {
-          header.style.background = 'rgba(43, 58, 66, 0.97)';
-          header.style.backdropFilter = 'blur(10px)';
-        } else {
-          header.style.background = 'var(--gunmetal)';
-          header.style.backdropFilter = 'none';
-        }
-        lastScroll = currentScroll;
-      });
-    })();
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <img id="lightboxImg" src="" alt="Gallery Image">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+</div>
 
-    /* ===== NEOCODE POPUP AT 70% SCROLL ===== */
-    (function() {
-      var popup = document.getElementById('neocodePopup');
-      var closeBtn = document.getElementById('popupClose');
-      var popupShown = false;
-      var popupDismissed = false;
+<!-- Why Choose Us -->
+<section class="section section-dark blueprint-bg" id="why">
+<div class="container">
+  <div class="section-header reveal">
+    <span class="tag">Why Mototech</span>
+    <h2>Built on <span class="accent">Trust</span>, Driven by Results</h2>
+    <p>There are plenty of garages in Portsmouth. Here's why customers keep coming back to us.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3>No Hidden Charges</h3>
+      <p>You'll get a clear quote before we start. If anything changes, we'll call you first. No surprises on the bill.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <h3>Certified Technicians</h3>
+      <p>Our mechanics are fully qualified with years of hands-on experience across every type of vehicle on the road.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3>Fast Turnaround</h3>
+      <p>Most standard services and MOTs completed same day. We know you need your car back, and we don't hang about.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      </div>
+      <h3>Genuine Care</h3>
+      <p>We're not a chain. We're local people who take real pride in our work and genuinely want to keep you safe on the road.</p>
+    </div>
+  </div>
+</div>
+</section>
 
-      window.addEventListener('scroll', function() {
-        if (popupDismissed || popupShown) return;
+<!-- Stats -->
+<section class="stats-section section-light" id="stats">
+<div class="container">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="speedometer">
+        <div class="speedo-track"></div>
+        <div class="speedo-fill" data-percent="90"></div>
+      </div>
+      <div class="stat-number" data-target="1000" data-suffix="+">0</div>
+      <div class="stat-label">MOTs Passed</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="speedometer">
+        <div class="speedo-track"></div>
+        <div class="speedo-fill amber" data-percent="75"></div>
+      </div>
+      <div class="stat-number amber-text" data-target="15" data-suffix="+">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="speedometer">
+        <div class="speedo-track"></div>
+        <div class="speedo-fill" data-percent="100"></div>
+      </div>
+      <div class="stat-number" data-target="50" data-suffix="+">0</div>
+      <div class="stat-label">Makes Serviced</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="speedometer">
+        <div class="speedo-track"></div>
+        <div class="speedo-fill amber" data-percent="95"></div>
+      </div>
+      <div class="stat-number amber-text" data-target="5" data-suffix="">0</div>
+      <div class="stat-label">Star Google Rating</div>
+    </div>
+  </div>
+</div>
+</section>
 
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var scrollPercent = (scrollTop / docHeight) * 100;
+<!-- Testimonials -->
+<section class="section" id="reviews">
+<div class="container">
+  <div class="section-header reveal">
+    <span class="tag">Customer Reviews</span>
+    <h2>What <span class="accent">Portsmouth</span> Says About Us</h2>
+    <p>Don't just take our word for it. Here's what real customers have to say after visiting Mototech Garage.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="review-header">
+        <span class="google-icon">G</span>
+        <span class="review-source">Google Review</span>
+      </div>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Took my car in for an MOT and they found a couple of issues. Instead of trying to charge me a fortune, they explained everything clearly and the repair cost was really reasonable. Will definitely be coming back."</p>
+      <div class="review-author">
+        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=80" alt="James T" class="review-avatar" loading="lazy">
+        <div class="review-info">
+          <div class="review-name">James T.</div>
+          <div class="review-date">2 weeks ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="review-header">
+        <span class="google-icon">G</span>
+        <span class="review-source">Google Review</span>
+      </div>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Brilliant service from start to finish. My car broke down on a Friday and they squeezed me in the same day. Fixed the alternator and had me back on the road by lunchtime. Proper local garage that actually cares."</p>
+      <div class="review-author">
+        <img src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Sarah M" class="review-avatar" loading="lazy">
+        <div class="review-info">
+          <div class="review-name">Sarah M.</div>
+          <div class="review-date">1 month ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="review-header">
+        <span class="google-icon">G</span>
+        <span class="review-source">Google Review</span>
+      </div>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Been using Mototech for years now and wouldn't go anywhere else. They're honest, they're quick, and they don't try to sell you stuff you don't need. Highly recommended for anyone in the Portsmouth area."</p>
+      <div class="review-author">
+        <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Dave R" class="review-avatar" loading="lazy">
+        <div class="review-info">
+          <div class="review-name">Dave R.</div>
+          <div class="review-date">3 months ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-        if (scrollPercent >= 70) {
-          popup.classList.add('show');
-          popupShown = true;
-        }
-      });
+<!-- Location -->
+<section class="section section-light" id="location">
+<div class="container">
+  <div class="section-header reveal">
+    <span class="tag">Find Us</span>
+    <h2>Visit <span class="accent">Mototech</span> Garage</h2>
+    <p>We're easy to find on the Warren Avenue Industrial Estate in Portsmouth. Drop in or give us a call.</p>
+  </div>
+  <div class="location-grid">
+    <div class="location-map reveal-left">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.5!2d-1.06!3d50.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUG9ydHNtb3V0aCBQTzQgOFBZ!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mototech Garage Location"></iframe>
+    </div>
+    <div class="location-info reveal-right">
+      <h3>Get in Touch</h3>
+      <div class="location-detail">
+        <div class="loc-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div class="loc-text">
+          <strong>Address</strong>
+          Unit 8, Warren Avenue Industrial Estate<br>Portsmouth, PO4 8PY
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="loc-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+        <div class="loc-text">
+          <strong>Phone</strong>
+          <a href="tel:02392874784" style="color:var(--blue)">023 9287 4784</a><br>
+          <a href="tel:07944056515" style="color:var(--blue)">07944 056 515</a>
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="loc-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="loc-text">
+          <strong>Opening Hours</strong>
+          <table class="hours-table">
+            <tr><td>Monday - Friday</td><td>8:00 AM - 5:30 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM - 1:00 PM</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-      closeBtn.addEventListener('click', function() {
-        popup.classList.remove('show');
-        popupDismissed = true;
-      });
-    })();
+<!-- CTA Section -->
+<section class="cta-section section-dark blueprint-bg">
+  <div class="cta-stripe-top"></div>
+  <div class="container">
+    <div class="reveal">
+      <h2>Ready to Book Your <span class="accent">Service</span>?</h2>
+      <p>Whether it's an MOT, a full service, or something making a funny noise, we're here to help.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="#booking" class="btn btn-primary">Book Online</a>
+        <a href="tel:02392874784" class="btn btn-outline">Call 023 9287 4784</a>
+      </div>
+    </div>
+  </div>
+  <div class="cta-stripe-bottom"></div>
+</section>
 
-    /* ===== FORM HANDLER ===== */
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      var form = e.target;
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var originalText = submitBtn.textContent;
+<!-- Booking Form -->
+<section class="section" id="booking">
+<div class="container">
+  <div class="booking-form-wrap reveal">
+    <h3>Book Your Service</h3>
+    <p class="form-sub">Fill in the form below and we'll get back to you to confirm your appointment.</p>
+    <form id="bookingForm" onsubmit="handleBooking(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" placeholder="07xxx xxxxxx" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@example.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Vehicle Registration</label>
+          <input type="text" placeholder="AB12 CDE">
+        </div>
+        <div class="form-group">
+          <label>Vehicle Make & Model</label>
+          <input type="text" placeholder="e.g. Ford Focus 2019">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Required *</label>
+        <select required>
+          <option value="">Select a service...</option>
+          <option>MOT Test</option>
+          <option>Full Service</option>
+          <option>Interim Service</option>
+          <option>MOT + Service</option>
+          <option>Brake Repair</option>
+          <option>Clutch Repair</option>
+          <option>Diagnostics</option>
+          <option>Air Conditioning</option>
+          <option>Engine Repair</option>
+          <option>Other (please describe)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Additional Details</label>
+        <textarea placeholder="Tell us a bit more about what your car needs..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Request Booking</button>
+    </form>
+  </div>
+</div>
+</section>
 
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.7';
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Moto<span class="accent">tech</span> Garage</div>
+      <p>Portsmouth's trusted independent garage. MOT testing, servicing, and repairs for all makes and models. Honest work at honest prices.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#mot">MOT Centre</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#booking">Book a Service</a>
+      </div>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+        Unit 8, Warren Ave Ind Estate, PO4 8PY
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <a href="tel:02392874784" style="color:var(--gray)">023 9287 4784</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <a href="tel:07944056515" style="color:var(--gray)">07944 056 515</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Mototech Garage Portsmouth. All rights reserved. | Demo site by <a href="https://neocodestudio.co.uk" target="_blank" style="color:var(--blue)">NeoCode Studio</a>
+  </div>
+</div>
+</footer>
 
-      // Simulate submission (replace with real endpoint in production)
-      setTimeout(function() {
-        submitBtn.textContent = 'Booking Request Sent!';
-        submitBtn.style.background = '#22c55e';
-        submitBtn.style.opacity = '1';
+<!-- NeoCode Popup -->
+<div class="neocode-popup" id="neocodePopup">
+  <div class="neocode-popup-header">
+    <h4>Like What You See?</h4>
+    <button class="neocode-popup-close" onclick="closeNeoPopup()">&times;</button>
+  </div>
+  <div class="neocode-popup-body">
+    <p>This demo was designed by <strong>NeoCode Studio</strong> to show Mototech Garage what a modern, professional website could look like. We build high-converting sites that bring in more customers and make a real impression.</p>
+    <a href="https://neocodestudio.co.uk" target="_blank" class="neocode-link">
+      Visit NeoCode Studio
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</div>
 
-        setTimeout(function() {
-          form.reset();
-          submitBtn.textContent = originalText;
-          submitBtn.style.background = '';
-          submitBtn.disabled = false;
-        }, 3000);
-      }, 1200);
+<script>
+/* ===== NAV SCROLL ===== */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ===== HAMBURGER ===== */
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMenu() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+/* ===== INTERSECTION OBSERVER - REVEAL ===== */
+var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObs.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(function(el) { revealObs.observe(el); });
 
-    /* ===== SMOOTH SCROLL POLYFILL FOR SAFARI ===== */
-    (function() {
-      var anchors = document.querySelectorAll('a[href^="#"]');
-      anchors.forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-          var targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          var target = document.querySelector(targetId);
-          if (target) {
-            e.preventDefault();
-            var headerHeight = document.querySelector('header').offsetHeight;
-            var targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({
-              top: targetPos,
-              behavior: 'smooth'
-            });
+/* ===== COUNTER ANIMATION ===== */
+var counters = document.querySelectorAll('.stat-number[data-target]');
+var countersAnimated = false;
+var counterObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !countersAnimated) {
+      countersAnimated = true;
+      counters.forEach(function(counter) {
+        var target = parseInt(counter.dataset.target);
+        var suffix = counter.dataset.suffix || '';
+        var duration = 2000;
+        var step = target / (duration / 16);
+        var current = 0;
+        var timer = setInterval(function() {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
           }
-        });
+          counter.textContent = Math.floor(current) + suffix;
+        }, 16);
       });
-    })();
+    }
+  });
+}, { threshold: 0.3 });
+var statsSection = document.getElementById('stats');
+if (statsSection) counterObs.observe(statsSection);
 
-    /* ===== STAGGERED REVEAL FOR SERVICE CARDS ===== */
-    (function() {
-      var cards = document.querySelectorAll('.service-card.reveal, .why-card.reveal, .testimonial-card.reveal');
-      cards.forEach(function(card, index) {
-        card.style.transitionDelay = (index % 4) * 0.1 + 's';
+/* ===== SPEEDOMETER ANIMATION ===== */
+var speedoObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var fills = entry.target.querySelectorAll('.speedo-fill');
+      fills.forEach(function(fill) {
+        var pct = parseInt(fill.dataset.percent) || 50;
+        var deg = 225 + (pct / 100) * 270;
+        setTimeout(function() {
+          fill.style.transform = 'rotate(' + deg + 'deg)';
+        }, 200);
       });
-    })();
-  </script>
+      speedoObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+if (statsSection) speedoObs.observe(statsSection);
+
+/* ===== LIGHTBOX ===== */
+var galleryImages = [
+  'https://images.pexels.com/photos/4489728/pexels-photo-4489728.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3807329/pexels-photo-3807329.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/4489710/pexels-photo-4489710.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3807811/pexels-photo-3807811.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/4489714/pexels-photo-4489714.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/4489731/pexels-photo-4489731.jpeg?auto=compress&cs=tinysrgb&w=1200'
+];
+var currentLb = 0;
+function openLightbox(idx) {
+  currentLb = idx;
+  document.getElementById('lightboxImg').src = galleryImages[idx];
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  currentLb = (currentLb + dir + galleryImages.length) % galleryImages.length;
+  document.getElementById('lightboxImg').src = galleryImages[currentLb];
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+/* ===== BOOKING FORM ===== */
+function handleBooking(e) {
+  e.preventDefault();
+  alert('Thank you! This is a demo site. In the live version, your booking request would be sent directly to Mototech Garage.');
+}
+
+/* ===== NEOCODE POPUP AT 70% SCROLL ===== */
+var neoShown = false;
+window.addEventListener('scroll', function() {
+  if (neoShown) return;
+  var scrollPct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  if (scrollPct >= 70) {
+    neoShown = true;
+    document.getElementById('neocodePopup').classList.add('show');
+  }
+});
+function closeNeoPopup() {
+  document.getElementById('neocodePopup').classList.remove('show');
+}
+</script>
 </body>
 </html>
