@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N&P Cleaning Agency | Professional Cleaning Services</title>
+<meta name="description" content="N&P Cleaning Agency - Trusted domestic, commercial and end of tenancy cleaning. We'll make your property spotless, guaranteed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --mint:#48c9b0;
+  --mint-dark:#3aaa95;
+  --mint-light:#7edece;
+  --mint-soft:rgba(72,201,176,0.1);
+  --navy:#1b2631;
+  --navy-deep:#111a22;
+  --navy-mid:#263747;
+  --pearl:#fafafa;
+  --white:#ffffff;
+  --text:#1b2631;
+  --text-light:#4a6274;
+  --text-muted:#7f8c8d;
+  --border:rgba(27,38,49,0.08);
+  --shadow-sm:0 2px 8px rgba(27,38,49,0.06);
+  --shadow-md:0 8px 32px rgba(27,38,49,0.1);
+  --shadow-lg:0 16px 48px rgba(27,38,49,0.14);
+  --shadow-mint:0 8px 32px rgba(72,201,176,0.25);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Zen Kaku Gothic New',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:400;line-height:1.7}
+h1,h2,h3,h4,h5,h6{font-family:'Readex Pro',sans-serif;line-height:1.2;font-weight:600}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.25s}
+.reveal.d4{transition-delay:.3s}.reveal.d5{transition-delay:.35s}.reveal.d6{transition-delay:.4s}
+
+/* NEOCODE BAR */
+.neocode-bar{background:var(--navy-deep);color:rgba(255,255,255,0.7);text-align:center;padding:10px 20px;font-size:12px;letter-spacing:.4px}
+.neocode-bar a{color:var(--mint);text-decoration:none;font-weight:600}
+.neocode-bar a:hover{text-decoration:underline}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 24px;transition:all .4s ease}
+.nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(27,38,49,0.08)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:'Readex Pro',sans-serif;font-size:22px;font-weight:700;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .logo-icon{width:36px;height:36px;background:var(--mint);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{color:var(--text);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.2px;position:relative;padding:4px 0;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--mint);transition:width .3s ease}
+.nav-links a:hover,
+.nav-links a:focus{color:var(--mint-dark);outline:none}
+.nav-links a:hover::after,
+.nav-links a:focus::after{width:100%}
+.nav-links a:focus-visible{outline:2px solid var(--mint);outline-offset:4px;border-radius:4px}
+.nav-cta{background:var(--mint);color:#fff!important;padding:10px 24px;border-radius:50px;font-weight:600;font-size:13px;letter-spacing:.3px;transition:all .3s ease}
+.nav-cta:hover{background:var(--mint-dark);transform:translateY(-1px);box-shadow:var(--shadow-mint)}
+.nav-cta::after{display:none!important}
+.nav-cta:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001}
+.hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s ease}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.hamburger:focus-visible{outline:2px solid var(--mint);outline-offset:4px;border-radius:4px}
+
+/* MOBILE NAV */
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:'Readex Pro',sans-serif;font-size:26px;color:var(--navy);text-decoration:none;font-weight:600;letter-spacing:.5px}
+.mobile-menu a:hover{color:var(--mint)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 40%,var(--navy-mid) 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(72,201,176,0.1) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--white),transparent);z-index:2}
+.hero-pattern{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%2348c9b0'/%3E%3C/svg%3E");background-size:40px 40px}
+.hero-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;padding:140px 24px 120px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(72,201,176,0.15);border:1px solid rgba(72,201,176,0.3);color:var(--mint-light);padding:8px 18px;border-radius:50px;font-size:13px;font-weight:500;margin-bottom:24px;backdrop-filter:blur(10px)}
+.hero-badge svg{width:16px;height:16px}
+.hero h1{font-size:clamp(36px,5vw,58px);color:#fff;margin-bottom:20px;letter-spacing:-.5px}
+.hero h1 span{color:var(--mint);display:block}
+.hero-text{color:rgba(255,255,255,0.75);font-size:18px;line-height:1.8;margin-bottom:36px;max-width:520px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:#fff;padding:16px 36px;border-radius:50px;font-family:'Readex Pro',sans-serif;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s ease;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--mint-dark);transform:translateY(-2px);box-shadow:var(--shadow-mint)}
+.btn-primary:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:16px 36px;border-radius:50px;font-family:'Readex Pro',sans-serif;font-size:15px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.3);transition:all .3s ease}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+.btn-secondary:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.hero-image{position:relative;display:flex;justify-content:center}
+.hero-image img{width:100%;max-width:500px;border-radius:20px;box-shadow:0 32px 64px rgba(0,0,0,0.3)}
+.hero-float{position:absolute;background:rgba(255,255,255,0.95);backdrop-filter:blur(15px);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px}
+.hero-float.top-right{top:20px;right:-10px}
+.hero-float.bottom-left{bottom:30px;left:-10px}
+.hero-float-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.hero-float-icon.green{background:var(--mint-soft);color:var(--mint-dark)}
+.hero-float-icon.navy{background:rgba(27,38,49,0.08);color:var(--navy)}
+.hero-float-text{font-size:13px;color:var(--text-light)}
+.hero-float-text strong{display:block;color:var(--text);font-size:15px}
+
+/* STATS */
+.stats{position:relative;z-index:4;max-width:1000px;margin:-50px auto 0;padding:0 24px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
+.stat-item{text-align:center;padding:36px 20px;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Readex Pro',sans-serif;font-size:36px;font-weight:700;color:var(--mint);margin-bottom:4px}
+.stat-label{font-size:13px;color:var(--text-muted);letter-spacing:.3px;text-transform:uppercase}
+
+/* SECTION COMMON */
+.section{padding:100px 24px}
+.section-center{text-align:center;max-width:640px;margin:0 auto 60px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-family:'Readex Pro',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--mint-dark);margin-bottom:16px}
+.section-tag::before{content:'';width:24px;height:2px;background:var(--mint);border-radius:2px}
+.section-title{font-size:clamp(28px,4vw,42px);color:var(--navy);margin-bottom:16px}
+.section-desc{color:var(--text-light);font-size:17px;line-height:1.8}
+.container{max-width:1200px;margin:0 auto}
+
+/* ABOUT */
+.about-bg{background:var(--pearl)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative}
+.about-img img{width:100%;border-radius:20px;box-shadow:var(--shadow-md)}
+.about-img-accent{position:absolute;top:-16px;left:-16px;width:100%;height:100%;border:2px solid var(--mint);border-radius:20px;z-index:-1}
+.about-content h2{font-size:clamp(28px,3.5vw,38px);color:var(--navy);margin-bottom:20px}
+.about-content p{color:var(--text-light);font-size:16px;line-height:1.8;margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)}
+.about-feature svg{width:20px;height:20px;color:var(--mint);flex-shrink:0}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:36px 28px;transition:all .4s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--mint);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(72,201,176,0.2)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:14px;background:var(--mint-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:all .3s}
+.service-card:hover .service-icon{background:var(--mint);color:#fff}
+.service-icon svg{width:26px;height:26px;color:var(--mint);transition:color .3s}
+.service-card:hover .service-icon svg{color:#fff}
+.service-card h3{font-size:19px;color:var(--navy);margin-bottom:10px}
+.service-card p{color:var(--text-light);font-size:14px;line-height:1.7}
+
+/* WHY CHOOSE US */
+.why-bg{background:linear-gradient(135deg,var(--navy-deep),var(--navy));color:#fff;position:relative;overflow:hidden}
+.why-bg::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(72,201,176,0.08),transparent 70%)}
+.why-bg .section-tag{color:var(--mint-light)}
+.why-bg .section-tag::before{background:var(--mint-light)}
+.why-bg .section-title{color:#fff}
+.why-bg .section-desc{color:rgba(255,255,255,0.65)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:36px 28px;transition:all .3s;backdrop-filter:blur(10px)}
+.why-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(72,201,176,0.3)}
+.why-card-num{font-family:'Readex Pro',sans-serif;font-size:48px;font-weight:700;color:rgba(72,201,176,0.2);line-height:1;margin-bottom:16px}
+.why-card h3{font-size:18px;margin-bottom:10px;color:#fff}
+.why-card p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7}
+
+/* TESTIMONIALS */
+.testimonials-bg{background:var(--pearl)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:var(--white);border-radius:20px;padding:36px 28px;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:all .3s}
+.testimonial-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.testimonial-stars{display:flex;gap:2px;margin-bottom:16px}
+.testimonial-stars svg{width:18px;height:18px;color:#f1c40f}
+.testimonial-card blockquote{color:var(--text-light);font-size:15px;line-height:1.8;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:16px}
+.testimonial-avatar{width:42px;height:42px;border-radius:50%;background:var(--mint-soft);display:flex;align-items:center;justify-content:center;font-family:'Readex Pro',sans-serif;font-weight:700;color:var(--mint-dark);font-size:16px}
+.testimonial-name{font-weight:600;font-size:14px;color:var(--text)}
+.testimonial-role{font-size:12px;color:var(--text-muted)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info h2{font-size:clamp(28px,3.5vw,38px);color:var(--navy);margin-bottom:16px}
+.contact-info>p{color:var(--text-light);font-size:16px;line-height:1.8;margin-bottom:32px}
+.contact-detail{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.contact-detail-icon{width:48px;height:48px;border-radius:14px;background:var(--mint-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-detail-icon svg{width:22px;height:22px;color:var(--mint-dark)}
+.contact-detail h4{font-size:15px;color:var(--navy);margin-bottom:4px}
+.contact-detail p{color:var(--text-light);font-size:14px}
+.contact-detail a{color:var(--mint-dark);text-decoration:none;font-weight:500}
+.contact-detail a:hover{text-decoration:underline}
+
+.contact-form{background:var(--white);border-radius:20px;padding:40px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.contact-form h3{font-size:22px;color:var(--navy);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:.3px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:12px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:14px;color:var(--text);background:var(--pearl);transition:all .3s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--mint);box-shadow:0 0 0 4px rgba(72,201,176,0.12);background:var(--white)}
+.form-group input:focus-visible,.form-group textarea:focus-visible,.form-group select:focus-visible{outline:2px solid var(--mint);outline-offset:1px}
+.form-group textarea{height:120px;resize:vertical}
+.form-submit{width:100%;padding:16px;background:var(--mint);color:#fff;border:none;border-radius:50px;font-family:'Readex Pro',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s}
+.form-submit:hover{background:var(--mint-dark);box-shadow:var(--shadow-mint)}
+.form-submit:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+
+/* FOOTER */
+.footer{background:var(--navy-deep);color:rgba(255,255,255,0.6);padding:60px 24px 24px}
+.footer-top{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-brand{font-family:'Readex Pro',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px}
+.footer-desc{font-size:14px;line-height:1.7;margin-bottom:20px;max-width:300px}
+.footer h4{font-family:'Readex Pro',sans-serif;font-size:14px;color:#fff;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:10px}
+.footer ul a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:color .3s}
+.footer ul a:hover{color:var(--mint)}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;flex-wrap:wrap;gap:12px}
+.footer-bottom a{color:var(--mint);text-decoration:none}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* NEOCODE POPUP */
+.neocode-popup{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--white);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.2);padding:28px;max-width:340px;width:calc(100% - 48px);transform:translateY(120%);opacity:0;transition:all .5s cubic-bezier(0.22,1,0.36,1);pointer-events:none}
+.neocode-popup.show{transform:translateY(0);opacity:1;pointer-events:auto}
+.neocode-popup-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:var(--pearl);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:18px;color:var(--text-muted)}
+.neocode-popup-close:hover{background:var(--border);color:var(--text)}
+.neocode-popup-close:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.neocode-popup h4{font-family:'Readex Pro',sans-serif;font-size:17px;color:var(--navy);margin-bottom:8px}
+.neocode-popup p{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:16px}
+.neocode-popup .popup-cta{display:inline-flex;align-items:center;gap:6px;background:var(--mint);color:#fff;padding:12px 24px;border-radius:50px;text-decoration:none;font-family:'Readex Pro',sans-serif;font-size:13px;font-weight:600;transition:all .3s}
+.neocode-popup .popup-cta:hover{background:var(--mint-dark);box-shadow:var(--shadow-mint)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;padding-top:120px}
+  .hero-text{margin:0 auto 36px}
+  .hero-btns{justify-content:center}
+  .hero-image{order:-1;margin-bottom:20px}
+  .hero-image img{max-width:400px}
+  .hero-float{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(2){border-right:none}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-img{max-width:500px;margin:0 auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonial-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  .section{padding:70px 20px}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .testimonial-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .about-features{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:1px solid var(--border)}
+  .stat-item:last-child{border-bottom:none}
+  .hero h1{font-size:32px}
+  .contact-form{padding:24px}
+  .neocode-popup{bottom:12px;right:12px;max-width:calc(100% - 24px)}
+}
+</style>
+</head>
+<body>
+
+<!-- NEOCODE BAR -->
+<div class="neocode-bar">
+  This is a demo redesign by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="N&P Cleaning Agency home">
+      <div class="logo-icon">N&P</div>
+      N&P Cleaning
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div class="reveal">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Trusted Cleaning Professionals
+      </div>
+      <h1>Your Space,<span>Spotlessly Clean.</span></h1>
+      <p class="hero-text">We're N&P Cleaning Agency, and we don't just clean - we transform spaces. Whether it's your home, office or rental property, we'll leave it looking (and smelling) brand new.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get a Free Quote
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-secondary">Our Services
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-image reveal d2">
+      <img src="https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional cleaning team at work" loading="eager">
+      <div class="hero-float top-right">
+        <div class="hero-float-icon green">&#10003;</div>
+        <div class="hero-float-text">
+          <strong>100% Satisfaction</strong>
+          Guaranteed results
+        </div>
+      </div>
+      <div class="hero-float bottom-left">
+        <div class="hero-float-icon navy">&#9733;</div>
+        <div class="hero-float-text">
+          <strong>5-Star Rated</strong>
+          By our clients
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Satisfaction Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Core Services</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section about-bg">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.pexels.com/photos/4107120/pexels-photo-4107120.jpeg?auto=compress&cs=tinysrgb&w=600" alt="N&P Cleaning team member at work">
+        <div class="about-img-accent"></div>
+      </div>
+      <div class="about-content reveal d1">
+        <div class="section-tag">About Us</div>
+        <h2>We're N&P Cleaning, and We Take Pride in Every Detail</h2>
+        <p>We've been helping homes and businesses stay spotless for over a decade. Our team isn't just trained, they're passionate about what they do. That's the difference you'll notice.</p>
+        <p>From a quick one-off deep clean to a regular office maintenance schedule, we tailor every job to your specific needs. No cookie-cutter approach here. Just honest, reliable cleaning you can count on.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Fully Insured
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            DBS Checked Staff
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Eco-Friendly Products
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Flexible Scheduling
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-center reveal">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Everything You Need, Under One Roof</h2>
+      <p class="section-desc">We've got your cleaning covered, from a quick spruce-up at home to full commercial contracts. Here's what we offer.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Domestic -->
+      <div class="service-card reveal d1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Domestic Cleaning</h3>
+        <p>Regular or one-off cleaning for your home. We'll handle the hoovering, dusting, mopping, bathrooms, and kitchens so you don't have to.</p>
+      </div>
+      <!-- Commercial -->
+      <div class="service-card reveal d2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Commercial Cleaning</h3>
+        <p>Keep your business premises looking professional. We offer flexible contracts for offices, retail spaces, and industrial units.</p>
+      </div>
+      <!-- End of Tenancy -->
+      <div class="service-card reveal d3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>End of Tenancy</h3>
+        <p>Moving out? We'll make sure the property's spotless for the final inspection. Landlords and letting agents love working with us.</p>
+      </div>
+      <!-- Deep Clean -->
+      <div class="service-card reveal d4">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Deep Clean</h3>
+        <p>For when a regular clean isn't enough. We'll get into every nook and cranny, behind appliances, inside ovens, the works.</p>
+      </div>
+      <!-- Carpet Cleaning -->
+      <div class="service-card reveal d5">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 12h20"/><path d="M7 6v12"/><path d="M17 6v12"/></svg>
+        </div>
+        <h3>Carpet Cleaning</h3>
+        <p>Professional carpet cleaning that removes deep-set stains, allergens, and odours. Your carpets will look and feel brand new again.</p>
+      </div>
+      <!-- Office Cleaning -->
+      <div class="service-card reveal d6">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Office Cleaning</h3>
+        <p>A clean workspace boosts productivity. We'll keep desks, break rooms, toilets, and common areas hygienic and welcoming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why" class="section why-bg">
+  <div class="container">
+    <div class="section-center reveal">
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">Here's Why Clients Stick With Us</h2>
+      <p class="section-desc">We're not the cheapest, and we're definitely not the most expensive. But we are the most reliable cleaning team you'll find.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <div class="why-card-num">01</div>
+        <h3>Reliable &amp; Consistent</h3>
+        <p>We show up on time, every time. You won't be chasing us for updates or wondering where we are. That's a promise.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-card-num">02</div>
+        <h3>Tailored to You</h3>
+        <p>Every property's different, and every client's got their own priorities. We'll build a cleaning plan that works around your schedule and needs.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="why-card-num">03</div>
+        <h3>Eco-Conscious</h3>
+        <p>We use environmentally friendly products wherever possible. Better for the planet, safer for your family and pets.</p>
+      </div>
+      <div class="why-card reveal d4">
+        <div class="why-card-num">04</div>
+        <h3>Trained Professionals</h3>
+        <p>Every member of our team is fully trained, vetted, and insured. We don't cut corners on quality or safety.</p>
+      </div>
+      <div class="why-card reveal d5">
+        <div class="why-card-num">05</div>
+        <h3>Transparent Pricing</h3>
+        <p>No hidden fees, no surprise charges. You'll know exactly what you're paying before we start. Simple as that.</p>
+      </div>
+      <div class="why-card reveal d6">
+        <div class="why-card-num">06</div>
+        <h3>Satisfaction Guarantee</h3>
+        <p>If you're not happy with our work, we'll come back and redo it. No questions asked, no fuss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section testimonials-bg">
+  <div class="container">
+    <div class="section-center reveal">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-desc">Don't just take our word for it. Here's what real people have to say about working with N&P Cleaning.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal d1">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote>"We've used N&P for our end of tenancy cleans for the past two years. They've never let us down. The properties always pass inspection first time."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SH</div>
+          <div>
+            <div class="testimonial-name">Sarah H.</div>
+            <div class="testimonial-role">Letting Agent</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal d2">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote>"Honestly, I can't recommend them enough. My house has never been this clean. They even sorted out stains on the carpet I thought were permanent!"</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MT</div>
+          <div>
+            <div class="testimonial-name">Mark T.</div>
+            <div class="testimonial-role">Homeowner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal d3">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote>"We switched to N&P for our office cleaning contract and the difference was night and day. The team's thorough, professional, and always friendly."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JR</div>
+          <div>
+            <div class="testimonial-name">James R.</div>
+            <div class="testimonial-role">Office Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-tag">Contact Us</div>
+        <h2>Let's Get Your Space Sorted</h2>
+        <p>Got a question or want a quote? Fill in the form and we'll get back to you as soon as we can. Usually that's within a few hours.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email Us</h4>
+            <p><a href="mailto:enquiries@npcleaning.co.uk">enquiries@npcleaning.co.uk</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Serving</h4>
+            <p>Homes &amp; businesses across the region</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Mon - Sat: 7am - 7pm<br>Sun: By appointment</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal d2">
+        <h3>Request a Free Quote</h3>
+        <form action="https://formsubmit.co/enquiries@npcleaning.co.uk" method="POST">
+          <input type="hidden" name="_subject" value="New Quote Request from Website">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="07xxx xxxxxx">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="domestic">Domestic Cleaning</option>
+                <option value="commercial">Commercial Cleaning</option>
+                <option value="end-of-tenancy">End of Tenancy</option>
+                <option value="deep-clean">Deep Clean</option>
+                <option value="carpet">Carpet Cleaning</option>
+                <option value="office">Office Cleaning</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Needs</label>
+            <textarea id="message" name="message" placeholder="E.g. 3-bed semi, weekly clean, starting next month..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Your Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">N&P Cleaning Agency</div>
+      <p class="footer-desc">Professional cleaning services for homes and businesses. We don't just clean your space, we make it shine.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Domestic Cleaning</a></li>
+        <li><a href="#services">Commercial Cleaning</a></li>
+        <li><a href="#services">End of Tenancy</a></li>
+        <li><a href="#services">Deep Clean</a></li>
+        <li><a href="#services">Carpet Cleaning</a></li>
+        <li><a href="#services">Office Cleaning</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:enquiries@npcleaning.co.uk">enquiries@npcleaning.co.uk</a></li>
+        <li>Mon - Sat: 7am - 7pm</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 N&P Cleaning Agency. All rights reserved.</span>
+    <span>Website redesign by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></span>
+  </div>
+</footer>
+
+<!-- NEOCODE POPUP -->
+<div class="neocode-popup" id="neoPopup" role="dialog" aria-label="NeoCode Studio promotion">
+  <button class="neocode-popup-close" id="neoPopupClose" aria-label="Close popup">&times;</button>
+  <h4>Like what you see?</h4>
+  <p>This is a demo redesign built by NeoCode Studio. We help local businesses look professional online and turn visitors into customers.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="popup-cta">Let's Talk
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<script>
+// NAV SCROLL
+const nav = document.querySelector('.nav');
+const neoBar = document.querySelector('.neocode-bar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 60) {
+    nav.classList.add('scrolled');
+    neoBar.style.transform = 'translateY(-100%)';
+    neoBar.style.transition = 'transform .3s';
+  } else {
+    nav.classList.remove('scrolled');
+    neoBar.style.transform = 'translateY(0)';
+  }
+  lastScroll = scrollY;
+});
+
+// HAMBURGER
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', !expanded);
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMobile() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+// INTERSECTION OBSERVER - REVEAL
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+// NEOCODE POPUP AT 70% SCROLL
+const neoPopup = document.getElementById('neoPopup');
+const neoPopupClose = document.getElementById('neoPopupClose');
+let popupShown = false;
+let popupDismissed = false;
+
+window.addEventListener('scroll', () => {
+  if (popupDismissed || popupShown) return;
+  const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+  if (scrollPercent >= 0.7) {
+    neoPopup.classList.add('show');
+    popupShown = true;
+  }
+});
+
+neoPopupClose.addEventListener('click', () => {
+  neoPopup.classList.remove('show');
+  popupDismissed = true;
+});
+
+// SMOOTH SCROLL FOR ANCHOR LINKS
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

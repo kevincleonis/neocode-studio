@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pest Control Cardiff | Fast &amp; Reliable Pest Removal | South Wales</title>
+<meta name="description" content="Professional pest control in Cardiff and South Wales. Rats, mice, wasps, bedbugs, cockroaches and more. BPCA trained, same-day callouts. Get your free quote today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --forest:#1b3a2d;
+  --forest-deep:#0f2519;
+  --forest-light:#2a5a44;
+  --amber:#f0a500;
+  --amber-light:#f5ba3c;
+  --amber-pale:#fff8e6;
+  --white:#fefefe;
+  --off-white:#f7f7f5;
+  --text:#1a1a1a;
+  --text-mid:#4a4a4a;
+  --text-soft:#6b6b6b;
+  --border:rgba(27,58,45,0.1);
+  --radius:10px;
+  --radius-lg:18px;
+  --shadow:0 4px 24px rgba(0,0,0,0.07);
+  --shadow-lg:0 16px 48px rgba(0,0,0,0.12);
+  --ease:cubic-bezier(0.4,0,0.2,1);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Space Mono',monospace;line-height:1.2;font-weight:700}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+:focus{outline:3px solid var(--amber);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}
+.stagger-4{transition-delay:.35s}.stagger-5{transition-delay:.4s}.stagger-6{transition-delay:.45s}
+
+/* NeoCode Banner */
+.nc-banner{background:var(--forest-deep);color:rgba(255,255,255,.7);text-align:center;padding:10px 20px;font-size:12px;font-weight:500;letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.08)}
+.nc-banner a{color:var(--amber);font-weight:700;transition:color .3s}
+.nc-banner a:hover{text-decoration:underline}
+
+/* Top Bar */
+.topbar{background:var(--forest);color:rgba(255,255,255,.85);padding:12px 24px;display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;font-size:.8rem;font-weight:500}
+.topbar a{color:var(--amber-light);transition:color .3s}
+.topbar a:hover{color:var(--amber)}
+.topbar svg{width:15px;height:15px;fill:var(--amber);flex-shrink:0}
+.topbar-item{display:flex;align-items:center;gap:6px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(254,254,254,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 28px}
+.nav-brand{font-family:'Space Mono',monospace;font-size:1.15rem;font-weight:700;color:var(--forest);display:flex;align-items:center;gap:10px}
+.nav-brand .mark{width:40px;height:40px;background:var(--forest);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.nav-brand .mark svg{width:22px;height:22px;fill:var(--amber)}
+.nav-links{list-style:none;display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--text-mid);transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--amber);transition:width .3s}
+.nav-links a:hover{color:var(--forest)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--amber);color:var(--forest-deep);padding:11px 24px;border-radius:100px;font-size:.85rem;font-weight:700;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.nav-cta:hover{background:var(--amber-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(240,165,0,.3)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:200}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--forest);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* Mobile nav */
+.mobile-nav{position:fixed;top:0;right:-100%;width:80%;max-width:360px;height:100vh;background:var(--forest-deep);z-index:150;padding:100px 40px 40px;transition:right .4s var(--ease);display:flex;flex-direction:column;gap:0}
+.mobile-nav.open{right:0}
+.mobile-nav a{font-family:'Space Mono',monospace;color:rgba(255,255,255,.85);font-size:1.1rem;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08);display:block;transition:color .3s}
+.mobile-nav a:hover{color:var(--amber)}
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:140;opacity:0;visibility:hidden;transition:all .3s}
+.mobile-overlay.open{opacity:1;visibility:visible}
+
+/* Hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:var(--forest-deep)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,37,25,.95) 0%,rgba(27,58,45,.8) 50%,rgba(15,37,25,.9) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 28px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(240,165,0,.15);border:1px solid rgba(240,165,0,.3);padding:8px 18px;border-radius:100px;color:var(--amber);font-size:.8rem;font-weight:600;letter-spacing:.04em;margin-bottom:24px}
+.hero-badge svg{width:16px;height:16px;fill:var(--amber)}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);color:var(--white);margin-bottom:20px;max-width:700px}
+.hero h1 span{color:var(--amber)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.7);max-width:560px;margin-bottom:36px;line-height:1.7}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--amber);color:var(--forest-deep);padding:15px 32px;border-radius:100px;font-size:.95rem;font-weight:700;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{background:var(--amber-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,165,0,.3)}
+.btn-secondary{background:transparent;color:var(--white);padding:15px 32px;border-radius:100px;font-size:.95rem;font-weight:600;border:2px solid rgba(255,255,255,.25);transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-secondary:hover{border-color:var(--amber);color:var(--amber)}
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1)}
+.hero-stat{text-align:left}
+.hero-stat .num{font-family:'Space Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--amber)}
+.hero-stat .label{font-size:.82rem;color:rgba(255,255,255,.55);margin-top:4px}
+
+/* Section shared */
+section{padding:100px 28px}
+.section-header{text-align:center;max-width:620px;margin:0 auto 60px}
+.section-header .tag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;color:var(--amber);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.section-header h2{font-size:clamp(1.7rem,3.5vw,2.4rem);color:var(--forest);margin-bottom:16px}
+.section-header p{font-size:1.05rem;color:var(--text-mid);line-height:1.7}
+.container{max-width:1200px;margin:0 auto}
+
+/* About */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img .badge{position:absolute;bottom:20px;left:20px;background:var(--amber);color:var(--forest-deep);padding:12px 20px;border-radius:var(--radius);font-family:'Space Mono',monospace;font-weight:700;font-size:.9rem}
+.about-content h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--forest);margin-bottom:20px}
+.about-content p{color:var(--text-mid);margin-bottom:16px;line-height:1.75}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feat{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--off-white);border-radius:var(--radius);transition:all .3s}
+.about-feat:hover{background:var(--amber-pale)}
+.about-feat svg{width:20px;height:20px;fill:var(--amber);flex-shrink:0;margin-top:2px}
+.about-feat span{font-size:.88rem;font-weight:600;color:var(--text)}
+
+/* Services */
+.services{background:var(--off-white)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:var(--radius-lg);padding:36px 28px;border:1px solid var(--border);transition:all .4s var(--ease);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--amber)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--forest),var(--forest-light));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.service-icon svg{width:28px;height:28px;fill:var(--amber)}
+.service-card h3{font-size:1.05rem;margin-bottom:10px;color:var(--forest)}
+.service-card p{font-size:.9rem;color:var(--text-soft);line-height:1.7}
+
+/* How it works */
+.how{background:var(--forest-deep);color:var(--white)}
+.how .section-header h2{color:var(--white)}
+.how .section-header p{color:rgba(255,255,255,.6)}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.how-steps::before{content:'';position:absolute;top:40px;left:12%;right:12%;height:2px;background:rgba(240,165,0,.2)}
+.how-step{text-align:center;position:relative;z-index:1}
+.how-num{width:60px;height:60px;background:var(--amber);color:var(--forest-deep);font-family:'Space Mono',monospace;font-weight:700;font-size:1.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 0 8px rgba(240,165,0,.15)}
+.how-step h3{font-size:.95rem;margin-bottom:8px;color:var(--amber)}
+.how-step p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6;max-width:220px;margin:0 auto}
+
+/* Why choose us */
+.why{background:var(--white)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why-card{padding:32px;border-radius:var(--radius-lg);background:var(--off-white);border:1px solid var(--border);transition:all .3s}
+.why-card:hover{border-color:var(--amber);background:var(--amber-pale)}
+.why-card svg{width:36px;height:36px;fill:var(--amber);margin-bottom:16px}
+.why-card h3{font-size:.95rem;color:var(--forest);margin-bottom:10px}
+.why-card p{font-size:.88rem;color:var(--text-soft);line-height:1.7}
+
+/* Coverage */
+.coverage{background:var(--forest);color:var(--white);position:relative;overflow:hidden}
+.coverage::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(240,165,0,.08) 0%,transparent 70%);border-radius:50%}
+.coverage .section-header h2{color:var(--white)}
+.coverage .section-header p{color:rgba(255,255,255,.6)}
+.coverage-areas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+.area-tag{padding:10px 22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:.88rem;font-weight:500;color:rgba(255,255,255,.8);transition:all .3s}
+.area-tag:hover{background:var(--amber);color:var(--forest-deep);border-color:var(--amber);font-weight:600}
+
+/* Testimonials */
+.testimonials{background:var(--off-white)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:var(--white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border);transition:all .3s}
+.test-card:hover{box-shadow:var(--shadow);border-color:rgba(240,165,0,.3)}
+.test-stars{display:flex;gap:3px;margin-bottom:16px}
+.test-stars svg{width:18px;height:18px;fill:var(--amber)}
+.test-card blockquote{font-size:.92rem;color:var(--text-mid);line-height:1.75;margin-bottom:20px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;color:var(--amber);font-family:'Space Mono',monospace;font-weight:700;font-size:.9rem}
+.test-info .name{font-weight:600;font-size:.88rem;color:var(--text)}
+.test-info .loc{font-size:.78rem;color:var(--text-soft)}
+
+/* Contact */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:clamp(1.5rem,3vw,2rem);color:var(--forest);margin-bottom:16px}
+.contact-info>p{color:var(--text-mid);margin-bottom:32px;line-height:1.7}
+.contact-detail{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;padding:20px;background:var(--off-white);border-radius:var(--radius);transition:all .3s}
+.contact-detail:hover{background:var(--amber-pale)}
+.contact-detail svg{width:22px;height:22px;fill:var(--amber);flex-shrink:0;margin-top:2px}
+.contact-detail .cd-label{font-size:.78rem;color:var(--text-soft);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:4px}
+.contact-detail .cd-value{font-weight:600;color:var(--text);font-size:.95rem}
+.contact-form{background:var(--off-white);padding:40px;border-radius:var(--radius-lg);border:1px solid var(--border)}
+.contact-form h3{font-size:1.1rem;color:var(--forest);margin-bottom:24px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'IBM Plex Sans',sans-serif;font-size:.92rem;background:var(--white);transition:border-color .3s;color:var(--text)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--amber);outline:none;box-shadow:0 0 0 3px rgba(240,165,0,.15)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{background:var(--amber);color:var(--forest-deep);padding:15px 40px;border-radius:100px;font-size:.95rem;font-weight:700;transition:all .3s;border:none;width:100%;font-family:'IBM Plex Sans',sans-serif;cursor:pointer}
+.form-submit:hover{background:var(--amber-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(240,165,0,.3)}
+
+/* Footer */
+.footer{background:var(--forest-deep);color:rgba(255,255,255,.6);padding:60px 28px 28px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-family:'Space Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.footer-brand svg{width:28px;height:28px;fill:var(--amber)}
+.footer-desc{font-size:.88rem;line-height:1.7;max-width:340px;margin-bottom:20px}
+.footer h4{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:.88rem;transition:color .3s}
+.footer-links a:hover{color:var(--amber)}
+.footer-bar{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.78rem}
+.footer-bar a{color:var(--amber);font-weight:600;transition:color .3s}
+.footer-bar a:hover{text-decoration:underline}
+
+/* NeoCode Popup */
+.nc-popup{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-lg);border:1px solid var(--border);max-width:340px;transform:translateY(20px);opacity:0;visibility:hidden;transition:all .4s var(--ease)}
+.nc-popup.show{transform:translateY(0);opacity:1;visibility:visible}
+.nc-popup-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-soft);transition:all .3s;border:none;cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
+.nc-popup-close:hover{background:var(--forest);color:var(--white)}
+.nc-popup .nc-logo{font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;color:var(--forest);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.nc-popup .nc-logo span{background:var(--forest);color:var(--amber);padding:3px 7px;border-radius:4px;font-size:.7rem}
+.nc-popup p{font-size:.85rem;color:var(--text-mid);line-height:1.65;margin-bottom:18px}
+.nc-popup .nc-btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:100px;font-size:.82rem;font-weight:600;transition:all .3s}
+.nc-popup .nc-btn:hover{background:var(--forest-light);transform:translateY(-1px)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .services-grid,.test-grid,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .how-steps{grid-template-columns:repeat(2,1fr);gap:32px}
+  .how-steps::before{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{min-height:auto;padding:80px 0}
+  .hero h1{font-size:clamp(1.8rem,6vw,2.6rem)}
+  .hero-stats{flex-wrap:wrap;gap:24px}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .services-grid,.test-grid,.why-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr}
+  section{padding:70px 20px}
+  .footer-grid{grid-template-columns:1fr}
+  .nc-popup{left:16px;right:16px;max-width:none;bottom:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="nc-banner">This is a demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></div>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <div class="topbar-item">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <a href="tel:02920000000">029 2000 0000</a>
+  </div>
+  <div class="topbar-item">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <a href="mailto:info@pestcontrolcardiff.com">info@pestcontrolcardiff.com</a>
+  </div>
+  <div class="topbar-item">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    <span>Cardiff &amp; South Wales</span>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" aria-label="Pest Control Cardiff Home">
+      <div class="mark">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+      </div>
+      Pest Control Cardiff
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">Process</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get Free Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-overlay" id="overlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#how">Process</a>
+  <a href="#why">Why Us</a>
+  <a href="#coverage">Areas</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="nav-cta" style="margin-top:24px;text-align:center;justify-content:center">Get Free Quote</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/5691585/pexels-photo-5691585.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Professional pest control technician in protective gear" width="1920" height="1080" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      BPCA Trained &amp; Fully Insured
+    </div>
+    <h1 class="reveal stagger-1">Cardiff's Trusted <span>Pest Control</span> Experts</h1>
+    <p class="hero-sub reveal stagger-2">We'll get rid of unwanted pests quickly, safely, and discreetly. Serving Cardiff and South Wales with same-day callouts and guaranteed results.</p>
+    <div class="hero-btns reveal stagger-3">
+      <a href="#contact" class="btn-primary">
+        Get a Free Quote
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>
+      </a>
+      <a href="tel:02920000000" class="btn-secondary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Us Now
+      </a>
+    </div>
+    <div class="hero-stats reveal stagger-3">
+      <div class="hero-stat">
+        <div class="num">15+</div>
+        <div class="label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">5,000+</div>
+        <div class="label">Jobs Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">4.9/5</div>
+        <div class="label">Google Rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">Same Day</div>
+        <div class="label">Emergency Callouts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.pexels.com/photos/5691660/pexels-photo-5691660.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Pest control professional inspecting property" width="800" height="600" loading="lazy">
+        <div class="badge">15+ Years Trusted</div>
+      </div>
+      <div class="about-content">
+        <div class="tag reveal">About Us</div>
+        <h2 class="reveal stagger-1">We're Cardiff's Go-To Pest Control Team</h2>
+        <p class="reveal stagger-2">For over 15 years, we've been helping homes and businesses across Cardiff and South Wales stay pest-free. Our team is BPCA trained, fully insured, and committed to solving your pest problem quickly and safely.</p>
+        <p class="reveal stagger-2">We don't just treat the symptoms. We find the root cause and make sure pests don't come back. Every job comes with a follow-up guarantee because your peace of mind matters to us.</p>
+        <div class="about-features reveal stagger-3">
+          <div class="about-feat">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>BPCA Trained Technicians</span>
+          </div>
+          <div class="about-feat">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>Eco-Friendly Methods</span>
+          </div>
+          <div class="about-feat">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>Fully Insured &amp; Licensed</span>
+          </div>
+          <div class="about-feat">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>Free Follow-Up Visits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">Our Services</div>
+      <h2 class="reveal stagger-1">We Handle Every Type of Pest</h2>
+      <p class="reveal stagger-2">From rodents to insects, we've got the tools, training, and experience to deal with it. Here's what we cover.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Rats & Mice -->
+      <div class="service-card reveal stagger-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Rats &amp; Mice</h3>
+        <p>Fast, effective rodent control for your home or business. We'll locate entry points, remove the problem, and proof your property to keep them out for good.</p>
+      </div>
+      <!-- Wasps & Bees -->
+      <div class="service-card reveal stagger-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Wasps &amp; Bees</h3>
+        <p>Safe nest removal and treatment for wasps, hornets, and bee infestations. We'll handle it quickly so you can enjoy your outdoor space without worry.</p>
+      </div>
+      <!-- Cockroaches -->
+      <div class="service-card reveal stagger-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Cockroaches</h3>
+        <p>Cockroaches spread disease and multiply fast. We use targeted treatments to eliminate colonies and stop them from coming back to your property.</p>
+      </div>
+      <!-- Bedbugs -->
+      <div class="service-card reveal stagger-4">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Bedbugs</h3>
+        <p>Discreet, thorough bedbug treatments using heat and insecticide methods. We'll inspect, treat, and follow up to make sure they're completely gone.</p>
+      </div>
+      <!-- Foxes & Squirrels -->
+      <div class="service-card reveal stagger-5">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Foxes &amp; Squirrels</h3>
+        <p>Humane wildlife management for foxes, squirrels, and other nuisance animals. We'll remove them safely and secure your property against re-entry.</p>
+      </div>
+      <!-- Commercial -->
+      <div class="service-card reveal stagger-6">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        </div>
+        <h3>Commercial Pest Control</h3>
+        <p>Tailored pest management contracts for restaurants, hotels, offices, and warehouses. We'll keep you compliant and pest-free all year round.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">How It Works</div>
+      <h2 class="reveal stagger-1">Simple, Stress-Free Process</h2>
+      <p class="reveal stagger-2">Getting rid of pests shouldn't be complicated. Here's how we make it easy for you.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal stagger-1">
+        <div class="how-num">1</div>
+        <h3>Get in Touch</h3>
+        <p>Call us or fill out the form. We'll ask a few questions to understand your situation and give you a free, no-obligation quote.</p>
+      </div>
+      <div class="how-step reveal stagger-2">
+        <div class="how-num">2</div>
+        <h3>Free Survey</h3>
+        <p>We'll visit your property to assess the problem, identify the pest, and find entry points. No charge, no pressure.</p>
+      </div>
+      <div class="how-step reveal stagger-3">
+        <div class="how-num">3</div>
+        <h3>Treatment</h3>
+        <p>Our BPCA trained technicians carry out the treatment using safe, effective methods. We'll explain everything before we start.</p>
+      </div>
+      <div class="how-step reveal stagger-4">
+        <div class="how-num">4</div>
+        <h3>Follow-Up</h3>
+        <p>We come back to check everything's sorted and the pests haven't returned. Your satisfaction is guaranteed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">Why Choose Us</div>
+      <h2 class="reveal stagger-1">What Sets Us Apart</h2>
+      <p class="reveal stagger-2">There are plenty of pest control companies out there. Here's why Cardiff homeowners and businesses choose us.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal stagger-1">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+        <h3>Local &amp; Trusted</h3>
+        <p>We're a Cardiff-based team with 15+ years of experience. Our reputation speaks for itself, and most of our work comes from referrals and repeat customers.</p>
+      </div>
+      <div class="why-card reveal stagger-2">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <h3>Guaranteed Results</h3>
+        <p>Every treatment comes with a satisfaction guarantee. If the pests come back within the guarantee period, we'll re-treat at no extra cost. It's that simple.</p>
+      </div>
+      <div class="why-card reveal stagger-3">
+        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        <h3>Fair, Transparent Pricing</h3>
+        <p>No hidden fees, no surprises. We'll give you a clear quote before we start and won't charge a penny more. What you see is what you pay.</p>
+      </div>
+      <div class="why-card reveal stagger-4">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        <h3>Same-Day Response</h3>
+        <p>Got an emergency? We offer same-day callouts across Cardiff and South Wales. Just give us a ring and we'll be there as soon as possible.</p>
+      </div>
+      <div class="why-card reveal stagger-5">
+        <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+        <h3>Discreet Service</h3>
+        <p>We understand pest problems can feel embarrassing. Our team arrives in unmarked vehicles and works discreetly to protect your privacy.</p>
+      </div>
+      <div class="why-card reveal stagger-6">
+        <svg viewBox="0 0 24 24"><path d="M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43L6.79 9C6.3 9.71 6 10.57 6 11.5 6 14.53 8.47 17 11.5 17h1c3.03 0 5.5-2.47 5.5-5.5 0-.93-.3-1.79-.79-2.5zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+        <h3>Eco-Friendly Options</h3>
+        <p>We offer environmentally responsible treatments that are safe for your family, pets, and the planet. Because effective doesn't have to mean harmful.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coverage -->
+<section class="coverage" id="coverage">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">Coverage Areas</div>
+      <h2 class="reveal stagger-1">Serving Cardiff &amp; South Wales</h2>
+      <p class="reveal stagger-2">We cover a wide area across Cardiff and the surrounding regions. If you don't see your area listed, give us a call and we'll do our best to help.</p>
+    </div>
+    <div class="coverage-areas reveal stagger-3">
+      <span class="area-tag">Cardiff City Centre</span>
+      <span class="area-tag">Canton</span>
+      <span class="area-tag">Cathays</span>
+      <span class="area-tag">Roath</span>
+      <span class="area-tag">Splott</span>
+      <span class="area-tag">Grangetown</span>
+      <span class="area-tag">Llandaff</span>
+      <span class="area-tag">Whitchurch</span>
+      <span class="area-tag">Heath</span>
+      <span class="area-tag">Rhiwbina</span>
+      <span class="area-tag">Pontcanna</span>
+      <span class="area-tag">Riverside</span>
+      <span class="area-tag">Ely</span>
+      <span class="area-tag">Fairwater</span>
+      <span class="area-tag">Rumney</span>
+      <span class="area-tag">Llanishen</span>
+      <span class="area-tag">Cyncoed</span>
+      <span class="area-tag">Penylan</span>
+      <span class="area-tag">Barry</span>
+      <span class="area-tag">Penarth</span>
+      <span class="area-tag">Caerphilly</span>
+      <span class="area-tag">Newport</span>
+      <span class="area-tag">Bridgend</span>
+      <span class="area-tag">Pontypridd</span>
+      <span class="area-tag">Merthyr Tydfil</span>
+      <span class="area-tag">Vale of Glamorgan</span>
+      <span class="area-tag">Swansea</span>
+      <span class="area-tag">Neath</span>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">Testimonials</div>
+      <h2 class="reveal stagger-1">What Our Customers Say</h2>
+      <p class="reveal stagger-2">Don't just take our word for it. Here's what homeowners and businesses across Cardiff have to say about our service.</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal stagger-1">
+        <div class="test-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <blockquote>"Had a rat problem in our loft that was keeping us up at night. These guys came out the same day, found where they were getting in, and sorted it within a week. Haven't had an issue since. Brilliant service."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">DW</div>
+          <div class="test-info">
+            <div class="name">David Williams</div>
+            <div class="loc">Roath, Cardiff</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal stagger-2">
+        <div class="test-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <blockquote>"We run a restaurant in the city centre and needed a reliable pest control contract. They've been looking after us for three years now. Always professional, always thorough. Couldn't recommend them enough."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">SE</div>
+          <div class="test-info">
+            <div class="name">Sarah Evans</div>
+            <div class="loc">Cardiff City Centre</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal stagger-3">
+        <div class="test-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <blockquote>"Found a wasp nest in our garden shed right before a family BBQ. Called Pest Control Cardiff and they had someone out within two hours. The technician was friendly, professional, and got rid of it safely. Top job."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">MJ</div>
+          <div class="test-info">
+            <div class="name">Mark Jones</div>
+            <div class="loc">Whitchurch, Cardiff</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="tag">Get in Touch</div>
+        <h2>Ready to Get Rid of Your Pest Problem?</h2>
+        <p>Fill out the form or give us a call. We'll get back to you quickly with a free, no-obligation quote. Most enquiries are answered within the hour.</p>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <div>
+            <div class="cd-label">Phone</div>
+            <div class="cd-value">029 2000 0000</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <div>
+            <div class="cd-label">Email</div>
+            <div class="cd-value">info@pestcontrolcardiff.com</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          <div>
+            <div class="cd-label">Hours</div>
+            <div class="cd-value">Mon-Sat: 7am - 8pm | Sun: Emergency Only</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div>
+            <div class="cd-label">Service Area</div>
+            <div class="cd-value">Cardiff &amp; South Wales</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal stagger-2">
+        <h3>Request a Free Quote</h3>
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx" required>
+          </div>
+          <div class="form-group">
+            <label for="pest">Type of Pest</label>
+            <select id="pest" name="pest" required>
+              <option value="" disabled selected>Select a pest type</option>
+              <option value="rats-mice">Rats &amp; Mice</option>
+              <option value="wasps-bees">Wasps &amp; Bees</option>
+              <option value="cockroaches">Cockroaches</option>
+              <option value="bedbugs">Bedbugs</option>
+              <option value="foxes-squirrels">Foxes &amp; Squirrels</option>
+              <option value="commercial">Commercial Contract</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Problem</label>
+            <textarea id="message" name="message" placeholder="Describe the issue, when you first noticed it, and your location..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Free Quote Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          Pest Control Cardiff
+        </div>
+        <p class="footer-desc">Cardiff's trusted pest control experts. BPCA trained, fully insured, and committed to keeping your home and business pest-free.</p>
+        <p class="footer-desc" style="font-size:.78rem;opacity:.7">Website redesign by <a href="https://neocodestudio.co.uk" target="_blank" style="color:var(--amber)">NeoCode Studio</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how">Our Process</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Rat &amp; Mouse Control</a></li>
+          <li><a href="#services">Wasp Nest Removal</a></li>
+          <li><a href="#services">Cockroach Treatment</a></li>
+          <li><a href="#services">Bedbug Removal</a></li>
+          <li><a href="#services">Commercial Contracts</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span>&copy; 2026 Pest Control Cardiff. All rights reserved.</span>
+      <span>Demo site by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- NeoCode Popup -->
+<div class="nc-popup" id="ncPopup">
+  <button class="nc-popup-close" id="ncClose" aria-label="Close popup">&times;</button>
+  <div class="nc-logo"><span>NC</span> NeoCode Studio</div>
+  <p>Like what you see? This is a free demo redesign of your website. We build fast, modern sites that convert visitors into customers. Let's chat about making it yours.</p>
+  <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="nc-btn">
+    Let's Talk
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>
+  </a>
+</div>
+
+<script>
+// Hamburger menu
+const hamburger=document.getElementById('hamburger');
+const mobileNav=document.getElementById('mobileNav');
+const overlay=document.getElementById('overlay');
+
+function toggleMenu(){
+  const isOpen=mobileNav.classList.toggle('open');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded',isOpen);
+  document.body.style.overflow=isOpen?'hidden':'';
+}
+hamburger.addEventListener('click',toggleMenu);
+overlay.addEventListener('click',toggleMenu);
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  if(mobileNav.classList.contains('open'))toggleMenu();
+}));
+
+// Sticky nav shadow
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>50);
+},{passive:true});
+
+// IntersectionObserver reveal
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>observer.observe(el));
+
+// NeoCode popup at 70% scroll
+let popupShown=false;
+let popupDismissed=false;
+window.addEventListener('scroll',()=>{
+  if(popupDismissed||popupShown)return;
+  const scrollPercent=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  if(scrollPercent>=70){
+    document.getElementById('ncPopup').classList.add('show');
+    popupShown=true;
+  }
+},{passive:true});
+
+document.getElementById('ncClose').addEventListener('click',()=>{
+  document.getElementById('ncPopup').classList.remove('show');
+  popupDismissed=true;
+});
+
+// Form handling (demo)
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.form-submit');
+  btn.textContent='Sent! We\'ll be in touch shortly.';
+  btn.style.background='var(--forest)';
+  btn.style.color='var(--white)';
+  btn.disabled=true;
+  return false;
+}
+</script>
+</body>
+</html>
