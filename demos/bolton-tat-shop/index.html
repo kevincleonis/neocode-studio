@@ -3,735 +3,559 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bolton Tat Shop | Award-Winning Tattoo Studio</title>
+<title>The Bolton Tat Shop | Award-Winning Tattoo & Piercing Studio | Bolton</title>
+<meta name="description" content="Award-winning tattoo studio on Newport Street, Bolton. 11+ years, 3 award-winning artists. Custom tattoos, piercings, free consultations. Walk-ins welcome. Call 01204 388377.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--emerald:#1a6b4a;--emerald-light:#22956a;--gold:#c9a84c;--gold-light:#dbb960;--gold-glow:rgba(201,168,76,0.15);--black:#090b0a;--black2:#0f1210;--black3:#161a17;--surface:rgba(201,168,76,0.03);--border:rgba(201,168,76,0.1);--text:#8a9189;--text-light:#a8b0a8;--white:#f0f2ef}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--black);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+::selection{background:var(--emerald);color:var(--white)}
 
-:root {
-  --gold: #d4a843;
-  --gold-light: #f0d78c;
-  --bg-dark: #0a0a0a;
-  --bg-card: #141414;
-  --bg-section: #0f0f0f;
-  --text: #e8e8e8;
-  --text-muted: #888;
-  --accent-glow: rgba(212, 168, 67, 0.15);
-}
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
 
-html { scroll-behavior: smooth; }
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center;height:72px;background:rgba(9,11,10,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s}
+.nav-logo{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:800;color:var(--white);letter-spacing:1px}
+.nav-logo em{font-style:normal;color:var(--gold)}
+.nav-links{list-style:none;display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--text-light);transition:color .3s;letter-spacing:1px;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--emerald)!important;color:var(--white)!important;padding:10px 24px;border-radius:4px;font-weight:600!important;transition:all .3s;letter-spacing:.5px!important}
+.nav-cta:hover{background:var(--emerald-light)!important;transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,107,74,0.3)}
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 
-/* === NEOCODE BANNER === */
-.neocode-banner {
-  background: linear-gradient(90deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 12px;
-  color: #888;
-  letter-spacing: 1px;
-  border-bottom: 1px solid rgba(212, 168, 67, 0.15);
-  font-family: 'Inter', sans-serif;
-  position: relative;
-  z-index: 100;
-}
-.neocode-banner a {
-  color: var(--gold);
-  text-decoration: none;
-  font-weight: 600;
-}
-.neocode-banner a:hover { text-decoration: underline; }
+/* Hamburger */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px;z-index:200}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-/* === NAV === */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 18px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(10, 10, 10, 0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  transition: all 0.3s;
-}
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 3px;
-  color: #fff;
-}
-.nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-cta {
-  background: var(--gold);
-  color: #0a0a0a;
-  padding: 10px 24px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.3s;
-}
-.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-.mobile-menu { display: none; background: none; border: none; cursor: pointer; }
-.mobile-menu span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(9,11,10,0.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:1.5rem clamp(1.5rem,4vw,3rem);z-index:99;transform:translateY(-110%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.mobile-nav.open{transform:translateY(0)}
+.mobile-nav a{display:block;font-size:.95rem;font-weight:500;color:var(--text-light);padding:.8rem 0;border-bottom:1px solid var(--border);letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+.mobile-nav a:hover{color:var(--gold)}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav .nav-cta-m{display:block;text-align:center;margin-top:1rem;background:var(--emerald);color:var(--white);padding:12px;border-radius:4px;font-weight:600;border-bottom:none}
 
-/* === HERO === */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 120px 60px 80px;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
-  opacity: 0.15;
-  filter: grayscale(40%);
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.9) 100%);
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 720px;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(212, 168, 67, 0.1);
-  border: 1px solid rgba(212, 168, 67, 0.25);
-  padding: 8px 18px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 32px;
-}
-.hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(56px, 8vw, 110px);
-  line-height: 0.95;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
-}
-.hero h1 .outline {
-  -webkit-text-stroke: 1.5px var(--gold);
-  color: transparent;
-}
-.hero p {
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--text-muted);
-  max-width: 520px;
-  margin-bottom: 40px;
-}
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--gold);
-  color: #0a0a0a;
-  padding: 16px 36px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  border: none;
-  cursor: pointer;
-}
-.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,168,67,0.25); }
-.btn-secondary {
-  background: transparent;
-  color: #fff;
-  padding: 16px 36px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: all 0.3s;
-}
-.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
-.hero-stats {
-  display: flex;
-  gap: 48px;
-  margin-top: 64px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.hero-stat h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px;
-  color: var(--gold);
-  line-height: 1;
-}
-.hero-stat p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-
-/* === SECTIONS === */
-section { padding: 100px 60px; }
-.section-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(36px, 5vw, 56px);
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  line-height: 1.05;
-}
-.section-desc {
-  font-size: 16px;
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: 560px;
+@media(max-width:900px){
+.hamburger{display:flex}
+.nav-links{display:none}
+.mobile-nav{display:block}
 }
 
-/* === ABOUT === */
-.about { background: var(--bg-section); }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-top: 60px;
-}
-.about-image {
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-}
-.about-image img { width: 100%; height: 500px; object-fit: cover; display: block; filter: grayscale(20%); }
-.about-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(212,168,67,0.15);
-  border-radius: 16px;
-  pointer-events: none;
-}
-.about-text h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1px; margin-bottom: 20px; }
-.about-text p { color: var(--text-muted); line-height: 1.9; margin-bottom: 16px; font-size: 15px; }
-.about-features { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
-.about-feature {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.about-feature .icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(212,168,67,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
+/* ===== HERO ===== */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(0.3) contrast(1.15) saturate(0.7)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(9,11,10,0.92) 0%,rgba(9,11,10,0.6) 40%,rgba(26,107,74,0.15) 100%)}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(9,11,10,0.8) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto;padding:0 clamp(1.5rem,4vw,3rem)}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border:1px solid var(--border);border-radius:100px;margin-bottom:2rem;font-size:.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(2.8rem,7vw,5.2rem);font-weight:900;color:var(--white);line-height:1.05;letter-spacing:1px;margin-bottom:1.5rem}
+.hero h1 .accent{color:var(--gold);display:block}
+.hero-sub{font-size:1.1rem;color:var(--text-light);max-width:520px;line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--emerald);color:var(--white);padding:16px 36px;border-radius:4px;font-weight:600;font-size:.95rem;transition:all .3s;border:none;cursor:pointer;letter-spacing:.5px}
+.btn-primary:hover{background:var(--emerald-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,107,74,0.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(201,168,76,0.25);color:var(--gold);padding:16px 36px;border-radius:4px;font-weight:500;font-size:.95rem;transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(201,168,76,0.06)}
+.hero-stats{position:absolute;bottom:4rem;right:clamp(1.5rem,4vw,3rem);z-index:2;display:flex;gap:3rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'Cinzel',serif;font-size:2.2rem;font-weight:800;color:var(--gold);display:block}
+.hero-stat .lbl{font-size:.7rem;font-weight:500;color:var(--text);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+@media(max-width:768px){.hero-stats{position:relative;bottom:auto;right:auto;margin-top:3rem;justify-content:flex-start;gap:2rem}.hero-stat .num{font-size:1.6rem}}
 
-/* === SERVICES === */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-.service-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 16px;
-  padding: 40px 32px;
-  transition: all 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.service-card:hover { transform: translateY(-4px); border-color: rgba(212,168,67,0.15); }
-.service-card:hover::before { opacity: 1; }
-.service-icon {
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-.service-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-}
-.service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text);font-size:.65rem;letter-spacing:3px;text-transform:uppercase}
+.hero-scroll::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
 
-/* === GALLERY === */
-.gallery { background: var(--bg-section); }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 60px;
-}
-.gallery-item {
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  aspect-ratio: 1;
-  cursor: pointer;
-}
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; filter: grayscale(30%); }
-.gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
-.gallery-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.gallery-item:hover::after { opacity: 1; }
-.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+/* ===== SECTIONS ===== */
+section{padding:7rem clamp(1.5rem,4vw,3rem)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:.68rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;position:relative;display:inline-block;padding-left:55px}
+.section-tag::before{content:'';position:absolute;left:0;top:50%;width:40px;height:1px;background:linear-gradient(to right,var(--gold),transparent)}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:.5px;margin-bottom:1rem}
+.section-title .gold{color:var(--gold)}
+.section-desc{color:var(--text);font-size:1rem;line-height:1.8;max-width:560px;margin-bottom:3rem;font-weight:300}
 
-/* === ARTISTS === */
-.artists-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-.artist-card {
-  text-align: center;
-  padding: 40px 20px;
-  background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 16px;
-  transition: all 0.4s;
-}
-.artist-card:hover { border-color: rgba(212,168,67,0.15); transform: translateY(-4px); }
-.artist-avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 20px;
-  border: 2px solid rgba(212,168,67,0.3);
-}
-.artist-avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
-.artist-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; margin-bottom: 6px; }
-.artist-card p { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+/* ===== STYLES / SERVICES ===== */
+.styles-section{background:var(--black2)}
+.styles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.style-card{background:var(--black3);border:1px solid var(--border);border-radius:8px;padding:2.5rem 2rem;transition:all .4s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.style-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--emerald),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.style-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,0.2);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+.style-card:hover::before{transform:scaleX(1)}
+.style-icon{font-size:2.2rem;margin-bottom:1.2rem;display:block}
+.style-card h3{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.8rem;letter-spacing:.5px}
+.style-card p{font-size:.88rem;color:var(--text);line-height:1.7;font-weight:300}
+@media(max-width:900px){.styles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.styles-grid{grid-template-columns:1fr}}
 
-/* === CONTACT === */
-.contact { background: var(--bg-section); }
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin-top: 60px;
-}
-.contact-info { display: flex; flex-direction: column; gap: 32px; }
-.contact-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-.contact-item .icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(212,168,67,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.contact-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-.contact-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-.contact-form { display: flex; flex-direction: column; gap: 16px; }
-.contact-form input, .contact-form textarea {
-  background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 16px 20px;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s;
-}
-.contact-form input:focus, .contact-form textarea:focus { border-color: rgba(212,168,67,0.4); }
-.contact-form textarea { resize: vertical; min-height: 120px; }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: #555; }
+/* ===== ARTISTS ===== */
+.artists-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.artist-card{border-radius:8px;overflow:hidden;position:relative;background:var(--black2);border:1px solid var(--border);transition:all .4s cubic-bezier(.22,1,.36,1)}
+.artist-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.5);border-color:rgba(201,168,76,0.2)}
+.artist-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(30%) brightness(0.9);transition:all .6s}
+.artist-card:hover .artist-img{filter:grayscale(0%) brightness(1);transform:scale(1.03)}
+.artist-info{padding:1.8rem}
+.artist-info h3{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.artist-role{font-size:.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--emerald-light);margin-bottom:.8rem;display:block}
+.artist-info p{font-size:.85rem;color:var(--text);line-height:1.7;font-weight:300}
+@media(max-width:900px){.artists-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.artists-grid{grid-template-columns:1fr}}
 
-/* === FOOTER === */
-footer {
-  padding: 40px 60px;
-  border-top: 1px solid rgba(255,255,255,0.04);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-footer p { font-size: 13px; color: var(--text-muted); }
-footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
+/* ===== PORTFOLIO GALLERY ===== */
+.gallery-section{background:var(--black2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gallery-item{position:relative;overflow:hidden;border-radius:6px;aspect-ratio:1;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1),filter .4s}
+.gallery-item:hover img{transform:scale(1.08);filter:brightness(0.7)}
+.gallery-label{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem;background:linear-gradient(to top,rgba(9,11,10,0.9),transparent);opacity:0;transform:translateY(10px);transition:all .4s}
+.gallery-item:hover .gallery-label{opacity:1;transform:none}
+.gallery-label span{font-family:'Cinzel',serif;font-size:.85rem;font-weight:700;color:var(--white);letter-spacing:.5px}
+.gallery-label small{display:block;font-size:.7rem;color:var(--gold);margin-top:4px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.gallery-grid{grid-template-columns:1fr;gap:.8rem}}
 
-/* === MOBILE === */
-@media (max-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-  .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-  .artists-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-  section { padding: 48px 16px; }
-  nav { padding: 12px 16px; }
-  .nav-logo { font-size: 22px; letter-spacing: 2px; }
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  .mobile-menu { display: block; }
-  .hero { padding: 100px 16px 48px; min-height: auto; }
-  .hero h1 { font-size: 40px; }
-  .hero p { font-size: 15px; }
-  .hero-badge { font-size: 11px; padding: 6px 14px; }
-  .hero-buttons { flex-direction: column; }
-  .btn-primary, .btn-secondary { width: 100%; text-align: center; min-height: 48px; display: flex; align-items: center; justify-content: center; padding: 14px 24px; }
-  .hero-stats { gap: 20px; flex-wrap: wrap; margin-top: 40px; padding-top: 28px; }
-  .hero-stat h3 { font-size: 28px; }
-  .hero-stat p { font-size: 11px; }
-  .section-title { font-size: 28px; }
-  .section-desc { font-size: 14px; }
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-image img { height: 240px; }
-  .about-text h3 { font-size: 26px; }
-  .about-text p { font-size: 14px; }
-  .about-feature { font-size: 13px; }
-  .services-grid { grid-template-columns: 1fr; }
-  .service-card { padding: 28px 20px; }
-  .service-card h3 { font-size: 20px; }
-  .service-card p { font-size: 13px; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-  .artists-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .artist-card { padding: 28px 16px; }
-  .artist-card h3 { font-size: 18px; }
-  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-  .contact-item h4 { font-size: 13px; }
-  .contact-item p { font-size: 13px; }
-  .contact-form input, .contact-form textarea { padding: 14px 16px; font-size: 14px; min-height: 48px; }
-  footer { flex-direction: column; text-align: center; padding: 24px 16px; }
-  footer p { font-size: 12px; }
-}
+/* ===== REVIEWS ===== */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.review-card{background:var(--black2);border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;transition:all .3s}
+.review-card:hover{border-color:rgba(201,168,76,0.2)}
+.review-stars{display:flex;gap:2px;margin-bottom:1.2rem}
+.review-stars span{color:var(--gold);font-size:1rem}
+.review-card blockquote{font-size:.92rem;color:var(--text-light);line-height:1.8;margin-bottom:1.5rem;font-weight:300;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:.8rem}
+.reviewer-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:800;font-size:.85rem;color:var(--black);flex-shrink:0}
+.reviewer-name{font-weight:600;color:var(--white);font-size:.85rem}
+.reviewer-source{font-size:.72rem;color:var(--text);margin-top:2px}
+@media(max-width:900px){.reviews-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.reviews-grid{grid-template-columns:1fr}}
+
+/* ===== WALK-IN / BOOKING ===== */
+.walkin-section{background:var(--black2);position:relative;overflow:hidden}
+.walkin-section::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(26,107,74,0.08),transparent);pointer-events:none}
+.walkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.walkin-content h3{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:800;color:var(--white);margin-bottom:1rem}
+.walkin-content .gold{color:var(--gold)}
+.walkin-content>p{font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:2rem;font-weight:300}
+.walkin-details{display:flex;flex-direction:column;gap:1.5rem}
+.walkin-item{display:flex;align-items:flex-start;gap:1rem}
+.walkin-icon{width:44px;height:44px;border-radius:8px;background:rgba(26,107,74,0.12);border:1px solid rgba(26,107,74,0.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.walkin-item h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:3px}
+.walkin-item p{font-size:.85rem;color:var(--text);line-height:1.6;margin-bottom:0;font-weight:300}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.hour-row{display:flex;justify-content:space-between;padding:.6rem 1rem;background:var(--black3);border-radius:4px;border:1px solid var(--border)}
+.hour-row .day{font-size:.82rem;font-weight:500;color:var(--text-light)}
+.hour-row .time{font-size:.82rem;font-weight:600;color:var(--white)}
+.hour-row.closed .time{color:var(--emerald)}
+@media(max-width:768px){.walkin-grid{grid-template-columns:1fr;gap:2.5rem}.hours-grid{grid-template-columns:1fr}}
+
+/* ===== CONTACT / CTA ===== */
+.cta-section{position:relative;overflow:hidden;text-align:center}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(26,107,74,0.1),transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:1}
+.cta-inner .section-tag{padding-left:0}
+.cta-inner .section-tag::before{display:none}
+.cta-inner .section-title{margin-bottom:.5rem}
+.cta-inner .section-desc{max-width:600px;margin:0 auto 2.5rem}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.contact-row{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--border)}
+.contact-item{text-align:center}
+.contact-item .label{font-size:.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.contact-item .value{font-size:.95rem;color:var(--white);font-weight:500}
+.contact-item .value a{color:var(--white);transition:color .3s}
+.contact-item .value a:hover{color:var(--gold)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--black2);border-top:1px solid var(--border);padding:3rem clamp(1.5rem,4vw,3rem)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-brand{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--white);letter-spacing:1px}
+.footer-brand em{font-style:normal;color:var(--gold)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.78rem;color:var(--text);transition:color .3s;font-weight:400}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:.75rem;color:var(--text);width:100%;text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+
+/* ===== DEMO BANNER ===== */
+.demo-banner{position:fixed;bottom:0;left:0;right:0;z-index:999;background:linear-gradient(135deg,var(--emerald),#145a3d);color:var(--white);text-align:center;padding:14px 1.5rem;font-size:.85rem;font-weight:500;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+.demo-banner a{color:var(--gold);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 </style>
 </head>
 <body>
 
-<!-- NEOCODE BANNER -->
-<div class="neocode-banner">
-  Redesigned by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; Web Design & Conversion Optimisation
+<!-- Demo Banner -->
+<div class="demo-banner">
+This is a free demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; Like what you see? Let's make it yours.
 </div>
 
-<!-- NAV -->
+<!-- Nav -->
 <nav>
-  <div class="nav-logo">BOLTON <span>TAT</span> SHOP</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#artists">Artists</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Book Now</a>
-  <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
-    <span></span><span></span><span></span>
-  </button>
+<a href="#" class="nav-logo">The Bolton <em>Tat Shop</em></a>
+<ul class="nav-links">
+<li><a href="#styles">Styles</a></li>
+<li><a href="#artists">Artists</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#visit">Visit</a></li>
+<li><a href="#contact" class="nav-cta">Book Now</a></li>
+</ul>
+<button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">&#9733; Award-Winning Studio</div>
-    <h1>INK THAT<br>TELLS <span class="outline">YOUR</span><br>STORY</h1>
-    <p>Bolton's premier tattoo studio with over 11 years of excellence. Three award-winning artists covering every style, from fine-line to full colour. Walk-ins welcome, consultations always free.</p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">Book a Consultation</a>
-      <a href="#gallery" class="btn-secondary">View Our Work</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <h3>11+</h3>
-        <p>Years in Bolton</p>
-      </div>
-      <div class="hero-stat">
-        <h3>4</h3>
-        <p>Expert Artists</p>
-      </div>
-      <div class="hero-stat">
-        <h3>3</h3>
-        <p>Awards Won</p>
-      </div>
-    </div>
-  </div>
+<div class="mobile-nav" role="navigation">
+<a href="#styles">Styles</a>
+<a href="#artists">Artists</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#visit">Visit Us</a>
+<a href="#contact" class="nav-cta-m">Book Now</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+<div class="hero-bg">
+<img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Tattoo artist at work in studio" loading="eager">
+</div>
+<div class="hero-overlay"></div>
+<div class="hero-vignette"></div>
+<div class="hero-content">
+<div class="hero-badge">Est. Bolton &bull; Award-Winning Studio</div>
+<h1>Your Skin.<br><span class="accent">Our Craft.</span></h1>
+<p class="hero-sub">Bolton's home for custom tattoos and professional piercings. Three award-winning artists, every style covered, and over 11 years of ink that speaks for itself.</p>
+<div class="hero-actions">
+<a href="#contact" class="btn-primary">Book a Free Consultation <span>&rarr;</span></a>
+<a href="#gallery" class="btn-ghost">View Our Work</a>
+</div>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><span class="num">11+</span><span class="lbl">Years</span></div>
+<div class="hero-stat"><span class="num">4.9</span><span class="lbl">Rating</span></div>
+<div class="hero-stat"><span class="num">3</span><span class="lbl">Artists</span></div>
+</div>
+<div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="section-label">Who We Are</div>
-  <div class="section-title">More Than Just<br>A Tattoo Studio</div>
-  <div class="about-grid">
-    <div class="about-image">
-      <img src="https://images.pexels.com/photos/4123833/pexels-photo-4123833.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo studio interior">
-    </div>
-    <div class="about-text">
-      <h3>A Comfortable & Friendly Atmosphere</h3>
-      <p>For over 11 years, The Bolton Tat Shop has been a trusted name on Newport Street. Our studio is designed to make your tattooing experience as pleasant as possible &mdash; whether it's your first piece or your fiftieth.</p>
-      <p>We pride ourselves on creating a welcoming environment where every client feels at ease. From the moment you walk through our doors, you'll experience the passion and professionalism that has earned us our reputation in Bolton and beyond.</p>
-      <div class="about-features">
-        <div class="about-feature">
-          <div class="icon">&#10003;</div>
-          <span>Free custom design consultations</span>
-        </div>
-        <div class="about-feature">
-          <div class="icon">&#10003;</div>
-          <span>Walk-ins welcome (booking recommended)</span>
-        </div>
-        <div class="about-feature">
-          <div class="icon">&#10003;</div>
-          <span>Award-winning artists, every style covered</span>
-        </div>
-        <div class="about-feature">
-          <div class="icon">&#10003;</div>
-          <span>Strict hygiene & sterilisation standards</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Styles / Services -->
+<section class="styles-section" id="styles">
+<div class="section-inner">
+<div class="reveal">
+<span class="section-tag">What We Do</span>
+<h2 class="section-title">Every Style. <span class="gold">Every Vision.</span></h2>
+<p class="section-desc">From fine line script to full colour sleeves, our artists cover every tattoo style imaginable. Walk in with an idea, walk out with art you'll wear forever.</p>
+</div>
+<div class="styles-grid">
+<div class="style-card reveal reveal-delay-1">
+<span class="style-icon">&#9998;</span>
+<h3>Custom Design</h3>
+<p>Bring your concept, reference, or even just a rough idea. We'll sketch it, refine it, and make sure it's perfect before any ink touches skin. Consultations are always free.</p>
+</div>
+<div class="style-card reveal reveal-delay-2">
+<span class="style-icon">&#10043;</span>
+<h3>Realism & Portraits</h3>
+<p>Photo-realistic tattoos that capture every detail. Whether it's a loved one, a pet, or a tribute piece, our artists bring images to life with incredible depth and precision.</p>
+</div>
+<div class="style-card reveal reveal-delay-3">
+<span class="style-icon">&#9775;</span>
+<h3>Traditional & Neo-Trad</h3>
+<p>Bold lines, vibrant colours, and classic designs that stand the test of time. From old school anchors to modern neo-traditional pieces with rich colour palettes.</p>
+</div>
+<div class="style-card reveal reveal-delay-1">
+<span class="style-icon">&#10070;</span>
+<h3>Black & Grey</h3>
+<p>Smooth shading, dramatic contrast, and timeless elegance. Our black and grey work ranges from delicate fine line to bold, statement-making pieces.</p>
+</div>
+<div class="style-card reveal reveal-delay-2">
+<span class="style-icon">&#10047;</span>
+<h3>Cover-Ups & Reworks</h3>
+<p>Got an old tattoo you've outgrown? We specialise in creative cover-ups and reworks that transform existing ink into something you'll actually love showing off.</p>
+</div>
+<div class="style-card reveal reveal-delay-3">
+<span class="style-icon">&#9830;</span>
+<h3>Professional Piercing</h3>
+<p>Male and female piercers on hand for everything from lobes to more advanced placements. Sterile environment, premium jewellery, and expert aftercare advice.</p>
+</div>
+</div>
+</div>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label">What We Do</div>
-  <div class="section-title">Our Services</div>
-  <div class="section-desc">From intricate fine-line work to bold traditional pieces, our artists specialise in bringing your vision to life.</div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">&#9998;</div>
-      <h3>Custom Tattoo Design</h3>
-      <p>Every piece starts with your story. Our artists work closely with you to create a completely bespoke design that's uniquely yours. Consultations are always free.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#128142;</div>
-      <h3>Professional Piercing</h3>
-      <p>Expert piercing services for men and women. Our trained piercers ensure a safe, comfortable experience with premium-quality jewellery and aftercare guidance.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#127912;</div>
-      <h3>All Styles Covered</h3>
-      <p>Traditional, neo-traditional, realism, fine-line, geometric, Japanese, blackwork &mdash; whatever your vision, we have an artist who specialises in it.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#128172;</div>
-      <h3>Free Consultations</h3>
-      <p>Not sure what you want? Come in for a free chat. We'll help you explore ideas, placement, sizing, and style &mdash; no pressure, no commitment.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#9889;</div>
-      <h3>Cover-Ups & Reworks</h3>
-      <p>Got a tattoo you're not happy with? Our artists are experienced in transforming old ink into something you'll love again.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#128274;</div>
-      <h3>Walk-In Sessions</h3>
-      <p>Feeling spontaneous? We welcome walk-ins for smaller pieces and flash designs. Pop in Tuesday to Saturday and see what's available.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="section-label">Our Work</div>
-  <div class="section-title">Portfolio</div>
-  <div class="section-desc">A glimpse at the artistry that walks out our doors every day.</div>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/1304473/pexels-photo-1304473.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo work">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo work">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/2183131/pexels-photo-2183131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo work">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo studio">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/1461519/pexels-photo-1461519.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo art">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/4123830/pexels-photo-4123830.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo process">
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.pexels.com/photos/4125635/pexels-photo-4125635.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo detail">
-    </div>
-  </div>
-</section>
-
-<!-- ARTISTS -->
+<!-- Artists -->
 <section id="artists">
-  <div class="section-label">The Team</div>
-  <div class="section-title">Meet Our Artists</div>
-  <div class="section-desc">Four talented artists, each with their own unique style and speciality.</div>
-  <div class="artists-grid">
-    <div class="artist-card">
-      <div class="artist-avatar">
-        <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Gary Parkinson">
-      </div>
-      <h3>Gary Parkinson</h3>
-      <p>Tattoo Artist</p>
-    </div>
-    <div class="artist-card">
-      <div class="artist-avatar">
-        <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Matt McHugh">
-      </div>
-      <h3>Matt McHugh</h3>
-      <p>Tattoo Artist</p>
-    </div>
-    <div class="artist-card">
-      <div class="artist-avatar">
-        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Alex Kelly">
-      </div>
-      <h3>Alex Kelly</h3>
-      <p>Tattoo Artist</p>
-    </div>
-    <div class="artist-card">
-      <div class="artist-avatar">
-        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Phill Delaney">
-      </div>
-      <h3>Phill Delaney</h3>
-      <p>Tattoo Artist</p>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="reveal">
+<span class="section-tag">Meet The Team</span>
+<h2 class="section-title">Award-Winning <span class="gold">Artists</span></h2>
+<p class="section-desc">Our crew brings decades of combined experience and a genuine passion for the craft. Each artist has their own speciality, but they're all comfortable working across any style you throw at them.</p>
+</div>
+<div class="artists-grid">
+<div class="artist-card reveal reveal-delay-1">
+<img class="artist-img" src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Gary Parkinson - Owner and Lead Artist">
+<div class="artist-info">
+<h3>Gary Parkinson</h3>
+<span class="artist-role">Owner / Lead Artist</span>
+<p>Award-winning tattooist and the driving force behind The Bolton Tat Shop. Over a decade of experience in custom work across every style, with a particular eye for detail in realism and portraits.</p>
+</div>
+</div>
+<div class="artist-card reveal reveal-delay-2">
+<img class="artist-img" src="https://images.pexels.com/photos/1684187/pexels-photo-1684187.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Matt McHugh - Tattoo Artist">
+<div class="artist-info">
+<h3>Matt McHugh</h3>
+<span class="artist-role">Artist</span>
+<p>Versatile artist with a strong background in traditional and neo-traditional styles. Matt's bold line work and colour theory bring every piece to life with striking impact.</p>
+</div>
+</div>
+<div class="artist-card reveal reveal-delay-3">
+<img class="artist-img" src="https://images.pexels.com/photos/2180305/pexels-photo-2180305.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Alex Kelly - Tattoo Artist">
+<div class="artist-info">
+<h3>Alex Kelly</h3>
+<span class="artist-role">Artist</span>
+<p>Specialising in black and grey work, Alex has a talent for creating atmospheric, moody pieces with incredibly smooth shading and sharp detail work.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-label">Get In Touch</div>
-  <div class="section-title">Book Your Session</div>
-  <div class="section-desc">Ready to get inked? Drop us a message or pop into the studio. Free consultations, always.</div>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="icon">&#128205;</div>
-        <div>
-          <h4>Visit Us</h4>
-          <p>72 &ndash; 74 Newport Street<br>Bolton, BL1 1PB</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="icon">&#128222;</div>
-        <div>
-          <h4>Call Us</h4>
-          <p>01204 388 377</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="icon">&#9993;</div>
-        <div>
-          <h4>Email Us</h4>
-          <p>info@theboltontatshop.co.uk</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="icon">&#128336;</div>
-        <div>
-          <h4>Opening Hours</h4>
-          <p>Tuesday &ndash; Saturday: 10:00 &ndash; 17:00<br>Sunday &amp; Monday: Closed</p>
-        </div>
-      </div>
-    </div>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a demo &mdash; form not connected.');">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="tel" placeholder="Your Phone">
-      <textarea placeholder="Tell us about your tattoo idea..."></textarea>
-      <button type="submit" class="btn-primary" style="width:100%;text-align:center;">Send Message</button>
-    </form>
-  </div>
+<!-- Portfolio Gallery -->
+<section class="gallery-section" id="gallery">
+<div class="section-inner">
+<div class="reveal">
+<span class="section-tag">Our Work</span>
+<h2 class="section-title">Portfolio <span class="gold">Gallery</span></h2>
+<p class="section-desc">Every tattoo tells a story. Here's a selection of recent custom work from our artists covering everything from fine line script to full colour sleeves.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item reveal">
+<img src="https://images.pexels.com/photos/1304473/pexels-photo-1304473.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Detailed black and grey sleeve tattoo">
+<div class="gallery-label"><span>Black &amp; Grey Sleeve</span><small>By Gary Parkinson</small></div>
+</div>
+<div class="gallery-item reveal reveal-delay-1">
+<img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Traditional style tattoo artwork">
+<div class="gallery-label"><span>Neo-Traditional Rose</span><small>By Matt McHugh</small></div>
+</div>
+<div class="gallery-item reveal reveal-delay-2">
+<img src="https://images.pexels.com/photos/2183132/pexels-photo-2183132.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fine line tattoo detail">
+<div class="gallery-label"><span>Fine Line Script</span><small>By Alex Kelly</small></div>
+</div>
+<div class="gallery-item reveal reveal-delay-1">
+<img src="https://images.pexels.com/photos/1975342/pexels-photo-1975342.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Colour realism tattoo piece">
+<div class="gallery-label"><span>Colour Realism</span><small>By Gary Parkinson</small></div>
+</div>
+<div class="gallery-item reveal reveal-delay-2">
+<img src="https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Geometric pattern tattoo">
+<div class="gallery-label"><span>Geometric Dotwork</span><small>By Alex Kelly</small></div>
+</div>
+<div class="gallery-item reveal reveal-delay-3">
+<img src="https://images.pexels.com/photos/2865901/pexels-photo-2865901.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Portrait tattoo artwork">
+<div class="gallery-label"><span>Portrait Piece</span><small>By Matt McHugh</small></div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- FOOTER -->
+<!-- Reviews -->
+<section id="reviews">
+<div class="section-inner">
+<div class="reveal">
+<span class="section-tag">Testimonials</span>
+<h2 class="section-title">What Our <span class="gold">Clients Say</span></h2>
+<p class="section-desc">Don't just take our word for it. With a 4.9-star rating and 96% recommendation rate, we let our work and our clients do the talking.</p>
+</div>
+<div class="reviews-grid">
+<div class="review-card reveal reveal-delay-1">
+<div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+<blockquote>"Can't recommend The Bolton Tat Shop enough. Gary did an incredible portrait piece for me and it's absolutely spot on. The detail is unreal. Booked in for another one already."</blockquote>
+<div class="reviewer">
+<div class="reviewer-avatar">M</div>
+<div><div class="reviewer-name">Mark T.</div><div class="reviewer-source">Google Review</div></div>
+</div>
+</div>
+<div class="review-card reveal reveal-delay-2">
+<div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+<blockquote>"Had my ears pierced here and came back for a tattoo. The whole team makes you feel so welcome, especially if it's your first time. Really clean studio, proper friendly atmosphere."</blockquote>
+<div class="reviewer">
+<div class="reviewer-avatar">S</div>
+<div><div class="reviewer-name">Sophie L.</div><div class="reviewer-source">Facebook Review</div></div>
+</div>
+</div>
+<div class="review-card reveal reveal-delay-3">
+<div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+<blockquote>"Matt did a full colour neo-trad piece on my forearm and it healed perfectly. Best tattoo shop in Bolton, hands down. I've been going here for years and the quality is always top notch."</blockquote>
+<div class="reviewer">
+<div class="reviewer-avatar">D</div>
+<div><div class="reviewer-name">Dan R.</div><div class="reviewer-source">Google Review</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Walk-in / Visit Info -->
+<section class="walkin-section" id="visit">
+<div class="section-inner">
+<div class="walkin-grid">
+<div class="walkin-content reveal">
+<span class="section-tag">Visit Us</span>
+<h3>Walk-Ins Welcome.<br><span class="gold">Bookings Recommended.</span></h3>
+<p>We try to fit walk-ins in whenever we can, but booking ahead is the best way to guarantee your slot. Consultations and custom design work are always free of charge, so there's no pressure. Just pop in, have a chat, and we'll go from there.</p>
+<div class="walkin-details">
+<div class="walkin-item">
+<div class="walkin-icon">&#128205;</div>
+<div>
+<h4>Find Us</h4>
+<p>72-74 Newport Street, Bolton, BL1 1PB</p>
+</div>
+</div>
+<div class="walkin-item">
+<div class="walkin-icon">&#128222;</div>
+<div>
+<h4>Call Us</h4>
+<p><a href="tel:01204388377" style="color:var(--white)">01204 388377</a></p>
+</div>
+</div>
+<div class="walkin-item">
+<div class="walkin-icon">&#9993;</div>
+<div>
+<h4>Email Us</h4>
+<p><a href="mailto:theboltontatshop@hotmail.co.uk" style="color:var(--white)">theboltontatshop@hotmail.co.uk</a></p>
+</div>
+</div>
+<div class="walkin-item">
+<div class="walkin-icon">&#128247;</div>
+<div>
+<h4>Follow Us</h4>
+<p><a href="https://www.instagram.com/theboltontatshop/" target="_blank" style="color:var(--gold)">@theboltontatshop</a> &bull; <a href="https://www.facebook.com/TheHeywoodTattooGallery/" target="_blank" style="color:var(--gold)">Facebook</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal reveal-delay-2">
+<h4 style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--white);margin-bottom:1.2rem;letter-spacing:.5px">Opening Hours</h4>
+<div class="hours-grid">
+<div class="hour-row closed"><span class="day">Monday</span><span class="time">Closed</span></div>
+<div class="hour-row"><span class="day">Tuesday</span><span class="time">10am - 5pm</span></div>
+<div class="hour-row"><span class="day">Wednesday</span><span class="time">10am - 5pm</span></div>
+<div class="hour-row"><span class="day">Thursday</span><span class="time">10am - 5pm</span></div>
+<div class="hour-row"><span class="day">Friday</span><span class="time">10am - 5pm</span></div>
+<div class="hour-row"><span class="day">Saturday</span><span class="time">10am - 5pm</span></div>
+<div class="hour-row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA / Contact -->
+<section class="cta-section" id="contact">
+<div class="section-inner cta-inner">
+<div class="reveal">
+<span class="section-tag">Ready?</span>
+<h2 class="section-title">Let's Create <span class="gold">Something Permanent</span></h2>
+<p class="section-desc">Whether you've got a fully formed concept or just a vague idea bouncing around your head, we're here to help bring it to life. Free consultations, no pressure, just great ink.</p>
+</div>
+<div class="cta-actions reveal reveal-delay-1">
+<a href="tel:01204388377" class="btn-primary">&#128222; Call 01204 388377</a>
+<a href="mailto:theboltontatshop@hotmail.co.uk" class="btn-ghost">&#9993; Email Us</a>
+</div>
+<div class="contact-row reveal reveal-delay-2">
+<div class="contact-item">
+<div class="label">Address</div>
+<div class="value">72-74 Newport Street, Bolton, BL1 1PB</div>
+</div>
+<div class="contact-item">
+<div class="label">Email</div>
+<div class="value"><a href="mailto:theboltontatshop@hotmail.co.uk">theboltontatshop@hotmail.co.uk</a></div>
+</div>
+<div class="contact-item">
+<div class="label">Social</div>
+<div class="value"><a href="https://www.instagram.com/theboltontatshop/" target="_blank">Instagram</a> &bull; <a href="https://www.facebook.com/TheHeywoodTattooGallery/" target="_blank">Facebook</a></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
 <footer>
-  <p>&copy; 2026 The Bolton Tat Shop. All rights reserved.</p>
-  <p>Original website: <a href="https://theboltontatshop.wordpress.com/" target="_blank">theboltontatshop.wordpress.com</a></p>
-  <p>Demo by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a></p>
+<div class="footer-inner">
+<div class="footer-brand">The Bolton <em>Tat Shop</em></div>
+<div class="footer-links">
+<a href="#styles">Styles</a>
+<a href="#artists">Artists</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+</div>
+<div class="footer-copy">&copy; 2026 The Bolton Tat Shop. 72-74 Newport Street, Bolton, BL1 1PB. All rights reserved.</div>
+</div>
 </footer>
 
-<!-- POPUP -->
-<div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
-    <div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
-    <h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
-    <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
-    <p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
-    <br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
-  </div>
-</div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{
+e.preventDefault();
+const t=document.querySelector(a.getAttribute('href'));
+if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+document.querySelector('.mobile-nav').classList.remove('open');
+document.querySelector('.hamburger').classList.remove('active');
+document.querySelector('.hamburger').setAttribute('aria-expanded','false');
+});
+});
 
+// Hamburger
+const hamburger=document.querySelector('.hamburger');
+const mobileNav=document.querySelector('.mobile-nav');
+hamburger.addEventListener('click',()=>{
+const isOpen=mobileNav.classList.toggle('open');
+hamburger.classList.toggle('active');
+hamburger.setAttribute('aria-expanded',isOpen);
+});
+
+// Close mobile nav on outside click
+document.addEventListener('click',e=>{
+if(!hamburger.contains(e.target)&&!mobileNav.contains(e.target)){
+mobileNav.classList.remove('open');
+hamburger.classList.remove('active');
+hamburger.setAttribute('aria-expanded','false');
+}
+});
+
+// IntersectionObserver for reveal animations
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Nav background on scroll
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+if(window.scrollY>80){
+nav.style.background='rgba(9,11,10,0.96)';
+}else{
+nav.style.background='rgba(9,11,10,0.88)';
+}
+},{passive:true});
+</script>
 </body>
 </html>

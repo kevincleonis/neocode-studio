@@ -3,464 +3,1683 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peter's Garage | MOT, Servicing & Repairs in Scunthorpe</title>
+<title>Peter's Garage | Trusted Car Repairs, MOT & Servicing in Scunthorpe</title>
+<meta name="description" content="Which? Trusted Trader in Scunthorpe since 2009. MOT testing, full servicing, dealer-level diagnostics, brakes, clutches, auto electrics. 5-star rated. Call 07872 075 207.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--charcoal:#0f1419;--red:#e63946;--red-dark:#c0392b;--red-glow:rgba(230,57,70,0.15);--slate:#1e293b;--light:#f8fafc;--gray:#64748b;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08)}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:#e2e8f0;background:var(--charcoal);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-/* Animations */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
-.reveal-scale.visible{opacity:1;transform:scale(1)}
-.stagger-1{transition-delay:0.1s}
-.stagger-2{transition-delay:0.2s}
-.stagger-3{transition-delay:0.3s}
-.stagger-4{transition-delay:0.4s}
-.stagger-5{transition-delay:0.5s}
-.stagger-6{transition-delay:0.6s}
-
-/* Neocode Banner */
-.neocode-banner{background:linear-gradient(90deg,#0f1419,#1a1f2e,#0f1419);color:rgba(255,255,255,0.5);text-align:center;padding:10px 20px;font-size:12px;font-weight:500;border-bottom:1px solid var(--border)}
-.neocode-banner a{color:var(--red);text-decoration:none;font-weight:700}
-.neocode-banner a:hover{text-decoration:underline}
-
-/* Navigation */
-nav{position:sticky;top:0;z-index:100;background:rgba(15,20,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:0 5%}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
-.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff}
-.nav-logo span{background:linear-gradient(135deg,var(--red),#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{text-decoration:none;color:var(--gray);font-size:14px;font-weight:500;transition:color 0.3s}
-.nav-links a:hover{color:#fff}
-.nav-cta{background:linear-gradient(135deg,var(--red),#ff4757);color:#fff;padding:10px 24px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:700;transition:all 0.3s;box-shadow:0 4px 16px rgba(230,57,70,0.3)}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(230,57,70,0.4)}
-.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.mobile-toggle span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;transition:0.3s}
-
-/* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:0 5%}
-.hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;opacity:0.2}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,20,25,0.97) 0%,rgba(30,41,59,0.85) 50%,rgba(15,20,25,0.95) 100%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(230,57,70,0.08),transparent 60%);pointer-events:none}
-.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:100px 0;width:100%}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--red-glow);border:1px solid rgba(230,57,70,0.25);color:var(--red);padding:8px 20px;border-radius:100px;font-size:12px;font-weight:700;margin-bottom:32px;letter-spacing:1px;text-transform:uppercase}
-.hero-badge::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,6vw,80px);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;max-width:800px}
-.hero h1 span{background:linear-gradient(135deg,var(--red),#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:18px;color:rgba(255,255,255,0.55);max-width:520px;line-height:1.7;margin-bottom:40px}
-.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px}
-.btn-primary{background:linear-gradient(135deg,var(--red),#ff4757);color:#fff;padding:16px 36px;border-radius:100px;text-decoration:none;font-size:15px;font-weight:700;transition:all 0.3s;box-shadow:0 4px 24px rgba(230,57,70,0.3);display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(230,57,70,0.4)}
-.btn-glass{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);color:#fff;padding:16px 36px;border-radius:100px;text-decoration:none;font-size:15px;font-weight:600;transition:all 0.3s}
-.btn-glass:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px)}
-.hero-counters{display:flex;gap:48px}
-.counter{position:relative;padding-left:20px}
-.counter::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--red),#ff6b6b);border-radius:2px}
-.counter-num{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;color:#fff}
-.counter-label{font-size:13px;color:rgba(255,255,255,0.4);margin-top:4px}
-
-/* Stats Strip */
-.stats{padding:0 5%}
-.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
-.stat{padding:48px 0;text-align:center;border-right:1px solid var(--border)}
-.stat:last-child{border-right:none}
-.stat-number{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:-1px}
-.stat-number span{background:linear-gradient(135deg,var(--red),#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-label{font-size:14px;color:var(--gray);margin-top:6px;font-weight:500}
-
-/* Section Shared */
-.section{padding:120px 5%}
-.section-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:700;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
-.section-subtitle{font-size:17px;color:var(--gray);line-height:1.7;max-width:560px}
-
-/* Services */
-.services{background:linear-gradient(180deg,var(--charcoal),#111720)}
-.services-grid{max-width:1280px;margin:0 auto}
-.services-header{margin-bottom:64px}
-.services-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.service-card{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:24px;padding:40px 32px;transition:all 0.4s;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:0;transition:opacity 0.4s}
-.service-card:hover{transform:translateY(-8px);border-color:rgba(230,57,70,0.2);box-shadow:0 24px 64px rgba(0,0,0,0.3)}
-.service-card:hover::before{opacity:1}
-.service-icon{width:56px;height:56px;background:var(--red-glow);border:1px solid rgba(230,57,70,0.2);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:24px;transition:all 0.3s}
-.service-card:hover .service-icon{background:linear-gradient(135deg,var(--red),#ff4757);border-color:transparent}
-.service-card h3{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:12px;color:#fff}
-.service-card p{font-size:14px;color:var(--gray);line-height:1.7}
-
-/* About / Why Us */
-.why-us{background:var(--charcoal)}
-.why-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.why-image{border-radius:24px;overflow:hidden;position:relative}
-.why-image img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
-.why-image::after{content:'';position:absolute;inset:0;border:1px solid rgba(230,57,70,0.15);border-radius:24px;pointer-events:none}
-.why-badge{position:absolute;top:24px;left:24px;background:linear-gradient(135deg,var(--red),#ff4757);color:#fff;padding:20px;border-radius:16px;text-align:center;box-shadow:0 12px 40px rgba(230,57,70,0.3)}
-.why-badge .num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;line-height:1}
-.why-badge .lab{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
-.why-list{margin-top:32px;display:flex;flex-direction:column;gap:20px}
-.why-item{display:flex;gap:16px;align-items:flex-start}
-.why-check{width:32px;height:32px;min-width:32px;background:var(--red-glow);border:1px solid rgba(230,57,70,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--red);font-weight:800;font-size:14px;margin-top:2px}
-.why-item-text h4{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px;color:#fff}
-.why-item-text p{font-size:14px;color:var(--gray);line-height:1.6}
-
-/* Reviews */
-.reviews{background:linear-gradient(180deg,#111720,var(--charcoal))}
-.reviews-inner{max-width:1280px;margin:0 auto}
-.reviews-header{margin-bottom:64px}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.review-card{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:24px;padding:36px 28px;transition:all 0.4s}
-.review-card:hover{transform:translateY(-4px);border-color:rgba(230,57,70,0.15);box-shadow:0 16px 48px rgba(0,0,0,0.2)}
-.review-stars{color:#fbbf24;font-size:16px;margin-bottom:16px;letter-spacing:2px}
-.review-card p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:20px;font-style:italic}
-.review-author{font-weight:700;color:#fff;font-size:14px}
-.review-source{font-size:12px;color:var(--gray);margin-top:2px}
-
-/* CTA */
-.cta-section{background:var(--charcoal)}
-.cta-inner{max-width:1280px;margin:0 auto}
-.cta-box{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:32px;padding:80px 60px;position:relative;overflow:hidden;text-align:center}
-.cta-box::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(230,57,70,0.1),transparent 60%);pointer-events:none}
-.cta-box::after{content:'';position:absolute;bottom:-50%;left:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(230,57,70,0.06),transparent 60%);pointer-events:none}
-.cta-box .section-title{color:#fff;margin-bottom:20px;position:relative;z-index:2}
-.cta-box p{color:rgba(255,255,255,0.5);font-size:17px;max-width:500px;margin:0 auto 36px;line-height:1.7;position:relative;z-index:2}
-
-/* Contact */
-.contact{background:var(--charcoal)}
-.contact-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.contact-info{display:flex;flex-direction:column;gap:32px}
-.contact-item{display:flex;gap:16px;align-items:flex-start;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:16px;padding:24px;transition:all 0.3s}
-.contact-item:hover{border-color:rgba(230,57,70,0.2)}
-.contact-icon{width:48px;height:48px;min-width:48px;background:var(--red-glow);border:1px solid rgba(230,57,70,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.contact-item h4{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px;color:#fff}
-.contact-item p{font-size:14px;color:var(--gray);line-height:1.5}
-.contact-map{border-radius:24px;overflow:hidden;border:1px solid var(--glass-border);aspect-ratio:1/1;background:#111720}
-.contact-map iframe{width:100%;height:100%;border:0;filter:grayscale(0.8) invert(0.95) hue-rotate(180deg)}
-
-/* Footer */
-.footer{background:var(--charcoal);border-top:1px solid var(--border);color:var(--gray);padding:40px 5%;text-align:center;font-size:13px}
-.footer a{color:var(--red);text-decoration:none}
-.footer a:hover{text-decoration:underline}
-
-/* Mobile */
-@media(max-width:968px){
-nav{padding:0 20px}
-.nav-links{display:none}
-.mobile-toggle{display:block}
-.hero-content{padding:80px 0 60px}
-.hero-counters{gap:24px;flex-wrap:wrap}
-.services-cards{grid-template-columns:1fr}
-.why-inner{grid-template-columns:1fr;gap:40px}
-.reviews-grid{grid-template-columns:1fr}
-.contact-inner{grid-template-columns:1fr}
-.stats-inner{grid-template-columns:repeat(2,1fr)}
-.stat{border-right:none}
-.cta-box{padding:48px 24px;border-radius:20px}
+:root {
+    --navy: #0c1829;
+    --navy-mid: #132237;
+    --navy-light: #1a2d47;
+    --steel: #3b82f6;
+    --steel-light: #60a5fa;
+    --steel-glow: rgba(59,130,246,0.12);
+    --steel-glow-strong: rgba(59,130,246,0.25);
+    --warm: #f8fafc;
+    --warm-mid: #e2e8f0;
+    --warm-dark: #94a3b8;
+    --text: #f1f5f9;
+    --text-dim: rgba(241,245,249,0.55);
+    --text-faint: rgba(241,245,249,0.35);
+    --amber: #f59e0b;
+    --green: #22c55e;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(59,130,246,0.3);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
-@media(max-width:768px){
-.hero{min-height:auto;padding:0 18px}
-.hero-content{padding:60px 0 40px}
-.hero h1{font-size:30px;letter-spacing:-1px}
-.hero p{font-size:15px}
-.hero-badge{font-size:11px;padding:6px 14px}
-.hero-buttons{flex-direction:column}
-.btn-primary,.btn-glass{width:100%;text-align:center;justify-content:center;min-height:48px;padding:14px 24px}
-.hero-counters{flex-direction:column;gap:16px}
-.counter-num{font-size:28px}
-.section{padding:60px 18px}
-.section-title{font-size:26px}
-.section-subtitle{font-size:15px}
-.services-cards{grid-template-columns:1fr}
-.service-card{padding:28px 20px}
-.service-card h3{font-size:18px}
-.stats{padding:0 18px}
-.stat{padding:28px 0}
-.stat-number{font-size:32px}
-.stat-label{font-size:12px}
-.why-inner{grid-template-columns:1fr;gap:32px}
-.reviews-grid{grid-template-columns:1fr}
-.review-card{padding:24px 20px}
-.review-card p{font-size:14px}
-.cta-box{padding:40px 18px;border-radius:16px}
-.cta-box .section-title{font-size:26px}
-.cta-box p{font-size:15px}
-.contact-inner{grid-template-columns:1fr;gap:32px}
-.contact-icon{width:42px;height:42px;min-width:42px}
-.footer{padding:32px 18px;font-size:12px}
-.neocode-banner{font-size:11px;padding:8px 12px}
-img{max-width:100%;height:auto}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
 }
-@media(max-width:480px){
-.hero h1{font-size:28px}
-.stats-inner{grid-template-columns:1fr}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ========== UTILITY ========== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+/* ========== ANIMATIONS ========== */
+.reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ========== TOPBAR ========== */
+.topbar {
+    background: var(--navy);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+}
+.topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.topbar-left { display: flex; align-items: center; gap: 6px; }
+.topbar-left svg { width: 13px; height: 13px; opacity: 0.5; }
+.topbar-right { display: flex; gap: 24px; }
+.topbar-right a {
+    color: var(--steel-light);
+    font-weight: 600;
+    transition: color 0.3s var(--ease);
+}
+.topbar-right a:hover { color: #fff; }
+
+/* ========== NAVBAR ========== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(12, 24, 41, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s var(--ease);
+}
+.navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.25); }
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: #fff;
+}
+.logo-mark {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: -0.5px;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+}
+.nav-menu a {
+    padding: 8px 18px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    border-radius: 8px;
+    transition: all 0.3s var(--ease);
+}
+.nav-menu a:hover, .nav-menu a:focus-visible {
+    color: #fff;
+    background: var(--surface);
+}
+.nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    color: #fff !important;
+    padding: 10px 22px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+    transition: all 0.3s var(--ease) !important;
+}
+.nav-phone:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(59,130,246,0.4) !important;
+    background: var(--surface) !important;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+}
+.nav-phone svg { width: 15px; height: 15px; }
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    z-index: 1002;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.35s var(--ease);
+    transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile overlay */
+.mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    background: rgba(12, 24, 41, 0.96);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease);
+}
+.mobile-overlay.open { opacity: 1; visibility: visible; }
+.mobile-overlay a {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    padding: 14px 40px;
+    border-radius: 12px;
+    transition: all 0.3s var(--ease);
+}
+.mobile-overlay a:hover { color: #fff; background: var(--surface); }
+
+/* ========== HERO ========== */
+.hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
+    opacity: 0.15;
+    filter: saturate(0.3);
+}
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(170deg, rgba(12,24,41,0.95) 0%, rgba(19,34,55,0.88) 40%, rgba(12,24,41,0.97) 100%);
+}
+.hero-mesh {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 600px 400px at 15% 50%, rgba(59,130,246,0.08), transparent),
+        radial-gradient(ellipse 400px 500px at 80% 30%, rgba(34,197,94,0.04), transparent);
+    pointer-events: none;
+}
+.hero .container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.hero-text { max-width: 580px; }
+.hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--steel-glow);
+    border: 1px solid var(--steel-glow-strong);
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--steel-light);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 24px;
+}
+.hero-chip-dot {
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: chipPulse 2.5s ease infinite;
+}
+@keyframes chipPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+.hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: #fff;
+    margin-bottom: 22px;
+}
+.hero h1 .accent {
+    background: linear-gradient(135deg, var(--steel-light), #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 480px;
+}
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 52px;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: all 0.3s var(--ease);
+    letter-spacing: -0.2px;
+}
+.btn:focus-visible { outline: 3px solid var(--steel); outline-offset: 3px; }
+.btn-fill {
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+}
+.btn-fill:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(59,130,246,0.45); }
+.btn-ghost {
+    background: var(--surface);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--surface-hover); color: #fff; border-color: var(--border-hover); }
+.btn svg { width: 16px; height: 16px; }
+
+.hero-proof {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.proof-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+    padding-left: 16px;
+}
+.proof-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--steel), var(--steel-light));
+    border-radius: 3px;
+}
+.proof-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+.proof-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Hero Card */
+.hero-visual {
+    position: relative;
+}
+.hero-card {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    position: relative;
+}
+.hero-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+.hero-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px;
+    background: linear-gradient(0deg, rgba(12,24,41,0.95) 0%, transparent 100%);
+}
+.hero-card-overlay h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+.hero-card-overlay p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.hero-float {
+    position: absolute;
+    top: 30px;
+    right: -16px;
+    background: rgba(12,24,41,0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    animation: floatBob 4s ease-in-out infinite;
+}
+@keyframes floatBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.hero-float-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--green), #16a34a);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+.hero-float-text strong {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+}
+.hero-float-text span {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+}
+
+/* ========== TRUST BAR ========== */
+.trust-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 22px 0;
+}
+.trust-bar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 44px;
+    flex-wrap: wrap;
+}
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-dim);
+}
+.trust-icon {
+    width: 34px;
+    height: 34px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+/* ========== SECTIONS ========== */
+.section { padding: 100px 0; }
+.section-top {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 56px;
+}
+.section-tag {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--steel-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+.section-top h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.8px;
+    margin-bottom: 14px;
+    line-height: 1.15;
+}
+.section-top p {
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+/* ========== SERVICES ========== */
+.services-section { background: linear-gradient(180deg, var(--navy), var(--navy-mid)); }
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.svc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px 28px;
+    transition: all 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+}
+.svc-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--steel), var(--steel-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+}
+.svc-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-hover);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(59,130,246,0.1);
+    background: var(--surface-hover);
+}
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--steel-glow);
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+    transition: all 0.3s var(--ease);
+}
+.svc-card:hover .svc-icon {
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+}
+.svc-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.svc-card p {
+    font-size: 0.87rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+}
+
+/* ========== ABOUT ========== */
+.about-section { background: var(--navy-mid); }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+.about-visual { position: relative; }
+.about-img {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.about-img img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+}
+.about-badge {
+    position: absolute;
+    bottom: -16px;
+    right: 24px;
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(59,130,246,0.35);
+}
+.about-badge strong {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+}
+.about-badge span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.about-text .section-tag { text-align: left; }
+.about-text h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+    line-height: 1.15;
+}
+.about-text p {
+    font-size: 0.93rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    margin-bottom: 14px;
+}
+.about-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+}
+.about-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.about-check-icon {
+    width: 26px;
+    height: 26px;
+    background: var(--steel-glow);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--steel-light);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* ========== BRAND STRIP ========== */
+.brands-strip {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 50px 0;
+    text-align: center;
+}
+.brands-strip h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+.brands-strip p {
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    margin-bottom: 28px;
+}
+.brand-tags {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.brand-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    transition: all 0.3s var(--ease);
+}
+.brand-tag:hover {
+    border-color: var(--border-hover);
+    color: #fff;
+    background: var(--steel-glow);
+}
+
+/* ========== STATS ========== */
+.stats-section { background: var(--navy-mid); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.stat-card {
+    text-align: center;
+    padding: 36px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.3s var(--ease);
+}
+.stat-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+.stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-num span { color: var(--steel-light); }
+.stat-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* ========== REVIEWS ========== */
+.reviews-section { background: linear-gradient(180deg, var(--navy-mid), var(--navy)); }
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.rev-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    transition: all 0.4s var(--ease);
+    position: relative;
+}
+.rev-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+.rev-quote {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 3rem;
+    color: rgba(59,130,246,0.1);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+.rev-stars {
+    color: var(--amber);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+.rev-text {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    margin-bottom: 22px;
+    font-style: italic;
+}
+.rev-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.rev-avatar {
+    width: 38px;
+    height: 38px;
+    background: var(--steel-glow);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--steel-light);
+}
+.rev-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #fff;
+}
+.rev-source {
+    font-size: 0.73rem;
+    color: var(--text-faint);
+    margin-top: 1px;
+}
+
+/* ========== HOURS + AREAS ========== */
+.info-section { background: var(--navy); }
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+.info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+}
+.info-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-day { color: var(--text-dim); font-weight: 500; }
+.hours-time { color: #fff; font-weight: 700; }
+.hours-closed { color: var(--text-faint); font-style: italic; font-weight: 400; }
+.areas-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.area-tag {
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.12);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    transition: all 0.3s var(--ease);
+}
+.area-tag:hover { background: var(--steel-glow); border-color: var(--border-hover); color: #fff; }
+
+/* ========== MAP ========== */
+.map-section {
+    padding: 0;
+}
+.map-wrap {
+    border-top: 1px solid var(--border);
+    height: 340px;
+    position: relative;
+    overflow: hidden;
+}
+.map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: brightness(0.7) contrast(1.1) saturate(0.3);
+}
+
+/* ========== CTA ========== */
+.cta-section {
+    background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+}
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 60%);
+    pointer-events: none;
+}
+.cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.cta-inner h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+.cta-inner p {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+    line-height: 1.7;
+}
+.cta-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    padding: 64px 0 0;
+    color: var(--text-dim);
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 48px;
+}
+.footer-about .logo { margin-bottom: 16px; }
+.footer-about p {
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--text-faint);
+}
+footer h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.footer-links a {
+    font-size: 0.86rem;
+    color: var(--text-faint);
+    transition: color 0.3s var(--ease);
+}
+.footer-links a:hover { color: var(--steel-light); }
+.footer-contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 0.86rem;
+    color: var(--text-faint);
+}
+.footer-contact-row svg {
+    width: 16px;
+    height: 16px;
+    color: var(--steel);
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+.footer-contact-row a {
+    color: var(--text-faint);
+    transition: color 0.3s var(--ease);
+}
+.footer-contact-row a:hover { color: var(--steel-light); }
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.76rem;
+    color: var(--text-faint);
+}
+
+/* ========== DEMO BANNER ========== */
+.demo-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #0c1829, #132237);
+    border-top: 1px solid var(--border);
+    color: #fff;
+    text-align: center;
+    padding: 13px 20px;
+    z-index: 9999;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    backdrop-filter: blur(12px);
+}
+.demo-banner a.demo-link {
+    color: var(--steel-light);
+    font-weight: 700;
+}
+.demo-banner a.demo-cta {
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    transition: all 0.3s var(--ease);
+}
+.demo-banner a.demo-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(59,130,246,0.3); }
+
+/* ========== POPUP ========== */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease);
+}
+.popup-overlay.show { opacity: 1; visibility: visible; }
+.popup-box {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    padding: 48px 36px;
+    text-align: center;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.4s var(--ease);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+}
+.popup-overlay.show .popup-box { transform: scale(1) translateY(0); }
+.popup-emoji { font-size: 2.5rem; margin-bottom: 18px; }
+.popup-box h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0c1829;
+    margin-bottom: 14px;
+    line-height: 1.3;
+}
+.popup-box p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.75;
+    margin-bottom: 10px;
+}
+.popup-box p strong { color: #0c1829; }
+.popup-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--steel), #2563eb);
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 18px;
+    transition: all 0.3s var(--ease);
+}
+.popup-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.35); }
+.popup-dismiss {
+    display: block;
+    margin: 14px auto 0;
+    color: #94a3b8;
+    font-size: 0.82rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+.popup-dismiss:hover { color: #64748b; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .hero .container { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { max-width: 520px; }
+    .hero h1 { font-size: 2.4rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .topbar { display: none; }
+    .nav-menu { display: none; }
+    .hamburger { display: flex; }
+    .hero { min-height: auto; }
+    .hero .container { padding-top: 50px; padding-bottom: 50px; }
+    .hero h1 { font-size: 2rem; }
+    .hero-desc { font-size: 0.93rem; }
+    .hero-proof { gap: 24px; }
+    .hero-card img { height: 300px; }
+    .hero-float { display: none; }
+    .section { padding: 70px 0; }
+    .section-top h2 { font-size: 1.7rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .cta-inner h2 { font-size: 1.7rem; }
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: 1.65rem; letter-spacing: -0.8px; }
+    .hero-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-proof { flex-direction: column; gap: 16px; }
+    .hero-card img { height: 240px; }
+    .about-checks { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .brand-tags { gap: 8px; }
+    .brand-tag { padding: 10px 20px; font-size: 0.8rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Neocode Banner -->
-<div class="neocode-banner">
-This is a demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a> &mdash; Not the live website.
+<!-- Topbar -->
+<div class="topbar">
+    <div class="container">
+        <div class="topbar-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            25 Midland Road, Scunthorpe DN16 1DQ
+        </div>
+        <div class="topbar-right">
+            <a href="tel:07872075207">07872 075 207</a>
+            <a href="mailto:garagescunny@gmail.com">garagescunny@gmail.com</a>
+        </div>
+    </div>
 </div>
 
-<!-- Navigation -->
-<nav>
-<div class="nav-inner">
-<div class="nav-logo">Peter's<span>Garage</span></div>
-<ul class="nav-links">
-<li><a href="#services">Services</a></li>
-<li><a href="#why-us">Why Us</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<a href="tel:07872075207" class="nav-cta">Call Now</a>
-<button class="mobile-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
-<span></span><span></span><span></span>
-</button>
-</div>
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="#" class="logo">
+            <div class="logo-mark">PG</div>
+            Peter's Garage
+        </a>
+        <ul class="nav-menu">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#info">Hours</a></li>
+            <li><a href="tel:07872075207" class="nav-phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Call Now
+            </a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-overlay" id="mobileNav">
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#reviews" class="mob-link">Reviews</a>
+    <a href="#info" class="mob-link">Hours</a>
+    <a href="tel:07872075207" class="mob-link" style="color: var(--steel-light);">Call 07872 075 207</a>
+</div>
 
 <!-- Hero -->
 <section class="hero">
-<div class="hero-bg"></div>
-<div class="hero-overlay"></div>
-<div class="hero-grid"></div>
-<div class="hero-glow"></div>
-<div class="hero-content">
-<div class="hero-badge reveal">Scunthorpe's Trusted Garage Since 2009</div>
-<h1 class="reveal stagger-1">Honest repairs. <span>Fair prices.</span> No nonsense.</h1>
-<p class="reveal stagger-2">MOTs, servicing, diagnostics, and repairs done right the first time. Family-run, locally trusted, and built on reputation.</p>
-<div class="hero-buttons reveal stagger-3">
-<a href="tel:07872075207" class="btn-primary">Book Now &rarr;</a>
-<a href="#services" class="btn-glass">View Services</a>
-</div>
-<div class="hero-counters reveal stagger-4">
-<div class="counter"><div class="counter-num">15+</div><div class="counter-label">Years Experience</div></div>
-<div class="counter"><div class="counter-num">5&#9733;</div><div class="counter-label">Google Rating</div></div>
-<div class="counter"><div class="counter-num">1000+</div><div class="counter-label">Cars Serviced</div></div>
-</div>
-</div>
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-mesh"></div>
+    <div class="container">
+        <div class="hero-text">
+            <div class="hero-chip reveal">
+                <div class="hero-chip-dot"></div>
+                Which? Trusted Trader Since 2009
+            </div>
+            <h1 class="reveal delay-1">Scunthorpe's Most <span class="accent">Trusted</span> Independent Garage</h1>
+            <p class="hero-desc reveal delay-2">Honest repairs, fair prices, and dealer-level diagnostics from a team with 15+ years under the bonnet. No hidden extras. No unnecessary work. Just proper mechanics who get it right first time.</p>
+            <div class="hero-actions reveal delay-3">
+                <a href="tel:07872075207" class="btn btn-fill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    07872 075 207
+                </a>
+                <a href="#services" class="btn btn-ghost">View Services</a>
+            </div>
+            <div class="hero-proof reveal delay-4">
+                <div class="proof-item">
+                    <div class="proof-num">17</div>
+                    <div class="proof-label">Years in Business</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-num">5.0</div>
+                    <div class="proof-label">Star Rating</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-num">100%</div>
+                    <div class="proof-label">Recommended</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual reveal delay-2">
+            <div class="hero-card">
+                <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional mechanic performing car diagnostics at Peter's Garage Scunthorpe" loading="eager">
+                <div class="hero-card-overlay">
+                    <h3>Dealer-Level Diagnostics</h3>
+                    <p>Broadest diagnostic coverage of any independent garage in Scunthorpe</p>
+                </div>
+            </div>
+            <div class="hero-float">
+                <div class="hero-float-icon">&#9989;</div>
+                <div class="hero-float-text">
+                    <strong>Which? Endorsed</strong>
+                    <span>Trusted Trader Status</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Stats -->
-<div class="stats">
-<div class="stats-inner">
-<div class="stat reveal"><div class="stat-number">15<span>+</span></div><div class="stat-label">Years Experience</div></div>
-<div class="stat reveal stagger-1"><div class="stat-number">5<span>&#9733;</span></div><div class="stat-label">Google Rating</div></div>
-<div class="stat reveal stagger-2"><div class="stat-number">1000<span>+</span></div><div class="stat-label">Cars Serviced</div></div>
-<div class="stat reveal stagger-3"><div class="stat-number">100<span>%</span></div><div class="stat-label">Transparent Pricing</div></div>
-</div>
+<!-- Trust Bar -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-item">
+            <div class="trust-icon">&#9989;</div>
+            Which? Trusted Trader
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">&#128270;</div>
+            MOT Testing Station
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">&#128187;</div>
+            Dealer-Level Diagnostics
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">&#11088;</div>
+            5.0 Star Reviews
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">&#128176;</div>
+            Free Estimates
+        </div>
+    </div>
 </div>
 
 <!-- Services -->
-<section id="services" class="section services">
-<div class="services-grid">
-<div class="services-header">
-<div class="section-tag reveal">What We Do</div>
-<div class="section-title reveal stagger-1">Complete car care<br>under one roof.</div>
-<div class="section-subtitle reveal stagger-2">From routine MOTs to complex engine diagnostics, we handle everything your vehicle needs.</div>
-</div>
-<div class="services-cards">
-<div class="service-card reveal stagger-1">
-<div class="service-icon">&#128663;</div>
-<h3>MOT Testing</h3>
-<p>Full MOT testing to keep your vehicle road-legal and safe. Quick turnaround with honest results and no upselling.</p>
-</div>
-<div class="service-card reveal stagger-2">
-<div class="service-icon">&#128295;</div>
-<h3>Full Servicing</h3>
-<p>Comprehensive interim and full services using quality parts. We follow manufacturer guidelines to protect your warranty.</p>
-</div>
-<div class="service-card reveal stagger-3">
-<div class="service-icon">&#9889;</div>
-<h3>Auto Electrics</h3>
-<p>Specialist auto electrical diagnostics and repairs. From battery issues to complex wiring faults, we've got it covered.</p>
-</div>
-<div class="service-card reveal stagger-4">
-<div class="service-icon">&#9881;</div>
-<h3>Brake & Clutch</h3>
-<p>Expert brake pad, disc, and clutch replacements. Safety-critical work done to the highest standards every time.</p>
-</div>
-<div class="service-card reveal stagger-5">
-<div class="service-icon">&#127777;</div>
-<h3>Radiator Repairs</h3>
-<p>Car radiator repairs and coolant system servicing. We diagnose overheating issues and fix them at the source.</p>
-</div>
-<div class="service-card reveal stagger-6">
-<div class="service-icon">&#128187;</div>
-<h3>Diagnostics</h3>
-<p>Advanced diagnostic equipment to read fault codes and identify issues accurately. No guesswork, just precision.</p>
-</div>
-</div>
-</div>
+<section class="section services-section" id="services">
+    <div class="container">
+        <div class="section-top reveal">
+            <span class="section-tag">Our Services</span>
+            <h2>Complete Car Care Under One Roof</h2>
+            <p>From routine MOTs to complex engine diagnostics, we handle everything your vehicle needs to stay safe and roadworthy.</p>
+        </div>
+        <div class="services-grid">
+            <div class="svc-card reveal">
+                <div class="svc-icon">&#128270;</div>
+                <h3>MOT Testing</h3>
+                <p>Official MOT testing station. Thorough checks with honest advice on any issues. No pressure, no upselling, just the facts.</p>
+            </div>
+            <div class="svc-card reveal delay-1">
+                <div class="svc-icon">&#128295;</div>
+                <h3>Full Servicing</h3>
+                <p>Interim and full service packages using quality parts. We follow manufacturer guidelines to keep your warranty intact.</p>
+            </div>
+            <div class="svc-card reveal delay-2">
+                <div class="svc-icon">&#128187;</div>
+                <h3>Diagnostics</h3>
+                <p>The broadest diagnostic software coverage in Scunthorpe. Dealer-level fault finding at a fraction of the dealer price.</p>
+            </div>
+            <div class="svc-card reveal delay-3">
+                <div class="svc-icon">&#9898;</div>
+                <h3>Brakes &amp; Clutches</h3>
+                <p>Expert brake and clutch repairs and replacements. Quality parts, full system checks, nothing gets missed.</p>
+            </div>
+            <div class="svc-card reveal delay-4">
+                <div class="svc-icon">&#9889;</div>
+                <h3>Auto Electrics</h3>
+                <p>Specialist auto electrician services. From battery faults and alternator issues to complex wiring problems.</p>
+            </div>
+            <div class="svc-card reveal delay-5">
+                <div class="svc-icon">&#9981;</div>
+                <h3>Diesel Specialists</h3>
+                <p>Diesel injection system experts. Rough idle, power loss, or warning lights - we've got the tools and know-how.</p>
+            </div>
+            <div class="svc-card reveal">
+                <div class="svc-icon">&#128260;</div>
+                <h3>Suspension &amp; Exhaust</h3>
+                <p>Complete suspension work and exhaust system repairs. Riding rough or sounding loud? We'll sort it.</p>
+            </div>
+            <div class="svc-card reveal delay-1">
+                <div class="svc-icon">&#9881;</div>
+                <h3>Gearbox Services</h3>
+                <p>Gearbox diagnostics, repairs and rebuilds for both manual and automatic transmissions across most makes.</p>
+            </div>
+            <div class="svc-card reveal delay-2">
+                <div class="svc-icon">&#127777;</div>
+                <h3>Radiator &amp; Cooling</h3>
+                <p>Cooling system diagnostics, radiator repairs and replacements. Don't risk overheating, get it checked early.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Why Us -->
-<section id="why-us" class="section why-us">
-<div class="why-inner">
-<div class="why-image reveal-left">
-<img src="https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mechanic working on car">
-<div class="why-badge"><div class="num">15+</div><div class="lab">Years Exp.</div></div>
+<!-- About -->
+<section class="section about-section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-visual reveal">
+                <div class="about-img">
+                    <img src="https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mechanic inspecting engine at Peter's Garage workshop" loading="lazy">
+                </div>
+                <div class="about-badge">
+                    <strong>17</strong>
+                    <span>Years Est.</span>
+                </div>
+            </div>
+            <div class="about-text reveal delay-1">
+                <span class="section-tag">About Peter's Garage</span>
+                <h2>An Honest Garage You Can Actually Trust</h2>
+                <p>Founded by Piotr in 2009 with a simple idea: give people a garage they don't have to worry about. No surprise charges, no unnecessary repairs, no jargon you can't understand.</p>
+                <p>With over 15 years of hands-on experience and a fully equipped workshop on Midland Road, we've built a reputation across Scunthorpe and North Lincolnshire for doing things properly. Our diagnostic equipment covers more car makes than any other independent garage in the area.</p>
+                <p>We specialise in diesel injection systems and VW Group vehicles (Audi, Seat, Skoda, VW), but we work on pretty much everything that rolls through the door.</p>
+                <div class="about-checks">
+                    <div class="about-check">
+                        <div class="about-check-icon">&#10003;</div>
+                        Free estimates
+                    </div>
+                    <div class="about-check">
+                        <div class="about-check-icon">&#10003;</div>
+                        No hidden costs
+                    </div>
+                    <div class="about-check">
+                        <div class="about-check-icon">&#10003;</div>
+                        Dealer-level diagnostics
+                    </div>
+                    <div class="about-check">
+                        <div class="about-check-icon">&#10003;</div>
+                        VW Group specialists
+                    </div>
+                    <div class="about-check">
+                        <div class="about-check-icon">&#10003;</div>
+                        Commercial vehicles
+                    </div>
+                    <div class="about-check">
+                        <div class="about-check-icon">&#10003;</div>
+                        Which? endorsed
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brand Strip -->
+<div class="brands-strip reveal">
+    <div class="container">
+        <h3>VW Group &amp; European Specialists</h3>
+        <p>Factory-level diagnostics and deep expertise across all major brands</p>
+        <div class="brand-tags">
+            <div class="brand-tag">VOLKSWAGEN</div>
+            <div class="brand-tag">AUDI</div>
+            <div class="brand-tag">SKODA</div>
+            <div class="brand-tag">SEAT</div>
+            <div class="brand-tag">BMW</div>
+            <div class="brand-tag">VOLVO</div>
+        </div>
+    </div>
 </div>
-<div class="reveal-right">
-<div class="section-tag">Why Peter's Garage</div>
-<div class="section-title">Built on trust,<br>not advertising.</div>
-<div class="section-subtitle">Since 2009, we've grown through word-of-mouth alone. Here's why Scunthorpe keeps coming back.</div>
-<div class="why-list">
-<div class="why-item reveal stagger-1">
-<div class="why-check">&#10003;</div>
-<div class="why-item-text">
-<h4>Honest & Transparent</h4>
-<p>We tell you what needs fixing and what can wait. No pressure, no hidden costs, ever.</p>
-</div>
-</div>
-<div class="why-item reveal stagger-2">
-<div class="why-check">&#10003;</div>
-<div class="why-item-text">
-<h4>Affordable Pricing</h4>
-<p>Quality work at fair prices. We compete on reputation, not expensive overheads.</p>
-</div>
-</div>
-<div class="why-item reveal stagger-3">
-<div class="why-check">&#10003;</div>
-<div class="why-item-text">
-<h4>Friendly, Personal Service</h4>
-<p>We're a small team that treats every customer like a neighbour. You'll always speak to someone who cares.</p>
-</div>
-</div>
-<div class="why-item reveal stagger-4">
-<div class="why-check">&#10003;</div>
-<div class="why-item-text">
-<h4>All Makes & Models</h4>
-<p>Petrol, diesel, hybrid &mdash; we work on every major manufacturer with the right tools and expertise.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+<!-- Stats -->
+<section class="section stats-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <span class="section-tag">By the Numbers</span>
+            <h2>Built on Reputation, Not Advertising</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card reveal">
+                <div class="stat-num">17</div>
+                <div class="stat-label">Years in Business</div>
+            </div>
+            <div class="stat-card reveal delay-1">
+                <div class="stat-num">5.0<span>&#9733;</span></div>
+                <div class="stat-label">Customer Rating</div>
+            </div>
+            <div class="stat-card reveal delay-2">
+                <div class="stat-num">100<span>%</span></div>
+                <div class="stat-label">Recommended</div>
+            </div>
+            <div class="stat-card reveal delay-3">
+                <div class="stat-num">15<span>+</span></div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Reviews -->
-<section id="reviews" class="section reviews">
-<div class="reviews-inner">
-<div class="reviews-header">
-<div class="section-tag reveal">Testimonials</div>
-<div class="section-title reveal stagger-1">What our customers say.</div>
-<div class="section-subtitle reveal stagger-2">Real reviews from real Scunthorpe residents.</div>
-</div>
-<div class="reviews-grid">
-<div class="review-card reveal stagger-1">
-<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p>"Fantastic service as always. Honest, affordable, and they always explain what work needs doing. Been going here for years and wouldn't go anywhere else."</p>
-<div class="review-author">Mark T.</div>
-<div class="review-source">Google Review</div>
-</div>
-<div class="review-card reveal stagger-2">
-<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p>"Took my car in for an MOT and they found a couple of issues. They showed me exactly what was wrong and fixed it at a very fair price. Top garage."</p>
-<div class="review-author">Sarah K.</div>
-<div class="review-source">Google Review</div>
-</div>
-<div class="review-card reveal stagger-3">
-<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p>"Friendly, professional and reasonably priced. They don't try to sell you work you don't need. Refreshing to find a garage you can actually trust."</p>
-<div class="review-author">David R.</div>
-<div class="review-source">Which? Trusted Trader</div>
-</div>
-</div>
-</div>
+<section class="section reviews-section" id="reviews">
+    <div class="container">
+        <div class="section-top reveal">
+            <span class="section-tag">Customer Reviews</span>
+            <h2>What Scunthorpe Says About Us</h2>
+            <p>Real reviews from verified customers. 5-star rated with 100% recommendation rate.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="rev-card reveal">
+                <div class="rev-quote">&ldquo;</div>
+                <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="rev-text">Service is first class with no hidden extras. From the moment you drop your car off to pick it up, you know you're in good hands. Can't see myself ever going anywhere else.</p>
+                <div class="rev-author">
+                    <div class="rev-avatar">S</div>
+                    <div>
+                        <div class="rev-name">Satisfied Customer</div>
+                        <div class="rev-source">Which? Trusted Traders - Verified</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rev-card reveal delay-1">
+                <div class="rev-quote">&ldquo;</div>
+                <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="rev-text">Their engineers found and fixed a complex engine starting problem that another garage couldn't diagnose. Really impressed with the diagnostics and turnaround time. Very professional outfit.</p>
+                <div class="rev-author">
+                    <div class="rev-avatar">M</div>
+                    <div>
+                        <div class="rev-name">Mike R.</div>
+                        <div class="rev-source">Which? Trusted Traders - Verified</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rev-card reveal delay-2">
+                <div class="rev-quote">&ldquo;</div>
+                <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="rev-text">Honest and trustworthy. Peter gave me a transparent assessment of what was actually needed, no unnecessary upselling. Competitive pricing too. This is how every garage should operate.</p>
+                <div class="rev-author">
+                    <div class="rev-avatar">J</div>
+                    <div>
+                        <div class="rev-name">James T.</div>
+                        <div class="rev-source">Verified Customer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+<!-- Hours & Areas -->
+<section class="section info-section" id="info">
+    <div class="container">
+        <div class="section-top reveal">
+            <span class="section-tag">Practical Info</span>
+            <h2>Opening Hours &amp; Areas We Cover</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-card reveal">
+                <h3>&#128338; Opening Hours</h3>
+                <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">09:00 - 17:00</span></div>
+                <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">09:00 - 17:00</span></div>
+                <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">09:00 - 17:00</span></div>
+                <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">09:00 - 17:00</span></div>
+                <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">09:00 - 17:00</span></div>
+                <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-closed">Closed</span></div>
+                <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-closed">Closed</span></div>
+            </div>
+            <div class="info-card reveal delay-1">
+                <h3>&#128205; Areas We Serve</h3>
+                <div class="areas-tags">
+                    <span class="area-tag">Scunthorpe</span>
+                    <span class="area-tag">Brigg</span>
+                    <span class="area-tag">Barton-upon-Humber</span>
+                    <span class="area-tag">Bottesford</span>
+                    <span class="area-tag">Ashby</span>
+                    <span class="area-tag">Crosby</span>
+                    <span class="area-tag">Messingham</span>
+                    <span class="area-tag">Winterton</span>
+                    <span class="area-tag">Burton upon Stather</span>
+                    <span class="area-tag">Gunness</span>
+                    <span class="area-tag">Broughton</span>
+                    <span class="area-tag">Appleby</span>
+                    <span class="area-tag">Kirton in Lindsey</span>
+                    <span class="area-tag">North Lincolnshire</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map -->
+<div class="map-section">
+    <div class="map-wrap">
+        <iframe src="https://maps.google.com/maps?q=25+Midland+Road+Scunthorpe+DN16+1DQ&output=embed" allowfullscreen loading="lazy" title="Peter's Garage location on map"></iframe>
+    </div>
+</div>
 
 <!-- CTA -->
-<section class="section cta-section">
-<div class="cta-inner">
-<div class="cta-box reveal-scale">
-<div class="section-tag">Ready?</div>
-<div class="section-title">Get your car sorted today.</div>
-<p>Give us a ring or pop in. No booking forms, no fuss. Just honest, reliable car care from people who give a damn.</p>
-<a href="tel:07872075207" class="btn-primary">Call 07872 075207 &rarr;</a>
-</div>
-</div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="section contact">
-<div class="contact-inner">
-<div>
-<div class="section-tag reveal">Get In Touch</div>
-<div class="section-title reveal stagger-1">Find us in<br>Scunthorpe.</div>
-<div class="section-subtitle reveal stagger-2" style="margin-bottom:40px">Drop by or give us a call. We're always happy to help.</div>
-<div class="contact-info">
-<div class="contact-item reveal stagger-1">
-<div class="contact-icon">&#128222;</div>
-<div>
-<h4>Phone</h4>
-<p>07872 075207</p>
-</div>
-</div>
-<div class="contact-item reveal stagger-2">
-<div class="contact-icon">&#9993;</div>
-<div>
-<h4>Email</h4>
-<p>garagescunny@gmail.com</p>
-</div>
-</div>
-<div class="contact-item reveal stagger-3">
-<div class="contact-icon">&#128205;</div>
-<div>
-<h4>Address</h4>
-<p>25 Midland Road, Scunthorpe<br>DN16 1DQ</p>
-</div>
-</div>
-<div class="contact-item reveal stagger-4">
-<div class="contact-icon">&#128338;</div>
-<div>
-<h4>Opening Hours</h4>
-<p>Monday &ndash; Friday: 9:00 AM &ndash; 5:00 PM<br>Saturday &ndash; Sunday: Closed</p>
-</div>
-</div>
-</div>
-</div>
-<div class="contact-map reveal-right">
-<iframe src="https://maps.google.com/maps?q=25+Midland+Road+Scunthorpe+DN16+1DQ&output=embed" allowfullscreen loading="lazy"></iframe>
-</div>
-</div>
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-inner reveal">
+            <h2>Need a Reliable Mechanic?</h2>
+            <p>Give us a ring or pop by the workshop on Midland Road. Free estimates on all work, no obligation, no fuss.</p>
+            <div class="cta-btns">
+                <a href="tel:07872075207" class="btn btn-fill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Call 07872 075 207
+                </a>
+                <a href="mailto:garagescunny@gmail.com" class="btn btn-ghost">Email Us</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-<p>This is a concept demo by <a href="https://neocodestudio.co.uk" target="_blank">Neocode Studio</a>. Original website: <a href="https://www.petersgarage.co.uk/" target="_blank">petersgarage.co.uk</a></p>
-<p style="margin-top:8px">&copy; 2026 Peter's Garage. All rights reserved.</p>
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <div class="logo-mark">PG</div>
+                    Peter's Garage
+                </a>
+                <p>Scunthorpe's trusted independent garage since 2009. Honest, affordable car repairs, servicing and MOTs by experienced mechanics who care about doing the job right.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">MOT Testing</a></li>
+                    <li><a href="#services">Car Servicing</a></li>
+                    <li><a href="#services">Diagnostics</a></li>
+                    <li><a href="#services">Brakes &amp; Clutches</a></li>
+                    <li><a href="#services">Auto Electrics</a></li>
+                    <li><a href="#services">Diesel Specialists</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#info">Opening Hours</a></li>
+                    <li><a href="https://www.facebook.com/garagescunny/" target="_blank" rel="noopener">Facebook</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>25 Midland Road<br>Scunthorpe<br>DN16 1DQ</span>
+                </div>
+                <div class="footer-contact-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    <a href="tel:07872075207">07872 075 207</a>
+                </div>
+                <div class="footer-contact-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:garagescunny@gmail.com">garagescunny@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Peter's Garage. All rights reserved. | 25 Midland Road, Scunthorpe DN16 1DQ
+        </div>
+    </div>
 </footer>
 
-<!-- Popup -->
-<div id="demo-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-<div style="background:#fff;border-radius:16px;max-width:520px;width:100%;padding:48px 36px;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
-<div style="font-size:40px;margin-bottom:20px;">&#9889;</div>
-<h2 style="font-size:24px;font-weight:800;color:#1a1a2e;margin-bottom:16px;line-height:1.3;">This was built in under 20 minutes.</h2>
-<p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:12px;">This is a quick concept I put together to show you what's possible. No templates. No shortcuts. Just a preview.</p>
-<p style="font-size:15px;color:#5a6276;line-height:1.8;margin-bottom:28px;">Imagine what we could build with <strong style="color:#1a1a2e;">a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong style="color:#1a1a2e;">turns visitors into paying customers</strong>.</p>
-<a href="https://neocodestudio.co.uk/contact.html" target="_blank" style="display:inline-block;background:#1a1a2e;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:12px;">Let's Talk</a>
-<br><button onclick="document.getElementById('demo-popup').style.display='none'" style="background:none;border:none;color:#8892a4;font-size:13px;cursor:pointer;margin-top:8px;font-family:inherit;">Continue browsing the demo</button>
+<!-- Demo Banner -->
+<div class="demo-banner">
+    <span>Free demo redesign by <a href="https://neocodestudio.co.uk" target="_blank" class="demo-link">NeoCode Studio</a></span>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="demo-cta">Get Yours Free</a>
 </div>
-</div>
-<script>var popupShown=false;window.addEventListener("scroll",function(){if(!popupShown&&window.scrollY>window.innerHeight*0.6){popupShown=true;var p=document.getElementById("demo-popup");if(p){p.style.display="flex";}}});</script>
 
-<!-- Scroll Animations -->
+<!-- Popup -->
+<div class="popup-overlay" id="demoPopup">
+    <div class="popup-box">
+        <div class="popup-emoji">&#9889;</div>
+        <h2>This was built in under 20 minutes.</h2>
+        <p>This is a quick concept to show you what's possible. No templates, no shortcuts. Just a preview of what a proper website could look like for Peter's Garage.</p>
+        <p>Imagine what we could build with <strong>a full week dedicated to your business</strong>. A site that doesn't just look premium, but actually <strong>turns visitors into paying customers</strong>.</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+        <button class="popup-dismiss" id="popupDismiss">Continue browsing the demo</button>
+    </div>
+</div>
+
 <script>
-document.addEventListener('DOMContentLoaded',function(){
-var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){observer.observe(el);});
+// Navbar scroll shadow
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    });
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    });
+});
+
+// Popup on scroll
+let popupFired = false;
+window.addEventListener('scroll', () => {
+    if (!popupFired && window.scrollY > window.innerHeight * 0.55) {
+        popupFired = true;
+        document.getElementById('demoPopup').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+}, { passive: true });
+document.getElementById('popupDismiss').addEventListener('click', () => {
+    document.getElementById('demoPopup').classList.remove('show');
+    document.body.style.overflow = '';
+});
+document.getElementById('demoPopup').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        document.getElementById('demoPopup').classList.remove('show');
+        document.body.style.overflow = '';
+    }
 });
 </script>
 
