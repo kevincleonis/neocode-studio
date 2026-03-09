@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frewin Plumbing &amp; Heating | Professional Plumber You Can Trust</title>
+    <meta name="description" content="Frewin Plumbing & Heating offers expert plumbing, heating, boiler installations, bathroom renovations, leak repairs and power flushing. Get in touch for a free quote.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --navy: #14213d;
+            --navy-light: #1b2d52;
+            --navy-dark: #0d1628;
+            --orange: #fb8500;
+            --orange-light: #fca62f;
+            --orange-dark: #e07600;
+            --cream: #fefae0;
+            --cream-dark: #f5edd0;
+            --white: #ffffff;
+            --off-white: #faf9f6;
+            --text-dark: #1a1a2e;
+            --text-mid: #4a4a5a;
+            --text-light: #6e6e7e;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 10px rgba(20,33,61,0.06);
+            --shadow: 0 4px 24px rgba(20,33,61,0.10);
+            --shadow-lg: 0 12px 48px rgba(20,33,61,0.14);
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Figtree', sans-serif;
+            line-height: 1.2;
+            color: var(--navy);
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.3s var(--ease); }
+        a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+        button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+        input:focus-visible, textarea:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+        /* === REVEAL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* === HEADER === */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(20,33,61,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: box-shadow 0.3s var(--ease);
+        }
+        .header.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.25); }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 72px;
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s var(--ease);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s var(--ease);
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--orange);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s var(--ease), transform 0.2s var(--ease) !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            position: relative;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px auto;
+            transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--navy-dark);
+                flex-direction: column;
+                padding: 100px 32px 40px;
+                gap: 24px;
+                transition: right 0.35s var(--ease);
+                box-shadow: -8px 0 32px rgba(0,0,0,0.3);
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1.1rem; }
+        }
+
+        /* === HERO === */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(165deg, var(--navy) 0%, var(--navy-light) 50%, #1e3a5f 100%);
+            overflow: hidden;
+            padding-top: 72px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(251,133,0,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(251,133,0,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content { padding: 40px 0; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(251,133,0,0.15);
+            border: 1px solid rgba(251,133,0,0.3);
+            color: var(--orange-light);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            color: var(--white);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .hero h1 span { color: var(--orange); }
+        .hero-text {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.15rem;
+            line-height: 1.75;
+            margin-bottom: 36px;
+            max-width: 500px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Figtree', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s var(--ease);
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: var(--white);
+        }
+        .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(251,133,0,0.35); }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+        }
+        .hero-stat h3 {
+            font-size: 2rem;
+            color: var(--orange);
+            font-weight: 800;
+        }
+        .hero-stat p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-img-wrapper img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+        .hero-img-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--white);
+            padding: 14px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+        }
+        .hero-img-badge-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .hero-img-badge h4 { font-size: 0.95rem; color: var(--navy); }
+        .hero-img-badge p { font-size: 0.8rem; color: var(--text-light); font-weight: 400; }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text { margin: 0 auto 36px; }
+            .hero-btns { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-image { display: none; }
+        }
+
+        /* === ABOUT === */
+        .about {
+            padding: 100px 0;
+            background: var(--off-white);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-img {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .about-img img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+        }
+        .about-img-accent {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 80px;
+            height: 80px;
+            background: var(--orange);
+            border-radius: 12px;
+            z-index: -1;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            font-family: 'Figtree', sans-serif;
+        }
+        .section-label::before {
+            content: '';
+            width: 28px;
+            height: 3px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .section-text {
+            color: var(--text-mid);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+        }
+        .about-feature-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(251,133,0,0.12);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr; }
+            .about { padding: 70px 0; }
+        }
+
+        /* === SERVICES === */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .services-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid rgba(20,33,61,0.08);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: all 0.35s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.35s var(--ease);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(251,133,0,0.1), rgba(251,133,0,0.05));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } .services { padding: 70px 0; } }
+
+        /* === WHY CHOOSE US === */
+        .why {
+            padding: 100px 0;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+        .why::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(251,133,0,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .why .section-title { color: var(--white); }
+        .why .section-text { color: rgba(255,255,255,0.65); }
+        .why-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 56px;
+            position: relative;
+            z-index: 2;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            position: relative;
+            z-index: 2;
+        }
+        .why-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.35s var(--ease);
+        }
+        .why-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
+        }
+        .why-card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(251,133,0,0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 18px;
+        }
+        .why-card h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .why-card p {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .why-grid { grid-template-columns: 1fr; } .why { padding: 70px 0; } }
+
+        /* === TESTIMONIALS === */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        .testimonials-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.35s var(--ease);
+            position: relative;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        .testimonial-stars {
+            color: var(--orange);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            font-family: 'Figtree', sans-serif;
+        }
+        .testimonial-author h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .testimonial-author span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; } }
+
+        /* === CONTACT === */
+        .contact {
+            padding: 100px 0;
+            background: var(--off-white);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 28px;
+        }
+        .contact-info-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--white);
+            padding: 20px 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s var(--ease);
+        }
+        .contact-info-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+        .contact-info-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(251,133,0,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-info-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .contact-info-card p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .contact-form-wrap {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+        .contact-form-wrap h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .contact-form-wrap > p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--navy);
+            margin-bottom: 6px;
+            font-family: 'Figtree', sans-serif;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 2px solid rgba(20,33,61,0.1);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'Libre Franklin', sans-serif;
+            color: var(--text-dark);
+            background: var(--off-white);
+            transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 4px rgba(251,133,0,0.1);
+            outline: none;
+            background: var(--white);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'Figtree', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+        }
+        .btn-submit:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(251,133,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form-wrap { padding: 28px 20px; }
+            .contact { padding: 70px 0; }
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: var(--navy-dark);
+            padding: 60px 0 0;
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand .logo { margin-bottom: 16px; }
+        .footer-brand p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 340px;
+        }
+        .footer h4 {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.55);
+            font-size: 0.95rem;
+            padding: 5px 0;
+            transition: color 0.3s var(--ease), padding-left 0.3s var(--ease);
+        }
+        .footer-links a:hover {
+            color: var(--orange);
+            padding-left: 6px;
+        }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-bottom a { color: var(--orange); }
+        .footer-bottom a:hover { color: var(--orange-light); }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        /* === NEOCODE POPUP === */
+        .neocode-popup {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            padding: 28px;
+            max-width: 340px;
+            width: calc(100% - 56px);
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.5s var(--ease);
+        }
+        .neocode-popup.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(20,33,61,0.06);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-mid);
+            transition: all 0.3s var(--ease);
+        }
+        .neocode-popup-close:hover { background: rgba(20,33,61,0.12); }
+        .neocode-popup h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--navy);
+        }
+        .neocode-popup p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+        .neocode-popup .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+
+        /* === DEMO BANNER === */
+        .demo-banner {
+            background: var(--orange);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1001;
+        }
+        .demo-banner a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        This is a demo site built by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a>. Want something like this for your business? <a href="https://neocodestudio.co.uk/contact.html" target="_blank">Let's talk</a>.
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#hero" class="logo">
+                <div class="logo-icon">🔧</div>
+                Frewin Plumbing
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#why">Why Us</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact" class="nav-cta">Get a Quote</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">&#9733; Trusted Local Plumber</div>
+                    <h1>Plumbing &amp; Heating <span>Done Right</span></h1>
+                    <p class="hero-text">From leaky taps to full boiler installations, Martin Frewin and the team deliver reliable, honest plumbing and heating services. No call-out surprises, no hidden fees. Just quality work you can count on.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="#services" class="btn btn-outline">Our Services</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <h3>15+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>500+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>24/7</h3>
+                            <p>Emergency Calls</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrapper">
+                        <img src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional plumber at work" loading="eager">
+                        <div class="hero-img-badge">
+                            <div class="hero-img-badge-icon">&#10003;</div>
+                            <div>
+                                <h4>Fully Insured</h4>
+                                <p>Peace of mind guaranteed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img reveal">
+                    <div class="about-img-accent"></div>
+                    <img src="https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Martin Frewin - Experienced plumber" loading="lazy">
+                </div>
+                <div class="reveal">
+                    <div class="section-label">About Martin</div>
+                    <h2 class="section-title">Your Local Plumber Who Actually Picks Up the Phone</h2>
+                    <p class="section-text">With over 15 years in the trade, Martin Frewin has built a reputation for doing things properly. He's the plumber your neighbours recommend, the one who shows up on time and doesn't leave a mess behind.</p>
+                    <p class="section-text">Whether it's a dripping tap that's been driving you mad or a complete central heating overhaul, Martin treats every job like it's his own home. That's not just a tagline, it's how he's always worked.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#128736;</div>
+                            Fully Qualified
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#9201;</div>
+                            Always On Time
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#128176;</div>
+                            Transparent Pricing
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">&#9989;</div>
+                            Fully Insured
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Services You Can Rely On</h2>
+                <p class="section-text">From small repairs to large installations, we've got the skills and experience to handle it all.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">🔧</div>
+                    <h3>General Plumbing</h3>
+                    <p>Leaky taps, burst pipes, toilet repairs, waste disposal. If water runs through it, we'll fix it. No job's too small for us.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🔥</div>
+                    <h3>Central Heating</h3>
+                    <p>Full central heating installations, radiator replacements, and system upgrades. We'll keep your home warm when it matters most.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">💨</div>
+                    <h3>Boiler Services</h3>
+                    <p>Boiler installations, repairs, and annual servicing. We work with all major brands and won't try to sell you something you don't need.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🚿</div>
+                    <h3>Bathroom Installations</h3>
+                    <p>Complete bathroom design and installation, from budget-friendly refreshes to full luxury renovations. We handle every detail.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">💧</div>
+                    <h3>Leak Detection &amp; Repair</h3>
+                    <p>Hidden leaks can cause serious damage. We'll track down the problem fast and fix it before it gets worse. Emergency callouts available.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🌊</div>
+                    <h3>Power Flushing</h3>
+                    <p>Cold spots on your radiators? Noisy boiler? A power flush clears the sludge and gets your heating system running like new again.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why" id="why">
+        <div class="container">
+            <div class="why-header reveal">
+                <div class="section-label">Why Choose Us</div>
+                <h2 class="section-title">We're Not Your Average Plumber</h2>
+                <p class="section-text">Here's what sets Frewin Plumbing &amp; Heating apart from the rest.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-card-icon">⏰</div>
+                    <h3>Punctual &amp; Reliable</h3>
+                    <p>We show up when we say we will. Your time matters, and we respect that.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-card-icon">💷</div>
+                    <h3>Fair, Honest Pricing</h3>
+                    <p>You'll get a clear quote upfront. No hidden charges, no nasty surprises on the invoice.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-card-icon">🛡️</div>
+                    <h3>Guaranteed Work</h3>
+                    <p>All our work comes with a satisfaction guarantee. If it's not right, we'll come back and sort it.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-card-icon">🏠</div>
+                    <h3>Tidy &amp; Respectful</h3>
+                    <p>We treat your home like our own. Dust sheets down, mess cleaned up, every single time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-text">Don't just take our word for it. Here's what people have to say about working with Martin.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Martin came out the same day I called. Fixed a leak under the kitchen sink that another plumber couldn't find. Really knows his stuff and didn't charge the earth either. Wouldn't use anyone else now."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JR</div>
+                        <div>
+                            <h4>James R.</h4>
+                            <span>Homeowner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Had our entire bathroom ripped out and refitted by Martin. The finish was absolutely brilliant, top quality work from start to finish. He kept us updated every step of the way. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SP</div>
+                        <div>
+                            <h4>Sarah P.</h4>
+                            <span>Homeowner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"We've used Frewin Plumbing for years now. From boiler servicing to fitting new radiators, they're always professional, on time and reasonably priced. It's rare to find a tradesman you can genuinely trust."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DM</div>
+                        <div>
+                            <h4>David M.</h4>
+                            <span>Landlord</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <div class="section-label">Get In Touch</div>
+                    <h2 class="section-title">Ready to Get It Sorted?</h2>
+                    <p class="section-text">Whether it's an emergency or you're planning a bigger project, drop us a message or give us a call. We're always happy to chat through your options and provide a no-obligation quote.</p>
+                    <div class="contact-info-cards">
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon">&#128231;</div>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>martinfrewin@hotmail.co.uk</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon">&#128197;</div>
+                            <div>
+                                <h4>Availability</h4>
+                                <p>Mon - Sat, 7am - 7pm</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon">&#9889;</div>
+                            <div>
+                                <h4>Emergency?</h4>
+                                <p>24/7 callout available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrap reveal">
+                    <h3>Request a Free Quote</h3>
+                    <p>Fill in the form and we'll get back to you as soon as possible.</p>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="e.g. 07123 456789" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="e.g. john@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="plumbing">General Plumbing</option>
+                                <option value="heating">Central Heating</option>
+                                <option value="boiler">Boiler Services</option>
+                                <option value="bathroom">Bathroom Installation</option>
+                                <option value="leak">Leak Detection &amp; Repair</option>
+                                <option value="powerflushing">Power Flushing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Job</label>
+                            <textarea id="message" name="message" placeholder="Describe what you need help with..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send My Request &#8594;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">🔧</div>
+                        Frewin Plumbing &amp; Heating
+                    </div>
+                    <p>Professional plumbing and heating services you can trust. Honest pricing, quality workmanship, and a plumber who actually answers his phone.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Martin</a>
+                        <a href="#services">Services</a>
+                        <a href="#testimonials">Reviews</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="#services">General Plumbing</a>
+                        <a href="#services">Central Heating</a>
+                        <a href="#services">Boiler Services</a>
+                        <a href="#services">Bathrooms</a>
+                        <a href="#services">Power Flushing</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Frewin Plumbing &amp; Heating. All rights reserved.</p>
+                <p>Website by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+        <h4>Like what you see?</h4>
+        <p>This demo was built by NeoCode Studio. We create modern, high-converting websites for local businesses. Want one for yours?</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn btn-primary">Let's Talk &#8594;</a>
+    </div>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // IntersectionObserver reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => observer.observe(el));
+
+        // Contact form (demo)
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('.btn-submit');
+            btn.textContent = 'Message Sent! ✓';
+            btn.style.background = '#16a34a';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.textContent = 'Send My Request →';
+                btn.style.background = '';
+                btn.disabled = false;
+                e.target.reset();
+            }, 3000);
+        });
+
+        // NeoCode popup at 70% scroll
+        let popupShown = false;
+        const popup = document.getElementById('neocodePopup');
+        const popupClose = document.getElementById('neocodeClose');
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                popup.classList.add('show');
+                popupShown = true;
+            }
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('show');
+        });
+    </script>
+
+</body>
+</html>

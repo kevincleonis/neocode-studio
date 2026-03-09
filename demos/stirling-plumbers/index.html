@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stirling Plumbers | Trusted Plumbing &amp; Heating in Stirling, Scotland</title>
+    <meta name="description" content="Professional plumbing, central heating, boiler servicing, and bathroom installations in Stirling and surrounding areas. Gas Safe registered. Get in touch today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --teal: #0d6968;
+            --teal-dark: #0a5453;
+            --teal-light: #0f7f7e;
+            --charcoal: #1e1e1e;
+            --charcoal-mid: #2a2a2a;
+            --light-grey: #f5f5f5;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --slate: #555555;
+            --slate-light: #888888;
+            --gold: #e8a830;
+            --gold-light: #f0c060;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.06);
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--teal);
+            outline-offset: 3px;
+        }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+        /* === SCROLL REVEAL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* === TOP BAR === */
+        .top-bar {
+            background: var(--charcoal);
+            color: var(--white);
+            font-size: 0.82rem;
+            padding: 8px 0;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .top-bar a { color: var(--gold-light); }
+        .top-bar a:hover { color: var(--gold); }
+        .top-bar-left { display: flex; gap: 20px; align-items: center; }
+        .top-bar-right { display: flex; gap: 16px; align-items: center; }
+        .top-bar-right span { color: #ccc; font-size: 0.78rem; }
+
+        /* === HEADER === */
+        header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--teal);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-icon svg { width: 24px; height: 24px; fill: var(--white); }
+        .logo-text h2 { font-size: 1.25rem; color: var(--charcoal); margin: 0; line-height: 1.1; }
+        .logo-text span { font-size: 0.7rem; color: var(--slate-light); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; }
+
+        nav ul { display: flex; gap: 28px; }
+        nav a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            transition: color 0.25s;
+            position: relative;
+        }
+        nav a:hover { color: var(--teal); }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s var(--ease);
+        }
+        nav a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--teal);
+            color: var(--white) !important;
+            padding: 10px 22px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .nav-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: all 0.3s var(--ease);
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-mid) 100%);
+            padding: 100px 0 110px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(13,105,104,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(13,105,104,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content { color: var(--white); }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(13,105,104,0.25);
+            border: 1px solid rgba(13,105,104,0.5);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero p {
+            font-size: 1.1rem;
+            color: #bbb;
+            margin-bottom: 36px;
+            max-width: 500px;
+            line-height: 1.75;
+        }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--teal);
+            color: var(--white);
+            padding: 15px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,105,104,0.3); }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            padding: 15px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid rgba(255,255,255,0.25);
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+        }
+        .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+        .hero-stats {
+            display: flex;
+            gap: 36px;
+            margin-top: 44px;
+        }
+        .hero-stat h3 { font-size: 1.7rem; color: var(--gold); }
+        .hero-stat p { font-size: 0.82rem; color: #999; }
+        .hero-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+        .hero-image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(13,105,104,0.92);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+
+        /* === ABOUT === */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .about-image img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--teal);
+            margin-bottom: 14px;
+        }
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: var(--teal);
+            border-radius: 2px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+        .section-title span { color: var(--teal); }
+        .about-text p {
+            color: var(--slate);
+            margin-bottom: 16px;
+            font-size: 1.02rem;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .about-feature-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(13,105,104,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .about-feature-icon svg { width: 16px; height: 16px; fill: var(--teal); }
+
+        /* === SERVICES === */
+        .services {
+            padding: 100px 0;
+            background: var(--light-grey);
+        }
+        .services .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            transition: all 0.35s var(--ease);
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--teal);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease);
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(13,105,104,0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .service-icon svg { width: 28px; height: 28px; fill: var(--teal); }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+        .service-card p { color: var(--slate); font-size: 0.92rem; line-height: 1.7; }
+
+        /* === WHY CHOOSE US === */
+        .why-us {
+            padding: 100px 0;
+            background: var(--charcoal);
+            color: var(--white);
+        }
+        .why-us .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+        .why-us .section-title { color: var(--white); }
+        .why-us .section-header p { color: #aaa; }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+        .why-card {
+            background: var(--charcoal-mid);
+            border: 1px solid #333;
+            border-radius: var(--radius-lg);
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.35s var(--ease);
+        }
+        .why-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+        .why-card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(13,105,104,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+        .why-card-icon svg { width: 26px; height: 26px; fill: var(--gold); }
+        .why-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+        .why-card p { color: #999; font-size: 0.88rem; line-height: 1.65; }
+
+        /* === COVERAGE === */
+        .coverage {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .coverage .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .coverage-areas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 28px;
+        }
+        .coverage-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--light-grey);
+            border-radius: var(--radius);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.25s;
+        }
+        .coverage-item:hover { background: rgba(13,105,104,0.08); }
+        .coverage-item svg { width: 16px; height: 16px; fill: var(--teal); flex-shrink: 0; }
+        .coverage-map {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .coverage-map img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        /* === TESTIMONIALS === */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--light-grey);
+        }
+        .testimonials .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid #eee;
+            transition: all 0.3s var(--ease);
+        }
+        .testimonial-card:hover { box-shadow: var(--shadow); }
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 16px;
+        }
+        .testimonial-stars svg { width: 18px; height: 18px; fill: var(--gold); }
+        .testimonial-card p {
+            color: var(--slate);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Rubik', sans-serif;
+        }
+        .testimonial-author h4 { font-size: 0.92rem; margin-bottom: 2px; }
+        .testimonial-author span { font-size: 0.78rem; color: var(--slate-light); }
+
+        /* === CONTACT === */
+        .contact {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        .contact .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 28px;
+        }
+        .contact-info-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--light-grey);
+            border-radius: var(--radius);
+            transition: all 0.25s;
+        }
+        .contact-info-card:hover { background: rgba(13,105,104,0.06); }
+        .contact-info-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(13,105,104,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-info-icon svg { width: 22px; height: 22px; fill: var(--teal); }
+        .contact-info-card h4 { font-size: 0.9rem; margin-bottom: 4px; }
+        .contact-info-card p { font-size: 0.88rem; color: var(--slate); }
+        .contact-form {
+            background: var(--light-grey);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+        }
+        .contact-form h3 {
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+        }
+        .form-group { margin-bottom: 18px; }
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--charcoal);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 2px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.95rem;
+            background: var(--white);
+            transition: border-color 0.25s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--teal);
+            outline: none;
+        }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 64px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid #333;
+        }
+        .footer-about p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-top: 16px;
+        }
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 18px;
+            color: var(--gold);
+        }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul a {
+            color: #aaa;
+            font-size: 0.88rem;
+            transition: color 0.25s;
+        }
+        .footer-col ul a:hover { color: var(--white); }
+        .footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-bottom p {
+            color: #777;
+            font-size: 0.82rem;
+        }
+        .footer-bottom a { color: var(--teal-light); }
+        .footer-bottom a:hover { color: var(--gold); }
+
+        /* === NEOCODE POPUP === */
+        .neocode-popup {
+            display: none;
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 16px 64px rgba(0,0,0,0.2);
+            padding: 32px;
+            max-width: 360px;
+            z-index: 9999;
+            animation: popupIn 0.5s var(--ease);
+            border: 2px solid var(--teal);
+        }
+        .neocode-popup.show { display: block; }
+        @keyframes popupIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--slate-light);
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .neocode-popup-close:hover { background: var(--light-grey); color: var(--charcoal); }
+        .neocode-popup h4 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        .neocode-popup p {
+            font-size: 0.88rem;
+            color: var(--slate);
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+        .neocode-popup .btn-primary { width: 100%; justify-content: center; font-size: 0.92rem; padding: 13px 24px; }
+
+        /* === BACK TO TOP === */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            width: 46px;
+            height: 46px;
+            background: var(--teal);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--teal-dark); transform: translateY(-3px); }
+        .back-to-top svg { width: 20px; height: 20px; fill: var(--white); }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                box-shadow: var(--shadow-lg);
+                padding: 20px 24px;
+                z-index: 999;
+            }
+            nav.active ul { flex-direction: column; gap: 0; }
+            nav.active li { border-bottom: 1px solid #eee; }
+            nav.active a { display: block; padding: 14px 0; }
+            nav.active .nav-cta { text-align: center; margin-top: 10px; }
+            .hamburger { display: flex; }
+            .hero .container { grid-template-columns: 1fr; text-align: center; }
+            .hero p { margin-left: auto; margin-right: auto; }
+            .hero-btns { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-image { margin-top: 20px; }
+            .about .container,
+            .coverage .container,
+            .contact .container { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr; }
+            .coverage-areas { grid-template-columns: 1fr; }
+            .top-bar { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .neocode-popup { left: 16px; right: 16px; max-width: none; bottom: 16px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <a href="mailto:customer-care@stirlingplumbers.co.uk">customer-care@stirlingplumbers.co.uk</a>
+            </div>
+            <div class="top-bar-right">
+                <span>Gas Safe Registered</span>
+                <span>|</span>
+                <span>Serving Stirling &amp; Surrounds</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="logo-text">
+                    <h2>Stirling Plumbers</h2>
+                    <span>Plumbing &amp; Heating</span>
+                </div>
+            </a>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    Stirling's Trusted Plumbers
+                </div>
+                <h1>Quality Plumbing &amp; Heating You Can <span>Count On</span></h1>
+                <p>We've been keeping Stirling's homes warm and water flowing for years. From emergency repairs to full bathroom installs, we're the team locals trust to get the job done right.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Get a Free Quote
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+                        Our Services
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3>500+</h3>
+                        <p>Jobs Completed</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>Gas Safe</h3>
+                        <p>Registered</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>24/7</h3>
+                        <p>Emergencies</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional plumber working on pipework" loading="eager">
+                <div class="hero-image-badge">Trusted Local Experts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-image reveal">
+                <img src="https://images.pexels.com/photos/6816849/pexels-photo-6816849.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Plumber inspecting boiler system">
+            </div>
+            <div class="about-text reveal">
+                <div class="section-label">About Us</div>
+                <h2 class="section-title">Stirling's Go-To <span>Plumbing Team</span></h2>
+                <p>We're a local, family-oriented plumbing and heating company serving Stirling and the surrounding areas. We don't believe in cutting corners or overcharging. What we do believe in is honest work, fair prices, and making sure you're happy with the result.</p>
+                <p>Whether it's a leaky tap that's been driving you mad or a full central heating installation, we'll turn up on time, explain what's needed, and get it sorted without fuss. We're Gas Safe registered and fully insured, so you're in safe hands.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                        Gas Safe Registered
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                        Fully Insured
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                        Free Quotes
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                        No Hidden Fees
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Our <span>Services</span></h2>
+                <p style="color: var(--slate); margin-top: 12px;">From dripping taps to full heating systems, we've got every aspect of plumbing and heating covered. Here's what we can help with.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+                    </div>
+                    <h3>General Plumbing</h3>
+                    <p>Leaking taps, burst pipes, toilet repairs, waste disposal, water tanks, and all general plumbing work. No job's too small for us.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm3-6c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>
+                    </div>
+                    <h3>Central Heating</h3>
+                    <p>Full central heating installations, radiator replacements, powerflush services, and system upgrades to keep your home warm all winter.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-3.3 3.29a.996.996 0 000 1.41l5.15 5.15c.39.39 1.02.39 1.41 0l4.71-4.71zm1.56 5.56l-8.94-8.94 1.42-1.41 8.94 8.94c.39.39.39 1.02 0 1.41l-4.71 4.71c-.39.39-1.02.39-1.41 0L8.94 14.5 7.5 15.94l4.71 4.71c1.17 1.17 3.07 1.17 4.24 0l4.71-4.71c1.17-1.17 1.17-3.07 0-4.24l-3.04-1.2z M2 19h20v4H2z"/></svg>
+                    </div>
+                    <h3>Boiler Services</h3>
+                    <p>Boiler installations, repairs, servicing, and annual safety checks. We work with all major brands and can recommend the best option for your home.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M7 7c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2V7zm-4 6h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm0 12h2v-2H3v2zm0-16h2V3H3v2zm4 16h2v-2H7v2zm8 0h2v-2h-2v2zm4 0h2v-2h-2v2z"/></svg>
+                    </div>
+                    <h3>Bathroom Installations</h3>
+                    <p>Complete bathroom design and fitting. We'll handle everything from plumbing and tiling to the final fixtures, creating the bathroom you've always wanted.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Emergency Call-Outs</h3>
+                    <p>Burst pipe at 2am? Boiler packed in on a freezing night? We offer 24/7 emergency plumbing and heating call-outs across Stirling. We'll be there fast.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                    </div>
+                    <h3>Gas Safety</h3>
+                    <p>Gas Safe registered engineers for landlord gas safety certificates, appliance installations, gas leak detection, and all gas-related work. Your safety's our priority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label" style="color: var(--gold);">Why Choose Us</div>
+                <h2 class="section-title">Why Stirling <span style="color: var(--gold);">Trusts Us</span></h2>
+                <p>We're not just another plumbing company. Here's what sets us apart from the rest.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                    </div>
+                    <h3>We Show Up On Time</h3>
+                    <p>We know your time matters. When we say we'll be there, we mean it. No vague "sometime between 8 and 5" windows.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h3>Honest, Fair Pricing</h3>
+                    <p>You'll get a clear, upfront quote before we start any work. No surprise charges, no inflated bills. Just honest pricing.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                    </div>
+                    <h3>Fully Qualified</h3>
+                    <p>Gas Safe registered, fully insured, and trained to the highest standards. You won't need to worry about a thing.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <h3>Local &amp; Trusted</h3>
+                    <p>We're part of the Stirling community. Most of our work comes from word-of-mouth and returning customers. That says it all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage -->
+    <section class="coverage" id="coverage">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Coverage Area</div>
+                <h2 class="section-title">Where We <span>Work</span></h2>
+                <p style="color: var(--slate); margin-top: 12px; max-width: 480px;">We're based in Stirling and cover a wide area across Central Scotland. If you're not sure whether we cover your area, just give us a shout.</p>
+                <div class="coverage-areas">
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Stirling
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Bridge of Allan
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Dunblane
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Alloa
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Falkirk
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Bannockburn
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Callander
+                    </div>
+                    <div class="coverage-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Clackmannanshire
+                    </div>
+                </div>
+            </div>
+            <div class="coverage-map reveal">
+                <img src="https://images.pexels.com/photos/1437493/pexels-photo-1437493.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Scenic view of Stirling and the Scottish landscape">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our <span>Customers Say</span></h2>
+                <p style="color: var(--slate); margin-top: 12px;">Don't just take our word for it. Here's what people across Stirling have to say about our work.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"Had a burst pipe on a Sunday morning and they were here within the hour. Fixed it quickly and didn't charge me an arm and a leg. Can't recommend them enough."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">GM</div>
+                        <div>
+                            <h4>Gordon MacLeod</h4>
+                            <span>Stirling</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"They installed a brand new bathroom for us and the result's absolutely stunning. Really tidy work, cleaned up after themselves, and the price was very reasonable."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FK</div>
+                        <div>
+                            <h4>Fiona Kennedy</h4>
+                            <span>Bridge of Allan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"We've used Stirling Plumbers for our rental properties for years now. They're always reliable, always professional, and the gas safety certificates are done properly every time."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DR</div>
+                        <div>
+                            <h4>David Robertson</h4>
+                            <span>Dunblane</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Let's Talk About <span>Your Project</span></h2>
+                <p style="color: var(--slate); margin-top: 12px; max-width: 460px;">Whether you need an emergency repair or want to plan a bigger project, drop us a message and we'll get back to you as soon as we can.</p>
+                <div class="contact-info-cards">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>customer-care@stirlingplumbers.co.uk</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Stirling, Scotland</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon-Fri: 8am - 6pm | 24/7 Emergencies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <h3>Request a Free Quote</h3>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service...</option>
+                            <option value="general-plumbing">General Plumbing</option>
+                            <option value="central-heating">Central Heating</option>
+                            <option value="boiler-services">Boiler Services</option>
+                            <option value="bathrooms">Bathroom Installation</option>
+                            <option value="emergency">Emergency Call-Out</option>
+                            <option value="gas-safety">Gas Safety Certificate</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell Us About Your Project</label>
+                        <textarea id="message" name="message" placeholder="Give us a brief description of what you need..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo" style="margin-bottom: 4px;">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        </div>
+                        <div class="logo-text">
+                            <h2 style="color: var(--white);">Stirling Plumbers</h2>
+                            <span>Plumbing &amp; Heating</span>
+                        </div>
+                    </div>
+                    <p>Your trusted local plumbing and heating team, serving Stirling and Central Scotland. Gas Safe registered and fully insured.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">General Plumbing</a></li>
+                        <li><a href="#services">Central Heating</a></li>
+                        <li><a href="#services">Boiler Services</a></li>
+                        <li><a href="#services">Bathrooms</a></li>
+                        <li><a href="#services">Emergency Call-Outs</a></li>
+                        <li><a href="#services">Gas Safety</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#why-us">Why Choose Us</a></li>
+                        <li><a href="#coverage">Coverage Area</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:customer-care@stirlingplumbers.co.uk">customer-care@stirlingplumbers.co.uk</a></li>
+                        <li><a href="#coverage">Stirling, Scotland</a></li>
+                        <li><a href="#contact">Mon-Fri: 8am - 6pm</a></li>
+                        <li><a href="#contact">24/7 Emergency Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Stirling Plumbers. All rights reserved.</p>
+                <p>Website demo by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" id="neocodeClose" aria-label="Close popup">&times;</button>
+        <h4>Like what you see?</h4>
+        <p>This is a demo redesign by NeoCode Studio. We build fast, modern websites that actually convert visitors into customers. Want something like this for your business?</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" rel="noopener" class="btn-primary">
+            Let's Chat
+        </a>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </button>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('mainNav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        // Close nav on link click
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // IntersectionObserver for .reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 80);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // NeoCode Popup at 70% scroll
+        const neocodePopup = document.getElementById('neocodePopup');
+        const neocodeClose = document.getElementById('neocodeClose');
+        let popupShown = false;
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                neocodePopup.classList.add('show');
+                popupShown = true;
+            }
+        });
+        neocodeClose.addEventListener('click', () => {
+            neocodePopup.classList.remove('show');
+        });
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Message Sent!';
+            btn.style.background = '#16a34a';
+            setTimeout(() => {
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+
+        // Sticky header shadow on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.style.boxShadow = window.scrollY > 10 ? '0 4px 20px rgba(0,0,0,0.1)' : 'var(--shadow-sm)';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matt Steele Cleaning Services | Professional Carpet & Cleaning Solutions</title>
+<meta name="description" content="Matt Steele Cleaning Services - Professional carpet, upholstery, rug, hard floor cleaning and end of tenancy services. Trusted local results you can count on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#2563eb;
+  --blue-dark:#1d4ed8;
+  --blue-deep:#1e3a8a;
+  --blue-light:#3b82f6;
+  --blue-soft:rgba(37,99,235,0.08);
+  --blue-glow:rgba(37,99,235,0.15);
+  --slate:#334155;
+  --slate-dark:#1e293b;
+  --slate-light:#475569;
+  --slate-muted:#64748b;
+  --off-white:#f8fafc;
+  --white:#ffffff;
+  --gray-50:#f1f5f9;
+  --gray-100:#e2e8f0;
+  --gray-200:#cbd5e1;
+  --text:#0f172a;
+  --text-light:#475569;
+  --text-muted:#94a3b8;
+  --border:rgba(51,65,85,0.08);
+  --shadow-sm:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-md:0 8px 32px rgba(15,23,42,0.1);
+  --shadow-lg:0 20px 50px rgba(15,23,42,0.14);
+  --shadow-blue:0 8px 32px rgba(37,99,235,0.25);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-family:'Sora',sans-serif;line-height:1.2}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.25s}
+.reveal.d4{transition-delay:.3s}.reveal.d5{transition-delay:.35s}.reveal.d6{transition-delay:.4s}
+
+/* NEOCODE BANNER */
+.neocode-bar{background:var(--slate-dark);color:rgba(255,255,255,0.7);text-align:center;padding:10px 20px;font-size:12px;letter-spacing:.4px}
+.neocode-bar a{color:var(--blue-light);text-decoration:none;font-weight:600}
+.neocode-bar a:hover{text-decoration:underline}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 24px;transition:all .4s ease}
+.nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(15,23,42,0.08)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:'Sora',sans-serif;font-size:20px;font-weight:700;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;transition:color .3s}
+.nav.scrolled .nav-logo{color:var(--slate-dark)}
+.nav-logo svg{width:28px;height:28px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.2px;position:relative;padding:4px 0;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--blue-light);transition:width .3s ease}
+.nav-links a:hover,.nav-links a:focus{color:#fff}
+.nav-links a:hover::after,.nav-links a:focus::after{width:100%}
+.nav.scrolled .nav-links a{color:var(--slate)}
+.nav.scrolled .nav-links a:hover,.nav.scrolled .nav-links a:focus{color:var(--blue)}
+.nav-cta{background:var(--blue)!important;color:#fff!important;padding:10px 24px;border-radius:50px;font-weight:600;font-size:13px;letter-spacing:.3px;transition:all .3s ease}
+.nav-cta:hover{background:var(--blue-dark)!important;transform:translateY(-1px);box-shadow:var(--shadow-blue)}
+.nav-cta::after{display:none!important}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s ease}
+.nav.scrolled .hamburger span{background:var(--slate-dark)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* MOBILE NAV */
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:'Sora',sans-serif;font-size:24px;color:var(--slate-dark);text-decoration:none;font-weight:600;letter-spacing:.3px}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--slate-dark) 0%,#1a2744 40%,var(--blue-deep) 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:70%;height:180%;background:radial-gradient(ellipse,rgba(37,99,235,0.12) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--white),transparent);z-index:2}
+.hero-dots{position:absolute;inset:0;opacity:.03;background-image:radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px);background-size:32px 32px}
+.hero-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;padding:140px 24px 120px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.25);color:rgba(255,255,255,0.9);padding:8px 18px;border-radius:50px;font-size:13px;font-weight:500;margin-bottom:24px}
+.hero-badge svg{width:16px;height:16px}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;color:#fff;margin-bottom:20px;letter-spacing:-.5px;line-height:1.1}
+.hero h1 span{color:var(--blue-light)}
+.hero-sub{font-size:18px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:36px;max-width:520px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:16px 32px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s ease;border:none;cursor:pointer}
+.btn-primary:hover,.btn-primary:focus{background:var(--blue-dark);transform:translateY(-2px);box-shadow:var(--shadow-blue)}
+.btn-primary:focus{outline:3px solid rgba(37,99,235,0.4);outline-offset:2px}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:16px 32px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,0.25);transition:all .3s ease}
+.btn-secondary:hover,.btn-secondary:focus{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.btn-secondary:focus{outline:3px solid rgba(255,255,255,0.3);outline-offset:2px}
+.hero-img{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.hero-img img{width:100%;height:100%;object-fit:cover;border-radius:20px}
+.hero-img::after{content:'';position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 0 60px rgba(0,0,0,0.15)}
+.hero-floating{position:absolute;bottom:30px;left:30px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:16px 22px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-md);z-index:4}
+.hero-floating-icon{width:44px;height:44px;background:var(--blue);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.hero-floating-icon svg{width:22px;height:22px;color:#fff}
+.hero-floating-text{font-size:13px;color:var(--slate-light)}
+.hero-floating-text strong{display:block;font-size:15px;color:var(--text);font-weight:700}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--blue-soft);color:var(--blue);padding:6px 16px;border-radius:50px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--text);margin-bottom:16px;letter-spacing:-.3px}
+.section-desc{font-size:17px;color:var(--text-light);max-width:600px;line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-desc{margin:0 auto}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding-top:48px}
+.about-img{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:1/1}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img::before{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;background:var(--blue);border-radius:20px 0 20px 0;z-index:1;opacity:.9}
+.about-img::after{content:'';position:absolute;inset:0;border:3px solid var(--blue-soft);border-radius:20px;pointer-events:none}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.about-stat{background:var(--off-white);padding:20px;border-radius:14px;text-align:center}
+.about-stat .num{font-family:'Sora',sans-serif;font-size:28px;font-weight:800;color:var(--blue);display:block}
+.about-stat .label{font-size:13px;color:var(--text-muted);margin-top:4px}
+.about-content p{color:var(--text-light);line-height:1.8;margin-bottom:16px;font-size:16px}
+
+/* SERVICES */
+.services{background:var(--off-white)}
+.services-grid{max-width:1200px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:20px;overflow:hidden;transition:all .4s ease;border:1px solid var(--border)}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card-img{height:200px;overflow:hidden}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.service-card:hover .service-card-img img{transform:scale(1.06)}
+.service-card-body{padding:28px}
+.service-card-icon{width:48px;height:48px;background:var(--blue-soft);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card-icon svg{width:24px;height:24px;color:var(--blue)}
+.service-card h3{font-size:20px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.service-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+
+/* PRICING */
+.pricing{background:var(--white)}
+.pricing-grid{max-width:1000px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pricing-card{background:var(--off-white);border-radius:20px;padding:36px 28px;text-align:center;transition:all .4s ease;border:2px solid transparent;position:relative}
+.pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.pricing-card.featured{background:var(--white);border-color:var(--blue);box-shadow:var(--shadow-blue)}
+.pricing-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:6px 20px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:.5px}
+.pricing-card-icon{width:56px;height:56px;background:var(--blue-soft);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.pricing-card.featured .pricing-card-icon{background:rgba(37,99,235,0.12)}
+.pricing-card-icon svg{width:28px;height:28px;color:var(--blue)}
+.pricing-card h3{font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.pricing-card p{font-size:14px;color:var(--text-light);line-height:1.6;margin-bottom:20px;min-height:42px}
+.pricing-card ul{list-style:none;text-align:left;margin-bottom:24px}
+.pricing-card ul li{font-size:14px;color:var(--text-light);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.pricing-card ul li svg{width:16px;height:16px;color:var(--blue);flex-shrink:0}
+.pricing-card .price{font-family:'Sora',sans-serif;font-size:32px;font-weight:800;color:var(--blue);margin-bottom:4px}
+.pricing-card .price-note{font-size:13px;color:var(--text-muted);margin-bottom:20px}
+.pricing-card .btn-primary{width:100%;justify-content:center;padding:14px 24px;font-size:14px}
+.pricing-card.featured .btn-primary{background:var(--blue)}
+
+/* WHY CHOOSE US */
+.why{background:var(--off-white)}
+.why-grid{max-width:1200px;margin:48px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.why-card{background:var(--white);padding:32px 24px;border-radius:20px;text-align:center;transition:all .4s ease;border:1px solid var(--border)}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.why-card-icon{width:60px;height:60px;background:var(--blue-soft);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.why-card-icon svg{width:28px;height:28px;color:var(--blue)}
+.why-card h3{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.why-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--white)}
+.testimonials-grid{max-width:1100px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--off-white);padding:32px;border-radius:20px;position:relative;transition:all .4s ease}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.testimonial-stars{display:flex;gap:4px;margin-bottom:16px}
+.testimonial-stars svg{width:18px;height:18px;color:#f59e0b;fill:#f59e0b}
+.testimonial-card p{font-size:15px;color:var(--text-light);line-height:1.7;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;background:var(--blue-soft);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;color:var(--blue);font-size:16px}
+.testimonial-name{font-size:14px;font-weight:600;color:var(--text)}
+.testimonial-role{font-size:12px;color:var(--text-muted)}
+
+/* CONTACT */
+.contact{background:linear-gradient(135deg,var(--slate-dark) 0%,var(--blue-deep) 100%);color:#fff;position:relative;overflow:hidden}
+.contact::before{content:'';position:absolute;top:-30%;right:-10%;width:50%;height:160%;background:radial-gradient(ellipse,rgba(37,99,235,0.15) 0%,transparent 60%);pointer-events:none}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;position:relative;z-index:2}
+.contact .section-tag{background:rgba(37,99,235,0.2);color:var(--blue-light)}
+.contact .section-title{color:#fff}
+.contact .section-desc{color:rgba(255,255,255,0.7)}
+.contact-info{margin-top:36px;display:flex;flex-direction:column;gap:20px}
+.contact-row{display:flex;align-items:center;gap:16px}
+.contact-row-icon{width:48px;height:48px;background:rgba(37,99,235,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-row-icon svg{width:22px;height:22px;color:var(--blue-light)}
+.contact-row-text{font-size:15px;color:rgba(255,255,255,0.8)}
+.contact-row-text a{color:var(--blue-light);text-decoration:none}
+.contact-row-text a:hover{text-decoration:underline}
+.contact-form{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:40px;backdrop-filter:blur(10px)}
+.contact-form h3{font-size:22px;font-weight:700;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:rgba(255,255,255,0.7);letter-spacing:.3px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff;font-family:'Inter',sans-serif;font-size:15px;transition:all .3s ease}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--blue);background:rgba(255,255,255,0.1);box-shadow:0 0 0 3px rgba(37,99,235,0.2)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.35)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select option{background:var(--slate-dark);color:#fff}
+.form-submit{width:100%;padding:16px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s ease}
+.form-submit:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:var(--shadow-blue)}
+.form-submit:focus{outline:3px solid rgba(37,99,235,0.4);outline-offset:2px}
+
+/* FOOTER */
+.footer{background:var(--slate-dark);color:rgba(255,255,255,0.6);padding:60px 24px 30px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer-brand{font-family:'Sora',sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.footer-brand-desc{font-size:14px;line-height:1.7;max-width:320px}
+.footer h4{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:#fff;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:10px}
+.footer ul a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:color .3s}
+.footer ul a:hover{color:var(--blue-light)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px}
+.footer-bottom a{color:var(--blue-light);text-decoration:none}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* NEOCODE POPUP */
+.demo-popup-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.demo-popup-overlay.show{opacity:1;pointer-events:auto}
+.demo-popup{background:var(--white);border-radius:24px;padding:48px 40px;max-width:480px;width:90%;text-align:center;position:relative;transform:scale(0.9);transition:transform .4s ease;box-shadow:var(--shadow-lg)}
+.demo-popup-overlay.show .demo-popup{transform:scale(1)}
+.demo-popup h2{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:var(--text);margin-bottom:14px}
+.demo-popup p{font-size:15px;color:var(--text-light);line-height:1.7;margin-bottom:12px}
+.popup-cta{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s ease;margin-top:8px}
+.popup-cta:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:var(--shadow-blue)}
+.popup-dismiss{display:block;margin:16px auto 0;background:none;border:none;color:var(--text-muted);font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:color .3s}
+.popup-dismiss:hover{color:var(--text)}
+.popup-close{position:absolute;top:16px;right:16px;width:36px;height:36px;background:var(--gray-50);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;color:var(--text-muted)}
+.popup-close:hover{background:var(--gray-100);color:var(--text)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-sub{margin:0 auto 36px}
+  .hero-btns{justify-content:center}
+  .hero-img{max-width:500px;margin:0 auto}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-img{max-width:500px;margin:0 auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  section{padding:72px 20px}
+  .hero-inner{padding:120px 20px 100px}
+  .services-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+  .why-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .hero-floating{bottom:16px;left:16px;padding:12px 16px}
+  .contact-form{padding:28px 20px}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NEOCODE BANNER -->
+<div class="neocode-bar">
+  Demo built by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &middot; Free preview, no obligations
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2"/><path d="M8 18l4-10 4 6 4-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Matt Steele
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge reveal">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z" fill="currentColor"/></svg>
+        Trusted Local Cleaning Experts
+      </div>
+      <h1 class="reveal d1">Carpets That Look <span>Brand New</span> Again</h1>
+      <p class="hero-sub reveal d2">Professional carpet, upholstery, and hard floor cleaning that brings your home back to life. We don't just clean surfaces, we restore them.</p>
+      <div class="hero-btns reveal d3">
+        <a href="#contact" class="btn-primary">
+          Get Your Free Quote
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-img reveal d2">
+      <img src="https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional carpet cleaning in action" loading="eager">
+      <div class="hero-floating">
+        <div class="hero-floating-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="hero-floating-text">
+          <strong>100% Satisfaction</strong>
+          Guaranteed results every time
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.pexels.com/photos/6197117/pexels-photo-6197117.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Matt Steele professional cleaning" loading="lazy">
+    </div>
+    <div>
+      <span class="section-tag reveal">About Matt</span>
+      <h2 class="section-title reveal d1">Cleaning Done Right, Every Single Time</h2>
+      <div class="reveal d2">
+        <p class="about-content">Matt Steele Cleaning Services isn't your average cleaning company. With years of hands-on experience and a genuine passion for getting things spotless, Matt's built a reputation that speaks for itself.</p>
+        <p class="about-content">Whether it's a tired-looking carpet that's seen better days or an end-of-tenancy job that needs to be perfect, you'll get the same level of care and attention every time. No cutting corners, no hidden fees. Just honest, reliable work that you can see and feel.</p>
+      </div>
+      <div class="about-stats reveal d3">
+        <div class="about-stat"><span class="num">500+</span><span class="label">Happy Customers</span></div>
+        <div class="about-stat"><span class="num">100%</span><span class="label">Satisfaction Rate</span></div>
+        <div class="about-stat"><span class="num">Same Day</span><span class="label">Quotes Available</span></div>
+        <div class="about-stat"><span class="num">Eco</span><span class="label">Friendly Products</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="text-center">
+    <span class="section-tag reveal">What We Do</span>
+    <h2 class="section-title reveal d1">Professional Cleaning Services</h2>
+    <p class="section-desc reveal d2">From deep carpet cleans to full commercial contracts, we've got the tools, the training, and the track record to deliver results.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <div class="service-card-img">
+        <img src="https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Carpet cleaning service" loading="lazy">
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </div>
+        <h3>Carpet Cleaning</h3>
+        <p>Deep hot water extraction that removes embedded dirt, allergens, and stubborn stains. Your carpets won't just look cleaner, they'll feel softer too.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-card-img">
+        <img src="https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Upholstery cleaning service" loading="lazy">
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2"/><path d="M20 18v2"/></svg>
+        </div>
+        <h3>Upholstery Cleaning</h3>
+        <p>Sofas, armchairs, dining chairs. We'll bring your furniture back to life with specialist fabric care that's gentle but incredibly effective.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="service-card-img">
+        <img src="https://images.pexels.com/photos/6195663/pexels-photo-6195663.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rug cleaning service" loading="lazy">
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h8"/><path d="M8 14h8"/><path d="M8 18h8"/></svg>
+        </div>
+        <h3>Rug Cleaning</h3>
+        <p>Whether it's a Persian heirloom or a modern statement piece, we'll handle your rugs with the specialist care they deserve.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d4">
+      <div class="service-card-img">
+        <img src="https://images.pexels.com/photos/6197107/pexels-photo-6197107.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hard floor cleaning service" loading="lazy">
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+        </div>
+        <h3>Hard Floor Cleaning</h3>
+        <p>Tile, stone, laminate, vinyl. We strip, scrub, and restore hard floors to bring back that just-installed shine.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d5">
+      <div class="service-card-img">
+        <img src="https://images.pexels.com/photos/6492397/pexels-photo-6492397.jpeg?auto=compress&cs=tinysrgb&w=600" alt="End of tenancy cleaning" loading="lazy">
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>End of Tenancy</h3>
+        <p>Moving out? We'll make sure your carpets and floors pass inspection. No stress, no callbacks, and your deposit stays safe.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d6">
+      <div class="service-card-img">
+        <img src="https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Commercial cleaning service" loading="lazy">
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Commercial Cleaning</h3>
+        <p>Offices, shops, restaurants. We offer flexible scheduling so your business stays clean without the disruption. Regular contracts available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="text-center">
+    <span class="section-tag reveal">Pricing</span>
+    <h2 class="section-title reveal d1">Simple, Transparent Pricing</h2>
+    <p class="section-desc reveal d2">No hidden fees, no surprises. Just straightforward pricing that reflects the quality you're getting.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal d1">
+      <div class="pricing-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <h3>Single Room</h3>
+      <p>Perfect for a quick refresh on one room</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Deep hot water extraction</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Stain pre-treatment</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Fast drying time</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Eco-friendly solutions</li>
+      </ul>
+      <div class="price">From &pound;35</div>
+      <div class="price-note">Per standard room</div>
+      <a href="#contact" class="btn-primary">Book Now</a>
+    </div>
+    <div class="pricing-card featured reveal d2">
+      <div class="pricing-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Whole House</h3>
+      <p>The most popular choice for a full home refresh</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> All rooms included</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Stairs and landing</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority stain treatment</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Deodorising included</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Best value per room</li>
+      </ul>
+      <div class="price">From &pound;120</div>
+      <div class="price-note">3-bed house (avg)</div>
+      <a href="#contact" class="btn-primary">Book Now</a>
+    </div>
+    <div class="pricing-card reveal d3">
+      <div class="pricing-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <h3>Commercial</h3>
+      <p>Tailored contracts for businesses</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Flexible scheduling</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Out-of-hours available</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Regular or one-off</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Multi-site discounts</li>
+      </ul>
+      <div class="price">Custom</div>
+      <div class="price-note">Get in touch for a quote</div>
+      <a href="#contact" class="btn-primary">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why" id="why">
+  <div class="text-center">
+    <span class="section-tag reveal">Why Choose Us</span>
+    <h2 class="section-title reveal d1">What Sets Matt Steele Apart</h2>
+    <p class="section-desc reveal d2">It's not just about having the right equipment. It's about actually caring that the job's done properly.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal d1">
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Fully Insured</h3>
+      <p>You're covered from start to finish. We carry full public liability insurance so there's zero risk to you.</p>
+    </div>
+    <div class="why-card reveal d2">
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>Always On Time</h3>
+      <p>We'll be there when we say we will. No vague time slots, no waiting around. Your time matters.</p>
+    </div>
+    <div class="why-card reveal d3">
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Local & Trusted</h3>
+      <p>We're not a faceless franchise. Matt's a local professional who's built a business on word-of-mouth and repeat customers.</p>
+    </div>
+    <div class="why-card reveal d4">
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+      </div>
+      <h3>Eco-Friendly</h3>
+      <p>We use non-toxic, biodegradable cleaning solutions that are safe for kids, pets, and the planet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="text-center">
+    <span class="section-tag reveal">Testimonials</span>
+    <h2 class="section-title reveal d1">What Our Customers Say</h2>
+    <p class="section-desc reveal d2">Don't just take our word for it. Here's what real customers have to say about working with Matt.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="testimonial-stars">
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+      </div>
+      <p>"Honestly couldn't believe the difference. Our living room carpet looked like it'd been replaced. Matt was friendly, professional, and the price was spot on. Will definitely use again."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SB</div>
+        <div>
+          <div class="testimonial-name">Sarah B.</div>
+          <div class="testimonial-role">Homeowner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="testimonial-stars">
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+      </div>
+      <p>"We had Matt in for an end-of-tenancy clean on a flat we'd been renting for three years. The carpets came up brilliantly and we got our full deposit back. Can't recommend him enough."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">JT</div>
+        <div>
+          <div class="testimonial-name">James T.</div>
+          <div class="testimonial-role">Tenant</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="testimonial-stars">
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+        <svg viewBox="0 0 16 16"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
+      </div>
+      <p>"We use Matt for our office carpets every quarter. He works around our schedule, the results are always top-notch, and his pricing is really fair. Wouldn't go anywhere else."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">DP</div>
+        <div>
+          <div class="testimonial-name">David P.</div>
+          <div class="testimonial-role">Office Manager</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <span class="section-tag reveal">Get In Touch</span>
+      <h2 class="section-title reveal d1">Ready for Cleaner Carpets?</h2>
+      <p class="section-desc reveal d2">Drop us a message and we'll get back to you with a free, no-obligation quote. It only takes a minute.</p>
+      <div class="contact-info reveal d3">
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <a href="mailto:mattsteele353@gmail.com">mattsteele353@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-row-text">
+            Call or text for a quick quote
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="contact-row-text">
+            Mon - Sat: 8am - 6pm
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal d2">
+      <h3>Request a Free Quote</h3>
+      <form action="https://formsubmit.co/mattsteele353@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Quote Request - Matt Steele Cleaning">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx">
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="Carpet Cleaning">Carpet Cleaning</option>
+            <option value="Upholstery Cleaning">Upholstery Cleaning</option>
+            <option value="Rug Cleaning">Rug Cleaning</option>
+            <option value="Hard Floor Cleaning">Hard Floor Cleaning</option>
+            <option value="End of Tenancy">End of Tenancy</option>
+            <option value="Commercial Cleaning">Commercial Cleaning</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us More</label>
+          <textarea id="message" name="message" placeholder="Number of rooms, type of flooring, any specific stains..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send My Quote Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Matt Steele Cleaning Services</div>
+      <p class="footer-brand-desc">Professional carpet, upholstery, and hard floor cleaning you can count on. Honest pricing, reliable service, and results that speak for themselves.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Carpet Cleaning</a></li>
+        <li><a href="#services">Upholstery Cleaning</a></li>
+        <li><a href="#services">Rug Cleaning</a></li>
+        <li><a href="#services">Hard Floor Cleaning</a></li>
+        <li><a href="#services">End of Tenancy</a></li>
+        <li><a href="#services">Commercial</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Matt Steele Cleaning Services. All rights reserved.</span>
+    <span>Website by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+  </div>
+</footer>
+
+<!-- NEOCODE POPUP -->
+<div class="demo-popup-overlay" id="demoPopup">
+  <div class="demo-popup">
+    <button class="popup-close" onclick="document.getElementById('demoPopup').classList.remove('show')" aria-label="Close popup">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+    </button>
+    <h2>Like what you see?</h2>
+    <p>This is a free demo built by <strong>NeoCode Studio</strong> to show you what your website could look like. No obligations, no cost for this preview.</p>
+    <p>If you'd like to make it yours, we'd love to chat.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+    <button class="popup-dismiss" onclick="document.getElementById('demoPopup').classList.remove('show')">Continue browsing</button>
+  </div>
+</div>
+
+<script>
+// NAV SCROLL
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// HAMBURGER
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',function(){
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+function closeMobile(){
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// INTERSECTION OBSERVER - REVEAL
+var reveals=document.querySelectorAll('.reveal');
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(function(el){observer.observe(el)});
+
+// NEOCODE POPUP AT 70% SCROLL
+var popupShown=false;
+window.addEventListener('scroll',function(){
+  if(!popupShown){
+    var scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    if(scrollPercent>0.7){popupShown=true;document.getElementById('demoPopup').classList.add('show')}
+  }
+});
+
+// CLOSE POPUP ON OVERLAY CLICK
+document.getElementById('demoPopup').addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('show');
+});
+</script>
+</body>
+</html>

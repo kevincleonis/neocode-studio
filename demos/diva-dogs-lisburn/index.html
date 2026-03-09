@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diva Dogs Lisburn | Premium Dog Grooming Salon</title>
+  <meta name="description" content="Diva Dogs Lisburn - Professional dog grooming salon on Sloan Street, Lisburn. Full grooms, hand stripping, puppy first grooms and more. Book today!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      color: #2D2D2D;
+      background-color: #FFF8F0;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ========== SCROLL REVEAL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== NAVIGATION ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(88, 28, 135, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 0.8rem 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(88, 28, 135, 0.3);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #FFF8F0;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span {
+      color: #F59E0B;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #FFF8F0;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #F59E0B;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #F59E0B;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: #C026D3;
+      color: #FFF8F0 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: background 0.3s ease, transform 0.3s ease !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      background: #a020b0;
+      transform: scale(1.05);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #FFF8F0;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: linear-gradient(180deg, #581C87 0%, #3b0764 100%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, #581C87 0%, #7c3aed 30%, #C026D3 60%, #a020b0 100%);
+      overflow: hidden;
+      padding: 6rem 1rem 4rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 50%, rgba(192, 38, 211, 0.2) 0%, transparent 50%);
+      animation: heroFloat 15s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(1deg); }
+      66% { transform: translate(-20px, 20px) rotate(-1deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #F59E0B;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #FFF8F0;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #F59E0B;
+    }
+
+    .hero p {
+      color: rgba(255, 248, 240, 0.85);
+      font-size: 1.15rem;
+      max-width: 550px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #F59E0B;
+      color: #581C87;
+    }
+
+    .btn-primary:hover {
+      background: #d97706;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #FFF8F0;
+      border: 2px solid rgba(255, 248, 240, 0.5);
+    }
+
+    .btn-outline:hover {
+      border-color: #FFF8F0;
+      background: rgba(255, 248, 240, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-paws {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      opacity: 0.4;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    /* ========== SECTION SPACING ========== */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #581C87;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: #6b7280;
+      font-size: 1.05rem;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #C026D3, #F59E0B);
+      margin: 1rem auto 0;
+      border-radius: 3px;
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      background: #FFF8F0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #C026D3, #581C87);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 2px dashed rgba(255, 248, 240, 0.3);
+      border-radius: 16px;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      color: #581C87;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: #4b5563;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #C026D3;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-image {
+        height: 280px;
+      }
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      background: linear-gradient(180deg, #f5f0ff 0%, #FFF8F0 100%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(88, 28, 135, 0.08);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(88, 28, 135, 0.12);
+    }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #C026D3, #581C87);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 1.8rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      color: #581C87;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      color: #6b7280;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== PRICING ========== */
+    .pricing {
+      background: #FFF8F0;
+    }
+
+    .pricing-table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(88, 28, 135, 0.08);
+    }
+
+    .pricing-table thead {
+      background: linear-gradient(135deg, #581C87, #C026D3);
+    }
+
+    .pricing-table th {
+      color: #FFF8F0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+    }
+
+    .pricing-table th:last-child {
+      text-align: right;
+    }
+
+    .pricing-table td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #f3e8ff;
+      font-size: 0.95rem;
+    }
+
+    .pricing-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: #C026D3;
+      font-size: 1.05rem;
+    }
+
+    .pricing-table tbody tr {
+      transition: background 0.2s ease;
+    }
+
+    .pricing-table tbody tr:hover {
+      background: #fdf4ff;
+    }
+
+    .pricing-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      background: linear-gradient(180deg, #FFF8F0 0%, #f5f0ff 100%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item:nth-child(1) { background: linear-gradient(135deg, #C026D3, #f0abfc); }
+    .gallery-item:nth-child(2) { background: linear-gradient(135deg, #581C87, #a855f7); }
+    .gallery-item:nth-child(3) { background: linear-gradient(135deg, #F59E0B, #fcd34d); }
+    .gallery-item:nth-child(4) { background: linear-gradient(135deg, #a020b0, #C026D3); }
+    .gallery-item:nth-child(5) { background: linear-gradient(135deg, #7c3aed, #581C87); }
+    .gallery-item:nth-child(6) { background: linear-gradient(135deg, #d97706, #F59E0B); }
+    .gallery-item:nth-child(7) { background: linear-gradient(135deg, #C026D3, #7c3aed); }
+    .gallery-item:nth-child(8) { background: linear-gradient(135deg, #581C87, #C026D3); }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(88, 28, 135, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #FFF8F0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .gallery-item .gallery-emoji {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials {
+      background: linear-gradient(135deg, #581C87 0%, #7c3aed 50%, #C026D3 100%);
+      color: #FFF8F0;
+    }
+
+    .testimonials .section-header h2 {
+      color: #FFF8F0;
+    }
+
+    .testimonials .section-header p {
+      color: rgba(255, 248, 240, 0.7);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .testimonial-stars {
+      color: #F59E0B;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: rgba(255, 248, 240, 0.9);
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-pet {
+      font-size: 0.8rem;
+      color: rgba(255, 248, 240, 0.6);
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== BOOKING FORM ========== */
+    .booking {
+      background: #FFF8F0;
+    }
+
+    .booking-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(88, 28, 135, 0.1);
+    }
+
+    .booking-info {
+      background: linear-gradient(135deg, #581C87, #C026D3);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #FFF8F0;
+    }
+
+    .booking-info h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #FFF8F0;
+    }
+
+    .booking-info p {
+      color: rgba(255, 248, 240, 0.8);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .booking-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .booking-detail-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .booking-detail-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .booking-detail-text strong {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+
+    .booking-form-section {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .booking-form-section h3 {
+      font-size: 1.6rem;
+      color: #581C87;
+      margin-bottom: 0.5rem;
+    }
+
+    .booking-form-section > p {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #581C87;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e9d5ff;
+      border-radius: 10px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: #2D2D2D;
+      background: #FFF8F0;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #C026D3;
+      box-shadow: 0 0 0 3px rgba(192, 38, 211, 0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #C026D3, #581C87);
+      color: #FFF8F0;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(192, 38, 211, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .booking-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-info {
+        padding: 2rem;
+      }
+
+      .booking-form-section {
+        padding: 2rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: #1a0533;
+      color: rgba(255, 248, 240, 0.7);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.6rem;
+      color: #FFF8F0;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand h3 span {
+      color: #F59E0B;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 350px;
+    }
+
+    .footer-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: #FFF8F0;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #F59E0B;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 248, 240, 0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* ========== NEOCODE POPUP ========== */
+    .neocode-popup {
+      position: fixed;
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #581C87, #C026D3);
+      color: #FFF8F0;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px 50px 0 0;
+      font-size: 0.85rem;
+      z-index: 999;
+      transition: bottom 0.5s ease;
+      white-space: nowrap;
+      box-shadow: 0 -4px 20px rgba(88, 28, 135, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .neocode-popup.show {
+      bottom: 0;
+    }
+
+    .neocode-popup a {
+      color: #F59E0B;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .neocode-popup a:hover {
+      color: #fcd34d;
+    }
+
+    .neocode-close {
+      background: none;
+      border: none;
+      color: rgba(255, 248, 240, 0.6);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0 0 0 0.5rem;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    .neocode-close:hover {
+      color: #FFF8F0;
+    }
+
+    /* ========== UTILITIES ========== */
+    .text-gold { color: #F59E0B; }
+    .text-magenta { color: #C026D3; }
+    .text-plum { color: #581C87; }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 3.5rem 0;
+      }
+
+      .hero {
+        padding: 5rem 1rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">Diva <span>Dogs</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#booking" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Lisburn's Premium Grooming Salon</div>
+      <h1>Where Every Dog Gets the <em>Star Treatment</em></h1>
+      <p>Your pup deserves to look and feel amazing. At Diva Dogs, we combine expert grooming with genuine love for every four-legged client who walks through our doors.</p>
+      <div class="hero-buttons">
+        <a href="#booking" class="btn btn-primary">Book an Appointment</a>
+        <a href="#services" class="btn btn-outline">View Our Services</a>
+      </div>
+    </div>
+    <div class="hero-paws" aria-hidden="true">&#x1F43E;</div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal" aria-label="Photo of grooming salon">
+          &#x1F436;
+        </div>
+        <div class="about-text reveal">
+          <h2>Passionate About Pups Since Day One</h2>
+          <p>Based right here on Sloan Street in Lisburn, Diva Dogs isn't just a grooming salon. It's a place where dogs genuinely enjoy coming back to. We've built our reputation on patience, skill and a deep understanding that every dog is different.</p>
+          <p>Whether you've got a nervous rescue who needs gentle handling or a bouncy pup ready for their first ever groom, our experienced team takes the time to make every visit stress-free and enjoyable.</p>
+          <p>We use only professional, dog-safe products and stay up to date with the latest grooming techniques. Because your best friend deserves nothing less than the best.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">1000+</div>
+              <div class="stat-label">Happy Dogs</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">5&#9733;</div>
+              <div class="stat-label">Rated Salon</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">All</div>
+              <div class="stat-label">Breeds Welcome</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Our Grooming Services</h2>
+        <p>From a quick tidy-up to the full works, we've got your pup covered.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#x2702;&#xFE0F;</div>
+          <h3>Full Groom</h3>
+          <p>The complete package: bath, blow dry, full haircut, ear cleaning, nail trim and a finishing spritz. Your dog will leave looking and smelling incredible.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#x1F6C1;</div>
+          <h3>Wash &amp; Dry</h3>
+          <p>A thorough bath using premium shampoos suited to your dog's coat type, followed by a professional blow dry. Perfect between full grooms.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#x1F9F4;</div>
+          <h3>Hand Stripping</h3>
+          <p>Specialist technique for wire-coated breeds like Terriers and Schnauzers. Keeps the coat healthy, textured and looking its natural best.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#x1F4AB;</div>
+          <h3>Nail Trimming</h3>
+          <p>Quick and careful nail clipping to keep your dog comfortable and prevent overgrowth. Available as a standalone service or add-on.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#x1F43E;</div>
+          <h3>Puppy First Groom</h3>
+          <p>A gentle, introductory session for puppies. We take it slow to build positive associations with grooming from an early age. Ideal for pups 12 weeks+.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#x1F4A8;</div>
+          <h3>De-Shedding Treatment</h3>
+          <p>Reduce shedding by up to 80% with our specialist de-shedding bath and blow out. A lifesaver for double-coated breeds and your furniture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Pricing Guide</h2>
+        <p>Transparent pricing with no hidden extras. Prices may vary based on breed, coat condition and size.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="reveal">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th style="text-align:right">From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Full Groom (Small Breed)</td>
+              <td>&pound;30</td>
+            </tr>
+            <tr>
+              <td>Full Groom (Medium Breed)</td>
+              <td>&pound;38</td>
+            </tr>
+            <tr>
+              <td>Full Groom (Large Breed)</td>
+              <td>&pound;48</td>
+            </tr>
+            <tr>
+              <td>Wash &amp; Dry</td>
+              <td>&pound;20</td>
+            </tr>
+            <tr>
+              <td>Hand Stripping</td>
+              <td>&pound;40</td>
+            </tr>
+            <tr>
+              <td>Nail Trim</td>
+              <td>&pound;8</td>
+            </tr>
+            <tr>
+              <td>Puppy First Groom</td>
+              <td>&pound;18</td>
+            </tr>
+            <tr>
+              <td>De-Shedding Treatment</td>
+              <td>&pound;25</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="pricing-note">Exact pricing confirmed at consultation. Additional charges may apply for matted or heavily tangled coats.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Our Happy Clients</h2>
+        <p>A peek at some of the gorgeous pups who've visited our salon.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F429;</span>
+          <div class="overlay">Freshly Groomed</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F415;</span>
+          <div class="overlay">Looking Sharp</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F436;</span>
+          <div class="overlay">Pampered Pooch</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F9AE;</span>
+          <div class="overlay">Salon Ready</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F431;</span>
+          <div class="overlay">VIP Treatment</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F415;</span>
+          <div class="overlay">Diva Approved</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F436;</span>
+          <div class="overlay">Tail Wagging</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-emoji">&#x1F429;</span>
+          <div class="overlay">Red Carpet Ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What Our Customers Say</h2>
+        <p>Don't just take our word for it. Here's what Lisburn dog owners think.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Absolutely brilliant. My Cockapoo used to hate the groomers but she's so relaxed at Diva Dogs. They're patient, gentle and she always comes out looking beautiful. Wouldn't go anywhere else."</p>
+          <div class="testimonial-author">Sarah M.</div>
+          <div class="testimonial-pet">Bella the Cockapoo</div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"We've been bringing our two Labs here for over a year now. The de-shedding treatment is a game changer, honestly. Our sofa has never been cleaner. Fantastic service every time."</p>
+          <div class="testimonial-author">Mark &amp; Claire T.</div>
+          <div class="testimonial-pet">Max &amp; Rosie, Labradors</div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Took our puppy in for his first groom and they were so careful with him. He wasn't stressed at all and came out smelling amazing. Really friendly team who clearly love dogs. Highly recommend."</p>
+          <div class="testimonial-author">Emma K.</div>
+          <div class="testimonial-pet">Teddy the Golden Retriever</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOOKING FORM ========== -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking-wrapper reveal">
+        <div class="booking-info">
+          <h2>Book Your Pup In</h2>
+          <p>Ready to give your dog the VIP treatment? Fill in the form and we'll get back to you to confirm your appointment. You can also give us a ring if you'd prefer.</p>
+          <div class="booking-detail">
+            <span class="booking-detail-icon">&#x1F4CD;</span>
+            <div class="booking-detail-text">
+              <strong>Visit Us</strong>
+              2B Sloan Street, Lisburn, BT27 5AG
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="booking-detail-icon">&#x1F4DE;</span>
+            <div class="booking-detail-text">
+              <strong>Call Us</strong>
+              <a href="tel:02892669470" style="color:#F59E0B;">028 92 669470</a>
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="booking-detail-icon">&#x1F552;</span>
+            <div class="booking-detail-text">
+              <strong>Opening Hours</strong>
+              Mon - Sat: 9:00am - 5:30pm
+            </div>
+          </div>
+        </div>
+        <div class="booking-form-section">
+          <h3>Request an Appointment</h3>
+          <p>We'll confirm your booking within 24 hours.</p>
+          <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ownerName">Your Name</label>
+                <input type="text" id="ownerName" name="ownerName" required placeholder="e.g. Sarah Jones">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="e.g. 07712 345678">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dogName">Dog's Name</label>
+                <input type="text" id="dogName" name="dogName" required placeholder="e.g. Bella">
+              </div>
+              <div class="form-group">
+                <label for="breed">Breed</label>
+                <input type="text" id="breed" name="breed" placeholder="e.g. Cockapoo">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Required</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="full-groom">Full Groom</option>
+                <option value="wash-dry">Wash &amp; Dry</option>
+                <option value="hand-stripping">Hand Stripping</option>
+                <option value="nail-trim">Nail Trimming</option>
+                <option value="puppy-first">Puppy First Groom</option>
+                <option value="deshedding">De-Shedding Treatment</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Anything else we should know?</label>
+              <textarea id="message" name="message" placeholder="e.g. Nervous around dryers, prefers morning slots, etc."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Request Booking</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Diva <span>Dogs</span></h3>
+          <p>Lisburn's go-to dog grooming salon. Professional, friendly and passionate about making every pup look their absolute best. Located on Sloan Street, right in the heart of Lisburn.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#booking">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Get In Touch</h4>
+          <div class="footer-contact-item">
+            <span>&#x1F4CD;</span>
+            <span>2B Sloan Street, Lisburn, BT27 5AG</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>&#x1F4DE;</span>
+            <a href="tel:02892669470">028 92 669470</a>
+          </div>
+          <div class="footer-contact-item">
+            <span>&#x1F552;</span>
+            <span>Mon - Sat: 9am - 5:30pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Diva Dogs Lisburn. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== NEOCODE POPUP ========== -->
+  <div class="neocode-popup" id="neocodePopup">
+    <span>&#x1F6E0;&#xFE0F; Demo built by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></span>
+    <button class="neocode-close" id="neocodeClose" aria-label="Close">&times;</button>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    /* ---- Mobile Navigation ---- */
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var navItems = navLinks.querySelectorAll('a');
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+      });
+
+      navItems.forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('open');
+        });
+      });
+
+      /* Close menu on outside click */
+      document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('open');
+        }
+      });
+    })();
+
+    /* ---- Navbar scroll effect ---- */
+    (function() {
+      var navbar = document.getElementById('navbar');
+      var scrollThreshold = 50;
+
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > scrollThreshold) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    })();
+
+    /* ---- IntersectionObserver Scroll Reveal ---- */
+    (function() {
+      var revealElements = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        /* Fallback for older browsers */
+        revealElements.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }
+    })();
+
+    /* ---- NeoCode Popup at 70% scroll ---- */
+    (function() {
+      var popup = document.getElementById('neocodePopup');
+      var closeBtn = document.getElementById('neocodeClose');
+      var popupShown = false;
+      var popupDismissed = false;
+
+      window.addEventListener('scroll', function() {
+        if (popupDismissed) return;
+
+        var scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+        if (scrollPercent >= 70 && !popupShown) {
+          popup.classList.add('show');
+          popupShown = true;
+        }
+      });
+
+      closeBtn.addEventListener('click', function() {
+        popup.classList.remove('show');
+        popupDismissed = true;
+      });
+    })();
+
+    /* ---- Booking Form Handler ---- */
+    function handleFormSubmit(e) {
+      e.preventDefault();
+
+      var form = e.target;
+      var submitBtn = form.querySelector('.btn-submit');
+      var originalText = submitBtn.textContent;
+
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+
+      /* Simulate form submission for demo purposes */
+      setTimeout(function() {
+        submitBtn.textContent = 'Booking Requested!';
+        submitBtn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
+        submitBtn.style.opacity = '1';
+
+        setTimeout(function() {
+          form.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = 'linear-gradient(135deg, #C026D3, #581C87)';
+          submitBtn.disabled = false;
+        }, 3000);
+      }, 1500);
+    }
+
+    /* ---- Smooth scroll for anchor links (fallback) ---- */
+    (function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    })();
+
+    /* ---- Staggered reveal for service cards ---- */
+    (function() {
+      var cards = document.querySelectorAll('.service-card');
+      cards.forEach(function(card, index) {
+        card.style.transitionDelay = (index * 0.1) + 's';
+      });
+
+      var testimonialCards = document.querySelectorAll('.testimonial-card');
+      testimonialCards.forEach(function(card, index) {
+        card.style.transitionDelay = (index * 0.15) + 's';
+      });
+    })();
+
+    /* ---- Gallery hover parallax effect ---- */
+    (function() {
+      var galleryItems = document.querySelectorAll('.gallery-item');
+
+      galleryItems.forEach(function(item) {
+        item.addEventListener('mousemove', function(e) {
+          var rect = item.getBoundingClientRect();
+          var x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+          var y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+          item.style.transform = 'scale(1.03) translate(' + x + 'px, ' + y + 'px)';
+        });
+
+        item.addEventListener('mouseleave', function() {
+          item.style.transform = 'scale(1) translate(0, 0)';
+        });
+      });
+    })();
+
+    /* ---- Animate stats on scroll ---- */
+    (function() {
+      var stats = document.querySelectorAll('.stat-number');
+      var animated = false;
+
+      function animateCount(el, target) {
+        var current = 0;
+        var increment = Math.ceil(target / 40);
+        var timer = setInterval(function() {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = current + '+';
+        }, 30);
+      }
+
+      var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !animated) {
+            animated = true;
+            stats.forEach(function(stat) {
+              var text = stat.textContent.trim();
+              if (text.match(/^\d+/)) {
+                var num = parseInt(text);
+                if (!isNaN(num)) {
+                  animateCount(stat, num);
+                }
+              }
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+
+      var aboutSection = document.querySelector('.about-stats');
+      if (aboutSection) {
+        statsObserver.observe(aboutSection);
+      }
+    })();
+  </script>
+
+</body>
+</html>

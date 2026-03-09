@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shapla Indian Restaurant | Authentic Indian Cuisine in Armagh</title>
+  <meta name="description" content="Shapla Indian Restaurant serves authentic Indian cuisine in the heart of Armagh. Fresh ingredients, family recipes, and a warm welcome await you at 39 Lower English Street.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Karla', sans-serif;
+      color: #1C1917;
+      background-color: #FFFBEB;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cinzel', serif;
+      line-height: 1.3;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background-color: rgba(28, 25, 23, 0.97);
+      padding: 0.6rem 0;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #F59E0B;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span {
+      color: #FFFBEB;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #FFFBEB;
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #F59E0B;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #F59E0B;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background-color: #F59E0B;
+      color: #1C1917 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background-color: #D97706;
+      transform: translateY(-1px);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background-color: #FFFBEB;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      margin: 4px 0;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 30%, #92400E 70%, #F59E0B 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(127, 29, 29, 0.2) 0%, transparent 50%);
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFBEB' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 251, 235, 0.15);
+      border: 1px solid rgba(255, 251, 235, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: #FFFBEB;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      color: #FFFBEB;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h1 em {
+      color: #F59E0B;
+      font-style: normal;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 251, 235, 0.85);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-family: 'Karla', sans-serif;
+    }
+
+    .btn-primary {
+      background-color: #F59E0B;
+      color: #1C1917;
+    }
+
+    .btn-primary:hover {
+      background-color: #D97706;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #FFFBEB;
+      border: 2px solid rgba(255, 251, 235, 0.5);
+    }
+
+    .btn-secondary:hover {
+      border-color: #F59E0B;
+      color: #F59E0B;
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: #FFFBEB;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll .arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid #FFFBEB;
+      border-bottom: 2px solid #FFFBEB;
+      transform: rotate(45deg);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-8px); }
+      60% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: #7F1D1D;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #F59E0B, #7F1D1D);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      color: #57534E;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      background-color: #FFFBEB;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #7F1D1D, #92400E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image-icon {
+      font-size: 6rem;
+      opacity: 0.3;
+    }
+
+    .about-image .overlay-text {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      color: #FFFBEB;
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .about-text h3 {
+      font-size: 1.6rem;
+      color: #7F1D1D;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      color: #44403C;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(127, 29, 29, 0.05), rgba(245, 158, 11, 0.05));
+      border-radius: 8px;
+      border: 1px solid rgba(245, 158, 11, 0.15);
+    }
+
+    .stat-box .number {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #F59E0B;
+    }
+
+    .stat-box .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #78716C;
+    }
+
+    /* ===== MENU SECTION ===== */
+    .menu {
+      background-color: #1C1917;
+      color: #FFFBEB;
+    }
+
+    .menu .section-header h2 {
+      color: #F59E0B;
+    }
+
+    .menu .section-header p {
+      color: rgba(255, 251, 235, 0.7);
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .menu-tab {
+      padding: 0.6rem 1.5rem;
+      background: rgba(255, 251, 235, 0.08);
+      border: 1px solid rgba(255, 251, 235, 0.15);
+      border-radius: 50px;
+      color: rgba(255, 251, 235, 0.7);
+      cursor: pointer;
+      font-family: 'Karla', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .menu-tab:hover,
+    .menu-tab.active {
+      background: #F59E0B;
+      color: #1C1917;
+      border-color: #F59E0B;
+    }
+
+    .menu-category {
+      display: none;
+    }
+
+    .menu-category.active {
+      display: block;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.2rem;
+      background: rgba(255, 251, 235, 0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 251, 235, 0.08);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .menu-item:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+      background: rgba(255, 251, 235, 0.07);
+    }
+
+    .menu-item-info h4 {
+      font-family: 'Karla', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: #FFFBEB;
+    }
+
+    .menu-item-info p {
+      font-size: 0.85rem;
+      color: rgba(255, 251, 235, 0.5);
+      line-height: 1.4;
+    }
+
+    .menu-item .price {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      color: #F59E0B;
+      font-size: 1.05rem;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    .menu-note {
+      text-align: center;
+      margin-top: 2rem;
+      color: rgba(255, 251, 235, 0.5);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* ===== WHY SHAPLA SECTION ===== */
+    .why-shapla {
+      background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: #FFFBEB;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(28, 25, 23, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(28, 25, 23, 0.1);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1.2rem;
+      background: linear-gradient(135deg, #7F1D1D, #991B1B);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      color: #7F1D1D;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      color: #57534E;
+      font-size: 0.95rem;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: #7F1D1D;
+      color: #FFFBEB;
+    }
+
+    .testimonials .section-header h2 {
+      color: #F59E0B;
+    }
+
+    .testimonials .section-header p {
+      color: rgba(255, 251, 235, 0.7);
+    }
+
+    .testimonials .divider {
+      background: linear-gradient(90deg, #F59E0B, #FFFBEB) !important;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 251, 235, 0.08);
+      border: 1px solid rgba(255, 251, 235, 0.12);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      color: #F59E0B;
+      opacity: 0.3;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.2rem;
+      line-height: 1;
+    }
+
+    .testimonial-stars {
+      color: #F59E0B;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: rgba(255, 251, 235, 0.85);
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: #F59E0B;
+      font-size: 0.9rem;
+    }
+
+    /* ===== HOURS SECTION ===== */
+    .hours {
+      background: #FFFBEB;
+    }
+
+    .hours-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hours-card {
+      background: linear-gradient(135deg, #1C1917, #292524);
+      border-radius: 12px;
+      padding: 2.5rem;
+      color: #FFFBEB;
+    }
+
+    .hours-card h3 {
+      font-size: 1.3rem;
+      color: #F59E0B;
+      margin-bottom: 1.5rem;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255, 251, 235, 0.08);
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row .day {
+      font-weight: 500;
+    }
+
+    .hours-row .time {
+      color: #F59E0B;
+      font-weight: 600;
+    }
+
+    .hours-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hours-info h3 {
+      font-size: 1.3rem;
+      color: #7F1D1D;
+      margin-bottom: 1rem;
+    }
+
+    .hours-info p {
+      color: #57534E;
+      margin-bottom: 1rem;
+    }
+
+    .hours-info .phone-number {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #7F1D1D;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hours-info .phone-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ===== CONTACT / RESERVE ===== */
+    .contact {
+      background: linear-gradient(180deg, #FEF3C7 0%, #FFFBEB 100%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+      color: #7F1D1D;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .contact-detail .icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #7F1D1D, #991B1B);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail .text h4 {
+      font-family: 'Karla', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1C1917;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-detail .text p,
+    .contact-detail .text a {
+      color: #57534E;
+      font-size: 0.95rem;
+    }
+
+    .contact-detail .text a:hover {
+      color: #F59E0B;
+    }
+
+    .contact-map {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #E7E5E4;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .reserve-form {
+      margin-top: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #FFFBEB;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(28, 25, 23, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.15);
+    }
+
+    .reserve-form h3 {
+      text-align: center;
+      font-size: 1.4rem;
+      color: #7F1D1D;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #44403C;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #D6D3D1;
+      border-radius: 6px;
+      font-family: 'Karla', sans-serif;
+      font-size: 0.95rem;
+      color: #1C1917;
+      background-color: #FFFBEB;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #F59E0B;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit .btn {
+      min-width: 200px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #1C1917;
+      color: rgba(255, 251, 235, 0.7);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.4rem;
+      color: #F59E0B;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col h4 {
+      font-family: 'Cinzel', serif;
+      color: #FFFBEB;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: #F59E0B;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 251, 235, 0.1);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    /* ===== NEOCODE POPUP ===== */
+    .neocode-popup {
+      position: fixed;
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #1C1917, #292524);
+      color: #FFFBEB;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px 8px 0 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+      transition: bottom 0.5s ease;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .neocode-popup.show {
+      bottom: 0;
+    }
+
+    .neocode-popup a {
+      color: #F59E0B;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .neocode-popup a:hover {
+      color: #D97706;
+    }
+
+    .neocode-popup .close-popup {
+      cursor: pointer;
+      opacity: 0.6;
+      font-size: 1.1rem;
+      background: none;
+      border: none;
+      color: #FFFBEB;
+      padding: 0 0.3rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .neocode-popup .close-popup:hover {
+      opacity: 1;
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(28, 25, 23, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .hours-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 3.5rem 0;
+      }
+
+      .section-header h2 {
+        font-size: 1.7rem;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+
+      .stat-box .number {
+        font-size: 1.4rem;
+      }
+
+      .reserve-form {
+        padding: 1.5rem;
+      }
+
+      .neocode-popup {
+        font-size: 0.78rem;
+        padding: 0.7rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">Shapla <span>Indian</span></a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#why">Why Shapla</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#hours">Hours</a>
+        <a href="#contact" class="nav-cta">Reserve a Table</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Est. in Armagh</div>
+      <h1>Authentic Indian Cuisine in the <em>Heart of Armagh</em></h1>
+      <p class="hero-subtitle">Experience the rich flavours of traditional Indian cooking, made with fresh ingredients and family recipes passed down through generations.</p>
+      <div class="hero-btns">
+        <a href="tel:02837518880" class="btn btn-primary">Order Now - 028 3751 8880</a>
+        <a href="#contact" class="btn btn-secondary">Reserve a Table</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Explore</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="about-image">
+          <div class="about-image-icon">&#127835;</div>
+          <div class="overlay-text">Where tradition meets flavour</div>
+        </div>
+        <div class="about-text">
+          <h3>Welcome to Shapla Indian Restaurant</h3>
+          <p>Tucked away on Lower English Street in the heart of Armagh, Shapla has been bringing the authentic flavours of India to Northern Ireland for years. Every dish we serve is a celebration of tradition, spice, and soul.</p>
+          <p>Our chefs use only the freshest ingredients and time-honoured recipes to create dishes that are bursting with flavour. Whether you're joining us for a quiet dinner, a family celebration, or a quick takeaway, we promise you an experience that keeps you coming back.</p>
+          <p>From our hand-ground spice blends to our tandoor-fired breads, everything at Shapla is crafted with care and passion.</p>
+          <div class="about-stats">
+            <div class="stat-box">
+              <span class="number">50+</span>
+              <span class="label">Dishes</span>
+            </div>
+            <div class="stat-box">
+              <span class="number">100%</span>
+              <span class="label">Fresh</span>
+            </div>
+            <div class="stat-box">
+              <span class="number">5&#9733;</span>
+              <span class="label">Rated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Our Menu</h2>
+        <div class="divider"></div>
+        <p>A carefully curated selection of authentic Indian dishes, each prepared fresh to order with traditional spices and techniques.</p>
+      </div>
+
+      <div class="menu-tabs reveal">
+        <button class="menu-tab active" data-tab="starters">Starters</button>
+        <button class="menu-tab" data-tab="mains">Mains</button>
+        <button class="menu-tab" data-tab="tandoori">Tandoori</button>
+        <button class="menu-tab" data-tab="biryani">Biryanis</button>
+        <button class="menu-tab" data-tab="sides">Sides</button>
+      </div>
+
+      <!-- Starters -->
+      <div class="menu-category active" id="tab-starters">
+        <div class="menu-grid reveal">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Onion Bhaji</h4>
+              <p>Crispy onion fritters with fresh herbs and spices</p>
+            </div>
+            <span class="price">&pound;3.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Samosa (2 pcs)</h4>
+              <p>Spiced potato and pea parcels, golden fried</p>
+            </div>
+            <span class="price">&pound;3.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Tikka Starter</h4>
+              <p>Marinated chicken pieces grilled in the tandoor</p>
+            </div>
+            <span class="price">&pound;4.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Prawn Puri</h4>
+              <p>Spiced prawns served on light, fluffy puri bread</p>
+            </div>
+            <span class="price">&pound;5.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Seekh Kebab</h4>
+              <p>Minced lamb skewers with herbs, grilled over charcoal</p>
+            </div>
+            <span class="price">&pound;4.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Mixed Platter</h4>
+              <p>A selection of our favourite starters for sharing</p>
+            </div>
+            <span class="price">&pound;8.95</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mains -->
+      <div class="menu-category" id="tab-mains">
+        <div class="menu-grid reveal">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Tikka Masala</h4>
+              <p>Tender chicken in a creamy, mildly spiced tomato sauce</p>
+            </div>
+            <span class="price">&pound;9.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Lamb Rogan Josh</h4>
+              <p>Slow-cooked lamb in a rich Kashmiri tomato gravy</p>
+            </div>
+            <span class="price">&pound;10.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Dopiaza</h4>
+              <p>Chicken cooked with onions in a thick, aromatic sauce</p>
+            </div>
+            <span class="price">&pound;9.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>King Prawn Jalfrezi</h4>
+              <p>King prawns with peppers, onions, and fresh chillies</p>
+            </div>
+            <span class="price">&pound;12.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Lamb Madras</h4>
+              <p>A hot and tangy South Indian curry with coconut</p>
+            </div>
+            <span class="price">&pound;10.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Vegetable Korma</h4>
+              <p>Seasonal vegetables in a mild, creamy coconut sauce</p>
+            </div>
+            <span class="price">&pound;8.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Balti</h4>
+              <p>Aromatic chicken cooked in a traditional balti bowl</p>
+            </div>
+            <span class="price">&pound;9.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Prawn Bhuna</h4>
+              <p>Prawns in a thick, spiced onion and tomato sauce</p>
+            </div>
+            <span class="price">&pound;10.50</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tandoori -->
+      <div class="menu-category" id="tab-tandoori">
+        <div class="menu-grid reveal">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Tikka</h4>
+              <p>Succulent chicken marinated in yoghurt and spices</p>
+            </div>
+            <span class="price">&pound;9.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tandoori Chicken</h4>
+              <p>Half chicken marinated overnight, roasted in clay oven</p>
+            </div>
+            <span class="price">&pound;9.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Lamb Tikka</h4>
+              <p>Tender lamb pieces marinated and grilled to perfection</p>
+            </div>
+            <span class="price">&pound;10.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tandoori King Prawns</h4>
+              <p>Juicy king prawns with a smoky tandoor char</p>
+            </div>
+            <span class="price">&pound;13.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Mixed Tandoori Grill</h4>
+              <p>A generous selection of tandoor-grilled meats</p>
+            </div>
+            <span class="price">&pound;14.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Paneer Tikka</h4>
+              <p>Indian cottage cheese with peppers, grilled in tandoor</p>
+            </div>
+            <span class="price">&pound;8.95</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Biryanis -->
+      <div class="menu-category" id="tab-biryani">
+        <div class="menu-grid reveal">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Biryani</h4>
+              <p>Fragrant basmati rice layered with spiced chicken</p>
+            </div>
+            <span class="price">&pound;9.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Lamb Biryani</h4>
+              <p>Aromatic rice with tender lamb and saffron</p>
+            </div>
+            <span class="price">&pound;10.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>King Prawn Biryani</h4>
+              <p>Premium king prawns with flavoured basmati rice</p>
+            </div>
+            <span class="price">&pound;12.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Vegetable Biryani</h4>
+              <p>Mixed seasonal vegetables with fragrant spiced rice</p>
+            </div>
+            <span class="price">&pound;8.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Special Shapla Biryani</h4>
+              <p>Our signature blend with chicken, lamb and prawns</p>
+            </div>
+            <span class="price">&pound;13.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tikka Biryani</h4>
+              <p>Tikka pieces layered with saffron-infused rice</p>
+            </div>
+            <span class="price">&pound;10.50</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sides -->
+      <div class="menu-category" id="tab-sides">
+        <div class="menu-grid reveal">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pilau Rice</h4>
+              <p>Fragrant basmati rice with whole spices</p>
+            </div>
+            <span class="price">&pound;2.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Plain Naan</h4>
+              <p>Soft, fluffy bread baked in the tandoor</p>
+            </div>
+            <span class="price">&pound;2.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Garlic Naan</h4>
+              <p>Tandoor bread brushed with garlic butter</p>
+            </div>
+            <span class="price">&pound;2.95</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Peshwari Naan</h4>
+              <p>Sweet naan filled with coconut, almonds and raisins</p>
+            </div>
+            <span class="price">&pound;3.25</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Bombay Aloo</h4>
+              <p>Spiced potatoes with cumin and turmeric</p>
+            </div>
+            <span class="price">&pound;3.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Saag Aloo</h4>
+              <p>Spinach and potato in a light, spiced sauce</p>
+            </div>
+            <span class="price">&pound;3.50</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Raita</h4>
+              <p>Cool yoghurt with cucumber and fresh mint</p>
+            </div>
+            <span class="price">&pound;2.00</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Poppadoms &amp; Chutneys</h4>
+              <p>Crispy poppadoms with mango, lime and mint dips</p>
+            </div>
+            <span class="price">&pound;2.50</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-note reveal">Prices are indicative. Please ask staff for the full menu and any allergen information.</p>
+    </div>
+  </section>
+
+  <!-- WHY SHAPLA -->
+  <section class="why-shapla" id="why">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Why Choose Shapla?</h2>
+        <div class="divider"></div>
+        <p>There's a reason locals keep coming back. Here's what sets us apart.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#127798;</div>
+          <h3>Fresh Ingredients</h3>
+          <p>We source our ingredients locally wherever possible and grind our spices in-house daily. No shortcuts, no frozen meals. Just real, honest food.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#128214;</div>
+          <h3>Family Recipes</h3>
+          <p>Our recipes have been passed down through generations. Each dish carries the warmth and wisdom of traditional Indian home cooking.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">&#10084;&#65039;</div>
+          <h3>Made with Love</h3>
+          <p>From the moment you walk through our door, you're family. We take pride in every plate that leaves our kitchen and every smile it brings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What Our Guests Say</h2>
+        <div class="divider"></div>
+        <p>Don't just take our word for it. Here's what diners are saying about Shapla.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Best Indian in Armagh by a mile. The lamb rogan josh is incredible and the naan bread is always fresh out of the oven. We're regulars now and it never disappoints."</blockquote>
+          <span class="testimonial-author">- Sarah M.</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Took the family here for a birthday meal. The food was amazing, portions were generous, and the staff couldn't have been more welcoming. Truly a hidden gem."</blockquote>
+          <span class="testimonial-author">- James P.</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"I've tried Indian restaurants all over Northern Ireland and Shapla is up there with the very best. The chicken tikka masala is absolutely spot on. Highly recommend."</blockquote>
+          <span class="testimonial-author">- Claire D.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPENING HOURS -->
+  <section class="hours" id="hours">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Opening Hours</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="hours-wrapper reveal">
+        <div class="hours-card">
+          <h3>When We're Open</h3>
+          <div class="hours-row">
+            <span class="day">Monday</span>
+            <span class="time">5:00 PM - 11:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Tuesday</span>
+            <span class="time">5:00 PM - 11:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Wednesday</span>
+            <span class="time">5:00 PM - 11:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Thursday</span>
+            <span class="time">5:00 PM - 11:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Friday</span>
+            <span class="time">5:00 PM - 11:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Saturday</span>
+            <span class="time">5:00 PM - 11:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Sunday</span>
+            <span class="time">4:00 PM - 10:30 PM</span>
+          </div>
+        </div>
+        <div class="hours-info">
+          <h3>Ready to Order?</h3>
+          <p>Whether you're dining in or ordering a takeaway, we'd love to hear from you. Give us a call to place your order or book a table for your next visit.</p>
+          <a href="tel:02837518880" class="phone-number">
+            <span class="phone-icon">&#128222;</span>
+            028 3751 8880
+          </a>
+          <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #78716C;">Both dine-in and takeaway available. Collection and delivery within Armagh city.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / RESERVE -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Find Us &amp; Get in Touch</h2>
+        <div class="divider"></div>
+        <p>We're right in the centre of Armagh, just a short walk from the main shopping area.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <h3>Contact Details</h3>
+          <div class="contact-detail">
+            <div class="icon">&#128205;</div>
+            <div class="text">
+              <h4>Address</h4>
+              <p>39 Lower English Street<br>Armagh, BT61 7LJ</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon">&#128222;</div>
+            <div class="text">
+              <h4>Phone</h4>
+              <a href="tel:02837518880">028 3751 8880</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon">&#128337;</div>
+            <div class="text">
+              <h4>Opening Hours</h4>
+              <p>Mon-Thu: 5pm - 11pm<br>Fri-Sat: 5pm - 11:30pm<br>Sun: 4pm - 10:30pm</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon">&#127860;</div>
+            <div class="text">
+              <h4>Services</h4>
+              <p>Dine-in, Takeaway &amp; Delivery</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2325.8!2d-6.6535!3d54.3503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z54.3503,-6.6535!5e0!3m2!1sen!2suk!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Shapla Indian Restaurant location on map"></iframe>
+        </div>
+      </div>
+
+      <!-- Reservation Form -->
+      <div class="reserve-form reveal">
+        <h3>Reserve a Table</h3>
+        <form id="reserveForm" onsubmit="handleReservation(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="028 XXXX XXXX" required>
+            </div>
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" name="time" required>
+                <option value="">Select a time</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="16:30">4:30 PM</option>
+                <option value="17:00">5:00 PM</option>
+                <option value="17:30">5:30 PM</option>
+                <option value="18:00">6:00 PM</option>
+                <option value="18:30">6:30 PM</option>
+                <option value="19:00">7:00 PM</option>
+                <option value="19:30">7:30 PM</option>
+                <option value="20:00">8:00 PM</option>
+                <option value="20:30">8:30 PM</option>
+                <option value="21:00">9:00 PM</option>
+                <option value="21:30">9:30 PM</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guests">Number of Guests</label>
+              <select id="guests" name="guests" required>
+                <option value="">Select guests</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+                <option value="7">7 people</option>
+                <option value="8">8+ people</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="email">Email (optional)</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group full">
+              <label for="notes">Special Requests</label>
+              <textarea id="notes" name="notes" placeholder="Allergies, dietary requirements, special occasions..."></textarea>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Request Reservation</button>
+          </div>
+        </form>
+        <div id="formSuccess" style="display:none; text-align:center; padding: 2rem;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">&#9989;</div>
+          <h3 style="color: #7F1D1D; margin-bottom: 0.5rem;">Reservation Request Sent!</h3>
+          <p style="color: #57534E;">Thank you! We'll confirm your booking shortly. For urgent enquiries, please call us on <strong>028 3751 8880</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Shapla Indian</h3>
+          <p>Serving authentic Indian cuisine in the heart of Armagh. Fresh ingredients, family recipes, and a warm welcome since day one.</p>
+          <p><strong>028 3751 8880</strong></p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#why">Why Shapla</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#hours">Opening Hours</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Visit Us</h4>
+          <ul>
+            <li>39 Lower English Street</li>
+            <li>Armagh</li>
+            <li>BT61 7LJ</li>
+            <li style="margin-top: 1rem;"><a href="tel:02837518880">028 3751 8880</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Shapla Indian Restaurant. All rights reserved.</p>
+        <p>39 Lower English Street, Armagh BT61 7LJ</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- NEOCODE POPUP -->
+  <div class="neocode-popup" id="neocodePopup">
+    <span>&#9889; Demo built by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></span>
+    <button class="close-popup" id="closePopup" aria-label="Close popup">&times;</button>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // ===== NAVBAR SCROLL EFFECT =====
+    (function() {
+      var navbar = document.getElementById('navbar');
+      var lastScroll = 0;
+
+      window.addEventListener('scroll', function() {
+        var currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+      });
+    })();
+
+    // ===== HAMBURGER MENU =====
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var links = navLinks.querySelectorAll('a');
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+        document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+      });
+
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Close menu on outside click
+      document.addEventListener('click', function(e) {
+        if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    })();
+
+    // ===== INTERSECTION OBSERVER - REVEAL ANIMATIONS =====
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        // Fallback: show all reveals immediately
+        reveals.forEach(function(el) {
+          el.classList.add('active');
+        });
+      }
+    })();
+
+    // ===== MENU TABS =====
+    (function() {
+      var tabs = document.querySelectorAll('.menu-tab');
+      var categories = document.querySelectorAll('.menu-category');
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var targetTab = this.getAttribute('data-tab');
+
+          // Update active tab
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          this.classList.add('active');
+
+          // Show target category
+          categories.forEach(function(cat) { cat.classList.remove('active'); });
+          var target = document.getElementById('tab-' + targetTab);
+          if (target) {
+            target.classList.add('active');
+
+            // Re-trigger reveal animations for newly visible items
+            var reveals = target.querySelectorAll('.reveal');
+            reveals.forEach(function(el) {
+              if (!el.classList.contains('active')) {
+                el.classList.add('active');
+              }
+            });
+          }
+        });
+      });
+    })();
+
+    // ===== RESERVATION FORM =====
+    function handleReservation(e) {
+      e.preventDefault();
+      var form = document.getElementById('reserveForm');
+      var success = document.getElementById('formSuccess');
+
+      form.style.display = 'none';
+      success.style.display = 'block';
+
+      // Scroll the success message into view
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Set minimum date to today for the date picker
+    (function() {
+      var dateInput = document.getElementById('date');
+      if (dateInput) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        dateInput.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+      }
+    })();
+
+    // ===== NEOCODE POPUP AT 70% SCROLL =====
+    (function() {
+      var popup = document.getElementById('neocodePopup');
+      var closeBtn = document.getElementById('closePopup');
+      var shown = false;
+      var dismissed = false;
+
+      window.addEventListener('scroll', function() {
+        if (dismissed) return;
+
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrollPercent = (scrollTop / docHeight) * 100;
+
+        if (scrollPercent >= 70 && !shown) {
+          popup.classList.add('show');
+          shown = true;
+        }
+
+        if (scrollPercent < 70 && shown && !dismissed) {
+          popup.classList.remove('show');
+          shown = false;
+        }
+      });
+
+      closeBtn.addEventListener('click', function() {
+        popup.classList.remove('show');
+        dismissed = true;
+      });
+    })();
+
+    // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+    (function() {
+      var anchors = document.querySelectorAll('a[href^="#"]');
+      anchors.forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          var target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            var navHeight = document.getElementById('navbar').offsetHeight;
+            var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({
+              top: targetPos,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    })();
+
+    // ===== ACTIVE NAV LINK HIGHLIGHT ON SCROLL =====
+    (function() {
+      var sections = document.querySelectorAll('section[id]');
+      var navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+
+      window.addEventListener('scroll', function() {
+        var scrollPos = window.pageYOffset + 100;
+
+        sections.forEach(function(section) {
+          var top = section.offsetTop;
+          var height = section.offsetHeight;
+          var id = section.getAttribute('id');
+
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach(function(link) {
+              link.style.color = '';
+              if (link.getAttribute('href') === '#' + id) {
+                link.style.color = '#F59E0B';
+              }
+            });
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
