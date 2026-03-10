@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tat2Derby | Premium Tattoo Studio in Derby</title>
+<meta name="description" content="Tat2Derby - Derby's premier tattoo studio. Custom tattoos, cover-ups, realism, blackwork and more. Book your consultation today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#262626;--crimson:#DC2626;--offwhite:#F9FAFB;--amber:#F59E0B;
+  --charcoal-light:#333;--crimson-dark:#b91c1c;--shadow:0 8px 32px rgba(0,0,0,.35);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Nunito Sans',sans-serif;color:var(--offwhite);background:var(--charcoal);overflow-x:hidden;line-height:1.7}
+h1,h2,h3,h4,h5{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:1px;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+.container{width:90%;max-width:1200px;margin:0 auto}
+
+/* ========== CONCRETE TEXTURE BG ========== */
+.concrete-bg{
+  background-color:var(--charcoal);
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* ========== REVEAL ANIMATIONS ========== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:all .7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:all .7s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ========== NAVBAR ========== */
+.navbar{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(38,38,38,.92);backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--crimson);transition:all .3s ease;
+}
+.navbar.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+.nav-logo{font-family:'Archivo Black',sans-serif;font-size:1.6rem;color:var(--offwhite);letter-spacing:2px}
+.nav-logo span{color:var(--crimson)}
+.nav-links{display:flex;gap:1.8rem;align-items:center}
+.nav-links a{font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite);position:relative;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--crimson);transition:width .3s}
+.nav-links a:hover{color:var(--crimson)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--crimson);color:#fff!important;padding:.6rem 1.4rem;border-radius:4px;font-weight:800;transition:all .3s}
+.nav-cta:hover{background:var(--crimson-dark);transform:translateY(-2px)}
+.nav-cta::after{display:none!important}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:28px;height:3px;background:var(--offwhite);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{
+    position:fixed;top:0;right:-100%;width:75%;height:100vh;
+    background:rgba(38,38,38,.98);flex-direction:column;
+    justify-content:center;align-items:center;gap:2rem;
+    transition:right .4s ease;padding:2rem;
+  }
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1.2rem}
+}
+
+/* ========== HERO ========== */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  overflow:hidden;padding-top:80px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(38,38,38,.93) 0%,rgba(38,38,38,.7) 50%,rgba(220,38,38,.3) 100%);
+}
+/* Diagonal crimson stripes */
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -45deg,
+    transparent,transparent 60px,
+    rgba(220,38,38,.06) 60px,rgba(220,38,38,.06) 62px
+  );
+}
+.hero-content{position:relative;z-index:2;padding:3rem 0}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(220,38,38,.15);border:1px solid var(--crimson);
+  padding:.4rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:700;
+  color:var(--crimson);margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:2px;
+}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);margin-bottom:1rem;line-height:1}
+.hero h1 .accent{color:var(--crimson);display:block}
+.hero p{font-size:1.15rem;max-width:550px;color:rgba(249,250,251,.8);margin-bottom:2rem;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--crimson);color:#fff;padding:.9rem 2.2rem;font-weight:800;
+  font-size:1rem;border:none;border-radius:4px;cursor:pointer;
+  text-transform:uppercase;letter-spacing:1px;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-primary:hover{background:var(--crimson-dark);transform:translateY(-3px);box-shadow:0 8px 24px rgba(220,38,38,.4)}
+.btn-outline{
+  border:2px solid var(--offwhite);color:var(--offwhite);padding:.9rem 2.2rem;font-weight:800;
+  font-size:1rem;border-radius:4px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;
+  transition:all .3s;background:transparent;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-outline:hover{background:var(--offwhite);color:var(--charcoal)}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;
+  animation:bounce 2s infinite;color:var(--offwhite);opacity:.6;font-size:.8rem;
+  text-transform:uppercase;letter-spacing:3px;text-align:center;
+}
+.hero-scroll .arrow{display:block;font-size:1.5rem;margin-top:.3rem}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* ========== SECTION STYLES ========== */
+.section{padding:5rem 0}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-header .tag{
+  color:var(--crimson);font-weight:800;font-size:.85rem;text-transform:uppercase;
+  letter-spacing:3px;margin-bottom:.5rem;display:block;
+}
+.section-header h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem}
+.section-header p{max-width:600px;margin:0 auto;color:rgba(249,250,251,.7);font-size:1.05rem}
+.divider{width:80px;height:4px;background:var(--crimson);margin:1rem auto 0;border-radius:2px}
+
+/* ========== ABOUT ========== */
+.about{background:var(--offwhite);color:var(--charcoal)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-img{position:relative;border-radius:8px;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.about-img::before{
+  content:'';position:absolute;top:-10px;left:-10px;width:100px;height:100px;
+  border-top:4px solid var(--crimson);border-left:4px solid var(--crimson);z-index:2;border-radius:8px 0 0 0;
+}
+.about-img::after{
+  content:'';position:absolute;bottom:-10px;right:-10px;width:100px;height:100px;
+  border-bottom:4px solid var(--amber);border-right:4px solid var(--amber);z-index:2;border-radius:0 0 8px 0;
+}
+.about-text .tag{color:var(--crimson);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:.5rem;display:block}
+.about-text h2{font-size:2.2rem;color:var(--charcoal);margin-bottom:1rem}
+.about-text p{color:#555;margin-bottom:1rem;font-size:1.05rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.about-feature{display:flex;align-items:flex-start;gap:.6rem}
+.about-feature .icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.about-feature strong{display:block;color:var(--charcoal);font-size:.95rem}
+.about-feature span{font-size:.85rem;color:#666}
+
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-features{grid-template-columns:1fr}
+}
+
+/* ========== STYLES ========== */
+.styles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.style-card{
+  background:var(--charcoal-light);border:1px solid rgba(249,250,251,.08);
+  border-radius:8px;padding:2rem;text-align:center;
+  transition:all .4s;position:relative;overflow:hidden;
+}
+.style-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--crimson),var(--amber));
+  transform:scaleX(0);transition:transform .4s;transform-origin:left;
+}
+.style-card:hover{transform:translateY(-8px);border-color:var(--crimson);box-shadow:var(--shadow)}
+.style-card:hover::before{transform:scaleX(1)}
+.style-icon{font-size:2.5rem;margin-bottom:1rem}
+.style-card h3{font-size:1.1rem;margin-bottom:.5rem;font-family:'Archivo Black',sans-serif}
+.style-card p{font-size:.9rem;color:rgba(249,250,251,.6);line-height:1.6}
+
+@media(max-width:768px){.styles-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.styles-grid{grid-template-columns:1fr}}
+
+/* ========== GALLERY ========== */
+.gallery{background:var(--offwhite);color:var(--charcoal)}
+.gallery .section-header h2{color:var(--charcoal)}
+.gallery .section-header p{color:#555}
+.gallery .tag{color:var(--crimson)}
+.masonry{columns:2;column-gap:1.2rem}
+@media(min-width:768px){.masonry{columns:4}}
+.masonry-item{
+  break-inside:avoid;margin-bottom:1.2rem;border-radius:8px;overflow:hidden;
+  position:relative;cursor:pointer;
+}
+.masonry-item img{width:100%;display:block;transition:transform .5s}
+.masonry-item:hover img{transform:scale(1.08)}
+.masonry-overlay{
+  position:absolute;inset:0;background:rgba(220,38,38,.7);display:flex;
+  align-items:center;justify-content:center;opacity:0;transition:opacity .3s;
+}
+.masonry-overlay span{color:#fff;font-size:2rem}
+.masonry-item:hover .masonry-overlay{opacity:1}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:2rem;
+}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;object-fit:contain}
+.lightbox-close{
+  position:absolute;top:1.5rem;right:2rem;font-size:2.5rem;color:#fff;
+  cursor:pointer;z-index:10000;background:none;border:none;transition:color .3s;
+}
+.lightbox-close:hover{color:var(--crimson)}
+
+/* ========== WHY CHOOSE US ========== */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.why-card{
+  background:rgba(249,250,251,.04);border:1px solid rgba(249,250,251,.08);
+  border-radius:8px;padding:2rem;transition:all .4s;text-align:center;
+}
+.why-card:hover{background:rgba(220,38,38,.08);border-color:var(--crimson);transform:translateY(-5px)}
+.why-icon{
+  width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin:0 auto 1.2rem;
+}
+.why-card h3{font-family:'Archivo Black',sans-serif;font-size:1rem;margin-bottom:.5rem}
+.why-card p{font-size:.9rem;color:rgba(249,250,251,.6);line-height:1.6}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+
+/* ========== STATS ========== */
+.stats{background:var(--crimson);position:relative;overflow:hidden}
+.stats::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -45deg,transparent,transparent 40px,rgba(0,0,0,.06) 40px,rgba(0,0,0,.06) 42px
+  );
+}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;z-index:2;text-align:center;padding:1.5rem 0}
+.stat-item h3{font-size:clamp(2.2rem,4vw,3.2rem);font-family:'Archivo Black',sans-serif;color:#fff}
+.stat-item p{font-size:.9rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.8);margin-top:.3rem;font-weight:700}
+@media(max-width:768px){.stats-grid{grid-template-columns:1fr 1fr}}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials{background:var(--offwhite);color:var(--charcoal)}
+.testimonials .section-header h2{color:var(--charcoal)}
+.testimonials .section-header p{color:#555}
+.testimonials .tag{color:var(--crimson)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.test-card{
+  background:#fff;border-radius:8px;padding:2rem;
+  box-shadow:0 4px 16px rgba(0,0,0,.06);transition:all .4s;
+  border-top:3px solid var(--crimson);
+}
+.test-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.test-stars{color:var(--amber);font-size:1.1rem;margin-bottom:.8rem;letter-spacing:2px}
+.test-card p{font-size:.95rem;color:#555;margin-bottom:1.2rem;font-style:italic;line-height:1.7}
+.test-author{display:flex;align-items:center;gap:.8rem}
+.test-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--crimson)}
+.test-name{font-weight:800;color:var(--charcoal);font-size:.9rem}
+.test-role{font-size:.8rem;color:#888}
+@media(max-width:768px){.test-grid{grid-template-columns:1fr}}
+
+/* ========== AFTERCARE ========== */
+.aftercare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.aftercare-card{
+  background:var(--charcoal-light);border:1px solid rgba(249,250,251,.08);
+  border-radius:8px;padding:1.8rem;display:flex;gap:1rem;align-items:flex-start;
+  transition:all .3s;
+}
+.aftercare-card:hover{border-color:var(--crimson);background:rgba(220,38,38,.05)}
+.aftercare-num{
+  font-family:'Archivo Black',sans-serif;font-size:1.8rem;color:var(--crimson);
+  flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+  background:rgba(220,38,38,.1);border-radius:50%;
+}
+.aftercare-card h4{font-family:'Archivo Black',sans-serif;font-size:.95rem;margin-bottom:.3rem}
+.aftercare-card p{font-size:.88rem;color:rgba(249,250,251,.6);line-height:1.6}
+@media(max-width:768px){.aftercare-grid{grid-template-columns:1fr}}
+
+/* ========== BOOKING FORM ========== */
+.booking{background:var(--offwhite);color:var(--charcoal);position:relative}
+.booking-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.booking-info .tag{color:var(--crimson);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:.5rem;display:block}
+.booking-info h2{font-size:2.2rem;color:var(--charcoal);margin-bottom:1rem}
+.booking-info p{color:#555;margin-bottom:1.5rem;font-size:1.05rem}
+.booking-detail{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;color:#444;font-size:.95rem}
+.booking-detail .bi{font-size:1.2rem;color:var(--crimson);flex-shrink:0}
+.booking-form{background:#fff;border-radius:8px;padding:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-weight:700;margin-bottom:.4rem;font-size:.9rem;color:var(--charcoal)}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:.8rem 1rem;border:2px solid #e5e7eb;border-radius:6px;
+  font-family:'Nunito Sans',sans-serif;font-size:.95rem;transition:border-color .3s;
+  background:#fafafa;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--crimson);background:#fff}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{
+  width:100%;background:var(--crimson);color:#fff;padding:1rem;border:none;
+  border-radius:6px;font-size:1rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:1px;cursor:pointer;transition:all .3s;font-family:'Nunito Sans',sans-serif;
+}
+.btn-submit:hover{background:var(--crimson-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(220,38,38,.3)}
+@media(max-width:768px){
+  .booking-wrapper{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+
+/* ========== FOOTER ========== */
+.footer{
+  background:#1a1a1a;padding:3rem 0 1.5rem;
+  border-top:3px solid var(--crimson);
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer-logo{font-family:'Archivo Black',sans-serif;font-size:1.5rem;margin-bottom:.8rem}
+.footer-logo span{color:var(--crimson)}
+.footer p{font-size:.9rem;color:rgba(249,250,251,.5);line-height:1.7}
+.footer h4{font-family:'Archivo Black',sans-serif;font-size:.95rem;margin-bottom:1rem;color:var(--crimson)}
+.footer-links a{display:block;color:rgba(249,250,251,.6);font-size:.9rem;margin-bottom:.5rem;transition:color .3s}
+.footer-links a:hover{color:var(--crimson)}
+.footer-bottom{border-top:1px solid rgba(249,250,251,.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.8rem;color:rgba(249,250,251,.4)}
+.footer-social{display:flex;gap:1rem}
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;background:rgba(249,250,251,.06);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;font-size:.9rem;color:var(--offwhite);
+}
+.footer-social a:hover{background:var(--crimson);transform:translateY(-3px)}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}}
+
+/* ========== NEOCODE POPUP ========== */
+.nc-popup-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:99999;
+  display:none;align-items:center;justify-content:center;padding:1rem;
+  backdrop-filter:blur(4px);
+}
+.nc-popup-overlay.active{display:flex}
+.nc-popup{
+  background:#fff;border-radius:12px;max-width:480px;width:100%;
+  padding:2.5rem;text-align:center;position:relative;
+  box-shadow:0 24px 64px rgba(0,0,0,.3);animation:popIn .4s ease;
+}
+@keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.nc-popup-close{
+  position:absolute;top:1rem;right:1rem;background:none;border:none;
+  font-size:1.5rem;cursor:pointer;color:#888;transition:color .3s;
+}
+.nc-popup-close:hover{color:var(--crimson)}
+.nc-popup h3{font-family:'Archivo Black',sans-serif;font-size:1.5rem;color:var(--charcoal);margin-bottom:.5rem}
+.nc-popup p{color:#555;font-size:.95rem;margin-bottom:1.5rem;line-height:1.6}
+.nc-popup .nc-logo{font-family:'Archivo Black',sans-serif;font-size:1rem;color:var(--crimson);margin-bottom:1rem;letter-spacing:2px}
+.nc-popup a{
+  display:inline-block;background:var(--crimson);color:#fff;padding:.8rem 2rem;
+  border-radius:6px;font-weight:800;text-transform:uppercase;letter-spacing:1px;
+  font-size:.9rem;transition:all .3s;
+}
+.nc-popup a:hover{background:var(--crimson-dark);transform:translateY(-2px)}
+
+/* ========== UTILITY ========== */
+.text-crimson{color:var(--crimson)}
+.text-amber{color:var(--amber)}
+.mb-0{margin-bottom:0}
+
+/* ========== SCROLL TO TOP ========== */
+.scroll-top{
+  position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;
+  background:var(--crimson);color:#fff;border:none;border-radius:50%;
+  font-size:1.2rem;cursor:pointer;z-index:999;
+  opacity:0;transform:translateY(20px);transition:all .3s;
+  box-shadow:0 4px 16px rgba(220,38,38,.4);
+}
+.scroll-top.visible{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:var(--crimson-dark);transform:translateY(-3px)}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">TAT2<span>DERBY</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#styles">Styles</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#aftercare">Aftercare</a>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">&#9733; Derby's Premier Tattoo Studio</div>
+    <h1>
+      Your Vision.<br>
+      <span class="accent">Our Ink.</span>
+    </h1>
+    <p>Custom tattoos crafted by experienced artists who actually care about the details. Walk-ins welcome, but the best pieces start with a proper consultation.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">&#9998; Book Consultation</a>
+      <a href="#gallery" class="btn-outline">&#9654; View Our Work</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    Scroll<span class="arrow">&#8595;</span>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal-left">
+        <img src="https://images.pexels.com/photos/4125662/pexels-photo-4125662.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tat2Derby tattoo artist at work" loading="lazy">
+      </div>
+      <div class="about-text reveal-right">
+        <span class="tag">Who We Are</span>
+        <h2>Not Your Average<br>Tattoo Shop</h2>
+        <p>Tat2Derby isn't just another high street studio. We're a team of dedicated artists based on Nightingale Road in Derby who live and breathe custom tattoo work. Every piece we create tells a story, and we don't cut corners getting there.</p>
+        <p>Whether you're after a delicate script piece or a full sleeve, we'll work with you from concept to completion. No rushed consultations, no cookie-cutter flash off a wall. Just honest, quality tattooing done right.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <span class="icon">&#128737;</span>
+            <div><strong>Licensed & Insured</strong><span>Fully registered studio</span></div>
+          </div>
+          <div class="about-feature">
+            <span class="icon">&#9996;</span>
+            <div><strong>Custom Designs</strong><span>Every piece is unique</span></div>
+          </div>
+          <div class="about-feature">
+            <span class="icon">&#128170;</span>
+            <div><strong>10+ Years Exp</strong><span>Seasoned professionals</span></div>
+          </div>
+          <div class="about-feature">
+            <span class="icon">&#9889;</span>
+            <div><strong>Walk-Ins Welcome</strong><span>Subject to availability</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STYLES ========== -->
+<section class="section concrete-bg" id="styles">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">What We Do</span>
+      <h2>Tattoo Styles</h2>
+      <p>From bold traditional work to photorealistic portraits, our artists cover the full spectrum. Here's what we specialise in.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="styles-grid">
+      <div class="style-card reveal">
+        <div class="style-icon">&#9875;</div>
+        <h3>Traditional</h3>
+        <p>Bold outlines, solid colour fills, and timeless designs. Anchors, roses, daggers, and all the classics done properly.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-icon">&#128247;</div>
+        <h3>Realism</h3>
+        <p>Photorealistic portraits and lifelike imagery. Every detail matters, from skin texture to light and shadow.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-icon">&#9679;</div>
+        <h3>Blackwork</h3>
+        <p>Striking geometric patterns, ornamental designs, and bold solid-black pieces with serious visual impact.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-icon">&#9998;</div>
+        <h3>Script & Lettering</h3>
+        <p>From elegant cursive to aggressive block letters. Names, quotes, and words that carry real meaning.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-icon">&#128260;</div>
+        <h3>Cover-Ups</h3>
+        <p>Got something you regret? We specialise in transforming old tattoos into artwork you'll actually want to show off.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-icon">&#127912;</div>
+        <h3>Custom Pieces</h3>
+        <p>Got an idea that doesn't fit a category? Perfect. We'll collaborate with you to bring your unique vision to life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="gallery section" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Our Portfolio</span>
+      <h2>Recent Work</h2>
+      <p>A selection of pieces from our artists. Click any image for a closer look.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="masonry">
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/2183131/pexels-photo-2183131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork" loading="lazy">
+        <div class="masonry-overlay"><span>&#43;</span></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/4125663/pexels-photo-4125663.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork" loading="lazy">
+        <div class="masonry-overlay"><span>&#43;</span></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/955937/pexels-photo-955937.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork" loading="lazy">
+        <div class="masonry-overlay"><span>&#43;</span></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tattoo artwork" loading="lazy">
+        <div class="masonry-overlay"><span>&#43;</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img src="" alt="Tattoo detail" id="lightboxImg">
+</div>
+
+<!-- ========== WHY CHOOSE US ========== -->
+<section class="section concrete-bg" id="why">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Why Tat2Derby</span>
+      <h2>What Sets Us Apart</h2>
+      <p>There are plenty of tattoo shops. Here's why people keep coming back to us.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">&#128172;</div>
+        <h3>Free Consultations</h3>
+        <p>We'll sit down with you, go through your ideas, talk placement and sizing, and make sure we're both on the same page before any ink touches skin.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#128737;</div>
+        <h3>Hospital-Grade Hygiene</h3>
+        <p>Autoclave sterilisation, single-use needles, medical-grade surfaces. Your safety isn't negotiable, and we take it seriously every single session.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#127793;</div>
+        <h3>Vegan-Friendly Inks</h3>
+        <p>We use premium vegan and cruelty-free inks as standard. Vibrant colour, clean ingredients, and peace of mind included.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#128170;</div>
+        <h3>Experienced Artists</h3>
+        <p>Our team has over a decade of combined experience. We've done thousands of pieces and we're still pushing to get better every day.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#128176;</div>
+        <h3>Transparent Pricing</h3>
+        <p>No hidden fees or surprise costs. We'll give you an honest quote upfront so you know exactly what you're paying before we start.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">&#10084;</div>
+        <h3>Aftercare Support</h3>
+        <p>Your tattoo journey doesn't end when you leave the chair. We provide detailed aftercare guidance and we're always a message away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS ========== -->
+<section class="stats section" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <h3><span class="counter" data-target="2500">0</span>+</h3>
+        <p>Tattoos Done</p>
+      </div>
+      <div class="stat-item reveal">
+        <h3><span class="counter" data-target="10">0</span>+</h3>
+        <p>Years Experience</p>
+      </div>
+      <div class="stat-item reveal">
+        <h3><span class="counter" data-target="98">0</span>%</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="stat-item reveal">
+        <h3><span class="counter" data-target="6">0</span></h3>
+        <p>Tattoo Styles</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials section" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Client Love</span>
+      <h2>What People Say</h2>
+      <p>Don't just take our word for it. Here's what our clients have to say about their experience.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I'd been putting off getting my first tattoo for years because I was nervous. The team at Tat2Derby made me feel completely at ease. The whole experience was brilliant and I'm already planning my next one."</p>
+        <div class="test-author">
+          <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Sarah" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Sarah M.</div>
+            <div class="test-role">First Timer</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Had a cover-up done on an old tribal piece I'd regretted for 15 years. Honestly can't believe the transformation. These guys really know what they're doing. Worth every penny."</p>
+        <div class="test-author">
+          <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=80" alt="James" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">James R.</div>
+            <div class="test-role">Cover-Up Client</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Got a realistic portrait of my dog done and honestly it looks better than most photos of him. The attention to detail is unreal. Super clean studio too, felt really safe the whole time."</p>
+        <div class="test-author">
+          <img src="https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Kez" class="test-avatar" loading="lazy">
+          <div>
+            <div class="test-name">Kez D.</div>
+            <div class="test-role">Realism Client</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AFTERCARE ========== -->
+<section class="section concrete-bg" id="aftercare">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag">Look After Your Ink</span>
+      <h2>Aftercare Tips</h2>
+      <p>A great tattoo is only half the job. Following proper aftercare keeps your piece looking sharp for years.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="aftercare-grid">
+      <div class="aftercare-card reveal">
+        <div class="aftercare-num">1</div>
+        <div>
+          <h4>Leave The Wrap On</h4>
+          <p>Keep the initial wrap on for 2-4 hours. It protects the fresh tattoo from bacteria and friction while the skin starts to settle.</p>
+        </div>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-num">2</div>
+        <div>
+          <h4>Wash Gently</h4>
+          <p>Use lukewarm water and a fragrance-free antibacterial soap. Pat dry with a clean paper towel. No rubbing, no cloth towels.</p>
+        </div>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-num">3</div>
+        <div>
+          <h4>Moisturise Daily</h4>
+          <p>Apply a thin layer of recommended tattoo balm or unscented moisturiser 2-3 times daily. Don't smother it, a little goes a long way.</p>
+        </div>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-num">4</div>
+        <div>
+          <h4>Don't Pick or Scratch</h4>
+          <p>Your tattoo will peel and itch as it heals. That's normal. Picking at scabs can pull ink out and leave patchy spots. Resist the urge.</p>
+        </div>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-num">5</div>
+        <div>
+          <h4>Avoid Sun & Water</h4>
+          <p>No swimming pools, hot tubs, or sunbathing for at least 2 weeks. UV exposure fades ink fast, so use SPF 50 once healed.</p>
+        </div>
+      </div>
+      <div class="aftercare-card reveal">
+        <div class="aftercare-num">6</div>
+        <div>
+          <h4>Wear Loose Clothing</h4>
+          <p>Tight clothing can irritate the tattooed area and stick to the healing skin. Loose, breathable fabrics are your best friend during healing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BOOKING ========== -->
+<section class="booking section" id="booking">
+  <div class="container">
+    <div class="booking-wrapper">
+      <div class="booking-info reveal-left">
+        <span class="tag">Get Inked</span>
+        <h2>Book Your<br>Consultation</h2>
+        <p>Ready to get started? Fill in the form and we'll get back to you within 24 hours to discuss your ideas, pricing, and availability.</p>
+        <div class="booking-detail">
+          <span class="bi">&#128205;</span>
+          <span>85 Nightingale Road, Derby, DE24 8BG</span>
+        </div>
+        <div class="booking-detail">
+          <span class="bi">&#128231;</span>
+          <span>tat2derby@hotmail.com</span>
+        </div>
+        <div class="booking-detail">
+          <span class="bi">&#128338;</span>
+          <span>Mon - Sat: 10am - 6pm</span>
+        </div>
+        <div class="booking-detail">
+          <span class="bi">&#128338;</span>
+          <span>Sunday: By Appointment Only</span>
+        </div>
+        <!-- Embedded Google Map -->
+        <div style="margin-top:1.5rem;border-radius:8px;overflow:hidden;border:2px solid #e5e7eb;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2404.5!2d-1.445!3d52.905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDU0JzE4LjAiTiAxwrAyNic0Mi4wIlc!5e0!3m2!1sen!2suk!4v1" width="100%" height="200" style="border:0" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="booking-form reveal-right">
+        <form id="bookingForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" name="fname" required placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" name="lname" required placeholder="Your last name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="style">Tattoo Style</label>
+            <select id="style" name="style">
+              <option value="">Select a style...</option>
+              <option value="traditional">Traditional</option>
+              <option value="realism">Realism</option>
+              <option value="blackwork">Blackwork</option>
+              <option value="script">Script & Lettering</option>
+              <option value="coverup">Cover-Up</option>
+              <option value="custom">Custom / Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="placement">Placement</label>
+              <input type="text" id="placement" name="placement" placeholder="e.g. Forearm, Back, Ribs">
+            </div>
+            <div class="form-group">
+              <label for="size">Approximate Size</label>
+              <select id="size" name="size">
+                <option value="">Select size...</option>
+                <option value="small">Small (2-4 inches)</option>
+                <option value="medium">Medium (4-6 inches)</option>
+                <option value="large">Large (6-10 inches)</option>
+                <option value="xlarge">Extra Large / Sleeve</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Describe Your Idea *</label>
+            <textarea id="message" name="message" required placeholder="Tell us about your tattoo idea, any reference images you have, and if this is your first tattoo..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">&#9998; Request Consultation</button>
+          <p style="text-align:center;font-size:.8rem;color:#888;margin-top:.8rem">We'll respond within 24 hours. No spam, ever.</p>
+        </form>
+        <div id="formSuccess" style="display:none;text-align:center;padding:2rem">
+          <div style="font-size:3rem;margin-bottom:1rem">&#10003;</div>
+          <h3 style="font-family:'Archivo Black',sans-serif;color:var(--charcoal);margin-bottom:.5rem">Request Sent!</h3>
+          <p style="color:#555">We'll be in touch within 24 hours to discuss your tattoo ideas. Get excited!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">TAT2<span>DERBY</span></div>
+        <p>Custom tattoos crafted with passion in the heart of Derby. Every piece tells a story, and we're here to help you tell yours.</p>
+        <p style="margin-top:.8rem">85 Nightingale Road, Derby, DE24 8BG</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#styles">Tattoo Styles</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#aftercare">Aftercare</a>
+          <a href="#booking">Book Now</a>
+        </div>
+      </div>
+      <div>
+        <h4>Opening Hours</h4>
+        <div class="footer-links">
+          <a>Monday - Friday: 10am - 6pm</a>
+          <a>Saturday: 10am - 5pm</a>
+          <a>Sunday: By Appointment</a>
+          <a style="margin-top:.8rem;color:var(--crimson)">Walk-ins welcome!</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tat2Derby. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="Instagram">Ig</a>
+        <a href="#" aria-label="TikTok">Tk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== NEOCODE POPUP ========== -->
+<div class="nc-popup-overlay" id="ncPopup">
+  <div class="nc-popup">
+    <button class="nc-popup-close" onclick="closeNcPopup()">&times;</button>
+    <div class="nc-logo">&#9671; NEOCODE STUDIO</div>
+    <h3>Like What You See?</h3>
+    <p>This premium website demo was built by NeoCode Studio. We design high-converting websites for local businesses across the UK. Want something like this for your brand?</p>
+    <a href="https://neocodestudio.co.uk/contact.html">Get Your Free Quote</a>
+  </div>
+</div>
+
+<!-- ========== SCROLL TO TOP ========== -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+(function(){
+  'use strict';
+
+  /* ---- Navbar scroll effect ---- */
+  var navbar = document.getElementById('navbar');
+  var scrollTopBtn = document.getElementById('scrollTop');
+  var lastScroll = 0;
+
+  window.addEventListener('scroll', function(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    if(st > 80){
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    if(st > 400){
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+    lastScroll = st;
+  });
+
+  /* ---- Hamburger menu ---- */
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu on link click
+  var links = navLinks.querySelectorAll('a');
+  for(var i = 0; i < links.length; i++){
+    links[i].addEventListener('click', function(){
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  }
+
+  /* ---- IntersectionObserver reveal ---- */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  if('IntersectionObserver' in window){
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+
+    revealEls.forEach(function(el){
+      revealObserver.observe(el);
+    });
+  } else {
+    // Fallback for older browsers
+    revealEls.forEach(function(el){
+      el.classList.add('visible');
+    });
+  }
+
+  /* ---- Animated counters ---- */
+  var counters = document.querySelectorAll('.counter');
+  var countersStarted = false;
+
+  function animateCounters(){
+    if(countersStarted) return;
+    countersStarted = true;
+    counters.forEach(function(counter){
+      var target = parseInt(counter.getAttribute('data-target'));
+      var duration = 2000;
+      var startTime = null;
+
+      function updateCounter(timestamp){
+        if(!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        // Ease out cubic
+        var eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = Math.floor(eased * target);
+        if(progress < 1){
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      }
+      requestAnimationFrame(updateCounter);
+    });
+  }
+
+  // Observe stats section for counter animation
+  var statsSection = document.getElementById('stats');
+  if(statsSection && 'IntersectionObserver' in window){
+    var statsObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.3});
+    statsObserver.observe(statsSection);
+  }
+
+  /* ---- NeoCode popup at 70% scroll ---- */
+  var ncPopupShown = false;
+  var ncPopup = document.getElementById('ncPopup');
+
+  window.addEventListener('scroll', function(){
+    if(ncPopupShown) return;
+    var scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    if(scrollPercent >= 70){
+      ncPopupShown = true;
+      ncPopup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Close popup on overlay click
+  ncPopup.addEventListener('click', function(e){
+    if(e.target === ncPopup){
+      closeNcPopup();
+    }
+  });
+
+})();
+
+/* ---- Lightbox functions ---- */
+function openLightbox(el){
+  var img = el.querySelector('img');
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  // Use higher res version
+  var src = img.src.replace('w=600','w=1200');
+  lightboxImg.src = src;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close lightbox on escape key
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    closeLightbox();
+    closeNcPopup();
+  }
+});
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', function(e){
+  if(e.target === this){
+    closeLightbox();
+  }
+});
+
+/* ---- NeoCode popup close ---- */
+function closeNcPopup(){
+  document.getElementById('ncPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ---- Form handling ---- */
+function handleSubmit(e){
+  e.preventDefault();
+  var form = document.getElementById('bookingForm');
+  var success = document.getElementById('formSuccess');
+  // Simulate submission
+  form.style.display = 'none';
+  success.style.display = 'block';
+  // Scroll to success message
+  success.scrollIntoView({behavior:'smooth', block:'center'});
+}
+</script>
+
+</body>
+</html>

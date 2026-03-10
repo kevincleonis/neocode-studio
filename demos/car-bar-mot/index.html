@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Car Bar Service Centre | MOT & Garage | Reading</title>
+    <meta name="description" content="The Car Bar Service Centre in Reading. MOT testing, servicing, brakes, diagnostics and more. Call 01189 510779.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== VARIABLES ===== */
+        :root {
+            --green: #1B4332;
+            --green-light: #2D6A4F;
+            --green-dark: #0B2118;
+            --silver: #C0C0C0;
+            --silver-light: #E8E8E8;
+            --gold: #D4A017;
+            --gold-light: #E8C547;
+            --white: #FFFFFF;
+            --off-white: #F9F9F7;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        /* ===== REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== TOPBAR ===== */
+        .topbar {
+            background: var(--green-dark);
+            color: var(--silver-light);
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+        .topbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .topbar a { color: var(--gold); }
+        .topbar a:hover { color: var(--gold-light); }
+        .topbar-left, .topbar-right { display: flex; align-items: center; gap: 16px; }
+        .topbar-right { gap: 20px; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: var(--green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+            padding: 16px 0;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-links a {
+            color: var(--silver-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 20px 14px;
+            transition: color 0.3s, background 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { width: 60%; }
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--green-dark) !important;
+            padding: 10px 24px !important;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            margin-left: 8px;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--gold-light) !important; }
+
+        /* ===== HAMBURGER ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        #nav-toggle { display: none; }
+        #nav-toggle:checked ~ .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #nav-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+        #nav-toggle:checked ~ .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+        #nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            max-height: 900px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(27,67,50,0.92) 0%, rgba(11,33,24,0.85) 60%, rgba(27,67,50,0.75) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 700px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212,160,23,0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--silver-light);
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--green-dark);
+            padding: 14px 36px;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,160,23,0.3);
+        }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--white);
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--green);
+            transform: translateY(-2px);
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+        .hero-scroll span {
+            display: block;
+            width: 28px;
+            height: 44px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 14px;
+            position: relative;
+        }
+        .hero-scroll span::after {
+            content: '';
+            width: 4px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 2px;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollDot 2s infinite;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+        @keyframes scrollDot { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 28px; } }
+
+        /* ===== SECTIONS COMMON ===== */
+        section { padding: 100px 0; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header .tag {
+            display: inline-block;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--green);
+            margin-bottom: 16px;
+        }
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 16px auto;
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about { background: var(--off-white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .about-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+        }
+        .about-img img { width: 100%; height: 400px; object-fit: cover; }
+        .about-text .tag {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--green);
+        }
+        .about-feature .check {
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services { background: var(--white); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--silver-light);
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(27,67,50,0.12);
+            border-color: transparent;
+        }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--green), var(--green-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--white);
+            transition: all 0.4s;
+        }
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            transform: scale(1.1);
+        }
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery { background: var(--off-white); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 260px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27,67,50,0.85) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span {
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .gallery-overlay .zoom-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--white);
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        .lightbox-close:hover { color: var(--gold); }
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 20px;
+            transition: color 0.3s;
+        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-prev:hover, .lightbox-next:hover { color: var(--gold); }
+
+        /* ===== PROCESS ===== */
+        .process { background: var(--green); color: var(--white); }
+        .process .section-header h2 { color: var(--white); }
+        .process .section-header p { color: var(--silver); }
+        .process .gold-line { background: var(--gold); }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: rgba(212,160,23,0.3);
+        }
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        .process-num {
+            width: 80px;
+            height: 80px;
+            background: rgba(212,160,23,0.15);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s;
+        }
+        .process-step:hover .process-num {
+            background: var(--gold);
+            color: var(--green-dark);
+            transform: scale(1.1);
+        }
+        .process-step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+        .process-step p {
+            color: var(--silver);
+            font-size: 0.9rem;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-us { background: var(--white); }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .why-card {
+            padding: 36px 28px;
+            border-radius: 8px;
+            background: var(--off-white);
+            border-left: 4px solid var(--gold);
+            transition: all 0.4s;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .why-card .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .why-card h3 {
+            font-size: 1.15rem;
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+        .why-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            padding: 80px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .stat-item p {
+            color: var(--silver-light);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { background: var(--off-white); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 36px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .testimonial-card:hover { transform: translateY(-4px); }
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+        .testimonial-author h4 {
+            font-size: 1rem;
+            color: var(--green);
+        }
+        .testimonial-author span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== FIND US / MAP ===== */
+        .find-us { background: var(--white); }
+        .find-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .find-info h3 {
+            font-size: 1.5rem;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .find-detail {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        .find-detail .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .find-detail h4 {
+            font-size: 0.95rem;
+            color: var(--green);
+            margin-bottom: 2px;
+        }
+        .find-detail p, .find-detail a {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .find-detail a:hover { color: var(--gold); }
+        .find-map {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .find-map iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+        }
+        .hours-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .hours-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--silver-light);
+            font-size: 0.95rem;
+        }
+        .hours-table td:first-child { font-weight: 600; color: var(--green); }
+        .hours-table td:last-child { text-align: right; color: var(--text-light); }
+
+        /* ===== BOOKING FORM ===== */
+        .booking {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: var(--white);
+        }
+        .booking .section-header h2 { color: var(--white); }
+        .booking .section-header p { color: var(--silver); }
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .booking-form .full-width { grid-column: 1 / -1; }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--silver-light);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.12);
+        }
+        .form-group select option { background: var(--green-dark); color: var(--white); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-submit {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .form-submit button {
+            background: var(--gold);
+            color: var(--green-dark);
+            padding: 16px 48px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .form-submit button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,160,23,0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--green-dark);
+            color: var(--silver);
+            padding: 60px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer h3 {
+            color: var(--white);
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+        }
+        .footer-brand .nav-logo { padding: 0; margin-bottom: 12px; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+        .footer ul li { margin-bottom: 10px; }
+        .footer ul li a {
+            color: var(--silver);
+            font-size: 0.9rem;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        .footer ul li a:hover { color: var(--gold); padding-left: 6px; }
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .footer-contact .fc-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+        .footer-bottom a { color: var(--gold); }
+        .footer-bottom a:hover { color: var(--gold-light); }
+
+        /* ===== NEOCODE POPUP ===== */
+        .nc-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .nc-popup-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .nc-popup {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 48px 40px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.4s;
+        }
+        .nc-popup-overlay.show .nc-popup { transform: scale(1); }
+        .nc-popup-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+        }
+        .nc-popup-close:hover { color: var(--green); }
+        .nc-popup h3 {
+            font-size: 1.6rem;
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+        .nc-popup p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .nc-popup .nc-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+        .nc-popup .nc-logo span { color: var(--gold); }
+        .nc-popup a.nc-btn {
+            display: inline-block;
+            background: var(--green);
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .nc-popup a.nc-btn:hover {
+            background: var(--gold);
+            color: var(--green-dark);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: var(--green);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: var(--gold);
+            color: var(--green-dark);
+            transform: translateY(-4px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .about-grid, .find-grid { grid-template-columns: 1fr; }
+            .about-img { order: -1; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid::before { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .topbar { display: none; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--green-dark);
+                flex-direction: column;
+                padding: 16px 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            .nav-links a { padding: 14px 24px; }
+            .nav-links a::after { display: none; }
+            .nav-cta { margin: 10px 24px !important; text-align: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero { min-height: 500px; }
+            section { padding: 70px 0; }
+            .section-header h2 { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .booking-form { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .stats-grid { gap: 24px; }
+            .stat-item h3 { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            .hero-btns { flex-direction: column; }
+            .process-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-left">
+                <span>&#128205; Reading, Berkshire</span>
+                <span>&#128338; Mon-Fri: 8am - 6pm | Sat: 9am - 1pm</span>
+            </div>
+            <div class="topbar-right">
+                <a href="tel:01189510779">&#128222; 01189 510779</a>
+                <a href="mailto:info@carbarmot.co.uk">&#9993; info@carbarmot.co.uk</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">The Car <span>Bar</span></a>
+            <input type="checkbox" id="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#process">Process</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#find-us">Find Us</a>
+                <a href="#booking" class="nav-cta">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Reading's Trusted Garage</div>
+                <h1>Expert <span>MOT Testing</span> & Vehicle Servicing</h1>
+                <p>Professional car care you can rely on. From MOTs to full engine diagnostics, we keep Reading on the road with honest work and fair prices.</p>
+                <div class="hero-btns">
+                    <a href="#booking" class="btn-primary">Book Your MOT</a>
+                    <a href="tel:01189510779" class="btn-outline">&#128222; 01189 510779</a>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="hero-scroll"><span></span></a>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img reveal-left">
+                    <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional mechanic at The Car Bar Service Centre" loading="lazy">
+                </div>
+                <div class="about-text reveal-right">
+                    <span class="tag">About Our Garage</span>
+                    <h2>Your Local Service Centre in Reading</h2>
+                    <p>The Car Bar Service Centre has been keeping drivers in Reading safe and on the road for years. We're a family-run garage that believes in doing things the right way: honest diagnostics, quality parts, and fair prices with no hidden surprises.</p>
+                    <p>Whether you need a routine MOT, a full service, or something more involved like clutch replacement or engine diagnostics, our experienced technicians have you covered. We treat every car like it's our own.</p>
+                    <div class="about-features">
+                        <div class="about-feature"><div class="check">&#10003;</div> MOT Testing Station</div>
+                        <div class="about-feature"><div class="check">&#10003;</div> All Makes & Models</div>
+                        <div class="about-feature"><div class="check">&#10003;</div> Transparent Pricing</div>
+                        <div class="about-feature"><div class="check">&#10003;</div> Experienced Technicians</div>
+                        <div class="about-feature"><div class="check">&#10003;</div> Quality OE Parts</div>
+                        <div class="about-feature"><div class="check">&#10003;</div> Free Estimates</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">What We Do</span>
+                <h2>Our Services</h2>
+                <div class="gold-line"></div>
+                <p>From routine MOTs to specialist diagnostics, we offer a complete range of services to keep your vehicle running at its best.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128203;</div>
+                    <h3>MOT Testing</h3>
+                    <p>DVSA-approved MOT testing for Class 4 vehicles. We'll give you a clear, honest assessment with no pressure to carry out unnecessary work.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128295;</div>
+                    <h3>Full Servicing</h3>
+                    <p>Interim and full services following manufacturer guidelines. Oil change, filter replacements, fluid top-ups and thorough multi-point inspections.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9881;</div>
+                    <h3>Brakes</h3>
+                    <p>Brake pad and disc replacement, fluid changes, and full brake system inspections. Your safety is always our top priority.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128736;</div>
+                    <h3>Clutch Repair</h3>
+                    <p>Complete clutch replacement and repairs. We handle dual-mass flywheel issues, clutch slippage, and hydraulic system faults.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#128187;</div>
+                    <h3>Diagnostics</h3>
+                    <p>Advanced engine diagnostics with professional-grade equipment. We pinpoint the exact issue before recommending any repairs.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#11044;</div>
+                    <h3>Tyres</h3>
+                    <p>New tyre fitting, puncture repairs, wheel balancing and alignment. We stock a wide range of budget and premium tyres from top brands.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">&#10052;</div>
+                    <h3>Air Conditioning</h3>
+                    <p>Full air con service including regas, leak detection and system repairs. Stay cool in summer and clear in winter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Our Workshop</span>
+                <h2>See Our Work</h2>
+                <div class="gold-line"></div>
+                <p>Take a look inside our fully equipped workshop. We invest in the right tools and keep our workspace clean and organised.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal" onclick="openLightbox(0)">
+                    <img src="https://images.pexels.com/photos/4489702/pexels-photo-4489702.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car workshop bay" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="zoom-icon">&#128269;</div>
+                        <span>Workshop Bay</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(1)">
+                    <img src="https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Engine repair work" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="zoom-icon">&#128269;</div>
+                        <span>Engine Work</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(2)">
+                    <img src="https://images.pexels.com/photos/279949/pexels-photo-279949.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Diagnostics equipment" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="zoom-icon">&#128269;</div>
+                        <span>Diagnostics</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(3)">
+                    <img src="https://images.pexels.com/photos/3807329/pexels-photo-3807329.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Brake servicing" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="zoom-icon">&#128269;</div>
+                        <span>Brake Service</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(4)">
+                    <img src="https://images.pexels.com/photos/4489714/pexels-photo-4489714.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tyre fitting bay" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="zoom-icon">&#128269;</div>
+                        <span>Tyre Fitting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+        <div class="lightbox-prev" onclick="changeLightbox(-1)">&#10094;</div>
+        <img src="" alt="Gallery image" id="lightbox-img">
+        <div class="lightbox-next" onclick="changeLightbox(1)">&#10095;</div>
+    </div>
+
+    <!-- PROCESS -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag" style="color:var(--gold)">How It Works</span>
+                <h2>Your Journey With Us</h2>
+                <div class="gold-line"></div>
+                <p>Getting your car seen to shouldn't be complicated. Here's how we make it simple from start to finish.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-num">1</div>
+                    <h3>Book Online or Call</h3>
+                    <p>Use our booking form or give us a ring. We'll find a time that works for you.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-num">2</div>
+                    <h3>Drop Off Your Car</h3>
+                    <p>Bring your vehicle in at the agreed time. We'll take it from there.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-num">3</div>
+                    <h3>We Fix It Right</h3>
+                    <p>Our technicians carry out the work. We'll call you before doing anything extra.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-num">4</div>
+                    <h3>Collect & Go</h3>
+                    <p>Pick up your car, good as new. We'll walk you through everything we've done.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Why The Car Bar</span>
+                <h2>Why Choose Us</h2>
+                <div class="gold-line"></div>
+                <p>We've built our reputation on trust, quality and straightforward service. Here's what sets us apart.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="icon">&#128176;</div>
+                    <h3>No Hidden Costs</h3>
+                    <p>We quote before we start and we don't carry out work without your go-ahead. What you're quoted is what you pay.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon">&#128170;</div>
+                    <h3>Skilled Technicians</h3>
+                    <p>Our mechanics are fully trained and keep up with the latest vehicle technology. Your car is in safe hands.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon">&#128338;</div>
+                    <h3>Quick Turnaround</h3>
+                    <p>We know you need your car back. Most routine jobs are completed same-day so you're not left waiting around.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon">&#127942;</div>
+                    <h3>Quality Parts</h3>
+                    <p>We only use OE-spec or manufacturer-approved parts. No shortcuts, no cheap substitutes.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon">&#128522;</div>
+                    <h3>Friendly Service</h3>
+                    <p>We explain things in plain English, not mechanic jargon. You'll always know what's going on with your car.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon">&#128205;</div>
+                    <h3>Convenient Location</h3>
+                    <p>Based in Reading with easy access and parking. Drop your car off and we'll take care of the rest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3><span class="counter" data-target="5000">0</span>+</h3>
+                    <p>MOTs Completed</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3><span class="counter" data-target="15">0</span>+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3><span class="counter" data-target="4500">0</span>+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3><span class="counter" data-target="98">0</span>%</h3>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Customer Reviews</span>
+                <h2>What Our Customers Say</h2>
+                <div class="gold-line"></div>
+                <p>Don't just take our word for it. Here's what drivers across Reading have to say about The Car Bar.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Took my car in for an MOT and they found a couple of issues I wasn't expecting. They explained everything clearly, showed me the worn parts, and the price was really fair. Won't go anywhere else now."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=80" alt="James T." loading="lazy">
+                        <div>
+                            <h4>James T.</h4>
+                            <span>Reading, Berkshire</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Brilliant service from start to finish. They fit me in last minute for brake pads and had the car back to me the same afternoon. Friendly team, competitive prices, and they actually care about doing a proper job."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Sarah M." loading="lazy">
+                        <div>
+                            <h4>Sarah M.</h4>
+                            <span>Tilehurst, Reading</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"I've been bringing my cars here for years now. Always reliable, always honest. They recently sorted a clutch issue for me and the cost was well below what other places quoted. Top garage."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=80" alt="David R." loading="lazy">
+                        <div>
+                            <h4>David R.</h4>
+                            <span>Caversham, Reading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FIND US -->
+    <section class="find-us" id="find-us">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag">Location</span>
+                <h2>Find Us</h2>
+                <div class="gold-line"></div>
+                <p>We're easy to find in Reading with plenty of space on-site. Pop in or give us a ring to arrange your visit.</p>
+            </div>
+            <div class="find-grid">
+                <div class="find-info reveal-left">
+                    <h3>Get In Touch</h3>
+                    <div class="find-detail">
+                        <div class="icon">&#128205;</div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>The Car Bar Service Centre<br>Reading, Berkshire</p>
+                        </div>
+                    </div>
+                    <div class="find-detail">
+                        <div class="icon">&#128222;</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:01189510779">01189 510779</a>
+                        </div>
+                    </div>
+                    <div class="find-detail">
+                        <div class="icon">&#9993;</div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:info@carbarmot.co.uk">info@carbarmot.co.uk</a>
+                        </div>
+                    </div>
+                    <h3 style="margin-top:30px;">Opening Hours</h3>
+                    <table class="hours-table">
+                        <tr><td>Monday - Friday</td><td>8:00am - 6:00pm</td></tr>
+                        <tr><td>Saturday</td><td>9:00am - 1:00pm</td></tr>
+                        <tr><td>Sunday</td><td>Closed</td></tr>
+                    </table>
+                </div>
+                <div class="find-map reveal-right">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39740.73048869!2d-1.0127!3d51.4543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742055c86c1587%3A0x75ed41abb1b47b9e!2sReading!5e0!3m2!1sen!2suk!4v1710000000000!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag" style="color:var(--gold)">Book Online</span>
+                <h2>Book Your Appointment</h2>
+                <div class="gold-line"></div>
+                <p>Fill in the form below and we'll get back to you to confirm your booking. Or call us on 01189 510779 for immediate assistance.</p>
+            </div>
+            <form class="booking-form reveal" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="reg">Vehicle Registration</label>
+                    <input type="text" id="reg" name="reg" placeholder="e.g. AB12 CDE" style="text-transform:uppercase;">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Required *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service...</option>
+                        <option value="MOT">MOT Testing</option>
+                        <option value="Full Service">Full Service</option>
+                        <option value="Interim Service">Interim Service</option>
+                        <option value="Brakes">Brake Repair</option>
+                        <option value="Clutch">Clutch Replacement</option>
+                        <option value="Diagnostics">Engine Diagnostics</option>
+                        <option value="Tyres">Tyres</option>
+                        <option value="Air Con">Air Conditioning</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div class="form-group full-width">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" placeholder="Tell us about any symptoms or specific issues..."></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit">Book Appointment</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">The Car <span>Bar</span></div>
+                    <p>Reading's trusted independent garage for MOT testing, servicing and repairs. Honest work, fair prices, and a team that genuinely cares about keeping you safe on the road.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">MOT Testing</a></li>
+                        <li><a href="#services">Full Servicing</a></li>
+                        <li><a href="#services">Brake Repairs</a></li>
+                        <li><a href="#services">Clutch Repair</a></li>
+                        <li><a href="#services">Diagnostics</a></li>
+                        <li><a href="#services">Tyres</a></li>
+                        <li><a href="#services">Air Con</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <span class="fc-icon">&#128205;</span>
+                            <span>The Car Bar Service Centre, Reading, Berkshire</span>
+                        </li>
+                        <li>
+                            <span class="fc-icon">&#128222;</span>
+                            <a href="tel:01189510779">01189 510779</a>
+                        </li>
+                        <li>
+                            <span class="fc-icon">&#9993;</span>
+                            <a href="mailto:info@carbarmot.co.uk">info@carbarmot.co.uk</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 The Car Bar Service Centre. All rights reserved.</span>
+                <span>Website by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</div>
+
+    <!-- NEOCODE POPUP -->
+    <div class="nc-popup-overlay" id="ncPopup">
+        <div class="nc-popup">
+            <button class="nc-popup-close" onclick="closeNcPopup()">&times;</button>
+            <div class="nc-logo">Neo<span>Code</span> Studio</div>
+            <h3>Like What You See?</h3>
+            <p>This is a free demo we built for The Car Bar Service Centre. A modern, mobile-friendly website designed to win you more customers and build trust online. Interested in making it yours?</p>
+            <a href="https://neocodestudio.co.uk/contact" target="_blank" class="nc-btn">Get In Touch</a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        /* ===== INTERSECTION OBSERVER - REVEAL ANIMATIONS ===== */
+        (function() {
+            var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+                revealEls.forEach(function(el) { observer.observe(el); });
+            } else {
+                revealEls.forEach(function(el) { el.classList.add('active'); });
+            }
+        })();
+
+        /* ===== ANIMATED COUNTERS ===== */
+        (function() {
+            var counters = document.querySelectorAll('.counter');
+            var started = {};
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-target'));
+                var duration = 2000;
+                var startTime = null;
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(eased * target);
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+            if ('IntersectionObserver' in window) {
+                var counterObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !started[entry.target.dataset.target + entry.target.offsetLeft]) {
+                            started[entry.target.dataset.target + entry.target.offsetLeft] = true;
+                            animateCounter(entry.target);
+                            counterObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                counters.forEach(function(c) { counterObserver.observe(c); });
+            } else {
+                counters.forEach(function(c) { c.textContent = c.getAttribute('data-target'); });
+            }
+        })();
+
+        /* ===== LIGHTBOX ===== */
+        var galleryImages = [
+            'https://images.pexels.com/photos/4489702/pexels-photo-4489702.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/279949/pexels-photo-279949.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3807329/pexels-photo-3807329.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/4489714/pexels-photo-4489714.jpeg?auto=compress&cs=tinysrgb&w=1200'
+        ];
+        var currentLightbox = 0;
+
+        function openLightbox(index) {
+            currentLightbox = index;
+            var lb = document.getElementById('lightbox');
+            document.getElementById('lightbox-img').src = galleryImages[index];
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeLightbox(dir) {
+            currentLightbox += dir;
+            if (currentLightbox < 0) currentLightbox = galleryImages.length - 1;
+            if (currentLightbox >= galleryImages.length) currentLightbox = 0;
+            document.getElementById('lightbox-img').src = galleryImages[currentLightbox];
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            var lb = document.getElementById('lightbox');
+            if (!lb.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeLightbox(-1);
+            if (e.key === 'ArrowRight') changeLightbox(1);
+        });
+
+        /* ===== BACK TO TOP ===== */
+        (function() {
+            var btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            });
+        })();
+
+        /* ===== NAVBAR CLOSE ON LINK CLICK (MOBILE) ===== */
+        (function() {
+            var toggle = document.getElementById('nav-toggle');
+            var links = document.querySelectorAll('.nav-links a');
+            links.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggle.checked = false;
+                });
+            });
+        })();
+
+        /* ===== NEOCODE POPUP AT 70% SCROLL ===== */
+        (function() {
+            var shown = false;
+            var popup = document.getElementById('ncPopup');
+            window.addEventListener('scroll', function() {
+                if (shown) return;
+                var scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                if (scrollPercent >= 70) {
+                    shown = true;
+                    popup.classList.add('show');
+                }
+            });
+        })();
+
+        function closeNcPopup() {
+            document.getElementById('ncPopup').classList.remove('show');
+        }
+
+        document.getElementById('ncPopup').addEventListener('click', function(e) {
+            if (e.target === this) closeNcPopup();
+        });
+
+        /* ===== FORM SUBMISSION ===== */
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            var btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = 'Booking Sent!';
+            btn.style.background = '#2D6A4F';
+            btn.style.color = '#fff';
+            btn.disabled = true;
+            setTimeout(function() {
+                btn.textContent = 'Book Appointment';
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.disabled = false;
+                e.target.reset();
+            }, 3000);
+        }
+
+        /* ===== NAVBAR SHADOW ON SCROLL ===== */
+        (function() {
+            var navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+                } else {
+                    navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

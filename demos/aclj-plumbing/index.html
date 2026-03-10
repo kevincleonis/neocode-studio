@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACLJ Plumbing and Heating | Ipswich's Trusted Gas Safe Engineers</title>
+<meta name="description" content="ACLJ Plumbing and Heating - Gas Safe registered plumbers and heating engineers in Ipswich, Suffolk. Boiler installations, central heating, emergency repairs. Call 01473 353636.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--midnight:#1E3A5F;--midnight-dark:#142942;--cyan:#06B6D4;--cyan-light:#22D3EE;
+--off-white:#F8FAFC;--amber:#F59E0B;--amber-light:#FBBF24;
+--text-dark:#0F172A;--text-mid:#475569;--text-light:#94A3B8;
+--radius:12px;--radius-lg:20px;--shadow:0 4px 24px rgba(30,58,95,.12);
+--shadow-lg:0 12px 48px rgba(30,58,95,.18);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;color:var(--text-dark);background:var(--off-white);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-family:'Manrope',sans-serif;font-weight:800;line-height:1.15}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;transition:all .35s ease}
+.navbar.scrolled{background:rgba(30,58,95,.97);backdrop-filter:blur(12px);padding:10px 0;box-shadow:0 2px 24px rgba(0,0,0,.15)}
+.nav-container{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;display:flex;align-items:center;gap:10px}
+.nav-logo span{color:var(--cyan)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.925rem;font-weight:500;transition:color .25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{background:var(--cyan);color:#fff!important;padding:10px 24px;border-radius:50px;font-weight:600;transition:all .3s}
+.nav-cta:hover{background:var(--cyan-light);transform:translateY(-2px);box-shadow:0 4px 16px rgba(6,182,212,.4)}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:26px;height:3px;background:#fff;border-radius:3px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+.nav-links{position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100vh;background:var(--midnight-dark);flex-direction:column;justify-content:center;gap:24px;transition:right .4s cubic-bezier(.25,.8,.25,1);padding:40px}
+.nav-links.open{right:0}
+.nav-links a{font-size:1.15rem}
+.hamburger{display:flex}
+.mobile-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-overlay.show{opacity:1;pointer-events:auto}
+}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.05)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,41,66,.92) 0%,rgba(30,58,95,.8) 50%,rgba(6,182,212,.3) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:140px 24px 100px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);padding:8px 20px;border-radius:50px;color:var(--cyan-light);font-size:.875rem;font-weight:600;margin-bottom:24px;backdrop-filter:blur(8px)}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);color:#fff;margin-bottom:20px;max-width:700px}
+.hero h1 .cyan{color:var(--cyan)}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.8);max-width:560px;margin-bottom:36px;line-height:1.7}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:16px}
+.btn-primary{background:var(--cyan);color:#fff;padding:16px 36px;border-radius:50px;font-weight:700;font-size:1rem;font-family:'Manrope',sans-serif;border:none;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{background:var(--cyan-light);transform:translateY(-3px);box-shadow:0 8px 24px rgba(6,182,212,.4)}
+.btn-secondary{background:transparent;color:#fff;padding:16px 36px;border-radius:50px;font-weight:700;font-size:1rem;font-family:'Manrope',sans-serif;border:2px solid rgba(255,255,255,.3);cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px)}
+
+/* FLOATING GAS SAFE BADGE */
+.gas-safe-float{position:absolute;bottom:60px;right:60px;z-index:3;background:rgba(255,255,255,.12);backdrop-filter:blur(16px);border:2px solid var(--amber);border-radius:var(--radius-lg);padding:20px 28px;display:flex;align-items:center;gap:16px;animation:float-badge 4s ease-in-out infinite,glow-badge 3s ease-in-out infinite alternate}
+@keyframes float-badge{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes glow-badge{0%{box-shadow:0 0 20px rgba(245,158,11,.15)}100%{box-shadow:0 0 40px rgba(245,158,11,.35),0 0 80px rgba(245,158,11,.1)}}
+.gas-safe-icon{width:60px;height:60px;background:var(--amber);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.gas-safe-icon svg{width:36px;height:36px;fill:#fff}
+.gas-safe-text{color:#fff}
+.gas-safe-text strong{display:block;font-family:'Manrope',sans-serif;font-size:1.05rem}
+.gas-safe-text span{font-size:.8rem;color:rgba(255,255,255,.7)}
+@media(max-width:768px){.gas-safe-float{bottom:24px;right:16px;left:16px;padding:14px 18px}}
+
+/* SECTION COMMON */
+.section{padding:100px 0}
+.section-dark{background:var(--midnight);color:#fff}
+.section-alt{background:#EFF6FF}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+.section-label{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.section-label::before{content:'';width:28px;height:2px;background:var(--cyan);border-radius:2px}
+.section-title{font-size:clamp(2rem,4vw,3rem);margin-bottom:20px}
+.section-subtitle{font-size:1.1rem;color:var(--text-mid);max-width:600px;line-height:1.7}
+.section-dark .section-subtitle{color:rgba(255,255,255,.7)}
+.text-center{text-align:center}
+.mx-auto{margin-left:auto;margin-right:auto}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.25,.8,.25,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.8,.25,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.8,.25,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.about-img-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-img-wrap img{width:100%;height:420px;object-fit:cover}
+.about-img-badge{position:absolute;bottom:20px;left:20px;background:var(--cyan);color:#fff;padding:14px 22px;border-radius:var(--radius);font-family:'Manrope',sans-serif;font-weight:800;font-size:1.1rem;box-shadow:0 8px 24px rgba(6,182,212,.35)}
+.about-text h3{font-size:1.5rem;margin:24px 0 12px;color:var(--midnight)}
+.about-text p{color:var(--text-mid);margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.about-feature{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff;border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.about-feature .icon-circle{width:40px;height:40px;min-width:40px;background:rgba(6,182,212,.1);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.about-feature .icon-circle svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:2}
+.about-feature span{font-weight:600;font-size:.9rem;color:var(--midnight)}
+@media(max-width:768px){
+.about-grid{grid-template-columns:1fr;gap:32px}
+.about-features{grid-template-columns:1fr}
+}
+
+/* BENTO SERVICES */
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(220px,auto);gap:20px;margin-top:48px}
+.bento-card{background:#fff;border-radius:var(--radius-lg);padding:36px 28px;position:relative;overflow:hidden;transition:all .4s;border:1px solid rgba(30,58,95,.08);display:flex;flex-direction:column;justify-content:flex-end}
+.bento-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--cyan)}
+.bento-card.featured{grid-column:span 2;background:linear-gradient(135deg,var(--midnight) 0%,#264a73 100%);color:#fff}
+.bento-card.featured .bento-desc{color:rgba(255,255,255,.75)}
+.bento-card.amber{background:linear-gradient(135deg,#92400E,#B45309);color:#fff}
+.bento-card.amber .bento-desc{color:rgba(255,255,255,.8)}
+.bento-icon{width:52px;height:52px;background:rgba(6,182,212,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.bento-card.featured .bento-icon,.bento-card.amber .bento-icon{background:rgba(255,255,255,.12)}
+.bento-icon svg{width:26px;height:26px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.bento-card.featured .bento-icon svg,.bento-card.amber .bento-icon svg{stroke:#fff}
+.bento-title{font-size:1.25rem;margin-bottom:10px}
+.bento-desc{color:var(--text-mid);font-size:.925rem;line-height:1.6}
+.bento-tag{position:absolute;top:20px;right:20px;background:var(--amber);color:#fff;font-size:.75rem;font-weight:700;padding:5px 14px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px}
+@media(max-width:768px){
+.bento-grid{grid-template-columns:1fr}
+.bento-card.featured{grid-column:span 1}
+}
+
+/* GAS SAFE SECTION */
+.gas-safe-section{position:relative;overflow:hidden}
+.gas-safe-showcase{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.gas-cert-visual{position:relative;text-align:center}
+.gas-cert-card{background:linear-gradient(145deg,#1a1a2e 0%,#16213e 100%);border-radius:var(--radius-lg);padding:48px;position:relative;overflow:hidden;border:2px solid var(--amber)}
+.gas-cert-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(245,158,11,.1),transparent,rgba(6,182,212,.1),transparent);animation:cert-rotate 8s linear infinite}
+@keyframes cert-rotate{to{transform:rotate(360deg)}}
+.gas-cert-inner{position:relative;z-index:1}
+.gas-cert-shield{width:100px;height:100px;background:var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 0 40px rgba(245,158,11,.3)}
+.gas-cert-shield svg{width:56px;height:56px;fill:#fff}
+.gas-cert-card h3{color:#fff;font-size:1.8rem;margin-bottom:8px}
+.gas-cert-card p{color:rgba(255,255,255,.7);font-size:1rem}
+.gas-cert-reg{display:inline-block;margin-top:16px;background:rgba(245,158,11,.15);border:1px solid var(--amber);color:var(--amber-light);padding:10px 28px;border-radius:50px;font-weight:700;font-family:'Manrope',sans-serif;font-size:1rem;letter-spacing:1px}
+.gas-info h3{font-size:2rem;margin-bottom:16px}
+.gas-info p{color:var(--text-mid);margin-bottom:16px;font-size:1.05rem;line-height:1.7}
+.gas-checklist{margin-top:24px}
+.gas-checklist li{display:flex;align-items:center;gap:12px;padding:10px 0;font-weight:500;color:var(--midnight)}
+.gas-checklist li svg{width:22px;height:22px;stroke:var(--cyan);fill:none;stroke-width:2.5;min-width:22px}
+@media(max-width:768px){.gas-safe-showcase{grid-template-columns:1fr}}
+
+/* GALLERY + LIGHTBOX */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:1;box-shadow:var(--shadow)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(30,58,95,.5) 0%,transparent 50%);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+.gallery-zoom{position:absolute;bottom:14px;right:14px;width:36px;height:36px;background:var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transform:translateY(10px);transition:all .3s}
+.gallery-item:hover .gallery-zoom{opacity:1;transform:translateY(0)}
+.gallery-zoom svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr 1fr}}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
+.lightbox.active{opacity:1;pointer-events:auto}
+.lightbox img{max-width:85%;max-height:85vh;border-radius:var(--radius);object-fit:contain}
+.lightbox-close{position:absolute;top:24px;right:24px;width:48px;height:48px;background:rgba(255,255,255,.1);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.lightbox-close:hover{background:rgba(255,255,255,.2)}
+.lightbox-close svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,255,255,.1);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.lightbox-nav:hover{background:rgba(255,255,255,.2)}
+.lightbox-nav svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2}
+.lightbox-prev{left:24px}
+.lightbox-next{right:24px}
+
+/* PROCESS TIMELINE */
+.timeline{position:relative;margin-top:60px;padding-left:40px}
+.timeline::before{content:'';position:absolute;top:0;left:15px;width:3px;height:100%;background:linear-gradient(to bottom,var(--cyan),var(--amber));border-radius:3px}
+.timeline-item{position:relative;padding:0 0 48px 40px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{position:absolute;left:-33px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--off-white);border:3px solid var(--cyan);display:flex;align-items:center;justify-content:center;z-index:1}
+.timeline-dot span{width:12px;height:12px;background:var(--cyan);border-radius:50%}
+.timeline-step{font-size:.8rem;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.timeline-item h4{font-size:1.25rem;margin-bottom:8px;color:var(--midnight)}
+.timeline-item p{color:var(--text-mid);font-size:.95rem;line-height:1.6}
+@media(max-width:768px){.timeline{padding-left:20px}.timeline-item{padding-left:30px}.timeline-dot{left:-28px}}
+
+/* ANIMATED COUNTERS / STATS */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:48px}
+.stat-card{text-align:center;padding:40px 20px;background:rgba(255,255,255,.06);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.1);transition:all .3s}
+.stat-card:hover{background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.3);transform:translateY(-4px)}
+.stat-number{font-family:'Manrope',sans-serif;font-size:3rem;font-weight:800;color:var(--cyan);line-height:1}
+.stat-number .suffix{font-size:1.5rem;color:var(--amber)}
+.stat-label{font-size:.95rem;color:rgba(255,255,255,.7);margin-top:8px;font-weight:500}
+@media(max-width:768px){.stats-bar{grid-template-columns:1fr 1fr;gap:16px}.stat-number{font-size:2.2rem}}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.testimonial-card{background:#fff;border-radius:var(--radius-lg);padding:32px;position:relative;border:1px solid rgba(30,58,95,.06);transition:all .3s}
+.testimonial-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:16px}
+.testimonial-stars svg{width:18px;height:18px;fill:var(--amber);stroke:none}
+.testimonial-text{color:var(--text-mid);font-size:.95rem;line-height:1.7;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan)}
+.testimonial-name{font-weight:700;font-size:.95rem;color:var(--midnight)}
+.testimonial-role{font-size:.8rem;color:var(--text-light)}
+@media(max-width:768px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* COVERAGE */
+.coverage-content{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:48px}
+.coverage-areas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.area-chip{display:flex;align-items:center;gap:8px;background:#fff;padding:12px 18px;border-radius:var(--radius);font-weight:500;font-size:.9rem;transition:all .25s;border:1px solid transparent}
+.area-chip:hover{border-color:var(--cyan);transform:translateX(4px)}
+.area-chip svg{width:16px;height:16px;stroke:var(--cyan);fill:none;stroke-width:2;min-width:16px}
+.coverage-card{background:linear-gradient(145deg,var(--midnight),#264a73);border-radius:var(--radius-lg);padding:40px;color:#fff}
+.coverage-card h3{font-size:1.6rem;margin-bottom:12px}
+.coverage-card p{color:rgba(255,255,255,.75);margin-bottom:24px;line-height:1.7}
+.coverage-card a{display:inline-flex;align-items:center;gap:10px;color:var(--cyan-light);font-weight:700;font-size:1.1rem;transition:gap .25s}
+.coverage-card a:hover{gap:16px}
+.coverage-card a svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+@media(max-width:768px){.coverage-content{grid-template-columns:1fr}.coverage-areas{grid-template-columns:1fr}}
+
+/* QUOTE FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;margin-top:48px}
+.form-info h3{font-size:2rem;margin-bottom:16px}
+.form-info p{color:var(--text-mid);line-height:1.7;margin-bottom:24px;font-size:1.05rem}
+.form-contact-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(30,58,95,.08)}
+.form-contact-item:last-child{border-bottom:none}
+.form-contact-icon{width:44px;height:44px;min-width:44px;background:rgba(6,182,212,.1);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.form-contact-icon svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:2}
+.form-contact-item strong{display:block;font-size:.8rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px}
+.form-contact-item span{font-weight:600;color:var(--midnight)}
+.quote-form{background:#fff;border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-lg);border:1px solid rgba(30,58,95,.06)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-weight:600;font-size:.875rem;color:var(--midnight);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:2px solid #E2E8F0;border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:.95rem;transition:all .25s;background:var(--off-white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 4px rgba(6,182,212,.1);background:#fff}
+.form-group textarea{min-height:110px;resize:vertical}
+.form-submit{width:100%;padding:16px;border:none;border-radius:var(--radius);background:var(--cyan);color:#fff;font-family:'Manrope',sans-serif;font-weight:800;font-size:1.05rem;cursor:pointer;transition:all .3s}
+.form-submit:hover{background:var(--cyan-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(6,182,212,.35)}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr;gap:32px}.form-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+.footer{background:var(--midnight-dark);color:#fff;padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-brand h3{font-size:1.4rem;margin-bottom:12px}
+.footer-brand h3 span{color:var(--cyan)}
+.footer-brand p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.7;margin-bottom:16px}
+.footer-gas-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);padding:8px 16px;border-radius:8px}
+.footer-gas-badge svg{width:20px;height:20px;fill:var(--amber)}
+.footer-gas-badge span{color:var(--amber-light);font-weight:600;font-size:.85rem}
+.footer h4{font-size:1rem;margin-bottom:20px;color:var(--cyan-light)}
+.footer ul li{margin-bottom:10px}
+.footer ul li a{color:rgba(255,255,255,.6);font-size:.9rem;transition:color .2s}
+.footer ul li a:hover{color:var(--cyan)}
+.footer-bottom{padding:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{color:rgba(255,255,255,.4);font-size:.85rem}
+.footer-bottom a{color:var(--cyan);font-weight:600}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+/* WHY CHOOSE US */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;transition:all .35s}
+.why-card:hover{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25);transform:translateY(-6px)}
+.why-icon{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--cyan),rgba(6,182,212,.4));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(6,182,212,.2)}
+.why-icon svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.why-card h4{font-size:1.15rem;margin-bottom:10px}
+.why-card p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.65}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+
+/* SCROLL TO TOP */
+.scroll-top{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--cyan);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;opacity:0;transform:translateY(20px);transition:all .35s;box-shadow:0 4px 16px rgba(6,182,212,.35)}
+.scroll-top.visible{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:var(--midnight);transform:translateY(-3px)}
+.scroll-top svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.5}
+
+/* NEOCODE POPUP */
+.nc-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;padding:24px}
+.nc-popup-overlay.show{opacity:1;pointer-events:auto}
+.nc-popup{background:#fff;border-radius:var(--radius-lg);max-width:480px;width:100%;padding:40px;text-align:center;transform:scale(.9) translateY(20px);transition:all .4s cubic-bezier(.25,.8,.25,1);position:relative}
+.nc-popup-overlay.show .nc-popup{transform:scale(1) translateY(0)}
+.nc-popup-close{position:absolute;top:16px;right:16px;width:32px;height:32px;background:none;border:1px solid #E2E8F0;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.nc-popup-close:hover{background:var(--off-white);border-color:var(--text-light)}
+.nc-popup-close svg{width:16px;height:16px;stroke:var(--text-mid);fill:none;stroke-width:2}
+.nc-popup .nc-badge{display:inline-block;background:rgba(6,182,212,.1);color:var(--cyan);font-weight:700;font-size:.8rem;padding:6px 16px;border-radius:50px;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.nc-popup h3{font-family:'Manrope',sans-serif;font-size:1.5rem;font-weight:800;color:var(--midnight);margin-bottom:12px}
+.nc-popup p{color:var(--text-mid);font-size:.95rem;line-height:1.6;margin-bottom:24px}
+.nc-popup .nc-btn{display:inline-block;background:var(--midnight);color:#fff;padding:14px 32px;border-radius:50px;font-weight:700;font-family:'Manrope',sans-serif;transition:all .3s}
+.nc-popup .nc-btn:hover{background:var(--cyan);transform:translateY(-2px)}
+</style>
+</head>
+<body>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="#" class="nav-logo">ACLJ <span>Plumbing</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#gas-safe">Gas Safe</a>
+<a href="#gallery">Gallery</a>
+<a href="#testimonials">Reviews</a>
+<a href="#quote" class="nav-cta">Get a Quote</a>
+</div>
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-bg">
+<img src="https://images.pexels.com/photos/8486972/pexels-photo-8486972.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Professional plumbing and heating services" id="heroBg">
+</div>
+<div class="hero-content">
+<div class="hero-badge"><span class="dot"></span> Gas Safe Registered Engineers</div>
+<h1>Ipswich's Most Trusted <span class="cyan">Plumbing & Heating</span> Experts</h1>
+<p>From emergency boiler repairs to full central heating installations, we've been keeping Ipswich homes warm and running smoothly for over a decade. Fully Gas Safe registered and ready when you need us.</p>
+<div class="hero-buttons">
+<a href="#quote" class="btn-primary">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+Get Free Quote
+</a>
+<a href="tel:01473353636" class="btn-secondary">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+01473 353636
+</a>
+</div>
+</div>
+<div class="gas-safe-float">
+<div class="gas-safe-icon">
+<svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 2.18l7 3.82v4c0 4.63-3.07 8.93-7 10.11-3.93-1.18-7-5.48-7-10.11V8l7-3.82zM10 12l-2 2 4 4 6-8-2-2-4 5.33L10 12z"/></svg>
+</div>
+<div class="gas-safe-text">
+<strong>Gas Safe Registered</strong>
+<span>Fully certified engineers</span>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img-wrap reveal-left">
+<img src="https://images.pexels.com/photos/8486968/pexels-photo-8486968.jpeg?auto=compress&cs=tinysrgb&w=800" alt="ACLJ Plumbing team at work">
+<div class="about-img-badge">10+ Years Experience</div>
+</div>
+<div class="about-text reveal-right">
+<div class="section-label">About Us</div>
+<h2 class="section-title">We Don't Just Fix Pipes. We Build Trust.</h2>
+<p>ACLJ Plumbing and Heating has been the go-to name for plumbing and heating in Ipswich and Suffolk for over a decade. We're a family-run business that genuinely cares about doing the job right, first time, every time.</p>
+<p>Every one of our engineers is Gas Safe registered, fully insured, and committed to delivering work you can rely on. No shortcuts. No hidden costs. Just honest, professional service.</p>
+<div class="about-features">
+<div class="about-feature">
+<div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+<span>Gas Safe Registered</span>
+</div>
+<div class="about-feature">
+<div class="icon-circle"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+<span>24/7 Emergency</span>
+</div>
+<div class="about-feature">
+<div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+<span>Fully Insured</span>
+</div>
+<div class="about-feature">
+<div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+<span>Family Owned</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES BENTO -->
+<section class="section section-alt" id="services">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">Our Services</div>
+<h2 class="section-title">Everything Your Home Needs, Covered</h2>
+<p class="section-subtitle mx-auto">Whether it's a dripping tap or a full boiler installation, we've got the skills and experience to handle it all.</p>
+</div>
+<div class="bento-grid">
+<!-- Boiler Installation - Featured -->
+<div class="bento-card featured reveal">
+<span class="bento-tag">Most Popular</span>
+<div class="bento-icon">
+<svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/><line x1="12" y1="6" x2="12" y2="6.01"/></svg>
+</div>
+<h3 class="bento-title">Boiler Installation & Repair</h3>
+<p class="bento-desc">New boiler installations, replacements, and repairs from Gas Safe registered engineers. We work with all major brands including Worcester Bosch, Vaillant, and Baxi. Finance options available.</p>
+</div>
+<!-- Central Heating -->
+<div class="bento-card reveal">
+<div class="bento-icon">
+<svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5c0 4 5 8 5 11a5 5 0 0 0 5-5c0-4-5-8-5-11z"/><path d="M12 18v4"/></svg>
+</div>
+<h3 class="bento-title">Central Heating</h3>
+<p class="bento-desc">Full system installations, radiator upgrades, and underfloor heating to keep your home comfortable year-round.</p>
+</div>
+<!-- Bathroom -->
+<div class="bento-card reveal">
+<div class="bento-icon">
+<svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h1"/><line x1="4" y1="20" x2="4" y2="22"/><line x1="20" y1="20" x2="20" y2="22"/></svg>
+</div>
+<h3 class="bento-title">Bathroom Fitting</h3>
+<p class="bento-desc">Complete bathroom design and fitting. From simple suite swaps to full renovations with tiling and plumbing.</p>
+</div>
+<!-- Emergency - Amber -->
+<div class="bento-card amber reveal">
+<span class="bento-tag" style="background:rgba(255,255,255,.2)">24/7</span>
+<div class="bento-icon">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+</div>
+<h3 class="bento-title">Emergency Call-Outs</h3>
+<p class="bento-desc">Burst pipe? Boiler breakdown? We're available 24/7 for emergencies. Fast response times across Ipswich and Suffolk.</p>
+</div>
+<!-- Gas Safety -->
+<div class="bento-card reveal">
+<div class="bento-icon">
+<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<h3 class="bento-title">Gas Safety Checks</h3>
+<p class="bento-desc">Landlord gas safety certificates (CP12), annual services, and carbon monoxide testing to keep you safe and legal.</p>
+</div>
+<!-- Power Flush -->
+<div class="bento-card reveal">
+<div class="bento-icon">
+<svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+</div>
+<h3 class="bento-title">Power Flushing</h3>
+<p class="bento-desc">Remove sludge and debris from your heating system. Improves efficiency, cuts energy bills, and extends boiler life.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GAS SAFE CERTIFICATION -->
+<section class="section" id="gas-safe">
+<div class="container">
+<div class="gas-safe-showcase">
+<div class="gas-cert-visual reveal-left">
+<div class="gas-cert-card">
+<div class="gas-cert-inner">
+<div class="gas-cert-shield">
+<svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 2.18l7 3.82v4c0 4.63-3.07 8.93-7 10.11-3.93-1.18-7-5.48-7-10.11V8l7-3.82zM10 12l-2 2 4 4 6-8-2-2-4 5.33L10 12z"/></svg>
+</div>
+<h3>Gas Safe Registered</h3>
+<p>Official certification for your peace of mind</p>
+<div class="gas-cert-reg">ACLJ Plumbing & Heating</div>
+</div>
+</div>
+</div>
+<div class="gas-info reveal-right">
+<div class="section-label">Your Safety Matters</div>
+<h3 class="section-title">Gas Safe Certified. No Compromises.</h3>
+<p>By law, anyone working with gas appliances in the UK must be on the Gas Safe Register. Every single engineer at ACLJ Plumbing is fully registered and carries their ID card on every job. You can (and should) ask to see it.</p>
+<p>We take gas safety seriously because your family's wellbeing depends on it. From boiler installations to annual safety checks, everything we do meets the highest industry standards.</p>
+<ul class="gas-checklist">
+<li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> All engineers Gas Safe registered</li>
+<li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Landlord safety certificates (CP12)</li>
+<li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Carbon monoxide testing included</li>
+<li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Annual servicing and maintenance</li>
+<li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Fully insured for every job</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section section-alt" id="gallery">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">Our Work</div>
+<h2 class="section-title">Recent Projects</h2>
+<p class="section-subtitle mx-auto">Take a look at some of our recent installations and repairs across Ipswich and Suffolk.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item reveal" onclick="openLightbox(0)">
+<img src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Boiler installation project">
+<div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+</div>
+<div class="gallery-item reveal" onclick="openLightbox(1)">
+<img src="https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bathroom fitting project">
+<div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+</div>
+<div class="gallery-item reveal" onclick="openLightbox(2)">
+<img src="https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Central heating system">
+<div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+</div>
+<div class="gallery-item reveal" onclick="openLightbox(3)">
+<img src="https://images.pexels.com/photos/3935350/pexels-photo-3935350.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Emergency plumbing repair">
+<div class="gallery-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+<button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+<img src="" alt="Gallery image" id="lightboxImg">
+<button class="lightbox-nav lightbox-next" onclick="navLightbox(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+</div>
+
+<!-- PROCESS TIMELINE -->
+<section class="section" id="process">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">How It Works</div>
+<h2 class="section-title">Simple From Start to Finish</h2>
+<p class="section-subtitle mx-auto">We've made getting your plumbing and heating sorted as straightforward as possible. Here's what to expect.</p>
+</div>
+<div style="max-width:700px;margin:0 auto">
+<div class="timeline">
+<div class="timeline-item reveal">
+<div class="timeline-dot"><span></span></div>
+<div class="timeline-step">Step 1</div>
+<h4>Get in Touch</h4>
+<p>Give us a call on 01473 353636 or fill in the quote form. Tell us what's going on and we'll take it from there. No pressure, just honest advice.</p>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-dot"><span></span></div>
+<div class="timeline-step">Step 2</div>
+<h4>Free Assessment</h4>
+<p>We'll come round, take a proper look at what needs doing, and give you a clear, written quote. No hidden charges. No surprises down the line.</p>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-dot"><span></span></div>
+<div class="timeline-step">Step 3</div>
+<h4>We Get to Work</h4>
+<p>Our Gas Safe registered engineers carry out the work to the highest standard. We're tidy, respectful, and we always clean up after ourselves.</p>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-dot"><span></span></div>
+<div class="timeline-step">Step 4</div>
+<h4>Guaranteed Satisfaction</h4>
+<p>We walk you through everything, make sure you're happy, and leave you with all the paperwork. Plus, all our work comes guaranteed.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section section-dark">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">Why Choose Us</div>
+<h2 class="section-title">What Sets ACLJ Apart</h2>
+<p class="section-subtitle mx-auto">There are plenty of plumbers out there. Here's why Ipswich homeowners keep coming back to us.</p>
+</div>
+<div class="why-grid">
+<div class="why-card reveal">
+<div class="why-icon">
+<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<h4>Gas Safe. Always.</h4>
+<p>Every engineer on our team is Gas Safe registered. We carry our ID cards on every single job and you're welcome to check. Your safety isn't something we take shortcuts on.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+</div>
+<h4>Transparent Pricing</h4>
+<p>We give you a clear, written quote before any work starts. No hidden fees, no surprise charges on the invoice. The price we quote is the price you pay.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<h4>Guaranteed Work</h4>
+<p>All our installations and repairs come with a written guarantee. If something isn't right, we come back and fix it. Simple as that. No arguments, no excuses.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<h4>On Time, Every Time</h4>
+<p>We know your time matters. That's why we show up when we say we will, get the job done efficiently, and always clean up after ourselves before we leave.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h4>Family Values</h4>
+<p>We're a family-run business, not some faceless corporation. You'll deal with real people who genuinely care about doing a good job for you and your home.</p>
+</div>
+<div class="why-card reveal">
+<div class="why-icon">
+<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</div>
+<h4>5-Star Reviews</h4>
+<p>Our reputation speaks for itself. We've built our business on word-of-mouth recommendations and consistently excellent feedback from customers across Suffolk.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="section section-dark" style="padding-top:0">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">By the Numbers</div>
+<h2 class="section-title">Trusted Across Ipswich & Suffolk</h2>
+</div>
+<div class="stats-bar">
+<div class="stat-card reveal">
+<div class="stat-number"><span class="counter" data-target="10">0</span><span class="suffix">+</span></div>
+<div class="stat-label">Years Experience</div>
+</div>
+<div class="stat-card reveal">
+<div class="stat-number"><span class="counter" data-target="100">0</span><span class="suffix">%</span></div>
+<div class="stat-label">Gas Safe Registered</div>
+</div>
+<div class="stat-card reveal">
+<div class="stat-number"><span class="counter" data-target="1000">0</span><span class="suffix">+</span></div>
+<div class="stat-label">Jobs Completed</div>
+</div>
+<div class="stat-card reveal">
+<div class="stat-number">24<span class="suffix">/7</span></div>
+<div class="stat-label">Emergency Call-Outs</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">Testimonials</div>
+<h2 class="section-title">What Our Customers Say</h2>
+<p class="section-subtitle mx-auto">Don't just take our word for it. Here's what homeowners across Ipswich have to say about working with us.</p>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">"Had a boiler emergency on a Saturday night and ACLJ were there within the hour. Fixed the problem quickly, explained everything, and the price was more than fair. Absolute lifesavers."</p>
+<div class="testimonial-author">
+<img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=80" alt="James T." class="testimonial-avatar">
+<div><div class="testimonial-name">James T.</div><div class="testimonial-role">Ipswich Homeowner</div></div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">"We had our entire bathroom refitted by ACLJ and it looks incredible. They were professional from day one, kept everything tidy, and finished on time. Couldn't recommend them enough."</p>
+<div class="testimonial-author">
+<img src="https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Sarah M." class="testimonial-avatar">
+<div><div class="testimonial-name">Sarah M.</div><div class="testimonial-role">Woodbridge Resident</div></div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">"ACLJ have done our annual gas safety checks for three years running now. Always on time, always thorough, and they actually explain what they're checking and why. Really solid service."</p>
+<div class="testimonial-author">
+<img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=80" alt="David R." class="testimonial-avatar">
+<div><div class="testimonial-name">David R.</div><div class="testimonial-role">Landlord, Stowmarket</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COVERAGE -->
+<section class="section section-alt" id="coverage">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label" style="justify-content:center">Service Area</div>
+<h2 class="section-title">Covering Ipswich & Across Suffolk</h2>
+<p class="section-subtitle mx-auto">Based in Ipswich, we serve homes and businesses right across Suffolk. Here are some of the areas we cover regularly.</p>
+</div>
+<div class="coverage-content">
+<div class="coverage-areas reveal-left">
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Ipswich</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Woodbridge</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Stowmarket</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Felixstowe</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Hadleigh</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Needham Market</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kesgrave</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Martlesham</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Bury St Edmunds</div>
+<div class="area-chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Sudbury</div>
+</div>
+<div class="coverage-card reveal-right">
+<h3>Not Sure If We Cover Your Area?</h3>
+<p>We're always happy to travel a bit further for the right job. If you're anywhere in Suffolk or the surrounding counties, give us a ring and we'll sort something out.</p>
+<a href="tel:01473353636">
+Call 01473 353636
+<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- QUOTE FORM -->
+<section class="section" id="quote">
+<div class="container">
+<div class="form-grid">
+<div class="form-info reveal-left">
+<div class="section-label">Get a Quote</div>
+<h3 class="section-title">Ready to Get Started?</h3>
+<p>Fill in the form and we'll get back to you within a few hours. Or if it's urgent, just pick up the phone. We're always happy to help.</p>
+<div class="form-contact-item">
+<div class="form-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+<div><strong>Phone</strong><span>01473 353636</span></div>
+</div>
+<div class="form-contact-item">
+<div class="form-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+<div><strong>Email</strong><span>info@aclj-plumbing.co.uk</span></div>
+</div>
+<div class="form-contact-item">
+<div class="form-contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+<div><strong>Location</strong><span>Ipswich, Suffolk</span></div>
+</div>
+<div class="form-contact-item">
+<div class="form-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+<div><strong>Hours</strong><span>Mon-Fri: 8am-6pm | Emergency: 24/7</span></div>
+</div>
+</div>
+<div class="reveal-right">
+<form class="quote-form" onsubmit="handleSubmit(event)">
+<div class="form-row">
+<div class="form-group">
+<label for="name">Full Name</label>
+<input type="text" id="name" placeholder="Your name" required>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" placeholder="Your phone number" required>
+</div>
+</div>
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" placeholder="you@example.com" required>
+</div>
+<div class="form-group">
+<label for="service">Service Needed</label>
+<select id="service" required>
+<option value="" disabled selected>Select a service</option>
+<option>Boiler Installation</option>
+<option>Boiler Repair</option>
+<option>Central Heating</option>
+<option>Bathroom Fitting</option>
+<option>Gas Safety Check (CP12)</option>
+<option>Power Flushing</option>
+<option>Emergency Call-Out</option>
+<option>General Plumbing</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-group">
+<label for="message">Tell Us More</label>
+<textarea id="message" placeholder="Describe what you need help with..."></textarea>
+</div>
+<button type="submit" class="form-submit">Request Free Quote</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>ACLJ <span>Plumbing</span></h3>
+<p>Ipswich's trusted plumbing and heating engineers. Gas Safe registered, fully insured, and committed to delivering honest, quality service every single time.</p>
+<div class="footer-gas-badge">
+<svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+<span>Gas Safe Registered</span>
+</div>
+</div>
+<div>
+<h4>Services</h4>
+<ul>
+<li><a href="#services">Boiler Installation</a></li>
+<li><a href="#services">Central Heating</a></li>
+<li><a href="#services">Bathroom Fitting</a></li>
+<li><a href="#services">Emergency Repairs</a></li>
+<li><a href="#services">Gas Safety Checks</a></li>
+<li><a href="#services">Power Flushing</a></li>
+</ul>
+</div>
+<div>
+<h4>Company</h4>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#gas-safe">Gas Safe</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#testimonials">Reviews</a></li>
+<li><a href="#coverage">Coverage</a></li>
+<li><a href="#quote">Get a Quote</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li><a href="tel:01473353636">01473 353636</a></li>
+<li><a href="mailto:info@aclj-plumbing.co.uk">info@aclj-plumbing.co.uk</a></li>
+<li><a href="#coverage">Ipswich, Suffolk</a></li>
+<li><a href="#quote">Request a Quote</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 ACLJ Plumbing and Heating. All rights reserved.</p>
+<p>Site designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+</div>
+</div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- NEOCODE POPUP -->
+<div class="nc-popup-overlay" id="ncPopup">
+<div class="nc-popup">
+<button class="nc-popup-close" onclick="closeNcPopup()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+<div class="nc-badge">Demo Preview</div>
+<h3>Like What You See?</h3>
+<p>This is a preview of what your new website could look like. Built by NeoCode Studio, it's designed to bring you more customers, more trust, and more bookings. Ready to make it yours?</p>
+<a href="https://neocodestudio.co.uk/contact" target="_blank" class="nc-btn">Let's Talk About Your Site</a>
+</div>
+</div>
+
+<script>
+/* NAVBAR SCROLL */
+(function(){
+var nav=document.getElementById('navbar');
+var heroBg=document.getElementById('heroBg');
+window.addEventListener('scroll',function(){
+var s=window.scrollY;
+if(s>60)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+/* Parallax */
+if(heroBg&&s<window.innerHeight){heroBg.style.transform='scale(1.05) translateY('+s*0.3+'px)';}
+},{passive:true});
+})();
+
+/* SCROLL TO TOP BUTTON */
+(function(){
+var btn=document.getElementById('scrollTop');
+window.addEventListener('scroll',function(){
+if(window.scrollY>500)btn.classList.add('visible');
+else btn.classList.remove('visible');
+},{passive:true});
+})();
+
+/* HAMBURGER */
+(function(){
+var btn=document.getElementById('hamburger');
+var links=document.getElementById('navLinks');
+var overlay=document.getElementById('mobileOverlay');
+function toggle(){
+btn.classList.toggle('active');
+links.classList.toggle('open');
+overlay.classList.toggle('show');
+document.body.style.overflow=links.classList.contains('open')?'hidden':'';
+}
+btn.addEventListener('click',toggle);
+overlay.addEventListener('click',toggle);
+links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+if(links.classList.contains('open'))toggle();
+});});
+})();
+
+/* INTERSECTION OBSERVER - REVEAL */
+(function(){
+var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('visible');});return;}
+var obs=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}
+});
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+els.forEach(function(e){obs.observe(e);});
+})();
+
+/* ANIMATED COUNTERS */
+(function(){
+var counters=document.querySelectorAll('.counter');
+var started={};
+if(!('IntersectionObserver' in window))return;
+var obs=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(!entry.isIntersecting)return;
+var el=entry.target;
+var id=el.dataset.target;
+if(started[id])return;
+started[id]=true;
+var target=parseInt(id);
+var duration=2000;
+var step=Math.max(1,Math.floor(target/60));
+var current=0;
+var interval=setInterval(function(){
+current+=step;
+if(current>=target){current=target;clearInterval(interval);}
+el.textContent=current.toLocaleString();
+},duration/60);
+obs.unobserve(el);
+});
+},{threshold:0.5});
+counters.forEach(function(c){obs.observe(c);});
+})();
+
+/* LIGHTBOX */
+var galleryImages=[
+'https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=1200',
+'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=1200',
+'https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=1200',
+'https://images.pexels.com/photos/3935350/pexels-photo-3935350.jpeg?auto=compress&cs=tinysrgb&w=1200'
+];
+var currentLightbox=0;
+function openLightbox(i){
+currentLightbox=i;
+document.getElementById('lightboxImg').src=galleryImages[i];
+document.getElementById('lightbox').classList.add('active');
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='';
+}
+function navLightbox(dir){
+currentLightbox=(currentLightbox+dir+galleryImages.length)%galleryImages.length;
+document.getElementById('lightboxImg').src=galleryImages[currentLightbox];
+}
+document.getElementById('lightbox').addEventListener('click',function(e){
+if(e.target===this)closeLightbox();
+});
+document.addEventListener('keydown',function(e){
+if(!document.getElementById('lightbox').classList.contains('active'))return;
+if(e.key==='Escape')closeLightbox();
+if(e.key==='ArrowLeft')navLightbox(-1);
+if(e.key==='ArrowRight')navLightbox(1);
+});
+
+/* FORM */
+function handleSubmit(e){
+e.preventDefault();
+var btn=e.target.querySelector('.form-submit');
+btn.textContent='Sending...';
+btn.disabled=true;
+setTimeout(function(){
+btn.textContent='Quote Requested!';
+btn.style.background='#10B981';
+e.target.reset();
+setTimeout(function(){
+btn.textContent='Request Free Quote';
+btn.style.background='';
+btn.disabled=false;
+},3000);
+},1500);
+}
+
+/* NEOCODE POPUP AT 70% SCROLL */
+(function(){
+var shown=false;
+var popup=document.getElementById('ncPopup');
+window.addEventListener('scroll',function(){
+if(shown)return;
+var scrollPercent=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+if(scrollPercent>=70){
+shown=true;
+popup.classList.add('show');
+}
+},{passive:true});
+})();
+function closeNcPopup(){
+document.getElementById('ncPopup').classList.remove('show');
+}
+document.getElementById('ncPopup').addEventListener('click',function(e){
+if(e.target===this)closeNcPopup();
+});
+</script>
+</body>
+</html>
