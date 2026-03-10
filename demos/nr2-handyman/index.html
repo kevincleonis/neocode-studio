@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NR2 Handyman | Professional Handyman Services in Norwich, Norfolk</title>
+    <meta name="description" content="NR2 Handyman - 20+ years experience, DBS checked & fully insured handyman services in Norwich, Norfolk. Carpentry, plumbing, painting, tiling & more.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #ecf0f1;
+            background: #1a252f;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* ===== UTILITY ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(230, 126, 34, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(230, 126, 34, 0.6);
+        }
+        .btn-outline {
+            border: 2px solid #e67e22;
+            color: #e67e22;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #e67e22;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ===== REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        nav.scrolled {
+            background: rgba(26, 37, 47, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: #fff;
+        }
+        .nav-logo span { color: #e67e22; }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #ecf0f1;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e67e22;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: #e67e22; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            padding: 10px 24px !important;
+            border-radius: 50px;
+            color: #fff !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { box-shadow: 0 4px 20px rgba(230,126,34,0.5); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #ecf0f1;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #1a252f;
+                flex-direction: column;
+                padding: 100px 40px;
+                gap: 25px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            }
+            .nav-links.open { right: 0; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(26,37,47,0.85), rgba(44,62,80,0.8)),
+                        url('https://images.pexels.com/photos/5691598/pexels-photo-5691598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat;
+            background-attachment: fixed;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+        }
+        .hero-content { max-width: 650px; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(230, 126, 34, 0.15);
+            border: 1px solid rgba(230, 126, 34, 0.4);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e67e22;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .hero-badge svg { vertical-align: middle; margin-right: 6px; width: 16px; height: 16px; }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .hero-trust {
+            display: flex;
+            gap: 30px;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+        .hero-trust-item svg { color: #e67e22; width: 20px; height: 20px; flex-shrink: 0; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%); }
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 80px 0 100px;
+            background: #2c3e50;
+            clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+            margin-top: -6%;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(230, 126, 34, 0.2);
+            transition: transform 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            background: rgba(230, 126, 34, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-icon svg { width: 24px; height: 24px; color: #e67e22; }
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+        .stat-label { color: #bdc3c7; font-size: 0.95rem; }
+
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats { clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%); }
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 100px 0;
+            background: #1a252f;
+            margin-top: -6%;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .about-image img { width: 100%; height: 450px; object-fit: cover; }
+        .about-image-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .about-text p {
+            color: #bdc3c7;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.5rem 0 2rem;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .about-feature svg { color: #e67e22; width: 20px; height: 20px; flex-shrink: 0; }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 30px; }
+            .about-image img { height: 300px; }
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 100px 0;
+            background: #2c3e50;
+            clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .service-card {
+            background: rgba(26, 37, 47, 0.7);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            border: 2px solid rgba(230, 126, 34, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e67e22, #f39c12);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(230, 126, 34, 0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+            background: rgba(230, 126, 34, 0.12);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(230, 126, 34, 0.2);
+        }
+        .service-icon svg { width: 30px; height: 30px; color: #e67e22; }
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ecf0f1;
+        }
+        .service-card p {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .services-grid { grid-template-columns: 1fr; } }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: 100px 0;
+            background: #1a252f;
+            margin-top: -5%;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(230, 126, 34, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 2001;
+            background: none;
+            border: none;
+            font-family: sans-serif;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 100px 0;
+            background: #2c3e50;
+            clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: rgba(26, 37, 47, 0.7);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(230, 126, 34, 0.15);
+            position: relative;
+        }
+        .testimonial-stars {
+            color: #f39c12;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            color: #bdc3c7;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .testimonial-location {
+            color: #95a5a6;
+            font-size: 0.8rem;
+        }
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 4rem;
+            color: rgba(230, 126, 34, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonials { clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%); }
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 100px 0;
+            background: #1a252f;
+            margin-top: -5%;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-info h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .contact-info > p {
+            color: #bdc3c7;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .contact-detail-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(230, 126, 34, 0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(230, 126, 34, 0.2);
+        }
+        .contact-detail-icon svg { width: 22px; height: 22px; color: #e67e22; }
+        .contact-detail-text strong {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .contact-detail-text span {
+            color: #95a5a6;
+            font-size: 0.95rem;
+        }
+        .contact-detail-text a {
+            color: #95a5a6;
+            transition: color 0.3s;
+        }
+        .contact-detail-text a:hover { color: #e67e22; }
+
+        .contact-form {
+            background: rgba(44, 62, 80, 0.5);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(230, 126, 34, 0.15);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #ecf0f1;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 2px solid rgba(230, 126, 34, 0.15);
+            background: rgba(26, 37, 47, 0.8);
+            color: #ecf0f1;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group select option { background: #1a252f; }
+        .contact-form .btn { width: 100%; text-align: center; font-size: 1.05rem; }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #151d25;
+            padding: 50px 0 25px;
+            border-top: 1px solid rgba(230, 126, 34, 0.15);
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-brand .nav-logo { margin-bottom: 12px; }
+        .footer-brand p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+        .footer-links h4 {
+            color: #e67e22;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            display: block;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: #e67e22; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-bottom p {
+            color: #566573;
+            font-size: 0.8rem;
+        }
+        .footer-bottom a {
+            color: #e67e22;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .footer-bottom a:hover { color: #f39c12; }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-popup {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1a252f, #2c3e50);
+            border: 1px solid rgba(230, 126, 34, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 340px;
+            z-index: 1500;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: popupSlide 0.5s ease;
+        }
+        @keyframes popupSlide {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .neocode-popup.show { display: block; }
+        .neocode-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .neocode-popup h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #e67e22;
+        }
+        .neocode-popup p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .neocode-popup .btn { font-size: 0.85rem; padding: 10px 24px; }
+
+        @media (max-width: 480px) {
+            .neocode-popup {
+                left: 15px;
+                right: 15px;
+                max-width: none;
+                bottom: 15px;
+            }
+        }
+
+        /* ===== FLOATING CTA ===== */
+        .floating-cta {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 25px rgba(230, 126, 34, 0.5);
+            z-index: 999;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .floating-cta:hover { transform: scale(1.1); }
+        .floating-cta svg { width: 26px; height: 26px; color: #fff; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">NR2 <span>Handyman</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    Norwich's Trusted Handyman
+                </div>
+                <h1>Your Home Deserves a <span class="highlight">Proper Handyman</span></h1>
+                <p>From dodgy shelves to full kitchen tiling, NR2 Handyman has been keeping Norwich homes in top shape for over 20 years. DBS checked, fully insured, and always on time.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                    <a href="tel:07813336686" class="btn btn-outline">Call Now</a>
+                </div>
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        DBS Checked
+                    </div>
+                    <div class="hero-trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        Fully Insured
+                    </div>
+                    <div class="hero-trust-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        Free Estimates
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="stat-number" data-target="20" data-suffix="+">20+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="stat-number">DBS</div>
+                    <div class="stat-label">Checked & Verified</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Fully Insured</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="stat-number" data-target="1000" data-suffix="+" data-comma="true">1,000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/5691593/pexels-photo-5691593.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="NR2 Handyman at work in Norwich">
+                    <div class="about-image-badge">20+ Years</div>
+                </div>
+                <div class="about-text reveal">
+                    <h2>Norwich's Most Trusted Handyman</h2>
+                    <p>When something needs fixing, building, or improving in your home, you want someone you can trust. That's where NR2 Handyman comes in. With over two decades of hands-on experience across Norwich and Norfolk, there's not much we haven't seen or sorted.</p>
+                    <p>We're DBS checked and fully insured, so you've got complete peace of mind when we're working in your home. No cowboys, no surprises on the bill, just honest work done right the first time.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            DBS Checked
+                        </div>
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            Fully Insured
+                        </div>
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            Free Estimates
+                        </div>
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            No Hidden Costs
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Book Your Handyman</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title reveal">What We Do</h2>
+            <p class="section-subtitle reveal">Whatever the job, big or small, we've got the tools and the know-how to get it done properly.</p>
+            <div class="services-grid">
+                <!-- Carpentry -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6V2"/><path d="M12 22v-4"/></svg>
+                    </div>
+                    <h3>Carpentry</h3>
+                    <p>Custom woodwork, repairs, skirting boards, architraves, and bespoke joinery solutions for your home.</p>
+                </div>
+                <!-- Plumbing -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v6"/><path d="M18 2v6"/><path d="M6 8a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4"/><path d="M12 12v10"/></svg>
+                    </div>
+                    <h3>Plumbing</h3>
+                    <p>Leaky taps, toilet repairs, new fixtures, radiator bleeding, and general plumbing maintenance.</p>
+                </div>
+                <!-- Painting -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M12 11v8"/><path d="M8 19h8"/></svg>
+                    </div>
+                    <h3>Painting</h3>
+                    <p>Interior and exterior painting, feature walls, wallpapering, and professional finishes throughout.</p>
+                </div>
+                <!-- Tiling -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <h3>Tiling</h3>
+                    <p>Kitchen splashbacks, bathroom tiling, floor tiles, and re-grouting to refresh tired spaces.</p>
+                </div>
+                <!-- Flat Pack -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>Flat Pack Assembly</h3>
+                    <p>IKEA, Argos, or any flat pack furniture assembled quickly and correctly. We won't leave spare bolts.</p>
+                </div>
+                <!-- Shelving -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M3 21h18"/><path d="M3 3v18"/><path d="M21 3v18"/></svg>
+                    </div>
+                    <h3>Shelving & Storage</h3>
+                    <p>Floating shelves, fitted wardrobes, bespoke storage units, and clever solutions for awkward spaces.</p>
+                </div>
+                <!-- Door Hanging -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h11a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><circle cx="14" cy="12" r="1"/></svg>
+                    </div>
+                    <h3>Door Hanging</h3>
+                    <p>New door fitting, trimming, hinge replacement, and lock installation for internal and external doors.</p>
+                </div>
+                <!-- General Repairs -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>General Repairs</h3>
+                    <p>Odd jobs, wall repairs, curtain poles, TV mounting, picture hanging, and everything in between.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title reveal">Our Work</h2>
+            <p class="section-subtitle reveal">A few recent projects from across Norwich and Norfolk. Every job gets the same care and attention.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691640/pexels-photo-5691640.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Carpentry project by NR2 Handyman">
+                    <div class="gallery-overlay"><span>Carpentry Work</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Home repair work in Norwich">
+                    <div class="gallery-overlay"><span>Home Repairs</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691612/pexels-photo-5691612.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional tiling work">
+                    <div class="gallery-overlay"><span>Tiling Project</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Kitchen renovation in Norfolk">
+                    <div class="gallery-overlay"><span>Kitchen Renovation</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691617/pexels-photo-5691617.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Painting and decorating work">
+                    <div class="gallery-overlay"><span>Painting & Decorating</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691598/pexels-photo-5691598.jpeg?auto=compress&cs=tinysrgb&w=600" alt="General handyman work in Norwich">
+                    <div class="gallery-overlay"><span>General Handyman</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="Gallery image" id="lightboxImg">
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title reveal">What Our Customers Say</h2>
+            <p class="section-subtitle reveal">Don't just take our word for it. Here's what folks across Norwich have to say about working with us.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Absolutely brilliant job on our bathroom tiling. Turned up on time, cleaned up after himself, and the finish is spot on. Won't be calling anyone else from now on.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JH</div>
+                        <div>
+                            <div class="testimonial-name">James H.</div>
+                            <div class="testimonial-location">NR2, Norwich</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Had a long list of odd jobs that had been building up for months. Got through the lot in a day and the prices were really fair. Highly recommend to anyone in the Norwich area.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SR</div>
+                        <div>
+                            <div class="testimonial-name">Sarah R.</div>
+                            <div class="testimonial-location">Eaton, Norwich</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>He hung three new doors and fitted new handles throughout. The attention to detail was impressive and he left the place spotless. A proper tradesman, refreshing to find these days.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MK</div>
+                        <div>
+                            <div class="testimonial-name">Mark K.</div>
+                            <div class="testimonial-location">Thorpe, Norwich</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h2>Get in Touch</h2>
+                    <p>Got a job that needs doing? Drop us a message or give us a ring. We offer free estimates with no obligation, and we'll get back to you as quickly as we can.</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-detail-text">
+                            <strong>Phone</strong>
+                            <a href="tel:07813336686">07813 336686</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-detail-text">
+                            <strong>Email</strong>
+                            <a href="mailto:theNR2handyman@gmail.com">theNR2handyman@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-detail-text">
+                            <strong>Location</strong>
+                            <span>Norwich, Norfolk</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="07xxx xxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="carpentry">Carpentry</option>
+                                <option value="plumbing">Plumbing</option>
+                                <option value="painting">Painting</option>
+                                <option value="tiling">Tiling</option>
+                                <option value="flatpack">Flat Pack Assembly</option>
+                                <option value="shelving">Shelving & Storage</option>
+                                <option value="doors">Door Hanging</option>
+                                <option value="repairs">General Repairs</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About the Job</label>
+                            <textarea id="message" name="message" placeholder="Describe what you need doing..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-logo">NR2 <span>Handyman</span></div>
+                    <p>Professional handyman services across Norwich and Norfolk. Over 20 years of experience, DBS checked and fully insured.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="#services">Carpentry</a>
+                    <a href="#services">Plumbing</a>
+                    <a href="#services">Painting</a>
+                    <a href="#services">Tiling</a>
+                </div>
+                <div class="footer-links">
+                    <h4>More Services</h4>
+                    <a href="#services">Flat Pack Assembly</a>
+                    <a href="#services">Shelving & Storage</a>
+                    <a href="#services">Door Hanging</a>
+                    <a href="#services">General Repairs</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:07813336686">07813 336686</a>
+                    <a href="mailto:theNR2handyman@gmail.com">theNR2handyman@gmail.com</a>
+                    <a href="#contact">Get a Quote</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NR2 Handyman. All rights reserved.</p>
+                <p>Demo built by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING CTA -->
+    <a href="tel:07813336686" class="floating-cta" aria-label="Call NR2 Handyman">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+
+    <!-- NEOCODE POPUP -->
+    <div class="neocode-popup" id="neocodePopup">
+        <button class="neocode-popup-close" onclick="closePopup()">&times;</button>
+        <h4>Like What You See?</h4>
+        <p>This demo was built by NeoCode Studio. We design premium websites that actually bring in customers. Want one for your business?</p>
+        <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn btn-primary">Get Your Free Quote</a>
+    </div>
+
+    <script>
+        /* ===== HAMBURGER MENU ===== */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        /* ===== NAVBAR SCROLL ===== */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        /* ===== REVEAL ON SCROLL (IntersectionObserver) ===== */
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* ===== LIGHTBOX ===== */
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        /* ===== NEOCODE POPUP AT 70% SCROLL ===== */
+        let popupShown = false;
+        const neocodePopup = document.getElementById('neocodePopup');
+
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                neocodePopup.classList.add('show');
+                popupShown = true;
+            }
+        });
+
+        function closePopup() {
+            neocodePopup.classList.remove('show');
+        }
+
+        /* ===== FORM HANDLER ===== */
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button');
+            btn.textContent = 'Sending...';
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                btn.textContent = 'Message Sent!';
+                btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                btn.style.opacity = '1';
+                form.reset();
+
+                setTimeout(() => {
+                    btn.textContent = 'Send Message';
+                    btn.style.background = 'linear-gradient(135deg, #e67e22, #d35400)';
+                }, 3000);
+            }, 1500);
+        }
+
+        /* ===== PARALLAX EFFECT ===== */
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.scrollY;
+            hero.style.backgroundPositionY = (scrolled * 0.4) + 'px';
+        });
+
+        /* ===== STAT COUNTER ANIMATION ===== */
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    const useComma = el.dataset.comma === 'true';
+                    animateCounter(el, target, suffix, useComma);
+                    statsObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => statsObserver.observe(el));
+
+        function animateCounter(el, target, suffix, useComma) {
+            let current = 0;
+            const step = Math.ceil(target / 50);
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                const display = useComma ? current.toLocaleString() : current;
+                el.textContent = display + suffix;
+            }, 30);
+        }
+    </script>
+</body>
+</html>

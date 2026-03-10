@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bee Clean Cleaning Service | Carpet & Upholstery Cleaning in Stoke-on-Trent</title>
+    <meta name="description" content="Professional carpet and upholstery cleaning in Stoke-on-Trent. Eco-friendly, same day service. 10+ years experience. Call 07885 386820.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --charcoal: #1d1d1d;
+            --charcoal-light: #2a2a2a;
+            --honey: #f0b429;
+            --honey-dark: #d4a017;
+            --honey-light: #f5c94c;
+            --cream: #fff8e7;
+            --cream-dark: #f5ecd4;
+            --white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --glass-bg: rgba(29, 29, 29, 0.75);
+            --glass-border: rgba(240, 180, 41, 0.2);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--charcoal);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; color: var(--cream); }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== BEE STRIPE ACCENT ===== */
+        .bee-stripe {
+            height: 6px;
+            background: repeating-linear-gradient(90deg, var(--charcoal) 0px, var(--charcoal) 20px, var(--honey) 20px, var(--honey) 40px);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(29, 29, 29, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        nav .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--honey);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo .bee-icon { font-size: 1.3rem; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--honey);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--honey); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--honey);
+            color: var(--charcoal);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+        .nav-cta:hover { background: var(--honey-light); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(240, 180, 41, 0.4); }
+
+        /* Hamburger */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .hamburger span { width: 28px; height: 3px; background: var(--honey); border-radius: 3px; transition: all 0.3s; }
+        #nav-toggle { display: none; }
+        #nav-toggle:checked ~ .nav-links {
+            transform: translateX(0);
+        }
+        #nav-toggle:checked ~ .hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        #nav-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+        #nav-toggle:checked ~ .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: var(--charcoal);
+                flex-direction: column;
+                padding: 100px 40px;
+                gap: 25px;
+                transform: translateX(100%);
+                transition: transform 0.4s ease;
+                border-left: 2px solid var(--honey);
+            }
+            .nav-cta { display: none; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(29,29,29,0.92) 0%, rgba(29,29,29,0.7) 50%, rgba(29,29,29,0.85) 100%);
+        }
+        /* Honey Drip Animation */
+        .honey-drips {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .drip {
+            position: absolute;
+            top: -20px;
+            width: 18px;
+            background: linear-gradient(180deg, var(--honey), var(--honey-dark));
+            border-radius: 0 0 50% 50%;
+            opacity: 0.5;
+            animation: dripFall linear infinite;
+        }
+        .drip:nth-child(1) { left: 8%; height: 60px; animation-duration: 4s; animation-delay: 0s; }
+        .drip:nth-child(2) { left: 22%; height: 80px; animation-duration: 5s; animation-delay: 1s; }
+        .drip:nth-child(3) { left: 38%; height: 50px; animation-duration: 3.5s; animation-delay: 0.5s; }
+        .drip:nth-child(4) { left: 55%; height: 70px; animation-duration: 4.5s; animation-delay: 2s; }
+        .drip:nth-child(5) { left: 72%; height: 55px; animation-duration: 3.8s; animation-delay: 1.5s; }
+        .drip:nth-child(6) { left: 88%; height: 65px; animation-duration: 4.2s; animation-delay: 0.8s; }
+        @keyframes dripFall {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 700px;
+            padding: 0 20px;
+            margin-left: 8%;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(240, 180, 41, 0.15);
+            border: 1px solid var(--honey);
+            color: var(--honey);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero h1 span { color: var(--honey); }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 520px;
+        }
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--honey);
+            color: var(--charcoal);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--honey-light); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(240, 180, 41, 0.35); }
+        .btn-outline {
+            background: transparent;
+            color: var(--cream);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: 2px solid var(--honey);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-outline:hover { background: var(--honey); color: var(--charcoal); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-content { margin-left: 0; }
+        }
+
+        /* ===== SECTION SHARED ===== */
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+        .section-header h2 span { color: var(--honey); }
+        .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+        .section-line {
+            width: 60px; height: 4px;
+            background: var(--honey);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about { background: var(--charcoal-light); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid var(--honey);
+        }
+        .about-img img { width: 100%; height: 400px; object-fit: cover; }
+        .about-text h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 800; }
+        .about-text h3 span { color: var(--honey); }
+        .about-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1rem; }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .about-feat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--cream);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .about-feat .icon {
+            width: 32px; height: 32px;
+            background: rgba(240, 180, 41, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--honey);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        /* ===== SERVICES (Hexagonal Cards) ===== */
+        .services { background: var(--charcoal); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--charcoal-light);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(240, 180, 41, 0.1);
+            transition: all 0.4s ease;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--honey), var(--honey-dark));
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--honey);
+            box-shadow: 0 20px 40px rgba(240, 180, 41, 0.1);
+        }
+        .service-hex {
+            width: 80px; height: 80px;
+            margin: 0 auto 25px;
+            background: rgba(240, 180, 41, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.3s;
+        }
+        .service-card:hover .service-hex { background: var(--honey); }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 12px; font-weight: 700; }
+        .service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== GALLERY (Hexagonal Grid) ===== */
+        .gallery { background: var(--charcoal-light); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            aspect-ratio: 1/1.1;
+            transition: transform 0.4s;
+        }
+        .gallery-item:hover { transform: scale(1.05); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(240, 180, 41, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span { color: var(--white); font-size: 2rem; }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 12px; border: 3px solid var(--honey); }
+        .lightbox-close {
+            position: absolute;
+            top: 30px; right: 30px;
+            color: var(--honey);
+            font-size: 2.5rem;
+            cursor: pointer;
+            font-weight: 300;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { background: var(--charcoal); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 35px 30px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            font-size: 4rem;
+            color: var(--honey);
+            position: absolute;
+            top: 10px; left: 20px;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        .testimonial-stars { color: var(--honey); font-size: 1rem; margin-bottom: 15px; }
+        .testimonial-card p { color: var(--text-muted); font-style: italic; margin-bottom: 20px; font-size: 0.95rem; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            background: var(--honey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .testimonial-name { font-weight: 600; color: var(--cream); font-size: 0.95rem; }
+        .testimonial-loc { font-size: 0.8rem; color: var(--text-muted); }
+        @media (max-width: 768px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--honey) 0%, var(--honey-dark) 100%);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--charcoal);
+        }
+        .stat-item p {
+            color: var(--charcoal);
+            opacity: 0.8;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        }
+
+        /* ===== PRICING ===== */
+        .pricing { background: var(--charcoal-light); }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .pricing-card {
+            background: var(--charcoal);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(240, 180, 41, 0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card.featured {
+            border-color: var(--honey);
+            transform: scale(1.05);
+        }
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px; right: -35px;
+            background: var(--honey);
+            color: var(--charcoal);
+            padding: 5px 40px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+        .pricing-card:hover { border-color: var(--honey); transform: translateY(-5px); }
+        .pricing-card.featured:hover { transform: scale(1.05) translateY(-5px); }
+        .pricing-card h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
+        .pricing-card .desc { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .pricing-card ul li {
+            padding: 8px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .pricing-card ul li .check { color: var(--honey); font-weight: 700; }
+        .pricing-price {
+            margin-top: 10px;
+        }
+        .pricing-price .from { color: var(--text-muted); font-size: 0.8rem; }
+        .pricing-price .amount {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--honey);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .pricing-card .btn-primary { margin-top: 20px; display: inline-block; width: 100%; }
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: none; }
+            .pricing-card.featured:hover { transform: translateY(-5px); }
+        }
+
+        /* ===== CONTACT ===== */
+        .contact { background: var(--charcoal); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-info h3 { font-size: 1.6rem; margin-bottom: 20px; font-weight: 700; }
+        .contact-info p { color: var(--text-muted); margin-bottom: 25px; }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .contact-icon {
+            width: 50px; height: 50px;
+            background: rgba(240, 180, 41, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--honey);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-detail h4 { color: var(--cream); font-size: 0.95rem; font-weight: 600; }
+        .contact-detail p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+        .contact-form { display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input,
+        .contact-form textarea {
+            background: var(--charcoal-light);
+            border: 1px solid rgba(240, 180, 41, 0.15);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: var(--cream);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--honey);
+        }
+        .contact-form textarea { min-height: 130px; resize: vertical; }
+        .contact-form .btn-primary { border: none; font-size: 1rem; }
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #141414;
+            padding: 50px 0 25px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--honey);
+            margin-bottom: 12px;
+        }
+        .footer-brand p { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-col h4 { color: var(--cream); font-size: 1rem; margin-bottom: 15px; font-weight: 700; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--honey); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 25px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .footer-bottom a { color: var(--honey); font-weight: 600; }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 25px; }
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-popup {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            z-index: 9998;
+            max-width: 340px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: popupSlide 0.5s ease;
+        }
+        @keyframes popupSlide {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .neocode-popup.show { display: block; }
+        .neocode-popup h4 { color: var(--honey); font-size: 1rem; margin-bottom: 8px; font-family: 'Montserrat', sans-serif; }
+        .neocode-popup p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px; line-height: 1.5; }
+        .neocode-popup a {
+            display: inline-block;
+            background: var(--honey);
+            color: var(--charcoal);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .neocode-popup a:hover { background: var(--honey-light); }
+        .neocode-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* ===== FLOATING HEXAGONS (BG DECOR) ===== */
+        .hex-bg {
+            position: absolute;
+            width: 60px; height: 60px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(240, 180, 41, 0.04);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bee Stripe Top -->
+    <div class="bee-stripe"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <span class="bee-icon">&#x1F41D;</span> Bee Clean
+            </a>
+            <input type="checkbox" id="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span></span><span></span><span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="#about" onclick="document.getElementById('nav-toggle').checked=false">About</a></li>
+                <li><a href="#services" onclick="document.getElementById('nav-toggle').checked=false">Services</a></li>
+                <li><a href="#gallery" onclick="document.getElementById('nav-toggle').checked=false">Gallery</a></li>
+                <li><a href="#pricing" onclick="document.getElementById('nav-toggle').checked=false">Pricing</a></li>
+                <li><a href="#contact" onclick="document.getElementById('nav-toggle').checked=false">Contact</a></li>
+            </ul>
+            <a href="tel:07885386820" class="nav-cta">07885 386820</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="honey-drips">
+            <div class="drip"></div>
+            <div class="drip"></div>
+            <div class="drip"></div>
+            <div class="drip"></div>
+            <div class="drip"></div>
+            <div class="drip"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Stoke-on-Trent's Trusted Cleaners</div>
+            <h1>Carpets & Upholstery <span>Buzzing Clean</span></h1>
+            <p>Professional carpet and upholstery cleaning across Stoke-on-Trent and Staffordshire. Eco-friendly products, affordable prices, and results you can see and feel.</p>
+            <div class="hero-btns">
+                <a href="tel:07885386820" class="btn-primary">Get a Free Quote</a>
+                <a href="#services" class="btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img reveal">
+                    <img src="https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Professional carpet cleaning in action">
+                </div>
+                <div class="about-text reveal">
+                    <h3>Why Choose <span>Bee Clean?</span></h3>
+                    <p>We've been restoring carpets and upholstery across Stoke-on-Trent for over 10 years. We don't just clean surfaces, we bring them back to life using professional-grade equipment and eco-friendly products that are safe for your family and pets.</p>
+                    <p>Whether it's a stubborn stain, end of tenancy clean, or a full house refresh, our team delivers results that speak for themselves. We're local, we're reliable, and we genuinely care about doing a great job every single time.</p>
+                    <div class="about-features">
+                        <div class="about-feat"><div class="icon">&#10003;</div> Fully Insured</div>
+                        <div class="about-feat"><div class="icon">&#10003;</div> Eco-Friendly</div>
+                        <div class="about-feat"><div class="icon">&#10003;</div> Same Day Service</div>
+                        <div class="about-feat"><div class="icon">&#10003;</div> Free Quotes</div>
+                        <div class="about-feat"><div class="icon">&#10003;</div> Pet Safe Products</div>
+                        <div class="about-feat"><div class="icon">&#10003;</div> 10+ Years Exp.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our <span>Services</span></h2>
+                <p>From a single room to an entire commercial property, we've got the tools and expertise to handle it all.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-hex">&#x1F9F9;</div>
+                    <h3>Carpet Cleaning</h3>
+                    <p>Deep hot water extraction that removes dirt, allergens, and bacteria from your carpets. We bring professional results to every room.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-hex">&#x1FA91;</div>
+                    <h3>Upholstery Cleaning</h3>
+                    <p>Sofas, armchairs, and dining chairs restored to their former glory. Safe for all fabric types including delicate materials.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-hex">&#x1F9F6;</div>
+                    <h3>Rug Cleaning</h3>
+                    <p>Specialist rug cleaning for all types, from Persian to modern. Gentle treatment that preserves colour and texture.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-hex">&#x1F4A7;</div>
+                    <h3>Stain Removal</h3>
+                    <p>Red wine, coffee, pet accidents, ink... you name it, we've tackled it. Targeted stain removal with a high success rate.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-hex">&#x1F3E0;</div>
+                    <h3>End of Tenancy</h3>
+                    <p>Moving out? We'll get those carpets looking deposit-worthy. Landlord-approved deep clean for tenants and letting agents.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-hex">&#x1F3E2;</div>
+                    <h3>Commercial Cleaning</h3>
+                    <p>Office carpets, hotel lobbies, retail spaces. Flexible scheduling including evenings and weekends to suit your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our <span>Results</span></h2>
+                <p>See the difference a professional clean makes. Real jobs, real results.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Carpet cleaning result">
+                    <div class="gallery-overlay"><span>&#x1F50D;</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4239035/pexels-photo-4239035.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Upholstery cleaning result">
+                    <div class="gallery-overlay"><span>&#x1F50D;</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4239107/pexels-photo-4239107.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Professional cleaning equipment">
+                    <div class="gallery-overlay"><span>&#x1F50D;</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4239146/pexels-photo-4239146.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Deep carpet clean">
+                    <div class="gallery-overlay"><span>&#x1F50D;</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Stain removal before and after">
+                    <div class="gallery-overlay"><span>&#x1F50D;</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sofa cleaning result">
+                    <div class="gallery-overlay"><span>&#x1F50D;</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Gallery image">
+    </div>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What Our <span>Customers Say</span></h2>
+                <p>Don't just take our word for it. Here's what people across Stoke-on-Trent think.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Absolutely brilliant job on our living room carpet. It looked brand new after they were done. The team was polite, on time, and left no mess behind. Would definitely recommend to anyone in Stoke."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SH</div>
+                        <div>
+                            <div class="testimonial-name">Sarah H.</div>
+                            <div class="testimonial-loc">Hanley, Stoke-on-Trent</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Had a nightmare red wine stain on a cream sofa. Thought it was ruined. Bee Clean came out the next day and it looks like it never happened. Genuine miracle workers. Great price too."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MP</div>
+                        <div>
+                            <div class="testimonial-name">Mark P.</div>
+                            <div class="testimonial-loc">Newcastle-under-Lyme</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"We use Bee Clean for all of our rental turnovers. They're reliable, the prices are fair, and the results always pass inspection. Wouldn't use anyone else at this point."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JR</div>
+                        <div>
+                            <div class="testimonial-name">James R.</div>
+                            <div class="testimonial-loc">Longton, Stoke-on-Trent</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3>10+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3>3,000+</h3>
+                    <p>Homes Cleaned</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3>100%</h3>
+                    <p>Eco-Friendly</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3>Same Day</h3>
+                    <p>Service Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Simple, <span>Honest Pricing</span></h2>
+                <p>No hidden fees, no surprises. Just straightforward pricing for quality work.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3>Single Room</h3>
+                    <p class="desc">Perfect for a quick refresh of one room</p>
+                    <ul>
+                        <li><span class="check">&#10003;</span> Deep hot water extraction</li>
+                        <li><span class="check">&#10003;</span> Pre-treatment spray</li>
+                        <li><span class="check">&#10003;</span> Stain spot treatment</li>
+                        <li><span class="check">&#10003;</span> Deodorising included</li>
+                        <li><span class="check">&#10003;</span> Fast drying time</li>
+                    </ul>
+                    <div class="pricing-price">
+                        <span class="from">from</span>
+                        <div class="amount">&pound;30</div>
+                    </div>
+                    <a href="tel:07885386820" class="btn-primary">Book Now</a>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <h3>Full House</h3>
+                    <p class="desc">Complete home carpet cleaning package</p>
+                    <ul>
+                        <li><span class="check">&#10003;</span> All rooms included</li>
+                        <li><span class="check">&#10003;</span> Stairs and landing</li>
+                        <li><span class="check">&#10003;</span> Deep stain treatment</li>
+                        <li><span class="check">&#10003;</span> Anti-bacterial treatment</li>
+                        <li><span class="check">&#10003;</span> Scotchgard protection</li>
+                    </ul>
+                    <div class="pricing-price">
+                        <span class="from">from</span>
+                        <div class="amount">&pound;80</div>
+                    </div>
+                    <a href="tel:07885386820" class="btn-primary">Book Now</a>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3>Commercial</h3>
+                    <p class="desc">Offices, retail, and large spaces</p>
+                    <ul>
+                        <li><span class="check">&#10003;</span> Flexible scheduling</li>
+                        <li><span class="check">&#10003;</span> Evening & weekend slots</li>
+                        <li><span class="check">&#10003;</span> Contract discounts</li>
+                        <li><span class="check">&#10003;</span> Health & safety certified</li>
+                        <li><span class="check">&#10003;</span> Invoice & receipt</li>
+                    </ul>
+                    <div class="pricing-price">
+                        <span class="from">from</span>
+                        <div class="amount">&pound;150</div>
+                    </div>
+                    <a href="tel:07885386820" class="btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Get In <span>Touch</span></h2>
+                <p>Ready for a fresher, cleaner home? Drop us a message or give us a call.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Let's talk about your cleaning needs</h3>
+                    <p>We're always happy to chat, give advice, or provide a free no-obligation quote. Reach out however works best for you.</p>
+                    <div class="contact-detail">
+                        <div class="contact-icon">&#x1F4DE;</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:07885386820" style="color: var(--honey);">07885 386820</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">&#x2709;</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:beecleanserviceww@gmail.com" style="color: var(--honey);">beecleanserviceww@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">&#x1F4CD;</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Stoke-on-Trent, Staffordshire</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('This is a demo site. Please call 07885 386820 to get in touch.');">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Your Phone Number">
+                    <textarea placeholder="Tell us about your cleaning needs..."></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="bee-stripe"></div>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>&#x1F41D; Bee Clean</h3>
+                    <p>Professional carpet and upholstery cleaning across Stoke-on-Trent and Staffordshire. Eco-friendly, affordable, and always reliable.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Carpet Cleaning</a></li>
+                        <li><a href="#services">Upholstery Cleaning</a></li>
+                        <li><a href="#services">Rug Cleaning</a></li>
+                        <li><a href="#services">Stain Removal</a></li>
+                        <li><a href="#services">End of Tenancy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bee Clean Cleaning Service. All rights reserved. | Demo built by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NeoCode Popup -->
+    <div class="neocode-popup" id="neocode-popup">
+        <span class="neocode-close" onclick="document.getElementById('neocode-popup').classList.remove('show')">&times;</span>
+        <h4>Like what you see?</h4>
+        <p>This premium website demo was designed by NeoCode Studio. We build high-converting sites for local businesses across the UK.</p>
+        <a href="https://neocodestudio.co.uk" target="_blank">Visit NeoCode Studio</a>
+    </div>
+
+    <script>
+        // ===== Scroll Reveal (IntersectionObserver) =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== Lightbox =====
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ===== NeoCode Popup at 70% scroll =====
+        let popupShown = false;
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent >= 70) {
+                document.getElementById('neocode-popup').classList.add('show');
+                popupShown = true;
+            }
+        });
+
+        // ===== Nav background on scroll =====
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

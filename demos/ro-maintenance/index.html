@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro Maintenance Ltd | Professional Handyman Services in Wolverhampton</title>
+    <meta name="description" content="Ro Maintenance Ltd - Trusted handyman and property maintenance services in Wolverhampton. Plumbing, electrical, painting, carpentry and more. Call 07309 690024.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1e1e2e;
+            --dark-alt: #252538;
+            --dark-light: #2a2a40;
+            --cyan: #00e5ff;
+            --cyan-dim: rgba(0, 229, 255, 0.15);
+            --cyan-glow: rgba(0, 229, 255, 0.4);
+            --white: #fafafa;
+            --grey: #a0a0b8;
+            --grid-color: rgba(0, 229, 255, 0.06);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== GRID BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== GEOMETRIC SHAPES ===== */
+        .geo-shape {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .geo-diamond {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--cyan-dim);
+            transform: rotate(45deg);
+        }
+
+        .geo-circle {
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--cyan-dim);
+            border-radius: 50%;
+        }
+
+        .geo-corner {
+            width: 60px;
+            height: 60px;
+            border-top: 3px solid var(--cyan);
+            border-left: 3px solid var(--cyan);
+            opacity: 0.3;
+        }
+
+        .geo-dots {
+            width: 100px;
+            height: 100px;
+            background-image: radial-gradient(circle, rgba(0,229,255,0.2) 1px, transparent 1px);
+            background-size: 12px 12px;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--cyan), #80f0ff, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--cyan);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(30, 30, 46, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--cyan-dim);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo span {
+            color: var(--cyan);
+        }
+
+        .nav-logo::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--cyan);
+            box-shadow: 0 0 12px var(--cyan-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--grey);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyan);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--cyan) !important;
+            color: var(--dark) !important;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            transition: box-shadow 0.3s, transform 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 0 25px var(--cyan-glow);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.25) saturate(0.8);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30,30,46,0.92) 0%, rgba(30,30,46,0.6) 50%, rgba(30,30,46,0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--cyan-dim);
+            border: 1px solid rgba(0,229,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--grey);
+            margin-bottom: 40px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--cyan);
+            color: var(--dark);
+            padding: 16px 32px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px var(--cyan-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 32px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .hero-geo-1 {
+            top: 15%;
+            right: 8%;
+        }
+
+        .hero-geo-2 {
+            bottom: 20%;
+            right: 15%;
+        }
+
+        .hero-geo-3 {
+            top: 30%;
+            right: 25%;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--dark-alt);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 80px;
+            height: 80px;
+            border-top: 3px solid var(--cyan);
+            border-left: 3px solid var(--cyan);
+            z-index: 2;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 80px;
+            height: 80px;
+            border-bottom: 3px solid var(--cyan);
+            border-right: 3px solid var(--cyan);
+            z-index: 2;
+        }
+
+        .about-text p {
+            color: var(--grey);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .about-feature::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            flex-shrink: 0;
+            box-shadow: 0 0 8px var(--cyan-glow);
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            position: relative;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-header .section-label {
+            justify-content: center;
+        }
+
+        .services-header .section-label::before {
+            display: none;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--dark-alt);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:nth-child(even) {
+            transform: translateY(30px);
+        }
+
+        .service-card:hover {
+            border-color: rgba(0,229,255,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .service-card:nth-child(even):hover {
+            transform: translateY(25px);
+        }
+
+        .service-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--cyan-dim);
+            line-height: 1;
+            margin-bottom: 20px;
+            transition: color 0.4s;
+        }
+
+        .service-card:hover .service-number {
+            color: rgba(0,229,255,0.3);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .service-card p {
+            color: var(--grey);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--cyan);
+            transition: width 0.4s;
+        }
+
+        .service-card:hover::after {
+            width: 100%;
+        }
+
+        .service-card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            filter: brightness(0.8) saturate(0.9);
+            transition: filter 0.4s;
+        }
+
+        .service-card:hover .service-card-img {
+            filter: brightness(0.9) saturate(1);
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--dark-alt);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .gallery-header .section-label {
+            justify-content: center;
+        }
+
+        .gallery-header .section-label::before {
+            display: none;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s, filter 0.5s;
+            filter: brightness(0.8);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30,30,46,0.4);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay span {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            text-shadow: 0 0 20px var(--cyan-glow);
+            transform: scale(0);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay span {
+            transform: scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,10,20,0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            transition: all 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .lightbox-close:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            position: relative;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-header .section-label {
+            justify-content: center;
+        }
+
+        .testimonials-header .section-label::before {
+            display: none;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--dark-alt);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            position: relative;
+        }
+
+        .testimonial-quote-mark {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            color: var(--cyan);
+            opacity: 0.15;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            color: var(--cyan);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .testimonial-card .testimonial-text {
+            color: var(--grey);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            background: var(--cyan-dim);
+            border: 2px solid var(--cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--cyan);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-location {
+            font-size: 0.8rem;
+            color: var(--grey);
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            background: var(--dark-alt);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,229,255,0.03) 0%, transparent 50%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--cyan);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            padding-right: 20px;
+        }
+
+        .contact-info > p {
+            color: var(--grey);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .contact-detail-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--cyan-dim);
+            border: 1px solid rgba(0,229,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-text {
+            padding-top: 4px;
+        }
+
+        .contact-detail-label {
+            font-size: 0.8rem;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .contact-detail-value {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .contact-detail-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-detail-value a:hover {
+            color: var(--cyan);
+        }
+
+        .contact-form {
+            background: var(--dark-alt);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--grey);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--white);
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px var(--cyan-dim);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background: var(--dark);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--cyan);
+            color: var(--dark);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-submit:hover {
+            box-shadow: 0 0 30px var(--cyan-glow);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #16162a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand p {
+            color: var(--grey);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-top: 16px;
+        }
+
+        .footer-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--grey);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            color: var(--grey);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--grey);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            box-shadow: 0 0 15px var(--cyan-dim);
+        }
+
+        /* ===== NEOCODE POPUP ===== */
+        .neocode-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--dark-alt);
+            border: 1px solid rgba(0,229,255,0.3);
+            padding: 24px 28px;
+            max-width: 340px;
+            z-index: 1500;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .neocode-popup.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .neocode-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            color: var(--grey);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .neocode-popup-close:hover {
+            color: var(--cyan);
+        }
+
+        .neocode-popup h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .neocode-popup p {
+            color: var(--grey);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .neocode-popup a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--cyan);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .neocode-popup a:hover {
+            gap: 10px;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--dark-alt);
+                flex-direction: column;
+                justify-content: center;
+                padding: 40px;
+                gap: 24px;
+                border-left: 1px solid var(--cyan-dim);
+                transition: right 0.4s ease;
+            }
+
+            #menu-toggle:checked ~ .nav-links {
+                right: 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .service-card:nth-child(even) {
+                transform: translateY(0);
+            }
+
+            .service-card:nth-child(even):hover {
+                transform: translateY(-5px);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding-bottom: 20px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .service-card {
+                min-width: 280px;
+                scroll-snap-align: start;
+                flex-shrink: 0;
+            }
+
+            .services-grid::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .services-grid::-webkit-scrollbar-track {
+                background: var(--dark-alt);
+            }
+
+            .services-grid::-webkit-scrollbar-thumb {
+                background: var(--cyan);
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                padding: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .neocode-popup {
+                left: 16px;
+                right: 16px;
+                max-width: none;
+                bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">RO<span>.</span>MAINTENANCE</a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:07309690024" class="nav-cta">Call Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/5691598/pexels-photo-5691598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Professional handyman working" loading="eager">
+        </div>
+        <div class="hero-overlay"></div>
+
+        <!-- Geometric shapes -->
+        <div class="geo-shape geo-diamond hero-geo-1"></div>
+        <div class="geo-shape geo-circle hero-geo-2"></div>
+        <div class="geo-shape geo-dots hero-geo-3"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Wolverhampton's Trusted Handyman</div>
+                <h1>Expert Property <br><span class="gradient-text">Maintenance</span> You Can Count On</h1>
+                <p>From plumbing and electrical fixes to full bathroom fitting and carpentry, Ro Maintenance Ltd delivers reliable, high-quality work across Wolverhampton and the West Midlands.</p>
+                <div class="hero-buttons">
+                    <a href="tel:07309690024" class="btn-primary">Call 07309 690024 &rarr;</a>
+                    <a href="#services" class="btn-secondary">View Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal-left">
+                    <img src="https://images.pexels.com/photos/3771111/pexels-photo-3771111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Ro Maintenance professional team" loading="lazy">
+                </div>
+                <div class="about-text reveal-right">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">Built on Trust, <span class="gradient-text">Driven by Quality</span></h2>
+                    <p>At Ro Maintenance Ltd, we don't just fix things - we make sure they stay fixed. Based in Wolverhampton, we've spent over a decade helping homeowners and businesses keep their properties in top shape.</p>
+                    <p>Whether it's a dripping tap at midnight or a full kitchen renovation, our team brings the same level of care and professionalism to every job. We're fully insured, competitively priced, and we always leave your space cleaner than we found it.</p>
+                    <div class="about-features">
+                        <div class="about-feature">Fully Insured</div>
+                        <div class="about-feature">Free Quotes</div>
+                        <div class="about-feature">No Job Too Small</div>
+                        <div class="about-feature">Rapid Response</div>
+                        <div class="about-feature">Transparent Pricing</div>
+                        <div class="about-feature">West Midlands Wide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <div class="service-number">01</div>
+                    <img src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Property Maintenance" class="service-card-img" loading="lazy">
+                    <h3>Property Maintenance</h3>
+                    <p>General upkeep and repairs for residential and commercial properties. We handle everything from wall patching and door adjustments to full property refurbishments.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card reveal">
+                    <div class="service-number">02</div>
+                    <img src="https://images.pexels.com/photos/5691612/pexels-photo-5691612.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plumbing Repairs" class="service-card-img" loading="lazy">
+                    <h3>Plumbing Repairs</h3>
+                    <p>Leaky taps, burst pipes, toilet repairs, and radiator maintenance. We diagnose the issue fast and fix it properly the first time around.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card reveal">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">&#9889;</div>
+                    <h3>Electrical Fixes</h3>
+                    <p>Light fittings, socket replacements, fault finding, and general electrical maintenance. Safe, compliant work you can rely on for your home or business.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card reveal">
+                    <div class="service-number">04</div>
+                    <div class="service-icon">&#127912;</div>
+                    <h3>Painting & Decorating</h3>
+                    <p>Interior and exterior painting, wallpaper hanging, feature walls, and full room makeovers. Clean lines, premium finishes, no mess left behind.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-card reveal">
+                    <div class="service-number">05</div>
+                    <div class="service-icon">&#129692;</div>
+                    <h3>Carpentry</h3>
+                    <p>Custom shelving, door hanging, skirting boards, and timber repairs. Precision woodwork that looks great and lasts for years to come.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-card reveal">
+                    <div class="service-number">06</div>
+                    <div class="service-icon">&#128705;</div>
+                    <h3>Bathroom Fitting</h3>
+                    <p>Complete bathroom installations from design to finish. Tiling, plumbing, fixtures, and fittings all handled by one reliable team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="gallery-header reveal">
+                <div class="section-label">Our Work</div>
+                <h2 class="section-title">Recent <span class="gradient-text">Projects</span></h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691617/pexels-photo-5691617.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Completed maintenance project" loading="lazy">
+                    <div class="gallery-item-overlay"><span>+</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691593/pexels-photo-5691593.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Property repair work" loading="lazy">
+                    <div class="gallery-item-overlay"><span>+</span></div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox(this)">
+                    <img src="https://images.pexels.com/photos/5691640/pexels-photo-5691640.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Handyman service completed" loading="lazy">
+                    <div class="gallery-item-overlay"><span>+</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="Gallery preview" id="lightbox-img">
+    </div>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our <span class="gradient-text">Clients Say</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote-mark">"</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Called Ro Maintenance about a leaking pipe on a Saturday morning and they were at my door within the hour. Fixed it fast, cleaned up after themselves, and the price was very fair. Wouldn't use anyone else now.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DH</div>
+                        <div>
+                            <div class="testimonial-name">David H.</div>
+                            <div class="testimonial-location">Wolverhampton, WV3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote-mark">"</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">We had our entire bathroom ripped out and refitted by Ro Maintenance. The finish is incredible - it looks like something out of a showroom. Professional team from start to finish, always on time.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SR</div>
+                        <div>
+                            <div class="testimonial-name">Sarah R.</div>
+                            <div class="testimonial-location">Bilston, WV14</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote-mark">"</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">I manage several rental properties and Ro Maintenance handles all my maintenance jobs. They're reliable, the communication is great, and they get things sorted quickly. Highly recommend them for landlords.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MP</div>
+                        <div>
+                            <div class="testimonial-name">Mark P.</div>
+                            <div class="testimonial-location">Wednesfield, WV11</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number gradient-text">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number gradient-text">100%</div>
+                    <div class="stat-label">Fully Insured</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number gradient-text">&lt;2hr</div>
+                    <div class="stat-label">Rapid Response</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number gradient-text">500+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <div class="section-label">Get In Touch</div>
+                    <h2 class="section-title">Ready to Get <span class="gradient-text">Started?</span></h2>
+                    <p>Whether you've got a quick repair or a bigger project in mind, we'd love to hear from you. Drop us a message or give us a call for a free, no-obligation quote.</p>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128222;</div>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Phone</div>
+                            <div class="contact-detail-value"><a href="tel:07309690024">07309 690024</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#9993;</div>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Email</div>
+                            <div class="contact-detail-value"><a href="mailto:office@romaintenance.co.uk">office@romaintenance.co.uk</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128205;</div>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Location</div>
+                            <div class="contact-detail-value">Wolverhampton, West Midlands</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#128247;</div>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Social</div>
+                            <div class="contact-detail-value"><a href="https://facebook.com/romaintenanceservices" target="_blank" rel="noopener">Facebook</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal-right">
+                    <h3>Send a <span class="gradient-text">Message</span></h3>
+                    <form action="https://formsubmit.co/office@romaintenance.co.uk" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="07xxx xxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="Property Maintenance">Property Maintenance</option>
+                                <option value="Plumbing Repairs">Plumbing Repairs</option>
+                                <option value="Electrical Fixes">Electrical Fixes</option>
+                                <option value="Painting & Decorating">Painting & Decorating</option>
+                                <option value="Carpentry">Carpentry</option>
+                                <option value="Bathroom Fitting">Bathroom Fitting</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Project</label>
+                            <textarea id="message" name="message" placeholder="Describe the work you need done..." required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Get Your Free Quote &rarr;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo" style="margin-bottom:8px;">RO<span>.</span>MAINTENANCE</a>
+                    <p>Professional handyman and property maintenance services across Wolverhampton and the West Midlands. No job too big, no job too small.</p>
+                </div>
+                <div>
+                    <div class="footer-heading">Services</div>
+                    <ul class="footer-links">
+                        <li><a href="#services">Property Maintenance</a></li>
+                        <li><a href="#services">Plumbing Repairs</a></li>
+                        <li><a href="#services">Electrical Fixes</a></li>
+                        <li><a href="#services">Painting & Decorating</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">More</div>
+                    <ul class="footer-links">
+                        <li><a href="#services">Carpentry</a></li>
+                        <li><a href="#services">Bathroom Fitting</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">Contact</div>
+                    <ul class="footer-links">
+                        <li><a href="tel:07309690024">07309 690024</a></li>
+                        <li><a href="mailto:office@romaintenance.co.uk">office@romaintenance.co.uk</a></li>
+                        <li><a href="https://facebook.com/romaintenanceservices" target="_blank" rel="noopener">Facebook</a></li>
+                        <li><a href="#contact">Get a Quote</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ro Maintenance Ltd. All rights reserved.</p>
+                <p>Demo built by <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">NeoCode Studio</a></p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/romaintenanceservices" target="_blank" rel="noopener" title="Facebook">Fb</a>
+                    <a href="mailto:office@romaintenance.co.uk" title="Email">@</a>
+                    <a href="tel:07309690024" title="Call">Ph</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== NEOCODE POPUP ===== -->
+    <div class="neocode-popup" id="neocode-popup">
+        <button class="neocode-popup-close" onclick="closePopup()">&times;</button>
+        <h4>Like what you see? <span class="gradient-text">It's yours.</span></h4>
+        <p>This demo was built by NeoCode Studio specifically for Ro Maintenance Ltd. We can get your new site live in under a week.</p>
+        <a href="https://neocodestudio.co.uk" target="_blank" rel="noopener">Learn more &rarr;</a>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ---- Navbar scroll effect ----
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ---- Close mobile menu on link click ----
+        const menuToggle = document.getElementById('menu-toggle');
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.checked = false;
+            });
+        });
+
+        // ---- Scroll reveal (IntersectionObserver) ----
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 100);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ---- Lightbox ----
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ---- NeoCode Popup at 70% scroll ----
+        let popupShown = false;
+        let popupDismissed = false;
+
+        window.addEventListener('scroll', () => {
+            if (popupDismissed) return;
+
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+            if (scrollPercent >= 70 && !popupShown) {
+                popupShown = true;
+                document.getElementById('neocode-popup').classList.add('show');
+            }
+        });
+
+        function closePopup() {
+            document.getElementById('neocode-popup').classList.remove('show');
+            popupDismissed = true;
+        }
+
+        // ---- Smooth scroll for anchor links ----
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
