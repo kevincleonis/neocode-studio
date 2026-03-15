@@ -64,24 +64,29 @@
 
     .btn-outline {
       display: inline-flex; align-items: center; gap: 10px;
-      border: 2px solid var(--silver); color: var(--midnight);
+      border: 2px solid rgba(255,255,255,0.25); color: var(--white);
       padding: 14px 30px; border-radius: var(--radius);
       font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease);
     }
-    .btn-outline:hover { border-color: var(--crimson); color: var(--crimson); }
+    .btn-outline:hover { border-color: var(--white); color: var(--white); background: rgba(255,255,255,0.08); }
 
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* Banner */
-    .neocode-banner { background: var(--midnight); color: rgba(255,255,255,0.7); text-align: center; padding: 10px 20px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; }
+    .neocode-banner { background: var(--midnight); color: rgba(255,255,255,0.7); text-align: center; padding: 10px 20px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; position: relative; z-index: 1001; }
     .neocode-banner a { color: var(--crimson); font-weight: 700; }
 
     /* Header */
-    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: all 0.3s var(--ease); background: transparent; }
-    .header.scrolled { background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 10px 0; }
+    .header { position: fixed; top: 38px; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: all 0.3s var(--ease); background: transparent; }
+    .header.scrolled { top: 0; }
+    .header.scrolled { top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 10px 0; }
     .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .header .logo, .header .nav-links a { color: var(--white); transition: color 0.3s; }
+    .header.scrolled .logo, .header.scrolled .nav-links a { color: var(--graphite); }
+    .header .hamburger span { background: var(--white); }
+    .header.scrolled .hamburger span { background: var(--midnight); }
     .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 800; }
     .logo-icon { width: 40px; height: 40px; background: var(--crimson); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
     .logo-icon svg { width: 22px; height: 22px; color: var(--white); }
@@ -103,26 +108,26 @@
     .mobile-nav a:hover { color: var(--crimson); }
 
     /* Hero */
-    .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--snow) 0%, var(--white) 40%, #FFF5F5 100%); position: relative; overflow: hidden; padding-top: 80px; }
-    .hero::before { content: ''; position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, var(--crimson-glow) 0%, transparent 70%); border-radius: 50%; }
-    .hero::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(30,41,59,0.04) 0%, transparent 70%); border-radius: 50%; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--crimson-glow); color: var(--crimson); padding: 10px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 120px; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.6) 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(220,38,38,0.15); color: #FCA5A5; padding: 10px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; backdrop-filter: blur(4px); }
     .hero-badge svg { width: 16px; height: 16px; }
-    .hero-title { font-size: clamp(2.5rem, 5.5vw, 3.8rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+    .hero-title { font-size: clamp(2.5rem, 5.5vw, 3.8rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; color: var(--white); }
     .hero-title .highlight { color: var(--crimson); position: relative; }
-    .hero-title .highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 8px; background: var(--crimson-glow); border-radius: 4px; z-index: -1; }
-    .hero-text { font-size: 1.1rem; color: var(--steel); line-height: 1.8; max-width: 500px; margin-bottom: 32px; }
+    .hero-title .highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 8px; background: rgba(220,38,38,0.3); border-radius: 4px; z-index: -1; }
+    .hero-text { font-size: 1.1rem; color: var(--silver); line-height: 1.8; max-width: 500px; margin-bottom: 32px; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
     /* Hero Stats */
-    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .stat-card { background: var(--white); border: 1px solid var(--cloud); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; z-index: 2; }
+    .stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; transition: all 0.4s var(--ease); position: relative; overflow: hidden; backdrop-filter: blur(10px); }
     .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--crimson); transform: scaleX(0); transition: transform 0.4s var(--ease); }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
-    .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--crimson); margin-bottom: 4px; }
-    .stat-label { font-size: 0.85rem; color: var(--steel); font-weight: 500; }
+    .stat-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+    .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .stat-label { font-size: 0.85rem; color: var(--silver); font-weight: 500; }
 
     /* Trust Bar */
     .trust-bar { background: var(--midnight); padding: 24px 0; overflow: hidden; }
@@ -322,6 +327,8 @@
 
   <!-- Hero -->
   <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-grid">
         <div>
@@ -503,7 +510,7 @@
       <div class="about-grid">
         <div class="about-img-wrap reveal">
           <div class="about-img">
-            <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile mechanic working under car bonnet" loading="lazy">
+            <img src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile mechanic working under car bonnet" loading="lazy">
           </div>
           <div class="about-floater">
             <span class="big">0</span>
