@@ -1,476 +1,709 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NG Autos | Mobile Mechanic in Wakefield</title>
-    <meta name="description" content="Mobile mechanic serving Wakefield and West Yorkshire. Diagnostics, servicing, brakes, clutches and more. We come to you. Call 07512 704766.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #f8f9fb;
-            --bg-alt: #ffffff;
-            --bg-soft: #eef1f6;
-            --text: #111827;
-            --text-light: #4b5563;
-            --text-lighter: #9ca3af;
-            --red: #dc2626;
-            --red-light: #ef4444;
-            --red-soft: #fef2f2;
-            --slate: #334155;
-            --slate-soft: #f1f5f9;
-            --yellow: #eab308;
-            --white: #ffffff;
-            --border: #e5e7eb;
-            --font-display: 'Outfit', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --ease: cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 14px;
-            --shadow: 0 4px 20px rgba(0,0,0,0.05);
-            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NG Autos | Mobile Mechanic in Wakefield & West Yorkshire</title>
+  <meta name="description" content="Mobile mechanic serving Wakefield and West Yorkshire. Diagnostics, servicing, brakes, clutches and more. We come to you. Call 07512 704766.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; font-weight: 400; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-        img { max-width: 100%; height: auto; display: block; }
+    :root {
+      --crimson: #DC2626;
+      --crimson-deep: #B91C1C;
+      --crimson-glow: rgba(220,38,38,0.15);
+      --midnight: #0F172A;
+      --slate: #1E293B;
+      --graphite: #334155;
+      --steel: #64748B;
+      --silver: #94A3B8;
+      --cloud: #F1F5F9;
+      --snow: #F8FAFC;
+      --white: #FFFFFF;
+      --yellow: #EAB308;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 24px rgba(15,23,42,0.08);
+      --shadow-lg: 0 16px 48px rgba(15,23,42,0.12);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; color: var(--midnight); background: var(--white); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', sans-serif; line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-        .reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-        .reveal-left.visible { opacity: 1; transform: translateX(0); }
-        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-        .reveal-right.visible { opacity: 1; transform: translateX(0); }
-        .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
-        .stagger-5 { transition-delay: 0.5s; } .stagger-6 { transition-delay: 0.6s; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
 
-        /* Popup */
-        .demo-popup-overlay { position: fixed; inset: 0; background: rgba(17,24,39,0.6); backdrop-filter: blur(6px); z-index: 99999; display: none; align-items: center; justify-content: center; }
-        .demo-popup-overlay.show { display: flex; }
-        .demo-popup { background: var(--white); border-radius: 20px; padding: 48px; max-width: 480px; width: 90%; text-align: center; box-shadow: var(--shadow-lg); }
-        .demo-popup h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
-        .demo-popup p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; margin-bottom: 12px; }
-        .demo-popup strong { color: var(--text); }
-        .demo-popup .popup-cta { display: inline-block; background: var(--red); color: var(--white); padding: 14px 32px; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; margin-top: 12px; }
-        .demo-popup .popup-cta:hover { background: var(--red-light); transform: translateY(-2px); }
-        .demo-popup .popup-dismiss { display: block; margin: 16px auto 0; background: none; border: none; color: var(--text-lighter); font-size: 0.85rem; cursor: pointer; transition: color 0.3s; font-family: var(--font-body); }
-        .demo-popup .popup-dismiss:hover { color: var(--text); }
+    /* Badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--crimson-glow); color: var(--crimson);
+      padding: 8px 18px; border-radius: 100px; font-size: 0.85rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--crimson); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
 
-        /* Banner */
-        .neocode-banner { background: var(--slate); color: rgba(255,255,255,0.7); text-align: center; padding: 10px 20px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; }
-        .neocode-banner a { color: var(--red-light); text-decoration: none; font-weight: 700; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin: 16px 0 20px; }
+    .section-subtitle { font-size: 1.1rem; color: var(--steel); max-width: 600px; line-height: 1.7; }
 
-        /* Nav */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); transition: all 0.35s var(--ease); }
-        .navbar.scrolled { padding: 10px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--text); text-decoration: none; }
-        .nav-logo span { color: var(--red); }
-        .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
-        .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--red); }
-        .nav-cta { background: var(--red); color: var(--white) !important; padding: 10px 24px; border-radius: var(--radius); font-weight: 600 !important; transition: all 0.3s !important; }
-        .nav-cta:hover { background: var(--red-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220,38,38,0.25); }
-        .nav-phone { color: var(--red) !important; font-weight: 600; font-size: 0.92rem; }
-        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-        .hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--crimson); color: var(--white);
+      padding: 16px 32px; border-radius: var(--radius);
+      font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease);
+    }
+    .btn-primary:hover { background: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 8px 24px var(--crimson-glow); }
 
-        /* Hero */
-        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--slate-soft) 0%, var(--bg) 50%, var(--red-soft) 100%); }
-        .hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(220,38,38,0.06) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite; }
-        .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--red-soft); color: var(--red); font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; padding: 8px 16px; border-radius: 50px; margin-bottom: 20px; font-weight: 600; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.3rem); font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
-        .hero h1 .accent { color: var(--red); }
-        .hero p { font-size: 1.05rem; color: var(--text-light); max-width: 460px; line-height: 1.8; margin-bottom: 28px; }
-        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-        .btn-primary { background: var(--red); color: var(--white); padding: 16px 36px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-radius: var(--radius); transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 8px; position: relative; overflow: hidden; }
-        .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); background-size: 200% 100%; animation: shimmer 3s infinite; }
-        .btn-primary:hover { background: var(--red-light); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(220,38,38,0.25); }
-        .btn-secondary { background: var(--white); border: 2px solid var(--border); color: var(--text); padding: 14px 36px; text-decoration: none; font-weight: 500; font-size: 0.9rem; border-radius: var(--radius); transition: all 0.3s var(--ease); }
-        .btn-secondary:hover { border-color: var(--red); color: var(--red); }
-        .hero-img img { width: 100%; height: 440px; object-fit: cover; border-radius: 20px; box-shadow: var(--shadow-lg); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 2px solid var(--silver); color: var(--midnight);
+      padding: 14px 30px; border-radius: var(--radius);
+      font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease);
+    }
+    .btn-outline:hover { border-color: var(--crimson); color: var(--crimson); }
 
-        /* Trust */
-        .trust-bar { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 24px; }
-        .trust-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
-        .trust-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--red); line-height: 1; }
-        .trust-label { font-size: 0.85rem; color: var(--text-light); margin-top: 8px; font-weight: 500; }
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Sections */
-        .section { padding: 100px 24px; }
-        .section-inner { max-width: 1200px; margin: 0 auto; }
-        .section-label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--red); font-weight: 600; margin-bottom: 10px; }
-        .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--text); margin-bottom: 16px; }
-        .section-desc { color: var(--text-light); font-size: 1rem; max-width: 540px; line-height: 1.8; }
+    /* Banner */
+    .neocode-banner { background: var(--midnight); color: rgba(255,255,255,0.7); text-align: center; padding: 10px 20px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; }
+    .neocode-banner a { color: var(--crimson); font-weight: 700; }
 
-        /* Services */
-        .services-section { background: var(--bg-soft); }
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
-        .service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 28px; transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
-        .service-card:hover::before { transform: scaleX(1); }
-        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
-        .service-card-icon { width: 56px; height: 56px; background: var(--red-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; transition: all 0.4s var(--ease); }
-        .service-card:hover .service-card-icon { background: var(--red); transform: scale(1.1) rotate(-5deg); }
-        .service-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
-        .service-card p { color: var(--text-light); font-size: 0.88rem; line-height: 1.7; margin-bottom: 16px; }
-        .service-card .price { color: var(--red); font-weight: 700; font-size: 0.95rem; }
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: all 0.3s var(--ease); background: transparent; }
+    .header.scrolled { background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 10px 0; }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 800; }
+    .logo-icon { width: 40px; height: 40px; background: var(--crimson); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .logo-icon svg { width: 22px; height: 22px; color: var(--white); }
+    .nav-links { display: flex; list-style: none; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--graphite); font-weight: 500; font-size: 0.92rem; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--crimson); }
+    .nav-cta { background: var(--crimson) !important; color: var(--white) !important; padding: 10px 24px !important; border-radius: var(--radius) !important; font-weight: 600 !important; transition: all 0.3s !important; }
+    .nav-cta:hover { background: var(--crimson-deep) !important; transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--midnight); transition: all 0.3s; display: block; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        /* How it works */
-        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
-        .step { text-align: center; }
-        .step-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; color: var(--red); opacity: 0.12; line-height: 1; margin-bottom: 16px; }
-        .step h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
-        .step p { color: var(--text-light); font-size: 0.88rem; line-height: 1.7; }
+    /* Mobile Nav */
+    .mobile-nav { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a { font-size: 1.3rem; font-weight: 600; color: var(--midnight); transition: color 0.3s; }
+    .mobile-nav a:hover { color: var(--crimson); }
 
-        /* Reviews */
-        .reviews-section { background: var(--bg-soft); }
-        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
-        .review-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; transition: all 0.4s var(--ease); }
-        .review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-        .review-stars { color: var(--yellow); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
-        .review-card > p { color: var(--text); font-size: 0.92rem; line-height: 1.75; margin-bottom: 20px; font-style: italic; }
-        .review-author { font-weight: 600; font-size: 0.9rem; }
-        .review-meta { color: var(--text-lighter); font-size: 0.78rem; margin-top: 3px; }
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--snow) 0%, var(--white) 40%, #FFF5F5 100%); position: relative; overflow: hidden; padding-top: 80px; }
+    .hero::before { content: ''; position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, var(--crimson-glow) 0%, transparent 70%); border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(30,41,59,0.04) 0%, transparent 70%); border-radius: 50%; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--crimson-glow); color: var(--crimson); padding: 10px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-badge svg { width: 16px; height: 16px; }
+    .hero-title { font-size: clamp(2.5rem, 5.5vw, 3.8rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+    .hero-title .highlight { color: var(--crimson); position: relative; }
+    .hero-title .highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 8px; background: var(--crimson-glow); border-radius: 4px; z-index: -1; }
+    .hero-text { font-size: 1.1rem; color: var(--steel); line-height: 1.8; max-width: 500px; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
-        /* Areas */
-        .areas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-        .area-tag { background: var(--white); border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s var(--ease); cursor: default; }
-        .area-tag:hover { background: var(--red); color: var(--white); border-color: var(--red); transform: translateY(-3px); }
+    /* Hero Stats */
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: var(--white); border: 1px solid var(--cloud); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--crimson); transform: scaleX(0); transition: transform 0.4s var(--ease); }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--crimson); margin-bottom: 4px; }
+    .stat-label { font-size: 0.85rem; color: var(--steel); font-weight: 500; }
 
-        /* CTA */
-        .cta-section { background: linear-gradient(135deg, var(--slate) 0%, #0f172a 100%); text-align: center; padding: 100px 24px; position: relative; overflow: hidden; }
-        .cta-section::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,38,38,0.1) 0%, transparent 70%); border-radius: 50%; animation: float 7s ease-in-out infinite; }
-        .cta-section .section-label { color: rgba(255,255,255,0.5); }
-        .cta-section .section-title { color: var(--white); }
-        .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 480px; margin: 0 auto 36px; line-height: 1.8; }
-        .cta-phone { font-family: var(--font-display); font-size: 2.2rem; color: var(--white); font-weight: 700; text-decoration: none; display: inline-block; margin-bottom: 24px; transition: all 0.3s; }
-        .cta-phone:hover { transform: scale(1.05); color: var(--red-light); }
-        .btn-white { background: var(--white); color: var(--red); padding: 16px 40px; text-decoration: none; font-weight: 700; font-size: 0.9rem; border-radius: var(--radius); transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 8px; }
-        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+    /* Trust Bar */
+    .trust-bar { background: var(--midnight); padding: 24px 0; overflow: hidden; }
+    .trust-inner { display: flex; gap: 48px; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.88rem; font-weight: 500; white-space: nowrap; }
+    .trust-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .trust-icon svg { width: 18px; height: 18px; color: var(--crimson); }
 
-        /* Contact */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; }
-        .contact-cards { display: flex; flex-direction: column; gap: 16px; }
-        .contact-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; display: flex; gap: 16px; align-items: center; transition: all 0.3s var(--ease); }
-        .contact-card:hover { transform: translateX(8px); box-shadow: var(--shadow); }
-        .contact-card-icon { width: 50px; height: 50px; background: var(--red-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-        .contact-card-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); font-weight: 600; margin-bottom: 4px; }
-        .contact-card-value { color: var(--text); font-size: 0.95rem; font-weight: 500; }
-        .contact-card-value a { color: var(--text); text-decoration: none; transition: color 0.3s; }
-        .contact-card-value a:hover { color: var(--red); }
-        .contact-map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); min-height: 380px; box-shadow: var(--shadow); }
-        .contact-map iframe { width: 100%; height: 100%; min-height: 380px; border: 0; }
+    /* Services */
+    .services { background: var(--snow); }
+    .services-header { margin-bottom: 16px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: var(--white); border: 1px solid var(--cloud); border-radius: var(--radius-lg); padding: 36px 28px; transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--crimson), var(--crimson-deep)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .service-icon { width: 56px; height: 56px; background: #FEF2F2; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.4s var(--ease); }
+    .service-icon svg { width: 26px; height: 26px; color: var(--crimson); transition: color 0.4s; }
+    .service-card:hover .service-icon { background: var(--crimson); transform: scale(1.08) rotate(-5deg); }
+    .service-card:hover .service-icon svg { color: var(--white); }
+    .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+    .service-card p { color: var(--steel); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+    .service-price { color: var(--crimson); font-weight: 700; font-size: 0.95rem; }
 
-        /* Footer */
-        .footer { background: #0f172a; padding: 60px 24px 30px; color: rgba(255,255,255,0.6); }
-        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; }
-        .footer-brand h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); margin-bottom: 14px; }
-        .footer-brand h3 span { color: var(--red-light); }
-        .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 300px; }
-        .footer h4 { font-family: var(--font-display); font-size: 0.85rem; color: var(--white); margin-bottom: 18px; }
-        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--white); }
-        .footer-bottom { max-width: 1200px; margin: 36px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; font-size: 0.78rem; flex-wrap: wrap; gap: 10px; }
-        .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; }
-        .footer-bottom a:hover { color: var(--white); }
+    /* How it Works */
+    .how-it-works { background: var(--white); }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 48px; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 40px; left: 15%; right: 15%; height: 2px; background: var(--cloud); z-index: 0; }
+    .step { text-align: center; position: relative; z-index: 1; }
+    .step-icon { width: 80px; height: 80px; background: var(--white); border: 2px solid var(--cloud); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: all 0.4s var(--ease); }
+    .step-icon svg { width: 32px; height: 32px; color: var(--crimson); }
+    .step:hover .step-icon { border-color: var(--crimson); background: #FEF2F2; transform: scale(1.1); box-shadow: 0 0 0 8px var(--crimson-glow); }
+    .step h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+    .step p { color: var(--steel); font-size: 0.9rem; line-height: 1.7; max-width: 280px; margin: 0 auto; }
 
-        /* Mobile */
-        @media (max-width: 1024px) {
-            .services-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-content { grid-template-columns: 1fr; }
-            .hero-img { display: none; }
-            .steps-grid { grid-template-columns: 1fr; gap: 30px; }
-        }
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); flex-direction: column; justify-content: center; align-items: center; gap: 24px; backdrop-filter: blur(20px); }
-            .nav-links.active { display: flex; }
-            .nav-links a { font-size: 1.1rem; color: var(--text); }
-            .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-            .services-grid, .reviews-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .section { padding: 70px 20px; }
-        }
-        @media (max-width: 480px) { .hero-btns { flex-direction: column; } .trust-inner { grid-template-columns: 1fr 1fr; } }
-    </style>
+    /* About / Why Us */
+    .about { background: var(--snow); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img img { width: 100%; height: 520px; object-fit: cover; border-radius: var(--radius-lg); }
+    .about-floater { position: absolute; bottom: -20px; right: -20px; background: var(--white); border-radius: var(--radius-lg); padding: 24px 28px; box-shadow: var(--shadow-lg); text-align: center; }
+    .about-floater .big { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--crimson); display: block; line-height: 1; }
+    .about-floater .small { font-size: 0.82rem; color: var(--steel); font-weight: 500; margin-top: 4px; display: block; }
+    .about-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+    .about-list li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 16px; border-radius: var(--radius); transition: all 0.3s var(--ease); }
+    .about-list li:hover { background: var(--cloud); transform: translateX(6px); }
+    .about-check { width: 28px; height: 28px; background: #FEF2F2; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .about-check svg { width: 14px; height: 14px; color: var(--crimson); }
+    .about-list li:hover .about-check { background: var(--crimson); }
+    .about-list li:hover .about-check svg { color: var(--white); }
+    .about-list h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+    .about-list p { font-size: 0.85rem; color: var(--steel); line-height: 1.6; }
+
+    /* Reviews */
+    .reviews { background: var(--white); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { background: var(--snow); border: 1px solid var(--cloud); border-radius: var(--radius-lg); padding: 36px 28px; transition: all 0.4s var(--ease); position: relative; }
+    .review-card::before { content: '\201C'; font-family: 'Space Grotesk', sans-serif; font-size: 6rem; color: var(--crimson); opacity: 0.06; position: absolute; top: 8px; left: 20px; line-height: 1; }
+    .review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); background: var(--white); }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .review-stars svg { width: 18px; height: 18px; color: var(--yellow); fill: var(--yellow); }
+    .review-card > p { color: var(--graphite); font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar { width: 40px; height: 40px; background: var(--crimson-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--crimson); font-size: 0.9rem; }
+    .review-name { font-weight: 600; font-size: 0.9rem; }
+    .review-meta { color: var(--steel); font-size: 0.78rem; margin-top: 2px; }
+
+    /* Areas */
+    .areas { background: var(--snow); }
+    .areas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; justify-content: center; }
+    .area-tag { background: var(--white); border: 1px solid var(--cloud); color: var(--graphite); padding: 10px 22px; border-radius: 100px; font-size: 0.88rem; font-weight: 500; transition: all 0.3s var(--ease); cursor: default; }
+    .area-tag:hover { background: var(--crimson); color: var(--white); border-color: var(--crimson); transform: translateY(-4px); box-shadow: 0 6px 16px var(--crimson-glow); }
+
+    /* CTA */
+    .cta { background: var(--midnight); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%); border-radius: 50%; }
+    .cta .badge { background: rgba(220,38,38,0.15); color: #FCA5A5; }
+    .cta .section-title { color: var(--white); }
+    .cta p { color: var(--silver); font-size: 1.1rem; max-width: 500px; margin: 0 auto 20px; line-height: 1.8; }
+    .cta-phone { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; color: var(--white); font-weight: 800; display: inline-block; margin-bottom: 28px; transition: all 0.3s; position: relative; }
+    .cta-phone:hover { color: var(--crimson); transform: scale(1.04); }
+    .cta-phone::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.15); border-radius: 2px; }
+    .btn-white { background: var(--white); color: var(--crimson); padding: 16px 36px; border-radius: var(--radius); font-weight: 700; font-size: 1rem; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 10px; }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 48px; }
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; }
+    .contact-card { background: var(--snow); border: 1px solid var(--cloud); border-radius: var(--radius); padding: 20px 24px; display: flex; gap: 16px; align-items: center; transition: all 0.3s var(--ease); }
+    .contact-card:hover { transform: translateX(8px); box-shadow: var(--shadow); border-color: transparent; }
+    .contact-card-icon { width: 48px; height: 48px; background: #FEF2F2; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-card-icon svg { width: 22px; height: 22px; color: var(--crimson); }
+    .contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--crimson); font-weight: 600; margin-bottom: 2px; }
+    .contact-value { color: var(--midnight); font-size: 0.95rem; font-weight: 500; }
+    .contact-value a { color: var(--midnight); transition: color 0.3s; }
+    .contact-value a:hover { color: var(--crimson); }
+    .contact-map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--cloud); min-height: 400px; box-shadow: var(--shadow); }
+    .contact-map iframe { width: 100%; height: 100%; min-height: 400px; border: 0; }
+
+    /* Scroll to top */
+    .scroll-top { position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; background: var(--crimson); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s var(--ease); z-index: 100; box-shadow: 0 4px 16px var(--crimson-glow); }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-4px); }
+    .scroll-top svg { width: 20px; height: 20px; }
+
+    /* Footer */
+    .footer { background: var(--midnight); padding: 64px 0 28px; color: var(--silver); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: 16px; max-width: 280px; }
+    .footer h4 { color: var(--white); font-size: 0.88rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: var(--silver); font-size: 0.88rem; transition: all 0.3s; display: inline-block; }
+    .footer-links a:hover { color: var(--white); transform: translateX(4px); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.88rem; }
+    .footer-contact-item svg { width: 18px; height: 18px; color: var(--crimson); flex-shrink: 0; margin-top: 3px; }
+    .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--steel); flex-wrap: wrap; gap: 10px; }
+    .footer-bottom a { color: var(--steel); transition: color 0.3s; }
+    .footer-bottom a:hover { color: var(--white); }
+
+    /* Popup */
+    .demo-popup-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.7); backdrop-filter: blur(4px); z-index: 99999; display: none; align-items: center; justify-content: center; }
+    .demo-popup-overlay.show { display: flex; }
+    .demo-popup { background: var(--white); border-radius: var(--radius-lg); padding: 48px; max-width: 480px; width: 90%; text-align: center; }
+    .demo-popup-icon { width: 64px; height: 64px; background: #FEF2F2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .demo-popup-icon svg { width: 32px; height: 32px; color: var(--crimson); }
+    .demo-popup h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+    .demo-popup p { font-size: 0.95rem; color: var(--steel); line-height: 1.8; margin-bottom: 12px; }
+    .demo-popup strong { color: var(--midnight); }
+    .demo-popup .popup-cta { display: inline-block; background: var(--crimson); color: var(--white); padding: 14px 32px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; transition: all 0.3s; margin-top: 12px; }
+    .demo-popup .popup-cta:hover { background: var(--crimson-deep); transform: translateY(-2px); }
+    .demo-popup .popup-dismiss { display: block; margin: 16px auto 0; background: none; border: none; color: var(--steel); font-size: 0.88rem; cursor: pointer; transition: color 0.3s; font-family: inherit; }
+    .demo-popup .popup-dismiss:hover { color: var(--midnight); }
+
+    /* Mobile */
+    @media (max-width: 1024px) {
+      .services-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(4, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-wrap { order: -1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+      .steps-grid::before { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .trust-inner { gap: 24px; justify-content: flex-start; }
+      .section-pad { padding: 70px 0; }
+      .about-floater { position: static; margin-top: 16px; display: inline-block; }
+    }
+    @media (max-width: 480px) { .hero-btns { flex-direction: column; } .hero-stats { grid-template-columns: 1fr 1fr; } }
+  </style>
 </head>
 <body>
 
-    <div class="neocode-banner">This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> - Premium websites that convert visitors into customers.</div>
+  <div class="neocode-banner">This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; Premium websites that convert visitors into customers.</div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">NG <span>Autos</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#how">How It Works</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#areas">Areas</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="tel:07512704766" class="nav-phone">&#128222; 07512 704766</a></li>
-                <li><a href="#contact" class="nav-cta">Book Now</a></li>
-            </ul>
-            <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
         </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div>
-                <div class="hero-badge">&#128663; Mobile Mechanic</div>
-                <h1>Your Mechanic Comes to <span class="accent">You</span></h1>
-                <p>No need to drop your car off or wait around at a garage. NG Autos comes to your home, your work, or wherever your car is. Professional repairs and servicing at your doorstep across Wakefield and West Yorkshire.</p>
-                <div class="hero-btns">
-                    <a href="tel:07512704766" class="btn-primary">&#128222; Call Now</a>
-                    <a href="#services" class="btn-secondary">View Services</a>
-                </div>
-            </div>
-            <div class="hero-img">
-                <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile mechanic working on car engine">
-            </div>
-        </div>
-    </section>
-
-    <div class="trust-bar">
-        <div class="trust-inner reveal">
-            <div><div class="trust-num">1,000+</div><div class="trust-label">Cars Fixed</div></div>
-            <div><div class="trust-num">5/5</div><div class="trust-label">Google Rating</div></div>
-            <div><div class="trust-num">Same</div><div class="trust-label">Day Service</div></div>
-            <div><div class="trust-num">£0</div><div class="trust-label">Call-Out Fee</div></div>
-        </div>
+        NG Autos
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#about">Why Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#areas">Areas</a></li>
+          <li><a href="tel:07512704766" style="color:var(--crimson);font-weight:600;">07512 704766</a></li>
+          <li><a href="#contact" class="nav-cta">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </div>
+  </header>
 
-    <section class="section services-section" id="services">
-        <div class="section-inner">
-            <div class="reveal" style="text-align:center;">
-                <span class="section-label">Our Services</span>
-                <h2 class="section-title">Everything Your Car Needs, At Your Door</h2>
-                <p class="section-desc" style="margin:0 auto;">All makes and models. Genuine parts. No garage markup.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal stagger-1">
-                    <div class="service-card-icon">&#128295;</div>
-                    <h3>Full Service</h3>
-                    <p>Oil change, filters, fluid top-ups, brake check, and full inspection. Everything your car needs to stay healthy and roadworthy.</p>
-                    <div class="price">From £120</div>
-                </div>
-                <div class="service-card reveal stagger-2">
-                    <div class="service-card-icon">&#9881;</div>
-                    <h3>Diagnostics</h3>
-                    <p>Engine warning light on? We'll plug in, read the codes, and tell you exactly what's wrong before you spend a penny on repairs.</p>
-                    <div class="price">From £40</div>
-                </div>
-                <div class="service-card reveal stagger-3">
-                    <div class="service-card-icon">&#128736;</div>
-                    <h3>Brakes</h3>
-                    <p>Pads, discs, calipers, and fluid. Squealing, grinding, or pulling to one side? We'll sort it and get you stopping safely.</p>
-                    <div class="price">From £80</div>
-                </div>
-                <div class="service-card reveal stagger-4">
-                    <div class="service-card-icon">&#9888;</div>
-                    <h3>Clutch Replacement</h3>
-                    <p>Slipping, biting high, or won't go into gear? We do full clutch replacements at your location, saving you the tow truck.</p>
-                    <div class="price">From £350</div>
-                </div>
-                <div class="service-card reveal stagger-5">
-                    <div class="service-card-icon">&#127777;</div>
-                    <h3>Timing Belt</h3>
-                    <p>Don't wait for it to snap. We replace timing belts and water pumps on-site. It's the job you can't afford to skip.</p>
-                    <div class="price">From £250</div>
-                </div>
-                <div class="service-card reveal stagger-6">
-                    <div class="service-card-icon">&#128267;</div>
-                    <h3>Batteries & Electrics</h3>
-                    <p>Dead battery? Alternator issues? Starter motor gone? We carry stock batteries in the van for same-day fitting.</p>
-                    <div class="price">From £60</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#about">Why Us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="tel:07512704766">07512 704766</a>
+    <a href="#contact">Book Now</a>
+  </div>
 
-    <section class="section" id="how">
-        <div class="section-inner">
-            <div class="reveal" style="text-align:center;">
-                <span class="section-label">How It Works</span>
-                <h2 class="section-title">Three Steps. That's It.</h2>
-            </div>
-            <div class="steps-grid reveal">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <h3>Call or Text</h3>
-                    <p>Tell us what's going on with your car. We'll give you an honest quote over the phone with no pressure.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <h3>We Come to You</h3>
-                    <p>Pick a time and place that works. Home, work, roadside. We'll be there with everything we need.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <h3>Car Fixed</h3>
-                    <p>We get the job done on the spot. You pay when you're happy. No hidden charges, no surprises.</p>
-                </div>
-            </div>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Mobile Mechanic - We Come to You
+          </div>
+          <h1 class="hero-title">
+            Your Mechanic.<br>Your <span class="highlight">Doorstep</span>.
+          </h1>
+          <p class="hero-text">
+            No more sitting in waiting rooms or paying garage markup. NG Autos brings professional car repairs and servicing straight to your home, your work, or wherever your car happens to be. Wakefield and all of West Yorkshire covered.
+          </p>
+          <div class="hero-btns">
+            <a href="tel:07512704766" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              07512 704766
+            </a>
+            <a href="#services" class="btn-outline">
+              View Services
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+            </a>
+          </div>
         </div>
-    </section>
-
-    <section class="section reviews-section" id="reviews">
-        <div class="section-inner">
-            <div class="reveal" style="text-align:center;">
-                <span class="section-label">Reviews</span>
-                <h2 class="section-title">What Our Customers Say</h2>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card reveal stagger-1">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>"Car wouldn't start Monday morning before work. Called NG and he was at my house within an hour. New battery fitted and I was on my way. Absolute lifesaver."</p>
-                    <div class="review-author">Mark T.</div>
-                    <div class="review-meta">Battery replacement, Wakefield</div>
-                </div>
-                <div class="review-card reveal stagger-2">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>"Had my brakes done at home while I worked from the kitchen. Half the price of what Kwik Fit quoted me and the quality was spot on. Won't go anywhere else now."</p>
-                    <div class="review-author">Claire B.</div>
-                    <div class="review-meta">Brake pads and discs, Ossett</div>
-                </div>
-                <div class="review-card reveal stagger-3">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>"Honest, reliable, and knows his stuff. Diagnosed a misfire in 10 minutes that another garage couldn't figure out in a week. Highly recommend."</p>
-                    <div class="review-author">James W.</div>
-                    <div class="review-meta">Engine diagnostics, Horbury</div>
-                </div>
-            </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">1,000+</div>
+            <div class="stat-label">Cars Repaired</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">Same Day</div>
+            <div class="stat-label">Service Available</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">£0</div>
+            <div class="stat-label">Call-Out Fee</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5.0</div>
+            <div class="stat-label">Google Rating</div>
+          </div>
         </div>
-    </section>
-
-    <section class="section" id="areas">
-        <div class="section-inner reveal">
-            <div style="text-align:center;">
-                <span class="section-label">Coverage</span>
-                <h2 class="section-title">Areas We Cover</h2>
-                <p class="section-desc" style="margin:0 auto 10px;">Based in Wakefield, covering all of West Yorkshire and beyond.</p>
-            </div>
-            <div class="areas-grid" style="justify-content:center;">
-                <span class="area-tag">Wakefield</span>
-                <span class="area-tag">Ossett</span>
-                <span class="area-tag">Horbury</span>
-                <span class="area-tag">Normanton</span>
-                <span class="area-tag">Castleford</span>
-                <span class="area-tag">Pontefract</span>
-                <span class="area-tag">Dewsbury</span>
-                <span class="area-tag">Batley</span>
-                <span class="area-tag">Morley</span>
-                <span class="area-tag">Rothwell</span>
-                <span class="area-tag">Hemsworth</span>
-                <span class="area-tag">Featherstone</span>
-                <span class="area-tag">Sandal</span>
-                <span class="area-tag">Stanley</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="section-inner reveal">
-            <span class="section-label">Need a Mechanic?</span>
-            <h2 class="section-title">Don't Waste Time at a Garage.<br>We'll Come to You.</h2>
-            <p>Call or text us now. Free quotes, no call-out fees, same-day service when possible.</p>
-            <a href="tel:07512704766" class="cta-phone">07512 704766</a><br><br>
-            <a href="tel:07512704766" class="btn-white">&#128222; Call NG Autos</a>
-        </div>
-    </section>
-
-    <section class="section" id="contact">
-        <div class="section-inner">
-            <div class="reveal"><span class="section-label">Get In Touch</span><h2 class="section-title">Contact Us</h2></div>
-            <div class="contact-grid">
-                <div class="contact-cards reveal-left">
-                    <div class="contact-card">
-                        <div class="contact-card-icon">&#128222;</div>
-                        <div><div class="contact-card-label">Phone / Text</div><div class="contact-card-value"><a href="tel:07512704766">07512 704766</a></div></div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon">&#128205;</div>
-                        <div><div class="contact-card-label">Based In</div><div class="contact-card-value">Wakefield, West Yorkshire</div></div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon">&#128337;</div>
-                        <div><div class="contact-card-label">Available</div><div class="contact-card-value">Mon - Sat: 8am - 7pm</div></div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon">&#128663;</div>
-                        <div><div class="contact-card-label">Service</div><div class="contact-card-value">We come to your location</div></div>
-                    </div>
-                </div>
-                <div class="contact-map reveal-right">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47500!2d-1.5!3d53.68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795!2sWakefield!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <h3>NG <span>Autos</span> Mobile Mechanic</h3>
-                <p>Your mobile mechanic in Wakefield and West Yorkshire. We come to you for servicing, repairs, and diagnostics. No call-out fees.</p>
-            </div>
-            <div>
-                <h4>Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#services">Full Service</a></li>
-                    <li><a href="#services">Diagnostics</a></li>
-                    <li><a href="#services">Brakes</a></li>
-                    <li><a href="#services">Clutch</a></li>
-                    <li><a href="#services">Batteries</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#how">How It Works</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#areas">Areas</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2025 NG Autos Mobile Mechanic. All rights reserved.</span>
-            <span>Original site: <a href="https://www.ngautosmobilemechanic.co.uk/" target="_blank">ngautosmobilemechanic.co.uk</a></span>
-            <span>Demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
-        </div>
-    </footer>
-
-    <div class="demo-popup-overlay" id="demoPopup">
-        <div class="demo-popup">
-            <h2>This was built in under 20 minutes.</h2>
-            <p>This is a quick concept to show you what's possible. No templates. No shortcuts. Just a preview of what a premium NG Autos website could look like.</p>
-            <p>Imagine what we could build with <strong>a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong>turns visitors into paying customers</strong>.</p>
-            <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
-            <button class="popup-dismiss" onclick="document.getElementById('demoPopup').classList.remove('show')">Continue browsing the demo</button>
-        </div>
+      </div>
     </div>
+  </section>
 
-    <script>
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
-        function toggleNav() { document.getElementById('navLinks').classList.toggle('active'); }
-        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-        var popupShown = false;
-        window.addEventListener('scroll', function() { var p = window.scrollY / (document.body.scrollHeight - window.innerHeight); if (!popupShown && p > 0.8) { popupShown = true; document.getElementById('demoPopup').classList.add('show'); } });
-    </script>
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          Fully Insured
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+          All Makes & Models
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          Same Day Response
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          OEM Parts
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          DBS Checked
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services section-pad" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="badge"><span class="dot"></span> What We Do</span>
+        <h2 class="section-title">Professional Repairs at Your Doorstep</h2>
+        <p class="section-subtitle">All makes and models. Genuine parts. No garage markup. Just honest work at fair prices, wherever your car is parked.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3>Full Car Service</h3>
+          <p>Oil and filter change, fluid top-ups, brake inspection, suspension check, and full vehicle report. Everything your car needs to stay healthy and roadworthy, done in your driveway.</p>
+          <div class="service-price">From £120</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3>Diagnostics</h3>
+          <p>Engine warning light on? We'll plug in our professional-grade scanner, read the fault codes, and tell you exactly what's wrong before you spend a penny. Knowledge is power.</p>
+          <div class="service-price">From £40</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+          <h3>Brakes</h3>
+          <p>Pads, discs, calipers, and brake fluid. Squealing, grinding, or pulling to one side? Don't ignore it. We'll get you stopping safely and leave zero mess on your drive.</p>
+          <div class="service-price">From £80</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+          <h3>Clutch Replacement</h3>
+          <p>Slipping, biting high, or won't go into gear? Full clutch replacement done at your location. Saves you the tow truck fee on top of the repair itself. All parts guaranteed.</p>
+          <div class="service-price">From £350</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>Batteries & Electrics</h3>
+          <p>Dead battery? Alternator playing up? Starter motor gone? We carry stock batteries in the van for same-day fitting. Most electrical faults diagnosed and fixed within the hour.</p>
+          <div class="service-price">From £60</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3>Timing Belt & Water Pump</h3>
+          <p>The one job you absolutely can't afford to skip. If your timing belt snaps, the engine is toast. We replace belts and water pumps on-site with manufacturer-spec parts.</p>
+          <div class="service-price">From £250</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <h3>Suspension & Steering</h3>
+          <p>Worn shock absorbers, broken springs, track rod ends, drop links. If your car is bouncing, knocking, or pulling, we'll find it and fix it. MOT failure repairs a speciality.</p>
+          <div class="service-price">From £90</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+          <h3>Pre-MOT Check</h3>
+          <p>Don't gamble on your MOT. We'll run through every item on the checklist and fix anything that's going to fail. Walk into the test centre knowing you'll pass first time.</p>
+          <div class="service-price">From £35</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <h3>Head Gasket & Engine Work</h3>
+          <p>Overheating? White smoke from the exhaust? Losing coolant? We handle head gasket replacements and major engine repairs that most mobile mechanics won't touch.</p>
+          <div class="service-price">From £500</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="how-it-works section-pad" id="how">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="badge"><span class="dot"></span> How It Works</span>
+        <h2 class="section-title">Three Steps. Car Fixed.</h2>
+        <p class="section-subtitle" style="margin:0 auto;">No stress, no waiting rooms, no surprises. Here's how it goes.</p>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Call or Text Us</h3>
+          <p>Tell us what's happening with your car. We'll give you an honest quote over the phone. No obligation, no pressure.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>We Come to You</h3>
+          <p>Pick a time and place. Your driveway, your office car park, the roadside. We'll show up fully equipped and ready to work.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Job Done. You Pay.</h3>
+          <p>We fix it on the spot. You only pay when you're happy. Cash, card, or bank transfer. No hidden charges, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Why Us -->
+  <section class="about section-pad" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-img">
+            <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile mechanic working under car bonnet" loading="lazy">
+          </div>
+          <div class="about-floater">
+            <span class="big">0</span>
+            <span class="small">Call-Out Fee. Ever.</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="badge"><span class="dot"></span> Why NG Autos</span>
+          <h2 class="section-title">Garage Quality. Doorstep Convenience.</h2>
+          <p class="section-subtitle">We started NG Autos because we were sick of seeing people get overcharged at garages for work they didn't even need. We keep things simple: fair prices, honest advice, and work you can trust.</p>
+          <ul class="about-list">
+            <li>
+              <div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div><h4>No Call-Out Fee</h4><p>We don't charge you just for showing up. The quote is for the job itself.</p></div>
+            </li>
+            <li>
+              <div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div><h4>Genuine Parts Only</h4><p>We use OEM and quality aftermarket parts. No cheap knock-offs that fail after six months.</p></div>
+            </li>
+            <li>
+              <div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div><h4>No Upselling</h4><p>We'll never tell you something needs fixing if it doesn't. If it's fine, we'll say so.</p></div>
+            </li>
+            <li>
+              <div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div><h4>Fully Insured & DBS Checked</h4><p>Your car and your property are safe. We're professionals, not cowboys.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews section-pad" id="reviews">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="badge"><span class="dot"></span> Reviews</span>
+        <h2 class="section-title">What Wakefield Thinks</h2>
+        <p class="section-subtitle" style="margin:0 auto;">Real reviews from real customers. No fakes, no fluff.</p>
+      </div>
+      <div class="reviews-grid" style="margin-top:48px;">
+        <div class="review-card reveal">
+          <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p>"Car wouldn't start Monday morning. Called NG and he was at my house within an hour. New battery, car running, and I was barely late for work. Half the price of the AA too."</p>
+          <div class="review-author"><div class="review-avatar">MT</div><div><div class="review-name">Mark T.</div><div class="review-meta">Battery replacement, Wakefield</div></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p>"Had my brakes done while I worked from home. Half the price of Kwik Fit and I could see exactly what was being done. No surprises, no upselling. Just proper work."</p>
+          <div class="review-author"><div class="review-avatar">CB</div><div><div class="review-name">Claire B.</div><div class="review-meta">Brake pads & discs, Ossett</div></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p>"Diagnosed a misfire in 10 minutes that Halfords couldn't figure out in a week. Honest guy, knows his stuff, and charged me way less than I expected. Won't use anyone else."</p>
+          <div class="review-author"><div class="review-avatar">JW</div><div><div class="review-name">James W.</div><div class="review-meta">Engine diagnostics, Horbury</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas -->
+  <section class="areas section-pad" id="areas">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="badge"><span class="dot"></span> Coverage</span>
+        <h2 class="section-title">Areas We Cover</h2>
+        <p class="section-subtitle" style="margin:0 auto;">Based in Wakefield. We cover all of West Yorkshire and don't charge extra for travel.</p>
+      </div>
+      <div class="areas-grid reveal" style="margin-top:40px;">
+        <span class="area-tag">Wakefield</span><span class="area-tag">Ossett</span><span class="area-tag">Horbury</span>
+        <span class="area-tag">Normanton</span><span class="area-tag">Castleford</span><span class="area-tag">Pontefract</span>
+        <span class="area-tag">Dewsbury</span><span class="area-tag">Batley</span><span class="area-tag">Morley</span>
+        <span class="area-tag">Rothwell</span><span class="area-tag">Hemsworth</span><span class="area-tag">Featherstone</span>
+        <span class="area-tag">Sandal</span><span class="area-tag">Stanley</span><span class="area-tag">Outwood</span>
+        <span class="area-tag">Crofton</span><span class="area-tag">Ackworth</span><span class="area-tag">Knottingley</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container reveal">
+      <span class="badge"><span class="dot"></span> Get in Touch</span>
+      <h2 class="section-title">Your Car Won't Fix Itself.<br>But We Will.</h2>
+      <p>Call or text us now. Free quotes, no call-out fees, same-day service when possible. Cash, card, or bank transfer accepted.</p>
+      <a href="tel:07512704766" class="cta-phone">07512 704766</a><br><br>
+      <a href="tel:07512704766" class="btn-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call NG Autos Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section-pad" id="contact">
+    <div class="container">
+      <div class="reveal" style="text-align:center;"><span class="badge"><span class="dot"></span> Contact</span><h2 class="section-title">Get In Touch</h2></div>
+      <div class="contact-grid">
+        <div class="contact-cards reveal">
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-label">Phone / Text</div><div class="contact-value"><a href="tel:07512704766">07512 704766</a></div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-label">Based In</div><div class="contact-value">Wakefield, West Yorkshire</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="contact-label">Available</div><div class="contact-value">Mon - Sat: 8am - 7pm</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div><div class="contact-label">Payment</div><div class="contact-value">Cash, card, or bank transfer</div></div></div>
+        </div>
+        <div class="contact-map reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47500!2d-1.5!3d53.68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795d!2sWakefield!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="color:var(--white);">
+            <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+            NG Autos
+          </a>
+          <p>Mobile mechanic serving Wakefield and West Yorkshire. We come to you for servicing, diagnostics, and repairs. No call-out fees, no garage markup.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Full Service</a></li><li><a href="#services">Diagnostics</a></li>
+            <li><a href="#services">Brakes</a></li><li><a href="#services">Clutch</a></li>
+            <li><a href="#services">Timing Belt</a></li><li><a href="#services">Batteries</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#how">How It Works</a></li><li><a href="#about">Why Us</a></li>
+            <li><a href="#reviews">Reviews</a></li><li><a href="#areas">Areas</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3"/></svg><span><a href="tel:07512704766" style="color:var(--silver);">07512 704766</a></span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Wakefield, West Yorkshire</span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Mon-Sat: 8am-7pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 NG Autos Mobile Mechanic. All rights reserved.</span>
+        <span>Original site: <a href="https://www.ngautosmobilemechanic.co.uk/" target="_blank">ngautosmobilemechanic.co.uk</a></span>
+        <span>Demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Popup -->
+  <div class="demo-popup-overlay" id="demoPopup">
+    <div class="demo-popup">
+      <div class="demo-popup-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+      <h2>This was built in under 20 minutes.</h2>
+      <p>This is a quick concept to show you what's possible. No templates. No shortcuts. Just a preview of what a premium NG Autos website could look like.</p>
+      <p>Imagine what we could build with <strong>a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong>turns visitors into paying customers</strong>.</p>
+      <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+      <button class="popup-dismiss" onclick="document.getElementById('demoPopup').classList.remove('show')">Continue browsing the demo</button>
+    </div>
+  </div>
+
+  <script>
+    var header = document.getElementById('header');
+    var scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+      scrollTopBtn.classList.toggle('show', window.scrollY > 500);
+    });
+    scrollTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    var hamburger = document.getElementById('hamburger');
+    var mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() { hamburger.classList.toggle('active'); mobileNav.classList.toggle('open'); document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : ''; });
+    mobileNav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', function() { hamburger.classList.remove('active'); mobileNav.classList.remove('open'); document.body.style.overflow = ''; }); });
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) { e.preventDefault(); var target = document.querySelector(this.getAttribute('href')); if (target) { window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' }); } });
+    });
+
+    var reveals = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el) { revealObserver.observe(el); });
+
+    document.querySelectorAll('.services-grid, .reviews-grid').forEach(function(container) {
+      var children = container.querySelectorAll('.reveal');
+      children.forEach(function(child, i) { child.style.transitionDelay = (i * 0.08) + 's'; });
+    });
+
+    var popupShown = false;
+    window.addEventListener('scroll', function() { var p = window.scrollY / (document.body.scrollHeight - window.innerHeight); if (!popupShown && p > 0.7) { popupShown = true; document.getElementById('demoPopup').classList.add('show'); } });
+  </script>
 </body>
 </html>
