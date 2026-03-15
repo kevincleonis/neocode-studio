@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holmes Plumbing & Heating | Gas Safe Plumber in Wigan</title>
+    <meta name="description" content="Gas Safe registered plumber in Wigan. Boiler installations, servicing, CP12 certificates and emergency repairs. Call 07743 265432.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0f1923;
+            --navy-light: #162030;
+            --navy-mid: #1c2a3d;
+            --blue: #2d8cf0;
+            --blue-light: #4da3ff;
+            --blue-dark: #1a6fd1;
+            --orange: #f07a2d;
+            --orange-light: #ff9248;
+            --slate: #94a3b8;
+            --off-white: #f1f5f9;
+            --white: #ffffff;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--off-white);
+            line-height: 1.7;
+            font-weight: 400;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Banner */
+        .neocode-banner {
+            background: #0a1018;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .neocode-banner a { color: var(--blue); text-decoration: none; font-weight: 700; }
+
+        /* Nav */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: all 0.35s var(--ease);
+        }
+        .navbar.scrolled {
+            background: rgba(15, 25, 35, 0.97);
+            backdrop-filter: blur(16px);
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--blue); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--blue-light); }
+        .nav-cta {
+            background: var(--orange);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: var(--radius);
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--orange-light); transform: translateY(-2px); }
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white) !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            filter: brightness(0.2) saturate(0.6);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,25,35,0.9) 0%, rgba(15,25,35,0.5) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+        .hero-text {}
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(45,140,240,0.12);
+            border: 1px solid rgba(45,140,240,0.3);
+            color: var(--blue-light);
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .hero-badge::before { content: '✓'; font-weight: 700; }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        .hero h1 .accent { color: var(--blue); }
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--slate);
+            max-width: 480px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: var(--white);
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            transition: all 0.3s var(--ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover { background: var(--orange-light); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(240,122,45,0.25); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--white);
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            transition: all 0.3s var(--ease);
+        }
+        .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+        .hero-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+        .hero-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .hero-card-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .hero-card-item:last-child { border: none; }
+        .hero-card-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(45,140,240,0.12);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .hero-card-item h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+        .hero-card-item p {
+            font-size: 0.82rem;
+            color: var(--slate);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--navy-light);
+            border-top: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 40px 24px;
+        }
+        .trust-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .trust-item {}
+        .trust-num {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+        .trust-label {
+            font-size: 0.82rem;
+            color: var(--slate);
+            margin-top: 4px;
+        }
+
+        /* Sections */
+        .section { padding: 100px 24px; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            color: var(--slate);
+            font-size: 1rem;
+            max-width: 540px;
+            line-height: 1.8;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            border-color: rgba(45,140,240,0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .service-card-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(45,140,240,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            color: var(--slate);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .service-card .price {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Why Us */
+        .why-section { background: var(--navy-light); }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .why-img img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+        .why-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .why-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .why-check {
+            width: 28px;
+            height: 28px;
+            background: rgba(45,140,240,0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .why-list h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .why-list p {
+            font-size: 0.85rem;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+        .review-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+        }
+        .review-stars {
+            color: var(--orange);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .review-card p {
+            color: var(--off-white);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+        .review-author {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.88rem;
+        }
+        .review-meta {
+            color: var(--slate);
+            font-size: 0.78rem;
+            margin-top: 3px;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--navy) 100%);
+            text-align: center;
+            padding: 100px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(240,122,45,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section .section-title { margin-bottom: 12px; }
+        .cta-section p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .cta-phone {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 24px;
+            transition: color 0.3s;
+        }
+        .cta-phone:hover { color: var(--orange); }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(45,140,240,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-card-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .contact-card-value {
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .contact-card-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-card-value a:hover { color: var(--orange); }
+        .contact-map {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            min-height: 380px;
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            border: 0;
+            filter: grayscale(0.7) invert(0.92) contrast(0.85);
+        }
+
+        /* Areas */
+        .areas-section { background: var(--navy-light); }
+        .areas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .area-tag {
+            background: rgba(45,140,240,0.08);
+            border: 1px solid rgba(45,140,240,0.15);
+            color: var(--off-white);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1018;
+            padding: 60px 24px 30px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+        .footer-brand h3 span { color: var(--blue); }
+        .footer-brand p {
+            color: var(--slate);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+        .footer h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--white);
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-links a {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--blue); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 36px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: var(--slate);
+        }
+        .gas-safe-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(240,122,45,0.1);
+            border: 1px solid rgba(240,122,45,0.25);
+            padding: 6px 14px;
+            border-radius: 8px;
+            color: var(--orange);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .services-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-card { display: none; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(15,25,35,0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                backdrop-filter: blur(20px);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1.1rem; }
+            .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; gap: 40px; }
+            .why-img { order: -1; }
+            .why-img img { height: 300px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+            .section { padding: 70px 20px; }
+        }
+        @media (max-width: 480px) {
+            .hero-btns { flex-direction: column; }
+            .trust-inner { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="neocode-banner">
+        Website demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a>
+    </div>
+
+    <!-- Nav -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Holmes <span>Plumbing</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#areas">Areas</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:07743265432" class="nav-phone">&#128222; 07743 265432</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">Gas Safe Registered</div>
+                <h1>Wigan's Trusted <span class="accent">Plumber</span> for Over a Decade</h1>
+                <p>From boiler breakdowns to full bathroom fits, Holmes Plumbing & Heating keeps Wigan's homes running smoothly. No call-out fees. No hidden charges. Just honest, reliable work.</p>
+                <div class="hero-btns">
+                    <a href="tel:07743265432" class="btn-primary">&#128222; Call Now</a>
+                    <a href="#services" class="btn-secondary">View Services</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>What We Cover</h3>
+                <div class="hero-card-item">
+                    <div class="hero-card-icon">&#128293;</div>
+                    <div>
+                        <h4>Boiler Installs & Repairs</h4>
+                        <p>New boilers, breakdowns, and annual servicing</p>
+                    </div>
+                </div>
+                <div class="hero-card-item">
+                    <div class="hero-card-icon">&#128703;</div>
+                    <div>
+                        <h4>Bathrooms & Kitchens</h4>
+                        <p>Full installations, taps, toilets, and showers</p>
+                    </div>
+                </div>
+                <div class="hero-card-item">
+                    <div class="hero-card-icon">&#128196;</div>
+                    <div>
+                        <h4>CP12 Gas Certificates</h4>
+                        <p>Landlord safety checks and compliance</p>
+                    </div>
+                </div>
+                <div class="hero-card-item">
+                    <div class="hero-card-icon">&#9888;</div>
+                    <div>
+                        <h4>Emergency Call-Outs</h4>
+                        <p>Fast response for leaks, burst pipes, no heat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-inner reveal">
+            <div class="trust-item">
+                <div class="trust-num">10+</div>
+                <div class="trust-label">Years in Wigan</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">2,500+</div>
+                <div class="trust-label">Jobs Completed</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">4.9/5</div>
+                <div class="trust-label">Customer Rating</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">0</div>
+                <div class="trust-label">Call-Out Fees</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="section-inner">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">Everything Plumbing & Heating</h2>
+                <p class="section-desc" style="margin:0 auto;">Whatever the job, big or small, we'll sort it. All work fully guaranteed and Gas Safe certified.</p>
+            </div>
+            <div class="services-grid reveal">
+                <div class="service-card">
+                    <div class="service-card-icon">&#128293;</div>
+                    <h3>Boiler Installation</h3>
+                    <p>Energy-efficient boiler replacements with up to 10 years warranty. We fit all major brands including Worcester, Vaillant, and Ideal.</p>
+                    <div class="price">From £1,800</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon">&#128295;</div>
+                    <h3>Boiler Servicing</h3>
+                    <p>Annual servicing to keep your boiler running safely and efficiently. Includes full safety check, flue test, and written report.</p>
+                    <div class="price">From £65</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon">&#128196;</div>
+                    <h3>CP12 Certificates</h3>
+                    <p>Landlord gas safety inspections and certificates. Legal requirement for all rental properties. Fast turnaround, competitive rates.</p>
+                    <div class="price">From £55</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon">&#128703;</div>
+                    <h3>Bathroom Fitting</h3>
+                    <p>Complete bathroom installations from design to finish. We handle plumbing, tiling, and electrics. Transform your space.</p>
+                    <div class="price">From £2,500</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon">&#9888;</div>
+                    <h3>Emergency Repairs</h3>
+                    <p>Burst pipes, leaks, no hot water? We're on call for emergencies across Wigan. Fast response, no call-out charge.</p>
+                    <div class="price">No call-out fee</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon">&#127777;</div>
+                    <h3>Central Heating</h3>
+                    <p>Radiator installs, power flushing, underfloor heating, and full system upgrades. Keep your home warm without wasting energy.</p>
+                    <div class="price">Free quote</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section why-section" id="why">
+        <div class="section-inner">
+            <div class="why-grid reveal">
+                <div class="why-img">
+                    <img src="https://images.pexels.com/photos/8486972/pexels-photo-8486972.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Plumber at work fixing pipes" loading="lazy">
+                </div>
+                <div>
+                    <span class="section-label">Why Holmes</span>
+                    <h2 class="section-title">Honest Work, Fair Prices</h2>
+                    <p class="section-desc" style="margin-bottom:32px;">We're not a big faceless company. We're a local Wigan plumber who takes pride in doing things right the first time.</p>
+                    <ul class="why-list">
+                        <li>
+                            <div class="why-check">&#10003;</div>
+                            <div>
+                                <h4>Gas Safe Registered</h4>
+                                <p>Fully certified for all gas work. Your safety isn't negotiable.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="why-check">&#10003;</div>
+                            <div>
+                                <h4>No Hidden Costs</h4>
+                                <p>We quote before we start. The price we give is the price you pay.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="why-check">&#10003;</div>
+                            <div>
+                                <h4>Clean and Tidy</h4>
+                                <p>We treat your home like our own. Dust sheets down, mess cleaned up.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="why-check">&#10003;</div>
+                            <div>
+                                <h4>Guaranteed Work</h4>
+                                <p>All our work comes with a written guarantee. If it's not right, we come back.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+        <div class="section-inner">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Wigan Says About Us</h2>
+            </div>
+            <div class="reviews-grid reveal">
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Called at 7am with no hot water and he was round by 9. Fixed the boiler, explained what went wrong, and charged a fair price. Can't ask for more than that."</p>
+                    <div class="review-author">Steve P.</div>
+                    <div class="review-meta">Boiler repair, Wigan</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"We've used Holmes for 3 years running for our landlord gas certs. Always on time, professional, and the tenants love how friendly he is. Wouldn't use anyone else."</p>
+                    <div class="review-author">Rachel W.</div>
+                    <div class="review-meta">CP12 certificates, landlord</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Had a full bathroom fitted and it looks absolutely stunning. He took the time to get every detail right and left the place spotless. Really impressed."</p>
+                    <div class="review-author">Karen D.</div>
+                    <div class="review-meta">Bathroom installation, Standish</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas -->
+    <section class="section areas-section" id="areas">
+        <div class="section-inner reveal">
+            <div style="text-align:center;">
+                <span class="section-label">Coverage</span>
+                <h2 class="section-title">Areas We Cover</h2>
+                <p class="section-desc" style="margin:0 auto 10px;">Based in Gidlow Lane, we cover all of Wigan and surrounding areas.</p>
+            </div>
+            <div class="areas-grid" style="justify-content:center;">
+                <span class="area-tag">Wigan</span>
+                <span class="area-tag">Standish</span>
+                <span class="area-tag">Aspull</span>
+                <span class="area-tag">Hindley</span>
+                <span class="area-tag">Ince</span>
+                <span class="area-tag">Pemberton</span>
+                <span class="area-tag">Orrell</span>
+                <span class="area-tag">Shevington</span>
+                <span class="area-tag">Leigh</span>
+                <span class="area-tag">Atherton</span>
+                <span class="area-tag">Tyldesley</span>
+                <span class="area-tag">Golborne</span>
+                <span class="area-tag">Ashton-in-Makerfield</span>
+                <span class="area-tag">Billinge</span>
+                <span class="area-tag">Haigh</span>
+                <span class="area-tag">Westhoughton</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-inner reveal">
+            <span class="section-label">Need a Plumber?</span>
+            <h2 class="section-title">Don't Wait for a Small<br>Problem to Get Bigger</h2>
+            <p>Give us a ring or drop a message on WhatsApp. Free quotes, no obligation, no call-out fees.</p>
+            <a href="tel:07743265432" class="cta-phone">07743 265432</a><br><br>
+            <a href="tel:07743265432" class="btn-primary">&#128222; Call Holmes Now</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="section-inner">
+            <div class="reveal">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+            </div>
+            <div class="contact-grid reveal">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">&#128222;</div>
+                        <div>
+                            <div class="contact-card-label">Phone / WhatsApp</div>
+                            <div class="contact-card-value"><a href="tel:07743265432">07743 265432</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">&#128205;</div>
+                        <div>
+                            <div class="contact-card-label">Based At</div>
+                            <div class="contact-card-value">292 Gidlow Lane, Wigan WN6 7PG</div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">&#128337;</div>
+                        <div>
+                            <div class="contact-card-label">Available</div>
+                            <div class="contact-card-value">Mon - Sat: 7am - 8pm | Emergencies: 24/7</div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">&#128737;</div>
+                        <div>
+                            <div class="contact-card-label">Certifications</div>
+                            <div class="contact-card-value">
+                                <span class="gas-safe-badge">&#128293; Gas Safe Registered</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370.1!2d-2.6444!3d53.5580!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b0f6e!2s292+Gidlow+Lane%2C+Wigan+WN6+7PG!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Holmes <span>Plumbing</span> & Heating</h3>
+                <p>Your local Gas Safe plumber in Wigan. Boiler installs, servicing, repairs, and bathroom fitting. No call-out fees, no hidden charges.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Boiler Installation</a></li>
+                    <li><a href="#services">Boiler Servicing</a></li>
+                    <li><a href="#services">CP12 Certificates</a></li>
+                    <li><a href="#services">Bathroom Fitting</a></li>
+                    <li><a href="#services">Emergency Repairs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#why">Why Us</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#areas">Areas Covered</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Holmes Plumbing & Heating. All rights reserved.</span>
+            <span class="gas-safe-badge">&#128293; Gas Safe Registered</span>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
