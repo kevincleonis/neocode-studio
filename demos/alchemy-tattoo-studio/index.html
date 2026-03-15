@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemy Tattoo Studio | Wigan's Finest Tattoo Artists</title>
+    <meta name="description" content="Custom tattoos crafted with precision in the heart of Wigan. Walk-ins welcome. Book your consultation at Alchemy Tattoo Studio, 51 Wallgate.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ink: #0c0c0f;
+            --ink-light: #141418;
+            --ink-mid: #1e1e24;
+            --gold: #c9a84c;
+            --gold-light: #dbbf65;
+            --gold-dark: #a88a35;
+            --bone: #f0ebe3;
+            --bone-dark: #d9d0c3;
+            --smoke: #8a8a92;
+            --crimson: #8b2530;
+            --crimson-light: #a63040;
+            --white: #ffffff;
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--ink);
+            color: var(--bone);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* ── Scroll Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── NeoCode Banner ── */
+        .neocode-banner {
+            background: #08080a;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .neocode-banner a { color: var(--gold); text-decoration: none; font-weight: 700; }
+
+        /* ── Navigation ── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: background 0.35s var(--ease), padding 0.35s var(--ease), box-shadow 0.35s var(--ease);
+        }
+        .navbar.scrolled {
+            background: rgba(12, 12, 15, 0.97);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 12px 0;
+            box-shadow: 0 2px 40px rgba(0,0,0,0.5);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--bone);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .nav-logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--smoke);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--ink) !important;
+            padding: 10px 24px;
+            border-radius: 0;
+            font-weight: 600 !important;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--bone);
+            transition: all 0.3s;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            filter: brightness(0.25) saturate(0.7);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(12,12,15,0.4) 0%, rgba(12,12,15,0.85) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero h1 .accent { color: var(--gold); }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--bone-dark);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: var(--ink);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s var(--ease);
+            display: inline-block;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(201,168,76,0.25); }
+        .btn-outline {
+            border: 1px solid rgba(240,235,227,0.3);
+            color: var(--bone);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s var(--ease);
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* ── Section Shared ── */
+        .section { padding: 100px 24px; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .section-desc {
+            color: var(--smoke);
+            font-size: 1rem;
+            max-width: 560px;
+            line-height: 1.8;
+        }
+
+        /* ── About ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .about-img {
+            position: relative;
+        }
+        .about-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            filter: saturate(0.85);
+        }
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--gold);
+            z-index: -1;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .stat-box {
+            background: var(--ink-light);
+            border: 1px solid rgba(201,168,76,0.15);
+            padding: 24px;
+            text-align: center;
+        }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--smoke);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ── Gallery (Masonry) ── */
+        .gallery-section { background: var(--ink-light); }
+        .gallery-grid {
+            columns: 3;
+            column-gap: 16px;
+            margin-top: 60px;
+        }
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s var(--ease), filter 0.6s;
+            filter: saturate(0.8);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: saturate(1);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(12,12,15,0.85) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .gallery-item:hover .overlay { opacity: 1; }
+        .overlay-text {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ── Services ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        .service-card {
+            background: var(--ink-light);
+            border: 1px solid rgba(201,168,76,0.1);
+            padding: 48px 32px;
+            text-align: center;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.4s var(--ease);
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .service-card p {
+            color: var(--smoke);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ── Testimonials ── */
+        .testimonials-section { background: var(--ink-light); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        .testimonial-card {
+            background: var(--ink);
+            border: 1px solid rgba(201,168,76,0.1);
+            padding: 40px 32px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.15;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            color: var(--bone-dark);
+            font-size: 0.92rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.85rem;
+        }
+        .testimonial-meta {
+            color: var(--smoke);
+            font-size: 0.78rem;
+            margin-top: 4px;
+        }
+
+        /* ── Process ── */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(201,168,76,0.15);
+            margin-bottom: 16px;
+        }
+        .step h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .step p {
+            color: var(--smoke);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--ink) 0%, #1a1520 50%, var(--ink) 100%);
+            text-align: center;
+            padding: 120px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section .section-title { margin-bottom: 16px; }
+        .cta-section p {
+            color: var(--smoke);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* ── Contact ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        .contact-info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .contact-info-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--ink-light);
+            border: 1px solid rgba(201,168,76,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .contact-value {
+            color: var(--bone);
+            font-size: 0.95rem;
+        }
+        .contact-value a {
+            color: var(--bone);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-value a:hover { color: var(--gold); }
+        .contact-map {
+            background: var(--ink-light);
+            border: 1px solid rgba(201,168,76,0.1);
+            height: 100%;
+            min-height: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.8) invert(0.92) contrast(0.9);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #08080a;
+            padding: 60px 24px 30px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .footer-brand h3 span { color: var(--gold); }
+        .footer-brand p {
+            color: var(--smoke);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+        .footer h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-links a {
+            color: var(--smoke);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--smoke);
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-social a {
+            color: var(--smoke);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        .footer-social a:hover { color: var(--gold); }
+
+        /* ── Mobile ── */
+        @media (max-width: 1024px) {
+            .services-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-steps { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { columns: 2; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(12,12,15,0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 28px;
+                backdrop-filter: blur(20px);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1.1rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img { order: -1; }
+            .about-img img { height: 350px; }
+            .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .gallery-grid { columns: 2; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+            .section { padding: 70px 20px; }
+            .hero h1 { letter-spacing: 1px; }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { columns: 1; }
+            .process-steps { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
+            .hero-btns { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NeoCode Banner -->
+    <div class="neocode-banner">
+        Website demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo"><span>Alchemy</span> Tattoo</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#book" class="nav-cta">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Wigan's Finest Since Day One</div>
+            <h1>Your Skin.<br>Your <span class="accent">Story</span>.</h1>
+            <p>Custom tattoos crafted with precision, passion and purpose. Every piece we create is as unique as the person wearing it. Walk into Alchemy and walk out with art.</p>
+            <div class="hero-btns">
+                <a href="#book" class="btn-primary">Book a Consultation</a>
+                <a href="#gallery" class="btn-outline">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="section-inner">
+            <div class="about-grid reveal">
+                <div class="about-img">
+                    <img src="https://images.pexels.com/photos/4123763/pexels-photo-4123763.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tattoo artist at work in studio">
+                </div>
+                <div>
+                    <span class="section-label">Our Studio</span>
+                    <h2 class="section-title">Where Art Meets Skin</h2>
+                    <p class="section-desc" style="margin-bottom: 16px;">
+                        Alchemy Tattoo Studio sits right in the heart of Wigan on Wallgate. We're not a high-street chain turning out flash sheets all day. Every single piece that leaves this studio is designed from scratch, built around your ideas, and crafted to last a lifetime.
+                    </p>
+                    <p class="section-desc">
+                        Our artists bring different strengths to the table. Whether you're after hyper-realistic portraits, geometric precision, traditional bold lines, or delicate fine-line work, you'll find someone here who lives and breathes that style.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <div class="stat-num">5K+</div>
+                            <div class="stat-label">Tattoos Done</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">4.9</div>
+                            <div class="stat-label">Google Rating</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">100%</div>
+                            <div class="stat-label">Custom Work</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">Sterile</div>
+                            <div class="stat-label">Clinical Grade</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery-section" id="gallery">
+        <div class="section-inner">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Recent Work</h2>
+                <p class="section-desc">Every tattoo tells a story. Here's some of our latest ink.</p>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/1304473/pexels-photo-1304473.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Detailed sleeve tattoo" loading="lazy">
+                    <div class="overlay"><span class="overlay-text">Full Sleeve</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/2183131/pexels-photo-2183131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fine line tattoo work" loading="lazy">
+                    <div class="overlay"><span class="overlay-text">Fine Line</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/1670342/pexels-photo-1670342.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Black and grey realism" loading="lazy">
+                    <div class="overlay"><span class="overlay-text">Realism</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/3644850/pexels-photo-3644850.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Geometric tattoo design" loading="lazy">
+                    <div class="overlay"><span class="overlay-text">Geometric</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/1975342/pexels-photo-1975342.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Traditional style tattoo" loading="lazy">
+                    <div class="overlay"><span class="overlay-text">Traditional</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom tattoo piece" loading="lazy">
+                    <div class="overlay"><span class="overlay-text">Custom Piece</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="section-inner">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-desc" style="margin:0 auto;">From small pieces to full-day sessions, we've got you covered.</p>
+            </div>
+            <div class="services-grid reveal">
+                <div class="service-card">
+                    <span class="service-icon">&#9998;</span>
+                    <h3>Custom Tattoos</h3>
+                    <p>Your idea, our artistry. We design every piece from scratch based on your vision. No flash, no repeats, just one-of-a-kind work.</p>
+                    <div class="service-price">From £80/hr</div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#128142;</span>
+                    <h3>Cover-Ups</h3>
+                    <p>Got ink you've outgrown? We specialise in transforming old tattoos into something you'll actually love. Free consultation included.</p>
+                    <div class="service-price">From £100/hr</div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#9733;</span>
+                    <h3>Walk-Ins</h3>
+                    <p>Feeling spontaneous? We keep walk-in slots open for smaller pieces. Pop in, pick a design or bring your own, and leave with fresh ink.</p>
+                    <div class="service-price">From £50</div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#127912;</span>
+                    <h3>Portraits</h3>
+                    <p>Photo-realistic portraits that actually look like the person. This is precision work and we don't rush it. Results speak for themselves.</p>
+                    <div class="service-price">From £120/hr</div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#10047;</span>
+                    <h3>Fine Line / Micro</h3>
+                    <p>Delicate, detailed, and built to age well. Fine line work needs a steady hand and years of experience. We've got both.</p>
+                    <div class="service-price">From £60</div>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#9881;</span>
+                    <h3>Touch-Ups</h3>
+                    <p>Old ink looking faded? We offer touch-up sessions to bring your tattoos back to life. Free for work done at Alchemy within 6 months.</p>
+                    <div class="service-price">From £40</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" style="background:var(--ink-light);">
+        <div class="section-inner">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label">How It Works</span>
+                <h2 class="section-title">From Idea to Ink</h2>
+            </div>
+            <div class="process-steps reveal">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <h3>Consultation</h3>
+                    <p>Come in or message us with your idea. We'll talk through placement, size, style, and budget. No pressure, no rush.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <h3>Design</h3>
+                    <p>Your artist draws up a custom design based on your brief. You'll see it before your session and we'll tweak it until it's perfect.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <h3>Session</h3>
+                    <p>Sit back, relax, and let us work. We keep things comfortable with a clean, chill studio. Music's on us.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">04</div>
+                    <h3>Aftercare</h3>
+                    <p>We'll walk you through proper aftercare so your tattoo heals perfectly. Follow-up touch-ups are on the house within 6 months.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section" id="reviews">
+        <div class="section-inner">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-label">Reviews</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            <div class="testimonials-grid reveal">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Best tattoo studio in Wigan, hands down. Got a full sleeve done over 4 sessions and the detail is insane. Everyone asks where I got it done."</p>
+                    <div class="testimonial-author">Jake M.</div>
+                    <div class="testimonial-meta">Full sleeve, 2024</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"I was so nervous getting my first tattoo but the team made me feel completely at ease. The studio is spotless and my fine line piece healed perfectly."</p>
+                    <div class="testimonial-author">Sophie T.</div>
+                    <div class="testimonial-meta">Fine line wrist piece, 2025</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"They covered up a terrible tattoo I'd had for 10 years and turned it into something I'm genuinely proud of. Absolute wizards with ink."</p>
+                    <div class="testimonial-author">Dan H.</div>
+                    <div class="testimonial-meta">Cover-up, 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="book">
+        <div class="section-inner reveal">
+            <span class="section-label">Ready?</span>
+            <h2 class="section-title">Let's Create Something<br>You'll Wear Forever</h2>
+            <p>Book a free consultation and let's talk about your next piece. Walk-ins welcome too.</p>
+            <a href="tel:01942538418" class="btn-primary">Call 01942 538418</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="section-inner">
+            <div class="reveal">
+                <span class="section-label">Find Us</span>
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            <div class="contact-grid reveal">
+                <ul class="contact-info-list">
+                    <li>
+                        <div class="contact-icon">&#128205;</div>
+                        <div>
+                            <div class="contact-label">Studio</div>
+                            <div class="contact-value">51 Wallgate, Wigan WN1 1BE</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon">&#128222;</div>
+                        <div>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value"><a href="tel:01942538418">01942 538418</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon">&#128337;</div>
+                        <div>
+                            <div class="contact-label">Hours</div>
+                            <div class="contact-value">Mon - Sat: 10am - 6pm<br>Sun: Closed</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon">&#128172;</div>
+                        <div>
+                            <div class="contact-label">Walk-Ins</div>
+                            <div class="contact-value">Always welcome, subject to availability</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370.5!2d-2.6326!3d53.5441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b0eb33b0fab83%3A0x1234567890!2s51+Wallgate%2C+Wigan+WN1+1BE!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3><span>Alchemy</span> Tattoo Studio</h3>
+                <p>Custom tattoos in the heart of Wigan. Every piece designed from scratch. Walk-ins welcome, consultations free.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Custom Tattoos</a></li>
+                    <li><a href="#services">Cover-Ups</a></li>
+                    <li><a href="#services">Walk-Ins</a></li>
+                    <li><a href="#services">Portraits</a></li>
+                    <li><a href="#services">Fine Line</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Alchemy Tattoo Studio. All rights reserved.</span>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram">&#128247;</a>
+                <a href="#" aria-label="Facebook">&#102;</a>
+                <a href="#" aria-label="TikTok">&#127925;</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Mobile nav toggle
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
