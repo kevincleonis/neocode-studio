@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Kebab & Pizza | Barnsley's Favourite Takeaway</title>
+  <meta name="description" content="Fresh pizzas, kebabs, burgers and fried chicken delivered in Barnsley. Order online or call us. 20 Wellington Street, Barnsley S70 1.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --flame: #E85D04;
+      --flame-deep: #D35400;
+      --flame-glow: rgba(232,93,4,0.15);
+      --midnight: #1A1A2E;
+      --slate: #16213E;
+      --graphite: #334155;
+      --steel: #64748B;
+      --silver: #94A3B8;
+      --cloud: #F1F5F9;
+      --snow: #F8FAFC;
+      --white: #FFFFFF;
+      --yellow: #F59E0B;
+      --green: #22C55E;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 24px rgba(26,26,46,0.08);
+      --shadow-lg: 0 16px 48px rgba(26,26,46,0.12);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; color: var(--midnight); background: var(--white); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', sans-serif; line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--flame-glow); color: var(--flame); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--flame); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin: 16px 0 20px; }
+    .section-subtitle { font-size: 1.1rem; color: var(--steel); max-width: 600px; line-height: 1.7; }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--flame); color: var(--white); padding: 16px 32px; border-radius: var(--radius); font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease); }
+    .btn-primary:hover { background: var(--flame-deep); transform: translateY(-2px); box-shadow: 0 8px 24px var(--flame-glow); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; border: 2px solid rgba(255,255,255,0.25); color: var(--white); padding: 14px 30px; border-radius: var(--radius); font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease); }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Banner */
+    .neocode-banner { background: var(--midnight); color: rgba(255,255,255,0.7); text-align: center; padding: 10px 20px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; position: relative; z-index: 1001; }
+    .neocode-banner a { color: var(--flame); font-weight: 700; }
+
+    /* Header */
+    .header { position: fixed; top: 38px; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: all 0.3s var(--ease); background: transparent; }
+    .header.scrolled { top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 10px 0; }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .header .logo, .header .nav-links a { color: var(--white); transition: color 0.3s; }
+    .header.scrolled .logo, .header.scrolled .nav-links a { color: var(--graphite); }
+    .header .hamburger span { background: var(--white); }
+    .header.scrolled .hamburger span { background: var(--midnight); }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 800; }
+    .logo-icon { width: 40px; height: 40px; background: var(--flame); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .nav-links { display: flex; list-style: none; gap: 32px; align-items: center; }
+    .nav-links a { font-weight: 500; font-size: 0.92rem; }
+    .nav-links a:hover { color: var(--flame) !important; }
+    .nav-cta { background: var(--flame) !important; color: var(--white) !important; padding: 10px 24px !important; border-radius: var(--radius) !important; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--flame-deep) !important; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; display: block; transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-nav { position: fixed; inset: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a { font-size: 1.3rem; font-weight: 600; color: var(--midnight); }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 120px; padding-bottom: 60px; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,26,46,0.93) 0%, rgba(26,26,46,0.8) 50%, rgba(26,26,46,0.65) 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,93,4,0.15); color: #FCA5A5; padding: 10px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; backdrop-filter: blur(4px); }
+    .hero-badge svg { width: 16px; height: 16px; }
+    .hero-title { font-size: clamp(2.5rem, 5.5vw, 3.8rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; color: var(--white); }
+    .hero-title .highlight { color: var(--flame); }
+    .hero-text { font-size: 1.1rem; color: var(--silver); line-height: 1.8; max-width: 500px; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-img-side { position: relative; z-index: 2; }
+    .hero-img-side img { width: 100%; height: 480px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border: 3px solid rgba(255,255,255,0.1); }
+    .hero-floater { position: absolute; bottom: -16px; left: -16px; background: var(--white); border-radius: var(--radius); padding: 16px 20px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px; }
+    .hero-floater-icon { width: 44px; height: 44px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.2rem; }
+    .hero-floater-text { font-weight: 700; font-size: 0.88rem; color: var(--midnight); }
+    .hero-floater-text span { display: block; font-weight: 400; font-size: 0.78rem; color: var(--steel); }
+
+    /* Trust */
+    .trust-bar { background: var(--midnight); padding: 24px 0; }
+    .trust-inner { display: flex; gap: 48px; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.88rem; font-weight: 500; white-space: nowrap; }
+    .trust-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .trust-icon svg { width: 18px; height: 18px; color: var(--flame); }
+
+    /* Menu */
+    .menu { background: var(--snow); }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .menu-card { background: var(--white); border: 1px solid var(--cloud); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.4s var(--ease); }
+    .menu-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .menu-card-img { height: 200px; overflow: hidden; }
+    .menu-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .menu-card:hover .menu-card-img img { transform: scale(1.08); }
+    .menu-card-body { padding: 24px; }
+    .menu-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .menu-card p { color: var(--steel); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
+    .menu-card-footer { display: flex; justify-content: space-between; align-items: center; }
+    .menu-price { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--flame); }
+    .menu-tag { background: var(--flame-glow); color: var(--flame); padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+
+    /* Deals */
+    .deals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .deal-card { background: linear-gradient(135deg, var(--midnight) 0%, var(--slate) 100%); border-radius: var(--radius-lg); padding: 40px 36px; color: var(--white); position: relative; overflow: hidden; transition: transform 0.4s var(--ease); }
+    .deal-card:hover { transform: translateY(-6px); }
+    .deal-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, var(--flame-glow) 0%, transparent 70%); border-radius: 50%; }
+    .deal-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; position: relative; }
+    .deal-card p { color: var(--silver); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px; position: relative; }
+    .deal-price { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800; color: var(--flame); position: relative; }
+    .deal-price .was { font-size: 1rem; color: var(--steel); text-decoration: line-through; font-weight: 400; margin-left: 8px; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img img { width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius-lg); }
+    .about-floater { position: absolute; bottom: -20px; right: -20px; background: var(--white); border-radius: var(--radius-lg); padding: 24px 28px; box-shadow: var(--shadow-lg); text-align: center; }
+    .about-floater .big { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--flame); display: block; line-height: 1; }
+    .about-floater .small { font-size: 0.82rem; color: var(--steel); font-weight: 500; margin-top: 4px; display: block; }
+    .about-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+    .about-list li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 16px; border-radius: var(--radius); transition: all 0.3s var(--ease); }
+    .about-list li:hover { background: var(--cloud); transform: translateX(6px); }
+    .about-check { width: 28px; height: 28px; background: var(--flame-glow); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .about-check svg { width: 14px; height: 14px; color: var(--flame); }
+    .about-list li:hover .about-check { background: var(--flame); }
+    .about-list li:hover .about-check svg { color: var(--white); }
+    .about-list h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+    .about-list p { font-size: 0.85rem; color: var(--steel); line-height: 1.6; }
+
+    /* Reviews */
+    .reviews { background: var(--snow); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { background: var(--white); border: 1px solid var(--cloud); border-radius: var(--radius-lg); padding: 36px 28px; transition: all 0.4s var(--ease); position: relative; }
+    .review-card::before { content: '\201C'; font-family: 'Space Grotesk', sans-serif; font-size: 6rem; color: var(--flame); opacity: 0.06; position: absolute; top: 8px; left: 20px; line-height: 1; }
+    .review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .review-stars svg { width: 18px; height: 18px; color: var(--yellow); fill: var(--yellow); }
+    .review-card > p { color: var(--graphite); font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar { width: 40px; height: 40px; background: var(--flame-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--flame); font-size: 0.9rem; }
+    .review-name { font-weight: 600; font-size: 0.9rem; }
+    .review-meta { color: var(--steel); font-size: 0.78rem; margin-top: 2px; }
+
+    /* CTA */
+    .cta { background: var(--midnight); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,93,4,0.08) 0%, transparent 70%); border-radius: 50%; }
+    .cta .badge { background: rgba(232,93,4,0.15); color: #FDBA74; }
+    .cta .section-title { color: var(--white); }
+    .cta p { color: var(--silver); font-size: 1.1rem; max-width: 500px; margin: 0 auto 32px; line-height: 1.8; }
+    .btn-white { background: var(--white); color: var(--flame); padding: 16px 36px; border-radius: var(--radius); font-weight: 700; font-size: 1rem; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 10px; }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 48px; }
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; }
+    .contact-card { background: var(--snow); border: 1px solid var(--cloud); border-radius: var(--radius); padding: 20px 24px; display: flex; gap: 16px; align-items: center; transition: all 0.3s var(--ease); }
+    .contact-card:hover { transform: translateX(8px); box-shadow: var(--shadow); }
+    .contact-card-icon { width: 48px; height: 48px; background: var(--flame-glow); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-card-icon svg { width: 22px; height: 22px; color: var(--flame); }
+    .contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--flame); font-weight: 600; margin-bottom: 2px; }
+    .contact-value { color: var(--midnight); font-size: 0.95rem; font-weight: 500; }
+    .contact-value a { color: var(--midnight); transition: color 0.3s; }
+    .contact-value a:hover { color: var(--flame); }
+    .contact-map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--cloud); min-height: 400px; box-shadow: var(--shadow); }
+    .contact-map iframe { width: 100%; height: 100%; min-height: 400px; border: 0; }
+
+    /* Scroll top */
+    .scroll-top { position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; background: var(--flame); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s var(--ease); z-index: 100; box-shadow: 0 4px 16px var(--flame-glow); }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-4px); }
+    .scroll-top svg { width: 20px; height: 20px; }
+
+    /* Footer */
+    .footer { background: var(--midnight); padding: 64px 0 28px; color: var(--silver); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: 16px; max-width: 280px; }
+    .footer h4 { color: var(--white); font-size: 0.88rem; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: var(--silver); font-size: 0.88rem; transition: all 0.3s; display: inline-block; }
+    .footer-links a:hover { color: var(--white); transform: translateX(4px); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.88rem; }
+    .footer-contact-item svg { width: 18px; height: 18px; color: var(--flame); flex-shrink: 0; margin-top: 3px; }
+    .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--steel); flex-wrap: wrap; gap: 10px; }
+    .footer-bottom a { color: var(--steel); transition: color 0.3s; }
+    .footer-bottom a:hover { color: var(--white); }
+
+    /* Popup */
+    .demo-popup-overlay { position: fixed; inset: 0; background: rgba(26,26,46,0.7); backdrop-filter: blur(4px); z-index: 99999; display: none; align-items: center; justify-content: center; }
+    .demo-popup-overlay.show { display: flex; }
+    .demo-popup { background: var(--white); border-radius: var(--radius-lg); padding: 48px; max-width: 480px; width: 90%; text-align: center; }
+    .demo-popup-icon { width: 64px; height: 64px; background: var(--flame-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; }
+    .demo-popup h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+    .demo-popup p { font-size: 0.95rem; color: var(--steel); line-height: 1.8; margin-bottom: 12px; }
+    .demo-popup strong { color: var(--midnight); }
+    .demo-popup .popup-cta { display: inline-block; background: var(--flame); color: var(--white); padding: 14px 32px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; transition: all 0.3s; margin-top: 12px; }
+    .demo-popup .popup-cta:hover { background: var(--flame-deep); transform: translateY(-2px); }
+    .demo-popup .popup-dismiss { display: block; margin: 16px auto 0; background: none; border: none; color: var(--steel); font-size: 0.88rem; cursor: pointer; transition: color 0.3s; font-family: inherit; }
+    .demo-popup .popup-dismiss:hover { color: var(--midnight); }
+
+    @media (max-width: 1024px) {
+      .menu-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-img-side { order: -1; }
+      .hero-img-side img { height: 350px; }
+      .deals-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .menu-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .section-pad { padding: 70px 0; }
+      .about-floater { position: static; margin-top: 16px; display: inline-block; }
+    }
+    @media (max-width: 480px) { .hero-btns { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+  <div class="neocode-banner">This demo was designed by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; Premium websites that convert visitors into customers.</div>
+
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo"><div class="logo-icon">&#127829;</div> UK Kebab & Pizza</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#deals">Deals</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Find Us</a></li>
+          <li><a href="#order" class="nav-cta">Order Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobileNav"><a href="#menu">Menu</a><a href="#deals">Deals</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#contact">Find Us</a><a href="#order">Order Now</a></div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Open Now - Delivering Until Late</div>
+          <h1 class="hero-title">Barnsley's Favourite <span class="highlight">Kebab & Pizza</span></h1>
+          <p class="hero-text">Fresh dough. Flame-grilled meat. Proper portions. We've been feeding Barnsley since day one and we're not stopping. Delivery or collection, your call.</p>
+          <div class="hero-btns">
+            <a href="#order" class="btn-primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Order Now</a>
+            <a href="#menu" class="btn-outline">View Full Menu</a>
+          </div>
+        </div>
+        <div class="hero-img-side">
+          <img src="https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Delicious pizza fresh from the oven">
+          <div class="hero-floater">
+            <div class="hero-floater-icon">&#128666;</div>
+            <div class="hero-floater-text">Free Delivery<span>On orders over £15</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>Open 7 Days</div>
+        <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>S70-S75 Delivery</div>
+        <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>5-Star Hygiene</div>
+        <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>Family Run</div>
+        <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>Halal Meat</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu section-pad" id="menu">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="badge"><span class="dot"></span> Our Menu</span>
+        <h2 class="section-title">Fresh, Hot & Made to Order</h2>
+        <p class="section-subtitle" style="margin:0 auto;">Every pizza hand-stretched. Every kebab flame-grilled. Every order made fresh when you place it.</p>
+      </div>
+      <div class="menu-grid" style="margin-top:48px;">
+        <div class="menu-card reveal">
+          <div class="menu-card-img"><img src="https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pizza selection" loading="lazy"></div>
+          <div class="menu-card-body">
+            <h3>Pizzas</h3>
+            <p>Hand-stretched dough, homemade sauce, loaded with toppings. From classic Margherita to our signature Olympus. 7" to 16" available.</p>
+            <div class="menu-card-footer"><span class="menu-price">From £4.99</span><span class="menu-tag">Popular</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img"><img src="https://images.pexels.com/photos/6542788/pexels-photo-6542788.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Doner kebab" loading="lazy"></div>
+          <div class="menu-card-body">
+            <h3>Kebabs</h3>
+            <p>Doner, shish, kofte, and mixed grills. Flame-grilled and served with fresh salad, sauces, and pitta or naan. Proper portions, no skimping.</p>
+            <div class="menu-card-footer"><span class="menu-price">From £5.99</span><span class="menu-tag">Best Seller</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img"><img src="https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Burger meal" loading="lazy"></div>
+          <div class="menu-card-body">
+            <h3>Burgers</h3>
+            <p>Quarter pounders, chicken burgers, veggie options. All served with fresh salad in a toasted bun. Add chips and a drink for a meal deal.</p>
+            <div class="menu-card-footer"><span class="menu-price">From £3.29</span><span class="menu-tag">Meal Deals</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img"><img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fried chicken" loading="lazy"></div>
+          <div class="menu-card-body">
+            <h3>Fried Chicken</h3>
+            <p>Crispy on the outside, juicy on the inside. Wings, strips, and pieces. Southern fried or spicy. Kids love it, adults can't resist it.</p>
+            <div class="menu-card-footer"><span class="menu-price">From £3.49</span><span class="menu-tag">Crispy</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img"><img src="https://images.pexels.com/photos/5903090/pexels-photo-5903090.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Calzone" loading="lazy"></div>
+          <div class="menu-card-body">
+            <h3>Calzones & Wraps</h3>
+            <p>Folded pizza dough stuffed with your favourite fillings, or grilled wraps packed with meat and salad. Something different from the usual.</p>
+            <div class="menu-card-footer"><span class="menu-price">From £4.99</span><span class="menu-tag">Stuffed</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img"><img src="https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sides and extras" loading="lazy"></div>
+          <div class="menu-card-body">
+            <h3>Sides & Extras</h3>
+            <p>Garlic bread, cheesy chips, onion rings, wedges, coleslaw, and more. Because the sides are just as important as the main.</p>
+            <div class="menu-card-footer"><span class="menu-price">From £0.99</span><span class="menu-tag">Extras</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deals -->
+  <section class="section-pad" id="deals">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="badge"><span class="dot"></span> Deals</span>
+        <h2 class="section-title">Save More, Eat More</h2>
+        <p class="section-subtitle" style="margin:0 auto;">Family packs and meal deals that actually save you money. No catch.</p>
+      </div>
+      <div class="deals-grid reveal">
+        <div class="deal-card">
+          <h3>Family Feast</h3>
+          <p>2 x 12" pizzas + garlic bread + 2 dips + 1.5L drink. Feeds the whole family without breaking the bank.</p>
+          <div class="deal-price">£19.99 <span class="was">£28.00</span></div>
+        </div>
+        <div class="deal-card">
+          <h3>Kebab Meal Deal</h3>
+          <p>Any large kebab + chips + can of drink. The perfect combo after a long day. No substitutions needed, it's already perfect.</p>
+          <div class="deal-price">£8.99 <span class="was">£12.50</span></div>
+        </div>
+        <div class="deal-card">
+          <h3>Pizza & Wings</h3>
+          <p>Any 12" pizza + 8 chicken wings + garlic bread + 1.5L drink. Date night sorted.</p>
+          <div class="deal-price">£14.99 <span class="was">£21.00</span></div>
+        </div>
+        <div class="deal-card">
+          <h3>Lunch Special</h3>
+          <p>Any 9" pizza or wrap + chips + can. Available until 5pm. Quick, cheap, and proper filling.</p>
+          <div class="deal-price">£6.49 <span class="was">£9.50</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section-pad" id="about" style="background:var(--snow);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-img"><img src="https://images.pexels.com/photos/3338681/pexels-photo-3338681.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Inside a takeaway kitchen" loading="lazy"></div>
+          <div class="about-floater"><span class="big">4.5</span><span class="small">Google Rating</span></div>
+        </div>
+        <div class="reveal">
+          <span class="badge"><span class="dot"></span> About Us</span>
+          <h2 class="section-title">Real Food. Real People.</h2>
+          <p class="section-subtitle">We're a family-run takeaway on Wellington Street and we take pride in everything that leaves our kitchen. Fresh ingredients, generous portions, and prices that won't hurt your wallet.</p>
+          <ul class="about-list">
+            <li><div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Freshly Made, Never Pre-Cooked</h4><p>Every order is made from scratch when you place it. That's why it tastes different.</p></div></li>
+            <li><div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Halal Certified Meat</h4><p>All our meat is halal sourced from trusted local suppliers.</p></div></li>
+            <li><div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Open 7 Days a Week</h4><p>Monday to Sunday, late night delivery on weekends until 2am.</p></div></li>
+            <li><div class="about-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Free Delivery Over £15</h4><p>Covering S70 to S75. Usually at your door in 30-45 minutes.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews section-pad" id="reviews">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="badge"><span class="dot"></span> Reviews</span>
+        <h2 class="section-title">What Barnsley Says</h2>
+      </div>
+      <div class="reviews-grid" style="margin-top:48px;">
+        <div class="review-card reveal">
+          <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p>"Best kebab in Barnsley, no question. The meat is always fresh, portions are massive, and it's delivered within 30 minutes every time. We order at least twice a week."</p>
+          <div class="review-author"><div class="review-avatar">DA</div><div><div class="review-name">Dan A.</div><div class="review-meta">Regular customer, S70</div></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p>"The family feast deal is unreal value. Two proper pizzas, garlic bread, and a big drink for twenty quid. Feeds all four of us with leftovers. Can't beat it."</p>
+          <div class="review-author"><div class="review-avatar">JH</div><div><div class="review-name">Julie H.</div><div class="review-meta">Family Feast fan, S71</div></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p>"Tried loads of takeaways round here and this lot are consistent every single time. Pizza dough is proper, not that frozen nonsense. Late night delivery on a Friday is a lifesaver."</p>
+          <div class="review-author"><div class="review-avatar">SK</div><div><div class="review-name">Sam K.</div><div class="review-meta">Friday regular, S72</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="order">
+    <div class="container reveal">
+      <span class="badge"><span class="dot"></span> Hungry?</span>
+      <h2 class="section-title">Your Food Is 30 Minutes Away</h2>
+      <p>Order by phone for collection or delivery. Or find us on Just Eat. Either way, your food is made fresh the moment you order.</p>
+      <a href="tel:01onal" class="btn-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call to Order</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section-pad" id="contact">
+    <div class="container">
+      <div class="reveal" style="text-align:center;"><span class="badge"><span class="dot"></span> Find Us</span><h2 class="section-title">Visit or Order</h2></div>
+      <div class="contact-grid">
+        <div class="contact-cards reveal">
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-label">Address</div><div class="contact-value">20 Wellington Street, Barnsley, S70 1</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="contact-label">Delivery Hours</div><div class="contact-value">Mon-Thu: 4:30pm - 12:30am<br>Fri-Sat: 4:30pm - 2:00am<br>Sun: 4:30pm - 12:30am</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="contact-label">Collection Hours</div><div class="contact-value">Mon-Thu: 5:00pm - 1:00am<br>Fri-Sat: 5:00pm - 2:00am<br>Sun: 5:00pm - 1:00am</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-label">Delivery Areas</div><div class="contact-value">S70, S71, S72, S73, S74, S75</div></div></div>
+        </div>
+        <div class="contact-map reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370!2d-1.48!3d53.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879!2s20+Wellington+Street+Barnsley!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="#" class="logo" style="color:var(--white);"><div class="logo-icon">&#127829;</div> UK Kebab & Pizza</a><p>Barnsley's favourite takeaway. Fresh pizzas, flame-grilled kebabs, crispy chicken, and unbeatable meal deals. Delivery or collection, 7 days a week.</p></div>
+        <div><h4>Menu</h4><ul class="footer-links"><li><a href="#menu">Pizzas</a></li><li><a href="#menu">Kebabs</a></li><li><a href="#menu">Burgers</a></li><li><a href="#menu">Fried Chicken</a></li><li><a href="#menu">Sides</a></li></ul></div>
+        <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="#deals">Deals</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Find Us</a></li></ul></div>
+        <div><h4>Find Us</h4>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>20 Wellington Street<br>Barnsley, S70 1</span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Open daily from 4:30pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 UK Kebab and Pizza. All rights reserved.</span>
+        <span>Original site: <a href="https://ukkebabbarnsley.co.uk/" target="_blank">ukkebabbarnsley.co.uk</a></span>
+        <span>Demo by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="demo-popup-overlay" id="demoPopup">
+    <div class="demo-popup">
+      <div class="demo-popup-icon">&#127829;</div>
+      <h2>This was built in under 20 minutes.</h2>
+      <p>This is a quick concept to show you what's possible. No templates. No shortcuts. Just a preview of what a premium UK Kebab & Pizza website could look like.</p>
+      <p>Imagine what we could build with <strong>a full week dedicated to your business</strong>. A website that doesn't just look premium, but actually <strong>turns visitors into paying customers</strong>.</p>
+      <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="popup-cta">Let's Talk</a>
+      <button class="popup-dismiss" onclick="document.getElementById('demoPopup').classList.remove('show')">Continue browsing the demo</button>
+    </div>
+  </div>
+
+  <script>
+    var header=document.getElementById('header'),scrollTopBtn=document.getElementById('scrollTop');
+    window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>60);scrollTopBtn.classList.toggle('show',window.scrollY>500);});
+    scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    var hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav');
+    hamburger.addEventListener('click',function(){hamburger.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':'';});
+    mobileNav.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){hamburger.classList.remove('active');mobileNav.classList.remove('open');document.body.style.overflow='';});});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});}});});
+    var reveals=document.querySelectorAll('.reveal');
+    var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){obs.observe(el);});
+    document.querySelectorAll('.menu-grid,.reviews-grid').forEach(function(c){var ch=c.querySelectorAll('.reveal');ch.forEach(function(child,i){child.style.transitionDelay=(i*0.08)+'s';});});
+    var popupShown=false;window.addEventListener('scroll',function(){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight);if(!popupShown&&p>0.7){popupShown=true;document.getElementById('demoPopup').classList.add('show');}});
+  </script>
+</body>
+</html>
