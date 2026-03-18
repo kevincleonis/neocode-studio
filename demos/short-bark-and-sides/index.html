@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short Bark and Sides | Dog Groomers in Leeds, Meanwood</title>
+  <meta name="description" content="Professional dog grooming in Meanwood, North Leeds. All breeds welcome. Hand stripping, puppy hygiene, microchipping. Book today on 07802 444484.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --coral: #E75D5D;
+      --coral-deep: #D14545;
+      --coral-glow: rgba(231,93,93,0.15);
+      --amber: #F1A733;
+      --sage: #5EB28F;
+      --midnight: #1A1A2E;
+      --slate: #2D2D44;
+      --graphite: #4A4A5A;
+      --steel: #6B6B7B;
+      --silver: #94A3B8;
+      --cloud: #FFF9F5;
+      --warm-white: #FFFCFA;
+      --white: #FFFFFF;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --shadow: 0 4px 24px rgba(26,26,46,0.07);
+      --shadow-lg: 0 16px 48px rgba(26,26,46,0.1);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; color: var(--midnight); background: var(--white); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', sans-serif; line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--coral-glow); color: var(--coral);
+      padding: 8px 18px; border-radius: 100px; font-size: 0.85rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin: 16px 0 20px; }
+    .section-subtitle { font-size: 1.1rem; color: var(--steel); max-width: 600px; line-height: 1.7; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--coral); color: var(--white);
+      padding: 16px 32px; border-radius: var(--radius);
+      font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease);
+    }
+    .btn-primary:hover { background: var(--coral-deep); transform: translateY(-2px); box-shadow: 0 8px 24px var(--coral-glow); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 2px solid rgba(255,255,255,0.3); color: var(--white);
+      padding: 14px 30px; border-radius: var(--radius);
+      font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease);
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Banner */
+    .neocode-banner { background: var(--midnight); color: rgba(255,255,255,0.7); text-align: center; padding: 10px 20px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; position: relative; z-index: 1001; }
+    .neocode-banner a { color: var(--coral); font-weight: 700; }
+
+    /* Header */
+    .header { position: fixed; top: 38px; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: all 0.3s var(--ease); background: transparent; }
+    .header.scrolled { top: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 10px 0; }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .header .logo, .header .nav-links a { color: var(--white); transition: color 0.3s; }
+    .header.scrolled .logo, .header.scrolled .nav-links a { color: var(--graphite); }
+    .header .hamburger span { background: var(--white); }
+    .header.scrolled .hamburger span { background: var(--midnight); }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 800; }
+    .logo-icon { width: 42px; height: 42px; background: var(--coral); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .logo-icon svg { width: 24px; height: 24px; color: var(--white); }
+    .nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
+    .nav-links a { font-weight: 500; font-size: 0.92rem; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-cta { background: var(--coral) !important; color: var(--white) !important; padding: 10px 24px !important; border-radius: var(--radius) !important; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--coral-deep) !important; transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--midnight); transition: all 0.3s; display: block; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile Nav */
+    .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(26,26,46,0.97); z-index: 999; justify-content: center; align-items: center; }
+    .mobile-nav.active { display: flex; }
+    .mobile-nav ul { list-style: none; text-align: center; }
+    .mobile-nav a { color: var(--white); font-size: 1.5rem; font-weight: 600; display: block; padding: 16px; transition: color 0.3s; }
+    .mobile-nav a:hover { color: var(--coral); }
+
+    /* Hero */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: linear-gradient(165deg, var(--midnight) 0%, #2D1B3D 40%, #3D1F2E 70%, var(--coral-deep) 100%); overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(circle, rgba(231,93,93,0.12) 0%, transparent 60%); }
+    .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    .hero-content { color: var(--white); }
+    .hero-content h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; margin: 20px 0; line-height: 1.1; }
+    .hero-content h1 span { color: var(--coral); }
+    .hero-content p { font-size: 1.2rem; color: rgba(255,255,255,0.75); margin-bottom: 36px; line-height: 1.7; max-width: 500px; }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .hero-image-wrapper { width: 420px; height: 420px; border-radius: 50%; overflow: hidden; border: 4px solid rgba(255,255,255,0.15); position: relative; }
+    .hero-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+    .hero-float-card { position: absolute; background: rgba(255,255,255,0.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); padding: 14px 20px; color: var(--white); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; animation: float 4s ease-in-out infinite; }
+    .hero-float-card svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .hero-float-card.card-1 { top: 15%; right: -30px; animation-delay: 0s; }
+    .hero-float-card.card-2 { bottom: 20%; left: -40px; animation-delay: 1.5s; }
+    .hero-float-card.card-3 { bottom: 5%; right: 10px; animation-delay: 3s; }
+    @keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+
+    /* Trust Bar */
+    .trust-bar { background: var(--cloud); padding: 40px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .trust-bar .container { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 14px; }
+    .trust-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--white); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); }
+    .trust-icon svg { width: 22px; height: 22px; color: var(--coral); }
+    .trust-text { font-weight: 600; font-size: 0.92rem; color: var(--graphite); }
+    .trust-text span { display: block; font-weight: 400; font-size: 0.8rem; color: var(--steel); }
+
+    /* Services */
+    .services { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+    .service-card { background: var(--warm-white); border-radius: var(--radius-lg); padding: 36px 28px; border: 1px solid rgba(0,0,0,0.04); transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--coral); }
+    .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--coral); transform: scaleX(0); transition: transform 0.4s var(--ease); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--coral-glow); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .service-icon svg { width: 28px; height: 28px; color: var(--coral); }
+    .service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: 0.92rem; color: var(--steel); line-height: 1.6; }
+
+    /* About */
+    .about { background: var(--cloud); }
+    .about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-image { position: relative; }
+    .about-image-main { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .about-image-main img { width: 100%; height: 450px; object-fit: cover; }
+    .about-badge { position: absolute; bottom: -20px; right: -20px; background: var(--coral); color: var(--white); padding: 20px 28px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-lg); }
+    .about-badge .number { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 800; display: block; }
+    .about-badge .label { font-size: 0.85rem; font-weight: 500; opacity: 0.9; }
+    .about-content h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 24px; }
+    .about-content p { color: var(--steel); margin-bottom: 16px; line-height: 1.7; }
+    .about-signature { margin-top: 28px; display: flex; align-items: center; gap: 16px; }
+    .about-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--coral-glow); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 800; color: var(--coral); font-size: 1.2rem; }
+    .about-signature-text { font-weight: 600; }
+    .about-signature-text span { display: block; font-weight: 400; color: var(--steel); font-size: 0.88rem; }
+
+    /* Pricing */
+    .pricing { background: var(--white); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+    .price-card { background: var(--warm-white); border-radius: var(--radius-lg); padding: 36px 28px; text-align: center; border: 1px solid rgba(0,0,0,0.04); transition: all 0.4s var(--ease); position: relative; }
+    .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .price-card.featured { border: 2px solid var(--coral); background: var(--white); }
+    .price-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--coral); color: var(--white); padding: 4px 16px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; }
+    .price-icon { margin: 0 auto 16px; width: 64px; height: 64px; border-radius: 50%; background: var(--coral-glow); display: flex; align-items: center; justify-content: center; }
+    .price-icon svg { width: 30px; height: 30px; color: var(--coral); }
+    .price-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .price-card .breed { color: var(--steel); font-size: 0.88rem; margin-bottom: 16px; }
+    .price-amount { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--coral); }
+    .price-amount span { font-size: 1rem; font-weight: 500; color: var(--steel); }
+    .price-note { font-size: 0.82rem; color: var(--steel); margin-top: 12px; }
+    .price-card .btn-primary { margin-top: 20px; width: 100%; justify-content: center; padding: 12px 20px; font-size: 0.92rem; }
+
+    /* Testimonials */
+    .testimonials { background: var(--midnight); color: var(--white); }
+    .testimonials .section-subtitle { color: rgba(255,255,255,0.6); }
+    .testimonials .badge { background: rgba(231,93,93,0.15); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 32px; }
+    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 16px; }
+    .testimonial-stars svg { width: 18px; height: 18px; color: var(--amber); fill: var(--amber); }
+    .testimonial-card p { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--coral-glow); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--coral); font-size: 0.85rem; }
+    .testimonial-name { font-weight: 600; font-size: 0.92rem; }
+    .testimonial-name span { display: block; font-weight: 400; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--coral) 0%, var(--coral-deep) 50%, #B83A3A 100%); color: var(--white); text-align: center; padding: 80px 0; }
+    .cta-section h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    .cta-section p { font-size: 1.1rem; opacity: 0.9; max-width: 500px; margin: 0 auto 36px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-buttons .btn-primary { background: var(--white); color: var(--coral); }
+    .cta-buttons .btn-primary:hover { background: rgba(255,255,255,0.9); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    /* Footer */
+    .footer { background: var(--midnight); color: rgba(255,255,255,0.6); padding: 60px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer h4 { color: var(--white); font-size: 1rem; margin-bottom: 16px; }
+    .footer-brand p { margin-top: 12px; font-size: 0.88rem; line-height: 1.6; }
+    .footer ul { list-style: none; }
+    .footer li { margin-bottom: 8px; }
+    .footer a { font-size: 0.88rem; transition: color 0.3s; }
+    .footer a:hover { color: var(--coral); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.82rem; }
+    .footer-bottom a { color: var(--coral); }
+
+    /* Scroll Top */
+    .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--coral); color: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 900; box-shadow: var(--shadow); }
+    .scroll-top.visible { opacity: 1; visibility: visible; }
+    .scroll-top:hover { transform: translateY(-3px); background: var(--coral-deep); }
+
+    /* Popup */
+    .popup-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
+    .popup-overlay.active { display: flex; }
+    .popup { background: var(--white); border-radius: var(--radius-lg); padding: 40px; max-width: 440px; width: 90%; text-align: center; position: relative; box-shadow: var(--shadow-lg); }
+    .popup-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border-radius: 50%; background: var(--cloud); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; color: var(--steel); }
+    .popup h3 { font-size: 1.4rem; margin: 16px 0 8px; }
+    .popup p { color: var(--steel); font-size: 0.92rem; margin-bottom: 20px; }
+    .popup .btn-primary { width: 100%; justify-content: center; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .services-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .hero .container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content p { margin: 0 auto 36px; }
+      .hero-ctas { justify-content: center; }
+      .hero-visual { display: none; }
+      .about .container { grid-template-columns: 1fr; }
+      .about-image { order: -1; }
+      .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .trust-bar .container { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="neocode-banner">
+  This is a free demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a> &mdash; See what your website could look like
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5M8 14v.5M16 14v.5M11.25 16.25h1.5L12 17l-.75-.75z"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      Short Bark & Sides
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="tel:07802444484" class="nav-cta">Call Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="#services" onclick="closeMobile()">Services</a></li>
+    <li><a href="#about" onclick="closeMobile()">About</a></li>
+    <li><a href="#pricing" onclick="closeMobile()">Pricing</a></li>
+    <li><a href="#reviews" onclick="closeMobile()">Reviews</a></li>
+    <li><a href="tel:07802444484" onclick="closeMobile()">Call Now</a></li>
+  </ul>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="badge"><span class="dot"></span> North Leeds Dog Grooming</div>
+      <h1>Your Dog Deserves a <span>Great Groomer</span></h1>
+      <p>Professional grooming for all breeds in Meanwood, Leeds. From a quick bath to the full pamper treatment, we treat every dog like our own.</p>
+      <div class="hero-ctas">
+        <a href="tel:07802444484" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Book Appointment
+        </a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=600&fit=crop" alt="Happy groomed dog">
+      </div>
+      <div class="hero-float-card card-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Since 2010
+      </div>
+      <div class="hero-float-card card-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        All Breeds Welcome
+      </div>
+      <div class="hero-float-card card-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Fully Qualified
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="trust-text">Fully Qualified<span>City & Guilds Certified</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="trust-text">15+ Years Experience<span>Grooming since 2010</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="trust-text">Loyal Client Base<span>North Leeds families</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="trust-text">Meanwood, Leeds<span>Close to Waitrose</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="services section-pad" id="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="badge"><span class="dot"></span> What We Do</div>
+      <h2 class="section-title">Our Grooming Services</h2>
+      <p class="section-subtitle">From a simple shampoo to the full pamper treatment, every dog gets individual care and attention.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485"/></svg>
+        </div>
+        <h3>Full Dog Grooming</h3>
+        <p>Complete grooming service including bath, blow dry, brush out, haircut, nail trim and ear clean. Your dog leaves looking and smelling fantastic.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Hand Stripping</h3>
+        <p>Expert hand stripping for wire and rough coated breeds. Maintains proper coat texture and colour. Refreshes the coat every 8-10 weeks.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Puppy Hygiene</h3>
+        <p>Gentle introduction to grooming for puppies. We take extra care with young pups, building positive associations from their very first visit.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h3>Peddymark Microchipping</h3>
+        <p>Fully qualified to implant Peddymark microchips for all breeds. Registered on Petlog, the Kennel Club database, for complete peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about section-pad" id="about">
+  <div class="container">
+    <div class="about-image reveal">
+      <div class="about-image-main">
+        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&h=450&fit=crop" alt="Professional dog grooming studio">
+      </div>
+      <div class="about-badge">
+        <span class="number">15+</span>
+        <span class="label">Years grooming</span>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="badge"><span class="dot"></span> Meet the Owner</div>
+      <h2>Born Into a Love of Animals</h2>
+      <p>I grew up on a farm, surrounded by animals from day one. My father breeds and trains working labradors, and I've owned dogs all my life. Short Bark and Sides sprang into existence in 2010 from a love of everything canine.</p>
+      <p>I trained under Zoe Duffy and Joanne Angus at their UK award-winning grooming centre. I'm a perfectionist and I get real satisfaction from a great cut. I only take a few appointments per day so every dog gets my complete focus.</p>
+      <p>There's always a free cup of tea and a biscuit on hand if you want one.</p>
+      <div class="about-signature">
+        <div class="about-avatar">CS</div>
+        <div class="about-signature-text">
+          Collette Sykes
+          <span>Owner & Head Groomer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing section-pad" id="pricing">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="badge"><span class="dot"></span> Simple Pricing</div>
+      <h2 class="section-title">Fair Prices, Great Results</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Prices are a guide and may vary based on coat condition. Every service includes a health check.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </div>
+        <h3>Small Dogs</h3>
+        <p class="breed">e.g. Terriers, Pugs</p>
+        <div class="price-amount">£40 <span>from</span></div>
+        <p class="price-note">Full groom, bath & dry</p>
+        <a href="tel:07802444484" class="btn-primary">Book Now</a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </div>
+        <h3>Medium Dogs</h3>
+        <p class="breed">e.g. Cockerpoos, Spaniels</p>
+        <div class="price-amount">£50 <span>from</span></div>
+        <p class="price-note">Full groom, bath & dry</p>
+        <a href="tel:07802444484" class="btn-primary">Book Now</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </div>
+        <h3>Large Dogs</h3>
+        <p class="breed">e.g. Labradoodles</p>
+        <div class="price-amount">£60 <span>from</span></div>
+        <p class="price-note">Full groom, bath & dry</p>
+        <a href="tel:07802444484" class="btn-primary">Book Now</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </div>
+        <h3>Very Large Dogs</h3>
+        <p class="breed">e.g. Old English Sheepdog</p>
+        <div class="price-amount">£80 <span>from</span></div>
+        <p class="price-note">Full groom, bath & dry</p>
+        <a href="tel:07802444484" class="btn-primary">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials section-pad" id="reviews">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="badge"><span class="dot"></span> Happy Dogs & Owners</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Our loyal client base speaks for itself. Here's what dog owners across North Leeds are saying.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p>"Both came away looking ready for the show ring. I was particularly pleased with my oldie whose coat is very difficult. She was completely hand stripped and looked years younger."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FJ</div>
+          <div class="testimonial-name">Frank & Marry Jones<span>Moortown, Leeds</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p>"Pretty knickers, trim undercarriage, fine feathering, ballerina feet, gorgeous tail. Cosby has never looked better, thank you!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">B</div>
+          <div class="testimonial-name">Barbara<span>Alwoodley, Leeds</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p>"My pampered pooches have just come back from Short Bark and Sides. They look amazing and smell good enough to eat!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CS</div>
+          <div class="testimonial-name">Chris & Julia Smith<span>Oakwood, Leeds</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container reveal">
+    <h2>Ready to Book Your Dog In?</h2>
+    <p>Appointments fill up fast. Call today to secure your spot. We only take a few dogs per day for complete focus.</p>
+    <div class="cta-buttons">
+      <a href="tel:07802444484" class="btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        07802 444484
+      </a>
+      <a href="#services" class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="color:#fff;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5M8 14v.5M16 14v.5M11.25 16.25h1.5L12 17l-.75-.75z"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          Short Bark & Sides
+        </div>
+        <p>Professional dog grooming in Meanwood, North Leeds. All breeds welcome. Grooming with love since 2010.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Dog Grooming</a></li>
+          <li><a href="#services">Hand Stripping</a></li>
+          <li><a href="#services">Puppy Hygiene</a></li>
+          <li><a href="#services">Microchipping</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:07802444484">07802 444484</a></li>
+          <li>1 Providence House</li>
+          <li>Authorpe Road, Meanwood</li>
+          <li>Leeds LS6 4JB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Short Bark & Sides. All rights reserved.</span>
+      <span>Demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</div>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <div class="popup-close" onclick="document.getElementById('popup').classList.remove('active')">&times;</div>
+    <div style="font-size:3rem;margin-bottom:8px;">🐾</div>
+    <h3>Your Dog Deserves Better</h3>
+    <p>This is what your website could look like. Professional, modern and built to bring in new clients. Get a free quote from NeoCode Studio.</p>
+    <a href="https://neocodestudio.co.uk/contact.html" target="_blank" class="btn-primary">Get Your Free Quote</a>
+  </div>
+</div>
+
+<script>
+  // Header scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+  }
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Popup after 70% scroll
+  let popupShown = false;
+  window.addEventListener('scroll', () => {
+    if (!popupShown && window.scrollY / (document.body.scrollHeight - window.innerHeight) > 0.7) {
+      popupShown = true;
+      document.getElementById('popup').classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>
