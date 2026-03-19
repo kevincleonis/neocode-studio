@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mobile Truck Wash - Professional commercial vehicle cleaning in Coventry & West Midlands. 10+ years experience. 24/7 service. Free demo wash available.">
+  <meta name="keywords" content="truck wash, commercial vehicle cleaning, fleet cleaning, van valeting, Coventry, West Midlands, mobile truck wash">
+  <meta name="author" content="Mobile Truck Wash">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Mobile Truck Wash | Professional Fleet Cleaning | Coventry & West Midlands</title>
+  <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+      --steel: #151B23;
+      --steel-light: #1E2530;
+      --steel-mid: #2A3240;
+      --steel-soft: #3A4555;
+      --orange: #F97316;
+      --orange-hover: #EA670A;
+      --orange-glow: rgba(249, 115, 22, 0.25);
+      --orange-subtle: rgba(249, 115, 22, 0.08);
+      --white: #FFFFFF;
+      --off-white: #F1F5F9;
+      --grey-100: #E2E8F0;
+      --grey-200: #CBD5E1;
+      --grey-300: #94A3B8;
+      --grey-400: #64748B;
+      --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.12);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.18);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.25);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-width: 1200px;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-main);
+      background: var(--steel);
+      color: var(--grey-200);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ── NeoCode Banner ── */
+    .nc-banner {
+      background: #0D1117;
+      color: var(--grey-300);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid rgba(249, 115, 22, 0.15);
+      position: relative;
+      z-index: 1001;
+    }
+    .nc-banner strong { color: var(--orange); font-weight: 600; }
+
+    /* ── Navigation ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(21, 27, 35, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: var(--transition);
+    }
+    .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      color: var(--grey-300);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--orange-hover); transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      z-index: 1002;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    /* Mobile Overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(21, 27, 35, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-menu.active { display: flex; opacity: 1; }
+    .mobile-menu a {
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+
+    /* ── Hero Section ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 120px 24px 80px;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 50%, rgba(249,115,22,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 80% 30%, rgba(249,115,22,0.04) 0%, transparent 70%),
+        linear-gradient(180deg, var(--steel) 0%, var(--steel-light) 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+      animation: heroPulse 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes heroPulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange-subtle);
+      border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .hero-badge svg { flex-shrink: 0; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--orange), #FB923C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--grey-300);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--orange-glow);
+    }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-2px); box-shadow: 0 8px 30px var(--orange-glow); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: 1px solid var(--steel-soft);
+      cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* Floating Stat Cards */
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 20px;
+    }
+    .stat-card {
+      background: rgba(30, 37, 48, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transition: var(--transition);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+    .stat-card:nth-child(1) { animation-delay: 0s; transform: translateX(20px); }
+    .stat-card:nth-child(2) { animation-delay: 2s; transform: translateX(-10px); }
+    .stat-card:nth-child(3) { animation-delay: 4s; transform: translateX(30px); }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .stat-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 8px 30px rgba(249,115,22,0.1); }
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      background: var(--orange-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-card h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .stat-card p {
+      font-size: 0.85rem;
+      color: var(--grey-400);
+      margin-top: 2px;
+    }
+
+    /* ── Trust Bar ── */
+    .trust-bar {
+      background: var(--steel-light);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 40px 24px;
+    }
+    .trust-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+    }
+    .trust-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--orange-subtle);
+      border: 1px solid rgba(249,115,22,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-text { font-weight: 600; color: var(--grey-200); font-size: 0.95rem; }
+    .trust-text small { display: block; font-weight: 400; color: var(--grey-400); font-size: 0.78rem; margin-top: 2px; }
+
+    /* ── Section Shared ── */
+    .section {
+      padding: 100px 24px;
+      position: relative;
+    }
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--grey-400);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+
+    /* ── Services ── */
+    .services { background: var(--steel); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--steel-light);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover { border-color: rgba(249,115,22,0.2); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      background: var(--orange-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: 0.9rem; color: var(--grey-400); line-height: 1.6; }
+
+    /* ── Areas ── */
+    .areas {
+      background: var(--steel-light);
+    }
+    .areas-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .area-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--steel);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--grey-200);
+      transition: var(--transition);
+    }
+    .area-chip:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-subtle); }
+    .area-chip.primary { background: var(--orange); color: var(--white); border-color: var(--orange); font-weight: 700; }
+    .area-chip.primary:hover { background: var(--orange-hover); }
+
+    /* ── Reviews ── */
+    .reviews { background: var(--steel); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--steel-light);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .review-card:hover { border-color: rgba(249,115,22,0.15); transform: translateY(-3px); }
+    .review-card .quote-mark {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      opacity: 0.06;
+    }
+    .review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), #FB923C);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-meta h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); }
+    .review-meta .role { font-size: 0.78rem; color: var(--grey-400); margin-top: 2px; }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .review-text { font-size: 0.92rem; color: var(--grey-300); line-height: 1.7; font-style: italic; }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--steel-light) 0%, var(--steel) 100%);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, var(--orange-glow) 0%, transparent 60%);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .cta-inner { max-width: 650px; margin: 0 auto; position: relative; z-index: 2; }
+    .cta-inner h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .cta-inner p { font-size: 1.05rem; color: var(--grey-400); margin-bottom: 36px; line-height: 1.7; }
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 30px var(--orange-glow);
+      border: none;
+      cursor: pointer;
+    }
+    .cta-phone:hover { background: var(--orange-hover); transform: translateY(-3px); box-shadow: 0 8px 40px var(--orange-glow); }
+
+    /* ── Footer ── */
+    .footer {
+      background: #0D1117;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 40px 24px;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left { font-size: 0.85rem; color: var(--grey-400); }
+    .footer-left a { color: var(--orange); transition: var(--transition); }
+    .footer-left a:hover { color: var(--orange-hover); }
+    .footer-right { font-size: 0.82rem; color: var(--grey-400); }
+    .footer-right a { color: var(--grey-300); font-weight: 600; transition: var(--transition); }
+    .footer-right a:hover { color: var(--orange); }
+
+    /* ── Scroll to Top ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: var(--transition);
+      box-shadow: 0 4px 20px var(--orange-glow);
+    }
+    .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-top:hover { background: var(--orange-hover); transform: translateY(-3px); }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      padding: 24px;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--steel-light);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: var(--transition);
+    }
+    .modal-overlay.active .modal { transform: scale(1) translateY(0); }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--steel);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--grey-300);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .modal-close:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--orange-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .modal h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .modal p { font-size: 0.95rem; color: var(--grey-400); margin-bottom: 28px; line-height: 1.6; }
+    .modal .btn-primary { width: 100%; justify-content: center; }
+
+    /* ── Reveal Animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.35s; }
+    .reveal-delay-5 { transition-delay: 0.4s; }
+    .reveal-delay-6 { transition-delay: 0.5s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1; min-width: 200px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-stats { flex-direction: column; }
+      .stat-card:nth-child(1),
+      .stat-card:nth-child(2),
+      .stat-card:nth-child(3) { transform: translateX(0); }
+      .section { padding: 70px 20px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .modal { padding: 36px 28px; }
+    }
+    @media (max-width: 480px) {
+      .trust-inner { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn-primary,
+      .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
+      .nc-banner { font-size: 0.72rem; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NeoCode Banner -->
+  <div class="nc-banner">
+    This is a free demo redesign by <strong>NeoCode Studio</strong> &mdash; not affiliated with Mobile Truck Wash
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#F97316" opacity="0.15"/>
+          <path d="M8 22V10l6 6 6-6v12" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 14v8" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        Mobile Truck <span>Wash</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#areas">Areas</a>
+        <a href="#reviews">Reviews</a>
+        <a href="tel:07508376650" class="nav-cta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#areas" class="mobile-link">Areas</a>
+    <a href="#reviews" class="mobile-link">Reviews</a>
+    <a href="tel:07508376650" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      07508 376650
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Coventry's Trusted Fleet Cleaning Specialists
+        </div>
+        <h1>Professional <span class="highlight">Commercial Vehicle</span> Cleaning</h1>
+        <p class="hero-sub">Mobile fleet washing that comes to your depot. Over a decade of experience keeping commercial vehicles spotless across the West Midlands and beyond.</p>
+        <div class="hero-buttons">
+          <a href="tel:07508376650" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            07508 376650
+          </a>
+          <a href="#services" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            View Services
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h3>10+ Years</h3>
+            <p>Industry experience</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <h3>24/7 Service</h3>
+            <p>Around the clock availability</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          </div>
+          <div>
+            <h3>80-Mile Radius</h3>
+            <p>Covering the West Midlands</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item reveal">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><path d="M12 15l-2 5 7-4H7l7 4-2-5z"/><path d="M12 2a7 7 0 017 7c0 3-2.5 5.5-7 10-4.5-4.5-7-7-7-10a7 7 0 017-7z"/></svg>
+        </div>
+        <div class="trust-text">10+ Years<small>Trusted experience</small></div>
+      </div>
+      <div class="trust-item reveal reveal-delay-1">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="trust-text">24/7 Available<small>Day or night service</small></div>
+      </div>
+      <div class="trust-item reveal reveal-delay-2">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M7 8c1 1 2 1 3 0M14 8c1 1 2 1 3 0"/><path d="M12 2a3 3 0 00-1 5.83V12l3-2"/></svg>
+        </div>
+        <div class="trust-text">Eco-Friendly<small>Biodegradable products</small></div>
+      </div>
+      <div class="trust-item reveal reveal-delay-3">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><path d="M20 12V8H6a2 2 0 01-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 000 4h4v-4h-4z"/></svg>
+        </div>
+        <div class="trust-text">Free Demo Wash<small>Try before you commit</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="section services" id="services">
+    <div class="section-inner">
+      <div class="section-label reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Our Services
+      </div>
+      <h2 class="section-title reveal">Complete Commercial <br>Vehicle Cleaning</h2>
+      <p class="section-desc reveal">From single vans to entire fleets, we deliver spotless results with our professional mobile cleaning units. Weekly, fortnightly, or monthly contracts available.</p>
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Truck Washing</h3>
+          <p>Complete exterior cleaning for HGVs and large commercial vehicles. Thorough degreasing and high-pressure wash to maintain your fleet's professional image.</p>
+        </div>
+        <!-- Service 2 -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17m-2 0a2 2 0 104 0 2 2 0 10-4 0"/><path d="M17 17m-2 0a2 2 0 104 0 2 2 0 10-4 0"/><path d="M5 17H3V6a1 1 0 011-1h9v12H9M15 17h4V9h-5"/></svg>
+          </div>
+          <h3>Van Valeting</h3>
+          <p>Interior and exterior valeting for delivery vans and commercial vehicles. Keep your vans clean and presentable for every customer interaction.</p>
+        </div>
+        <!-- Service 3 -->
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17a2 2 0 104 0 2 2 0 10-4 0"/><path d="M15 17a2 2 0 104 0 2 2 0 10-4 0"/><path d="M3 17V7a2 2 0 012-2h10a2 2 0 012 2v10"/><path d="M9 5v10M3 10h14"/></svg>
+          </div>
+          <h3>Tractor Unit Washing</h3>
+          <p>Specialist cab and chassis cleaning for tractor units. Engine bay degreasing and aluminium brightening to keep your units in showroom condition.</p>
+        </div>
+        <!-- Service 4 -->
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 7V5a2 2 0 012-2h8a2 2 0 012 2v2"/><path d="M2 12h20"/><circle cx="12" cy="14.5" r="1.5"/></svg>
+          </div>
+          <h3>Trailer Cleaning</h3>
+          <p>Rigid and double-deck trailer washing, inside and out. Remove road grime, dirt buildup, and restore your trailers to their best appearance.</p>
+        </div>
+        <!-- Service 5 -->
+        <div class="service-card reveal reveal-delay-5">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.22 20.7a2.12 2.12 0 01-3-3l7.24-7.24a6 6 0 017.94-7.94L14.7 6.3z"/></svg>
+          </div>
+          <h3>Hand Brush Washing</h3>
+          <p>Meticulous hand brush cleaning for areas that need extra attention. Perfect for delicate surfaces, badging, and intricate bodywork details.</p>
+        </div>
+        <!-- Service 6 -->
+        <div class="service-card reveal reveal-delay-6">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5.5 8.5L12 3l6.5 5.5"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 15v-3a2 2 0 012-2h8a2 2 0 012 2v3"/></svg>
+          </div>
+          <h3>Aluminium Cleaning</h3>
+          <p>Specialist aluminium brightening and polishing for fuel tanks, wheels, and alloy surfaces. Restore the gleaming finish your fleet deserves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Section -->
+  <section class="section areas" id="areas">
+    <div class="section-inner">
+      <div class="section-label reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Coverage Area
+      </div>
+      <h2 class="section-title reveal">We Come to You</h2>
+      <p class="section-desc reveal">Based in Coventry with an 80-mile service radius. Our mobile washing units travel to your depot, yard, or site &mdash; wherever your fleet is parked.</p>
+      <div class="areas-map reveal">
+        <span class="area-chip primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Coventry
+        </span>
+        <span class="area-chip">Birmingham</span>
+        <span class="area-chip">Wolverhampton</span>
+        <span class="area-chip">Solihull</span>
+        <span class="area-chip">Walsall</span>
+        <span class="area-chip">Dudley</span>
+        <span class="area-chip">Warwick</span>
+        <span class="area-chip">Leamington Spa</span>
+        <span class="area-chip">Rugby</span>
+        <span class="area-chip">Nuneaton</span>
+        <span class="area-chip">Tamworth</span>
+        <span class="area-chip">Leicester</span>
+        <span class="area-chip">Northampton</span>
+        <span class="area-chip">Stratford-upon-Avon</span>
+        <span class="area-chip">Redditch</span>
+        <span class="area-chip">Telford</span>
+        <span class="area-chip">Stoke-on-Trent</span>
+        <span class="area-chip">Derby</span>
+        <span class="area-chip">Nottingham</span>
+        <span class="area-chip">Worcester</span>
+        <span class="area-chip">Oxford</span>
+        <span class="area-chip">Milton Keynes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="section reviews" id="reviews">
+    <div class="section-inner">
+      <div class="section-label reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Customer Reviews
+      </div>
+      <h2 class="section-title reveal">Trusted by Fleet <br>Managers Across the Region</h2>
+      <p class="section-desc reveal">Our consistent quality and reliability speaks for itself. Here is what our commercial customers have to say.</p>
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card reveal reveal-delay-1">
+          <svg class="quote-mark" width="48" height="48" viewBox="0 0 24 24" fill="#F97316"><path d="M11 7H7a4 4 0 00-4 4v1a3 3 0 003 3h1a2 2 0 002-2v-1a2 2 0 00-2-2H6a2 2 0 012-2h3V7zm10 0h-4a4 4 0 00-4 4v1a3 3 0 003 3h1a2 2 0 002-2v-1a2 2 0 00-2-2h-1a2 2 0 012-2h3V7z"/></svg>
+          <div class="review-header">
+            <div class="review-avatar">DH</div>
+            <div class="review-meta">
+              <h4>David Hartley</h4>
+              <div class="role">Fleet Manager, DHL Coventry</div>
+            </div>
+          </div>
+          <div class="review-stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"We've been using Mobile Truck Wash on a weekly contract for over two years. The lads are always on time, thorough, and the quality never drops. Our fleet of 40 vehicles has never looked better."</p>
+        </div>
+        <!-- Review 2 -->
+        <div class="review-card reveal reveal-delay-2">
+          <svg class="quote-mark" width="48" height="48" viewBox="0 0 24 24" fill="#F97316"><path d="M11 7H7a4 4 0 00-4 4v1a3 3 0 003 3h1a2 2 0 002-2v-1a2 2 0 00-2-2H6a2 2 0 012-2h3V7zm10 0h-4a4 4 0 00-4 4v1a3 3 0 003 3h1a2 2 0 002-2v-1a2 2 0 00-2-2h-1a2 2 0 012-2h3V7z"/></svg>
+          <div class="review-header">
+            <div class="review-avatar">SP</div>
+            <div class="review-meta">
+              <h4>Sarah Prescott</h4>
+              <div class="role">Operations Director, Midlands Haulage</div>
+            </div>
+          </div>
+          <div class="review-stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Brilliant service, very professional. They offered us a free demo wash and we were so impressed we signed up immediately for a fortnightly contract. The eco-friendly products are a huge plus for our sustainability reporting."</p>
+        </div>
+        <!-- Review 3 -->
+        <div class="review-card reveal reveal-delay-3">
+          <svg class="quote-mark" width="48" height="48" viewBox="0 0 24 24" fill="#F97316"><path d="M11 7H7a4 4 0 00-4 4v1a3 3 0 003 3h1a2 2 0 002-2v-1a2 2 0 00-2-2H6a2 2 0 012-2h3V7zm10 0h-4a4 4 0 00-4 4v1a3 3 0 003 3h1a2 2 0 002-2v-1a2 2 0 00-2-2h-1a2 2 0 012-2h3V7z"/></svg>
+          <div class="review-header">
+            <div class="review-avatar">MR</div>
+            <div class="review-meta">
+              <h4>Mark Reynolds</h4>
+              <div class="role">Owner, Reynolds Transport Ltd</div>
+            </div>
+          </div>
+          <div class="review-stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F97316"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Been through three different truck wash companies before finding these guys. Night and day difference. They come out at 5am before our drivers start, and every single truck passes inspection. Worth every penny."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner">
+      <div class="section-label reveal" style="justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Get in Touch
+      </div>
+      <h2 class="reveal">Ready for a <span style="color: var(--orange);">Spotless Fleet?</span></h2>
+      <p class="reveal">Book your free demo wash today. Call us any time &mdash; we are available 24 hours a day, 7 days a week. On time, every time.</p>
+      <a href="tel:07508376650" class="cta-phone reveal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        07508 376650
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        Original website: <a href="https://truckwashcoventry.co.uk" target="_blank" rel="noopener">truckwashcoventry.co.uk</a>
+      </div>
+      <div class="footer-right">
+        Demo by <a href="https://neocodestudio.com" target="_blank" rel="noopener">NeoCode Studio</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <h3>Get Your Free Demo Wash</h3>
+      <p>See the quality for yourself with no obligation. We will come to your site and clean one vehicle completely free.</p>
+      <a href="tel:07508376650" class="btn-primary" onclick="closeModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Call 07508 376650
+      </a>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ── Navbar scroll effect ──
+      const navbar = document.getElementById('navbar');
+      const ncBanner = document.querySelector('.nc-banner');
+      let bannerHeight = ncBanner.offsetHeight;
+
+      function handleNavbar() {
+        if (window.scrollY > bannerHeight) {
+          navbar.classList.add('scrolled');
+          navbar.style.top = '0';
+        } else {
+          navbar.classList.remove('scrolled');
+          navbar.style.top = bannerHeight - window.scrollY + 'px';
+        }
+      }
+
+      // Set initial position
+      navbar.style.top = bannerHeight + 'px';
+      window.addEventListener('scroll', handleNavbar, { passive: true });
+      window.addEventListener('resize', function() {
+        bannerHeight = ncBanner.offsetHeight;
+        handleNavbar();
+      });
+
+      // ── Hamburger menu ──
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // ── Scroll to top button ──
+      const scrollTopBtn = document.getElementById('scrollTop');
+
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ── Reveal on scroll (IntersectionObserver) ──
+      var revealElements = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        // Fallback: show all
+        revealElements.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }
+
+      // ── Modal (triggers once at 75% scroll) ──
+      var modalOverlay = document.getElementById('modalOverlay');
+      var modalClose = document.getElementById('modalClose');
+      var modalShown = false;
+
+      function showModal() {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      window.closeModal = function() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      modalClose.addEventListener('click', closeModal);
+
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // Escape key closes modal
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      window.addEventListener('scroll', function() {
+        if (modalShown) return;
+        var scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrollPercent >= 0.75) {
+          modalShown = true;
+          // Small delay so it doesn't feel jarring
+          setTimeout(showModal, 600);
+        }
+      }, { passive: true });
+
+      // ── Smooth scroll for anchor links ──
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            var offset = navbar.offsetHeight + 20;
+            var targetPos = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: targetPos, behavior: 'smooth' });
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
