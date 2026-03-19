@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paws Groomers Nottingham — City &amp; Guilds Dog Grooming</title>
+<meta name="description" content="Premium dog grooming in Nottingham. City & Guilds qualified, 100% recommendation rate. Full groom, bath & brush, nail clipping and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --dark: #152228;
+  --dark-light: #1c2f38;
+  --dark-lighter: #243a45;
+  --accent: #F97171;
+  --accent-hover: #fb8e8e;
+  --cream: #f5efe6;
+  --cream-dim: #c8c2b9;
+  --white: #ffffff;
+  --gold: #f0c862;
+  --teal-glow: #2a8a8a;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark);
+  color: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NeoCode Banner ── */
+.neocode-banner {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  color: #888;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.neocode-banner span { color: #ccc; font-weight: 600; }
+.neocode-banner a { color: var(--accent); text-decoration: none; }
+.neocode-banner a:hover { text-decoration: underline; }
+
+/* ── Navigation ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(21, 34, 40, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 40px;
+  transition: var(--transition);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--cream);
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+.nav-logo svg { flex-shrink: 0; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--cream-dim);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: var(--transition);
+  border-radius: 2px;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--white);
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.nav-cta svg { flex-shrink: 0; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1100;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 34, 40, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1050;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.mobile-overlay.active { display: flex; opacity: 1; }
+.mobile-overlay a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.mobile-overlay a:hover { color: var(--accent); }
+.mobile-overlay .nav-cta { font-size: 1.1rem; padding: 14px 32px; margin-top: 12px; }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  padding: 100px 40px 80px;
+  overflow: hidden;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 70% 40%, rgba(249,113,113,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 20% 60%, rgba(42,138,138,0.06) 0%, transparent 60%);
+  z-index: 0;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249,113,113,0.1);
+  border: 1px solid rgba(249,113,113,0.2);
+  color: var(--accent);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.3px;
+}
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 {
+  font-size: 3.6rem;
+  font-weight: 900;
+  line-height: 1.08;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+.hero h1 .gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 50%, var(--accent-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-desc {
+  font-size: 1.15rem;
+  color: var(--cream-dim);
+  margin-bottom: 36px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(249,113,113,0.3); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  color: var(--cream);
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+/* Hero Floating Cards */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+.float-card {
+  position: absolute;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  animation: float 6s ease-in-out infinite;
+}
+.float-card-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.float-card-2 { top: 45%; right: 0%; animation-delay: -2s; }
+.float-card-3 { bottom: 5%; left: 15%; animation-delay: -4s; }
+.float-card .fc-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(249,113,113,0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.float-card .fc-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+.float-card .fc-sub { font-size: 0.82rem; color: var(--cream-dim); }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+/* ── Trust Bar ── */
+.trust-bar {
+  padding: 50px 40px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.015);
+}
+.trust-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+.trust-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(249,113,113,0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.trust-label .tl-title { font-weight: 700; font-size: 0.95rem; }
+.trust-label .tl-sub { font-size: 0.8rem; color: var(--cream-dim); margin-top: 2px; }
+
+/* ── Section Shared ── */
+.section {
+  padding: 100px 40px;
+}
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249,113,113,0.08);
+  border: 1px solid rgba(249,113,113,0.15);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.section-desc {
+  color: var(--cream-dim);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+.section-center { text-align: center; }
+.section-center .section-desc { margin-left: auto; margin-right: auto; }
+
+/* ── Services ── */
+.services-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.service-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  opacity: 0;
+  transition: var(--transition);
+}
+.service-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-4px); border-color: rgba(249,113,113,0.15); }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(249,113,113,0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+.service-card p { color: var(--cream-dim); font-size: 0.9rem; line-height: 1.65; }
+
+/* ── Reviews ── */
+.reviews-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.review-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+.review-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+.review-stars svg { color: var(--gold); }
+.review-card blockquote {
+  font-size: 0.95rem;
+  color: var(--cream);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 22px;
+  font-style: italic;
+  position: relative;
+  padding-left: 18px;
+  border-left: 3px solid rgba(249,113,113,0.3);
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.review-name { font-weight: 600; font-size: 0.9rem; }
+.review-loc { font-size: 0.78rem; color: var(--cream-dim); margin-top: 2px; }
+
+/* ── CTA Section ── */
+.cta-section {
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(249,113,113,0.08) 0%, transparent 70%);
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.cta-section h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.cta-section h2 .gradient {
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cta-section p {
+  color: var(--cream-dim);
+  font-size: 1.1rem;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Footer ── */
+.footer {
+  padding: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer p { color: var(--cream-dim); font-size: 0.85rem; }
+.footer a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+.footer a:hover { color: var(--accent-hover); }
+
+/* ── Scroll to Top ── */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: var(--transition);
+  z-index: 900;
+  box-shadow: 0 8px 24px rgba(249,113,113,0.3);
+}
+.scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+/* ── Popup ── */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  padding: 20px;
+}
+.popup-overlay.active { opacity: 1; visibility: visible; }
+.popup {
+  background: var(--dark-light);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 44px 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.4s ease;
+}
+.popup-overlay.active .popup { transform: scale(1) translateY(0); }
+.popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: var(--cream-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.popup-close:hover { background: rgba(255,255,255,0.1); color: var(--cream); }
+.popup-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(249,113,113,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.popup h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+.popup p { color: var(--cream-dim); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.6; }
+.popup .btn-primary { width: 100%; justify-content: center; }
+
+/* ── Reveal Animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 2.8rem; }
+  .section-title { font-size: 2.2rem; }
+  .services-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 0 20px; }
+  .nav-links, .nav-cta-desktop { display: none !important; }
+  .hamburger { display: flex; }
+
+  .hero { padding: 60px 20px 50px; min-height: auto; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-buttons { justify-content: center; }
+  .hero-visual { min-height: 320px; }
+  .float-card { padding: 16px 18px; }
+
+  .section { padding: 60px 20px; }
+  .section-title { font-size: 1.9rem; }
+  .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .trust-bar { padding: 30px 20px; }
+  .trust-bar-inner { grid-template-columns: 1fr; gap: 16px; }
+
+  .cta-section { padding: 60px 20px; }
+  .cta-section h2 { font-size: 2rem; }
+
+  .footer { padding: 30px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .float-card-2 { right: -5%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NeoCode Studio Banner -->
+<div class="neocode-banner">
+  Built by <span>NeoCode Studio</span> &mdash; Premium web design for local businesses
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="15" stroke="#F97171" stroke-width="2"/>
+        <path d="M10 20c0-4 2.5-7 6-7s6 3 6 7" stroke="#F97171" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="13" cy="13" r="1.5" fill="#F97171"/>
+        <circle cx="19" cy="13" r="1.5" fill="#F97171"/>
+        <path d="M14.5 17.5c0.8 0.8 2.2 0.8 3 0" stroke="#F97171" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Paws Groomers
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:07710272111" class="nav-cta nav-cta-desktop">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      07710 272 111
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="tel:07710272111" class="nav-cta" onclick="closeMobile()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+    07710 272 111
+  </a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        City &amp; Guilds Qualified &mdash; 100% Recommended
+      </div>
+      <h1>Professional Dog<br><span class="gradient">Grooming in Nottingham</span></h1>
+      <p class="hero-desc">Expert care for your best friend. From full grooms to puppy introductions, we treat every dog with the love and attention they deserve. Join our long waiting list of happy customers.</p>
+      <div class="hero-buttons">
+        <a href="tel:07710272111" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Book Now
+        </a>
+        <a href="#services" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+          </svg>
+          View Services
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Floating Card 1: Reviews -->
+      <div class="float-card float-card-1">
+        <div class="fc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <div class="fc-title">16 Five-Star Reviews</div>
+        <div class="fc-sub">100% recommendation rate</div>
+      </div>
+      <!-- Floating Card 2: Qualified -->
+      <div class="float-card float-card-2">
+        <div class="fc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+        </div>
+        <div class="fc-title">City &amp; Guilds</div>
+        <div class="fc-sub">Professionally qualified</div>
+      </div>
+      <!-- Floating Card 3: Popular -->
+      <div class="float-card float-card-3">
+        <div class="fc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <div class="fc-title">Long Waiting List</div>
+        <div class="fc-sub">Nottingham's most loved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+        </svg>
+      </div>
+      <div class="trust-label">
+        <div class="tl-title">City &amp; Guilds Qualified</div>
+        <div class="tl-sub">Professional certification</div>
+      </div>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </div>
+      <div class="trust-label">
+        <div class="tl-title">100% Recommended</div>
+        <div class="tl-sub">16 glowing reviews</div>
+      </div>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+      </div>
+      <div class="trust-label">
+        <div class="tl-title">Loved by Dogs</div>
+        <div class="tl-sub">Gentle, caring approach</div>
+      </div>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+      </div>
+      <div class="trust-label">
+        <div class="tl-title">Safe &amp; Insured</div>
+        <div class="tl-sub">Your pet in trusted hands</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section section-center" id="services">
+  <div class="section-label reveal">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>
+    </svg>
+    Our Services
+  </div>
+  <h2 class="section-title reveal">Everything Your Dog <span class="gradient">Deserves</span></h2>
+  <p class="section-desc reveal">From a full pamper session to a quick nail trim, we offer a complete range of grooming services tailored to every breed and temperament.</p>
+
+  <div class="services-grid">
+    <!-- Full Groom -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+      </div>
+      <h3>Full Groom</h3>
+      <p>The complete treatment: bath, blow-dry, brush, haircut, nail trim, ear clean and finishing touches. Your dog will leave looking and feeling fantastic.</p>
+    </div>
+    <!-- Bath & Brush -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c0-1.657 1.343-3 3-3s3 1.343 3 3"/><path d="M12 12V2"/>
+        </svg>
+      </div>
+      <h3>Bath &amp; Brush</h3>
+      <p>A thorough bath with premium shampoo and conditioner, followed by a professional blow-dry and full brush-out. Perfect for maintaining a healthy coat.</p>
+    </div>
+    <!-- Nail Clipping -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/>
+        </svg>
+      </div>
+      <h3>Nail Clipping</h3>
+      <p>Quick and careful nail trimming to keep your dog comfortable and prevent overgrown nails. A stress-free experience for even the most nervous pups.</p>
+    </div>
+    <!-- De-matting -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <h3>De-matting</h3>
+      <p>Gentle removal of tangles and mats using specialist tools and techniques. We work patiently to restore your dog's coat without discomfort or distress.</p>
+    </div>
+    <!-- De-shedding -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 3a3 3 0 00-3 3v12a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3H6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3V6a3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3h12a3 3 0 003-3 3 3 0 00-3-3z"/>
+        </svg>
+      </div>
+      <h3>De-shedding</h3>
+      <p>Specialist treatment to remove excess undercoat and reduce shedding. Ideal for double-coated breeds and keeping your home fur-free between visits.</p>
+    </div>
+    <!-- Puppy Introductions -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+      </div>
+      <h3>Puppy Introductions</h3>
+      <p>A calm, gentle first grooming experience designed to build confidence and positive associations. We take it at your puppy's pace to set them up for life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section section-center" id="reviews" style="background: rgba(255,255,255,0.01);">
+  <div class="section-label reveal">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+    Reviews
+  </div>
+  <h2 class="section-title reveal">What Our Customers <span class="gradient">Say</span></h2>
+  <p class="section-desc reveal">Don't just take our word for it. Here's what dog owners across Nottingham say about their experience with Paws Groomers.</p>
+
+  <div class="reviews-grid">
+    <!-- Review 1 -->
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"Absolutely wonderful! My cockapoo was so nervous before his first visit but they were incredibly patient. He came back looking gorgeous and so relaxed. Wouldn't go anywhere else now."</blockquote>
+      <div class="review-author">
+        <div class="review-avatar">SH</div>
+        <div>
+          <div class="review-name">Sarah H.</div>
+          <div class="review-loc">Beeston, Nottingham</div>
+        </div>
+      </div>
+    </div>
+    <!-- Review 2 -->
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"Best groomer we've ever used. Our golden retriever's de-shedding treatment was brilliant - the amount of fur that came out was unbelievable! House has been so much cleaner since."</blockquote>
+      <div class="review-author">
+        <div class="review-avatar">MT</div>
+        <div>
+          <div class="review-name">Mark T.</div>
+          <div class="review-loc">West Bridgford, Nottingham</div>
+        </div>
+      </div>
+    </div>
+    <!-- Review 3 -->
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f0c862" stroke="#f0c862" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"I've been bringing my two shih tzus here for over a year and every single time they come back looking absolutely perfect. The attention to detail is second to none. Worth every penny."</blockquote>
+      <div class="review-author">
+        <div class="review-avatar">JR</div>
+        <div>
+          <div class="review-name">Jenny R.</div>
+          <div class="review-loc">Lenton, Nottingham</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="section-label reveal" style="display:inline-flex;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      Get In Touch
+    </div>
+    <h2 class="reveal">Ready to Book Your<br><span class="gradient">Dog's Pamper Day?</span></h2>
+    <p class="reveal">Give us a call to book an appointment or discuss your dog's grooming needs. We're based at 74A Nottingham Road, Nottingham NG7 7AH.</p>
+    <div class="cta-buttons reveal">
+      <a href="tel:07710272111" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        Call 07710 272 111
+      </a>
+      <a href="https://maps.google.com/?q=74A+Nottingham+Road+Nottingham+NG7+7AH" target="_blank" rel="noopener" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        Get Directions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 Paws Groomers. All rights reserved. 74A Nottingham Road, Nottingham NG7 7AH</p>
+    <p>Currently live at <a href="https://pawsgroomers.co.uk" target="_blank" rel="noopener">pawsgroomers.co.uk</a></p>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <button class="popup-close" id="popupClose" aria-label="Close popup">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="popup-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F97171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+      </svg>
+    </div>
+    <h3>Join Our Waiting List</h3>
+    <p>We're Nottingham's most popular groomers with a long waiting list. Call now to secure your dog's spot and experience the Paws Groomers difference.</p>
+    <a href="tel:07710272111" class="btn-primary" onclick="closePopup()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      Call 07710 272 111
+    </a>
+  </div>
+</div>
+
+<script>
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileOverlay = document.getElementById('mobileOverlay');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileOverlay.classList.toggle('active');
+  document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+});
+
+function closeMobile() {
+  hamburger.classList.remove('active');
+  mobileOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Scroll to top
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Popup at 75% scroll
+let popupShown = false;
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose = document.getElementById('popupClose');
+
+window.addEventListener('scroll', () => {
+  if (popupShown) return;
+  const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+  if (scrollPercent >= 0.75) {
+    popupShown = true;
+    popupOverlay.classList.add('active');
+  }
+});
+
+function closePopup() {
+  popupOverlay.classList.remove('active');
+}
+
+popupClose.addEventListener('click', closePopup);
+popupOverlay.addEventListener('click', (e) => {
+  if (e.target === popupOverlay) closePopup();
+});
+
+// Reveal animations on scroll
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
