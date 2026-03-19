@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express York Glaziers | Emergency Glazing & Double Glazing Repair in York</title>
+<meta name="description" content="Express York Glaziers: 24/7 emergency glazing, double glazing repair, window replacement & glass cutting in York, Harrogate, Selby & North Yorkshire. Call 0344 947 0955.">
+<meta name="keywords" content="glaziers York, emergency glazing York, double glazing repair, window replacement York, glass cutting, shopfront glazing, boarding up, mirror fitting, North Yorkshire glaziers">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Express York Glaziers | Emergency Glazing & Glass Services">
+<meta property="og:description" content="24/7 emergency glazing, double glazing repairs & window replacement across York & North Yorkshire. Fast response, fair prices.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://expressyorkglaziers.co.uk">
+<style>
+/* ========== CSS Custom Properties ========== */
+:root {
+  --primary: #111B27;
+  --accent: #38BDF8;
+  --accent-glow: rgba(56, 189, 248, 0.15);
+  --accent-dark: #0EA5E9;
+  --white: #FFFFFF;
+  --off-white: #F0F6FC;
+  --gray-100: #E2E8F0;
+  --gray-200: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-600: #64748B;
+  --gray-800: #1E293B;
+  --surface: #162032;
+  --card-bg: #1A2740;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.25);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.35);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --max-w: 1200px;
+  --neo-gradient: linear-gradient(135deg, #6366F1, #A855F7, #EC4899);
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font);
+  background: var(--primary);
+  color: var(--gray-100);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+/* ========== NeoCode Banner ========== */
+.neo-banner {
+  background: var(--neo-gradient);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1001;
+}
+.neo-banner a { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
+.neo-banner a:hover { opacity: 0.85; }
+
+/* ========== Navigation ========== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(17, 27, 39, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  padding: 0 24px;
+  transition: var(--transition);
+}
+.navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo svg { flex-shrink: 0; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--gray-200);
+  transition: var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: var(--transition);
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: var(--accent) !important;
+  color: var(--primary) !important;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+.nav-cta::after { display: none !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  z-index: 1002;
+}
+.hamburger span {
+  width: 26px;
+  height: 2.5px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ========== Hero ========== */
+.hero {
+  position: relative;
+  padding: 100px 24px 120px;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(56,189,248,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(56,189,248,0.05) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(56,189,248,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(56,189,248,0.25);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), #7DD3FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  margin-bottom: 36px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--primary);
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(56,189,248,0.3); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: 1.5px solid var(--gray-600);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Floating Stat Cards */
+.hero-stats {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 0;
+}
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(56,189,248,0.12);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  animation: floatCard 6s ease-in-out infinite;
+}
+.stat-card:nth-child(1) { animation-delay: 0s; transform: translateX(20px); }
+.stat-card:nth-child(2) { animation-delay: 2s; transform: translateX(-10px); }
+.stat-card:nth-child(3) { animation-delay: 4s; transform: translateX(30px); }
+.stat-card:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-4px) !important; }
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--white);
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+  margin-top: 2px;
+}
+
+/* ========== Trust Bar ========== */
+.trust-bar {
+  background: var(--surface);
+  border-top: 1px solid rgba(56,189,248,0.08);
+  border-bottom: 1px solid rgba(56,189,248,0.08);
+  padding: 40px 24px;
+}
+.trust-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+.trust-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.trust-text { font-size: 0.92rem; font-weight: 600; color: var(--gray-200); line-height: 1.4; }
+
+/* ========== Section Styles ========== */
+.section { padding: 100px 24px; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--gray-400);
+  max-width: 600px;
+  line-height: 1.7;
+}
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header .section-desc { margin: 0 auto; }
+
+/* ========== Services ========== */
+.services-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(56,189,248,0.08);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+.service-card:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.25); box-shadow: var(--shadow-lg); }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.service-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.service-card p {
+  font-size: 0.92rem;
+  color: var(--gray-400);
+  line-height: 1.65;
+}
+
+/* ========== Areas ========== */
+.areas { background: var(--surface); }
+.areas-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.chip {
+  background: var(--card-bg);
+  border: 1px solid rgba(56,189,248,0.12);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-200);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.chip svg { flex-shrink: 0; }
+
+/* ========== Reviews ========== */
+.reviews-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(56,189,248,0.08);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: var(--transition);
+}
+.review-card:hover { transform: translateY(-4px); border-color: rgba(56,189,248,0.2); }
+.review-top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.review-name { font-weight: 700; color: var(--white); font-size: 0.95rem; }
+.review-date { font-size: 0.8rem; color: var(--gray-600); }
+.review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.review-text { font-size: 0.92rem; color: var(--gray-400); line-height: 1.65; font-style: italic; }
+
+/* ========== CTA Section ========== */
+.cta-section {
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(56,189,248,0.08) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(56,189,248,0.06) 0%, transparent 50%);
+}
+.cta-content { position: relative; z-index: 1; }
+.cta-section .section-title { margin-bottom: 12px; }
+.cta-section .section-desc { margin: 0 auto 36px; }
+.cta-phone {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* ========== Footer ========== */
+.footer {
+  background: var(--primary);
+  border-top: 1px solid rgba(56,189,248,0.08);
+  padding: 48px 24px 24px;
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-left p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-top: 6px;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  font-size: 0.88rem;
+  color: var(--gray-400);
+  transition: var(--transition);
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom {
+  max-width: var(--max-w);
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p { font-size: 0.8rem; color: var(--gray-600); }
+.footer-bottom a { color: var(--accent); }
+.original-site { font-size: 0.8rem; color: var(--gray-600); }
+.original-site a { color: var(--gray-400); transition: var(--transition); }
+.original-site a:hover { color: var(--accent); }
+
+/* ========== Scroll to Top ========== */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: var(--transition);
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(56,189,248,0.3);
+}
+.scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top:hover { background: var(--accent-dark); transform: translateY(-3px) !important; }
+
+/* ========== Popup ========== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  padding: 24px;
+}
+.popup-overlay.active { opacity: 1; visibility: visible; }
+.popup {
+  background: var(--card-bg);
+  border: 1px solid rgba(56,189,248,0.2);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9);
+  transition: var(--transition);
+  box-shadow: var(--shadow-lg);
+}
+.popup-overlay.active .popup { transform: scale(1); }
+.popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  transition: var(--transition);
+}
+.popup-close:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+.popup-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.popup h3 { font-size: 1.4rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+.popup p { font-size: 0.95rem; color: var(--gray-400); margin-bottom: 28px; line-height: 1.6; }
+.popup .btn-primary { width: 100%; justify-content: center; }
+
+/* ========== Reveal Animation ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== Mobile ========== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--surface);
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    padding: 40px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 1.1rem; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero { padding: 60px 24px 80px; min-height: auto; }
+  .hero-stats { padding: 0; }
+  .stat-card { transform: none !important; }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .cta-phone { font-size: 1.6rem; flex-direction: column; gap: 8px; }
+}
+@media (max-width: 480px) {
+  .trust-grid { grid-template-columns: 1fr; }
+  .section { padding: 64px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="neo-banner">
+  This is a demo website built by <a href="#">NeoCode Studio</a> &mdash; Premium web design for local businesses
+</div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#38BDF8" fill-opacity="0.15"/>
+        <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M16 8V24" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 12L16 16L24 12" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      Express York <span>Glaziers</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#areas">Areas</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:03449470955" class="nav-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        0344 947 0955
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        24/7 Emergency Callout
+      </div>
+      <h1>Expert <span class="highlight">Glazing Services</span> in York &amp; North Yorkshire</h1>
+      <p class="hero-sub">Fast, reliable glazing solutions for homes and businesses. From emergency repairs to bespoke installations &mdash; we're the glaziers York trusts.</p>
+      <div class="hero-actions">
+        <a href="tel:03449470955" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Now Free
+        </a>
+        <a href="#services" class="btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          View Services
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <div class="stat-number">&lt; 60 min</div>
+          <div class="stat-label">Emergency Response Time</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+          <div class="stat-number">2,500+</div>
+          <div class="stat-label">Jobs Completed in York</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div>
+          <div class="stat-number">4.9 / 5.0</div>
+          <div class="stat-label">Average Customer Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span class="trust-text">Fully Insured &amp; FENSA Registered</span>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <span class="trust-text">24/7 Emergency Callout</span>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <span class="trust-text">Free No-Obligation Quotes</span>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <span class="trust-text">Competitive Fixed Pricing</span>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <div class="section-header reveal">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Our Services
+    </div>
+    <h2 class="section-title">Professional Glazing Solutions</h2>
+    <p class="section-desc">From emergency boarding up to precision glass cutting, we deliver expert glazing services across York and the surrounding areas.</p>
+  </div>
+  <div class="services-grid">
+    <!-- Service 1 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Emergency Glazing</h3>
+      <p>Rapid response 24/7 for smashed windows, break-ins, and storm damage. We'll secure your property fast and fit replacement glass the same day wherever possible.</p>
+    </div>
+    <!-- Service 2 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Double Glazing Repair</h3>
+      <p>Misted, cracked, or blown double glazing units replaced quickly. We restore thermal efficiency and eliminate condensation between panes without full frame replacement.</p>
+    </div>
+    <!-- Service 3 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      </div>
+      <h3>Window Replacement</h3>
+      <p>Complete window installation including uPVC, aluminium, and timber frames. Energy-efficient A-rated glass as standard with all new window fittings.</p>
+    </div>
+    <!-- Service 4 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <h3>Glass Cutting</h3>
+      <p>Precision glass cutting to any size and specification. Toughened, laminated, patterned, and obscure glass available for collection or delivery across York.</p>
+    </div>
+    <!-- Service 5 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Shopfront Glazing</h3>
+      <p>Commercial shopfront glass installation, repair, and replacement. Toughened safety glass, automatic doors, and full shopfront fit-outs for retail premises.</p>
+    </div>
+    <!-- Service 6 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/><path d="M2 12h20"/></svg>
+      </div>
+      <h3>Boarding Up &amp; Mirror Fitting</h3>
+      <p>Emergency board-up service to secure your property immediately. Plus bespoke mirror cutting and fitting for bathrooms, gyms, and feature walls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="section areas" id="areas">
+  <div class="section-header reveal">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Areas We Cover
+    </div>
+    <h2 class="section-title">Serving York &amp; North Yorkshire</h2>
+    <p class="section-desc">Based in Micklegate, York, we provide fast glazing services across the region with typical arrival times under one hour.</p>
+  </div>
+  <div class="areas-chips">
+    <div class="chip reveal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      York
+    </div>
+    <div class="chip reveal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Harrogate
+    </div>
+    <div class="chip reveal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Selby
+    </div>
+    <div class="chip reveal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Tadcaster
+    </div>
+    <div class="chip reveal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Wetherby
+    </div>
+    <div class="chip reveal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      North Yorkshire
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section" id="reviews">
+  <div class="section-header reveal">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Customer Reviews
+    </div>
+    <h2 class="section-title">Trusted by York Homeowners</h2>
+    <p class="section-desc">Don't just take our word for it. Here's what our customers across York and North Yorkshire have to say.</p>
+  </div>
+  <div class="reviews-grid">
+    <!-- Review 1 -->
+    <div class="review-card reveal">
+      <div class="review-top">
+        <div class="review-avatar">JT</div>
+        <div>
+          <div class="review-name">James T.</div>
+          <div class="review-date">York &mdash; 3 weeks ago</div>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Brilliant service. Had a break-in at 2am and they were here within 40 minutes to board up and came back next morning to fit new glass. Couldn't ask for more."</p>
+    </div>
+    <!-- Review 2 -->
+    <div class="review-card reveal">
+      <div class="review-top">
+        <div class="review-avatar">SP</div>
+        <div>
+          <div class="review-name">Sarah P.</div>
+          <div class="review-date">Harrogate &mdash; 1 month ago</div>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Had all the blown double glazing units in our conservatory replaced. The difference is incredible &mdash; no more misting and the room is so much warmer. Great price too."</p>
+    </div>
+    <!-- Review 3 -->
+    <div class="review-card reveal">
+      <div class="review-top">
+        <div class="review-avatar">MR</div>
+        <div>
+          <div class="review-name">Mark R.</div>
+          <div class="review-date">Selby &mdash; 2 months ago</div>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#38BDF8" stroke="#38BDF8" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Needed a custom mirror cut and fitted for our new bathroom. Perfect measurements, clean installation, and done in under an hour. Highly recommend these lads."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta-section" id="contact">
+  <div class="cta-content reveal">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Get in Touch
+    </div>
+    <h2 class="section-title">Need a Glazier? Call Us Now</h2>
+    <p class="section-desc">Whether it's an emergency or a planned project, we're ready to help. Free quotes, no call-out charges, and honest pricing every time.</p>
+    <div class="cta-phone">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <a href="tel:03449470955" style="color:var(--accent)">0344 947 0955</a>
+    </div>
+    <a href="tel:03449470955" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Now &mdash; Free Quote
+    </a>
+    <p style="margin-top:20px;font-size:0.88rem;color:var(--gray-600);">Micklegate, York YO1 6LJ &mdash; Serving all of North Yorkshire</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <a href="#" class="nav-logo" style="font-size:1.15rem;">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#38BDF8" fill-opacity="0.15"/>
+          <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M16 8V24" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 12L16 16L24 12" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Express York <span>Glaziers</span>
+      </a>
+      <p>Professional glazing services in York &amp; North Yorkshire</p>
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#areas">Areas</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:03449470955">Call Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Express York Glaziers. All rights reserved.</p>
+    <p class="original-site">Original site: <a href="https://expressyorkglaziers.co.uk" target="_blank" rel="noopener">expressyorkglaziers.co.uk</a></p>
+    <p>Demo by <a href="#">NeoCode Studio</a></p>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <button class="popup-close" id="popupClose" aria-label="Close popup">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="popup-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+    <h3>Need Emergency Glazing?</h3>
+    <p>Smashed window or break-in? We offer 24/7 emergency callout across York &amp; North Yorkshire with under 60-minute response times.</p>
+    <a href="tel:03449470955" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call 0344 947 0955
+    </a>
+  </div>
+</div>
+
+<script>
+/* ========== Mobile Menu ========== */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ========== Navbar Scroll ========== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+/* ========== Scroll to Top (300px threshold) ========== */
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ========== Staggered Reveal on Scroll ========== */
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+      let staggerIndex = 0;
+      siblings.forEach((sib, i) => {
+        if (sib === entry.target) staggerIndex = i;
+      });
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, staggerIndex * 100);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+/* ========== Popup at 75% scroll ========== */
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose = document.getElementById('popupClose');
+let popupShown = false;
+window.addEventListener('scroll', () => {
+  if (popupShown) return;
+  const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+  if (scrollPercent >= 0.75) {
+    popupShown = true;
+    popupOverlay.classList.add('active');
+  }
+});
+popupClose.addEventListener('click', () => {
+  popupOverlay.classList.remove('active');
+});
+popupOverlay.addEventListener('click', (e) => {
+  if (e.target === popupOverlay) popupOverlay.classList.remove('active');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') popupOverlay.classList.remove('active');
+});
+</script>
+
+</body>
+</html>

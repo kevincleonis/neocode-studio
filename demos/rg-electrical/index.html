@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RG Electrical | Trusted Electricians in Cheltenham & Gloucester | Rewiring, EV Chargers & More</title>
+<meta name="description" content="RG Electrical provides expert electrical services across Cheltenham, Gloucester and Gloucestershire. Rewiring, fuse boards, EV chargers, fire alarms, PAT testing. Call 01242 437099.">
+<meta name="keywords" content="electrician Cheltenham, electrician Gloucester, rewiring, fuse board upgrade, EV charger installation, fire alarm, PAT testing, Gloucestershire electrician">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="RG Electrical | Trusted Electricians in Cheltenham & Gloucester">
+<meta property="og:description" content="Expert electrical services across Gloucestershire. Rewiring, EV chargers, fire alarms & more. Call 01242 437099.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://neocodestudio.com/demos/rg-electrical">
+<style>
+  :root {
+    --graphite: #171C20;
+    --graphite-light: #1E2328;
+    --graphite-mid: #2A2F35;
+    --graphite-soft: #3A4048;
+    --electric: #EAB308;
+    --electric-dim: #CA9A06;
+    --electric-glow: rgba(234, 179, 8, 0.15);
+    --electric-glow-strong: rgba(234, 179, 8, 0.25);
+    --white: #FFFFFF;
+    --off-white: #F5F5F0;
+    --text-light: #C8CCD0;
+    --text-muted: #8A9098;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.4);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--graphite);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── NeoCode Banner ── */
+  .neocode-banner {
+    background: linear-gradient(135deg, #0F0F0F 0%, #1a1a2e 100%);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: #999;
+    border-bottom: 1px solid rgba(234,179,8,0.1);
+    position: relative;
+    z-index: 1000;
+  }
+  .neocode-banner span { color: var(--electric); font-weight: 700; }
+  .neocode-banner a { color: var(--electric); text-decoration: underline; text-underline-offset: 2px; }
+  .neocode-banner a:hover { color: var(--white); }
+
+  /* ── Navigation ── */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(23, 28, 32, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(234,179,8,0.08);
+    z-index: 999;
+    padding: 0 24px;
+    transition: var(--transition);
+  }
+  .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
+  }
+  .nav-logo .logo-icon {
+    width: 40px; height: 40px; background: var(--electric);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo .accent { color: var(--electric); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 15px; font-weight: 500; color: var(--text-light);
+    transition: var(--transition); position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px; background: var(--electric);
+    transition: var(--transition);
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--electric); color: var(--graphite);
+    padding: 10px 24px; border-radius: 50px; font-weight: 700;
+    font-size: 14px; transition: var(--transition);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .nav-cta:hover { background: var(--white); transform: translateY(-1px); }
+  .nav-cta svg { width: 16px; height: 16px; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 8px; background: none; border: none;
+  }
+  .hamburger span {
+    width: 26px; height: 2.5px; background: var(--white);
+    border-radius: 2px; transition: var(--transition);
+  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+    background: rgba(23, 28, 32, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    z-index: 998;
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu a {
+    font-size: 22px; font-weight: 600; color: var(--text-light);
+    transition: var(--transition);
+  }
+  .mobile-menu a:hover { color: var(--electric); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 160px 24px 120px;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(234,179,8,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(234,179,8,0.04) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.03;
+    background-image:
+      linear-gradient(var(--electric) 1px, transparent 1px),
+      linear-gradient(90deg, var(--electric) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero .container { position: relative; z-index: 2; width: 100%; }
+  .hero-content { max-width: 680px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--electric-glow); border: 1px solid rgba(234,179,8,0.2);
+    padding: 8px 18px; border-radius: 50px;
+    font-size: 13px; font-weight: 600; color: var(--electric);
+    margin-bottom: 28px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .hero-badge svg { width: 14px; height: 14px; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -1.5px; margin-bottom: 24px;
+  }
+  .hero h1 .highlight {
+    color: var(--electric);
+    text-shadow: 0 0 40px rgba(234,179,8,0.3);
+  }
+  .hero p {
+    font-size: 18px; color: var(--text-light);
+    max-width: 520px; margin-bottom: 40px; line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--electric); color: var(--graphite);
+    padding: 16px 36px; border-radius: 50px; font-weight: 700;
+    font-size: 16px; display: inline-flex; align-items: center; gap: 10px;
+    transition: var(--transition); border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn-primary svg { width: 20px; height: 20px; }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 16px 36px; border-radius: 50px; font-weight: 600;
+    font-size: 16px; display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid var(--graphite-soft); transition: var(--transition); cursor: pointer;
+  }
+  .btn-secondary:hover { border-color: var(--electric); color: var(--electric); }
+
+  /* Floating Stats */
+  .hero-stats {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 20px; z-index: 3;
+  }
+  .stat-card {
+    background: rgba(30, 35, 40, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(234,179,8,0.12);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    min-width: 220px;
+    transition: var(--transition);
+    animation: float 6s ease-in-out infinite;
+  }
+  .stat-card:nth-child(2) { animation-delay: -2s; transform: translateX(-30px); }
+  .stat-card:nth-child(3) { animation-delay: -4s; transform: translateX(10px); }
+  .stat-card:hover { border-color: rgba(234,179,8,0.3); transform: translateY(-4px); }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .stat-card .stat-number {
+    font-size: 36px; font-weight: 800; color: var(--electric);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stat-card .stat-label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+
+  /* ── Trust Bar ── */
+  .trust-bar {
+    padding: 48px 24px;
+    border-top: 1px solid rgba(234,179,8,0.06);
+    border-bottom: 1px solid rgba(234,179,8,0.06);
+    background: var(--graphite-light);
+  }
+  .trust-items {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 32px; text-align: center;
+  }
+  .trust-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .trust-icon {
+    width: 56px; height: 56px;
+    background: var(--electric-glow); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .trust-icon svg { width: 28px; height: 28px; color: var(--electric); }
+  .trust-item h4 { font-size: 15px; font-weight: 700; }
+  .trust-item p { font-size: 13px; color: var(--text-muted); }
+
+  /* ── Sections ── */
+  .section { padding: 100px 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700; color: var(--electric);
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; width: 24px; height: 1px; background: var(--electric); opacity: 0.4;
+  }
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800; letter-spacing: -1px; margin-bottom: 16px;
+  }
+  .section-header p { font-size: 17px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+  /* ── Services ── */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--graphite-light);
+    border: 1px solid rgba(234,179,8,0.06);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    transition: var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--electric);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover { border-color: rgba(234,179,8,0.2); transform: translateY(-4px); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--electric-glow); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; transition: var(--transition);
+  }
+  .service-card:hover .service-icon { background: var(--electric-glow-strong); }
+  .service-icon svg { width: 26px; height: 26px; color: var(--electric); }
+  .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── Areas ── */
+  .areas-section { background: var(--graphite-light); }
+  .areas-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .area-chip {
+    background: var(--graphite-mid);
+    border: 1px solid rgba(234,179,8,0.08);
+    padding: 12px 24px; border-radius: 50px;
+    font-size: 15px; font-weight: 600;
+    transition: var(--transition); cursor: default;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .area-chip svg { width: 16px; height: 16px; color: var(--electric); }
+  .area-chip:hover {
+    border-color: var(--electric);
+    background: var(--electric-glow);
+    color: var(--electric);
+  }
+
+  /* ── Reviews ── */
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    background: var(--graphite-light);
+    border: 1px solid rgba(234,179,8,0.06);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: var(--transition);
+  }
+  .review-card:hover { border-color: rgba(234,179,8,0.2); transform: translateY(-2px); }
+  .review-stars { display: flex; gap: 4px; margin-bottom: 16px; }
+  .review-stars svg { width: 18px; height: 18px; color: var(--electric); }
+  .review-text { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .review-author { display: flex; align-items: center; gap: 14px; }
+  .review-avatar {
+    width: 46px; height: 46px;
+    background: var(--electric); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; color: var(--graphite);
+  }
+  .review-name { font-weight: 700; font-size: 15px; }
+  .review-meta { font-size: 13px; color: var(--text-muted); }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 100px 24px;
+    background:
+      linear-gradient(135deg, rgba(234,179,8,0.08) 0%, transparent 50%),
+      var(--graphite-light);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(234,179,8,0.1) 0%, transparent 60%);
+  }
+  .cta-section .container { position: relative; z-index: 2; }
+  .cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; margin-bottom: 16px; letter-spacing: -1px;
+  }
+  .cta-section p { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; margin-inline: auto; }
+  .cta-phone {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800; color: var(--electric);
+    display: inline-flex; align-items: center; gap: 16px;
+    margin-bottom: 32px;
+    text-shadow: 0 0 40px rgba(234,179,8,0.3);
+  }
+  .cta-phone svg { width: 40px; height: 40px; }
+
+  /* ── Footer ── */
+  .footer {
+    background: #0D1014;
+    border-top: 1px solid rgba(234,179,8,0.06);
+    padding: 48px 24px 24px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-brand { font-size: 18px; font-weight: 700; }
+  .footer-brand .accent { color: var(--electric); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 14px; color: var(--text-muted); transition: var(--transition); }
+  .footer-links a:hover { color: var(--electric); }
+  .footer-bottom {
+    max-width: 1200px; margin: 32px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center; font-size: 12px; color: var(--text-muted);
+  }
+  .footer-bottom a { color: var(--electric); }
+
+  /* ── Scroll to Top ── */
+  .scroll-top {
+    position: fixed; bottom: 32px; right: 32px;
+    width: 48px; height: 48px;
+    background: var(--electric); color: var(--graphite);
+    border: none; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: var(--transition); z-index: 997;
+    box-shadow: 0 4px 20px rgba(234,179,8,0.3);
+  }
+  .scroll-top.visible { opacity: 1; visibility: visible; }
+  .scroll-top:hover { background: var(--white); transform: translateY(-3px); }
+  .scroll-top svg { width: 22px; height: 22px; }
+
+  /* ── Popup ── */
+  .popup-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 2000; padding: 24px;
+  }
+  .popup-overlay.active { display: flex; }
+  .popup {
+    background: var(--graphite-light);
+    border: 1px solid rgba(234,179,8,0.15);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    max-width: 480px; width: 100%;
+    text-align: center;
+    position: relative;
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .popup-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--graphite-mid); border: none;
+    color: var(--text-muted); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+  }
+  .popup-close:hover { background: var(--electric); color: var(--graphite); }
+  .popup-close svg { width: 18px; height: 18px; }
+  .popup-icon {
+    width: 64px; height: 64px; margin: 0 auto 20px;
+    background: var(--electric-glow); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .popup-icon svg { width: 32px; height: 32px; color: var(--electric); }
+  .popup h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+  .popup p { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
+
+  /* ── Reveal Animation ── */
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Mobile ── */
+  @media (max-width: 1024px) {
+    .hero-stats { position: static; transform: none;
+      flex-direction: row; flex-wrap: wrap; justify-content: center;
+      margin-top: 48px;
+    }
+    .stat-card:nth-child(2) { transform: none; }
+    .stat-card:nth-child(3) { transform: none; }
+    .stat-card { min-width: 160px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta-wrap { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 130px 24px 60px; min-height: auto; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero-stats { gap: 12px; }
+    .stat-card { padding: 20px 24px; min-width: 140px; }
+    .stat-card .stat-number { font-size: 28px; }
+    .trust-items { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .section { padding: 72px 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .hero-actions { flex-direction: column; }
+    .hero-stats { flex-direction: column; align-items: stretch; }
+    .trust-items { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NeoCode Banner -->
+<div class="neocode-banner">
+  This is a demo website built by <span>NeoCode Studio</span> &mdash;
+  <a href="https://neocodestudio.com" target="_blank" rel="noopener">See what we can build for you</a>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#171C20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      RG <span class="accent">Electrical</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="tel:01242437099" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        01242 437099
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#areas" onclick="closeMenu()">Areas</a>
+  <a href="#reviews" onclick="closeMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="tel:01242437099" class="nav-cta" style="margin-top:16px">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    01242 437099
+  </a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Trusted Local Electricians
+      </div>
+      <h1>Expert Electricians for <span class="highlight">Cheltenham &amp; Gloucester</span></h1>
+      <p>From full rewiring and fuse board upgrades to EV charger installations, RG Electrical delivers safe, certified electrical work across Gloucestershire.</p>
+      <div class="hero-actions">
+        <a href="tel:01242437099" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call 01242 437099
+        </a>
+        <a href="#services" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          View Services
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card reveal">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-number">5,000+</div>
+        <div class="stat-label">Jobs Completed</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-number">4.9/5</div>
+        <div class="stat-label">Customer Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item reveal">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h4>Fully Certified</h4>
+        <p>NICEIC approved &amp; Part P registered</p>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>Fast Response</h4>
+        <p>Same-day service available</p>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+        </div>
+        <h4>Free Quotes</h4>
+        <p>No obligation, transparent pricing</p>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 00-6 0v4"/><rect x="2" y="9" width="20" height="13" rx="2"/><circle cx="12" cy="16" r="1"/></svg>
+        </div>
+        <h4>Fully Insured</h4>
+        <p>Complete public liability cover</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2>Our Electrical Services</h2>
+      <p>Comprehensive electrical solutions for homes and businesses across Gloucestershire</p>
+    </div>
+    <div class="services-grid">
+      <!-- Rewiring -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M4 15h16"/><path d="M12 3v8"/><circle cx="12" cy="11" r="1"/><path d="M8 7l4 4 4-4"/></svg>
+        </div>
+        <h3>Rewiring</h3>
+        <p>Complete house rewiring to modern standards. We bring older properties up to current regulations with minimal disruption.</p>
+      </div>
+      <!-- Fuse Board Upgrades -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/></svg>
+        </div>
+        <h3>Fuse Board Upgrades</h3>
+        <p>Replace outdated fuse boxes with modern consumer units. Enhanced safety with RCD protection for every circuit.</p>
+      </div>
+      <!-- Lighting -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/></svg>
+        </div>
+        <h3>Lighting &amp; Sockets</h3>
+        <p>Interior and exterior lighting design, LED upgrades, additional sockets, and smart home wiring throughout your property.</p>
+      </div>
+      <!-- EV Charger -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>EV Charger Installation</h3>
+        <p>Certified home EV charging point installation. Compatible with all major brands including Tesla, Pod Point, and Ohme.</p>
+      </div>
+      <!-- Fire Alarms -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        </div>
+        <h3>Fire Alarms &amp; Safety</h3>
+        <p>Hardwired fire alarm and smoke detector systems. Full compliance with Building Regulations for landlords and homeowners.</p>
+      </div>
+      <!-- Inspections -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <h3>Inspections &amp; PAT Testing</h3>
+        <p>EICR electrical inspections, condition reports, and portable appliance testing for landlords, businesses, and homeowners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="section areas-section" id="areas">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Coverage</div>
+      <h2>Areas We Serve</h2>
+      <p>Covering Cheltenham, Gloucester, and the wider Gloucestershire region</p>
+    </div>
+    <div class="areas-wrap reveal">
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Cheltenham
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Gloucester
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Tewkesbury
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Stroud
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bishops Cleeve
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Cirencester
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Evesham
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Winchcombe
+      </div>
+      <div class="area-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        All of Gloucestershire
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Testimonials</div>
+      <h2>What Our Customers Say</h2>
+      <p>Trusted by thousands of homeowners and businesses across Gloucestershire</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"Fantastic service from start to finish. RG Electrical rewired our entire 1930s house in Cheltenham. Clean, professional, and finished ahead of schedule. Highly recommended."</p>
+        <div class="review-author">
+          <div class="review-avatar">JM</div>
+          <div>
+            <div class="review-name">James Mitchell</div>
+            <div class="review-meta">Cheltenham &bull; Full Rewire</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"Had an EV charger installed at our home in Gloucester. The team explained everything clearly, handled the installation perfectly, and even helped with the OZEV grant paperwork."</p>
+        <div class="review-author">
+          <div class="review-avatar">SP</div>
+          <div>
+            <div class="review-name">Sarah Palmer</div>
+            <div class="review-meta">Gloucester &bull; EV Charger Install</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"We manage 30+ rental properties in Tewkesbury and use RG Electrical for all our EICRs and fire alarm installations. Always reliable, always on time, brilliant reports."</p>
+        <div class="review-author">
+          <div class="review-avatar">DH</div>
+          <div>
+            <div class="review-name">David Hughes</div>
+            <div class="review-meta">Tewkesbury &bull; Landlord Services</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <h2>Ready to Get Started?</h2>
+      <p>Get a free, no-obligation quote for your electrical project. We typically respond within the hour.</p>
+      <a href="tel:01242437099" class="cta-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        01242 437099
+      </a>
+      <br>
+      <a href="tel:01242437099" class="btn-primary" style="margin-top:8px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now for a Free Quote
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      RG <span class="accent">Electrical</span> &mdash; Cheltenham &amp; Gloucester
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#areas">Areas</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:01242437099">01242 437099</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 RG Electrical. All rights reserved. &nbsp;|&nbsp;
+    Demo built by <a href="https://neocodestudio.com" target="_blank" rel="noopener">NeoCode Studio</a>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <button class="popup-close" id="popupClose" aria-label="Close popup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="popup-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <h3>Need an Electrician?</h3>
+    <p>Get a free quote from RG Electrical. Trusted by thousands of customers across Gloucestershire.</p>
+    <a href="tel:01242437099" class="btn-primary" style="width:100%;justify-content:center;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call 01242 437099
+    </a>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ── Navbar scroll effect ── */
+  const navbar = document.getElementById('navbar');
+  const scrollTop = document.getElementById('scrollTop');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', function() {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 50);
+    scrollTop.classList.toggle('visible', y > 300);
+    lastScroll = y;
+  }, { passive: true });
+
+  /* ── Scroll to top ── */
+  scrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ── Hamburger menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  window.closeMenu = function() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  /* ── Staggered reveal on scroll ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, index) {
+      if (entry.isIntersecting) {
+        // Calculate stagger based on siblings
+        const parent = entry.target.parentElement;
+        const siblings = Array.from(parent.querySelectorAll('.reveal'));
+        const siblingIndex = siblings.indexOf(entry.target);
+        const delay = siblingIndex * 120;
+
+        setTimeout(function() {
+          entry.target.classList.add('visible');
+        }, delay);
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  /* ── Popup at 75% scroll ── */
+  const popupOverlay = document.getElementById('popupOverlay');
+  const popupClose = document.getElementById('popupClose');
+  let popupShown = false;
+
+  window.addEventListener('scroll', function() {
+    if (popupShown) return;
+    const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+    if (scrollPercent >= 0.75) {
+      popupShown = true;
+      popupOverlay.classList.add('active');
+    }
+  }, { passive: true });
+
+  popupClose.addEventListener('click', function() {
+    popupOverlay.classList.remove('active');
+  });
+
+  popupOverlay.addEventListener('click', function(e) {
+    if (e.target === popupOverlay) popupOverlay.classList.remove('active');
+  });
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = navbar.offsetHeight + 16;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>

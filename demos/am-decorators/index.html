@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM Decorators | Professional Painter & Decorator in Sunderland | NeoCode Studio Demo</title>
+    <meta name="description" content="AM Decorators — professional painting and decorating services in Sunderland, Washington, Houghton-le-Spring, South Shields and across Tyne and Wear. Interior, exterior, wallpapering, coving and more.">
+    <meta name="keywords" content="painter decorator Sunderland, painting services Tyne and Wear, wallpapering, coving, commercial painting, AM Decorators">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="AM Decorators | Professional Painter & Decorator in Sunderland">
+    <meta property="og:description" content="Trusted painting and decorating across Sunderland and Tyne and Wear. Free quotes — call 07807 014088.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://neocode.studio/demos/am-decorators/">
+    <style>
+        /* ========== CSS Custom Properties ========== */
+        :root {
+            --slate: #151A1F;
+            --slate-light: #1E2530;
+            --slate-lighter: #2A3240;
+            --sage: #84CC16;
+            --sage-dark: #6BB308;
+            --sage-glow: rgba(132, 204, 22, 0.15);
+            --sage-glow-strong: rgba(132, 204, 22, 0.25);
+            --white: #FFFFFF;
+            --off-white: #F1F5F9;
+            --gray-100: #F8FAFC;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --max-w: 1200px;
+            --nav-h: 72px;
+        }
+
+        /* ========== Reset & Base ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+        body {
+            font-family: var(--font);
+            color: var(--gray-600);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        h1, h2, h3, h4 { color: var(--slate); line-height: 1.2; }
+
+        /* ========== Utility ========== */
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0; }
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--sage); margin-bottom: 12px;
+        }
+        .section-label svg { width: 18px; height: 18px; }
+        .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; }
+        .section-sub { font-size: 17px; color: var(--gray-500); max-width: 560px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 32px; border-radius: 50px; font-weight: 700;
+            font-size: 15px; border: none; cursor: pointer;
+            transition: var(--transition); text-decoration: none;
+        }
+        .btn-primary {
+            background: var(--sage); color: var(--slate);
+            box-shadow: 0 4px 20px rgba(132,204,22,0.3);
+        }
+        .btn-primary:hover { background: var(--sage-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(132,204,22,0.4); }
+        .btn-outline {
+            background: transparent; color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline:hover { border-color: var(--sage); color: var(--sage); }
+        .btn svg { width: 18px; height: 18px; }
+
+        /* ========== Reveal Animation ========== */
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ========== NeoCode Banner ========== */
+        .neocode-banner {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            padding: 10px 24px; text-align: center;
+            font-size: 13px; color: var(--gray-400);
+            border-bottom: 1px solid rgba(132,204,22,0.1);
+        }
+        .neocode-banner a {
+            color: var(--sage); font-weight: 600;
+            transition: var(--transition);
+        }
+        .neocode-banner a:hover { color: var(--sage-dark); }
+        .neocode-banner span { opacity: 0.5; margin: 0 8px; }
+
+        /* ========== Navigation ========== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(21, 26, 31, 0.95);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            height: var(--nav-h);
+            transition: var(--transition);
+        }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .nav-inner {
+            max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 100%;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--white); }
+        .nav-logo .logo-icon {
+            width: 40px; height: 40px; background: var(--sage);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-size: 18px; font-weight: 900; color: var(--slate);
+        }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a {
+            color: var(--gray-400); font-size: 14px; font-weight: 500;
+            transition: var(--transition); position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--sage);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--sage); color: var(--slate) !important;
+            padding: 10px 24px; border-radius: 50px; font-weight: 700 !important;
+            font-size: 14px;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--sage-dark); transform: scale(1.03); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001;
+        }
+        .hamburger span {
+            width: 24px; height: 2px; background: var(--white);
+            transition: var(--transition); border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Mobile Nav */
+        .mobile-menu {
+            display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
+            background: rgba(21, 26, 31, 0.98); backdrop-filter: blur(20px);
+            flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+            z-index: 999;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--white); font-size: 20px; font-weight: 600;
+            transition: var(--transition);
+        }
+        .mobile-menu a:hover { color: var(--sage); }
+
+        /* ========== Hero ========== */
+        .hero {
+            position: relative; min-height: 100vh; display: flex; align-items: center;
+            background: linear-gradient(160deg, var(--slate) 0%, var(--slate-light) 50%, #1a2520 100%);
+            overflow: hidden; padding-top: var(--nav-h);
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, var(--sage-glow) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+            background: linear-gradient(to top, var(--white), transparent);
+            pointer-events: none;
+        }
+        .hero-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center; position: relative; z-index: 1;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--sage-glow); border: 1px solid rgba(132,204,22,0.2);
+            padding: 8px 16px; border-radius: 50px; margin-bottom: 24px;
+            font-size: 13px; font-weight: 600; color: var(--sage);
+        }
+        .hero-badge svg { width: 16px; height: 16px; }
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px); font-weight: 900;
+            color: var(--white); margin-bottom: 20px; line-height: 1.1;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--sage), #a3e635);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc { font-size: 18px; color: var(--gray-400); margin-bottom: 36px; max-width: 480px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        /* Floating Stat Cards */
+        .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; }
+        .stat-card {
+            position: absolute; background: rgba(30, 37, 48, 0.85);
+            backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius); padding: 24px 28px;
+            color: var(--white); box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        .stat-card:hover { transform: scale(1.05); border-color: rgba(132,204,22,0.2); }
+        .stat-card .stat-icon {
+            width: 48px; height: 48px; background: var(--sage-glow);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px;
+        }
+        .stat-card .stat-icon svg { width: 24px; height: 24px; color: var(--sage); }
+        .stat-card .stat-number { font-size: 32px; font-weight: 900; color: var(--sage); }
+        .stat-card .stat-text { font-size: 13px; color: var(--gray-400); margin-top: 4px; }
+        .stat-card:nth-child(1) { top: 10%; right: 10%; animation: float 6s ease-in-out infinite; }
+        .stat-card:nth-child(2) { top: 45%; left: 5%; animation: float 6s ease-in-out 1s infinite; }
+        .stat-card:nth-child(3) { bottom: 5%; right: 15%; animation: float 6s ease-in-out 2s infinite; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* ========== Trust Bar ========== */
+        .trust-bar {
+            background: var(--gray-100); border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200); padding: 40px 0;
+        }
+        .trust-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+            text-align: center;
+        }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        .trust-icon {
+            width: 56px; height: 56px; background: var(--white);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow); border: 1px solid var(--gray-200);
+        }
+        .trust-icon svg { width: 28px; height: 28px; color: var(--sage); }
+        .trust-item h4 { font-size: 15px; font-weight: 700; }
+        .trust-item p { font-size: 13px; color: var(--gray-500); }
+
+        /* ========== Services ========== */
+        .services { background: var(--white); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px; margin-top: 48px;
+        }
+        .service-card {
+            background: var(--white); border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg); padding: 36px 28px;
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: var(--sage); transform: scaleX(0);
+            transition: var(--transition); transform-origin: left;
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 56px; height: 56px; background: var(--sage-glow);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; transition: var(--transition);
+        }
+        .service-card:hover .service-icon { background: var(--sage); }
+        .service-icon svg { width: 28px; height: 28px; color: var(--sage); transition: var(--transition); }
+        .service-card:hover .service-icon svg { color: var(--slate); }
+        .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .service-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+
+        /* ========== Areas ========== */
+        .areas { background: var(--gray-100); }
+        .areas-header { text-align: center; margin-bottom: 48px; }
+        .areas-header .section-sub { margin: 0 auto; }
+        .areas-chips {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 12px; margin-bottom: 48px;
+        }
+        .area-chip {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--white); border: 1px solid var(--gray-200);
+            padding: 12px 24px; border-radius: 50px;
+            font-size: 15px; font-weight: 600; color: var(--slate);
+            transition: var(--transition); cursor: default;
+        }
+        .area-chip svg { width: 16px; height: 16px; color: var(--sage); }
+        .area-chip:hover { border-color: var(--sage); background: var(--sage-glow); transform: translateY(-2px); }
+        .areas-note {
+            text-align: center; font-size: 15px; color: var(--gray-500);
+            padding: 24px; background: var(--white);
+            border-radius: var(--radius); border: 1px solid var(--gray-200);
+            max-width: 600px; margin: 0 auto;
+        }
+        .areas-note strong { color: var(--sage); }
+
+        /* ========== Reviews ========== */
+        .reviews { background: var(--white); }
+        .reviews-header { text-align: center; margin-bottom: 48px; }
+        .reviews-header .section-sub { margin: 0 auto; }
+        .reviews-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .review-card {
+            background: var(--gray-100); border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg); padding: 32px;
+            transition: var(--transition);
+        }
+        .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .review-stars { display: flex; gap: 4px; margin-bottom: 16px; }
+        .review-stars svg { width: 18px; height: 18px; color: #FBBF24; fill: #FBBF24; }
+        .review-text { font-size: 15px; color: var(--gray-600); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+        .review-author { display: flex; align-items: center; gap: 12px; }
+        .review-avatar {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--sage); display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 800; color: var(--slate);
+        }
+        .review-name { font-size: 15px; font-weight: 700; color: var(--slate); }
+        .review-loc { font-size: 13px; color: var(--gray-500); }
+
+        /* ========== CTA ========== */
+        .cta {
+            background: linear-gradient(160deg, var(--slate) 0%, var(--slate-light) 100%);
+            position: relative; overflow: hidden;
+        }
+        .cta::before {
+            content: ''; position: absolute; top: -100px; right: -100px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--sage-glow) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-inner {
+            text-align: center; position: relative; z-index: 1;
+            max-width: 680px; margin: 0 auto;
+        }
+        .cta h2 { color: var(--white); font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+        .cta p { color: var(--gray-400); font-size: 17px; margin-bottom: 36px; }
+        .cta-phone {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-size: 28px; font-weight: 900; color: var(--sage);
+            margin-bottom: 24px;
+        }
+        .cta-phone svg { width: 32px; height: 32px; }
+        .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* ========== Footer ========== */
+        .footer {
+            background: var(--slate); border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px; margin-bottom: 48px;
+        }
+        .footer-brand p { color: var(--gray-500); font-size: 14px; line-height: 1.7; margin-top: 16px; }
+        .footer h4 { color: var(--white); font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+        .footer-links a {
+            display: block; color: var(--gray-500); font-size: 14px;
+            padding: 6px 0; transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--sage); padding-left: 8px; }
+        .footer-contact a {
+            display: flex; align-items: center; gap: 10px;
+            color: var(--gray-500); font-size: 14px; padding: 6px 0;
+            transition: var(--transition);
+        }
+        .footer-contact a:hover { color: var(--sage); }
+        .footer-contact svg { width: 16px; height: 16px; color: var(--sage); flex-shrink: 0; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px; text-align: center;
+        }
+        .footer-bottom p { font-size: 13px; color: var(--gray-500); }
+        .footer-bottom a { color: var(--sage); font-weight: 600; transition: var(--transition); }
+        .footer-bottom a:hover { color: var(--sage-dark); }
+
+        /* ========== Scroll to Top ========== */
+        .scroll-top {
+            position: fixed; bottom: 32px; right: 32px; z-index: 900;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--sage); color: var(--slate);
+            border: none; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(132,204,22,0.4);
+            opacity: 0; transform: translateY(20px);
+            transition: var(--transition); pointer-events: none;
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .scroll-top:hover { background: var(--sage-dark); transform: translateY(-3px); }
+        .scroll-top svg { width: 22px; height: 22px; }
+
+        /* ========== Popup ========== */
+        .popup-overlay {
+            position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: var(--transition);
+        }
+        .popup-overlay.active { opacity: 1; pointer-events: auto; }
+        .popup {
+            background: var(--white); border-radius: var(--radius-lg);
+            padding: 48px; max-width: 480px; width: 90%;
+            text-align: center; position: relative;
+            transform: scale(0.9); transition: var(--transition);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+        }
+        .popup-overlay.active .popup { transform: scale(1); }
+        .popup-close {
+            position: absolute; top: 16px; right: 16px;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--gray-100); border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .popup-close:hover { background: var(--gray-200); }
+        .popup-close svg { width: 18px; height: 18px; color: var(--gray-500); }
+        .popup-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: var(--sage-glow); margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .popup-icon svg { width: 32px; height: 32px; color: var(--sage); }
+        .popup h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+        .popup p { font-size: 15px; color: var(--gray-500); margin-bottom: 28px; line-height: 1.6; }
+        .popup .btn { width: 100%; justify-content: center; }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 36px; }
+            .hero-btns { justify-content: center; }
+            .hero-visual { min-height: 300px; margin-top: 20px; }
+            .stat-card:nth-child(1) { top: 0; right: 5%; }
+            .stat-card:nth-child(2) { top: 40%; left: 0; }
+            .stat-card:nth-child(3) { bottom: 0; right: 10%; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none; }
+            .hero { padding-top: calc(var(--nav-h) + 20px); }
+            .hero-visual { min-height: 240px; }
+            .stat-card { padding: 18px 22px; }
+            .stat-card .stat-number { font-size: 24px; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .section { padding: 72px 0; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 32px; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .stat-card:nth-child(2) { left: -5%; }
+            .cta-phone { font-size: 22px; }
+            .cta-btns { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============ NeoCode Banner ============ -->
+<div class="neocode-banner">
+    Website demo built by <a href="https://neocode.studio" target="_blank" rel="noopener">NeoCode Studio</a>
+    <span>|</span> Premium Web Design &amp; Development
+</div>
+
+<!-- ============ Navigation ============ -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <div class="logo-icon">AM</div>
+            <span>AM Decorators</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#services">Services</a>
+            <a href="#areas">Areas</a>
+            <a href="#reviews">Reviews</a>
+            <a href="tel:07807014088" class="nav-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                07807 014088
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#areas" onclick="closeMobile()">Areas</a>
+    <a href="#reviews" onclick="closeMobile()">Reviews</a>
+    <a href="tel:07807014088" class="btn btn-primary" onclick="closeMobile()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now
+    </a>
+</div>
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div>
+                <div class="hero-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    Trusted Since 2005
+                </div>
+                <h1>Professional <span class="highlight">Painting &amp; Decorating</span> in Sunderland</h1>
+                <p class="hero-desc">Transforming homes and businesses across Tyne and Wear with expert craftsmanship, premium materials, and meticulous attention to detail.</p>
+                <div class="hero-btns">
+                    <a href="tel:07807014088" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Get Free Quote
+                    </a>
+                    <a href="#services" class="btn btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        View Services
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Stat Card 1: Years -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <div class="stat-number">20+</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+                <!-- Stat Card 2: Projects -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                <!-- Stat Card 3: Rating -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <div class="stat-number">5.0</div>
+                    <div class="stat-text">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ Trust Bar ============ -->
+<section class="trust-bar reveal">
+    <div class="container">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <!-- Shield check -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </div>
+                <h4>Fully Insured</h4>
+                <p>Public liability covered</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <!-- Clock -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h4>Reliable &amp; Punctual</h4>
+                <p>On time, every time</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <!-- Thumbs up -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                </div>
+                <h4>Premium Finish</h4>
+                <p>Quality materials only</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <!-- Quote / Free estimate -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                </div>
+                <h4>Free Estimates</h4>
+                <p>No obligation quotes</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ Services ============ -->
+<section class="services section" id="services">
+    <div class="container">
+        <div class="reveal">
+            <div class="section-label">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Our Services
+            </div>
+            <h2 class="section-title">Expert Painting &amp; Decorating</h2>
+            <p class="section-sub">From a single feature wall to a full commercial property, we deliver flawless results every time.</p>
+        </div>
+        <div class="services-grid">
+            <!-- Service 1: Interior Painting -->
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <h3>Interior Painting</h3>
+                <p>Refresh every room with clean lines, smooth finishes, and colours that bring your vision to life. Walls, ceilings, woodwork, and more.</p>
+            </div>
+            <!-- Service 2: Exterior Painting -->
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                </div>
+                <h3>Exterior Painting</h3>
+                <p>Weather-resistant coatings and expert preparation to protect and beautify your property's exterior for years to come.</p>
+            </div>
+            <!-- Service 3: Wallpapering -->
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                </div>
+                <h3>Wallpapering</h3>
+                <p>Precision-hung wallpaper with seamless pattern matching. From bold prints to delicate textures, we handle all styles with care.</p>
+            </div>
+            <!-- Service 4: Coving & Skirting -->
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                </div>
+                <h3>Coving &amp; Skirting</h3>
+                <p>Elegant coving and skirting board installation to add the finishing architectural detail your rooms deserve.</p>
+            </div>
+            <!-- Service 5: Feature Walls -->
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </div>
+                <h3>Feature Walls</h3>
+                <p>Create stunning focal points with accent colours, textured finishes, or statement wallpaper that transforms your space.</p>
+            </div>
+            <!-- Service 6: Commercial Painting -->
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+                </div>
+                <h3>Commercial Painting</h3>
+                <p>Professional painting for offices, shops, restaurants, and commercial buildings. Minimal disruption, maximum impact.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ Areas ============ -->
+<section class="areas section" id="areas">
+    <div class="container">
+        <div class="areas-header reveal">
+            <div class="section-label">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Areas We Cover
+            </div>
+            <h2 class="section-title">Serving Tyne and Wear</h2>
+            <p class="section-sub">Based in Thorney Close, Sunderland, we provide painting and decorating services across the wider region.</p>
+        </div>
+        <div class="areas-chips reveal">
+            <div class="area-chip">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Sunderland
+            </div>
+            <div class="area-chip">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Washington
+            </div>
+            <div class="area-chip">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Houghton-le-Spring
+            </div>
+            <div class="area-chip">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                South Shields
+            </div>
+            <div class="area-chip">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Tyne and Wear
+            </div>
+        </div>
+        <div class="areas-note reveal">
+            <strong>Not listed above?</strong> We may still cover your area. Give us a call on <a href="tel:07807014088" style="color:var(--sage);font-weight:700">07807 014088</a> to check.
+        </div>
+    </div>
+</section>
+
+<!-- ============ Reviews ============ -->
+<section class="reviews section" id="reviews">
+    <div class="container">
+        <div class="reviews-header reveal">
+            <div class="section-label">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Client Reviews
+            </div>
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-sub">We let our work and our clients speak for themselves. Here is what a few of them had to say.</p>
+        </div>
+        <div class="reviews-grid">
+            <!-- Review 1 -->
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">"Absolutely brilliant job on our living room and hallway. Andrew was professional, tidy, and the finish is spot on. Would recommend AM Decorators to anyone."</p>
+                <div class="review-author">
+                    <div class="review-avatar">ST</div>
+                    <div>
+                        <div class="review-name">Sarah T.</div>
+                        <div class="review-loc">Sunderland</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 2 -->
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">"Had our entire downstairs wallpapered and painted. The attention to detail was incredible, especially the pattern matching. Very fair price too. Top class."</p>
+                <div class="review-author">
+                    <div class="review-avatar">MH</div>
+                    <div>
+                        <div class="review-name">Mark H.</div>
+                        <div class="review-loc">Washington</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 3 -->
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">"AM Decorators painted the exterior of our shop and it looks brand new. They worked around our opening hours and left everything spotless. Couldn't ask for more."</p>
+                <div class="review-author">
+                    <div class="review-avatar">JR</div>
+                    <div>
+                        <div class="review-name">Julie R.</div>
+                        <div class="review-loc">Houghton-le-Spring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta section" id="contact">
+    <div class="container">
+        <div class="cta-inner reveal">
+            <div class="section-label" style="justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Get in Touch
+            </div>
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Call us today for a free, no-obligation quote. We will discuss your project and provide an honest, competitive price.</p>
+            <div class="cta-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <a href="tel:07807014088" style="color:var(--sage)">07807 014088</a>
+            </div>
+            <div class="cta-btns">
+                <a href="tel:07807014088" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call Now
+                </a>
+                <a href="#services" class="btn btn-outline">View Our Services</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo" style="margin-bottom:8px">
+                    <div class="logo-icon">AM</div>
+                    <span>AM Decorators</span>
+                </a>
+                <p>Professional painting and decorating services across Sunderland and Tyne and Wear. Over 20 years of experience delivering quality finishes for homes and businesses.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#areas">Areas Covered</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <div class="footer-contact">
+                    <a href="tel:07807014088">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        07807 014088
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        7 Tunbridge Road, Thorney Close
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Sunderland, Tyne and Wear
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AM Decorators. All rights reserved.</p>
+            <p style="margin-top:8px">
+                Demo by <a href="https://neocode.studio" target="_blank" rel="noopener">NeoCode Studio</a>
+                <span style="opacity:0.3;margin:0 8px">|</span>
+                <a href="#" target="_blank" rel="noopener">View Original Site</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- ============ Scroll to Top ============ -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ============ Popup ============ -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+        <button class="popup-close" id="popupClose" aria-label="Close popup">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="popup-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Get Your Free Quote</h3>
+        <p>Planning a painting or decorating project? Call us now for a free, no-obligation estimate. We cover all of Sunderland and Tyne and Wear.</p>
+        <a href="tel:07807014088" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call 07807 014088
+        </a>
+    </div>
+</div>
+
+<!-- ============ JavaScript ============ -->
+<script>
+    /* ---- Navigation scroll effect ---- */
+    const nav = document.getElementById('nav');
+    const scrollTop = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+        scrollTop.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    /* ---- Scroll to top ---- */
+    scrollTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ---- Hamburger menu ---- */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    /* ---- Staggered reveal on scroll ---- */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const siblings = el.parentElement.querySelectorAll('.reveal');
+                let staggerIndex = 0;
+                siblings.forEach((sib, i) => {
+                    if (sib === el) staggerIndex = i;
+                });
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, staggerIndex * 120);
+                revealObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    /* ---- Popup at 75% scroll ---- */
+    let popupShown = false;
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupClose = document.getElementById('popupClose');
+
+    window.addEventListener('scroll', () => {
+        if (popupShown) return;
+        const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrollPercent >= 0.75) {
+            popupShown = true;
+            popupOverlay.classList.add('active');
+        }
+    });
+
+    popupClose.addEventListener('click', () => {
+        popupOverlay.classList.remove('active');
+    });
+
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.classList.remove('active');
+        }
+    });
+
+    /* ---- Close popup with Escape key ---- */
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            popupOverlay.classList.remove('active');
+            closeMobile();
+        }
+    });
+</script>
+</body>
+</html>
