@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Locksmith Central London | 24/7 Locksmith Services</title>
+    <meta name="description" content="Emergency locksmith in Central London. 24/7 call-out, no hidden fees. Lock outs, lock changes, lock repairs & security upgrades. 20+ years experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1B2A4A;
+            --primary-light: #2C3E6B;
+            --accent: #D4A849;
+            --accent-light: #E8C76A;
+            --accent-dark: #B8922E;
+            --dark: #0F1A2E;
+            --text: #2D3748;
+            --text-light: #718096;
+            --light: #F7F8FA;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            --shadow: 0 4px 24px rgba(27,42,74,0.10);
+            --shadow-lg: 0 12px 48px rgba(27,42,74,0.15);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+        /* NeoCode Banner */
+        .neocode-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1000;
+        }
+        .neocode-banner a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .neocode-banner a:hover { text-decoration: underline; }
+
+        /* Pulsing badge */
+        .pulse-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(212,168,73,0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-left: 10px;
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 20px rgba(27,42,74,0.08);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled { box-shadow: 0 4px 30px rgba(27,42,74,0.12); }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .nav-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-logo-text {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        .nav-logo-text span { color: var(--accent); }
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 600 !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,168,73,0.35); }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 998;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+        .mobile-overlay.active { display: flex; }
+        .mobile-overlay a {
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            overflow: hidden;
+            padding-top: 72px;
+        }
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(212,168,73,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212,168,73,0.05) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A849' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text { color: var(--white); }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212,168,73,0.15);
+            border: 1px solid rgba(212,168,73,0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero-title .highlight { color: var(--accent); }
+        .hero-desc {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 36px;
+            line-height: 1.7;
+            max-width: 480px;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(212,168,73,0.4); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.25);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
+
+        /* Hero visual */
+        .hero-visual { position: relative; }
+        .hero-image-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .hero-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(27,42,74,0.6) 100%);
+        }
+
+        /* Floating cards */
+        .float-card {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 14px 20px;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: floatCard 3s ease-in-out infinite;
+            z-index: 5;
+        }
+        .float-card-1 { top: 30px; right: -20px; animation-delay: 0s; }
+        .float-card-2 { bottom: 80px; left: -30px; animation-delay: 1s; }
+        .float-card-3 { bottom: -10px; right: 30px; animation-delay: 2s; }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .float-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .float-card-icon.gold { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); }
+        .float-card-icon.navy { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .float-card-icon.green { background: linear-gradient(135deg, #38A169, #2F855A); }
+        .float-card-text { font-size: 0.85rem; font-weight: 700; color: var(--primary); }
+        .float-card-sub { font-size: 0.75rem; color: var(--text-light); font-weight: 400; }
+
+        /* Trust bar */
+        .trust-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 28px 0;
+        }
+        .trust-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px;
+        }
+        .trust-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(212,168,73,0.1), rgba(212,168,73,0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .trust-text { font-size: 0.9rem; font-weight: 700; color: var(--primary); }
+        .trust-sub { font-size: 0.78rem; color: var(--text-light); font-weight: 400; }
+
+        /* Sections */
+        .section { padding: 100px 0; }
+        .section-alt { background: var(--light); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(212,168,73,0.1), rgba(212,168,73,0.05));
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .service-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .service-card-body { padding: 24px; }
+        .service-card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .service-tag {
+            display: inline-block;
+            background: rgba(212,168,73,0.1);
+            color: var(--accent-dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 12px;
+        }
+
+        /* About section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .about-stat-card {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--white);
+            padding: 20px 28px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        .about-stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .about-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-features {
+            list-style: none;
+            margin-top: 24px;
+        }
+        .about-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Areas section */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .area-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .area-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        .area-card-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .review-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .review-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+        .review-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .review-name { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+        .review-date { font-size: 0.78rem; color: var(--text-light); }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark), var(--primary), var(--primary-light));
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A849' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .cta-content { position: relative; z-index: 2; }
+        .cta-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .cta-desc {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .footer-brand h3 span { color: var(--accent); }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+        .footer-col h4 {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+        }
+        .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 900;
+            border: none;
+            box-shadow: 0 4px 16px rgba(212,168,73,0.3);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px); }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,26,46,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-overlay.active { display: flex; }
+        .popup {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: popupIn 0.4s ease;
+        }
+        @keyframes popupIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .popup-close:hover { background: var(--border); }
+        .popup-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .popup h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .popup p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 36px; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { max-width: 500px; margin: 0 auto; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .areas-grid { grid-template-columns: repeat(3, 1fr); }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .hero-title { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .areas-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .cta-title { font-size: 2rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .float-card-1 { top: 10px; right: 0; }
+            .float-card-2 { bottom: 60px; left: 0; }
+            .float-card-3 { bottom: 0; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NeoCode Banner -->
+    <div class="neocode-banner">
+        This is a free demo redesign by <a href="https://neocodestudio.co.uk" target="_blank">NeoCode Studio</a>
+        <span class="pulse-badge"><span class="pulse-dot"></span> Demo</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <div>
+                    <div class="nav-logo-text">Emergency <span>Locksmith</span></div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#areas">Areas</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact" class="nav-cta">Call Now</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobileMenu">
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#areas" onclick="toggleMenu()">Areas</a>
+        <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+        <a href="#contact" onclick="toggleMenu()">Call Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    24/7 Emergency Service &mdash; Central London
+                </div>
+                <h1 class="hero-title">
+                    Locked Out?<br>
+                    We're <span class="highlight">There Fast.</span>
+                </h1>
+                <p class="hero-desc">
+                    Professional emergency locksmith serving Central London and surrounding areas. No call-out fee, no hidden charges. Over 20 years of trusted experience keeping London secure.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Call Now
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Our Services
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=420&fit=crop" alt="Professional locksmith at work" class="hero-image" onerror="this.style.background='linear-gradient(135deg, var(--primary), var(--accent))'; this.style.display='block';">
+                    <div class="hero-image-overlay"></div>
+                </div>
+                <!-- Floating cards -->
+                <div class="float-card float-card-1">
+                    <div class="float-card-icon gold">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <div class="float-card-text">24/7 Available</div>
+                        <div class="float-card-sub">Day & Night Service</div>
+                    </div>
+                </div>
+                <div class="float-card float-card-2">
+                    <div class="float-card-icon navy">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div>
+                        <div class="float-card-text">20+ Years</div>
+                        <div class="float-card-sub">Trusted Experience</div>
+                    </div>
+                </div>
+                <div class="float-card float-card-3">
+                    <div class="float-card-icon green">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div>
+                        <div class="float-card-text">No Call-Out Fee</div>
+                        <div class="float-card-sub">Transparent Pricing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A849" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                    <div class="trust-text">24/7 Emergency</div>
+                    <div class="trust-sub">Day & night, 365 days</div>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A849" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                    <div class="trust-text">DBS Checked</div>
+                    <div class="trust-sub">Fully vetted engineers</div>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A849" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div>
+                    <div class="trust-text">No Hidden Fees</div>
+                    <div class="trust-sub">Upfront pricing always</div>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A849" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                    <div class="trust-text">Central London</div>
+                    <div class="trust-sub">30 min response time</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Our Services
+                </div>
+                <h2 class="section-title">Professional Locksmith Services</h2>
+                <p class="section-desc">From emergency lockouts to full security upgrades, we handle all your lock and key needs with precision and care.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1622974671498-aa5a36fbbf90?w=400&h=180&fit=crop" alt="Emergency lockout service" class="service-card-image" onerror="this.style.background='linear-gradient(135deg, #1B2A4A, #2C3E6B)'; this.style.display='block';">
+                    <div class="service-card-body">
+                        <div class="service-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <h3>Emergency Lockout</h3>
+                        <p>Locked out of your home, office, or car? Our rapid response team will get you back inside quickly with minimal disruption.</p>
+                        <span class="service-tag">30 Min Response</span>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=180&fit=crop" alt="Lock change service" class="service-card-image" onerror="this.style.background='linear-gradient(135deg, #1B2A4A, #2C3E6B)'; this.style.display='block';">
+                    <div class="service-card-body">
+                        <div class="service-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <h3>Lock Changes</h3>
+                        <p>Moving home or had a break-in? We supply and fit high-security locks from trusted brands like Yale, Chubb, and ERA.</p>
+                        <span class="service-tag">British Standard</span>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=180&fit=crop" alt="Lock repair service" class="service-card-image" onerror="this.style.background='linear-gradient(135deg, #1B2A4A, #2C3E6B)'; this.style.display='block';">
+                    <div class="service-card-body">
+                        <div class="service-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h3>Lock Repairs</h3>
+                        <p>Faulty lock, stiff mechanism, or broken key stuck inside? Our skilled engineers diagnose and repair all types of locks on-site.</p>
+                        <span class="service-tag">Same-Day Fix</span>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=180&fit=crop" alt="Security upgrade service" class="service-card-image" onerror="this.style.background='linear-gradient(135deg, #1B2A4A, #2C3E6B)'; this.style.display='block';">
+                    <div class="service-card-body">
+                        <div class="service-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Security Upgrades</h3>
+                        <p>Upgrade your property's security with anti-snap locks, deadbolts, window locks, and smart lock installations.</p>
+                        <span class="service-tag">Insurance Approved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=500&h=400&fit=crop" alt="Locksmith tools and equipment" onerror="this.style.background='linear-gradient(135deg, var(--primary), var(--accent))'; this.style.display='block'; this.style.height='400px';">
+                    <div class="about-stat-card">
+                        <div class="about-stat-number">20+</div>
+                        <div class="about-stat-label">Years Experience</div>
+                    </div>
+                </div>
+                <div class="about-text reveal">
+                    <div class="section-tag">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        About Us
+                    </div>
+                    <h2>London's Trusted<br>Locksmith Service</h2>
+                    <p>With over 20 years of experience, Emergency Locksmith Central London has been providing fast, reliable, and affordable locksmith services to homes and businesses across the capital.</p>
+                    <p>Our fully trained, DBS-checked engineers carry a comprehensive range of locks and tools, allowing us to resolve most issues on the first visit. We work with all major brands including Yale, Chubb, ERA, and Banham.</p>
+                    <ul class="about-features">
+                        <li>
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            Fully insured & DBS checked engineers
+                        </li>
+                        <li>
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            No call-out fee &mdash; transparent pricing
+                        </li>
+                        <li>
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            British Standard locks fitted as standard
+                        </li>
+                        <li>
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            30-minute average response time
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas Section -->
+    <section class="section" id="areas">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Coverage Area
+                </div>
+                <h2 class="section-title">Areas We Cover</h2>
+                <p class="section-desc">Serving all of Central London and surrounding boroughs with rapid response times.</p>
+            </div>
+            <div class="areas-grid">
+                <div class="area-card reveal"><div class="area-card-name">Westminster</div></div>
+                <div class="area-card reveal"><div class="area-card-name">City of London</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Camden</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Islington</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Kensington</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Chelsea</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Southwark</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Lambeth</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Tower Hamlets</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Hackney</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Mayfair</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Soho</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Covent Garden</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Paddington</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Shoreditch</div></div>
+                <div class="area-card reveal"><div class="area-card-name">Notting Hill</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section section-alt" id="reviews">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Testimonials
+                </div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-desc">Trusted by thousands of homeowners and businesses across London.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card reveal">
+                    <div class="review-stars">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"Got locked out at midnight and they arrived in under 25 minutes. Professional, friendly, and got me back in without any damage. Couldn't recommend more highly."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">JW</div>
+                        <div>
+                            <div class="review-name">James W.</div>
+                            <div class="review-date">Westminster</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"After a break-in, they came out the same evening and replaced all our locks with high-security ones. Made us feel safe again. Very reasonable price too."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">SP</div>
+                        <div>
+                            <div class="review-name">Sarah P.</div>
+                            <div class="review-date">Islington</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A849" stroke="#D4A849" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"We use them for all our commercial properties. Always punctual, professional, and their security recommendations have been spot on. A trusted partner for our business."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">MK</div>
+                        <div>
+                            <div class="review-name">Michael K.</div>
+                            <div class="review-date">City of London</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content container">
+            <div class="reveal">
+                <h2 class="cta-title">Need a Locksmith Now?</h2>
+                <p class="cta-desc">Available 24 hours a day, 7 days a week. No call-out fee. We'll be there in 30 minutes or less.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+44" class="btn-primary" style="font-size: 1.15rem; padding: 18px 40px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Call Emergency Line
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Emergency <span>Locksmith</span></h3>
+                    <p>Central London's trusted 24/7 emergency locksmith service. Over 20 years of experience keeping homes and businesses secure across the capital.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Emergency Lockout</a></li>
+                        <li><a href="#services">Lock Changes</a></li>
+                        <li><a href="#services">Lock Repairs</a></li>
+                        <li><a href="#services">Security Upgrades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Areas</h4>
+                    <ul>
+                        <li><a href="#areas">Westminster</a></li>
+                        <li><a href="#areas">City of London</a></li>
+                        <li><a href="#areas">Camden</a></li>
+                        <li><a href="#areas">Islington</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Emergency Locksmith Central London. All rights reserved.</span>
+                <span>Current site: <a href="https://emergencylocksmithincentrallondon.weebly.com" target="_blank">View original</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup">
+            <button class="popup-close" onclick="closePopup()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#718096" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="popup-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Like What You See?</h3>
+            <p>This is a free demo redesign by NeoCode Studio. We build modern, high-converting websites for local businesses. Interested in making this yours?</p>
+            <a href="mailto:hello@neocodestudio.co.uk?subject=Emergency Locksmith Central London - Website Redesign" class="btn-primary" style="width: 100%; justify-content: center;">
+                Get This Website &mdash; It's Free
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+        });
+
+        // Mobile menu
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        // Reveal animations
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // Popup at 75% scroll
+        let popupShown = false;
+        window.addEventListener('scroll', () => {
+            if (popupShown) return;
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+            if (scrollPercent > 75) {
+                document.getElementById('popup').classList.add('active');
+                popupShown = true;
+            }
+        });
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
